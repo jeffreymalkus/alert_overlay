@@ -1,0 +1,391 @@
+========================================================================================================================
+REGIME-GATED LONG STUDY — Decisive test of 10:15 sector-breadth gate
+========================================================================================================================
+
+========================================================================================================================
+SECTION 1 — STUDY DEFINITION
+========================================================================================================================
+  Entry: VK acceptance (hold=2, expansion close, vol>70% MA)
+  Market gate: ML1 (SPY above VWAP at signal bar)
+  Leadership: L1 (stock RS > SPY at signal bar)
+  In-play: none
+  Exit: X2 (3R target, stop at acceptance low / VWAP, EOD close)
+  Entry window: 10:15-11:30
+  Cost: 4bps slippage/side + $0.005/share commission
+
+  Regime gate (computed ONCE at 10:15, frozen for the day):
+    Gate A: >6 sectors above VWAP at 10:15
+    Gate B: >7 sectors above VWAP at 10:15
+    Gate C: SPY>VWAP AND >6 sectors above VWAP at 10:15
+
+  LIVE-AVAILABLE: all regime features use only data through bar 9 (10:15).
+  No hindsight. No GREEN-day. No future information.
+
+  Loading data...
+  Computing 10:15 regime states...
+  207 trading days: Gate A=84d, Gate B=60d, Gate C=72d
+
+  Day-by-day regime state:
+  Date         Sec>VW SPY>VW   A   B   C
+  2025-05-12        6      Y   -   -   -
+  2025-05-13       10      Y   Y   Y   Y
+  2025-05-14        2      N   -   -   -
+  2025-05-15        9      Y   Y   Y   Y
+  2025-05-16        8      N   Y   Y   -
+  2025-05-19       10      Y   Y   Y   Y
+  2025-05-20        7      N   Y   -   -
+  2025-05-21        2      Y   -   -   -
+  2025-05-22        3      Y   -   -   -
+  2025-05-23       10      Y   Y   Y   Y
+  2025-05-27        7      Y   Y   -   Y
+  2025-05-28        2      N   -   -   -
+  2025-05-29        4      N   -   -   -
+  2025-05-30       10      Y   Y   Y   Y
+  2025-06-02        2      N   -   -   -
+  2025-06-03        4      Y   -   -   -
+  2025-06-04        4      N   -   -   -
+  2025-06-05        4      N   -   -   -
+  2025-06-06        4      Y   -   -   -
+  2025-06-09        5      Y   -   -   -
+  2025-06-10        7      Y   Y   -   Y
+  2025-06-11        6      Y   -   -   -
+  2025-06-12        9      Y   Y   Y   Y
+  2025-06-13        4      N   -   -   -
+  2025-06-16       10      Y   Y   Y   Y
+  2025-06-17       10      Y   Y   Y   Y
+  2025-06-18        9      Y   Y   Y   Y
+  2025-06-20        6      N   -   -   -
+  2025-06-23        9      Y   Y   Y   Y
+  2025-06-24        5      N   -   -   -
+  2025-06-25        5      N   -   -   -
+  2025-06-26        5      Y   -   -   -
+  2025-06-27       10      Y   Y   Y   Y
+  2025-06-30        6      Y   -   -   -
+  2025-07-01        6      Y   -   -   -
+  2025-07-02        7      Y   Y   -   Y
+  2025-07-03        4      Y   -   -   -
+  2025-07-07        6      N   -   -   -
+  2025-07-08        4      N   -   -   -
+  2025-07-09        2      Y   -   -   -
+  2025-07-10        9      Y   Y   Y   Y
+  2025-07-11        8      Y   Y   Y   Y
+  2025-07-14        5      Y   -   -   -
+  2025-07-15        5      N   -   -   -
+  2025-07-16        1      N   -   -   -
+  2025-07-17        8      Y   Y   Y   Y
+  2025-07-18        4      N   -   -   -
+  2025-07-21        8      Y   Y   Y   Y
+  2025-07-22        0      N   -   -   -
+  2025-07-23        6      N   -   -   -
+  2025-07-24        8      N   Y   Y   -
+  2025-07-25        4      Y   -   -   -
+  2025-07-28       10      Y   Y   Y   Y
+  2025-07-29        6      N   -   -   -
+  2025-07-30        5      N   -   -   -
+  2025-07-31        7      Y   Y   -   Y
+  2025-08-01        2      N   -   -   -
+  2025-08-04        7      Y   Y   -   Y
+  2025-08-05        1      N   -   -   -
+  2025-08-06        4      Y   -   -   -
+  2025-08-07        1      N   -   -   -
+  2025-08-08        7      Y   Y   -   Y
+  2025-08-11        2      Y   -   -   -
+  2025-08-12        9      Y   Y   Y   Y
+  2025-08-13        6      N   -   -   -
+  2025-08-14        6      Y   -   -   -
+  2025-08-15        2      N   -   -   -
+  2025-08-18        7      Y   Y   -   Y
+  2025-08-19        9      Y   Y   Y   Y
+  2025-08-20        3      N   -   -   -
+  2025-08-21       11      Y   Y   Y   Y
+  2025-08-22       10      Y   Y   Y   Y
+  2025-08-25        3      Y   -   -   -
+  2025-08-26        7      Y   Y   -   Y
+  2025-08-27        8      Y   Y   Y   Y
+  2025-08-28        1      N   -   -   -
+  2025-08-29        3      N   -   -   -
+  2025-09-02        9      Y   Y   Y   Y
+  2025-09-03        1      N   -   -   -
+  2025-09-04        3      N   -   -   -
+  2025-09-05        2      N   -   -   -
+  2025-09-08        2      N   -   -   -
+  2025-09-09        7      Y   Y   -   Y
+  2025-09-10        9      Y   Y   Y   Y
+  2025-09-11       10      Y   Y   Y   Y
+  2025-09-12        3      N   -   -   -
+  2025-09-15        4      Y   -   -   -
+  2025-09-16        1      N   -   -   -
+  2025-09-17        3      N   -   -   -
+  2025-09-18       10      Y   Y   Y   Y
+  2025-09-19        4      Y   -   -   -
+  2025-09-22        9      Y   Y   Y   Y
+  2025-09-23        7      Y   Y   -   Y
+  2025-09-24        4      N   -   -   -
+  2025-09-25        8      Y   Y   Y   Y
+  2025-09-26        5      N   -   -   -
+  2025-09-29        4      Y   -   -   -
+  2025-09-30        4      N   -   -   -
+  2025-10-01        5      Y   -   -   -
+  2025-10-02        0      N   -   -   -
+  2025-10-03        5      N   -   -   -
+  2025-10-06        4      N   -   -   -
+  2025-10-07        4      N   -   -   -
+  2025-10-08       10      Y   Y   Y   Y
+  2025-10-09        1      N   -   -   -
+  2025-10-10        3      N   -   -   -
+  2025-10-13        6      Y   -   -   -
+  2025-10-14       11      Y   Y   Y   Y
+  2025-10-15       10      Y   Y   Y   Y
+  2025-10-16        1      N   -   -   -
+  2025-10-17       10      Y   Y   Y   Y
+  2025-10-20        7      Y   Y   -   Y
+  2025-10-21        6      N   -   -   -
+  2025-10-22        6      N   -   -   -
+  2025-10-23        1      N   -   -   -
+  2025-10-24        8      Y   Y   Y   Y
+  2025-10-27        9      Y   Y   Y   Y
+  2025-10-28        2      N   -   -   -
+  2025-10-29        5      N   -   -   -
+  2025-10-30       11      Y   Y   Y   Y
+  2025-10-31        9      N   Y   Y   -
+  2025-11-03        3      N   -   -   -
+  2025-11-04        9      Y   Y   Y   Y
+  2025-11-05        7      Y   Y   -   Y
+  2025-11-06        4      N   -   -   -
+  2025-11-07        8      Y   Y   Y   Y
+  2025-11-10        6      Y   -   -   -
+  2025-11-11        4      N   -   -   -
+  2025-11-12        5      N   -   -   -
+  2025-11-13        6      Y   -   -   -
+  2025-11-14        6      Y   -   -   -
+  2025-11-17        7      N   Y   -   -
+  2025-11-18        3      N   -   -   -
+  2025-11-19        8      Y   Y   Y   Y
+  2025-11-20        4      N   -   -   -
+  2025-11-21        8      N   Y   Y   -
+  2025-11-24       10      Y   Y   Y   Y
+  2025-11-25        5      Y   -   -   -
+  2025-11-26        8      N   Y   Y   -
+  2025-11-28        9      Y   Y   Y   Y
+  2025-12-01        6      Y   -   -   -
+  2025-12-02        8      Y   Y   Y   Y
+  2025-12-03        4      Y   -   -   -
+  2025-12-04        4      N   -   -   -
+  2025-12-05        9      Y   Y   Y   Y
+  2025-12-08        2      N   -   -   -
+  2025-12-09        5      Y   -   -   -
+  2025-12-10        8      Y   Y   Y   Y
+  2025-12-11        9      Y   Y   Y   Y
+  2025-12-12        1      N   -   -   -
+  2025-12-15        1      N   -   -   -
+  2025-12-16        2      N   -   -   -
+  2025-12-17        8      N   Y   Y   -
+  2025-12-18        6      N   -   -   -
+  2025-12-19        8      Y   Y   Y   Y
+  2025-12-22        6      N   -   -   -
+  2025-12-23        3      N   -   -   -
+  2025-12-24        8      Y   Y   Y   Y
+  2025-12-26        4      N   -   -   -
+  2025-12-29        5      N   -   -   -
+  2025-12-30        1      N   -   -   -
+  2025-12-31        1      N   -   -   -
+  2026-01-02        7      N   Y   -   -
+  2026-01-05        3      Y   -   -   -
+  2026-01-06        9      Y   Y   Y   Y
+  2026-01-07        1      N   -   -   -
+  2026-01-08        9      Y   Y   Y   Y
+  2026-01-09        5      Y   -   -   -
+  2026-01-12        6      Y   -   -   -
+  2026-01-13        3      N   -   -   -
+  2026-01-14       10      Y   Y   Y   Y
+  2026-01-15        7      N   Y   -   -
+  2026-01-16        7      N   Y   -   -
+  2026-01-20        4      N   -   -   -
+  2026-01-21        7      Y   Y   -   Y
+  2026-01-22        1      N   -   -   -
+  2026-01-23        4      Y   -   -   -
+  2026-01-26        8      Y   Y   Y   Y
+  2026-01-27        6      Y   -   -   -
+  2026-01-28        1      N   -   -   -
+  2026-01-29        2      N   -   -   -
+  2026-01-30        6      Y   -   -   -
+  2026-02-02        7      Y   Y   -   Y
+  2026-02-03        6      N   -   -   -
+  2026-02-04        4      N   -   -   -
+  2026-02-05        5      N   -   -   -
+  2026-02-06        7      N   Y   -   -
+  2026-02-09        7      Y   Y   -   Y
+  2026-02-10        7      Y   Y   -   Y
+  2026-02-11        4      N   -   -   -
+  2026-02-12        5      N   -   -   -
+  2026-02-13       10      Y   Y   Y   Y
+  2026-02-17        0      N   -   -   -
+  2026-02-18        8      Y   Y   Y   Y
+  2026-02-19        2      N   -   -   -
+  2026-02-20        6      Y   -   -   -
+  2026-02-23        2      N   -   -   -
+  2026-02-24        8      Y   Y   Y   Y
+  2026-02-25        2      N   -   -   -
+  2026-02-26        3      N   -   -   -
+  2026-02-27        7      Y   Y   -   Y
+  2026-03-02       10      Y   Y   Y   Y
+  2026-03-03        0      N   -   -   -
+  2026-03-04        9      Y   Y   Y   Y
+  2026-03-05        4      Y   -   -   -
+  2026-03-06        7      Y   Y   -   Y
+  2026-03-09        0      N   -   -   -
+
+  Loading 88 symbols and running VK acceptance entry...
+  Total trades (ungated): 2088
+
+========================================================================================================================
+SECTION 2 — LEDGER
+========================================================================================================================
+  UNGATED BASELINE
+    Trades:  2088   Days active: 203   Avg/day: 10.3
+    PF(R):   0.80   PF(raw):   1.03   Exp(R): -0.125   Total R: -260.3   Raw R: +41.0
+    MaxDD: 350.3R   WR: 36.7%   Stop: 48.6%   QStop: 7.8%   Target: 8.4%
+    AvgWin: +1.373R   AvgLoss: -0.994R   MedianR: -0.938
+    Train PF: 0.86   Test PF: 0.74   Ex-best-day PF: 0.78   Ex-top-sym PF: 0.79
+    Top3 day %: -29.1%   Top3 sym %: -11.3%
+    Median daily R: -1.520   %pos days: 36.9%   %zero-trade days: 1.9%
+
+  GATE A (>6 sec>VWAP @10:15)
+      Deploy days (84d)
+      Trades:   793   Days active:  83   Avg/day: 9.6
+      PF(R):   0.93   PF(raw):   1.22   Exp(R): -0.039   Total R: -31.3   Raw R: +90.4
+      MaxDD: 86.3R   WR: 39.3%   Stop: 46.0%   QStop: 8.4%   Target: 10.7%
+      AvgWin: +1.427R   AvgLoss: -0.991R   MedianR: -0.564
+      Train PF: 0.95   Test PF: 0.92   Ex-best-day PF: 0.89   Ex-top-sym PF: 0.91
+      Top3 day %: -180.5%   Top3 sym %: -76.0%
+      Median daily R: -1.026   %pos days: 43.4%   %zero-trade days: 1.2%
+      Non-deploy days (123d)
+      Trades:  1295   Days active: 120   Avg/day: 10.8
+      PF(R):   0.73   PF(raw):   0.93   Exp(R): -0.177   Total R: -229.0   Raw R: -49.3
+      MaxDD: 286.6R   WR: 35.1%   Stop: 50.2%   QStop: 7.4%   Target: 6.9%
+      AvgWin: +1.335R   AvgLoss: -0.996R   MedianR: -1.044
+      Train PF: 0.81   Test PF: 0.63   Ex-best-day PF: 0.69   Ex-top-sym PF: 0.71
+      Top3 day %: -32.0%   Top3 sym %: -12.9%
+      Median daily R: -2.217   %pos days: 32.5%   %zero-trade days: 2.4%
+
+  GATE B (>7 sec>VWAP @10:15)
+      Deploy days (60d)
+      Trades:   552   Days active:  59   Avg/day: 9.4
+      PF(R):   0.98   PF(raw):   1.29   Exp(R): -0.013   Total R: -7.4   Raw R: +82.0
+      MaxDD: 77.6R   WR: 40.2%   Stop: 45.7%   QStop: 8.9%   Target: 11.4%
+      AvgWin: +1.459R   AvgLoss: -1.004R   MedianR: -0.518
+      Train PF: 1.06   Test PF: 0.91   Ex-best-day PF: 0.92   Ex-top-sym PF: 0.95
+      Top3 day %: -762.8%   Top3 sym %: -360.1%
+      Median daily R: -0.960   %pos days: 42.4%   %zero-trade days: 1.7%
+      Non-deploy days (147d)
+      Trades:  1536   Days active: 144   Avg/day: 10.7
+      PF(R):   0.74   PF(raw):   0.95   Exp(R): -0.165   Total R: -252.9   Raw R: -41.0
+      MaxDD: 306.6R   WR: 35.5%   Stop: 49.7%   QStop: 7.4%   Target: 7.3%
+      AvgWin: +1.337R   AvgLoss: -0.991R   MedianR: -1.039
+      Train PF: 0.80   Test PF: 0.69   Ex-best-day PF: 0.71   Ex-top-sym PF: 0.73
+      Top3 day %: -28.9%   Top3 sym %: -10.8%
+      Median daily R: -2.052   %pos days: 34.7%   %zero-trade days: 2.0%
+
+  GATE C (SPY>VW + >6 sec>VWAP @10:15)
+      Deploy days (72d)
+      Trades:   624   Days active:  71   Avg/day: 8.8
+      PF(R):   0.91   PF(raw):   1.20   Exp(R): -0.055   Total R: -34.6   Raw R: +66.4
+      MaxDD: 77.7R   WR: 38.9%   Stop: 47.8%   QStop: 9.5%   Target: 10.7%
+      AvgWin: +1.455R   AvgLoss: -1.019R   MedianR: -0.769
+      Train PF: 1.03   Test PF: 0.81   Ex-best-day PF: 0.86   Ex-top-sym PF: 0.89
+      Top3 day %: -144.4%   Top3 sym %: -62.6%
+      Median daily R: -1.093   %pos days: 40.8%   %zero-trade days: 1.4%
+      Non-deploy days (135d)
+      Trades:  1464   Days active: 132   Avg/day: 11.1
+      PF(R):   0.76   PF(raw):   0.97   Exp(R): -0.154   Total R: -225.7   Raw R: -25.4
+      MaxDD: 286.0R   WR: 35.8%   Stop: 49.0%   QStop: 7.1%   Target: 7.4%
+      AvgWin: +1.334R   AvgLoss: -0.984R   MedianR: -1.028
+      Train PF: 0.80   Test PF: 0.71   Ex-best-day PF: 0.72   Ex-top-sym PF: 0.74
+      Top3 day %: -33.0%   Top3 sym %: -11.5%
+      Median daily R: -2.030   %pos days: 34.8%   %zero-trade days: 2.2%
+
+========================================================================================================================
+SECTION 3 — GATE-ON vs GATE-OFF COMPARISON
+========================================================================================================================
+
+  GATE A (>6 sec>VWAP @10:15) — Deploy vs Non-deploy contrast:
+    Metric                   Deploy   Non-deploy      Delta   Baseline
+    -------------------- ---------- ------------ ---------- ----------
+    Trades                      793         1295                  2088
+    Days                         83          120                   203
+    PF(R)                      0.93         0.73      +0.21       0.80
+    Exp(R)                   -0.039       -0.177     +0.137     -0.125
+    Total R                   -31.3       -229.0                -260.3
+    WR%                       39.3%        35.1%       +4.2      36.7%
+    Stop%                     46.0%        50.2%       -4.2      48.6%
+    MaxDD                     86.3R       286.6R                350.3R
+    %Pos days                 43.4%        32.5%      +10.9      36.9%
+
+  GATE B (>7 sec>VWAP @10:15) — Deploy vs Non-deploy contrast:
+    Metric                   Deploy   Non-deploy      Delta   Baseline
+    -------------------- ---------- ------------ ---------- ----------
+    Trades                      552         1536                  2088
+    Days                         59          144                   203
+    PF(R)                      0.98         0.74      +0.24       0.80
+    Exp(R)                   -0.013       -0.165     +0.151     -0.125
+    Total R                    -7.4       -252.9                -260.3
+    WR%                       40.2%        35.5%       +4.7      36.7%
+    Stop%                     45.7%        49.7%       -4.0      48.6%
+    MaxDD                     77.6R       306.6R                350.3R
+    %Pos days                 42.4%        34.7%       +7.7      36.9%
+
+  GATE C (SPY>VW + >6 sec>VWAP @10:15) — Deploy vs Non-deploy contrast:
+    Metric                   Deploy   Non-deploy      Delta   Baseline
+    -------------------- ---------- ------------ ---------- ----------
+    Trades                      624         1464                  2088
+    Days                         71          132                   203
+    PF(R)                      0.91         0.76      +0.16       0.80
+    Exp(R)                   -0.055       -0.154     +0.099     -0.125
+    Total R                   -34.6       -225.7                -260.3
+    WR%                       38.9%        35.8%       +3.1      36.7%
+    Stop%                     47.8%        49.0%       -1.2      48.6%
+    MaxDD                     77.7R       286.0R                350.3R
+    %Pos days                 40.8%        34.8%       +6.0      36.9%
+
+========================================================================================================================
+SECTION 4 — ROBUSTNESS & CONCENTRATION
+========================================================================================================================
+
+  GATE A (>6 sec>VWAP @10:15) — Deploy days:
+    Train PF: 0.95   Test PF: 0.92
+    Ex-best-day PF: 0.89   Ex-top-sym PF: 0.91
+    Top-3 days: 2025-05-15 (+19.8R)  2025-11-21 (+18.7R)  2025-07-17 (+17.9R)    [-180.5% of total]
+    Top-3 syms: CAT (+9.4R)  BAC (+7.4R)  LABU (+6.9R)    [-76.0% of total]
+    Median daily R: -1.026   %pos days: 43.4%   %zero-trade eligible: 1.2%
+
+  GATE B (>7 sec>VWAP @10:15) — Deploy days:
+    Train PF: 1.06   Test PF: 0.91
+    Ex-best-day PF: 0.92   Ex-top-sym PF: 0.95
+    Top-3 days: 2025-05-15 (+19.8R)  2025-11-21 (+18.7R)  2025-07-17 (+17.9R)    [-762.8% of total]
+    Top-3 syms: CAT (+10.6R)  UPRO (+8.1R)  CVX (+8.0R)    [-360.1% of total]
+    Median daily R: -0.960   %pos days: 42.4%   %zero-trade eligible: 1.7%
+
+  GATE C (SPY>VW + >6 sec>VWAP @10:15) — Deploy days:
+    Train PF: 1.03   Test PF: 0.81
+    Ex-best-day PF: 0.86   Ex-top-sym PF: 0.89
+    Top-3 days: 2025-05-15 (+19.8R)  2025-07-17 (+17.9R)  2025-12-10 (+12.2R)    [-144.4% of total]
+    Top-3 syms: CAT (+8.6R)  CVX (+7.0R)  COST (+6.1R)    [-62.6% of total]
+    Median daily R: -1.093   %pos days: 40.8%   %zero-trade eligible: 1.4%
+
+========================================================================================================================
+SECTION 5 — SUMMARY COMPARISON TABLE
+========================================================================================================================
+
+  Mode                                           N  Days     PF PF(raw)     Exp    TotR  MaxDD   WR% Stop%  TrnPF  TstPF  xBdPF  xTsPF  %Pos
+  ------------------------------------------ ----- ----- ------ ------- ------- ------- ------ ----- ----- ------ ------ ------ ------ -----
+  Ungated baseline                            2088   203   0.80    1.03 -0.125 -260.3 350.3 36.7% 48.6%  0.86  0.74  0.78  0.79 36.9%
+  GATE A (>6 sec>VWAP @10:15) (deploy)         793    83   0.93    1.22 -0.039  -31.3  86.3 39.3% 46.0%  0.95  0.92  0.89  0.91 43.4%
+  GATE A (>6 sec>VWAP @10:15) (non-deploy)    1295   120   0.73    0.93 -0.177 -229.0 286.6 35.1% 50.2%  0.81  0.63  0.69  0.71 32.5%
+  GATE B (>7 sec>VWAP @10:15) (deploy)         552    59   0.98    1.29 -0.013   -7.4  77.6 40.2% 45.7%  1.06  0.91  0.92  0.95 42.4%
+  GATE B (>7 sec>VWAP @10:15) (non-deploy)    1536   144   0.74    0.95 -0.165 -252.9 306.6 35.5% 49.7%  0.80  0.69  0.71  0.73 34.7%
+  GATE C (SPY>VW + >6 sec>VWAP @10:15) (deploy)   624    71   0.91    1.20 -0.055  -34.6  77.7 38.9% 47.8%  1.03  0.81  0.86  0.89 40.8%
+  GATE C (SPY>VW + >6 sec>VWAP @10:15) (non-deploy)  1464   132   0.76    0.97 -0.154 -225.7 286.0 35.8% 49.0%  0.80  0.71  0.72  0.74 34.8%
+
+========================================================================================================================
+REGIME-GATED LONG STUDY COMPLETE
+========================================================================================================================

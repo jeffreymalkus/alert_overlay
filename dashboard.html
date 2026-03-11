@@ -1,0 +1,1579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio D — Live Dashboard</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+    background: #0a0e17;
+    color: #e1e5ee;
+    min-height: 100vh;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: #111827;
+    border-bottom: 1px solid #1e293b;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header h1 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #f8fafc;
+  }
+  .header .subtitle {
+    font-size: 11px;
+    color: #64748b;
+    margin-top: 2px;
+  }
+  .header .status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #94a3b8;
+  }
+  .status-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #ef4444;
+  }
+  .status-dot.connected {
+    background: #22c55e;
+    box-shadow: 0 0 6px #22c55e88;
+  }
+
+  /* ── Regime Bar ── */
+  .regime-bar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 10px 24px;
+    background: #0f1629;
+    border-bottom: 1px solid #1e293b;
+    font-size: 13px;
+  }
+  .regime-label {
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+  }
+  .regime-label.green { background: #22c55e22; color: #4ade80; }
+  .regime-label.red { background: #ef444422; color: #f87171; }
+  .regime-label.flat { background: #f59e0b22; color: #fbbf24; }
+  .regime-label.unknown { background: #33415522; color: #94a3b8; }
+
+  .book-status {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .book-badge {
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .book-badge.active { background: #22c55e22; color: #4ade80; border: 1px solid #22c55e44; }
+  .book-badge.inactive { background: #1e293b; color: #475569; border: 1px solid #334155; }
+
+  /* ── Position Sizing Controls ── */
+  .sizing-controls {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-left: auto;
+  }
+  .sizing-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .sizing-label {
+    font-size: 11px;
+    color: #64748b;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+  .sizing-input {
+    background: #1a2235;
+    border: 1px solid #2a3550;
+    border-radius: 6px;
+    color: #f8fafc;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+    width: 110px;
+  }
+  .sizing-input:focus { outline: none; border-color: #3b82f6; }
+  .sizing-input::placeholder { color: #475569; }
+  .sizing-unit {
+    font-size: 12px;
+    color: #64748b;
+    font-weight: 500;
+  }
+
+  /* ── Position size in alert card ── */
+  .alert-sizing {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-top: 4px;
+  }
+  .sizing-pill {
+    font-size: 13px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 5px;
+    background: #3b82f622;
+    color: #60a5fa;
+    font-variant-numeric: tabular-nums;
+  }
+  .sizing-pill.dollars {
+    background: #8b5cf622;
+    color: #a78bfa;
+    font-weight: 500;
+    font-size: 11px;
+  }
+  .sizing-pill.risk-dollars {
+    background: #f59e0b22;
+    color: #fbbf24;
+    font-weight: 500;
+    font-size: 11px;
+  }
+
+  /* ── Symbol Section (collapsible) ── */
+  .symbol-section {
+    background: #0f1629;
+    border-bottom: 1px solid #1e293b;
+  }
+  .symbol-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 24px;
+    cursor: pointer;
+    user-select: none;
+    font-size: 12px;
+    color: #64748b;
+    font-weight: 600;
+    transition: color 0.2s;
+  }
+  .symbol-toggle:hover { color: #94a3b8; }
+  .symbol-toggle .chevron {
+    font-size: 10px;
+    transition: transform 0.2s;
+  }
+  .symbol-toggle .chevron.open { transform: rotate(90deg); }
+  .symbol-summary {
+    font-weight: 400;
+    color: #475569;
+    margin-left: 4px;
+  }
+  .symbol-collapse {
+    display: none;
+  }
+  .symbol-collapse.open {
+    display: block;
+  }
+  .symbol-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 8px;
+    padding: 8px 24px 16px 24px;
+    background: #0f1629;
+  }
+  .symbol-card {
+    background: #1a2235;
+    border: 1px solid #2a3550;
+    border-radius: 8px;
+    padding: 10px 12px;
+    text-align: center;
+    transition: border-color 0.3s;
+    position: relative;
+  }
+  .symbol-card .ticker {
+    font-size: 13px;
+    font-weight: 700;
+    color: #f8fafc;
+    letter-spacing: 0.5px;
+  }
+  .symbol-card .price {
+    font-size: 16px;
+    font-weight: 600;
+    color: #60a5fa;
+    margin: 4px 0;
+    font-variant-numeric: tabular-nums;
+  }
+  .symbol-card .meta {
+    font-size: 10px;
+    color: #64748b;
+  }
+  .symbol-card.has-alert {
+    border-color: #f59e0b;
+    box-shadow: 0 0 12px #f59e0b22;
+  }
+  .symbol-card.warming-up {
+    opacity: 0.5;
+    border-style: dashed;
+  }
+  .symbol-card .remove-btn {
+    display: none;
+    position: absolute;
+    top: 4px; right: 6px;
+    background: none; border: none;
+    color: #64748b; font-size: 14px;
+    cursor: pointer; line-height: 1;
+  }
+  .symbol-card:hover .remove-btn {
+    display: block;
+  }
+  .symbol-card .remove-btn:hover {
+    color: #ef4444;
+  }
+
+  /* ── Add symbol input ── */
+  .add-symbol-row {
+    display: flex;
+    gap: 8px;
+    padding: 8px 24px 0 24px;
+    background: #0f1629;
+  }
+  .add-symbol-input {
+    background: #1a2235;
+    border: 1px solid #2a3550;
+    border-radius: 6px;
+    color: #f8fafc;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-family: inherit;
+    width: 140px;
+    text-transform: uppercase;
+  }
+  .add-symbol-input::placeholder { color: #475569; }
+  .add-symbol-input:focus { outline: none; border-color: #3b82f6; }
+  .add-symbol-btn {
+    background: #1e293b;
+    border: 1px solid #334155;
+    color: #94a3b8;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+  .add-symbol-btn:hover { background: #22c55e22; border-color: #22c55e44; color: #4ade80; }
+  .add-symbol-msg {
+    font-size: 12px;
+    line-height: 32px;
+    color: #64748b;
+  }
+  .add-symbol-msg.error { color: #f87171; }
+  .add-symbol-msg.success { color: #4ade80; }
+
+  /* ── Main Content ── */
+  .main {
+    padding: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .section-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+
+  /* ── Alert Cards ── */
+  .alerts-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .alert-card {
+    background: #111827;
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 16px;
+    align-items: center;
+    border-left: 4px solid transparent;
+    animation: slideIn 0.3s ease-out;
+    transition: background 0.2s;
+  }
+  .alert-card:hover {
+    background: #1a2235;
+  }
+  .alert-card.long {
+    border-left-color: #22c55e;
+  }
+  .alert-card.short {
+    border-left-color: #ef4444;
+  }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .alert-left {
+    text-align: center;
+    min-width: 80px;
+  }
+  .alert-symbol {
+    font-size: 15px;
+    font-weight: 700;
+    color: #f8fafc;
+  }
+  .alert-direction {
+    font-size: 12px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 4px;
+    margin-top: 4px;
+    display: inline-block;
+  }
+  .alert-direction.long {
+    background: #22c55e22;
+    color: #4ade80;
+  }
+  .alert-direction.short {
+    background: #ef444422;
+    color: #f87171;
+  }
+
+  .alert-middle {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+  }
+  .alert-setup {
+    font-size: 14px;
+    font-weight: 600;
+    color: #e2e8f0;
+    background: #1e293b;
+    padding: 4px 12px;
+    border-radius: 6px;
+  }
+  .alert-prices {
+    display: flex;
+    gap: 16px;
+    font-size: 13px;
+    font-variant-numeric: tabular-nums;
+  }
+  .price-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .price-label {
+    font-size: 10px;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .price-value {
+    font-weight: 600;
+    color: #cbd5e1;
+  }
+  .price-value.entry { color: #60a5fa; }
+  .price-value.stop { color: #f87171; }
+  .price-value.target { color: #4ade80; }
+
+  .alert-right {
+    text-align: right;
+    min-width: 80px;
+  }
+  .alert-rr {
+    font-size: 18px;
+    font-weight: 700;
+    color: #f59e0b;
+  }
+  .alert-quality {
+    font-size: 11px;
+    color: #94a3b8;
+    margin-top: 2px;
+  }
+  .alert-time {
+    font-size: 11px;
+    color: #64748b;
+    margin-top: 4px;
+  }
+
+  .alert-tags {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+  .tag {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 3px;
+    background: #1e293b;
+    color: #94a3b8;
+  }
+  .tag.confluence { background: #3b82f622; color: #60a5fa; }
+  .tag.sweep { background: #a855f722; color: #c084fc; }
+  .tag.test-badge { background: #f59e0b33; color: #fbbf24; font-size: 11px; padding: 2px 8px; }
+  .tag.book-tag { font-size: 10px; padding: 2px 8px; }
+  .tag.book-long { background: #22c55e22; color: #4ade80; }
+  .tag.book-short { background: #ef444422; color: #f87171; }
+  .tag.regime-tag { background: #8b5cf622; color: #a78bfa; }
+  .tag.universe-static { background: #33415566; color: #94a3b8; }
+  .tag.universe-in-play { background: #3b82f622; color: #60a5fa; }
+  .tag.universe-both { background: #a855f722; color: #c084fc; }
+
+  /* ── In-Play Section ── */
+  .in-play-section {
+    background: #0f1629;
+    border-bottom: 1px solid #1e293b;
+  }
+  .in-play-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 24px;
+    cursor: pointer;
+    user-select: none;
+    font-size: 12px;
+    color: #64748b;
+    font-weight: 600;
+    transition: color 0.2s;
+  }
+  .in-play-toggle:hover { color: #94a3b8; }
+  .in-play-collapse { display: none; }
+  .in-play-collapse.open { display: block; }
+  .in-play-body { padding: 8px 24px 16px 24px; }
+  .in-play-input-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .in-play-input {
+    background: #1a2235;
+    border: 1px solid #2a3550;
+    border-radius: 6px;
+    color: #f8fafc;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-family: inherit;
+    width: 140px;
+    text-transform: uppercase;
+  }
+  .in-play-input::placeholder { color: #475569; }
+  .in-play-input:focus { outline: none; border-color: #3b82f6; }
+  .in-play-btn {
+    background: #1e293b;
+    border: 1px solid #334155;
+    color: #94a3b8;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+  .in-play-btn:hover { background: #3b82f622; border-color: #3b82f644; color: #60a5fa; }
+  .in-play-btn.clear { color: #f87171; }
+  .in-play-btn.clear:hover { background: #ef444422; border-color: #ef444444; }
+  .in-play-msg {
+    font-size: 12px;
+    line-height: 32px;
+    color: #64748b;
+  }
+  .in-play-msg.error { color: #f87171; }
+  .in-play-msg.success { color: #60a5fa; }
+  .in-play-empty {
+    font-size: 12px;
+    color: #475569;
+    font-style: italic;
+  }
+
+  /* In-play cards: blue-tinted to distinguish from static */
+  .symbol-card.in-play-card {
+    border-color: #3b82f644;
+  }
+  .symbol-card.in-play-card .ticker {
+    color: #60a5fa;
+  }
+
+  /* In-play section shows cards in a grid like the static section */
+  .in-play-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 0;
+  }
+
+  /* In-play history log widget */
+  .ip-history {
+    margin-top: 12px;
+    border-top: 1px solid #1e293b;
+    padding-top: 10px;
+  }
+  .ip-history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  .ip-history-title {
+    font-size: 11px;
+    font-weight: 600;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .ip-history-stats {
+    font-size: 11px;
+    color: #475569;
+  }
+  .ip-history-stats .stat-val {
+    color: #60a5fa;
+    font-weight: 600;
+  }
+  .ip-history-log {
+    max-height: 120px;
+    overflow-y: auto;
+    font-size: 11px;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    line-height: 1.7;
+    color: #94a3b8;
+  }
+  .ip-history-log::-webkit-scrollbar { width: 4px; }
+  .ip-history-log::-webkit-scrollbar-thumb { background: #334155; border-radius: 2px; }
+  .ip-log-row { display: flex; gap: 8px; }
+  .ip-log-time { color: #475569; min-width: 58px; }
+  .ip-log-action { min-width: 50px; font-weight: 600; }
+  .ip-log-action.add { color: #34d399; }
+  .ip-log-action.remove { color: #fbbf24; }
+  .ip-log-action.clear { color: #f87171; }
+  .ip-log-sym { color: #e2e8f0; }
+  .ip-history-empty {
+    font-size: 11px;
+    color: #334155;
+    font-style: italic;
+  }
+
+  /* ── Test alert styling ── */
+  .alert-card.test-alert {
+    opacity: 0.65;
+    border-style: dashed;
+  }
+  .alert-card.test-alert:hover { opacity: 0.85; }
+
+  /* ── Delete button ── */
+  .delete-btn {
+    background: none;
+    border: 1px solid #334155;
+    color: #64748b;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 6px;
+    transition: all 0.2s;
+  }
+  .delete-btn:hover {
+    background: #ef444433;
+    border-color: #ef4444;
+    color: #f87171;
+  }
+
+  /* ── Empty State ── */
+  .empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: #475569;
+  }
+  .empty-state .icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+    opacity: 0.5;
+  }
+  .empty-state p {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* ── Flash animation for new alerts ── */
+  .alert-card.flash {
+    animation: flash 0.6s ease-out;
+  }
+  @keyframes flash {
+    0% { background: #f59e0b33; }
+    100% { background: #111827; }
+  }
+
+  /* ── Sound toggle ── */
+  .sound-toggle {
+    background: #1e293b;
+    border: 1px solid #334155;
+    color: #94a3b8;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.2s;
+  }
+  .sound-toggle:hover { background: #334155; }
+  .sound-toggle.active { background: #22c55e22; border-color: #22c55e44; color: #4ade80; }
+
+  /* ── Disconnected overlay ── */
+  .disconnected-banner {
+    display: none;
+    background: #ef444422;
+    border: 1px solid #ef444444;
+    color: #fca5a5;
+    text-align: center;
+    padding: 10px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .disconnected-banner.show { display: block; }
+
+  /* ── Order Panel Modal ── */
+  .order-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: #000000aa;
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+  }
+  .order-overlay.show { display: flex; }
+  .order-panel {
+    background: #111827;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 24px;
+    max-width: 460px;
+    width: 90%;
+    box-shadow: 0 20px 60px #00000088;
+  }
+  .order-panel h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #f8fafc;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .order-badge {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+  .order-badge.long { background: #22c55e22; color: #4ade80; }
+  .order-badge.short { background: #ef444422; color: #f87171; }
+  .order-field { margin-bottom: 14px; }
+  .order-field-label {
+    font-size: 11px;
+    color: #64748b;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+  .order-field-input {
+    font-size: 14px;
+    color: #f8fafc;
+    padding: 8px 12px;
+    background: #1a2235;
+    border-radius: 6px;
+    border: 1px solid #2a3550;
+    font-family: 'SF Mono', 'Menlo', monospace;
+    width: 100%;
+  }
+  .order-field-input:focus { outline: none; border-color: #3b82f6; box-shadow: 0 0 0 2px #3b82f622; }
+  .order-summary {
+    background: #0f1629;
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    padding: 12px;
+    margin: 16px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    font-size: 13px;
+  }
+  .order-summary-item { display: flex; justify-content: space-between; }
+  .order-summary-label { color: #64748b; }
+  .order-summary-value { color: #e2e8f0; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .order-actions { display: flex; gap: 8px; }
+  .order-btn {
+    flex: 1;
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 13px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .order-btn-send { background: #22c55e; color: #0a0e17; }
+  .order-btn-send:hover { background: #16a34a; }
+  .order-btn-send:disabled { background: #334155; color: #64748b; cursor: not-allowed; }
+  .order-btn-cancel { background: #1e293b; color: #94a3b8; border: 1px solid #334155; }
+  .order-btn-cancel:hover { background: #334155; }
+  .order-paper-badge {
+    margin-left: auto;
+    font-size: 10px;
+    color: #f59e0b;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 2px 8px;
+    background: #f59e0b22;
+    border-radius: 4px;
+  }
+
+  /* ── Trade button in alert cards ── */
+  .trade-btn {
+    background: #22c55e11;
+    border: 1px solid #22c55e44;
+    color: #4ade80;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 4px;
+    transition: all 0.15s;
+  }
+  .trade-btn:hover { background: #22c55e33; border-color: #22c55e; }
+  .trade-btn:disabled { background: #1e293b; border-color: #334155; color: #64748b; cursor: not-allowed; }
+  .trade-btn.ordered { background: #3b82f622; border-color: #3b82f644; color: #60a5fa; cursor: default; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1>Portfolio D</h1>
+    <div class="subtitle">Long (VK+SC, Tape≥0.40) + Short (BDR RED+TREND AM)</div>
+  </div>
+  <div style="display: flex; align-items: center; gap: 12px;">
+    <button class="sound-toggle" onclick="exportCSV()">Export CSV</button>
+    <button class="sound-toggle" onclick="clearTestAlerts()">Clear Test Alerts</button>
+    <button class="sound-toggle" id="testBtn" onclick="fireTestAlert()">Test Alert</button>
+    <button class="sound-toggle active" id="soundBtn" onclick="toggleSound()">Sound ON</button>
+    <div class="status">
+      <div class="status-dot" id="statusDot"></div>
+      <span id="statusText">Connecting...</span>
+      <span id="lastUpdate" style="margin-left:8px; font-size:11px; color:#475569;"></span>
+    </div>
+  </div>
+</div>
+
+<div class="disconnected-banner" id="disconnectedBanner">
+  Connection lost. Attempting to reconnect...
+</div>
+
+<div class="regime-bar" id="regimeBar">
+  <span style="color:#64748b; font-weight:600;">REGIME:</span>
+  <span class="regime-label unknown" id="regimeLabel">CONNECTING...</span>
+  <div class="book-status">
+    <span class="book-badge inactive" id="longBookBadge">LONG BOOK</span>
+    <span class="book-badge inactive" id="shortBookBadge">SHORT BOOK</span>
+  </div>
+  <div class="sizing-controls">
+    <div class="sizing-group">
+      <span class="sizing-label">Daily Loss Limit</span>
+      <span class="sizing-unit">$</span>
+      <input class="sizing-input" id="dailyLossInput" type="text" value="1,000"
+             oninput="onSizingChange()" onblur="formatDailyLoss()">
+    </div>
+    <div class="sizing-group">
+      <span class="sizing-label">Per Trade</span>
+      <input class="sizing-input" id="perTradePctInput" type="number" value="10"
+             step="5" min="5" max="50" style="width:65px;" oninput="onSizingChange()">
+      <span class="sizing-unit">%</span>
+    </div>
+    <span id="riskDollarLabel" style="font-size:12px; color:#fbbf24; font-weight:600; white-space:nowrap;">= $100 / trade</span>
+  </div>
+  <span id="marketStatus" style="font-size:11px; padding:2px 8px; border-radius:4px;"></span>
+</div>
+
+<div class="symbol-section">
+  <div class="symbol-toggle" onclick="toggleSymbols()">
+    <span class="chevron" id="symbolChevron">&#9654;</span>
+    <span>SYMBOLS</span>
+    <span class="symbol-summary" id="symbolSummary">0 connected</span>
+  </div>
+  <div class="symbol-collapse" id="symbolCollapse">
+    <div class="add-symbol-row" style="padding-top:0;">
+      <input class="add-symbol-input" id="addSymbolInput" type="text" placeholder="Add symbol..." maxlength="10"
+             onkeydown="if(event.key==='Enter')addSymbol()">
+      <button class="add-symbol-btn" onclick="addSymbol()">+ Add</button>
+      <span class="add-symbol-msg" id="addSymbolMsg"></span>
+    </div>
+    <div class="symbol-bar" id="symbolBar"></div>
+  </div>
+</div>
+
+<div class="in-play-section">
+  <div class="in-play-toggle" onclick="toggleInPlay()">
+    <span class="chevron" id="inPlayChevron">&#9654;</span>
+    <span>DAILY IN-PLAY</span>
+    <span class="symbol-summary" id="inPlaySummary">0 symbols</span>
+  </div>
+  <div class="in-play-collapse" id="inPlayCollapse">
+    <div class="in-play-body">
+      <div class="in-play-input-row">
+        <input class="in-play-input" id="inPlayInput" type="text" placeholder="Add in-play..." maxlength="10"
+               onkeydown="if(event.key==='Enter')addInPlay()">
+        <button class="in-play-btn" onclick="addInPlay()">+ Add</button>
+        <button class="in-play-btn clear" onclick="clearInPlay()">Clear All</button>
+        <span class="in-play-msg" id="inPlayMsg"></span>
+      </div>
+      <div class="in-play-badges" id="inPlayBadges">
+        <span class="in-play-empty">No in-play symbols. Add symbols for today's session.</span>
+      </div>
+      <div class="ip-history" id="ipHistory">
+        <div class="ip-history-header">
+          <span class="ip-history-title">Session Log</span>
+          <span class="ip-history-stats" id="ipHistoryStats"></span>
+        </div>
+        <div class="ip-history-log" id="ipHistoryLog">
+          <span class="ip-history-empty">No activity yet today.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+  <div class="section-title">Live Alerts</div>
+  <div class="empty-state" id="emptyState">
+    <div class="icon">&#x1F4E1;</div>
+    <p>Waiting for alerts...<br>Long book active on GREEN/FLAT days. Short book active on RED+TREND days only.</p>
+  </div>
+  <div class="alerts-container" id="alertsContainer"></div>
+</div>
+
+<!-- Order Panel Modal -->
+<div class="order-overlay" id="orderOverlay" onclick="if(event.target===this)closeOrderPanel()">
+  <div class="order-panel">
+    <h2>
+      <span id="opSymbol">SPY</span>
+      <span class="order-badge" id="opBadge">LONG</span>
+      <span class="order-paper-badge">PAPER</span>
+    </h2>
+    <div class="order-field">
+      <div class="order-field-label">Entry (Limit)</div>
+      <input type="number" class="order-field-input" id="opEntry" step="0.01" oninput="updateOrderSummary()">
+    </div>
+    <div class="order-field">
+      <div class="order-field-label">Stop Loss</div>
+      <input type="number" class="order-field-input" id="opStop" step="0.01" oninput="updateOrderSummary()">
+    </div>
+    <div class="order-field">
+      <div class="order-field-label">Take Profit</div>
+      <input type="number" class="order-field-input" id="opTarget" step="0.01" oninput="updateOrderSummary()">
+    </div>
+    <div class="order-field">
+      <div class="order-field-label">Shares</div>
+      <input type="number" class="order-field-input" id="opShares" step="1" min="1" oninput="updateOrderSummary()">
+    </div>
+    <div class="order-summary">
+      <div class="order-summary-item"><span class="order-summary-label">Risk/Share</span><span class="order-summary-value" id="opRiskPerShare">--</span></div>
+      <div class="order-summary-item"><span class="order-summary-label">Total Risk</span><span class="order-summary-value" id="opTotalRisk">--</span></div>
+      <div class="order-summary-item"><span class="order-summary-label">Position Value</span><span class="order-summary-value" id="opPosValue">--</span></div>
+      <div class="order-summary-item"><span class="order-summary-label">Reward/Risk</span><span class="order-summary-value" id="opRR">--</span></div>
+    </div>
+    <div class="order-actions">
+      <button class="order-btn order-btn-send" id="opSendBtn" onclick="submitOrder()">Send to IBKR</button>
+      <button class="order-btn order-btn-cancel" onclick="closeOrderPanel()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  let soundEnabled = true;
+  let alerts = [];
+  let status = { symbols: {}, connected: false };
+  let eventSource = null;
+  let reconnectTimer = null;
+  let orderedAlerts = new Set();  // track which alert IDs have been ordered
+  let currentOrderAlert = null;   // alert data for open order panel
+
+  // ── Sound ──
+  function playAlertSound() {
+    if (!soundEnabled) return;
+    try {
+      const ctx = new (window.AudioContext || window.webkitAudioContext)();
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.frequency.value = 880;
+      osc.type = 'sine';
+      gain.gain.setValueAtTime(0.3, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.3);
+      osc.start(ctx.currentTime);
+      osc.stop(ctx.currentTime + 0.3);
+    } catch(e) {}
+  }
+
+  function toggleSound() {
+    soundEnabled = !soundEnabled;
+    const btn = document.getElementById('soundBtn');
+    btn.textContent = soundEnabled ? 'Sound ON' : 'Sound OFF';
+    btn.classList.toggle('active', soundEnabled);
+  }
+
+  // ── Render ──
+  function renderRegimeBar() {
+    const label = document.getElementById('regimeLabel');
+    const longBadge = document.getElementById('longBookBadge');
+    const shortBadge = document.getElementById('shortBookBadge');
+
+    const regime = status.regime || 'UNKNOWN';
+    label.textContent = regime;
+    label.className = 'regime-label';
+    if (regime.startsWith('GREEN')) label.classList.add('green');
+    else if (regime.startsWith('RED')) label.classList.add('red');
+    else if (regime.startsWith('FLAT')) label.classList.add('flat');
+    else label.classList.add('unknown');
+
+    longBadge.className = 'book-badge ' + (status.long_active ? 'active' : 'inactive');
+    shortBadge.className = 'book-badge ' + (status.short_active ? 'active' : 'inactive');
+  }
+
+  let symbolsOpen = false;
+  function toggleSymbols() {
+    symbolsOpen = !symbolsOpen;
+    document.getElementById('symbolCollapse').classList.toggle('open', symbolsOpen);
+    document.getElementById('symbolChevron').classList.toggle('open', symbolsOpen);
+  }
+
+  function renderSymbolBar() {
+    const bar = document.getElementById('symbolBar');
+    const summary = document.getElementById('symbolSummary');
+    const symbols = Object.keys(status.symbols);
+    const ready = symbols.filter(s => !status.symbols[s].warming_up).length;
+    const warming = symbols.length - ready;
+    const totalAlerts = symbols.reduce((n, s) => n + (status.symbols[s].alerts || 0), 0);
+
+    let summaryText = `${ready} connected`;
+    if (warming > 0) summaryText += ` · ${warming} warming`;
+    if (totalAlerts > 0) summaryText += ` · ${totalAlerts} alerts`;
+    summary.textContent = summaryText;
+
+    if (!symbols.length) { bar.innerHTML = ''; return; }
+
+    // STATIC symbol grid: exclude IN_PLAY-only symbols — they belong in the in-play section
+    const staticSymbols = symbols.filter(s => {
+      const uni = status.symbols[s]?.universe || 'STATIC';
+      return uni === 'STATIC' || uni === 'BOTH';
+    }).sort();
+
+    const staticReady = staticSymbols.filter(s => !status.symbols[s].warming_up).length;
+    summary.textContent = `${staticReady} connected` +
+      (staticSymbols.length - staticReady > 0 ? ` · ${staticSymbols.length - staticReady} warming` : '') +
+      (totalAlerts > 0 ? ` · ${totalAlerts} alerts` : '');
+
+    bar.innerHTML = staticSymbols.map(sym => {
+      const s = status.symbols[sym];
+      const hasAlert = s.alerts > 0;
+      const warmingUp = s.warming_up === true;
+      return `
+        <div class="symbol-card ${hasAlert ? 'has-alert' : ''} ${warmingUp ? 'warming-up' : ''}">
+          <button class="remove-btn" onclick="removeSymbol('${sym}')" title="Remove ${sym}">&times;</button>
+          <div class="ticker">${sym}</div>
+          <div class="price">${warmingUp ? '...' : '$' + (s.last_price || 0).toFixed(2)}</div>
+          <div class="meta">${warmingUp ? 'connecting...' : (s.bars || 0) + ' bars &middot; ' + (s.alerts || 0) + ' alerts'}</div>
+        </div>
+      `;
+    }).join('');
+
+    // Also refresh in-play cards (they have live data too)
+    renderInPlayCards();
+  }
+
+  // ── Position Sizing ──
+  function getDailyLoss() {
+    const raw = document.getElementById('dailyLossInput').value.replace(/[^0-9.]/g, '');
+    return parseFloat(raw) || 0;
+  }
+  function getPerTradePct() {
+    return parseFloat(document.getElementById('perTradePctInput').value) || 0;
+  }
+  function getRiskPerTrade() {
+    return getDailyLoss() * (getPerTradePct() / 100);
+  }
+  function calcShares(entry, stop) {
+    const riskPerShare = Math.abs(entry - stop);
+    if (riskPerShare < 0.01) return 0;
+    return Math.floor(getRiskPerTrade() / riskPerShare);
+  }
+  function formatDailyLoss() {
+    const input = document.getElementById('dailyLossInput');
+    const val = getDailyLoss();
+    input.value = val.toLocaleString('en-US', {maximumFractionDigits: 0});
+  }
+  function onSizingChange() {
+    const rpt = getRiskPerTrade();
+    document.getElementById('riskDollarLabel').textContent = '= $' + rpt.toLocaleString('en-US', {maximumFractionDigits: 0}) + ' / trade';
+    renderAlerts();
+  }
+  function fmtDollars(n) {
+    return '$' + n.toLocaleString('en-US', {maximumFractionDigits: 0});
+  }
+
+  function renderAlerts() {
+    const container = document.getElementById('alertsContainer');
+    const empty = document.getElementById('emptyState');
+
+    if (!alerts.length) {
+      empty.style.display = 'block';
+      container.innerHTML = '';
+      return;
+    }
+    empty.style.display = 'none';
+
+    container.innerHTML = alerts.map((a, i) => {
+      const dir = a.direction.toLowerCase();
+      const isTest = a.test === true;
+      const confTags = (a.confluence || []).map(t => `<span class="tag confluence">${t}</span>`).join('');
+      const sweepTags = (a.sweeps || []).map(t => `<span class="tag sweep">SW:${t}</span>`).join('');
+      const testBadge = isTest ? '<span class="tag test-badge">TEST</span>' : '';
+      const deleteBtn = `<button class="delete-btn" onclick="deleteAlert('${a.id || ''}')">Delete</button>`;
+      const isOrdered = orderedAlerts.has(a.id);
+      const tradeBtn = isOrdered
+        ? `<button class="trade-btn ordered" disabled>Ordered</button>`
+        : `<button class="trade-btn" onclick='openOrderPanel(${JSON.stringify(a).replace(/'/g, "&#39;")})'>Trade</button>`;
+
+      // Portfolio D book and regime tags
+      const bookTag = a.book ? `<span class="tag book-tag book-${a.book.toLowerCase()}">${a.book} BOOK</span>` : '';
+      const regimeTag = a.regime ? `<span class="tag regime-tag">${a.regime}</span>` : '';
+      const tapeTag = a.tape_perm != null ? `<span class="tag" style="background:#6366f122;color:#818cf8;">Tape ${a.tape_perm > 0 ? '+' : ''}${a.tape_perm.toFixed(2)}</span>` : '';
+      const uniClass = a.universe === 'IN_PLAY' ? 'universe-in-play' : a.universe === 'BOTH' ? 'universe-both' : 'universe-static';
+      const universeTag = a.universe ? `<span class="tag ${uniClass}">${a.universe}</span>` : '';
+
+      // Position sizing
+      const shares = calcShares(a.entry, a.stop);
+      const positionValue = shares * a.entry;
+      const riskOnTrade = shares * Math.abs(a.entry - a.stop);
+      const sizingHtml = shares > 0
+        ? `<div class="alert-sizing">
+             <span class="sizing-pill">${shares} shares</span>
+             <span class="sizing-pill dollars">${fmtDollars(positionValue)}</span>
+             <span class="sizing-pill risk-dollars">Risk ${fmtDollars(riskOnTrade)}</span>
+           </div>`
+        : `<div class="alert-sizing"><span class="sizing-pill" style="opacity:0.4;">Set sizing above</span></div>`;
+
+      return `
+        <div class="alert-card ${dir} ${i === 0 ? 'flash' : ''} ${isTest ? 'test-alert' : ''}">
+          <div class="alert-left">
+            <div class="alert-symbol">${a.symbol}</div>
+            <div class="alert-direction ${dir}">${a.direction}</div>
+            ${testBadge}
+          </div>
+          <div class="alert-middle">
+            <span class="alert-setup">${a.setup}</span>
+            <div class="alert-prices">
+              <div class="price-item">
+                <span class="price-label">Entry</span>
+                <span class="price-value entry">$${a.entry.toFixed(2)}</span>
+              </div>
+              <div class="price-item">
+                <span class="price-label">Stop</span>
+                <span class="price-value stop">$${a.stop.toFixed(2)}</span>
+              </div>
+              <div class="price-item">
+                <span class="price-label">Target</span>
+                <span class="price-value target">$${a.target.toFixed(2)}</span>
+              </div>
+            </div>
+            ${sizingHtml}
+            <div class="alert-tags">${universeTag}${bookTag}${regimeTag}${tapeTag}${confTags}${sweepTags}</div>
+          </div>
+          <div class="alert-right">
+            <div class="alert-rr">${a.rr.toFixed(1)}R</div>
+            <div class="alert-quality">Q${a.quality}</div>
+            <div class="alert-time">${a.timestamp}</div>
+            ${tradeBtn}
+            ${deleteBtn}
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  function updateConnectionStatus(connected) {
+    const dot = document.getElementById('statusDot');
+    const text = document.getElementById('statusText');
+    const banner = document.getElementById('disconnectedBanner');
+    const marketEl = document.getElementById('marketStatus');
+    const updateEl = document.getElementById('lastUpdate');
+
+    if (connected) {
+      dot.classList.add('connected');
+      text.textContent = `Connected${status.started_at ? ' since ' + status.started_at : ''}`;
+      banner.classList.remove('show');
+    } else {
+      dot.classList.remove('connected');
+      text.textContent = 'Disconnected';
+      banner.classList.add('show');
+    }
+
+    // Market status
+    if (status.market_open === true) {
+      marketEl.textContent = 'MARKET OPEN';
+      marketEl.style.background = '#22c55e22';
+      marketEl.style.color = '#4ade80';
+    } else if (status.market_open === false) {
+      marketEl.textContent = 'MARKET CLOSED';
+      marketEl.style.background = '#ef444422';
+      marketEl.style.color = '#f87171';
+    }
+
+    // Last heartbeat
+    if (status.last_heartbeat) {
+      updateEl.textContent = 'Last update: ' + status.last_heartbeat;
+    }
+  }
+
+  // ── SSE Connection ──
+  function connectSSE() {
+    if (eventSource) { eventSource.close(); }
+
+    eventSource = new EventSource('/api/stream');
+
+    eventSource.addEventListener('status', (e) => {
+      status = JSON.parse(e.data);
+      // Sync in-play list from status if present (covers initial load + reconnect)
+      if (status.in_play && Array.isArray(status.in_play)) {
+        inPlaySymbols = status.in_play;
+      }
+      updateConnectionStatus(status.connected);
+      renderSymbolBar();
+      renderRegimeBar();
+      // Note: Session Log data loaded via loadInPlayHistory() on init
+      // and updated via in_play_updated SSE events for live changes
+    });
+
+    eventSource.addEventListener('alert', (e) => {
+      const alert = JSON.parse(e.data);
+      alerts.unshift(alert);
+      if (alerts.length > 50) alerts.pop();
+      renderAlerts();
+      playAlertSound();
+    });
+
+    eventSource.addEventListener('history', (e) => {
+      alerts = JSON.parse(e.data);
+      renderAlerts();
+    });
+
+    eventSource.addEventListener('in_play_updated', (e) => {
+      const data = JSON.parse(e.data);
+      inPlaySymbols = data.symbols || [];
+      renderInPlayBadges();
+      // Append new event locally (action + symbol come from SSE payload)
+      if (data.action && data.symbol) {
+        appendIPHistoryRow(data.action, data.symbol);
+      } else if (data.action === 'CLEAR' && data.cleared) {
+        // CLEAR events carry a list of cleared symbols
+        data.cleared.forEach(s => appendIPHistoryRow('CLEAR', s));
+      }
+    });
+
+    eventSource.addEventListener('order', (e) => {
+      const order = JSON.parse(e.data);
+      if (order.type === 'placed' || order.type === 'status') {
+        orderedAlerts.add(order.alert_id);
+      } else if (order.type === 'cancelled') {
+        orderedAlerts.delete(order.alert_id);
+      }
+      renderAlerts();
+    });
+
+    eventSource.onopen = () => {
+      updateConnectionStatus(true);
+      if (reconnectTimer) { clearInterval(reconnectTimer); reconnectTimer = null; }
+    };
+
+    eventSource.onerror = () => {
+      updateConnectionStatus(false);
+      eventSource.close();
+      if (!reconnectTimer) {
+        reconnectTimer = setInterval(() => { connectSSE(); }, 3000);
+      }
+    };
+  }
+
+  // ── Test Alert ──
+  function fireTestAlert() {
+    fetch('/api/test-alert?t=' + Date.now()).then(r => r.json()).then(d => {
+      console.log('Test alert fired:', d);
+    }).catch(e => console.error('Test alert failed:', e));
+  }
+
+  // ── Delete single alert ──
+  function deleteAlert(id) {
+    if (!id) return;
+    alerts = alerts.filter(a => a.id !== id);
+    renderAlerts();
+    fetch('/api/delete-alert/' + id + '?t=' + Date.now()).then(r => r.json()).catch(e => console.error('Delete failed:', e));
+  }
+
+  // ── Clear all test alerts ──
+  function clearTestAlerts() {
+    alerts = alerts.filter(a => !a.test);
+    renderAlerts();
+    fetch('/api/clear-test-alerts?t=' + Date.now()).then(r => r.json()).catch(e => console.error('Clear failed:', e));
+  }
+
+  // ── Export CSV ──
+  function exportCSV() {
+    window.location.href = '/api/export-csv';
+  }
+
+  // ── Add / Remove Symbols ──
+  function addSymbol() {
+    const input = document.getElementById('addSymbolInput');
+    const msg = document.getElementById('addSymbolMsg');
+    const symbol = input.value.trim().toUpperCase();
+    if (!symbol) return;
+
+    msg.textContent = '';
+    msg.className = 'add-symbol-msg';
+
+    fetch('/api/add-symbol', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({symbol: symbol})
+    })
+    .then(r => r.json())
+    .then(d => {
+      if (d.ok) {
+        msg.textContent = d.message || `Added ${symbol}`;
+        msg.className = 'add-symbol-msg success';
+        input.value = '';
+      } else {
+        msg.textContent = d.error || 'Failed';
+        msg.className = 'add-symbol-msg error';
+      }
+      setTimeout(() => { msg.textContent = ''; }, 3000);
+    })
+    .catch(() => {
+      msg.textContent = 'Network error';
+      msg.className = 'add-symbol-msg error';
+    });
+
+    input.focus();
+  }
+
+  function removeSymbol(symbol) {
+    if (status.symbols[symbol]) {
+      delete status.symbols[symbol];
+      renderSymbolBar();
+    }
+    fetch('/api/remove-symbol', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({symbol: symbol})
+    }).catch(e => console.error('Remove failed:', e));
+  }
+
+  // ── Order Panel ──
+  function openOrderPanel(alert) {
+    currentOrderAlert = alert;
+    document.getElementById('opSymbol').textContent = alert.symbol;
+    const badge = document.getElementById('opBadge');
+    badge.textContent = alert.direction;
+    badge.className = 'order-badge ' + alert.direction.toLowerCase();
+
+    document.getElementById('opEntry').value = alert.entry;
+    document.getElementById('opStop').value = alert.stop;
+    document.getElementById('opTarget').value = alert.target;
+    document.getElementById('opShares').value = calcShares(alert.entry, alert.stop);
+
+    updateOrderSummary();
+    document.getElementById('opSendBtn').disabled = false;
+    document.getElementById('opSendBtn').textContent = 'Send to IBKR';
+    document.getElementById('orderOverlay').classList.add('show');
+  }
+
+  function closeOrderPanel() {
+    document.getElementById('orderOverlay').classList.remove('show');
+    currentOrderAlert = null;
+  }
+
+  function updateOrderSummary() {
+    const entry = parseFloat(document.getElementById('opEntry').value) || 0;
+    const stop = parseFloat(document.getElementById('opStop').value) || 0;
+    const target = parseFloat(document.getElementById('opTarget').value) || 0;
+    const shares = parseInt(document.getElementById('opShares').value) || 0;
+
+    const riskPS = Math.abs(entry - stop);
+    const reward = Math.abs(target - entry);
+    const rr = riskPS > 0.01 ? (reward / riskPS) : 0;
+
+    document.getElementById('opRiskPerShare').textContent = '$' + riskPS.toFixed(2);
+    document.getElementById('opTotalRisk').textContent = '$' + (riskPS * shares).toFixed(0);
+    document.getElementById('opPosValue').textContent = '$' + (entry * shares).toLocaleString('en-US', {maximumFractionDigits: 0});
+    document.getElementById('opRR').textContent = rr.toFixed(1) + 'R';
+  }
+
+  function submitOrder() {
+    if (!currentOrderAlert) return;
+    const entry = parseFloat(document.getElementById('opEntry').value);
+    const stop = parseFloat(document.getElementById('opStop').value);
+    const target = parseFloat(document.getElementById('opTarget').value);
+    const shares = parseInt(document.getElementById('opShares').value);
+
+    if (!entry || !stop || !target || shares <= 0) {
+      window.alert('All fields required. Shares must be > 0.');
+      return;
+    }
+
+    const isLong = currentOrderAlert.direction === 'LONG';
+    if (isLong && stop >= entry) { window.alert('Long stop must be below entry'); return; }
+    if (!isLong && stop <= entry) { window.alert('Short stop must be above entry'); return; }
+    if (isLong && target <= entry) { window.alert('Long target must be above entry'); return; }
+    if (!isLong && target >= entry) { window.alert('Short target must be below entry'); return; }
+
+    const btn = document.getElementById('opSendBtn');
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    fetch('/api/order', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        alert_id: currentOrderAlert.id,
+        symbol: currentOrderAlert.symbol,
+        direction: isLong ? 1 : -1,
+        entry_price: entry,
+        stop_price: stop,
+        target_price: target,
+        shares: shares
+      })
+    })
+    .then(r => r.json())
+    .then(d => {
+      if (d.ok) {
+        orderedAlerts.add(currentOrderAlert.id);
+        renderAlerts();
+        closeOrderPanel();
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Send to IBKR';
+        window.alert('Order failed: ' + d.error);
+      }
+    })
+    .catch(e => {
+      btn.disabled = false;
+      btn.textContent = 'Send to IBKR';
+      window.alert('Network error');
+    });
+  }
+
+  // Load existing open orders on page init
+  function loadOpenOrders() {
+    fetch('/api/orders').then(r => r.json()).then(orders => {
+      orders.forEach(o => { if (o.alert_id) orderedAlerts.add(o.alert_id); });
+      renderAlerts();
+    }).catch(() => {});
+  }
+
+  // Close order panel with Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && currentOrderAlert) closeOrderPanel();
+  });
+
+  // ── In-Play Management ──
+  let inPlaySymbols = [];
+  let inPlayOpen = false;
+
+  function toggleInPlay() {
+    inPlayOpen = !inPlayOpen;
+    document.getElementById('inPlayCollapse').classList.toggle('open', inPlayOpen);
+    document.getElementById('inPlayChevron').classList.toggle('open', inPlayOpen);
+  }
+
+  function renderInPlayBadges() {
+    // Just update the summary count — cards are rendered by renderInPlayCards()
+    const summary = document.getElementById('inPlaySummary');
+    summary.textContent = inPlaySymbols.length + ' symbol' + (inPlaySymbols.length !== 1 ? 's' : '');
+    renderInPlayCards();
+  }
+
+  function renderInPlayCards() {
+    const container = document.getElementById('inPlayBadges');
+    const summary = document.getElementById('inPlaySummary');
+    summary.textContent = inPlaySymbols.length + ' symbol' + (inPlaySymbols.length !== 1 ? 's' : '');
+
+    if (!inPlaySymbols.length) {
+      container.innerHTML = '<span class="in-play-empty">No in-play symbols. Add symbols for today\'s session.</span>';
+      return;
+    }
+
+    container.innerHTML = inPlaySymbols.map(sym => {
+      const s = status.symbols?.[sym];
+      if (!s) {
+        // Symbol not yet connected — show placeholder
+        return `
+          <div class="symbol-card in-play-card warming-up">
+            <button class="remove-btn" onclick="removeInPlay('${sym}')" title="Remove ${sym}">&times;</button>
+            <div class="ticker">${sym}</div>
+            <div class="price">connecting...</div>
+            <div class="meta">in-play</div>
+          </div>`;
+      }
+      const hasAlert = s.alerts > 0;
+      const warmingUp = s.warming_up === true;
+      return `
+        <div class="symbol-card in-play-card ${hasAlert ? 'has-alert' : ''} ${warmingUp ? 'warming-up' : ''}">
+          <button class="remove-btn" onclick="removeInPlay('${sym}')" title="Remove ${sym}">&times;</button>
+          <div class="ticker">${sym}</div>
+          <div class="price">${warmingUp ? '...' : '$' + (s.last_price || 0).toFixed(2)}</div>
+          <div class="meta">${warmingUp ? 'connecting...' : (s.bars || 0) + ' bars &middot; ' + (s.alerts || 0) + ' alerts'}</div>
+        </div>`;
+    }).join('');
+  }
+
+  function addInPlay() {
+    const input = document.getElementById('inPlayInput');
+    const msg = document.getElementById('inPlayMsg');
+    const symbol = input.value.trim().toUpperCase();
+    if (!symbol) return;
+    msg.textContent = '';
+    msg.className = 'in-play-msg';
+
+    fetch('/api/add-in-play', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({symbol: symbol})
+    })
+    .then(r => r.json())
+    .then(d => {
+      if (d.ok) {
+        msg.textContent = d.message || `Added ${symbol}`;
+        msg.className = 'in-play-msg success';
+        input.value = '';
+      } else {
+        msg.textContent = d.error || 'Failed';
+        msg.className = 'in-play-msg error';
+      }
+      setTimeout(() => { msg.textContent = ''; }, 3000);
+    })
+    .catch(() => {
+      msg.textContent = 'Network error';
+      msg.className = 'in-play-msg error';
+    });
+    input.focus();
+  }
+
+  function removeInPlay(symbol) {
+    fetch('/api/remove-in-play', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({symbol: symbol})
+    }).catch(e => console.error('Remove in-play failed:', e));
+  }
+
+  function clearInPlay() {
+    if (!inPlaySymbols.length) return;
+    fetch('/api/clear-in-play', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({})
+    }).catch(e => console.error('Clear in-play failed:', e));
+  }
+
+  function loadInPlay() {
+    fetch('/api/in-play').then(r => r.json()).then(d => {
+      if (d.ok) {
+        inPlaySymbols = d.symbols || [];
+        renderInPlayBadges();
+      }
+    }).catch(() => {});
+  }
+
+  // ── In-Play History Log ──
+  let ipHistoryRows = [];
+
+  function loadInPlayHistory() {
+    fetch('/api/iplog').then(r => r.json()).then(d => {
+      if (d.ok) {
+        ipHistoryRows = d.history || [];
+        const snapCount = (d.snapshots || []).length;
+        renderIPHistory(snapCount);
+      }
+    }).catch(() => {});
+  }
+
+  function renderIPHistory(snapCount) {
+    const logEl = document.getElementById('ipHistoryLog');
+    const statsEl = document.getElementById('ipHistoryStats');
+
+    // Filter to today only
+    const today = new Date().toISOString().slice(0, 10);
+    const todayRows = ipHistoryRows.filter(r => r.date === today);
+
+    // Stats line
+    const totalDays = snapCount || 0;
+    const todayActions = todayRows.length;
+    statsEl.innerHTML = `<span class="stat-val">${todayActions}</span> actions today · <span class="stat-val">${totalDays}</span> day${totalDays !== 1 ? 's' : ''} archived`;
+
+    if (!todayRows.length) {
+      logEl.innerHTML = '<span class="ip-history-empty">No activity yet today.</span>';
+      return;
+    }
+
+    // Render most recent first
+    logEl.innerHTML = todayRows.slice().reverse().map(r => {
+      const actionClass = r.action.toLowerCase();
+      return `<div class="ip-log-row"><span class="ip-log-time">${r.time}</span><span class="ip-log-action ${actionClass}">${r.action}</span><span class="ip-log-sym">${r.symbol}</span></div>`;
+    }).join('');
+  }
+
+  function appendIPHistoryRow(action, symbol) {
+    const now = new Date();
+    const date = now.toISOString().slice(0, 10);
+    const time = now.toTimeString().slice(0, 8);
+    ipHistoryRows.push({date, time, symbol, action});
+    // Re-render with current snap count (don't re-fetch, just increment locally)
+    const statsEl = document.getElementById('ipHistoryStats');
+    const currentText = statsEl?.textContent || '';
+    const snapMatch = currentText.match(/(\d+) day/);
+    const snapCount = snapMatch ? parseInt(snapMatch[1]) : 0;
+    renderIPHistory(snapCount);
+  }
+
+  // ── Init ──
+  connectSSE();
+  loadOpenOrders();
+  loadInPlay();
+  loadInPlayHistory();
+</script>
+</body>
+</html>

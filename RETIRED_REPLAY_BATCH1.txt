@@ -1,0 +1,420 @@
+======================================================================================================================================================
+RETIRED STRATEGY RE-VALIDATION — Phase 2 (batch=1)
+Corrected evaluation standard: actual exit timestamps, per-setup isolation
+======================================================================================================================================================
+
+  Loading market data...
+  SPY date range: 2025-05-12 → 2026-03-09 (207 trading days)
+  Trading symbols: 88
+
+======================================================================================================================================================
+SECTION 1 — SPENCER LONG-ONLY
+======================================================================================================================================================
+
+  Running SPENCER LONG-ONLY...
+  Label                                         N   PF(R)   Exp(R)    TotalR    MaxDD     WR%   Stop%    Tgt%   Time%   TrnPF   TstPF   ExDay   ExSym    %Pos  AvgBr
+  ----------------------------------------------------------------------------------------------------------------------------------------------------
+  SPENCER LONG-ONLY (ALL)                      34    0.18   -0.512     -17.4     17.4   20.6%   14.7%    0.0%   85.3%    0.18    0.17    0.12    0.13   13.8%    8.0
+
+  ── SPENCER LONG-ONLY STANDALONE SUMMARY ──
+  Trade count:       34
+  Win rate:          20.6%
+  Profit factor:     0.18
+  Expectancy (R):    -0.512
+  Total R:           -17.4
+  Avg winner (R):    +0.541
+  Avg loser (R):     -0.785
+  Max drawdown (R):  17.4
+  Avg hold bars:     8.0
+  Stop rate:         14.7%
+  Target rate:       0.0%
+  Time/trail/EOD:    85.3%
+  Train PF:          0.18
+  Test PF:           0.17
+  Ex-best-day PF:    0.12
+  Ex-top-symbol PF:  0.13
+  Days active:       29
+  Avg trades/day:    1.17
+  % positive days:   13.8%
+  Date range:        2025-05-12 → 2026-03-09 (207 trading days)
+  Universe:          88 symbols (IBKR-extended)
+  Slippage:          Dynamic (4bps base, vol×family multiplier)
+  Commission:        $0.00/share (config default)
+
+  PROMOTION CRITERIA:
+    N ≥ 10:           PASS (34)
+    PF > 1.0:         FAIL (0.18)
+    Exp > 0:          FAIL (-0.512)
+    Train PF > 0.80:  FAIL (0.18)
+    Test PF > 0.80:   FAIL (0.17)
+    → DOES NOT SURVIVE
+
+  SPENCER LONG-ONLY:
+       Month      N         R      CumR
+    -----------------------------------
+     2025-05      3      -1.4      -1.4
+     2025-06      3      -1.7      -3.2
+     2025-07      3      -1.0      -4.2
+     2025-08      8      -3.6      -7.8
+     2025-09      2      +0.8      -7.0
+     2025-10      2      -2.5      -9.5
+     2025-11      4      -2.0     -11.5
+     2025-12      4      -1.1     -12.6
+     2026-01      4      -3.1     -15.7
+     2026-02      1      -1.7     -17.4
+  → Exported 34 trades to replay_retired_spencer_long.csv
+
+======================================================================================================================================================
+SECTION 2 — SPENCER BOTH DIRECTIONS
+======================================================================================================================================================
+
+  Running SPENCER BOTH DIRECTIONS...
+  Label                                         N   PF(R)   Exp(R)    TotalR    MaxDD     WR%   Stop%    Tgt%   Time%   TrnPF   TstPF   ExDay   ExSym    %Pos  AvgBr
+  ----------------------------------------------------------------------------------------------------------------------------------------------------
+  SPENCER BOTH DIRECTIONS (LONG)               34    0.18   -0.512     -17.4     17.4   20.6%   14.7%    0.0%   85.3%    0.18    0.17    0.12    0.13   13.8%    8.0
+  SPENCER BOTH DIRECTIONS (SHORT)              11    0.06   -0.601      -6.6      6.6    9.1%    0.0%    0.0%  100.0%    0.00    0.26    0.00    0.00    9.1%    8.8
+  SPENCER BOTH DIRECTIONS (ALL)                45    0.15   -0.534     -24.0     24.0   17.8%   11.1%    0.0%   88.9%    0.13    0.19    0.11    0.11   13.2%    8.2
+
+  ── SPENCER BOTH DIRECTIONS STANDALONE SUMMARY ──
+  Trade count:       45
+  Win rate:          17.8%
+  Profit factor:     0.15
+  Expectancy (R):    -0.534
+  Total R:           -24.0
+  Avg winner (R):    +0.526
+  Avg loser (R):     -0.763
+  Max drawdown (R):  24.0
+  Avg hold bars:     8.2
+  Stop rate:         11.1%
+  Target rate:       0.0%
+  Time/trail/EOD:    88.9%
+  Train PF:          0.13
+  Test PF:           0.19
+  Ex-best-day PF:    0.11
+  Ex-top-symbol PF:  0.11
+  Days active:       38
+  Avg trades/day:    1.18
+  % positive days:   13.2%
+  Date range:        2025-05-12 → 2026-03-09 (207 trading days)
+  Universe:          88 symbols (IBKR-extended)
+  Slippage:          Dynamic (4bps base, vol×family multiplier)
+  Commission:        $0.00/share (config default)
+
+  PROMOTION CRITERIA:
+    N ≥ 10:           PASS (45)
+    PF > 1.0:         FAIL (0.15)
+    Exp > 0:          FAIL (-0.534)
+    Train PF > 0.80:  FAIL (0.13)
+    Test PF > 0.80:   FAIL (0.19)
+    → DOES NOT SURVIVE
+
+  SPENCER BOTH DIRECTIONS:
+       Month      N         R      CumR
+    -----------------------------------
+     2025-05      5      -3.1      -3.1
+     2025-06      4      -4.0      -7.1
+     2025-07      3      -1.0      -8.2
+     2025-08      9      -3.8     -11.9
+     2025-09      3      +0.6     -11.3
+     2025-10      2      -2.5     -13.8
+     2025-11      6      -3.1     -16.9
+     2025-12      4      -1.1     -18.0
+     2026-01      5      -3.6     -21.7
+     2026-02      4      -2.4     -24.0
+  → Exported 45 trades to replay_retired_spencer_both.csv
+
+======================================================================================================================================================
+SECTION 3 — SC V2 (SECOND CHANCE V2)
+======================================================================================================================================================
+
+  Running SC V2 (SECOND CHANCE V2)...
+  Label                                         N   PF(R)   Exp(R)    TotalR    MaxDD     WR%   Stop%    Tgt%   Time%   TrnPF   TstPF   ExDay   ExSym    %Pos  AvgBr
+  ----------------------------------------------------------------------------------------------------------------------------------------------------
+  SC V2 (SECOND CHANCE V2) (ALL)                0    0.00   +0.000      +0.0      0.0    0.0%    0.0%    0.0%    0.0%    0.00    0.00    0.00    0.00    0.0%    0.0
+
+  ── SC V2 (SECOND CHANCE V2) STANDALONE SUMMARY ──
+  Trade count:       0
+  Win rate:          0.0%
+  Profit factor:     0.00
+  Expectancy (R):    +0.000
+  Total R:           +0.0
+  Avg winner (R):    +0.000
+  Avg loser (R):     +0.000
+  Max drawdown (R):  0.0
+  Avg hold bars:     0.0
+  Stop rate:         0.0%
+  Target rate:       0.0%
+  Time/trail/EOD:    0.0%
+  Train PF:          0.00
+  Test PF:           0.00
+  Ex-best-day PF:    0.00
+  Ex-top-symbol PF:  0.00
+  Days active:       0
+  Avg trades/day:    0.00
+  % positive days:   0.0%
+  Date range:        2025-05-12 → 2026-03-09 (207 trading days)
+  Universe:          88 symbols (IBKR-extended)
+  Slippage:          Dynamic (4bps base, vol×family multiplier)
+  Commission:        $0.00/share (config default)
+
+  PROMOTION CRITERIA:
+    N ≥ 10:           FAIL (0)
+    PF > 1.0:         FAIL (0.00)
+    Exp > 0:          FAIL (+0.000)
+    Train PF > 0.80:  FAIL (0.00)
+    Test PF > 0.80:   FAIL (0.00)
+    → DOES NOT SURVIVE
+
+  SC V2 (SECOND CHANCE V2): no trades
+  → Exported 0 trades to replay_retired_sc_v2.csv
+
+======================================================================================================================================================
+SECTION 4 — VWAP RECLAIM LONG
+======================================================================================================================================================
+
+  [PROCESS TERMINATED BY SYSTEM  Label                                         N   PF(R)   Exp(R)    TotalR    MaxDD     WR%   Stop%    Tgt%   Time%   TrnPF   TstPF   ExDay   ExSym    %Pos  AvgBr
+  ----------------------------------------------------------------------------------------------------------------------------------------------------
+  VWAP RECLAIM LONG (ALL)                    4001    0.78   -0.107    -428.5    488.0   42.5%   35.1%    2.8%   62.0%    0.70    0.86    0.76    0.77   38.7%   50.8
+
+  ── VWAP RECLAIM LONG STANDALONE SUMMARY ──
+  Trade count:       4001
+  Win rate:          42.5%
+  Profit factor:     0.78
+  Expectancy (R):    -0.107
+  Total R:           -428.5
+  Avg winner (R):    +0.891
+  Avg loser (R):     -0.846
+  Max drawdown (R):  488.0
+  Avg hold bars:     50.8
+  Stop rate:         35.1%
+  Target rate:       2.8%
+  Time/trail/EOD:    62.0%
+  Train PF:          0.70
+  Test PF:           0.86
+  Ex-best-day PF:    0.76
+  Ex-top-symbol PF:  0.77
+  Days active:       212
+  Avg trades/day:    18.87
+  % positive days:   38.7%
+  Date range:        2025-05-12 → 2026-03-09 (207 trading days)
+  Universe:          88 symbols (IBKR-extended)
+  Slippage:          Dynamic (4bps base, vol×family multiplier)
+  Commission:        $0.00/share (config default)
+
+  PROMOTION CRITERIA:
+    N ≥ 10:           PASS (4001)
+    PF > 1.0:         FAIL (0.78)
+    Exp > 0:          FAIL (-0.107)
+    Train PF > 0.80:  FAIL (0.70)
+    Test PF > 0.80:   PASS (0.86)
+    → DOES NOT SURVIVE
+
+  VWAP RECLAIM LONG:
+       Month      N         R      CumR
+    -----------------------------------
+     2025-04      4      +3.4      +3.4
+     2025-05    269     -15.3     -11.9
+     2025-06    484     -67.2     -79.1
+     2025-07    454     -42.4    -121.6
+     2025-08    429     -35.9    -157.5
+     2025-09    379     -27.7    -185.2
+     2025-10    496    -102.5    -287.7
+     2025-11    270     -35.7    -323.4
+     2025-12    338     -55.5    -379.0
+     2026-01    352     -15.3    -394.2
+     2026-02    400     -54.6    -448.8
+     2026-03    126     +20.4    -428.5
+  → Exported 4001 trades to replay_retired_vwap_reclaim.csv
+
+======================================================================================================================================================
+SECTION 5 — VK ACCEPT LONG
+======================================================================================================================================================
+
+  Running VK ACCEPT LONG...
+  Label                                         N   PF(R)   Exp(R)    TotalR    MaxDD     WR%   Stop%    Tgt%   Time%   TrnPF   TstPF   ExDay   ExSym    %Pos  AvgBr
+  ----------------------------------------------------------------------------------------------------------------------------------------------------
+  VK ACCEPT LONG (ALL)                       2943    0.82   -0.091    -267.8    340.3   43.2%   38.4%   12.8%   48.9%    0.76    0.87    0.80    0.81   41.6%   45.0
+
+  ── VK ACCEPT LONG STANDALONE SUMMARY ──
+  Trade count:       2943
+  Win rate:          43.2%
+  Profit factor:     0.82
+  Expectancy (R):    -0.091
+  Total R:           -267.8
+  Avg winner (R):    +0.961
+  Avg loser (R):     -0.891
+  Max drawdown (R):  340.3
+  Avg hold bars:     45.0
+  Stop rate:         38.4%
+  Target rate:       12.8%
+  Time/trail/EOD:    48.9%
+  Train PF:          0.76
+  Test PF:           0.87
+  Ex-best-day PF:    0.80
+  Ex-top-symbol PF:  0.81
+  Days active:       185
+  Avg trades/day:    15.91
+  % positive days:   41.6%
+  Date range:        2025-05-12 → 2026-03-09 (207 trading days)
+  Universe:          88 symbols (IBKR-extended)
+  Slippage:          Dynamic (4bps base, vol×family multiplier)
+  Commission:        $0.00/share (config default)
+
+  PROMOTION CRITERIA:
+    N ≥ 10:           PASS (2943)
+    PF > 1.0:         FAIL (0.82)
+    Exp > 0:          FAIL (-0.091)
+    Train PF > 0.80:  FAIL (0.76)
+    Test PF > 0.80:   PASS (0.87)
+    → DOES NOT SURVIVE
+
+  VK ACCEPT LONG:
+       Month      N         R      CumR
+    -----------------------------------
+     2025-04      5      +3.5      +3.5
+     2025-05    192      +0.8      +4.3
+     2025-06    329     -43.7     -39.4
+     2025-07    216      +5.4     -34.1
+     2025-08    334     -23.0     -57.1
+     2025-09    188     -23.8     -80.8
+     2025-10    366     -57.3    -138.1
+     2025-11    218     -14.2    -152.3
+     2025-12    239     -41.8    -194.1
+     2026-01    277     -43.0    -237.1
+     2026-02    412     -51.7    -288.8
+     2026-03    167     +21.0    -267.8
+  → Exported 2943 trades to replay_retired_vka.csv
+
+======================================================================================================================================================
+SECTION 6 — MCS LONG-ONLY
+======================================================================================================================================================
+
+  Running MCS LONG-ONLY...
+  Label                                         N   PF(R)   Exp(R)    TotalR    MaxDD     WR%   Stop%    Tgt%   Time%   TrnPF   TstPF   ExDay   ExSym    %Pos  AvgBr
+  ----------------------------------------------------------------------------------------------------------------------------------------------------
+  MCS LONG-ONLY (ALL)                         912    0.43   -0.496    -452.2    470.4   28.0%   41.6%    2.3%   56.1%    0.48    0.40    0.42    0.41   24.1%    7.0
+
+  ── MCS LONG-ONLY STANDALONE SUMMARY ──
+  Trade count:       912
+  Win rate:          28.0%
+  Profit factor:     0.43
+  Expectancy (R):    -0.496
+  Total R:           -452.2
+  Avg winner (R):    +1.361
+  Avg loser (R):     -1.217
+  Max drawdown (R):  470.4
+  Avg hold bars:     7.0
+  Stop rate:         41.6%
+  Target rate:       2.3%
+  Time/trail/EOD:    56.1%
+  Train PF:          0.48
+  Test PF:           0.40
+  Ex-best-day PF:    0.42
+  Ex-top-symbol PF:  0.41
+  Days active:       174
+  Avg trades/day:    5.24
+  % positive days:   24.1%
+  Date range:        2025-05-12 → 2026-03-09 (207 trading days)
+  Universe:          88 symbols (IBKR-extended)
+  Slippage:          Dynamic (4bps base, vol×family multiplier)
+  Commission:        $0.00/share (config default)
+
+  PROMOTION CRITERIA:
+    N ≥ 10:           PASS (912)
+    PF > 1.0:         FAIL (0.43)
+    Exp > 0:          FAIL (-0.496)
+    Train PF > 0.80:  FAIL (0.48)
+    Test PF > 0.80:   FAIL (0.40)
+    → DOES NOT SURVIVE
+
+  MCS LONG-ONLY:
+       Month      N         R      CumR
+    -----------------------------------
+     2025-05      1      -1.8      -1.8
+     2025-06    112     -41.1     -42.9
+     2025-07    113     -76.0    -119.0
+     2025-08    110     -62.7    -181.6
+     2025-09    108     -40.7    -222.4
+     2025-10     91     -52.9    -275.3
+     2025-11     76     -38.9    -314.2
+     2025-12    108     -64.9    -379.0
+     2026-01     73     -41.2    -420.2
+     2026-02     84     -28.1    -448.3
+     2026-03     36      -3.9    -452.2
+  → Exported 912 trades to replay_retired_mcs.csv
+
+======================================================================================================================================================
+SECTION 7 — FAILED BOUNCE SHORT
+======================================================================================================================================================
+
+  Running FAILED BOUNCE SHORT...
+  Label                                         N   PF(R)   Exp(R)    TotalR    MaxDD     WR%   Stop%    Tgt%   Time%   TrnPF   TstPF   ExDay   ExSym    %Pos  AvgBr
+  ----------------------------------------------------------------------------------------------------------------------------------------------------
+  FAILED BOUNCE SHORT (ALL)                   776    0.52   -0.291    -225.9    226.0   34.9%   35.1%    0.0%   64.9%    0.57    0.47    0.49    0.50   28.9%    6.6
+
+  ── FAILED BOUNCE SHORT STANDALONE SUMMARY ──
+  Trade count:       776
+  Win rate:          34.9%
+  Profit factor:     0.52
+  Expectancy (R):    -0.291
+  Total R:           -225.9
+  Avg winner (R):    +0.899
+  Avg loser (R):     -0.930
+  Max drawdown (R):  226.0
+  Avg hold bars:     6.6
+  Stop rate:         35.1%
+  Target rate:       0.0%
+  Time/trail/EOD:    64.9%
+  Train PF:          0.57
+  Test PF:           0.47
+  Ex-best-day PF:    0.49
+  Ex-top-symbol PF:  0.50
+  Days active:       197
+  Avg trades/day:    3.94
+  % positive days:   28.9%
+  Date range:        2025-05-12 → 2026-03-09 (207 trading days)
+  Universe:          88 symbols (IBKR-extended)
+  Slippage:          Dynamic (4bps base, vol×family multiplier)
+  Commission:        $0.00/share (config default)
+
+  PROMOTION CRITERIA:
+    N ≥ 10:           PASS (776)
+    PF > 1.0:         FAIL (0.52)
+    Exp > 0:          FAIL (-0.291)
+    Train PF > 0.80:  FAIL (0.57)
+    Test PF > 0.80:   FAIL (0.47)
+    → DOES NOT SURVIVE
+
+  FAILED BOUNCE SHORT:
+       Month      N         R      CumR
+    -----------------------------------
+     2025-05     46     -13.5     -13.5
+     2025-06     72     -25.7     -39.2
+     2025-07     87     -19.6     -58.8
+     2025-08     77     -22.4     -81.2
+     2025-09     90     -41.1    -122.4
+     2025-10     84      -9.0    -131.3
+     2025-11     70      -6.9    -138.2
+     2025-12     91     -47.4    -185.6
+     2026-01     78     -23.5    -209.2
+     2026-02     63      -8.9    -218.1
+     2026-03     18      -7.8    -225.9
+  → Exported 776 trades to replay_retired_failed_bounce.csv
+
+======================================================================================================================================================
+FINAL VERDICT TABLE — RETIRED STRATEGY RE-VALIDATION
+======================================================================================================================================================
+  ✗ SPENCER LONG-ONLY                             → DOES NOT SURVIVE
+  ✗ SPENCER BOTH DIRECTIONS                       → DOES NOT SURVIVE
+  ✗ SC V2 (SECOND CHANCE V2)                      → DOES NOT SURVIVE
+  ✗ VWAP RECLAIM LONG                             → DOES NOT SURVIVE
+  ✗ VK ACCEPT LONG                                → DOES NOT SURVIVE
+  ✗ MCS LONG-ONLY                                 → DOES NOT SURVIVE
+  ✗ FAILED BOUNCE SHORT                           → DOES NOT SURVIVE
+
+  Survivors: 0 / 7
+  Failures:  7 / 7
+
+======================================================================================================================================================
+DONE.
+======================================================================================================================================================

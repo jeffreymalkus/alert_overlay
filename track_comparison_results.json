@@ -1,0 +1,176 @@
+{
+  "tracks": {
+    "T1_FROZEN_V1": {
+      "n": 75,
+      "pf_r": 1.2087,
+      "exp_r": 0.1197,
+      "total_r": 8.9747,
+      "max_dd_r": 16.9083,
+      "stop_rate": 37.3333,
+      "quick_stop_rate": 5.3333,
+      "ex_best_day_r": -5.8266,
+      "ex_best_day_pf": 0.8645,
+      "ex_top_sym_r": 2.6307,
+      "ex_top_sym_pf": 1.0612,
+      "best_day": "2026-02-12",
+      "best_day_r": 14.8013,
+      "top_sym": "NUGT",
+      "top_sym_r": 6.3439,
+      "train_pf": 1.1537,
+      "test_pf": 1.2951,
+      "train_exp": 0.0877,
+      "test_exp": 0.1703,
+      "train_n": 46,
+      "test_n": 29
+    },
+    "T2_CANDIDATE_V2": {
+      "n": 330,
+      "pf_r": 1.2197,
+      "exp_r": 0.0838,
+      "total_r": 27.6482,
+      "max_dd_r": 26.8647,
+      "stop_rate": 25.7576,
+      "quick_stop_rate": 2.1212,
+      "ex_best_day_r": 1.8971,
+      "ex_best_day_pf": 1.0154,
+      "ex_top_sym_r": 17.551,
+      "ex_top_sym_pf": 1.1404,
+      "best_day": "2026-03-09",
+      "best_day_r": 25.7511,
+      "top_sym": "FAS",
+      "top_sym_r": 10.0972,
+      "train_pf": 1.2464,
+      "test_pf": 1.1845,
+      "train_exp": 0.102,
+      "test_exp": 0.0637,
+      "train_n": 173,
+      "test_n": 157
+    },
+    "T3_DISC_ACTIVE": {
+      "n": 329,
+      "pf_r": 1.2187,
+      "exp_r": 0.0837,
+      "total_r": 27.5316,
+      "max_dd_r": 26.9813,
+      "stop_rate": 25.8359,
+      "quick_stop_rate": 2.1277,
+      "ex_best_day_r": 1.7805,
+      "ex_best_day_pf": 1.0144,
+      "ex_top_sym_r": 17.4344,
+      "ex_top_sym_pf": 1.1394,
+      "best_day": "2026-03-09",
+      "best_day_r": 25.7511,
+      "top_sym": "FAS",
+      "top_sym_r": 10.0972,
+      "train_pf": 1.2447,
+      "test_pf": 1.1845,
+      "train_exp": 0.1019,
+      "test_exp": 0.0637,
+      "train_n": 172,
+      "test_n": 157
+    },
+    "T3_DISC_SHADOW": {
+      "n": 128,
+      "pf_r": 0.6083,
+      "exp_r": -0.2603,
+      "total_r": -33.3157,
+      "max_dd_r": 42.0547,
+      "stop_rate": 24.2188,
+      "quick_stop_rate": 6.25,
+      "ex_best_day_r": -44.2724,
+      "ex_best_day_pf": 0.4758,
+      "ex_top_sym_r": -39.2859,
+      "ex_top_sym_pf": 0.536,
+      "best_day": "2026-02-19",
+      "best_day_r": 10.9567,
+      "top_sym": "NUGT",
+      "top_sym_r": 5.9701,
+      "train_pf": 0.9037,
+      "test_pf": 0.3164,
+      "train_exp": -0.0573,
+      "test_exp": -0.5131,
+      "train_n": 71,
+      "test_n": 57
+    }
+  },
+  "setups": {
+    "T1_FROZEN_V1": {
+      "BDR SHORT": {
+        "n": 42,
+        "pf_r": 1.3862113286322972,
+        "exp_r": 0.17612203429840428,
+        "total_r": 7.39712544053298,
+        "stop_rate": 26.190476190476193,
+        "dir": "SHORT"
+      },
+      "VWAP KISS": {
+        "n": 33,
+        "pf_r": 1.0661669478947031,
+        "exp_r": 0.04780400706192904,
+        "total_r": 1.5775322330436583,
+        "stop_rate": 51.515151515151516,
+        "dir": "LONG"
+      }
+    },
+    "T2_CANDIDATE_V2": {
+      "BDR SHORT": {
+        "n": 42,
+        "pf_r": 1.3862113286322972,
+        "exp_r": 0.17612203429840428,
+        "total_r": 7.39712544053298,
+        "stop_rate": 26.190476190476193,
+        "dir": "SHORT"
+      },
+      "VWAP RECLAIM": {
+        "n": 288,
+        "pf_r": 1.189782027326768,
+        "exp_r": 0.07031623839980039,
+        "total_r": 20.251076659142512,
+        "stop_rate": 25.694444444444443,
+        "dir": "LONG"
+      }
+    }
+  },
+  "shadow_setups": {
+    "2ND CHANCE": {
+      "n": 53,
+      "pf_r": 0.7357433259391836,
+      "exp_r": -0.15123492359544702,
+      "total_r": -8.015450950558693,
+      "stop_rate": 11.320754716981133,
+      "dir": "LONG"
+    },
+    "9EMA RECLAIM": {
+      "n": 35,
+      "pf_r": 0.22251711398174703,
+      "exp_r": -0.5647532761633568,
+      "total_r": -19.76636466571749,
+      "stop_rate": 20.0,
+      "dir": "LONG"
+    },
+    "SPENCER": {
+      "n": 9,
+      "pf_r": 0.07746394846177394,
+      "exp_r": -0.5584618034930708,
+      "total_r": -5.026156231437637,
+      "stop_rate": 11.11111111111111,
+      "dir": "SHORT"
+    },
+    "VWAP KISS": {
+      "n": 31,
+      "pf_r": 0.9787022733186599,
+      "exp_r": -0.016379803784889922,
+      "total_r": -0.5077739173315876,
+      "stop_rate": 54.83870967741935,
+      "dir": "LONG"
+    }
+  },
+  "integrity": {
+    "t2_n": 330,
+    "t3a_n": 329,
+    "match_n": false,
+    "t2_r": 27.65,
+    "t3a_r": 27.53,
+    "match_r": true
+  }
+}

@@ -1,0 +1,246 @@
+========================================================================================================================
+REGIME-GATED LONG STUDY — Decisive test of 10:15 sector-breadth gate
+========================================================================================================================
+
+========================================================================================================================
+SECTION 1 — STUDY DEFINITION
+========================================================================================================================
+  Entry: VK acceptance (hold=2, expansion close, vol>70% MA)
+  Market gate: ML1 (SPY above VWAP at signal bar)
+  Leadership: L1 (stock RS > SPY at signal bar)
+  In-play: none
+  Exit: X2 (3R target, stop at acceptance low / VWAP, EOD close)
+  Entry window: 10:15-11:30
+  Cost: 4bps slippage/side + $0.005/share commission
+
+  Regime gate (computed ONCE at 10:15, frozen for the day):
+    Gate A: >6 sectors above VWAP at 10:15
+    Gate B: >7 sectors above VWAP at 10:15
+    Gate C: SPY>VWAP AND >6 sectors above VWAP at 10:15
+
+  LIVE-AVAILABLE: all regime features use only data through bar 9 (10:15).
+  No hindsight. No GREEN-day. No future information.
+
+  Loading data...
+  Computing 10:15 regime states...
+  62 trading days: Gate A=24d, Gate B=14d, Gate C=19d
+
+  Day-by-day regime state:
+  Date         Sec>VW SPY>VW   A   B   C
+  2025-12-08        2      N   -   -   -
+  2025-12-09        5      Y   -   -   -
+  2025-12-10        8      Y   Y   Y   Y
+  2025-12-11        9      Y   Y   Y   Y
+  2025-12-12        1      N   -   -   -
+  2025-12-15        1      N   -   -   -
+  2025-12-16        2      N   -   -   -
+  2025-12-17        8      N   Y   Y   -
+  2025-12-18        6      N   -   -   -
+  2025-12-19        8      Y   Y   Y   Y
+  2025-12-22        6      N   -   -   -
+  2025-12-23        3      N   -   -   -
+  2025-12-24        8      Y   Y   Y   Y
+  2025-12-26        4      N   -   -   -
+  2025-12-29        5      N   -   -   -
+  2025-12-30        1      N   -   -   -
+  2025-12-31        1      N   -   -   -
+  2026-01-02        7      N   Y   -   -
+  2026-01-05        3      Y   -   -   -
+  2026-01-06        9      Y   Y   Y   Y
+  2026-01-07        1      N   -   -   -
+  2026-01-08        9      Y   Y   Y   Y
+  2026-01-09        5      Y   -   -   -
+  2026-01-12        6      Y   -   -   -
+  2026-01-13        3      N   -   -   -
+  2026-01-14       10      Y   Y   Y   Y
+  2026-01-15        7      N   Y   -   -
+  2026-01-16        7      N   Y   -   -
+  2026-01-20        4      N   -   -   -
+  2026-01-21        7      Y   Y   -   Y
+  2026-01-22        1      N   -   -   -
+  2026-01-23        4      Y   -   -   -
+  2026-01-26        8      Y   Y   Y   Y
+  2026-01-27        6      Y   -   -   -
+  2026-01-28        1      N   -   -   -
+  2026-01-29        2      N   -   -   -
+  2026-01-30        6      Y   -   -   -
+  2026-02-02        7      Y   Y   -   Y
+  2026-02-03        6      N   -   -   -
+  2026-02-04        4      N   -   -   -
+  2026-02-05        5      N   -   -   -
+  2026-02-06        7      N   Y   -   -
+  2026-02-09        7      Y   Y   -   Y
+  2026-02-10        7      Y   Y   -   Y
+  2026-02-11        4      N   -   -   -
+  2026-02-12        5      N   -   -   -
+  2026-02-13       10      Y   Y   Y   Y
+  2026-02-17        0      N   -   -   -
+  2026-02-18        8      Y   Y   Y   Y
+  2026-02-19        2      N   -   -   -
+  2026-02-20        6      Y   -   -   -
+  2026-02-23        2      N   -   -   -
+  2026-02-24        8      Y   Y   Y   Y
+  2026-02-25        2      N   -   -   -
+  2026-02-26        3      N   -   -   -
+  2026-02-27        7      Y   Y   -   Y
+  2026-03-02       10      Y   Y   Y   Y
+  2026-03-03        0      N   -   -   -
+  2026-03-04        9      Y   Y   Y   Y
+  2026-03-05        4      Y   -   -   -
+  2026-03-06        7      Y   Y   -   Y
+  2026-03-09        0      N   -   -   -
+
+  Loading 88 symbols and running VK acceptance entry...
+  Total trades (ungated): 661
+
+========================================================================================================================
+SECTION 2 — LEDGER
+========================================================================================================================
+  UNGATED BASELINE
+    Trades:   661   Days active:  60   Avg/day: 11.0
+    PF(R):   0.84   PF(raw):   1.06   Exp(R): -0.099   Total R: -65.6   Raw R: +22.5
+    MaxDD: 141.3R   WR: 37.8%   Stop: 47.4%   QStop: 6.2%   Target: 8.2%
+    AvgWin: +1.349R   AvgLoss: -0.980R   MedianR: -0.698
+    Train PF: 1.01   Test PF: 0.67   Ex-best-day PF: 0.75   Ex-top-sym PF: 0.82
+    Top3 day %: -103.6%   Top3 sym %: -26.7%
+    Median daily R: -2.469   %pos days: 35.0%   %zero-trade days: 3.2%
+
+  GATE A (>6 sec>VWAP @10:15)
+      Deploy days (24d)
+      Trades:   244   Days active:  24   Avg/day: 10.2
+      PF(R):   1.10   PF(raw):   1.44   Exp(R): +0.055   Total R: +13.4   Raw R: +50.7
+      MaxDD: 38.9R   WR: 43.0%   Stop: 42.2%   QStop: 7.8%   Target: 11.9%
+      AvgWin: +1.439R   AvgLoss: -0.991R   MedianR: -0.317
+      Train PF: 1.00   Test PF: 1.15   Ex-best-day PF: 1.01   Ex-top-sym PF: 1.05
+      Top3 day %: +234.9%   Top3 sym %: +123.9%
+      Median daily R: +0.604   %pos days: 54.2%   %zero-trade days: 0.0%
+      Non-deploy days (38d)
+      Trades:   417   Days active:  36   Avg/day: 11.6
+      PF(R):   0.70   PF(raw):   0.88   Exp(R): -0.190   Total R: -79.0   Raw R: -28.2
+      MaxDD: 140.1R   WR: 34.8%   Stop: 50.4%   QStop: 5.3%   Target: 6.0%
+      AvgWin: +1.284R   AvgLoss: -0.975R   MedianR: -1.041
+      Train PF: 1.01   Test PF: 0.32   Ex-best-day PF: 0.57   Ex-top-sym PF: 0.67
+      Top3 day %: -85.5%   Top3 sym %: -22.8%
+      Median daily R: -3.312   %pos days: 22.2%   %zero-trade days: 5.3%
+
+  GATE B (>7 sec>VWAP @10:15)
+      Deploy days (14d)
+      Trades:   139   Days active:  14   Avg/day: 9.9
+      PF(R):   1.41   PF(raw):   1.93   Exp(R): +0.215   Total R: +29.8   Raw R: +55.1
+      MaxDD: 14.4R   WR: 48.9%   Stop: 36.7%   QStop: 8.6%   Target: 14.4%
+      AvgWin: +1.515R   AvgLoss: -1.031R   MedianR: -0.024
+      Train PF: 1.93   Test PF: 1.23   Ex-best-day PF: 1.29   Ex-top-sym PF: 1.34
+      Top3 day %: +104.3%   Top3 sym %: +47.6%
+      Median daily R: +1.647   %pos days: 64.3%   %zero-trade days: 0.0%
+      Non-deploy days (48d)
+      Trades:   522   Days active:  46   Avg/day: 11.3
+      PF(R):   0.71   PF(raw):   0.88   Exp(R): -0.183   Total R: -95.5   Raw R: -32.7
+      MaxDD: 152.6R   WR: 34.9%   Stop: 50.2%   QStop: 5.6%   Target: 6.5%
+      AvgWin: +1.287R   AvgLoss: -0.970R   MedianR: -1.039
+      Train PF: 0.91   Test PF: 0.48   Ex-best-day PF: 0.61   Ex-top-sym PF: 0.69
+      Top3 day %: -70.8%   Top3 sym %: -17.4%
+      Median daily R: -3.312   %pos days: 26.1%   %zero-trade days: 4.2%
+
+  GATE C (SPY>VW + >6 sec>VWAP @10:15)
+      Deploy days (19d)
+      Trades:   180   Days active:  19   Avg/day: 9.5
+      PF(R):   1.11   PF(raw):   1.47   Exp(R): +0.064   Total R: +11.5   Raw R: +41.6
+      MaxDD: 26.1R   WR: 42.8%   Stop: 44.4%   QStop: 10.0%   Target: 12.8%
+      AvgWin: +1.539R   AvgLoss: -1.038R   MedianR: -0.428
+      Train PF: 1.36   Test PF: 1.00   Ex-best-day PF: 0.99   Ex-top-sym PF: 1.05
+      Top3 day %: +269.7%   Top3 sym %: +145.6%
+      Median daily R: +0.394   %pos days: 52.6%   %zero-trade days: 0.0%
+      Non-deploy days (43d)
+      Trades:   481   Days active:  41   Avg/day: 11.7
+      PF(R):   0.74   PF(raw):   0.92   Exp(R): -0.160   Total R: -77.2   Raw R: -19.2
+      MaxDD: 138.2R   WR: 36.0%   Stop: 48.4%   QStop: 4.8%   Target: 6.4%
+      AvgWin: +1.265R   AvgLoss: -0.961R   MedianR: -0.828
+      Train PF: 0.94   Test PF: 0.49   Ex-best-day PF: 0.62   Ex-top-sym PF: 0.71
+      Top3 day %: -87.6%   Top3 sym %: -23.6%
+      Median daily R: -3.280   %pos days: 26.8%   %zero-trade days: 4.7%
+
+========================================================================================================================
+SECTION 3 — GATE-ON vs GATE-OFF COMPARISON
+========================================================================================================================
+
+  GATE A (>6 sec>VWAP @10:15) — Deploy vs Non-deploy contrast:
+    Metric                   Deploy   Non-deploy      Delta   Baseline
+    -------------------- ---------- ------------ ---------- ----------
+    Trades                      244          417                   661
+    Days                         24           36                    60
+    PF(R)                      1.10         0.70      +0.40       0.84
+    Exp(R)                   +0.055       -0.190     +0.244     -0.099
+    Total R                   +13.4        -79.0                 -65.6
+    WR%                       43.0%        34.8%       +8.3      37.8%
+    Stop%                     42.2%        50.4%       -8.1      47.4%
+    MaxDD                     38.9R       140.1R                141.3R
+    %Pos days                 54.2%        22.2%      +31.9      35.0%
+
+  GATE B (>7 sec>VWAP @10:15) — Deploy vs Non-deploy contrast:
+    Metric                   Deploy   Non-deploy      Delta   Baseline
+    -------------------- ---------- ------------ ---------- ----------
+    Trades                      139          522                   661
+    Days                         14           46                    60
+    PF(R)                      1.41         0.71      +0.70       0.84
+    Exp(R)                   +0.215       -0.183     +0.398     -0.099
+    Total R                   +29.8        -95.5                 -65.6
+    WR%                       48.9%        34.9%      +14.1      37.8%
+    Stop%                     36.7%        50.2%      -13.5      47.4%
+    MaxDD                     14.4R       152.6R                141.3R
+    %Pos days                 64.3%        26.1%      +38.2      35.0%
+
+  GATE C (SPY>VW + >6 sec>VWAP @10:15) — Deploy vs Non-deploy contrast:
+    Metric                   Deploy   Non-deploy      Delta   Baseline
+    -------------------- ---------- ------------ ---------- ----------
+    Trades                      180          481                   661
+    Days                         19           41                    60
+    PF(R)                      1.11         0.74      +0.37       0.84
+    Exp(R)                   +0.064       -0.160     +0.225     -0.099
+    Total R                   +11.5        -77.2                 -65.6
+    WR%                       42.8%        36.0%       +6.8      37.8%
+    Stop%                     44.4%        48.4%       -4.0      47.4%
+    MaxDD                     26.1R       138.2R                141.3R
+    %Pos days                 52.6%        26.8%      +25.8      35.0%
+
+========================================================================================================================
+SECTION 4 — ROBUSTNESS & CONCENTRATION
+========================================================================================================================
+
+  GATE A (>6 sec>VWAP @10:15) — Deploy days:
+    Train PF: 1.00   Test PF: 1.15
+    Ex-best-day PF: 1.01   Ex-top-sym PF: 1.05
+    Top-3 days: 2025-12-10 (+12.2R)  2026-01-02 (+9.7R)  2025-12-11 (+9.6R)    [+234.9% of total]
+    Top-3 syms: WEBL (+6.5R)  BAC (+5.4R)  SHOP (+4.7R)    [+123.9% of total]
+    Median daily R: +0.604   %pos days: 54.2%   %zero-trade eligible: 0.0%
+
+  GATE B (>7 sec>VWAP @10:15) — Deploy days:
+    Train PF: 1.93   Test PF: 1.23
+    Ex-best-day PF: 1.29   Ex-top-sym PF: 1.34
+    Top-3 days: 2025-12-10 (+12.2R)  2025-12-11 (+9.6R)  2026-02-24 (+9.3R)    [+104.3% of total]
+    Top-3 syms: UBER (+5.2R)  PYPL (+4.5R)  NKE (+4.5R)    [+47.6% of total]
+    Median daily R: +1.647   %pos days: 64.3%   %zero-trade eligible: 0.0%
+
+  GATE C (SPY>VW + >6 sec>VWAP @10:15) — Deploy days:
+    Train PF: 1.36   Test PF: 1.00
+    Ex-best-day PF: 0.99   Ex-top-sym PF: 1.05
+    Top-3 days: 2025-12-10 (+12.2R)  2025-12-11 (+9.6R)  2026-02-24 (+9.3R)    [+269.7% of total]
+    Top-3 syms: WEBL (+6.5R)  SHOP (+5.8R)  NKE (+4.5R)    [+145.6% of total]
+    Median daily R: +0.394   %pos days: 52.6%   %zero-trade eligible: 0.0%
+
+========================================================================================================================
+SECTION 5 — SUMMARY COMPARISON TABLE
+========================================================================================================================
+
+  Mode                                           N  Days     PF PF(raw)     Exp    TotR  MaxDD   WR% Stop%  TrnPF  TstPF  xBdPF  xTsPF  %Pos
+  ------------------------------------------ ----- ----- ------ ------- ------- ------- ------ ----- ----- ------ ------ ------ ------ -----
+  Ungated baseline                             661    60   0.84    1.06 -0.099  -65.6 141.3 37.8% 47.4%  1.01  0.67  0.75  0.82 35.0%
+  GATE A (>6 sec>VWAP @10:15) (deploy)         244    24   1.10    1.44 +0.055  +13.4  38.9 43.0% 42.2%  1.00  1.15  1.01  1.05 54.2%
+  GATE A (>6 sec>VWAP @10:15) (non-deploy)     417    36   0.70    0.88 -0.190  -79.0 140.1 34.8% 50.4%  1.01  0.32  0.57  0.67 22.2%
+  GATE B (>7 sec>VWAP @10:15) (deploy)         139    14   1.41    1.93 +0.215  +29.8  14.4 48.9% 36.7%  1.93  1.23  1.29  1.34 64.3%
+  GATE B (>7 sec>VWAP @10:15) (non-deploy)     522    46   0.71    0.88 -0.183  -95.5 152.6 34.9% 50.2%  0.91  0.48  0.61  0.69 26.1%
+  GATE C (SPY>VW + >6 sec>VWAP @10:15) (deploy)   180    19   1.11    1.47 +0.064  +11.5  26.1 42.8% 44.4%  1.36  1.00  0.99  1.05 52.6%
+  GATE C (SPY>VW + >6 sec>VWAP @10:15) (non-deploy)   481    41   0.74    0.92 -0.160  -77.2 138.2 36.0% 48.4%  0.94  0.49  0.62  0.71 26.8%
+
+========================================================================================================================
+REGIME-GATED LONG STUDY COMPLETE
+========================================================================================================================

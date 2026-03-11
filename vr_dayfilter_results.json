@@ -1,0 +1,241 @@
+{
+  "portfolio_metrics": {
+    "FROZEN_CURRENT": {
+      "n": 75,
+      "pf_r": 1.2087,
+      "exp_r": 0.1197,
+      "total_r": 8.9747,
+      "max_dd_r": 16.9083,
+      "stop_rate": 37.3333,
+      "quick_stop_rate": 5.3333,
+      "ex_best_day_total_r": -5.8266,
+      "ex_best_day_pf": 0.8645,
+      "ex_top_sym_total_r": 2.6307,
+      "ex_top_sym_pf": 1.0612,
+      "best_day": "2026-02-12",
+      "best_day_r": 14.8013,
+      "top_sym": "NUGT",
+      "top_sym_r": 6.3439,
+      "train_pf": 1.1537,
+      "test_pf": 1.2951,
+      "train_exp": 0.0877,
+      "test_exp": 0.1703,
+      "train_n": 46,
+      "test_n": 29
+    },
+    "VR_GREEN_ONLY": {
+      "n": 330,
+      "pf_r": 1.2197,
+      "exp_r": 0.0838,
+      "total_r": 27.6482,
+      "max_dd_r": 26.8647,
+      "stop_rate": 25.7576,
+      "quick_stop_rate": 2.1212,
+      "ex_best_day_total_r": 1.8971,
+      "ex_best_day_pf": 1.0154,
+      "ex_top_sym_total_r": 17.551,
+      "ex_top_sym_pf": 1.1404,
+      "best_day": "2026-03-09",
+      "best_day_r": 25.7511,
+      "top_sym": "FAS",
+      "top_sym_r": 10.0972,
+      "train_pf": 1.2464,
+      "test_pf": 1.1845,
+      "train_exp": 0.102,
+      "test_exp": 0.0637,
+      "train_n": 173,
+      "test_n": 157
+    },
+    "VR_NON_RED": {
+      "n": 499,
+      "pf_r": 1.1419,
+      "exp_r": 0.0575,
+      "total_r": 28.6848,
+      "max_dd_r": 30.9702,
+      "stop_rate": 27.2545,
+      "quick_stop_rate": 2.6052,
+      "ex_best_day_total_r": 2.9337,
+      "ex_best_day_pf": 1.0147,
+      "ex_top_sym_total_r": 16.4739,
+      "ex_top_sym_pf": 1.0823,
+      "best_day": "2026-03-09",
+      "best_day_r": 25.7511,
+      "top_sym": "FAS",
+      "top_sym_r": 12.2109,
+      "train_pf": 1.1367,
+      "test_pf": 1.1485,
+      "train_exp": 0.0613,
+      "test_exp": 0.0536,
+      "train_n": 251,
+      "test_n": 248
+    },
+    "VR_MARKET_ALIGN_ONLY": {
+      "n": 518,
+      "pf_r": 1.1572,
+      "exp_r": 0.0637,
+      "total_r": 32.9826,
+      "max_dd_r": 33.0599,
+      "stop_rate": 27.4131,
+      "quick_stop_rate": 2.7027,
+      "ex_best_day_total_r": 7.2315,
+      "ex_best_day_pf": 1.0349,
+      "ex_top_sym_total_r": 19.3686,
+      "ex_top_sym_pf": 1.0932,
+      "best_day": "2026-03-09",
+      "best_day_r": 25.7511,
+      "top_sym": "FAS",
+      "top_sym_r": 13.6139,
+      "train_pf": 1.1662,
+      "test_pf": 1.1464,
+      "train_exp": 0.074,
+      "test_exp": 0.0535,
+      "train_n": 257,
+      "test_n": 261
+    }
+  },
+  "vr_only_metrics": {
+    "VR_GREEN_ONLY": {
+      "n": 288,
+      "pf_r": 1.1898,
+      "exp_r": 0.0703,
+      "total_r": 20.2511,
+      "max_dd_r": 24.238,
+      "stop_rate": 25.6944,
+      "quick_stop_rate": 1.3889,
+      "ex_best_day_total_r": -5.8284,
+      "ex_best_day_pf": 0.9442,
+      "ex_top_sym_total_r": 12.6077,
+      "ex_top_sym_pf": 1.1182,
+      "best_day": "2026-03-09",
+      "best_day_r": 26.0795,
+      "top_sym": "FAS",
+      "top_sym_r": 7.6434,
+      "train_pf": 1.3344,
+      "test_pf": 1.0141,
+      "train_exp": 0.1341,
+      "test_exp": 0.0048,
+      "train_n": 146,
+      "test_n": 142
+    },
+    "VR_NON_RED": {
+      "n": 457,
+      "pf_r": 1.1163,
+      "exp_r": 0.0466,
+      "total_r": 21.2877,
+      "max_dd_r": 28.9905,
+      "stop_rate": 27.3523,
+      "quick_stop_rate": 2.1882,
+      "ex_best_day_total_r": -4.7918,
+      "ex_best_day_pf": 0.9735,
+      "ex_top_sym_total_r": 11.5306,
+      "ex_top_sym_pf": 1.0634,
+      "best_day": "2026-03-09",
+      "best_day_r": 26.0795,
+      "top_sym": "FAS",
+      "top_sym_r": 9.7571,
+      "train_pf": 1.174,
+      "test_pf": 1.0475,
+      "train_exp": 0.0774,
+      "test_exp": 0.017,
+      "train_n": 224,
+      "test_n": 233
+    },
+    "VR_MARKET_ALIGN_ONLY": {
+      "n": 476,
+      "pf_r": 1.1342,
+      "exp_r": 0.0538,
+      "total_r": 25.5854,
+      "max_dd_r": 27.0114,
+      "stop_rate": 27.521,
+      "quick_stop_rate": 2.3109,
+      "ex_best_day_total_r": -0.4941,
+      "ex_best_day_pf": 0.9974,
+      "ex_top_sym_total_r": 14.4253,
+      "ex_top_sym_pf": 1.0762,
+      "best_day": "2026-03-09",
+      "best_day_r": 26.0795,
+      "top_sym": "FAS",
+      "top_sym_r": 11.1601,
+      "train_pf": 1.2067,
+      "test_pf": 1.052,
+      "train_exp": 0.091,
+      "test_exp": 0.0189,
+      "train_n": 230,
+      "test_n": 246
+    }
+  },
+  "breakdowns": {
+    "FROZEN_CURRENT": {
+      "BDR SHORT": {
+        "n": 42,
+        "pf_r": 1.3862113286322972,
+        "exp_r": 0.17612203429840428,
+        "total_r": 7.39712544053298,
+        "stop_rate": 26.190476190476193,
+        "direction": "SHORT"
+      },
+      "VWAP KISS": {
+        "n": 33,
+        "pf_r": 1.0661669478947031,
+        "exp_r": 0.04780400706192904,
+        "total_r": 1.5775322330436583,
+        "stop_rate": 51.515151515151516,
+        "direction": "LONG"
+      }
+    },
+    "VR_GREEN_ONLY": {
+      "BDR SHORT": {
+        "n": 42,
+        "pf_r": 1.3862113286322972,
+        "exp_r": 0.17612203429840428,
+        "total_r": 7.39712544053298,
+        "stop_rate": 26.190476190476193,
+        "direction": "SHORT"
+      },
+      "VWAP RECLAIM": {
+        "n": 288,
+        "pf_r": 1.189782027326768,
+        "exp_r": 0.07031623839980039,
+        "total_r": 20.251076659142512,
+        "stop_rate": 25.694444444444443,
+        "direction": "LONG"
+      }
+    },
+    "VR_NON_RED": {
+      "BDR SHORT": {
+        "n": 42,
+        "pf_r": 1.3862113286322972,
+        "exp_r": 0.17612203429840428,
+        "total_r": 7.39712544053298,
+        "stop_rate": 26.190476190476193,
+        "direction": "SHORT"
+      },
+      "VWAP RECLAIM": {
+        "n": 457,
+        "pf_r": 1.1163348069814985,
+        "exp_r": 0.04658141477563544,
+        "total_r": 21.287706552465394,
+        "stop_rate": 27.35229759299781,
+        "direction": "LONG"
+      }
+    },
+    "VR_MARKET_ALIGN_ONLY": {
+      "BDR SHORT": {
+        "n": 42,
+        "pf_r": 1.3862113286322972,
+        "exp_r": 0.17612203429840428,
+        "total_r": 7.39712544053298,
+        "stop_rate": 26.190476190476193,
+        "direction": "SHORT"
+      },
+      "VWAP RECLAIM": {
+        "n": 476,
+        "pf_r": 1.1341851360326072,
+        "exp_r": 0.05375091050625645,
+        "total_r": 25.585433400978072,
+        "stop_rate": 27.521008403361346,
+        "direction": "LONG"
+      }
+    }
+  }
+}

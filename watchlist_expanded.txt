@@ -1,0 +1,118 @@
+# ═══════════════════════════════════════════════════════════
+# EXPANDED WATCHLIST — ~100 symbols
+# Optimized for VWAP KISS Long + Second Chance Long
+# Criteria: $15-700, >500K daily vol, trends intraday
+# ═══════════════════════════════════════════════════════════
+
+# ── MEGA CAP TECH (14) ──
+AAPL
+AMZN
+GOOG
+META
+MSFT
+NVDA
+TSLA
+NFLX
+AVGO
+CRM
+ORCL
+ADBE
+AMD
+INTC
+
+# ── MOMENTUM / GROWTH (19) ──
+PLTR
+SOFI
+RIVN
+SHOP
+XYZ
+PYPL
+AFRM
+HOOD
+RBLX
+SNOW
+DKNG
+COIN
+UBER
+DASH
+ARM
+SMCI
+MELI
+NU
+PANW
+
+# ── BIOTECH / PHARMA (4) ──
+MRNA
+CRSP
+LABU
+XBI
+
+# ── ENERGY (6) ──
+OXY
+XOM
+CVX
+SLB
+XLE
+HAL
+
+# ── FINANCIALS (6) ──
+JPM
+GS
+BAC
+C
+FAS
+MS
+
+# ── INDUSTRIALS / AEROSPACE (5) ──
+BA
+CAT
+GE
+LMT
+RTX
+
+# ── CONSUMER / RETAIL (6) ──
+COST
+WMT
+TGT
+NKE
+LULU
+BABA
+
+# ── LEVERAGED ETFs (18) ──
+TQQQ
+SOXL
+TNA
+SPXL
+TECL
+FNGU
+NVDL
+TSLL
+JNUG
+NUGT
+UPRO
+LABD
+SOXS
+UDOW
+WEBL
+NAIL
+SPXS
+NIO
+
+# ── SECTOR ETFs (8) ──
+XLK
+XLF
+XLI
+XLV
+SMH
+KWEB
+GDX
+QQQ
+
+# ── SMALL/MID MOMENTUM (7) ──
+MARA
+LCID
+IONQ
+RGTI
+LUNR
+JOBY
+SPY
