@@ -1,0 +1,935 @@
+09:27:32 [INFO] Dashboard running at http://localhost:8878
+09:27:32 [INFO] Loaded 31 in-play symbols: AAPL, ADBE, AMZN, BESI, BOIL, CF, CRWV, CVX, DKS, FFIV...
+09:27:32 [INFO] Connecting to IBKR at 127.0.0.1:7497...
+09:27:32 [INFO] Connecting to 127.0.0.1:7497 with clientId 10...
+09:27:32 [INFO] Connected
+09:27:32 [INFO] Logged on to server version 176
+09:27:32 [INFO] API connection ready
+09:27:32 [INFO] Warning 2104, reqId -1: Market data farm connection is OK:usfarm.nj
+09:27:32 [INFO] Warning 2104, reqId -1: Market data farm connection is OK:usopt.nj
+09:27:32 [INFO] Warning 2104, reqId -1: Market data farm connection is OK:cashfarm
+09:27:32 [INFO] Warning 2104, reqId -1: Market data farm connection is OK:usfarm
+09:27:32 [INFO] Warning 2106, reqId -1: HMDS data farm connection is OK:euhmds
+09:27:32 [INFO] Warning 2106, reqId -1: HMDS data farm connection is OK:fundfarm
+09:27:32 [INFO] Warning 2106, reqId -1: HMDS data farm connection is OK:ushmds
+09:27:32 [INFO] Warning 2158, reqId -1: Sec-def data farm connection is OK:secdefnj
+09:27:33 [INFO] Synchronization complete
+09:27:33 [INFO] Connected.
+09:27:33 [INFO] Order manager ready (port 7497— PAPER)
+09:27:33 [INFO] Setting up market context (SPY + QQQ)...
+09:27:33 [INFO] [MKT:SPY] Contract qualified
+09:27:33 [INFO] [MKT:SPY] Caught up: 390 1-min bars → 78 5-min bars
+09:27:33 [INFO] [MKT:QQQ] Contract qualified
+09:27:34 [INFO] [MKT:QQQ] Caught up: 390 1-min bars → 78 5-min bars
+09:27:34 [INFO] [MKT:SPY] reqMktData subscribed for market context
+09:27:34 [INFO] [SPY] Market context subscribed (reqMktData)
+09:27:34 [INFO] [MKT:QQQ] reqMktData subscribed for market context
+09:27:34 [INFO] [QQQ] Market context subscribed (reqMktData)
+09:27:34 [INFO] Regime: RED+TREND
+09:27:34 [INFO] Pausing 2s before symbol setup...
+09:27:36 [INFO] [AAPL] Contract qualified: Stock(conId=265598, symbol='AAPL', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='AAPL', tradingClass='NMS')
+09:27:36 [INFO] [AAPL] ATR warmed: 30 days, PD H:256.33 L:249.52
+09:27:36 [INFO] [AAPL] 5m bar #50 @1335 ind=9μs strat=9μs total=18μs (5 active)
+09:27:36 [INFO] [AAPL] 5m bar #100 @1115 ind=8μs strat=15μs total=23μs (5 active)
+09:27:36 [INFO] [AAPL] 5m bar #150 @1525 ind=7μs strat=8μs total=15μs (5 active)
+09:27:36 [INFO] [AAPL] 1m bar #836 @1025 ind=8μs strat=60μs total=69μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:27:36 [INFO] [AAPL] 5m bar #200 @1305 ind=7μs strat=11μs total=18μs (5 active)
+09:27:36 [INFO] [AAPL] 5m bar #250 @1045 ind=7μs strat=10μs total=17μs (5 active)
+09:27:36 [INFO] [AAPL] 1m bar #1286 @1125 ind=8μs strat=55μs total=63μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:27:36 [INFO] [AAPL] 5m bar #258 @1125 ind=7μs strat=39μs total=46μs (5 active) | SIGNALS: FL_ANTICHOP
+09:27:36 [INFO] [AAPL] 1m bar #1296 @1135 ind=8μs strat=39μs total=47μs (3 active) | SIGNALS: ORH_FBO_V2_B
+09:27:36 [INFO] [AAPL] 5m bar #300 @1455 ind=6μs strat=6μs total=12μs (5 active)
+09:27:36 [INFO] [AAPL] 5m bar #350 @1235 ind=6μs strat=6μs total=12μs (5 active)
+09:27:36 [INFO] [AAPL] 5m bar #400 @1015 ind=6μs strat=11μs total=17μs (5 active)
+09:27:36 [INFO] [AAPL] 1m bar #2042 @1101 ind=7μs strat=46μs total=53μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:27:36 [INFO] [AAPL] 5m bar #450 @1425 ind=6μs strat=6μs total=12μs (5 active)
+09:27:36 [INFO] [AAPL] 5m bar #500 @1205 ind=6μs strat=6μs total=12μs (5 active)
+09:27:36 [INFO] [AAPL] 5m bar #550 @0945 ind=6μs strat=8μs total=14μs (5 active)
+09:27:36 [INFO] [AAPL] 1m bar #2856 @1135 ind=10μs strat=62μs total=71μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:27:36 [INFO] [AAPL] 5m bar #600 @1355 ind=6μs strat=9μs total=15μs (5 active)
+09:27:36 [INFO] [AAPL] 5m bar #633 @1010 ind=6μs strat=38μs total=44μs (5 active) | SIGNALS: BDR_SHORT
+09:27:36 [INFO] [AAPL] 5m bar #650 @1135 ind=6μs strat=7μs total=13μs (5 active)
+09:27:36 [INFO] [AAPL] 5m bar #700 @1545 ind=6μs strat=6μs total=12μs (5 active)
+09:27:36 [INFO] [AAPL] 5m bar #715 @1030 ind=6μs strat=32μs total=39μs (5 active) | SIGNALS: BDR_SHORT
+09:27:36 [INFO] [AAPL] 5m bar #750 @1325 ind=6μs strat=6μs total=13μs (5 active)
+09:27:36 [INFO] [AAPL] 5m bar #800 @1105 ind=6μs strat=7μs total=13μs (5 active)
+09:27:36 [INFO] [AAPL] 5m bar #850 @1515 ind=6μs strat=7μs total=13μs (5 active)
+09:27:36 [INFO] [AAPL] 5m bar #900 @1255 ind=6μs strat=6μs total=12μs (5 active)
+09:27:36 [INFO] [AAPL] 5m bar #950 @1035 ind=6μs strat=11μs total=18μs (5 active)
+09:27:36 [INFO] [AAPL] 5m bar #956 @1105 ind=6μs strat=46μs total=52μs (5 active) | SIGNALS: FL_ANTICHOP
+09:27:36 [INFO] [AAPL] 5m bar #1000 @1445 ind=6μs strat=6μs total=12μs (5 active)
+09:27:36 [INFO] [AAPL] 5m bar #1050 @1225 ind=6μs strat=6μs total=13μs (5 active)
+09:27:36 [INFO] [AAPL] 5m bar #1100 @1005 ind=6μs strat=10μs total=16μs (5 active)
+09:27:36 [INFO] [AAPL] 1m bar #5542 @1051 ind=8μs strat=57μs total=64μs (3 active) | SIGNALS: ORH_FBO_V2_B
+09:27:36 [INFO] [AAPL] 1m bar #5668 @1257 ind=7μs strat=40μs total=47μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:27:36 [INFO] [AAPL] 5m bar #1150 @1415 ind=6μs strat=6μs total=12μs (5 active)
+09:27:36 [INFO] [AAPL] 5m bar #1200 @1155 ind=6μs strat=7μs total=13μs (5 active)
+09:27:36 [INFO] [AAPL] 1m bar #6108 @1347 ind=7μs strat=23μs total=29μs (3 active) | SIGNALS: PDH_FBO_B
+09:27:36 [INFO] [AAPL] 5m bar #1250 @0935 ind=6μs strat=7μs total=13μs (5 active)
+09:27:36 [INFO] [AAPL] 5m bar #1300 @1345 ind=6μs strat=9μs total=15μs (5 active)
+09:27:36 [INFO] [AAPL] 5m bar #1336 @1015 ind=6μs strat=37μs total=43μs (5 active) | SIGNALS: BDR_SHORT
+09:27:36 [INFO] [AAPL] 5m bar #1350 @1125 ind=6μs strat=7μs total=13μs (5 active)
+09:27:36 [INFO] [AAPL] 5m bar #1400 @1535 ind=6μs strat=6μs total=12μs (5 active)
+09:27:36 [INFO] [AAPL] 5m bar #1450 @1315 ind=6μs strat=7μs total=13μs (5 active)
+09:27:36 [INFO] [AAPL] 5m bar #1500 @1055 ind=6μs strat=7μs total=13μs (5 active)
+09:27:36 [INFO] [AAPL] 5m bar #1550 @1505 ind=6μs strat=7μs total=13μs (5 active)
+09:27:36 [INFO] [AAPL] Warmed: 7800 1-min → 1560 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y | IP vol_depth=19/20 range_depth=19/20 prev_close=Y
+09:27:36 [INFO] [AAPL] Ready (1/84, universe=IN_PLAY).
+09:27:38 [INFO] [ADBE] Contract qualified: Stock(conId=265768, symbol='ADBE', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='ADBE', tradingClass='NMS')
+09:27:38 [INFO] [ADBE] ATR warmed: 30 days, PD H:256.70 L:247.16
+09:27:48 [INFO] [ADBE] 1m bar #128 @1137 ind=7μs strat=59μs total=66μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:27:48 [INFO] [ADBE] 5m bar #50 @1335 ind=6μs strat=6μs total=12μs (5 active)
+09:27:48 [INFO] [ADBE] 5m bar #100 @1115 ind=6μs strat=7μs total=13μs (5 active)
+09:27:48 [INFO] [ADBE] 5m bar #150 @1525 ind=6μs strat=6μs total=12μs (5 active)
+09:27:48 [INFO] [ADBE] 1m bar #859 @1048 ind=7μs strat=51μs total=58μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:27:48 [INFO] [ADBE] 5m bar #200 @1305 ind=6μs strat=6μs total=12μs (5 active)
+09:27:48 [INFO] [ADBE] 5m bar #250 @1045 ind=6μs strat=10μs total=16μs (5 active)
+09:27:48 [INFO] [ADBE] 5m bar #300 @1455 ind=6μs strat=7μs total=13μs (5 active)
+09:27:48 [INFO] [ADBE] 1m bar #1611 @1020 ind=7μs strat=49μs total=56μs (3 active) | SIGNALS: ORH_FBO_V2_B
+09:27:48 [INFO] [ADBE] 5m bar #350 @1235 ind=6μs strat=7μs total=13μs (5 active)
+09:27:48 [INFO] [ADBE] 5m bar #400 @1015 ind=6μs strat=8μs total=14μs (5 active)
+09:27:48 [INFO] [ADBE] 5m bar #450 @1425 ind=6μs strat=7μs total=13μs (5 active)
+09:27:48 [INFO] [ADBE] 5m bar #477 @1010 ind=6μs strat=41μs total=47μs (5 active) | SIGNALS: EMA_FPIP
+09:27:48 [INFO] [ADBE] 1m bar #2415 @1044 ind=14μs strat=72μs total=87μs (3 active) | SIGNALS: PDH_FBO_B
+09:27:48 [INFO] [ADBE] 5m bar #500 @1205 ind=8μs strat=9μs total=17μs (5 active)
+09:27:48 [INFO] [ADBE] 5m bar #550 @0945 ind=6μs strat=8μs total=14μs (5 active)
+09:27:48 [INFO] [ADBE] 1m bar #2796 @1035 ind=6μs strat=39μs total=45μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:27:48 [INFO] [ADBE] 1m bar #2816 @1055 ind=7μs strat=35μs total=42μs (3 active) | SIGNALS: ORH_FBO_V2_B
+09:27:48 [INFO] [ADBE] 5m bar #600 @1355 ind=6μs strat=8μs total=14μs (5 active)
+09:27:48 [INFO] [ADBE] 5m bar #650 @1135 ind=6μs strat=6μs total=13μs (5 active)
+09:27:48 [INFO] [ADBE] 5m bar #700 @1545 ind=6μs strat=7μs total=13μs (5 active)
+09:27:48 [INFO] [ADBE] 1m bar #3566 @1025 ind=7μs strat=42μs total=49μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:27:48 [INFO] [ADBE] 5m bar #750 @1325 ind=7μs strat=9μs total=16μs (5 active)
+09:27:48 [INFO] [ADBE] 5m bar #800 @1105 ind=6μs strat=8μs total=14μs (5 active)
+09:27:48 [INFO] [ADBE] 1m bar #4111 @1300 ind=7μs strat=40μs total=47μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:27:48 [INFO] [ADBE] 5m bar #850 @1515 ind=6μs strat=6μs total=13μs (5 active)
+09:27:48 [INFO] [ADBE] 5m bar #900 @1255 ind=9μs strat=14μs total=22μs (5 active)
+09:27:48 [INFO] [ADBE] 5m bar #950 @1035 ind=6μs strat=10μs total=16μs (5 active)
+09:27:48 [INFO] [ADBE] 1m bar #4799 @1128 ind=7μs strat=38μs total=45μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:27:48 [INFO] [ADBE] 5m bar #1000 @1445 ind=7μs strat=7μs total=14μs (5 active)
+09:27:48 [INFO] [ADBE] 5m bar #1050 @1225 ind=6μs strat=8μs total=14μs (5 active)
+09:27:48 [INFO] [ADBE] 5m bar #1100 @1005 ind=6μs strat=8μs total=14μs (5 active)
+09:27:48 [INFO] [ADBE] 5m bar #1150 @1415 ind=6μs strat=10μs total=16μs (5 active)
+09:27:48 [INFO] [ADBE] 5m bar #1200 @1155 ind=9μs strat=10μs total=19μs (5 active)
+09:27:48 [INFO] [ADBE] 5m bar #1250 @0935 ind=6μs strat=7μs total=13μs (5 active)
+09:27:48 [INFO] [ADBE] 5m bar #1282 @1215 ind=9μs strat=50μs total=59μs (5 active) | SIGNALS: FL_ANTICHOP
+09:27:48 [INFO] [ADBE] 5m bar #1300 @1345 ind=6μs strat=9μs total=15μs (5 active)
+09:27:48 [INFO] [ADBE] 5m bar #1350 @1125 ind=6μs strat=8μs total=14μs (5 active)
+09:27:48 [INFO] [ADBE] 5m bar #1400 @1535 ind=6μs strat=7μs total=13μs (5 active)
+09:27:48 [INFO] [ADBE] 5m bar #1422 @1055 ind=6μs strat=44μs total=50μs (5 active) | SIGNALS: FL_ANTICHOP
+09:27:48 [INFO] [ADBE] 5m bar #1450 @1315 ind=6μs strat=6μs total=11μs (5 active)
+09:27:48 [INFO] [ADBE] 5m bar #1500 @1055 ind=6μs strat=9μs total=15μs (5 active)
+09:27:48 [INFO] [ADBE] 5m bar #1523 @1250 ind=6μs strat=31μs total=37μs (5 active) | SIGNALS: FL_ANTICHOP
+09:27:48 [INFO] [ADBE] 5m bar #1550 @1505 ind=6μs strat=6μs total=12μs (5 active)
+09:27:48 [INFO] [ADBE] Warmed: 7800 1-min → 1560 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y | IP vol_depth=19/20 range_depth=19/20 prev_close=Y
+09:27:48 [INFO] [ADBE] Ready (2/84, universe=IN_PLAY).
+09:27:50 [INFO] [AFRM] Contract qualified: Stock(conId=465119069, symbol='AFRM', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='AFRM', tradingClass='NMS')
+09:27:50 [INFO] [AFRM] ATR warmed: 30 days, PD H:48.38 L:46.29
+09:28:12 [INFO] [AFRM] 1m bar #72 @1041 ind=8μs strat=61μs total=69μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:28:12 [INFO] [AFRM] 5m bar #50 @1335 ind=6μs strat=8μs total=14μs (5 active)
+09:28:12 [INFO] [AFRM] 5m bar #100 @1115 ind=6μs strat=11μs total=17μs (5 active)
+09:28:12 [INFO] [AFRM] 1m bar #581 @1240 ind=7μs strat=55μs total=62μs (3 active) | SIGNALS: ORH_FBO_V2_B
+09:28:12 [INFO] [AFRM] 5m bar #150 @1525 ind=6μs strat=6μs total=13μs (5 active)
+09:28:12 [INFO] [AFRM] 1m bar #834 @1023 ind=7μs strat=44μs total=51μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:28:12 [INFO] [AFRM] 5m bar #200 @1305 ind=6μs strat=10μs total=16μs (5 active)
+09:28:12 [INFO] [AFRM] 5m bar #250 @1045 ind=6μs strat=12μs total=19μs (5 active)
+09:28:12 [INFO] [AFRM] 1m bar #1312 @1151 ind=7μs strat=49μs total=56μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:28:12 [INFO] [AFRM] 5m bar #300 @1455 ind=6μs strat=8μs total=14μs (5 active)
+09:28:12 [INFO] [AFRM] 1m bar #1685 @1134 ind=8μs strat=51μs total=59μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:28:12 [INFO] [AFRM] 1m bar #1713 @1202 ind=8μs strat=51μs total=59μs (3 active) | SIGNALS: ORH_FBO_V2_B
+09:28:12 [INFO] [AFRM] 5m bar #350 @1235 ind=6μs strat=8μs total=14μs (5 active)
+09:28:12 [INFO] [AFRM] 5m bar #400 @1015 ind=6μs strat=8μs total=14μs (5 active)
+09:28:12 [INFO] [AFRM] 1m bar #2079 @1138 ind=15μs strat=28μs total=43μs (3 active) | SIGNALS: PDH_FBO_B
+09:28:12 [INFO] [AFRM] 5m bar #450 @1425 ind=6μs strat=7μs total=13μs (5 active)
+09:28:12 [INFO] [AFRM] 5m bar #500 @1205 ind=6μs strat=11μs total=17μs (5 active)
+09:28:12 [INFO] [AFRM] 5m bar #550 @0945 ind=6μs strat=8μs total=14μs (5 active)
+09:28:12 [INFO] [AFRM] 1m bar #2771 @1010 ind=7μs strat=47μs total=54μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:28:12 [INFO] [AFRM] 1m bar #2777 @1016 ind=7μs strat=25μs total=33μs (3 active) | SIGNALS: PDH_FBO_B
+09:28:12 [INFO] [AFRM] 5m bar #600 @1355 ind=7μs strat=11μs total=18μs (5 active)
+09:28:12 [INFO] [AFRM] 5m bar #648 @1125 ind=6μs strat=37μs total=43μs (5 active) | SIGNALS: FL_ANTICHOP
+09:28:12 [INFO] [AFRM] 1m bar #3243 @1132 ind=9μs strat=36μs total=45μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:28:12 [INFO] [AFRM] 5m bar #650 @1135 ind=6μs strat=6μs total=13μs (5 active)
+09:28:12 [INFO] [AFRM] 5m bar #700 @1545 ind=6μs strat=6μs total=12μs (5 active)
+09:28:12 [INFO] [AFRM] 5m bar #750 @1325 ind=6μs strat=7μs total=13μs (5 active)
+09:28:12 [INFO] [AFRM] 1m bar #3956 @1025 ind=7μs strat=49μs total=56μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:28:12 [INFO] [AFRM] 5m bar #800 @1105 ind=6μs strat=9μs total=16μs (5 active)
+09:28:12 [INFO] [AFRM] 5m bar #811 @1200 ind=6μs strat=36μs total=43μs (5 active) | SIGNALS: FL_ANTICHOP
+09:28:12 [INFO] [AFRM] 1m bar #4086 @1235 ind=7μs strat=37μs total=44μs (3 active) | SIGNALS: ORH_FBO_V2_B
+09:28:12 [INFO] [AFRM] 5m bar #850 @1515 ind=6μs strat=6μs total=12μs (5 active)
+09:28:12 [INFO] [AFRM] 5m bar #881 @1120 ind=6μs strat=45μs total=51μs (5 active) | SIGNALS: FL_ANTICHOP
+09:28:12 [INFO] [AFRM] 5m bar #900 @1255 ind=6μs strat=13μs total=19μs (5 active)
+09:28:12 [INFO] [AFRM] 5m bar #950 @1035 ind=6μs strat=11μs total=17μs (5 active)
+09:28:12 [INFO] [AFRM] 5m bar #1000 @1445 ind=6μs strat=6μs total=12μs (5 active)
+09:28:12 [INFO] [AFRM] 5m bar #1050 @1225 ind=6μs strat=8μs total=14μs (5 active)
+09:28:12 [INFO] [AFRM] 5m bar #1100 @1005 ind=6μs strat=8μs total=14μs (5 active)
+09:28:12 [INFO] [AFRM] 1m bar #5534 @1043 ind=7μs strat=53μs total=60μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:28:12 [INFO] [AFRM] 1m bar #5693 @1322 ind=7μs strat=49μs total=55μs (3 active) | SIGNALS: ORH_FBO_V2_B
+09:28:12 [INFO] [AFRM] 5m bar #1150 @1415 ind=6μs strat=8μs total=15μs (5 active)
+09:28:12 [INFO] [AFRM] 5m bar #1199 @1150 ind=6μs strat=37μs total=43μs (5 active) | SIGNALS: FL_ANTICHOP
+09:28:12 [INFO] [AFRM] 5m bar #1200 @1155 ind=6μs strat=8μs total=14μs (5 active)
+09:28:12 [INFO] [AFRM] 5m bar #1250 @0935 ind=6μs strat=7μs total=13μs (5 active)
+09:28:12 [INFO] [AFRM] 5m bar #1300 @1345 ind=6μs strat=9μs total=15μs (5 active)
+09:28:12 [INFO] [AFRM] 5m bar #1346 @1105 ind=6μs strat=53μs total=59μs (5 active) | SIGNALS: FL_ANTICHOP
+09:28:12 [INFO] [AFRM] 5m bar #1350 @1125 ind=6μs strat=8μs total=14μs (5 active)
+09:28:12 [INFO] [AFRM] 5m bar #1400 @1535 ind=6μs strat=7μs total=12μs (5 active)
+09:28:12 [INFO] [AFRM] 5m bar #1450 @1315 ind=6μs strat=7μs total=13μs (5 active)
+09:28:12 [INFO] [AFRM] 5m bar #1498 @1045 ind=6μs strat=43μs total=49μs (5 active) | SIGNALS: FL_ANTICHOP
+09:28:12 [INFO] [AFRM] 5m bar #1500 @1055 ind=6μs strat=10μs total=16μs (5 active)
+09:28:12 [INFO] [AFRM] 5m bar #1550 @1505 ind=6μs strat=5μs total=11μs (5 active)
+09:28:12 [INFO] [AFRM] Warmed: 7800 1-min → 1560 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y | IP vol_depth=19/20 range_depth=19/20 prev_close=Y
+09:28:12 [INFO] [AFRM] Ready (3/84, universe=STATIC).
+09:28:14 [INFO] [AMD] Contract qualified: Stock(conId=4391, symbol='AMD', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='AMD', tradingClass='NMS')
+09:28:14 [INFO] [AMD] ATR warmed: 30 days, PD H:199.68 L:192.27
+09:28:36 [INFO] [AMD] 5m bar #50 @1335 ind=8μs strat=9μs total=17μs (5 active)
+09:28:36 [INFO] [AMD] 5m bar #97 @1100 ind=7μs strat=62μs total=69μs (5 active) | SIGNALS: FL_ANTICHOP
+09:28:36 [INFO] [AMD] 5m bar #100 @1115 ind=8μs strat=15μs total=23μs (5 active)
+09:28:36 [INFO] [AMD] 5m bar #150 @1525 ind=7μs strat=6μs total=13μs (5 active)
+09:28:36 [INFO] [AMD] 1m bar #828 @1017 ind=8μs strat=45μs total=53μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:28:36 [INFO] [AMD] 5m bar #200 @1305 ind=7μs strat=10μs total=16μs (5 active)
+09:28:36 [INFO] [AMD] 1m bar #1222 @1021 ind=8μs strat=48μs total=56μs (3 active) | SIGNALS: ORH_FBO_V2_B
+09:28:36 [INFO] [AMD] 5m bar #250 @1045 ind=6μs strat=16μs total=22μs (5 active)
+09:28:36 [INFO] [AMD] 5m bar #251 @1050 ind=6μs strat=37μs total=44μs (5 active) | SIGNALS: FL_ANTICHOP
+09:28:36 [INFO] [AMD] 5m bar #300 @1455 ind=6μs strat=7μs total=13μs (5 active)
+09:28:36 [INFO] [AMD] 5m bar #350 @1235 ind=6μs strat=6μs total=13μs (5 active)
+09:28:36 [INFO] [AMD] 5m bar #400 @1015 ind=6μs strat=8μs total=14μs (5 active)
+09:28:36 [INFO] [AMD] 5m bar #450 @1425 ind=8μs strat=9μs total=18μs (5 active)
+09:28:36 [INFO] [AMD] 5m bar #500 @1205 ind=6μs strat=15μs total=21μs (5 active)
+09:28:36 [INFO] [AMD] 5m bar #550 @0945 ind=6μs strat=8μs total=14μs (5 active)
+09:28:36 [INFO] [AMD] 5m bar #573 @1140 ind=6μs strat=39μs total=46μs (5 active) | SIGNALS: FL_ANTICHOP
+09:28:36 [INFO] [AMD] 5m bar #600 @1355 ind=6μs strat=7μs total=13μs (5 active)
+09:28:36 [INFO] [AMD] 5m bar #650 @1135 ind=6μs strat=8μs total=14μs (5 active)
+09:28:36 [INFO] [AMD] 5m bar #700 @1545 ind=6μs strat=6μs total=12μs (5 active)
+09:28:36 [INFO] [AMD] 1m bar #3682 @1221 ind=7μs strat=32μs total=39μs (3 active) | SIGNALS: PDH_FBO_B
+09:28:36 [INFO] [AMD] 5m bar #750 @1325 ind=6μs strat=6μs total=12μs (5 active)
+09:28:36 [INFO] [AMD] 5m bar #800 @1105 ind=6μs strat=8μs total=14μs (5 active)
+09:28:36 [INFO] [AMD] 5m bar #850 @1515 ind=6μs strat=6μs total=12μs (5 active)
+09:28:36 [INFO] [AMD] 5m bar #900 @1255 ind=6μs strat=7μs total=13μs (5 active)
+09:28:36 [INFO] [AMD] 5m bar #950 @1035 ind=6μs strat=10μs total=16μs (5 active)
+09:28:36 [INFO] [AMD] 5m bar #953 @1050 ind=6μs strat=40μs total=46μs (5 active) | SIGNALS: EMA_FPIP
+09:28:36 [INFO] [AMD] 5m bar #1000 @1445 ind=8μs strat=9μs total=17μs (5 active)
+09:28:36 [INFO] [AMD] 5m bar #1050 @1225 ind=6μs strat=7μs total=13μs (5 active)
+09:28:36 [INFO] [AMD] 5m bar #1100 @1005 ind=6μs strat=8μs total=14μs (5 active)
+09:28:36 [INFO] [AMD] 1m bar #5521 @1030 ind=7μs strat=41μs total=48μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:28:36 [INFO] [AMD] 1m bar #5539 @1048 ind=7μs strat=35μs total=41μs (3 active) | SIGNALS: ORH_FBO_V2_B
+09:28:36 [INFO] [AMD] 1m bar #5607 @1156 ind=7μs strat=21μs total=28μs (3 active) | SIGNALS: PDH_FBO_B
+09:28:36 [INFO] [AMD] 5m bar #1150 @1415 ind=6μs strat=6μs total=12μs (5 active)
+09:28:36 [INFO] [AMD] 5m bar #1200 @1155 ind=6μs strat=9μs total=15μs (5 active)
+09:28:36 [INFO] [AMD] 5m bar #1250 @0935 ind=6μs strat=8μs total=14μs (5 active)
+09:28:36 [INFO] [AMD] 5m bar #1300 @1345 ind=7μs strat=8μs total=15μs (5 active)
+09:28:36 [INFO] [AMD] 5m bar #1350 @1125 ind=6μs strat=8μs total=14μs (5 active)
+09:28:36 [INFO] [AMD] 5m bar #1400 @1535 ind=6μs strat=9μs total=15μs (5 active)
+09:28:36 [INFO] [AMD] 1m bar #7070 @1019 ind=7μs strat=40μs total=47μs (3 active) | SIGNALS: PDH_FBO_B
+09:28:36 [INFO] [AMD] 5m bar #1416 @1025 ind=6μs strat=36μs total=42μs (5 active) | SIGNALS: BDR_SHORT
+09:28:36 [INFO] [AMD] 5m bar #1450 @1315 ind=6μs strat=6μs total=12μs (5 active)
+09:28:36 [INFO] [AMD] 5m bar #1500 @1055 ind=6μs strat=7μs total=13μs (5 active)
+09:28:36 [INFO] [AMD] 5m bar #1550 @1505 ind=6μs strat=7μs total=13μs (5 active)
+09:28:36 [INFO] [AMD] Warmed: 7800 1-min → 1560 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y | IP vol_depth=19/20 range_depth=19/20 prev_close=Y
+09:28:36 [INFO] [AMD] Ready (4/84, universe=STATIC).
+09:28:38 [INFO] [AMZN] Contract qualified: Stock(conId=3691937, symbol='AMZN', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='AMZN', tradingClass='NMS')
+09:28:38 [INFO] [AMZN] ATR warmed: 30 days, PD H:210.56 L:206.22
+09:28:48 [INFO] [AMZN] 1m bar #114 @1123 ind=9μs strat=67μs total=76μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:28:48 [INFO] [AMZN] 5m bar #50 @1335 ind=7μs strat=8μs total=15μs (5 active)
+09:28:48 [INFO] [AMZN] 5m bar #100 @1115 ind=7μs strat=18μs total=25μs (5 active)
+09:28:48 [INFO] [AMZN] 5m bar #103 @1130 ind=7μs strat=46μs total=53μs (5 active) | SIGNALS: FL_ANTICHOP
+09:28:48 [INFO] [AMZN] 1m bar #557 @1216 ind=8μs strat=42μs total=50μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:28:48 [INFO] [AMZN] 1m bar #579 @1238 ind=8μs strat=40μs total=47μs (3 active) | SIGNALS: ORH_FBO_V2_B
+09:28:48 [INFO] [AMZN] 5m bar #150 @1525 ind=7μs strat=6μs total=13μs (5 active)
+09:28:48 [INFO] [AMZN] 5m bar #190 @1215 ind=6μs strat=47μs total=53μs (5 active) | SIGNALS: FL_ANTICHOP
+09:28:48 [INFO] [AMZN] 5m bar #200 @1305 ind=6μs strat=8μs total=15μs (5 active)
+09:28:48 [INFO] [AMZN] 5m bar #250 @1045 ind=6μs strat=9μs total=16μs (5 active)
+09:28:48 [INFO] [AMZN] 5m bar #255 @1110 ind=6μs strat=38μs total=44μs (5 active) | SIGNALS: FL_ANTICHOP
+09:28:48 [INFO] [AMZN] 5m bar #300 @1455 ind=6μs strat=5μs total=11μs (5 active)
+09:28:48 [INFO] [AMZN] 1m bar #1664 @1113 ind=7μs strat=27μs total=34μs (3 active) | SIGNALS: PDH_FBO_B
+09:28:48 [INFO] [AMZN] 5m bar #350 @1235 ind=6μs strat=6μs total=12μs (5 active)
+09:28:48 [INFO] [AMZN] 5m bar #351 @1240 ind=6μs strat=32μs total=38μs (5 active) | SIGNALS: FL_ANTICHOP
+09:28:48 [INFO] [AMZN] 5m bar #400 @1015 ind=6μs strat=8μs total=14μs (5 active)
+09:28:48 [INFO] [AMZN] 5m bar #450 @1425 ind=6μs strat=8μs total=14μs (5 active)
+09:28:48 [INFO] [AMZN] 1m bar #2402 @1031 ind=7μs strat=49μs total=56μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:28:48 [INFO] [AMZN] 5m bar #500 @1205 ind=6μs strat=8μs total=14μs (5 active)
+09:28:48 [INFO] [AMZN] 5m bar #550 @0945 ind=6μs strat=11μs total=17μs (5 active)
+09:28:48 [INFO] [AMZN] 1m bar #2774 @1013 ind=7μs strat=39μs total=46μs (3 active) | SIGNALS: ORH_FBO_V2_B
+09:28:48 [INFO] [AMZN] 1m bar #2823 @1102 ind=7μs strat=20μs total=27μs (3 active) | SIGNALS: PDH_FBO_B
+09:28:48 [INFO] [AMZN] 5m bar #600 @1355 ind=6μs strat=7μs total=13μs (5 active)
+09:28:48 [INFO] [AMZN] 5m bar #650 @1135 ind=6μs strat=8μs total=14μs (5 active)
+09:28:48 [INFO] [AMZN] 5m bar #700 @1545 ind=6μs strat=6μs total=12μs (5 active)
+09:28:48 [INFO] [AMZN] 1m bar #3725 @1304 ind=7μs strat=35μs total=42μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:28:48 [INFO] [AMZN] 5m bar #750 @1325 ind=6μs strat=6μs total=13μs (5 active)
+09:28:48 [INFO] [AMZN] 1m bar #3993 @1102 ind=7μs strat=34μs total=41μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:28:48 [INFO] [AMZN] 5m bar #800 @1105 ind=6μs strat=7μs total=14μs (5 active)
+09:28:48 [INFO] [AMZN] 5m bar #816 @1225 ind=6μs strat=30μs total=37μs (5 active) | SIGNALS: FL_ANTICHOP
+09:28:48 [INFO] [AMZN] 5m bar #850 @1515 ind=6μs strat=6μs total=12μs (5 active)
+09:28:48 [INFO] [AMZN] 5m bar #888 @1155 ind=6μs strat=32μs total=38μs (5 active) | SIGNALS: FL_ANTICHOP
+09:28:48 [INFO] [AMZN] 5m bar #900 @1255 ind=6μs strat=6μs total=12μs (5 active)
+09:28:48 [INFO] [AMZN] 1m bar #4719 @1008 ind=7μs strat=34μs total=41μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:28:48 [INFO] [AMZN] 5m bar #950 @1035 ind=6μs strat=11μs total=17μs (5 active)
+09:28:48 [INFO] [AMZN] 5m bar #1000 @1445 ind=6μs strat=7μs total=13μs (5 active)
+09:28:48 [INFO] [AMZN] 5m bar #1050 @1225 ind=6μs strat=7μs total=13μs (5 active)
+09:28:48 [INFO] [AMZN] 5m bar #1100 @1005 ind=6μs strat=8μs total=14μs (5 active)
+09:28:48 [INFO] [AMZN] 5m bar #1112 @1105 ind=6μs strat=31μs total=38μs (5 active) | SIGNALS: FL_ANTICHOP
+09:28:48 [INFO] [AMZN] 5m bar #1150 @1415 ind=6μs strat=6μs total=12μs (5 active)
+09:28:48 [INFO] [AMZN] 1m bar #5977 @1136 ind=7μs strat=19μs total=26μs (3 active) | SIGNALS: PDH_FBO_B
+09:28:48 [INFO] [AMZN] 5m bar #1200 @1155 ind=6μs strat=6μs total=12μs (5 active)
+09:28:48 [INFO] [AMZN] 5m bar #1250 @0935 ind=6μs strat=7μs total=13μs (5 active)
+09:28:48 [INFO] [AMZN] 1m bar #6365 @1134 ind=7μs strat=34μs total=41μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:28:48 [INFO] [AMZN] 5m bar #1300 @1345 ind=6μs strat=9μs total=15μs (5 active)
+09:28:48 [INFO] [AMZN] 5m bar #1350 @1125 ind=6μs strat=7μs total=13μs (5 active)
+09:28:48 [INFO] [AMZN] 5m bar #1400 @1535 ind=6μs strat=8μs total=14μs (5 active)
+09:28:48 [INFO] [AMZN] 1m bar #7087 @1036 ind=7μs strat=19μs total=26μs (3 active) | SIGNALS: PDH_FBO_B
+09:28:48 [INFO] [AMZN] 5m bar #1450 @1315 ind=6μs strat=8μs total=14μs (5 active)
+09:28:48 [INFO] [AMZN] 5m bar #1500 @1055 ind=6μs strat=10μs total=17μs (5 active)
+09:28:48 [INFO] [AMZN] 5m bar #1550 @1505 ind=6μs strat=8μs total=14μs (5 active)
+09:28:48 [INFO] [AMZN] Warmed: 7800 1-min → 1560 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y | IP vol_depth=19/20 range_depth=19/20 prev_close=Y
+09:28:48 [INFO] [AMZN] Ready (5/84, universe=IN_PLAY).
+09:28:50 [INFO] [ARM] Contract qualified: Stock(conId=653400472, symbol='ARM', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='ARM', tradingClass='NMS')
+09:28:50 [INFO] [ARM] ATR warmed: 30 days, PD H:118.06 L:115.05
+09:29:06 [INFO] [ARM] 5m bar #50 @1335 ind=7μs strat=7μs total=14μs (5 active)
+09:29:06 [INFO] [ARM] 5m bar #97 @1100 ind=7μs strat=65μs total=72μs (5 active) | SIGNALS: FL_ANTICHOP
+09:29:06 [INFO] [ARM] 5m bar #100 @1115 ind=7μs strat=17μs total=24μs (5 active)
+09:29:06 [INFO] [ARM] 5m bar #150 @1525 ind=6μs strat=6μs total=12μs (5 active)
+09:29:06 [INFO] [ARM] 1m bar #844 @1033 ind=7μs strat=43μs total=50μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:29:06 [INFO] [ARM] 5m bar #184 @1145 ind=6μs strat=35μs total=42μs (5 active) | SIGNALS: FL_ANTICHOP
+09:29:06 [INFO] [ARM] 5m bar #200 @1305 ind=6μs strat=6μs total=12μs (5 active)
+09:29:06 [INFO] [ARM] 5m bar #250 @1045 ind=6μs strat=10μs total=16μs (5 active)
+09:29:06 [INFO] [ARM] 5m bar #300 @1455 ind=6μs strat=6μs total=13μs (5 active)
+09:29:06 [INFO] [ARM] 1m bar #1728 @1217 ind=7μs strat=48μs total=56μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:29:06 [INFO] [ARM] 5m bar #350 @1235 ind=6μs strat=7μs total=13μs (5 active)
+09:29:06 [INFO] [ARM] 5m bar #400 @1015 ind=6μs strat=9μs total=16μs (5 active)
+09:29:06 [INFO] [ARM] 5m bar #450 @1425 ind=6μs strat=6μs total=12μs (5 active)
+09:29:06 [INFO] [ARM] 1m bar #2401 @1030 ind=7μs strat=46μs total=53μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:29:06 [INFO] [ARM] 5m bar #500 @1205 ind=6μs strat=9μs total=15μs (5 active)
+09:29:06 [INFO] [ARM] 5m bar #550 @0945 ind=6μs strat=8μs total=14μs (5 active)
+09:29:06 [INFO] [ARM] 5m bar #600 @1355 ind=6μs strat=9μs total=16μs (5 active)
+09:29:06 [INFO] [ARM] 5m bar #650 @1135 ind=6μs strat=7μs total=13μs (5 active)
+09:29:06 [INFO] [ARM] 5m bar #700 @1545 ind=6μs strat=7μs total=13μs (5 active)
+09:29:06 [INFO] [ARM] 5m bar #750 @1325 ind=6μs strat=6μs total=13μs (5 active)
+09:29:06 [INFO] [ARM] 5m bar #800 @1105 ind=6μs strat=7μs total=13μs (5 active)
+09:29:06 [INFO] [ARM] 5m bar #817 @1230 ind=6μs strat=36μs total=42μs (5 active) | SIGNALS: FL_ANTICHOP
+09:29:06 [INFO] [ARM] 5m bar #850 @1515 ind=6μs strat=6μs total=12μs (5 active)
+09:29:06 [INFO] [ARM] 1m bar #4330 @1009 ind=7μs strat=22μs total=29μs (3 active) | SIGNALS: PDH_FBO_B
+09:29:06 [INFO] [ARM] 5m bar #872 @1035 ind=6μs strat=33μs total=39μs (5 active) | SIGNALS: BDR_SHORT
+09:29:06 [INFO] [ARM] 1m bar #4494 @1253 ind=7μs strat=36μs total=43μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:29:06 [INFO] [ARM] 5m bar #900 @1255 ind=6μs strat=7μs total=14μs (5 active)
+09:29:06 [INFO] [ARM] 5m bar #950 @1035 ind=6μs strat=11μs total=17μs (5 active)
+09:29:06 [INFO] [ARM] 5m bar #975 @1240 ind=6μs strat=33μs total=39μs (5 active) | SIGNALS: FL_ANTICHOP
+09:29:06 [INFO] [ARM] 5m bar #1000 @1445 ind=6μs strat=6μs total=12μs (5 active)
+09:29:06 [INFO] [ARM] 5m bar #1050 @1225 ind=6μs strat=8μs total=14μs (5 active)
+09:29:06 [INFO] [ARM] 5m bar #1100 @1005 ind=6μs strat=8μs total=15μs (5 active)
+09:29:06 [INFO] [ARM] 5m bar #1150 @1415 ind=6μs strat=6μs total=12μs (5 active)
+09:29:06 [INFO] [ARM] 5m bar #1200 @1155 ind=6μs strat=9μs total=15μs (5 active)
+09:29:06 [INFO] [ARM] 5m bar #1250 @0935 ind=6μs strat=8μs total=14μs (5 active)
+09:29:06 [INFO] [ARM] 5m bar #1300 @1345 ind=6μs strat=9μs total=15μs (5 active)
+09:29:06 [INFO] [ARM] 5m bar #1350 @1125 ind=6μs strat=7μs total=13μs (5 active)
+09:29:06 [INFO] [ARM] 5m bar #1400 @1535 ind=6μs strat=6μs total=12μs (5 active)
+09:29:06 [INFO] [ARM] 5m bar #1450 @1315 ind=6μs strat=6μs total=12μs (5 active)
+09:29:06 [INFO] [ARM] 5m bar #1500 @1055 ind=6μs strat=9μs total=16μs (5 active)
+09:29:06 [INFO] [ARM] 5m bar #1550 @1505 ind=6μs strat=8μs total=14μs (5 active)
+09:29:06 [INFO] [ARM] Warmed: 7800 1-min → 1560 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y | IP vol_depth=19/20 range_depth=19/20 prev_close=Y
+09:29:06 [INFO] [ARM] Ready (6/84, universe=STATIC).
+09:29:08 [INFO] [BABA] Contract qualified: Stock(conId=166090175, symbol='BABA', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='BABA', tradingClass='BABA')
+09:29:08 [INFO] [BABA] ATR warmed: 30 days, PD H:137.20 L:134.70
+09:29:36 [INFO] [BABA] 1m bar #88 @1057 ind=9μs strat=68μs total=77μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:29:36 [INFO] [BABA] 1m bar #111 @1120 ind=8μs strat=52μs total=60μs (3 active) | SIGNALS: ORH_FBO_V2_B
+09:29:36 [INFO] [BABA] 5m bar #50 @1335 ind=7μs strat=9μs total=16μs (5 active)
+09:29:36 [INFO] [BABA] 5m bar #100 @1115 ind=7μs strat=12μs total=19μs (5 active)
+09:29:36 [INFO] [BABA] 5m bar #150 @1525 ind=9μs strat=8μs total=17μs (5 active)
+09:29:36 [INFO] [BABA] 1m bar #829 @1018 ind=8μs strat=53μs total=61μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:29:36 [INFO] [BABA] 5m bar #200 @1305 ind=6μs strat=10μs total=16μs (5 active)
+09:29:36 [INFO] [BABA] 1m bar #1251 @1050 ind=7μs strat=38μs total=45μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:29:36 [INFO] [BABA] 5m bar #250 @1045 ind=9μs strat=11μs total=21μs (5 active)
+09:29:36 [INFO] [BABA] 5m bar #300 @1455 ind=6μs strat=6μs total=13μs (5 active)
+09:29:36 [INFO] [BABA] 5m bar #350 @1235 ind=6μs strat=8μs total=14μs (5 active)
+09:29:36 [INFO] [BABA] 5m bar #400 @1015 ind=6μs strat=11μs total=17μs (5 active)
+09:29:36 [INFO] [BABA] 5m bar #450 @1425 ind=6μs strat=6μs total=12μs (5 active)
+09:29:36 [INFO] [BABA] 5m bar #500 @1205 ind=6μs strat=10μs total=16μs (5 active)
+09:29:36 [INFO] [BABA] 5m bar #550 @0945 ind=6μs strat=8μs total=14μs (5 active)
+09:29:36 [INFO] [BABA] 5m bar #600 @1355 ind=6μs strat=8μs total=14μs (5 active)
+09:29:36 [INFO] [BABA] 5m bar #650 @1135 ind=6μs strat=8μs total=14μs (5 active)
+09:29:36 [INFO] [BABA] 5m bar #700 @1545 ind=6μs strat=7μs total=13μs (5 active)
+09:29:36 [INFO] [BABA] 5m bar #750 @1325 ind=6μs strat=6μs total=12μs (5 active)
+09:29:36 [INFO] [BABA] 5m bar #800 @1105 ind=6μs strat=8μs total=14μs (5 active)
+09:29:36 [INFO] [BABA] 1m bar #4020 @1129 ind=7μs strat=55μs total=62μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:29:36 [INFO] [BABA] 5m bar #850 @1515 ind=6μs strat=7μs total=13μs (5 active)
+09:29:36 [INFO] [BABA] 1m bar #4416 @1135 ind=7μs strat=48μs total=55μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:29:36 [INFO] [BABA] 1m bar #4450 @1209 ind=7μs strat=37μs total=44μs (3 active) | SIGNALS: ORH_FBO_V2_B
+09:29:36 [INFO] [BABA] 5m bar #896 @1235 ind=6μs strat=33μs total=39μs (5 active) | SIGNALS: FL_ANTICHOP
+09:29:36 [INFO] [BABA] 5m bar #900 @1255 ind=6μs strat=6μs total=12μs (5 active)
+09:29:36 [INFO] [BABA] 5m bar #950 @1035 ind=6μs strat=8μs total=14μs (5 active)
+09:29:36 [INFO] [BABA] 5m bar #1000 @1445 ind=6μs strat=6μs total=12μs (5 active)
+09:29:36 [INFO] [BABA] 5m bar #1050 @1225 ind=6μs strat=8μs total=14μs (5 active)
+09:29:36 [INFO] [BABA] 5m bar #1100 @1005 ind=7μs strat=15μs total=22μs (5 active)
+09:29:36 [INFO] [BABA] 5m bar #1150 @1415 ind=6μs strat=16μs total=22μs (5 active)
+09:29:36 [INFO] [BABA] 5m bar #1191 @1110 ind=6μs strat=36μs total=43μs (5 active) | SIGNALS: FL_ANTICHOP
+09:29:36 [INFO] [BABA] 1m bar #5970 @1129 ind=7μs strat=35μs total=42μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:29:36 [INFO] [BABA] 5m bar #1200 @1155 ind=6μs strat=10μs total=16μs (5 active)
+09:29:36 [INFO] [BABA] 5m bar #1250 @0935 ind=7μs strat=7μs total=14μs (5 active)
+09:29:36 [INFO] [BABA] 5m bar #1300 @1345 ind=6μs strat=7μs total=13μs (5 active)
+09:29:36 [INFO] [BABA] 1m bar #6683 @1022 ind=7μs strat=35μs total=42μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:29:36 [INFO] [BABA] 5m bar #1350 @1125 ind=6μs strat=8μs total=14μs (5 active)
+09:29:36 [INFO] [BABA] 5m bar #1400 @1535 ind=6μs strat=9μs total=15μs (5 active)
+09:29:36 [INFO] [BABA] 5m bar #1441 @1230 ind=6μs strat=32μs total=38μs (5 active) | SIGNALS: FL_ANTICHOP
+09:29:36 [INFO] [BABA] 5m bar #1450 @1315 ind=6μs strat=6μs total=12μs (5 active)
+09:29:36 [INFO] [BABA] 5m bar #1500 @1055 ind=6μs strat=7μs total=13μs (5 active)
+09:29:36 [INFO] [BABA] 5m bar #1550 @1505 ind=6μs strat=7μs total=13μs (5 active)
+09:29:36 [INFO] [BABA] Warmed: 7800 1-min → 1560 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y | IP vol_depth=19/20 range_depth=19/20 prev_close=Y
+09:29:36 [INFO] [BABA] Ready (7/84, universe=STATIC).
+09:29:38 [INFO] [BAC] Contract qualified: Stock(conId=10098, symbol='BAC', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='BAC', tradingClass='BAC')
+09:29:38 [INFO] [BAC] ATR warmed: 30 days, PD H:47.83 L:46.65
+09:29:42 [INFO] [BAC] 5m bar #50 @1335 ind=7μs strat=8μs total=15μs (5 active)
+09:29:42 [INFO] [BAC] 5m bar #100 @1115 ind=7μs strat=10μs total=17μs (5 active)
+09:29:42 [INFO] [BAC] 5m bar #150 @1525 ind=6μs strat=7μs total=13μs (5 active)
+09:29:42 [INFO] [BAC] 5m bar #200 @1305 ind=6μs strat=15μs total=21μs (5 active)
+09:29:42 [INFO] [BAC] 1m bar #1251 @1050 ind=7μs strat=59μs total=66μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:29:42 [INFO] [BAC] 5m bar #250 @1045 ind=8μs strat=10μs total=18μs (5 active)
+09:29:42 [INFO] [BAC] 1m bar #1318 @1157 ind=7μs strat=38μs total=45μs (3 active) | SIGNALS: ORH_FBO_V2_B
+09:29:42 [INFO] [BAC] 5m bar #300 @1455 ind=6μs strat=6μs total=13μs (5 active)
+09:29:42 [INFO] [BAC] 1m bar #1603 @1012 ind=7μs strat=48μs total=55μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:29:42 [INFO] [BAC] 1m bar #1651 @1100 ind=7μs strat=36μs total=43μs (3 active) | SIGNALS: ORH_FBO_V2_B
+09:29:42 [INFO] [BAC] 5m bar #350 @1235 ind=6μs strat=8μs total=14μs (5 active)
+09:29:42 [INFO] [BAC] 5m bar #400 @1015 ind=6μs strat=7μs total=13μs (5 active)
+09:29:42 [INFO] [BAC] 5m bar #450 @1425 ind=6μs strat=8μs total=14μs (5 active)
+09:29:42 [INFO] [BAC] 5m bar #499 @1200 ind=6μs strat=42μs total=48μs (5 active) | SIGNALS: FL_ANTICHOP
+09:29:42 [INFO] [BAC] 5m bar #500 @1205 ind=6μs strat=18μs total=25μs (5 active)
+09:29:42 [INFO] [BAC] 5m bar #550 @0945 ind=8μs strat=11μs total=20μs (5 active)
+09:29:42 [INFO] [BAC] 1m bar #2782 @1021 ind=8μs strat=44μs total=52μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:29:42 [INFO] [BAC] 5m bar #600 @1355 ind=6μs strat=8μs total=14μs (5 active)
+09:29:42 [INFO] [BAC] 5m bar #650 @1135 ind=6μs strat=7μs total=13μs (5 active)
+09:29:42 [INFO] [BAC] 5m bar #700 @1545 ind=6μs strat=7μs total=14μs (5 active)
+09:29:42 [INFO] [BAC] 5m bar #720 @1055 ind=6μs strat=41μs total=47μs (5 active) | SIGNALS: BDR_SHORT
+09:29:42 [INFO] [BAC] 5m bar #750 @1325 ind=6μs strat=7μs total=13μs (5 active)
+09:29:42 [INFO] [BAC] 5m bar #800 @1105 ind=6μs strat=8μs total=14μs (5 active)
+09:29:42 [INFO] [BAC] 5m bar #850 @1515 ind=6μs strat=8μs total=14μs (5 active)
+09:29:42 [INFO] [BAC] 5m bar #900 @1255 ind=6μs strat=9μs total=15μs (5 active)
+09:29:42 [INFO] [BAC] 5m bar #950 @1035 ind=6μs strat=11μs total=17μs (5 active)
+09:29:42 [INFO] [BAC] 5m bar #1000 @1445 ind=6μs strat=8μs total=14μs (5 active)
+09:29:42 [INFO] [BAC] 5m bar #1050 @1225 ind=6μs strat=8μs total=14μs (5 active)
+09:29:42 [INFO] [BAC] 5m bar #1100 @1005 ind=6μs strat=8μs total=14μs (5 active)
+09:29:42 [INFO] [BAC] 5m bar #1150 @1415 ind=6μs strat=9μs total=15μs (5 active)
+09:29:42 [INFO] [BAC] 5m bar #1200 @1155 ind=6μs strat=8μs total=14μs (5 active)
+09:29:42 [INFO] [BAC] 5m bar #1207 @1230 ind=6μs strat=46μs total=53μs (5 active) | SIGNALS: FL_ANTICHOP
+09:29:42 [INFO] [BAC] 5m bar #1250 @0935 ind=6μs strat=8μs total=14μs (5 active)
+09:29:42 [INFO] [BAC] 1m bar #6343 @1112 ind=7μs strat=39μs total=46μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:29:42 [INFO] [BAC] 5m bar #1280 @1205 ind=6μs strat=29μs total=35μs (5 active) | SIGNALS: FL_ANTICHOP
+09:29:42 [INFO] [BAC] 5m bar #1300 @1345 ind=6μs strat=12μs total=18μs (5 active)
+09:29:42 [INFO] [BAC] 1m bar #6671 @1010 ind=7μs strat=36μs total=43μs (3 active) | SIGNALS: ORH_FBO_V2_B
+09:29:42 [INFO] [BAC] 5m bar #1350 @1125 ind=6μs strat=7μs total=14μs (5 active)
+09:29:42 [INFO] [BAC] 5m bar #1373 @1320 ind=6μs strat=40μs total=47μs (5 active) | SIGNALS: BS_STRUCT
+09:29:42 [INFO] [BAC] 5m bar #1400 @1535 ind=6μs strat=8μs total=14μs (5 active)
+09:29:42 [INFO] [BAC] 5m bar #1430 @1135 ind=6μs strat=32μs total=39μs (5 active) | SIGNALS: FL_ANTICHOP
+09:29:42 [INFO] [BAC] 5m bar #1450 @1315 ind=6μs strat=6μs total=12μs (5 active)
+09:29:42 [INFO] [BAC] 5m bar #1500 @1055 ind=6μs strat=11μs total=18μs (5 active)
+09:29:42 [INFO] [BAC] 5m bar #1550 @1505 ind=6μs strat=6μs total=12μs (5 active)
+09:29:42 [INFO] [BAC] Warmed: 7800 1-min → 1560 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y | IP vol_depth=19/20 range_depth=19/20 prev_close=Y
+09:29:42 [INFO] [BAC] Ready (8/84, universe=STATIC).
+09:29:44 [INFO] [C] Contract qualified: Stock(conId=87335484, symbol='C', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='C', tradingClass='C')
+09:29:44 [INFO] [C] ATR warmed: 30 days, PD H:107.90 L:105.39
+09:30:00 [INFO] [C] 1m bar #45 @1014 ind=9μs strat=69μs total=78μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:30:00 [INFO] [C] 5m bar #50 @1335 ind=7μs strat=7μs total=15μs (5 active)
+09:30:00 [INFO] [C] 5m bar #100 @1115 ind=7μs strat=9μs total=16μs (5 active)
+09:30:00 [INFO] [C] 5m bar #150 @1525 ind=7μs strat=8μs total=15μs (5 active)
+09:30:00 [INFO] [C] 5m bar #200 @1305 ind=6μs strat=8μs total=14μs (5 active)
+09:30:00 [INFO] [C] 5m bar #250 @1045 ind=6μs strat=11μs total=17μs (5 active)
+09:30:00 [INFO] [C] 5m bar #300 @1455 ind=6μs strat=7μs total=13μs (5 active)
+09:30:00 [INFO] [C] 5m bar #350 @1235 ind=6μs strat=6μs total=12μs (5 active)
+09:30:00 [INFO] [C] 5m bar #400 @1015 ind=6μs strat=7μs total=13μs (5 active)
+09:30:00 [INFO] [C] 5m bar #450 @1425 ind=6μs strat=8μs total=14μs (5 active)
+09:30:00 [INFO] [C] 5m bar #500 @1205 ind=6μs strat=60μs total=67μs (5 active) | SIGNALS: FL_ANTICHOP
+09:30:00 [INFO] [C] 5m bar #511 @1300 ind=6μs strat=31μs total=37μs (5 active) | SIGNALS: EMA_FPIP
+09:30:00 [INFO] [C] 5m bar #550 @0945 ind=6μs strat=9μs total=15μs (5 active)
+09:30:00 [INFO] [C] 1m bar #2832 @1111 ind=7μs strat=49μs total=56μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:30:00 [INFO] [C] 5m bar #600 @1355 ind=6μs strat=10μs total=16μs (5 active)
+09:30:00 [INFO] [C] 5m bar #636 @1025 ind=6μs strat=34μs total=40μs (5 active) | SIGNALS: BDR_SHORT
+09:30:00 [INFO] [C] 5m bar #650 @1135 ind=6μs strat=7μs total=13μs (5 active)
+09:30:00 [INFO] [C] 5m bar #700 @1545 ind=6μs strat=6μs total=13μs (5 active)
+09:30:00 [INFO] [C] 5m bar #750 @1325 ind=6μs strat=6μs total=12μs (5 active)
+09:30:00 [INFO] [C] 1m bar #3966 @1035 ind=7μs strat=47μs total=54μs (3 active) | SIGNALS: ORH_FBO_V2_B
+09:30:00 [INFO] [C] 5m bar #800 @1105 ind=6μs strat=8μs total=14μs (5 active)
+09:30:00 [INFO] [C] 5m bar #850 @1515 ind=6μs strat=7μs total=13μs (5 active)
+09:30:00 [INFO] [C] 5m bar #900 @1255 ind=6μs strat=9μs total=15μs (5 active)
+09:30:00 [INFO] [C] 5m bar #950 @1035 ind=6μs strat=13μs total=19μs (5 active)
+09:30:00 [INFO] [C] 5m bar #1000 @1445 ind=6μs strat=6μs total=13μs (5 active)
+09:30:00 [INFO] [C] 5m bar #1050 @1225 ind=6μs strat=7μs total=13μs (5 active)
+09:30:00 [INFO] [C] 5m bar #1100 @1005 ind=6μs strat=8μs total=14μs (5 active)
+09:30:00 [INFO] [C] 5m bar #1150 @1415 ind=6μs strat=8μs total=14μs (5 active)
+09:30:00 [INFO] [C] 5m bar #1194 @1125 ind=6μs strat=44μs total=50μs (5 active) | SIGNALS: FL_ANTICHOP
+09:30:00 [INFO] [C] 5m bar #1200 @1155 ind=6μs strat=6μs total=12μs (5 active)
+09:30:00 [INFO] [C] 5m bar #1250 @0935 ind=6μs strat=8μs total=14μs (5 active)
+09:30:00 [INFO] [C] 5m bar #1280 @1205 ind=6μs strat=29μs total=35μs (5 active) | SIGNALS: FL_ANTICHOP
+09:30:00 [INFO] [C] 5m bar #1300 @1345 ind=6μs strat=8μs total=14μs (5 active)
+09:30:00 [INFO] [C] 5m bar #1345 @1100 ind=6μs strat=30μs total=37μs (5 active) | SIGNALS: FL_ANTICHOP
+09:30:00 [INFO] [C] 5m bar #1350 @1125 ind=6μs strat=7μs total=13μs (5 active)
+09:30:00 [INFO] [C] 1m bar #6796 @1215 ind=7μs strat=23μs total=30μs (3 active) | SIGNALS: PDH_FBO_B
+09:30:00 [INFO] [C] 5m bar #1400 @1535 ind=6μs strat=7μs total=13μs (5 active)
+09:30:00 [INFO] [C] 5m bar #1432 @1145 ind=6μs strat=33μs total=39μs (5 active) | SIGNALS: FL_ANTICHOP
+09:30:00 [INFO] [C] 5m bar #1450 @1315 ind=6μs strat=6μs total=12μs (5 active)
+09:30:00 [INFO] [C] 5m bar #1500 @1055 ind=6μs strat=10μs total=16μs (5 active)
+09:30:00 [INFO] [C] 5m bar #1550 @1505 ind=6μs strat=7μs total=13μs (5 active)
+09:30:00 [INFO] [C] Warmed: 7800 1-min → 1560 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y | IP vol_depth=19/20 range_depth=19/20 prev_close=Y
+09:30:00 [INFO] [C] Ready (9/84, universe=STATIC).
+09:30:02 [INFO] [COIN] Contract qualified: Stock(conId=481691285, symbol='COIN', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='COIN', tradingClass='NMS')
+09:30:02 [INFO] [COIN] ATR warmed: 29 days, PD H:207.13 L:193.84
+09:30:36 [INFO] [COIN] 5m bar #50 @1335 ind=7μs strat=9μs total=16μs (5 active)
+09:30:36 [INFO] [COIN] 1m bar #433 @1012 ind=8μs strat=67μs total=76μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:30:36 [INFO] [COIN] 5m bar #100 @1115 ind=6μs strat=7μs total=13μs (5 active)
+09:30:36 [INFO] [COIN] 5m bar #150 @1525 ind=8μs strat=8μs total=16μs (5 active)
+09:30:36 [INFO] [COIN] 5m bar #200 @1305 ind=93μs strat=32μs total=125μs (5 active)
+09:30:36 [INFO] [COIN] 5m bar #250 @1045 ind=7μs strat=14μs total=22μs (5 active)
+09:30:36 [INFO] [COIN] 5m bar #253 @1100 ind=8μs strat=64μs total=72μs (5 active) | SIGNALS: FL_ANTICHOP
+09:30:36 [INFO] [COIN] 5m bar #300 @1455 ind=7μs strat=8μs total=14μs (5 active)
+09:30:36 [INFO] [COIN] 5m bar #350 @1235 ind=6μs strat=7μs total=13μs (5 active)
+09:30:36 [INFO] [COIN] 5m bar #400 @1015 ind=6μs strat=8μs total=14μs (5 active)
+09:30:36 [INFO] [COIN] 5m bar #450 @1425 ind=6μs strat=7μs total=13μs (5 active)
+09:30:36 [INFO] [COIN] 5m bar #500 @1205 ind=6μs strat=7μs total=13μs (5 active)
+09:30:36 [INFO] [COIN] 5m bar #506 @1235 ind=7μs strat=48μs total=55μs (5 active) | SIGNALS: EMA_FPIP
+09:30:36 [INFO] [COIN] 5m bar #550 @0945 ind=6μs strat=8μs total=14μs (5 active)
+09:30:36 [INFO] [COIN] 5m bar #568 @1115 ind=7μs strat=52μs total=59μs (5 active) | SIGNALS: FL_ANTICHOP
+09:30:36 [INFO] [COIN] 5m bar #600 @1355 ind=7μs strat=7μs total=14μs (5 active)
+09:30:36 [INFO] [COIN] 1m bar #3212 @1101 ind=8μs strat=61μs total=69μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:30:36 [INFO] [COIN] 5m bar #650 @1135 ind=6μs strat=10μs total=16μs (5 active)
+09:30:36 [INFO] [COIN] 1m bar #3315 @1244 ind=7μs strat=40μs total=47μs (3 active) | SIGNALS: ORH_FBO_V2_B
+09:30:36 [INFO] [COIN] 5m bar #700 @1545 ind=6μs strat=7μs total=13μs (5 active)
+09:30:36 [INFO] [COIN] 5m bar #710 @1005 ind=6μs strat=39μs total=46μs (5 active) | SIGNALS: EMA_FPIP
+09:30:36 [INFO] [COIN] 5m bar #716 @1035 ind=8μs strat=55μs total=63μs (5 active) | SIGNALS: FL_ANTICHOP
+09:30:36 [INFO] [COIN] 5m bar #750 @1325 ind=6μs strat=6μs total=12μs (5 active)
+09:30:36 [INFO] [COIN] 5m bar #796 @1045 ind=6μs strat=48μs total=54μs (5 active) | SIGNALS: FL_ANTICHOP
+09:30:36 [INFO] [COIN] 5m bar #800 @1105 ind=6μs strat=10μs total=17μs (5 active)
+09:30:36 [INFO] [COIN] 5m bar #850 @1515 ind=6μs strat=6μs total=12μs (5 active)
+09:30:36 [INFO] [COIN] 5m bar #900 @1255 ind=6μs strat=10μs total=16μs (5 active)
+09:30:36 [INFO] [COIN] 5m bar #948 @1025 ind=6μs strat=43μs total=49μs (5 active) | SIGNALS: BDR_SHORT
+09:30:36 [INFO] [COIN] 5m bar #950 @1035 ind=6μs strat=8μs total=14μs (5 active)
+09:30:36 [INFO] [COIN] 5m bar #1000 @1445 ind=6μs strat=6μs total=12μs (5 active)
+09:30:36 [INFO] [COIN] 5m bar #1050 @1225 ind=6μs strat=7μs total=13μs (5 active)
+09:30:36 [INFO] [COIN] 5m bar #1100 @1005 ind=6μs strat=8μs total=15μs (5 active)
+09:30:36 [INFO] [COIN] 5m bar #1150 @1415 ind=6μs strat=6μs total=12μs (5 active)
+09:30:36 [INFO] [COIN] 5m bar #1200 @1155 ind=6μs strat=7μs total=13μs (5 active)
+09:30:36 [INFO] [COIN] 5m bar #1204 @1215 ind=6μs strat=40μs total=46μs (5 active) | SIGNALS: FL_ANTICHOP
+09:30:36 [INFO] [COIN] 5m bar #1250 @0935 ind=6μs strat=8μs total=14μs (5 active)
+09:30:36 [INFO] [COIN] 5m bar #1300 @1345 ind=6μs strat=7μs total=14μs (5 active)
+09:30:36 [INFO] [COIN] 5m bar #1350 @1125 ind=6μs strat=8μs total=14μs (5 active)
+09:30:36 [INFO] [COIN] 5m bar #1352 @1135 ind=6μs strat=39μs total=45μs (5 active) | SIGNALS: FL_ANTICHOP
+09:30:36 [INFO] [COIN] 5m bar #1400 @1535 ind=6μs strat=6μs total=12μs (5 active)
+09:30:36 [INFO] [COIN] 5m bar #1450 @1315 ind=6μs strat=9μs total=15μs (5 active)
+09:30:36 [INFO] [COIN] Warmed: 7410 1-min → 1482 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y | IP vol_depth=18/20 range_depth=18/20 prev_close=Y
+09:30:36 [INFO] [COIN] Ready (10/84, universe=STATIC).
+09:30:38 [INFO] [CRSP] Contract qualified: Stock(conId=252260612, symbol='CRSP', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='CRSP', tradingClass='NMS')
+09:30:38 [INFO] [CRSP] ATR warmed: 30 days, PD H:50.00 L:49.50
+09:30:42 [INFO] [CRSP] 1m bar #100 @1109 ind=9μs strat=84μs total=93μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:30:42 [INFO] [CRSP] 1m bar #191 @1240 ind=8μs strat=50μs total=58μs (3 active) | SIGNALS: ORH_FBO_V2_B
+09:30:42 [INFO] [CRSP] 5m bar #50 @1335 ind=7μs strat=9μs total=16μs (5 active)
+09:30:42 [INFO] [CRSP] 5m bar #100 @1115 ind=7μs strat=8μs total=15μs (5 active)
+09:30:42 [INFO] [CRSP] 5m bar #115 @1230 ind=7μs strat=44μs total=51μs (5 active) | SIGNALS: FL_ANTICHOP
+09:30:42 [INFO] [CRSP] 5m bar #150 @1525 ind=14μs strat=6μs total=21μs (5 active)
+09:30:42 [INFO] [CRSP] 5m bar #200 @1305 ind=7μs strat=10μs total=17μs (5 active)
+09:30:42 [INFO] [CRSP] 5m bar #250 @1045 ind=6μs strat=8μs total=14μs (5 active)
+09:30:42 [INFO] [CRSP] 5m bar #300 @1455 ind=6μs strat=6μs total=12μs (5 active)
+09:30:42 [INFO] [CRSP] 5m bar #350 @1235 ind=6μs strat=7μs total=13μs (5 active)
+09:30:42 [INFO] [CRSP] 5m bar #400 @1015 ind=6μs strat=12μs total=18μs (5 active)
+09:30:42 [INFO] [CRSP] 1m bar #2061 @1120 ind=7μs strat=56μs total=63μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:30:42 [INFO] [CRSP] 5m bar #415 @1130 ind=6μs strat=34μs total=40μs (5 active) | SIGNALS: FL_ANTICHOP
+09:30:42 [INFO] [CRSP] 5m bar #450 @1425 ind=6μs strat=6μs total=12μs (5 active)
+09:30:42 [INFO] [CRSP] 5m bar #500 @1205 ind=6μs strat=7μs total=13μs (5 active)
+09:30:42 [INFO] [CRSP] 5m bar #550 @0945 ind=6μs strat=7μs total=13μs (5 active)
+09:30:42 [INFO] [CRSP] 5m bar #600 @1355 ind=6μs strat=6μs total=13μs (5 active)
+09:30:42 [INFO] [CRSP] 1m bar #3181 @1030 ind=7μs strat=51μs total=58μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:30:42 [INFO] [CRSP] 5m bar #650 @1135 ind=6μs strat=6μs total=12μs (5 active)
+09:30:42 [INFO] [CRSP] 5m bar #700 @1545 ind=6μs strat=8μs total=14μs (5 active)
+09:30:42 [INFO] [CRSP] 1m bar #3702 @1241 ind=8μs strat=40μs total=48μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:30:42 [INFO] [CRSP] 5m bar #750 @1325 ind=6μs strat=7μs total=13μs (5 active)
+09:30:42 [INFO] [CRSP] 5m bar #800 @1105 ind=6μs strat=7μs total=14μs (5 active)
+09:30:42 [INFO] [CRSP] 1m bar #4139 @1328 ind=7μs strat=37μs total=44μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:30:42 [INFO] [CRSP] 5m bar #850 @1515 ind=6μs strat=6μs total=12μs (5 active)
+09:30:42 [INFO] [CRSP] 5m bar #900 @1255 ind=6μs strat=10μs total=16μs (5 active)
+09:30:42 [INFO] [CRSP] 5m bar #950 @1035 ind=6μs strat=7μs total=13μs (5 active)
+09:30:42 [INFO] [CRSP] 5m bar #1000 @1445 ind=6μs strat=7μs total=13μs (5 active)
+09:30:42 [INFO] [CRSP] 5m bar #1050 @1225 ind=7μs strat=8μs total=15μs (5 active)
+09:30:42 [INFO] [CRSP] 5m bar #1100 @1005 ind=7μs strat=9μs total=16μs (5 active)
+09:30:42 [INFO] [CRSP] 1m bar #5592 @1141 ind=8μs strat=41μs total=49μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:30:42 [INFO] [CRSP] 5m bar #1150 @1415 ind=6μs strat=15μs total=21μs (5 active)
+09:30:42 [INFO] [CRSP] 5m bar #1200 @1155 ind=6μs strat=8μs total=14μs (5 active)
+09:30:42 [INFO] [CRSP] 5m bar #1250 @0935 ind=7μs strat=6μs total=13μs (5 active)
+09:30:42 [INFO] [CRSP] 5m bar #1300 @1345 ind=7μs strat=7μs total=14μs (5 active)
+09:30:42 [INFO] [CRSP] 1m bar #6699 @1038 ind=8μs strat=38μs total=46μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:30:42 [INFO] [CRSP] 5m bar #1350 @1125 ind=6μs strat=8μs total=14μs (5 active)
+09:30:42 [INFO] [CRSP] 1m bar #6767 @1146 ind=7μs strat=35μs total=42μs (3 active) | SIGNALS: ORH_FBO_V2_B
+09:30:42 [INFO] [CRSP] 5m bar #1400 @1535 ind=6μs strat=6μs total=12μs (5 active)
+09:30:42 [INFO] [CRSP] 5m bar #1450 @1315 ind=7μs strat=7μs total=14μs (5 active)
+09:30:42 [INFO] [CRSP] Warmed: 7411 1-min → 1483 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y | IP vol_depth=19/20 range_depth=19/20 prev_close=Y
+09:30:42 [INFO] [CRSP] Ready (11/84, universe=STATIC).
+09:30:44 [INFO] [CVX] Contract qualified: Stock(conId=5684, symbol='CVX', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='CVX', tradingClass='CVX')
+09:30:44 [INFO] [CVX] ATR warmed: 30 days, PD H:196.80 L:195.85
+09:30:54 [INFO] [CVX] 5m bar #50 @1335 ind=7μs strat=11μs total=19μs (5 active)
+09:30:54 [INFO] [CVX] 5m bar #100 @1115 ind=7μs strat=12μs total=20μs (5 active)
+09:30:54 [INFO] [CVX] 5m bar #121 @1300 ind=7μs strat=56μs total=63μs (5 active) | SIGNALS: FL_ANTICHOP
+09:30:54 [INFO] [CVX] 5m bar #150 @1525 ind=7μs strat=8μs total=15μs (5 active)
+09:30:54 [INFO] [CVX] 5m bar #200 @1305 ind=8μs strat=9μs total=16μs (5 active)
+09:30:54 [INFO] [CVX] 5m bar #250 @1045 ind=6μs strat=7μs total=13μs (5 active)
+09:30:54 [INFO] [CVX] 5m bar #276 @1255 ind=6μs strat=41μs total=47μs (5 active) | SIGNALS: FL_ANTICHOP
+09:30:54 [INFO] [CVX] 5m bar #300 @1455 ind=6μs strat=6μs total=12μs (5 active)
+09:30:54 [INFO] [CVX] 5m bar #350 @1235 ind=6μs strat=7μs total=13μs (5 active)
+09:30:54 [INFO] [CVX] 5m bar #400 @1015 ind=6μs strat=9μs total=15μs (5 active)
+09:30:54 [INFO] [CVX] 5m bar #412 @1115 ind=6μs strat=49μs total=55μs (5 active) | SIGNALS: FL_ANTICHOP
+09:30:54 [INFO] [CVX] 5m bar #440 @1335 ind=6μs strat=35μs total=41μs (5 active) | SIGNALS: EMA_FPIP
+09:30:54 [INFO] [CVX] 5m bar #450 @1425 ind=6μs strat=5μs total=11μs (5 active)
+09:30:54 [INFO] [CVX] 5m bar #500 @1205 ind=6μs strat=8μs total=14μs (5 active)
+09:30:54 [INFO] [CVX] 5m bar #510 @1255 ind=6μs strat=46μs total=53μs (5 active) | SIGNALS: FL_ANTICHOP
+09:30:54 [INFO] [CVX] 5m bar #550 @0945 ind=6μs strat=8μs total=14μs (5 active)
+09:30:54 [INFO] [CVX] 5m bar #600 @1355 ind=6μs strat=6μs total=13μs (5 active)
+09:30:54 [INFO] [CVX] 5m bar #650 @1135 ind=6μs strat=7μs total=14μs (5 active)
+09:30:54 [INFO] [CVX] 5m bar #665 @1250 ind=6μs strat=41μs total=47μs (5 active) | SIGNALS: FL_ANTICHOP
+09:30:54 [INFO] [CVX] 1m bar #3349 @1318 ind=7μs strat=42μs total=49μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:30:54 [INFO] [CVX] 5m bar #700 @1545 ind=6μs strat=6μs total=12μs (5 active)
+09:30:54 [INFO] [CVX] 1m bar #3561 @1020 ind=7μs strat=35μs total=42μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:30:54 [INFO] [CVX] 5m bar #750 @1325 ind=6μs strat=6μs total=12μs (5 active)
+09:30:54 [INFO] [CVX] 5m bar #799 @1100 ind=6μs strat=41μs total=47μs (5 active) | SIGNALS: FL_ANTICHOP
+09:30:54 [INFO] [CVX] 5m bar #800 @1105 ind=6μs strat=10μs total=16μs (5 active)
+09:30:54 [INFO] [CVX] 5m bar #850 @1515 ind=6μs strat=5μs total=11μs (5 active)
+09:30:54 [INFO] [CVX] 5m bar #900 @1255 ind=6μs strat=7μs total=12μs (5 active)
+09:30:54 [INFO] [CVX] 5m bar #950 @1035 ind=6μs strat=8μs total=14μs (5 active)
+09:30:54 [INFO] [CVX] 5m bar #978 @1255 ind=6μs strat=36μs total=42μs (5 active) | SIGNALS: FL_ANTICHOP
+09:30:54 [INFO] [CVX] 5m bar #1000 @1445 ind=6μs strat=7μs total=14μs (5 active)
+09:30:54 [INFO] [CVX] 5m bar #1050 @1225 ind=6μs strat=7μs total=13μs (5 active)
+09:30:54 [INFO] [CVX] 5m bar #1100 @1005 ind=6μs strat=8μs total=14μs (5 active)
+09:30:54 [INFO] [CVX] 1m bar #5546 @1055 ind=7μs strat=44μs total=50μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:30:54 [INFO] [CVX] 1m bar #5566 @1115 ind=7μs strat=34μs total=41μs (3 active) | SIGNALS: ORH_FBO_V2_B
+09:30:54 [INFO] [CVX] 5m bar #1150 @1415 ind=6μs strat=7μs total=13μs (5 active)
+09:30:54 [INFO] [CVX] 5m bar #1200 @1155 ind=7μs strat=8μs total=15μs (5 active)
+09:30:54 [INFO] [CVX] 1m bar #6062 @1301 ind=11μs strat=35μs total=46μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:30:54 [INFO] [CVX] 5m bar #1250 @0935 ind=6μs strat=8μs total=14μs (5 active)
+09:30:54 [INFO] [CVX] 5m bar #1300 @1345 ind=7μs strat=10μs total=17μs (5 active)
+09:30:54 [INFO] [CVX] 5m bar #1350 @1125 ind=7μs strat=16μs total=22μs (5 active)
+09:30:54 [INFO] [CVX] 5m bar #1400 @1535 ind=6μs strat=6μs total=12μs (5 active)
+09:30:54 [INFO] [CVX] 1m bar #7059 @1008 ind=7μs strat=35μs total=42μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:30:54 [INFO] [CVX] 1m bar #7070 @1019 ind=7μs strat=21μs total=28μs (3 active) | SIGNALS: PDH_FBO_B
+09:30:54 [INFO] [CVX] 5m bar #1450 @1315 ind=6μs strat=11μs total=17μs (5 active)
+09:30:54 [INFO] [CVX] Warmed: 7411 1-min → 1483 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y | IP vol_depth=19/20 range_depth=19/20 prev_close=Y
+09:30:54 [INFO] [CVX] Ready (12/84, universe=IN_PLAY).
+09:30:56 [INFO] [DASH] Contract qualified: Stock(conId=459309417, symbol='DASH', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='DASH', tradingClass='NMS')
+09:30:56 [INFO] [DASH] ATR warmed: 30 days, PD H:163.50 L:162.12
+09:31:00 [INFO] [MKT:QQQ] Bar #79 closed @ 09:25 C=599.93
+09:31:00 [INFO] [MKT:SPY] Bar #79 closed @ 09:25 C=668.38
+09:31:36 [INFO] [DASH] 1m bar #147 @1156 ind=9μs strat=45μs total=54μs (3 active) | SIGNALS: PDH_FBO_B
+09:31:36 [INFO] [DASH] 1m bar #155 @1204 ind=10μs strat=62μs total=72μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:31:36 [INFO] [DASH] 5m bar #50 @1335 ind=7μs strat=10μs total=17μs (5 active)
+09:31:36 [INFO] [DASH] 5m bar #100 @1115 ind=7μs strat=9μs total=16μs (5 active)
+09:31:36 [INFO] [DASH] 1m bar #553 @1212 ind=8μs strat=46μs total=54μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:31:36 [INFO] [DASH] 5m bar #150 @1525 ind=7μs strat=8μs total=14μs (5 active)
+09:31:36 [INFO] [DASH] 5m bar #200 @1305 ind=7μs strat=7μs total=14μs (5 active)
+09:31:36 [INFO] [DASH] 5m bar #250 @1045 ind=6μs strat=9μs total=16μs (5 active)
+09:31:36 [INFO] [DASH] 1m bar #1274 @1113 ind=7μs strat=47μs total=54μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:31:36 [INFO] [DASH] 1m bar #1319 @1158 ind=7μs strat=38μs total=44μs (3 active) | SIGNALS: ORH_FBO_V2_B
+09:31:36 [INFO] [DASH] 5m bar #265 @1200 ind=6μs strat=31μs total=37μs (5 active) | SIGNALS: FL_ANTICHOP
+09:31:36 [INFO] [DASH] 5m bar #300 @1455 ind=6μs strat=6μs total=12μs (5 active)
+09:31:36 [INFO] [DASH] 5m bar #350 @1235 ind=6μs strat=6μs total=12μs (5 active)
+09:31:36 [INFO] [DASH] 5m bar #400 @1015 ind=6μs strat=8μs total=14μs (5 active)
+09:31:36 [INFO] [DASH] 5m bar #450 @1425 ind=6μs strat=6μs total=12μs (5 active)
+09:31:36 [INFO] [DASH] 1m bar #2403 @1032 ind=7μs strat=47μs total=54μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:31:36 [INFO] [DASH] 5m bar #500 @1205 ind=6μs strat=15μs total=21μs (5 active)
+09:31:36 [INFO] [DASH] 5m bar #550 @0945 ind=6μs strat=8μs total=14μs (5 active)
+09:31:36 [INFO] [DASH] 1m bar #2782 @1021 ind=7μs strat=47μs total=54μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:31:36 [INFO] [DASH] 5m bar #600 @1355 ind=6μs strat=7μs total=13μs (5 active)
+09:31:36 [INFO] [DASH] 5m bar #650 @1135 ind=6μs strat=6μs total=12μs (5 active)
+09:31:36 [INFO] [DASH] 5m bar #700 @1545 ind=6μs strat=6μs total=12μs (5 active)
+09:31:36 [INFO] [DASH] 1m bar #3574 @1033 ind=7μs strat=40μs total=46μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:31:36 [INFO] [DASH] 5m bar #732 @1155 ind=6μs strat=34μs total=40μs (5 active) | SIGNALS: FL_ANTICHOP
+09:31:36 [INFO] [DASH] 5m bar #750 @1325 ind=6μs strat=8μs total=14μs (5 active)
+09:31:36 [INFO] [DASH] 5m bar #800 @1105 ind=6μs strat=7μs total=13μs (5 active)
+09:31:36 [INFO] [DASH] 1m bar #4047 @1156 ind=12μs strat=50μs total=62μs (3 active) | SIGNALS: ORH_FBO_V2_B
+09:31:36 [INFO] [DASH] 5m bar #850 @1515 ind=6μs strat=6μs total=12μs (5 active)
+09:31:36 [INFO] [DASH] 1m bar #4396 @1115 ind=7μs strat=41μs total=48μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:31:36 [INFO] [DASH] 5m bar #900 @1255 ind=6μs strat=10μs total=16μs (5 active)
+09:31:36 [INFO] [DASH] 5m bar #950 @1035 ind=6μs strat=8μs total=14μs (5 active)
+09:31:36 [INFO] [DASH] 5m bar #1000 @1445 ind=6μs strat=6μs total=12μs (5 active)
+09:31:36 [INFO] [DASH] 5m bar #1050 @1225 ind=6μs strat=7μs total=13μs (5 active)
+09:31:36 [INFO] [DASH] 5m bar #1100 @1005 ind=6μs strat=8μs total=14μs (5 active)
+09:31:36 [INFO] [DASH] 5m bar #1150 @1415 ind=6μs strat=6μs total=12μs (5 active)
+09:31:36 [INFO] [DASH] 5m bar #1200 @1155 ind=6μs strat=7μs total=13μs (5 active)
+09:31:36 [INFO] [DASH] 5m bar #1201 @1200 ind=6μs strat=47μs total=53μs (5 active) | SIGNALS: FL_ANTICHOP
+09:31:36 [INFO] [DASH] 5m bar #1250 @0935 ind=6μs strat=8μs total=14μs (5 active)
+09:31:36 [INFO] [DASH] 5m bar #1300 @1345 ind=6μs strat=7μs total=13μs (5 active)
+09:31:36 [INFO] [DASH] 5m bar #1350 @1125 ind=6μs strat=8μs total=14μs (5 active)
+09:31:36 [INFO] [DASH] 5m bar #1400 @1535 ind=6μs strat=6μs total=12μs (5 active)
+09:31:36 [INFO] [DASH] 1m bar #7106 @1055 ind=7μs strat=24μs total=30μs (3 active) | SIGNALS: PDH_FBO_B
+09:31:36 [INFO] [DASH] 5m bar #1450 @1315 ind=6μs strat=7μs total=13μs (5 active)
+09:31:36 [INFO] [DASH] Warmed: 7411 1-min → 1483 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y | IP vol_depth=19/20 range_depth=19/20 prev_close=Y
+09:31:36 [INFO] [DASH] Ready (13/84, universe=STATIC).
+09:31:38 [INFO] [DKNG] Contract qualified: Stock(conId=560105364, symbol='DKNG', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='DKNG', tradingClass='NMS')
+09:31:38 [INFO] [DKNG] ATR warmed: 30 days, PD H:25.72 L:25.05
+09:31:42 [INFO] [DKNG] 1m bar #193 @1242 ind=7μs strat=66μs total=73μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:31:42 [INFO] [DKNG] 5m bar #50 @1335 ind=6μs strat=8μs total=14μs (5 active)
+09:31:42 [INFO] [DKNG] 5m bar #100 @1115 ind=6μs strat=9μs total=15μs (5 active)
+09:31:42 [INFO] [DKNG] 5m bar #150 @1525 ind=6μs strat=6μs total=13μs (5 active)
+09:31:42 [INFO] [DKNG] 5m bar #200 @1305 ind=8μs strat=9μs total=16μs (5 active)
+09:31:42 [INFO] [DKNG] 1m bar #1216 @1015 ind=7μs strat=60μs total=67μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:31:42 [INFO] [DKNG] 5m bar #250 @1045 ind=6μs strat=9μs total=15μs (5 active)
+09:31:42 [INFO] [DKNG] 5m bar #300 @1455 ind=6μs strat=7μs total=13μs (5 active)
+09:31:42 [INFO] [DKNG] 5m bar #350 @1235 ind=6μs strat=7μs total=13μs (5 active)
+09:31:42 [INFO] [DKNG] 5m bar #362 @1335 ind=6μs strat=47μs total=53μs (5 active) | SIGNALS: SP_ATIER
+09:31:42 [INFO] [DKNG] 5m bar #400 @1015 ind=6μs strat=10μs total=16μs (5 active)
+09:31:42 [INFO] [DKNG] 5m bar #426 @1225 ind=6μs strat=43μs total=49μs (5 active) | SIGNALS: FL_ANTICHOP
+09:31:42 [INFO] [DKNG] 5m bar #450 @1425 ind=6μs strat=6μs total=12μs (5 active)
+09:31:42 [INFO] [DKNG] 1m bar #2377 @1006 ind=8μs strat=40μs total=47μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:31:42 [INFO] [DKNG] 5m bar #484 @1045 ind=6μs strat=34μs total=41μs (5 active) | SIGNALS: FL_ANTICHOP
+09:31:42 [INFO] [DKNG] 1m bar #2463 @1132 ind=7μs strat=42μs total=49μs (3 active) | SIGNALS: ORH_FBO_V2_B
+09:31:42 [INFO] [DKNG] 5m bar #500 @1205 ind=6μs strat=8μs total=15μs (5 active)
+09:31:42 [INFO] [DKNG] 5m bar #518 @1335 ind=6μs strat=41μs total=47μs (5 active) | SIGNALS: EMA_FPIP
+09:31:42 [INFO] [DKNG] 5m bar #550 @0945 ind=6μs strat=8μs total=14μs (5 active)
+09:31:42 [INFO] [DKNG] 5m bar #600 @1355 ind=6μs strat=10μs total=16μs (5 active)
+09:31:42 [INFO] [DKNG] 5m bar #650 @1135 ind=6μs strat=8μs total=14μs (5 active)
+09:31:42 [INFO] [DKNG] 5m bar #700 @1545 ind=6μs strat=7μs total=13μs (5 active)
+09:31:42 [INFO] [DKNG] 5m bar #750 @1325 ind=6μs strat=8μs total=14μs (5 active)
+09:31:42 [INFO] [DKNG] 5m bar #756 @1355 ind=6μs strat=35μs total=41μs (5 active) | SIGNALS: EMA_FPIP
+09:31:42 [INFO] [DKNG] 5m bar #800 @1105 ind=6μs strat=16μs total=22μs (5 active)
+09:31:42 [INFO] [DKNG] 5m bar #850 @1515 ind=6μs strat=6μs total=12μs (5 active)
+09:31:42 [INFO] [DKNG] 5m bar #883 @1130 ind=6μs strat=45μs total=51μs (5 active) | SIGNALS: FL_ANTICHOP
+09:31:42 [INFO] [DKNG] 5m bar #900 @1255 ind=6μs strat=6μs total=11μs (5 active)
+09:31:42 [INFO] [DKNG] 5m bar #950 @1035 ind=6μs strat=8μs total=15μs (5 active)
+09:31:42 [INFO] [DKNG] 1m bar #4844 @1213 ind=7μs strat=31μs total=38μs (3 active) | SIGNALS: PDH_FBO_B
+09:31:42 [INFO] [DKNG] 5m bar #1000 @1445 ind=6μs strat=6μs total=12μs (5 active)
+09:31:42 [INFO] [DKNG] 1m bar #5174 @1113 ind=10μs strat=47μs total=58μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:31:42 [INFO] [DKNG] 5m bar #1050 @1225 ind=6μs strat=7μs total=13μs (5 active)
+09:31:42 [INFO] [DKNG] 5m bar #1100 @1005 ind=6μs strat=8μs total=14μs (5 active)
+09:31:42 [INFO] [DKNG] 5m bar #1137 @1310 ind=6μs strat=38μs total=44μs (5 active) | SIGNALS: EMA_FPIP
+09:31:42 [INFO] [DKNG] 5m bar #1150 @1415 ind=6μs strat=6μs total=13μs (5 active)
+09:31:42 [INFO] [DKNG] 5m bar #1200 @1155 ind=6μs strat=9μs total=15μs (5 active)
+09:31:42 [INFO] [DKNG] 1m bar #6027 @1226 ind=7μs strat=44μs total=52μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:31:42 [INFO] [DKNG] 5m bar #1250 @0935 ind=6μs strat=7μs total=13μs (5 active)
+09:31:42 [INFO] [DKNG] 5m bar #1300 @1345 ind=7μs strat=8μs total=15μs (5 active)
+09:31:42 [INFO] [DKNG] 1m bar #6685 @1024 ind=7μs strat=43μs total=50μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:31:42 [INFO] [DKNG] 5m bar #1350 @1125 ind=6μs strat=7μs total=13μs (5 active)
+09:31:42 [INFO] [DKNG] 5m bar #1400 @1535 ind=6μs strat=6μs total=13μs (5 active)
+09:31:42 [INFO] [DKNG] 5m bar #1450 @1315 ind=6μs strat=6μs total=13μs (5 active)
+09:31:42 [INFO] [DKNG] Warmed: 7412 1-min → 1483 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y | IP vol_depth=19/20 range_depth=19/20 prev_close=Y
+09:31:42 [INFO] [DKNG] Ready (14/84, universe=STATIC).
+09:31:44 [INFO] [FAS] Contract qualified: Stock(conId=97276826, symbol='FAS', exchange='SMART', primaryExchange='ARCA', currency='USD', localSymbol='FAS', tradingClass='FAS')
+09:31:44 [INFO] [FAS] ATR warmed: 30 days, PD H:118.24 L:117.40
+09:31:54 [INFO] [FAS] 5m bar #50 @1335 ind=8μs strat=10μs total=17μs (5 active)
+09:31:54 [INFO] [FAS] 5m bar #100 @1115 ind=7μs strat=8μs total=15μs (5 active)
+09:31:54 [INFO] [FAS] 5m bar #150 @1525 ind=7μs strat=7μs total=14μs (5 active)
+09:31:54 [INFO] [FAS] 5m bar #200 @1305 ind=6μs strat=7μs total=13μs (5 active)
+09:31:54 [INFO] [FAS] 5m bar #250 @1045 ind=6μs strat=8μs total=15μs (5 active)
+09:31:54 [INFO] [FAS] 5m bar #300 @1455 ind=6μs strat=6μs total=12μs (5 active)
+09:31:54 [INFO] [FAS] 5m bar #350 @1235 ind=6μs strat=7μs total=13μs (5 active)
+09:31:54 [INFO] [FAS] 5m bar #400 @1015 ind=6μs strat=8μs total=14μs (5 active)
+09:31:54 [INFO] [FAS] 5m bar #418 @1145 ind=6μs strat=55μs total=61μs (5 active) | SIGNALS: FL_ANTICHOP
+09:31:54 [INFO] [FAS] 5m bar #450 @1425 ind=6μs strat=8μs total=14μs (5 active)
+09:31:54 [INFO] [FAS] 1m bar #2417 @1046 ind=8μs strat=44μs total=52μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:31:54 [INFO] [FAS] 5m bar #500 @1205 ind=6μs strat=17μs total=23μs (5 active)
+09:31:54 [INFO] [FAS] 5m bar #550 @0945 ind=6μs strat=8μs total=14μs (5 active)
+09:31:54 [INFO] [FAS] 1m bar #2781 @1020 ind=7μs strat=46μs total=53μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:31:54 [INFO] [FAS] 5m bar #600 @1355 ind=6μs strat=8μs total=14μs (5 active)
+09:31:54 [INFO] [FAS] 5m bar #650 @1135 ind=6μs strat=8μs total=14μs (5 active)
+09:31:54 [INFO] [FAS] 5m bar #700 @1545 ind=6μs strat=7μs total=13μs (5 active)
+09:31:54 [INFO] [FAS] 1m bar #3578 @1037 ind=7μs strat=40μs total=47μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:31:54 [INFO] [FAS] 5m bar #750 @1325 ind=7μs strat=9μs total=16μs (5 active)
+09:31:54 [INFO] [FAS] 5m bar #800 @1105 ind=6μs strat=8μs total=14μs (5 active)
+09:31:54 [INFO] [FAS] 5m bar #850 @1515 ind=7μs strat=7μs total=14μs (5 active)
+09:31:54 [INFO] [FAS] 5m bar #900 @1255 ind=7μs strat=7μs total=14μs (5 active)
+09:31:54 [INFO] [FAS] 5m bar #950 @1035 ind=6μs strat=7μs total=13μs (5 active)
+09:31:54 [INFO] [FAS] 5m bar #1000 @1445 ind=6μs strat=6μs total=12μs (5 active)
+09:31:54 [INFO] [FAS] 1m bar #5146 @1045 ind=7μs strat=50μs total=56μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:31:54 [INFO] [FAS] 1m bar #5225 @1204 ind=7μs strat=37μs total=44μs (3 active) | SIGNALS: ORH_FBO_V2_B
+09:31:54 [INFO] [FAS] 5m bar #1050 @1225 ind=6μs strat=6μs total=12μs (5 active)
+09:31:54 [INFO] [FAS] 5m bar #1100 @1005 ind=6μs strat=9μs total=15μs (5 active)
+09:31:54 [INFO] [FAS] 5m bar #1127 @1220 ind=6μs strat=40μs total=46μs (5 active) | SIGNALS: FL_ANTICHOP
+09:31:54 [INFO] [FAS] 5m bar #1150 @1415 ind=6μs strat=6μs total=12μs (5 active)
+09:31:54 [INFO] [FAS] 5m bar #1200 @1155 ind=6μs strat=14μs total=20μs (5 active)
+09:31:54 [INFO] [FAS] 5m bar #1250 @0935 ind=6μs strat=6μs total=12μs (5 active)
+09:31:54 [INFO] [FAS] 5m bar #1300 @1345 ind=6μs strat=6μs total=12μs (5 active)
+09:31:54 [INFO] [FAS] 5m bar #1350 @1125 ind=6μs strat=6μs total=12μs (5 active)
+09:31:54 [INFO] [FAS] 5m bar #1400 @1535 ind=6μs strat=7μs total=13μs (5 active)
+09:31:54 [INFO] [FAS] 5m bar #1450 @1315 ind=6μs strat=8μs total=14μs (5 active)
+09:31:54 [INFO] [FAS] Warmed: 7412 1-min → 1483 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y | IP vol_depth=19/20 range_depth=19/20 prev_close=Y
+09:31:54 [INFO] [FAS] Ready (15/84, universe=STATIC).
+09:31:56 [INFO] [FNGU] Contract qualified: Stock(conId=756373390, symbol='FNGU', exchange='SMART', primaryExchange='ARCA', currency='USD', localSymbol='FNGU', tradingClass='FNGU')
+09:31:56 [INFO] [FNGU] ATR warmed: 30 days, PD H:19.33 L:19.02
+09:32:18 [INFO] [FNGU] 5m bar #50 @1335 ind=7μs strat=7μs total=14μs (5 active)
+09:32:18 [INFO] [FNGU] 5m bar #100 @1115 ind=7μs strat=10μs total=17μs (5 active)
+09:32:18 [INFO] [FNGU] 5m bar #150 @1525 ind=7μs strat=7μs total=14μs (5 active)
+09:32:18 [INFO] [FNGU] 5m bar #200 @1305 ind=6μs strat=7μs total=13μs (5 active)
+09:32:18 [INFO] [FNGU] 1m bar #1216 @1015 ind=8μs strat=57μs total=64μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:32:18 [INFO] [FNGU] 5m bar #250 @1045 ind=7μs strat=11μs total=18μs (5 active)
+09:32:18 [INFO] [FNGU] 5m bar #259 @1130 ind=6μs strat=41μs total=48μs (5 active) | SIGNALS: FL_ANTICHOP
+09:32:18 [INFO] [FNGU] 1m bar #1402 @1321 ind=8μs strat=43μs total=51μs (3 active) | SIGNALS: ORH_FBO_V2_B
+09:32:18 [INFO] [FNGU] 5m bar #300 @1455 ind=6μs strat=8μs total=14μs (5 active)
+09:32:18 [INFO] [FNGU] 5m bar #350 @1235 ind=6μs strat=7μs total=13μs (5 active)
+09:32:18 [INFO] [FNGU] 5m bar #400 @1015 ind=7μs strat=12μs total=19μs (5 active)
+09:32:18 [INFO] [FNGU] 5m bar #450 @1425 ind=6μs strat=7μs total=13μs (5 active)
+09:32:18 [INFO] [FNGU] 5m bar #500 @1205 ind=7μs strat=11μs total=18μs (5 active)
+09:32:18 [INFO] [FNGU] 5m bar #550 @0945 ind=6μs strat=8μs total=13μs (5 active)
+09:32:18 [INFO] [FNGU] 5m bar #600 @1355 ind=6μs strat=9μs total=15μs (5 active)
+09:32:18 [INFO] [FNGU] 1m bar #3172 @1021 ind=8μs strat=57μs total=66μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:32:18 [INFO] [FNGU] 1m bar #3186 @1035 ind=7μs strat=38μs total=45μs (3 active) | SIGNALS: ORH_FBO_V2_B
+09:32:18 [INFO] [FNGU] 5m bar #650 @1135 ind=7μs strat=7μs total=14μs (5 active)
+09:32:18 [INFO] [FNGU] 5m bar #700 @1545 ind=7μs strat=7μs total=13μs (5 active)
+09:32:18 [INFO] [FNGU] 1m bar #3556 @1015 ind=7μs strat=47μs total=54μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:32:18 [INFO] [FNGU] 5m bar #750 @1325 ind=7μs strat=8μs total=14μs (5 active)
+09:32:18 [INFO] [FNGU] 5m bar #800 @1105 ind=6μs strat=7μs total=13μs (5 active)
+09:32:18 [INFO] [FNGU] 1m bar #4024 @1133 ind=8μs strat=57μs total=64μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:32:18 [INFO] [FNGU] 5m bar #850 @1515 ind=6μs strat=7μs total=13μs (5 active)
+09:32:18 [INFO] [FNGU] 5m bar #900 @1255 ind=7μs strat=17μs total=24μs (5 active)
+09:32:18 [INFO] [FNGU] 1m bar #4717 @1006 ind=8μs strat=55μs total=63μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:32:18 [INFO] [FNGU] 5m bar #950 @1035 ind=7μs strat=10μs total=16μs (5 active)
+09:32:18 [INFO] [FNGU] 5m bar #1000 @1445 ind=6μs strat=6μs total=12μs (5 active)
+09:32:18 [INFO] [FNGU] 1m bar #5158 @1057 ind=8μs strat=46μs total=54μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:32:18 [INFO] [FNGU] 5m bar #1050 @1225 ind=7μs strat=7μs total=14μs (5 active)
+09:32:18 [INFO] [FNGU] 5m bar #1100 @1005 ind=6μs strat=8μs total=13μs (5 active)
+09:32:18 [INFO] [FNGU] 5m bar #1150 @1415 ind=6μs strat=7μs total=13μs (5 active)
+09:32:18 [INFO] [FNGU] 5m bar #1200 @1155 ind=7μs strat=21μs total=27μs (5 active)
+09:32:18 [INFO] [FNGU] 5m bar #1203 @1210 ind=7μs strat=41μs total=48μs (5 active) | SIGNALS: FL_ANTICHOP
+09:32:18 [INFO] [FNGU] 5m bar #1250 @0935 ind=7μs strat=9μs total=16μs (5 active)
+09:32:18 [INFO] [FNGU] 5m bar #1300 @1345 ind=7μs strat=8μs total=15μs (5 active)
+09:32:18 [INFO] [FNGU] 5m bar #1350 @1125 ind=6μs strat=7μs total=13μs (5 active)
+09:32:18 [INFO] [FNGU] 5m bar #1400 @1535 ind=7μs strat=7μs total=14μs (5 active)
+09:32:18 [INFO] [FNGU] 5m bar #1450 @1315 ind=7μs strat=9μs total=16μs (5 active)
+09:32:18 [INFO] [FNGU] Warmed: 7412 1-min → 1483 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y | IP vol_depth=19/20 range_depth=19/20 prev_close=Y
+09:32:18 [INFO] [FNGU] Ready (16/84, universe=STATIC).
+09:32:20 [INFO] [GE] Contract qualified: Stock(conId=498843743, symbol='GE', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='GE', tradingClass='GE')
+09:32:20 [INFO] [GE] ATR warmed: 30 days, PD H:303.99 L:300.75
+09:32:36 [INFO] [GE] 5m bar #50 @1335 ind=8μs strat=10μs total=17μs (5 active)
+09:32:36 [INFO] [GE] 5m bar #100 @1115 ind=7μs strat=10μs total=17μs (5 active)
+09:32:36 [INFO] [GE] 5m bar #150 @1525 ind=7μs strat=7μs total=14μs (5 active)
+09:32:36 [INFO] [GE] 5m bar #200 @1305 ind=7μs strat=7μs total=14μs (5 active)
+09:32:36 [INFO] [GE] 1m bar #1214 @1013 ind=7μs strat=64μs total=71μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:32:36 [INFO] [GE] 5m bar #250 @1045 ind=7μs strat=16μs total=23μs (5 active)
+09:32:36 [INFO] [GE] 1m bar #1310 @1149 ind=7μs strat=40μs total=47μs (3 active) | SIGNALS: ORH_FBO_V2_B
+09:32:36 [INFO] [GE] 5m bar #300 @1455 ind=8μs strat=11μs total=19μs (5 active)
+09:32:36 [INFO] [GE] 5m bar #350 @1235 ind=6μs strat=6μs total=12μs (5 active)
+09:32:36 [INFO] [GE] 5m bar #400 @1015 ind=6μs strat=11μs total=17μs (5 active)
+09:32:36 [INFO] [GE] 5m bar #450 @1425 ind=6μs strat=8μs total=14μs (5 active)
+09:32:36 [INFO] [GE] 5m bar #500 @1205 ind=6μs strat=9μs total=15μs (5 active)
+09:32:36 [INFO] [GE] 5m bar #550 @0945 ind=6μs strat=7μs total=13μs (5 active)
+09:32:36 [INFO] [GE] 5m bar #561 @1040 ind=6μs strat=46μs total=52μs (5 active) | SIGNALS: FL_ANTICHOP
+09:32:36 [INFO] [GE] 5m bar #600 @1355 ind=6μs strat=8μs total=14μs (5 active)
+09:32:36 [INFO] [GE] 5m bar #650 @1135 ind=6μs strat=11μs total=17μs (5 active)
+09:32:36 [INFO] [GE] 5m bar #659 @1220 ind=6μs strat=33μs total=39μs (5 active) | SIGNALS: FL_ANTICHOP
+09:32:36 [INFO] [GE] 5m bar #700 @1545 ind=7μs strat=8μs total=14μs (5 active)
+09:32:36 [INFO] [GE] 1m bar #3583 @1042 ind=7μs strat=38μs total=45μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:32:36 [INFO] [GE] 5m bar #750 @1325 ind=6μs strat=9μs total=15μs (5 active)
+09:32:36 [INFO] [GE] 5m bar #800 @1105 ind=6μs strat=7μs total=13μs (5 active)
+09:32:36 [INFO] [GE] 5m bar #804 @1125 ind=7μs strat=39μs total=45μs (5 active) | SIGNALS: FL_ANTICHOP
+09:32:36 [INFO] [GE] 5m bar #850 @1515 ind=6μs strat=7μs total=13μs (5 active)
+09:32:36 [INFO] [GE] 1m bar #4407 @1126 ind=7μs strat=36μs total=43μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:32:36 [INFO] [GE] 5m bar #885 @1140 ind=8μs strat=43μs total=52μs (5 active) | SIGNALS: FL_ANTICHOP
+09:32:36 [INFO] [GE] 5m bar #900 @1255 ind=8μs strat=12μs total=21μs (5 active)
+09:32:36 [INFO] [GE] 5m bar #950 @1035 ind=6μs strat=8μs total=14μs (5 active)
+09:32:36 [INFO] [GE] 5m bar #1000 @1445 ind=6μs strat=6μs total=12μs (5 active)
+09:32:36 [INFO] [GE] 1m bar #5147 @1046 ind=7μs strat=42μs total=50μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:32:36 [INFO] [GE] 1m bar #5181 @1120 ind=7μs strat=35μs total=42μs (3 active) | SIGNALS: ORH_FBO_V2_B
+09:32:36 [INFO] [GE] 5m bar #1050 @1225 ind=6μs strat=6μs total=12μs (5 active)
+09:32:36 [INFO] [GE] 5m bar #1100 @1005 ind=7μs strat=10μs total=16μs (5 active)
+09:32:36 [INFO] [GE] 5m bar #1115 @1120 ind=6μs strat=33μs total=40μs (5 active) | SIGNALS: FL_ANTICHOP
+09:32:36 [INFO] [GE] 1m bar #5686 @1315 ind=8μs strat=37μs total=44μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:32:36 [INFO] [GE] 5m bar #1150 @1415 ind=6μs strat=6μs total=13μs (5 active)
+09:32:36 [INFO] [GE] 5m bar #1200 @1155 ind=7μs strat=7μs total=14μs (5 active)
+09:32:36 [INFO] [GE] 5m bar #1250 @0935 ind=7μs strat=8μs total=14μs (5 active)
+09:32:36 [INFO] [GE] 1m bar #6281 @1010 ind=7μs strat=34μs total=41μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:32:36 [INFO] [GE] 5m bar #1300 @1345 ind=6μs strat=6μs total=13μs (5 active)
+09:32:36 [INFO] [GE] 5m bar #1350 @1125 ind=6μs strat=8μs total=14μs (5 active)
+09:32:36 [INFO] [GE] 5m bar #1400 @1535 ind=6μs strat=8μs total=14μs (5 active)
+09:32:36 [INFO] [GE] 5m bar #1450 @1315 ind=7μs strat=8μs total=15μs (5 active)
+09:32:36 [INFO] [GE] Warmed: 7413 1-min → 1483 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y | IP vol_depth=19/20 range_depth=19/20 prev_close=Y
+09:32:36 [INFO] [GE] Ready (17/84, universe=STATIC).
+09:32:38 [INFO] [GOOG] Contract qualified: Stock(conId=208813720, symbol='GOOG', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='GOOG', tradingClass='NMS')
+09:32:38 [INFO] [GOOG] ATR warmed: 30 days, PD H:304.48 L:302.48
+09:32:48 [INFO] [GOOG] 5m bar #50 @1335 ind=8μs strat=10μs total=18μs (5 active)
+09:32:48 [INFO] [GOOG] 1m bar #436 @1015 ind=8μs strat=43μs total=52μs (3 active) | SIGNALS: PDH_FBO_B
+09:32:48 [INFO] [GOOG] 5m bar #100 @1115 ind=7μs strat=10μs total=17μs (5 active)
+09:32:48 [INFO] [GOOG] 5m bar #107 @1150 ind=7μs strat=48μs total=55μs (5 active) | SIGNALS: FL_ANTICHOP
+09:32:48 [INFO] [GOOG] 5m bar #150 @1525 ind=7μs strat=6μs total=13μs (5 active)
+09:32:48 [INFO] [GOOG] 1m bar #821 @1010 ind=7μs strat=51μs total=58μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:32:48 [INFO] [GOOG] 1m bar #840 @1029 ind=7μs strat=39μs total=47μs (3 active) | SIGNALS: ORH_FBO_V2_B
+09:32:48 [INFO] [GOOG] 1m bar #928 @1157 ind=7μs strat=21μs total=29μs (3 active) | SIGNALS: PDH_FBO_B
+09:32:48 [INFO] [GOOG] 5m bar #200 @1305 ind=6μs strat=9μs total=15μs (5 active)
+09:32:48 [INFO] [GOOG] 1m bar #1212 @1011 ind=8μs strat=36μs total=43μs (3 active) | SIGNALS: ORH_FBO_V2_B
+09:32:48 [INFO] [GOOG] 5m bar #250 @1045 ind=6μs strat=9μs total=15μs (5 active)
+09:32:48 [INFO] [GOOG] 5m bar #269 @1220 ind=6μs strat=28μs total=34μs (5 active) | SIGNALS: FL_ANTICHOP
+09:32:48 [INFO] [GOOG] 5m bar #300 @1455 ind=6μs strat=7μs total=13μs (5 active)
+09:32:48 [INFO] [GOOG] 5m bar #350 @1235 ind=6μs strat=7μs total=13μs (5 active)
+09:32:48 [INFO] [GOOG] 5m bar #400 @1015 ind=6μs strat=9μs total=15μs (5 active)
+09:32:48 [INFO] [GOOG] 5m bar #450 @1425 ind=6μs strat=6μs total=12μs (5 active)
+09:32:48 [INFO] [GOOG] 5m bar #495 @1140 ind=6μs strat=42μs total=48μs (5 active) | SIGNALS: FL_ANTICHOP
+09:32:48 [INFO] [GOOG] 5m bar #500 @1205 ind=6μs strat=11μs total=17μs (5 active)
+09:32:48 [INFO] [GOOG] 5m bar #550 @0945 ind=6μs strat=7μs total=13μs (5 active)
+09:32:48 [INFO] [GOOG] 5m bar #600 @1355 ind=6μs strat=10μs total=16μs (5 active)
+09:32:48 [INFO] [GOOG] 5m bar #650 @1135 ind=6μs strat=8μs total=14μs (5 active)
+09:32:48 [INFO] [GOOG] 5m bar #700 @1545 ind=6μs strat=7μs total=13μs (5 active)
+09:32:48 [INFO] [GOOG] 1m bar #3569 @1028 ind=7μs strat=32μs total=39μs (3 active) | SIGNALS: PDH_FBO_B
+09:32:48 [INFO] [GOOG] 5m bar #750 @1325 ind=6μs strat=7μs total=13μs (5 active)
+09:32:48 [INFO] [GOOG] 5m bar #800 @1105 ind=6μs strat=7μs total=13μs (5 active)
+09:32:48 [INFO] [GOOG] 5m bar #801 @1110 ind=6μs strat=39μs total=45μs (5 active) | SIGNALS: FL_ANTICHOP
+09:32:48 [INFO] [GOOG] 1m bar #4049 @1158 ind=7μs strat=38μs total=44μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:32:48 [INFO] [GOOG] 5m bar #850 @1515 ind=6μs strat=7μs total=13μs (5 active)
+09:32:48 [INFO] [GOOG] 1m bar #4365 @1044 ind=7μs strat=22μs total=29μs (3 active) | SIGNALS: PDH_FBO_B
+09:32:48 [INFO] [GOOG] 1m bar #4473 @1232 ind=7μs strat=35μs total=42μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:32:48 [INFO] [GOOG] 5m bar #900 @1255 ind=6μs strat=10μs total=16μs (5 active)
+09:32:48 [INFO] [GOOG] 5m bar #950 @1035 ind=6μs strat=9μs total=16μs (5 active)
+09:32:48 [INFO] [GOOG] 5m bar #1000 @1445 ind=6μs strat=8μs total=14μs (5 active)
+09:32:48 [INFO] [GOOG] 1m bar #5117 @1016 ind=7μs strat=48μs total=56μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:32:48 [INFO] [GOOG] 5m bar #1050 @1225 ind=6μs strat=6μs total=12μs (5 active)
+09:32:48 [INFO] [GOOG] 1m bar #5276 @1255 ind=7μs strat=38μs total=45μs (3 active) | SIGNALS: ORH_FBO_V2_B
+09:32:48 [INFO] [GOOG] 5m bar #1100 @1005 ind=6μs strat=8μs total=14μs (5 active)
+09:32:48 [INFO] [GOOG] 1m bar #5530 @1039 ind=7μs strat=42μs total=49μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:32:48 [INFO] [GOOG] 5m bar #1150 @1415 ind=6μs strat=8μs total=15μs (5 active)
+09:32:48 [INFO] [GOOG] 1m bar #5981 @1140 ind=8μs strat=41μs total=49μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:32:48 [INFO] [GOOG] 5m bar #1200 @1155 ind=6μs strat=10μs total=17μs (5 active)
+09:32:48 [INFO] [GOOG] 5m bar #1250 @0935 ind=8μs strat=7μs total=15μs (5 active)
+09:32:48 [INFO] [GOOG] 1m bar #6286 @1015 ind=7μs strat=41μs total=48μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:32:48 [INFO] [GOOG] 1m bar #6353 @1122 ind=7μs strat=34μs total=41μs (3 active) | SIGNALS: ORH_FBO_V2_B
+09:32:48 [INFO] [GOOG] 5m bar #1300 @1345 ind=6μs strat=6μs total=13μs (5 active)
+09:32:48 [INFO] [GOOG] 5m bar #1350 @1125 ind=6μs strat=8μs total=14μs (5 active)
+09:32:48 [INFO] [GOOG] 5m bar #1400 @1535 ind=6μs strat=7μs total=13μs (5 active)
+09:32:48 [INFO] [GOOG] 5m bar #1450 @1315 ind=7μs strat=6μs total=13μs (5 active)
+09:32:48 [INFO] [GOOG] Warmed: 7413 1-min → 1483 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y | IP vol_depth=19/20 range_depth=19/20 prev_close=Y
+09:32:48 [INFO] [GOOG] Ready (18/84, universe=STATIC).
+09:32:50 [INFO] [HOOD] Contract qualified: Stock(conId=504546674, symbol='HOOD', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='HOOD', tradingClass='NMS')
+09:32:50 [INFO] [HOOD] ATR warmed: 30 days, PD H:75.69 L:74.33
+09:33:12 [INFO] [HOOD] 1m bar #131 @1140 ind=8μs strat=42μs total=51μs (3 active) | SIGNALS: PDH_FBO_B
+09:33:12 [INFO] [HOOD] 5m bar #50 @1335 ind=7μs strat=10μs total=17μs (5 active)
+09:33:12 [INFO] [HOOD] 1m bar #500 @1119 ind=8μs strat=55μs total=63μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:33:12 [INFO] [HOOD] 5m bar #100 @1115 ind=8μs strat=10μs total=18μs (5 active)
+09:33:12 [INFO] [HOOD] 5m bar #150 @1525 ind=7μs strat=7μs total=13μs (5 active)
+09:33:12 [INFO] [HOOD] 1m bar #859 @1048 ind=7μs strat=23μs total=31μs (3 active) | SIGNALS: PDH_FBO_B
+09:33:12 [INFO] [HOOD] 5m bar #200 @1305 ind=6μs strat=8μs total=14μs (5 active)
+09:33:12 [INFO] [HOOD] 5m bar #250 @1045 ind=7μs strat=13μs total=19μs (5 active)
+09:33:12 [INFO] [HOOD] 5m bar #260 @1135 ind=6μs strat=40μs total=46μs (5 active) | SIGNALS: FL_ANTICHOP
+09:33:12 [INFO] [HOOD] 5m bar #300 @1455 ind=6μs strat=6μs total=11μs (5 active)
+09:33:12 [INFO] [HOOD] 5m bar #350 @1235 ind=6μs strat=6μs total=12μs (5 active)
+09:33:12 [INFO] [HOOD] 5m bar #400 @1015 ind=6μs strat=8μs total=14μs (5 active)
+09:33:12 [INFO] [HOOD] 5m bar #439 @1330 ind=6μs strat=32μs total=38μs (5 active) | SIGNALS: EMA_FPIP
+09:33:12 [INFO] [HOOD] 5m bar #450 @1425 ind=6μs strat=7μs total=13μs (5 active)
+09:33:12 [INFO] [HOOD] 5m bar #483 @1040 ind=6μs strat=50μs total=56μs (5 active) | SIGNALS: FL_ANTICHOP
+09:33:12 [INFO] [HOOD] 5m bar #500 @1205 ind=6μs strat=8μs total=13μs (5 active)
+09:33:12 [INFO] [HOOD] 1m bar #2540 @1249 ind=7μs strat=40μs total=47μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:33:12 [INFO] [HOOD] 5m bar #550 @0945 ind=6μs strat=7μs total=13μs (5 active)
+09:33:12 [INFO] [HOOD] 5m bar #559 @1030 ind=6μs strat=33μs total=39μs (5 active) | SIGNALS: BDR_SHORT
+09:33:12 [INFO] [HOOD] 1m bar #2829 @1108 ind=7μs strat=34μs total=41μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:33:12 [INFO] [HOOD] 5m bar #600 @1355 ind=6μs strat=9μs total=15μs (5 active)
+09:33:12 [INFO] [HOOD] 5m bar #650 @1135 ind=6μs strat=9μs total=14μs (5 active)
+09:33:12 [INFO] [HOOD] 5m bar #700 @1545 ind=6μs strat=7μs total=13μs (5 active)
+09:33:12 [INFO] [HOOD] 5m bar #750 @1325 ind=6μs strat=6μs total=12μs (5 active)
+09:33:12 [INFO] [HOOD] 5m bar #800 @1105 ind=7μs strat=8μs total=15μs (5 active)
+09:33:12 [INFO] [HOOD] 1m bar #4026 @1135 ind=7μs strat=35μs total=42μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:33:12 [INFO] [HOOD] 1m bar #4033 @1142 ind=7μs strat=21μs total=28μs (3 active) | SIGNALS: PDH_FBO_B
+09:33:12 [INFO] [HOOD] 5m bar #850 @1515 ind=6μs strat=6μs total=12μs (5 active)
+09:33:12 [INFO] [HOOD] 1m bar #4363 @1042 ind=7μs strat=34μs total=41μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:33:12 [INFO] [HOOD] 1m bar #4393 @1112 ind=7μs strat=33μs total=40μs (3 active) | SIGNALS: ORH_FBO_V2_B
+09:33:12 [INFO] [HOOD] 5m bar #900 @1255 ind=6μs strat=9μs total=15μs (5 active)
+09:33:12 [INFO] [HOOD] 5m bar #950 @1035 ind=7μs strat=8μs total=14μs (5 active)
+09:33:12 [INFO] [HOOD] 5m bar #1000 @1445 ind=6μs strat=7μs total=13μs (5 active)
+09:33:12 [INFO] [HOOD] 1m bar #5160 @1059 ind=7μs strat=38μs total=45μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:33:12 [INFO] [HOOD] 5m bar #1050 @1225 ind=6μs strat=6μs total=12μs (5 active)
+09:33:12 [INFO] [HOOD] 5m bar #1100 @1005 ind=7μs strat=9μs total=16μs (5 active)
+09:33:12 [INFO] [HOOD] 1m bar #5631 @1220 ind=7μs strat=34μs total=41μs (3 active) | SIGNALS: ORH_FBO_V2_A
+09:33:12 [INFO] [HOOD] 5m bar #1135 @1300 ind=6μs strat=30μs total=36μs (5 active) | SIGNALS: FL_ANTICHOP
+09:33:12 [INFO] [HOOD] 1m bar #5687 @1316 ind=7μs strat=33μs total=40μs (3 active) | SIGNALS: ORH_FBO_V2_B
+09:33:12 [INFO] [HOOD] 5m bar #1150 @1415 ind=6μs strat=6μs total=11μs (5 active)
+09:33:12 [INFO] [HOOD] 5m bar #1186 @1045 ind=7μs strat=44μs total=50μs (5 active) | SIGNALS: FL_ANTICHOP
+09:33:12 [INFO] [HOOD] 5m bar #1200 @1155 ind=7μs strat=10μs total=17μs (5 active)
+09:33:12 [INFO] [HOOD] 5m bar #1250 @0935 ind=6μs strat=7μs total=13μs (5 active)
+09:33:12 [INFO] [HOOD] 5m bar #1300 @1345 ind=6μs strat=6μs total=12μs (5 active)
+09:33:12 [INFO] [HOOD] 5m bar #1350 @1125 ind=6μs strat=8μs total=14μs (5 active)
+09:33:12 [INFO] [HOOD] 5m bar #1400 @1535 ind=6μs strat=7μs total=13μs (5 active)
+09:33:12 [INFO] [HOOD] 5m bar #1450 @1315 ind=7μs strat=8μs total=15μs (5 active)
+09:33:12 [INFO] [HOOD] Warmed: 7413 1-min → 1483 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y | IP vol_depth=19/20 range_depth=19/20 prev_close=Y
+09:33:12 [INFO] [HOOD] Ready (19/84, universe=STATIC).
+09:33:14 [INFO] [INTC] Contract qualified: Stock(conId=270639, symbol='INTC', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='INTC', tradingClass='NMS')
+09:33:14 [INFO] [INTC] ATR warmed: 30 days, PD H:49.17 L:47.90

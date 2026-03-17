@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Portfolio D — Honest Exits Report</title>
+<style>
+body{font-family:-apple-system,system-ui,sans-serif;max-width:1200px;margin:20px auto;padding:0 20px;background:#0d1117;color:#c9d1d9}
+h1{color:#58a6ff;border-bottom:1px solid #30363d;padding-bottom:10px}
+h2{color:#ff7b72;margin-top:30px}
+h3{color:#d2a8ff}
+table{border-collapse:collapse;width:100%;margin:15px 0;font-size:13px}
+th{background:#161b22;color:#58a6ff;padding:8px 10px;text-align:left;border:1px solid #30363d;white-space:nowrap}
+td{padding:6px 10px;border:1px solid #21262d;white-space:nowrap}
+tr:nth-child(even){background:#161b22}
+.bad{color:#f85149;font-weight:bold}
+.warn{color:#d29922}
+.good{color:#3fb950;font-weight:bold}
+.neutral{color:#8b949e}
+.box{background:#161b22;border:1px solid #30363d;padding:15px;border-radius:8px;margin:15px 0}
+.box h3{margin-top:0}
+.alert{background:#1c2128;border-left:4px solid #f85149;padding:15px;margin:20px 0;border-radius:0 8px 8px 0}
+.alert h3{color:#f85149;margin-top:0}
+.insight{background:#1c2128;border-left:4px solid #58a6ff;padding:15px;margin:20px 0;border-radius:0 8px 8px 0}
+.insight h3{color:#58a6ff;margin-top:0}
+.divider{border:0;border-top:1px solid #30363d;margin:30px 0}
+</style></head><body>
+
+<h1>Portfolio D — Honest Exits Report</h1>
+<p>Fixed R:R fallback targets removed. Trades without structural levels now exit only via stop, EOD, or max_bars.</p>
+
+<div class="alert">
+<h3>What changed</h3>
+<p>Previously, when <code>compute_structural_target_long/short()</code> couldn't find a real price level within 1.0–3.0 R:R, the system would fabricate a target at <code>entry + fallback_rr × risk</code>. This affected <strong>431 of 973 trades (44.3%)</strong>.</p>
+<p>Now those trades have <strong>no target exit</strong>. They can only exit via stop loss, end-of-day, or max_bars timeout. This shows us what the strategy's entry + stop logic actually produces without artificial help.</p>
+</div>
+
+<h2>1. Overall Results — With Honest Exits + 8bps/side Friction</h2>
+<table>
+<tr><th>Book</th><th>N</th><th>PF</th><th>Exp</th><th>Total R</th><th>WR</th><th>Max DD</th></tr>
+<tr><td>LONG</td><td>389</td><td class="bad">0.67</td><td>-0.205R</td><td class="bad">-79.7</td><td>—</td><td>83.6R</td></tr>
+<tr><td>SHORT</td><td>584</td><td class="bad">0.71</td><td>-0.213R</td><td class="bad">-124.6</td><td>—</td><td>128.1R</td></tr>
+<tr><td><strong>ALL</strong></td><td><strong>973</strong></td><td class="bad"><strong>0.70</strong></td><td><strong>-0.210R</strong></td><td class="bad"><strong>-204.4</strong></td><td><strong>—</strong></td><td><strong>207.6R</strong></td></tr>
+</table>
+
+<h2>2. Per-Strategy Results</h2>
+<table>
+<tr><th>Strategy</th><th>N</th><th>PF</th><th>Exp</th><th>Total R</th><th>WR</th><th>Max DD</th><th>Train PF</th><th>Test PF</th></tr>
+<tr><td>BS_STRUCT</td><td>6</td><td class="good">2.31</td><td>+0.598R</td><td class="good">+3.6</td><td>50.0%</td><td>1.3R</td><td colspan="2" class="neutral">small N</td></tr>
+<tr><td>EMA_FPIP</td><td>83</td><td class="warn">0.89</td><td>-0.071R</td><td class="bad">-5.9</td><td>39.8%</td><td>13.2R</td><td>0.87</td><td>0.90</td></tr>
+<tr><td>FL_ANTICHOP</td><td>70</td><td class="warn">0.84</td><td>-0.110R</td><td class="bad">-7.7</td><td>45.7%</td><td>16.9R</td><td>0.51</td><td>1.69</td></tr>
+<tr><td>ORH_FBO_V2_B</td><td>207</td><td class="warn">0.84</td><td>-0.099R</td><td class="bad">-20.4</td><td>43.0%</td><td>29.0R</td><td>0.69</td><td>1.09</td></tr>
+<tr><td>SP_ATIER</td><td>21</td><td class="bad">0.62</td><td>-0.226R</td><td class="bad">-4.8</td><td>47.6%</td><td>5.6R</td><td>1.06</td><td>0.18</td></tr>
+<tr><td>ORH_FBO_V2_A</td><td>338</td><td class="bad">0.66</td><td>-0.273R</td><td class="bad">-92.3</td><td>38.8%</td><td>94.1R</td><td>0.55</td><td>0.82</td></tr>
+<tr><td>PDH_FBO_B</td><td>37</td><td class="bad">0.57</td><td>-0.314R</td><td class="bad">-11.6</td><td>40.5%</td><td>13.5R</td><td>0.42</td><td>0.82</td></tr>
+<tr><td>HH_QUALITY</td><td>152</td><td class="bad">0.52</td><td>-0.276R</td><td class="bad">-41.9</td><td>38.2%</td><td>47.4R</td><td>0.46</td><td>0.59</td></tr>
+<tr><td>FFT_NEWLOW_REV</td><td>25</td><td class="bad">0.50</td><td>-0.372R</td><td class="bad">-9.3</td><td>36.0%</td><td>9.6R</td><td>0.58</td><td>0.36</td></tr>
+<tr><td>EMA9_FT</td><td>6</td><td class="bad">0.48</td><td>-0.337R</td><td class="bad">-2.0</td><td>50.0%</td><td>2.9R</td><td colspan="2" class="neutral">small N</td></tr>
+<tr><td>SC_SNIPER</td><td>25</td><td class="bad">0.45</td><td>-0.465R</td><td class="bad">-11.6</td><td>28.0%</td><td>14.7R</td><td>0.31</td><td>0.74</td></tr>
+<tr><td>BDR_SHORT</td><td>2</td><td class="bad">0.00</td><td>-0.161R</td><td class="bad">-0.3</td><td>0.0%</td><td>0.3R</td><td colspan="2" class="neutral">small N</td></tr>
+<tr><td>ORL_FBD_LONG</td><td>1</td><td class="bad">0.00</td><td>-0.115R</td><td class="bad">-0.1</td><td>0.0%</td><td>0.1R</td><td colspan="2" class="neutral">small N</td></tr>
+</table>
+
+<h2>3. Structural Target vs No-Target Split</h2>
+<p>This is the critical view: does the strategy's entry + stop logic have edge even without a target exit?</p>
+
+<table>
+<tr>
+<th rowspan="2">Strategy</th>
+<th colspan="5" style="text-align:center;border-bottom:2px solid #3fb950">Structural Target Trades</th>
+<th colspan="5" style="text-align:center;border-bottom:2px solid #d29922">No-Target Trades (stop/EOD only)</th>
+</tr>
+<tr>
+<th>N</th><th>PF</th><th>Exp</th><th>Total R</th><th>WR</th>
+<th>N</th><th>PF</th><th>Exp</th><th>Total R</th><th>WR</th>
+</tr>
+<tr><td>EMA_FPIP</td>
+<td>18</td><td class="good">1.93</td><td>+0.414R</td><td class="good">+7.4</td><td>61.1%</td>
+<td>65</td><td class="bad">0.69</td><td>-0.205R</td><td class="bad">-13.4</td><td>33.8%</td></tr>
+<tr><td>FL_ANTICHOP</td>
+<td>32</td><td class="bad">0.67</td><td>-0.270R</td><td class="bad">-8.6</td><td>46.9%</td>
+<td>38</td><td class="warn">1.04</td><td>+0.025R</td><td class="good">+0.9</td><td>44.7%</td></tr>
+<tr><td>ORH_FBO_V2_A</td>
+<td>292</td><td class="bad">0.65</td><td>-0.293R</td><td class="bad">-85.7</td><td>39.0%</td>
+<td>46</td><td class="bad">0.73</td><td>-0.144R</td><td class="bad">-6.6</td><td>37.0%</td></tr>
+<tr><td>ORH_FBO_V2_B</td>
+<td>129</td><td class="warn">0.83</td><td>-0.130R</td><td class="bad">-16.7</td><td>44.2%</td>
+<td>78</td><td class="warn">0.89</td><td>-0.047R</td><td class="bad">-3.7</td><td>41.0%</td></tr>
+<tr><td>HH_QUALITY</td>
+<td>26</td><td class="bad">0.49</td><td>-0.342R</td><td class="bad">-8.9</td><td>38.5%</td>
+<td>126</td><td class="bad">0.52</td><td>-0.262R</td><td class="bad">-33.0</td><td>38.1%</td></tr>
+<tr><td>SC_SNIPER</td>
+<td>4</td><td class="warn">1.10</td><td>+0.043R</td><td class="good">+0.2</td><td>50.0%</td>
+<td>21</td><td class="bad">0.40</td><td>-0.562R</td><td class="bad">-11.8</td><td>23.8%</td></tr>
+<tr><td>SP_ATIER</td>
+<td>6</td><td class="bad">0.11</td><td>-0.620R</td><td class="bad">-3.7</td><td>33.3%</td>
+<td>15</td><td class="warn">0.88</td><td>-0.069R</td><td class="bad">-1.0</td><td>53.3%</td></tr>
+<tr><td>PDH_FBO_B</td>
+<td>11</td><td class="bad">0.31</td><td>-0.758R</td><td class="bad">-8.3</td><td>27.3%</td>
+<td>26</td><td class="bad">0.78</td><td>-0.127R</td><td class="bad">-3.3</td><td>46.2%</td></tr>
+<tr><td>FFT_NEWLOW_REV</td>
+<td>20</td><td class="bad">0.34</td><td>-0.528R</td><td class="bad">-10.6</td><td>30.0%</td>
+<td>5</td><td class="good">1.53</td><td>+0.251R</td><td class="good">+1.3</td><td>60.0%</td></tr>
+<tr style="font-weight:bold;background:#1c2128">
+<td>COMBINED</td>
+<td>542</td><td class="bad">0.68</td><td>-0.251R</td><td class="bad">-135.9</td><td>40.8%</td>
+<td>431</td><td class="bad">0.72</td><td>-0.159R</td><td class="bad">-68.5</td><td>39.2%</td></tr>
+</table>
+
+<h2>4. Monthly Equity Curve</h2>
+<table>
+<tr><th>Month</th><th>N</th><th>R</th><th>Cumulative</th></tr>
+<tr><td>2025-05</td><td>75</td><td class="bad">-42.1</td><td>-42.1</td></tr>
+<tr><td>2025-06</td><td>108</td><td class="bad">-19.2</td><td>-61.3</td></tr>
+<tr><td>2025-07</td><td>82</td><td class="bad">-22.3</td><td>-83.6</td></tr>
+<tr><td>2025-08</td><td>89</td><td class="bad">-52.6</td><td>-136.2</td></tr>
+<tr><td>2025-09</td><td>72</td><td class="bad">-23.5</td><td>-159.7</td></tr>
+<tr><td>2025-10</td><td>101</td><td class="good">+9.4</td><td>-150.3</td></tr>
+<tr><td>2025-11</td><td>105</td><td class="good">+11.7</td><td>-138.6</td></tr>
+<tr><td>2025-12</td><td>91</td><td class="bad">-37.8</td><td>-176.4</td></tr>
+<tr><td>2026-01</td><td>88</td><td class="good">+25.8</td><td>-150.6</td></tr>
+<tr><td>2026-02</td><td>114</td><td class="bad">-40.8</td><td>-191.4</td></tr>
+<tr><td>2026-03</td><td>48</td><td class="bad">-13.0</td><td>-204.4</td></tr>
+</table>
+
+<hr class="divider">
+
+<h2>5. Diagnosis</h2>
+
+<div class="insight">
+<h3>The truth about these strategies</h3>
+<p>With honest exits and real friction, <strong>every single strategy is underwater</strong>. The combined system loses -204.4R across 973 trades (PF 0.70).</p>
+<p>The only bright spot is <strong>EMA_FPIP structural-target trades</strong>: 18 trades, PF 1.93, +7.4R — but it's a tiny sample, and the 65 non-structural trades lose -13.4R.</p>
+</div>
+
+<div class="box">
+<h3>Three compounding problems</h3>
+<p><strong>1. Friction kills tight stops.</strong> With 0.5–0.8% median risk and 16bps round-trip cost, friction consumes 20–35% of every R. This is the structural floor — no amount of signal quality fixes this without wider stops.</p>
+<p><strong>2. Structural targets are scarce.</strong> 44% of trades couldn't find a real structural level to exit at. Without those phantom targets, these trades bleed via stop and EOD exits.</p>
+<p><strong>3. Even structural targets underperform.</strong> The 542 structural-target trades have PF 0.68 — worse than the no-target group (PF 0.72). The targets that do exist may be too close (tight R:R) or at levels that don't hold.</p>
+</div>
+
+<div class="alert">
+<h3>What this means for the path forward</h3>
+<p>These strategies, as currently designed with their entry logic, stop placement, and target selection, <strong>do not have positive expectancy under realistic conditions</strong>. The previous PF of 1.31 was entirely a product of zero-friction simulation plus 44% of trades hitting fabricated targets.</p>
+<p>To build something that works, the fundamental economics need to change: wider stops (so friction is &lt;10% of R), and entries that produce directional edge strong enough to overcome realistic exit mechanics.</p>
+</div>
+
+<p style="color:#484f58;font-size:11px;margin-top:40px">Generated: 2026-03-14 | 8bps/side friction, no artificial R:R targets</p>
+</body></html>

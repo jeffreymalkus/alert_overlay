@@ -1,0 +1,61 @@
+=================================================================
+  STRATEGYMANAGER — FIRST SESSION VALIDATION REPORT
+=================================================================
+
+Engine:    StrategyManager (step)
+Session:   11:19:50 → 16:37:58
+Runners:   138
+
+─────────────────────────────────────────────
+1. TOTAL ALERT COUNT
+   Alerts fired:   0
+   Alerts blocked: 0 (tape permission gate)
+   LONG:  0
+   SHORT: 0
+
+─────────────────────────────────────────────
+2. ALERTS BY STRATEGY
+   (none)
+
+
+─────────────────────────────────────────────
+3. BAD ENTRY/STOP/TARGET VALUES
+   PASS — no suspicious values detected
+
+─────────────────────────────────────────────
+4. DUPLICATE / SPAM BEHAVIOR
+   PASS — no rapid-fire duplicates detected
+
+─────────────────────────────────────────────
+5. STARTUP & OPEN LATENCY
+   Dashboard start:  11:19:50
+   IBKR connected:   11:19:51
+   All runners ready: 11:21:35
+   First bar:        11:26:00
+   First alert:      (none fired)
+   Startup→Ready:    105s
+
+─────────────────────────────────────────────
+6. RUNTIME EXCEPTIONS
+   ✗ 13:51:00 Value (Ticker(contract=Stock(conId=527803231, symbol='TSAT', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='TSAT', tradingClass='NMS'), time=datetime.datetime(2026, 3, 17, 17, 51, 0, 667551, tzinfo=datetime.timezone.utc), minTick=0.01, bid=41.92, bidSize=300.0, bidExchange='QZ', ask=42.49, askSize=300.0, askExchange='PQZ', last=42.0, lastSize=559.0, prevBid=41.9, prevBidSize=200.0, prevAsk=42.6, prevAskSize=600.0, prevLast=41.91, prevLastSize=100.0, volume=401022.364712, open=34.38, high=42.88, low=34.38, close=35.5, ticks=[TickData(time=datetime.datetime(2026, 3, 17, 17, 51, 0, 667551, tzinfo=datetime.timezone.utc), tickType=1, price=41.92, size=300.0), TickData(time=datetime.datetime(2026, 3, 17, 17, 51, 0, 667551, tzinfo=datetime.timezone.utc), tickType=3, price=42.49, size=300.0)], bboExchange='9c0001', snapshotPermissions=3),) caused exception for event Event<updateEvent, [[None, <weakref at 0x10983f720; to 'SymbolRunner' at 0x10a174c70>, <function SymbolRunner._on_tick at 0x10845ae50>]]>
+   Warnings: 5
+     11:20:20 MASS STALE: 31/32 symbols (97%) stale. Full resubscribe of all runners + SPY/QQQ.
+     11:20:50 MASS STALE: 69/71 symbols (97%) stale. Full resubscribe of all runners + SPY/QQQ.
+     11:21:20 MASS STALE: 113/115 symbols (98%) stale. Full resubscribe of all runners + SPY/QQQ.
+     11:21:35 MARKET DATA BUDGET: 140 lines needed (2 market + 138 symbols). Check your IBKR account's market data line limit (usually 100, can be lower). Excess subscriptions will be silently dropped by IBKR.
+     11:21:50 PER-SYMBOL STALE: 65 stale symbols detected. Resubscribing batch of 5: ['EOG', 'ESLT', 'FCPT', 'FE', 'FLR']
+
+─────────────────────────────────────────────
+7. IN-PLAY / UNIVERSE TAGGING
+   In-play symbols loaded: 90
+   IN_PLAY: 90 symbols
+   STATIC: 48 symbols
+
+─────────────────────────────────────────────
+BAR PROGRESS
+   Symbols receiving bars: 138
+   Min bars: 620  Max bars: 1950  Avg: 1745
+
+=================================================================
+VERDICT: 1 issue(s) found — review above
+=================================================================

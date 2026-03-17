@@ -1,0 +1,149 @@
+{
+  "overall": "REVIEW",
+  "strategies": {
+    "SC_SNIPER": {
+      "replay_signals": 5,
+      "live_signals": 5,
+      "matched": 5,
+      "match_rate": 100.0,
+      "replay_only": 0,
+      "live_only": 0,
+      "price_mismatches": 0,
+      "verdict": "PASS",
+      "symbol_days_tested": 45,
+      "symbol_days_with_signals": 5,
+      "mismatches_sample": []
+    },
+    "FL_ANTICHOP": {
+      "replay_signals": 22,
+      "live_signals": 21,
+      "matched": 21,
+      "match_rate": 95.5,
+      "replay_only": 1,
+      "live_only": 0,
+      "price_mismatches": 0,
+      "verdict": "PASS",
+      "symbol_days_tested": 45,
+      "symbol_days_with_signals": 22,
+      "mismatches_sample": [
+        {
+          "type": "replay_only",
+          "time": "2025-05-13 11:20:00-04:00",
+          "entry": 658.53,
+          "symbol": "META",
+          "date": "2025-05-13"
+        }
+      ]
+    },
+    "SP_ATIER": {
+      "replay_signals": 3,
+      "live_signals": 2,
+      "matched": 2,
+      "match_rate": 66.7,
+      "replay_only": 1,
+      "live_only": 0,
+      "price_mismatches": 0,
+      "verdict": "REVIEW",
+      "symbol_days_tested": 45,
+      "symbol_days_with_signals": 3,
+      "mismatches_sample": [
+        {
+          "type": "replay_only",
+          "time": "2025-05-15 13:15:00-04:00",
+          "entry": 118.32,
+          "symbol": "NFLX",
+          "date": "2025-05-15"
+        }
+      ]
+    },
+    "HH_QUALITY": {
+      "replay_signals": 12,
+      "live_signals": 12,
+      "matched": 11,
+      "match_rate": 91.7,
+      "replay_only": 1,
+      "live_only": 1,
+      "price_mismatches": 0,
+      "verdict": "PASS",
+      "symbol_days_tested": 45,
+      "symbol_days_with_signals": 12,
+      "mismatches_sample": [
+        {
+          "type": "replay_only",
+          "time": "2025-05-14 11:30:00-04:00",
+          "entry": 453.16,
+          "symbol": "MSFT",
+          "date": "2025-05-14"
+        },
+        {
+          "type": "live_only",
+          "time": "2025-05-14 10:20:00-04:00",
+          "entry": 452.84,
+          "symbol": "MSFT",
+          "date": "2025-05-14"
+        }
+      ]
+    },
+    "EMA_FPIP": {
+      "replay_signals": 4,
+      "live_signals": 5,
+      "matched": 4,
+      "match_rate": 80.0,
+      "replay_only": 0,
+      "live_only": 1,
+      "price_mismatches": 0,
+      "verdict": "PASS",
+      "symbol_days_tested": 45,
+      "symbol_days_with_signals": 5,
+      "mismatches_sample": [
+        {
+          "type": "live_only",
+          "time": "2025-05-14 12:30:00-04:00",
+          "entry": 348.63,
+          "symbol": "TSLA",
+          "date": "2025-05-14"
+        }
+      ]
+    },
+    "BDR_SHORT": {
+      "replay_signals": 1,
+      "live_signals": 1,
+      "matched": 1,
+      "match_rate": 100.0,
+      "replay_only": 0,
+      "live_only": 0,
+      "price_mismatches": 0,
+      "verdict": "PASS",
+      "symbol_days_tested": 45,
+      "symbol_days_with_signals": 1,
+      "mismatches_sample": []
+    },
+    "EMA9_FT": {
+      "replay_signals": 0,
+      "live_signals": 0,
+      "matched": 0,
+      "match_rate": 0.0,
+      "replay_only": 0,
+      "live_only": 0,
+      "price_mismatches": 0,
+      "verdict": "PASS (no signals)",
+      "symbol_days_tested": 45,
+      "symbol_days_with_signals": 0,
+      "mismatches_sample": []
+    },
+    "BS_STRUCT": {
+      "replay_signals": 1,
+      "live_signals": 1,
+      "matched": 1,
+      "match_rate": 100.0,
+      "replay_only": 0,
+      "live_only": 0,
+      "price_mismatches": 0,
+      "verdict": "PASS",
+      "symbol_days_tested": 45,
+      "symbol_days_with_signals": 1,
+      "mismatches_sample": []
+    }
+  },
+  "total_bars": 5931960
+}

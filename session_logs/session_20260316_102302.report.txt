@@ -1,0 +1,56 @@
+=================================================================
+  STRATEGYMANAGER — FIRST SESSION VALIDATION REPORT
+=================================================================
+
+Engine:    StrategyManager (step)
+Session:   10:23:02 → 10:27:58
+Runners:   97
+
+─────────────────────────────────────────────
+1. TOTAL ALERT COUNT
+   Alerts fired:   0
+   Alerts blocked: 0 (tape permission gate)
+   LONG:  0
+   SHORT: 0
+
+─────────────────────────────────────────────
+2. ALERTS BY STRATEGY
+   (none)
+
+
+─────────────────────────────────────────────
+3. BAD ENTRY/STOP/TARGET VALUES
+   PASS — no suspicious values detected
+
+─────────────────────────────────────────────
+4. DUPLICATE / SPAM BEHAVIOR
+   PASS — no rapid-fire duplicates detected
+
+─────────────────────────────────────────────
+5. STARTUP & OPEN LATENCY
+   Dashboard start:  10:23:02
+   IBKR connected:   10:23:03
+   All runners ready: 10:26:02
+   First bar:        (none seen)
+   First alert:      (none fired)
+   Startup→Ready:    180s
+
+─────────────────────────────────────────────
+6. RUNTIME EXCEPTIONS
+   ✗ 10:23:56 Error 200, reqId 904: No security definition has been found for the request, contract: Stock(symbol='BESI', exchange='SMART', currency='USD')
+   ✗ 10:23:56 Error 200, reqId 905: No security definition has been found for the request, contract: Stock(symbol='BESI', exchange='SMART', currency='USD')
+   ✗ 10:23:56 Error 200, reqId 906: No security definition has been found for the request, contract: Stock(symbol='BESI', exchange='SMART', currency='USD')
+   ✗ 10:26:15 Error 200, reqId 1041: No security definition has been found for the request, contract: Stock(symbol='BESI', exchange='SMART', currency='USD')
+   ✗ 10:27:27 Error 300, reqId 1041: Can't find EId with tickerId:1041
+   Warnings: 1
+     10:23:56 Unknown contract: Stock(symbol='BESI', exchange='SMART', currency='USD')
+
+─────────────────────────────────────────────
+7. IN-PLAY / UNIVERSE TAGGING
+   In-play symbols loaded: 45
+   STATIC: 52 symbols
+   IN_PLAY: 45 symbols
+
+=================================================================
+VERDICT: 5 issue(s) found — review above
+=================================================================

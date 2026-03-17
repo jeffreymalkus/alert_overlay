@@ -1,0 +1,73 @@
+=================================================================
+  STRATEGYMANAGER — FIRST SESSION VALIDATION REPORT
+=================================================================
+
+Engine:    StrategyManager (step)
+Session:   10:09:08 → 10:21:58
+Runners:   86
+
+─────────────────────────────────────────────
+1. TOTAL ALERT COUNT
+   Alerts fired:   0
+   Alerts blocked: 0 (tape permission gate)
+   LONG:  0
+   SHORT: 0
+
+─────────────────────────────────────────────
+2. ALERTS BY STRATEGY
+   (none)
+
+
+─────────────────────────────────────────────
+3. BAD ENTRY/STOP/TARGET VALUES
+   PASS — no suspicious values detected
+
+─────────────────────────────────────────────
+4. DUPLICATE / SPAM BEHAVIOR
+   PASS — no rapid-fire duplicates detected
+
+─────────────────────────────────────────────
+5. STARTUP & OPEN LATENCY
+   Dashboard start:  10:09:08
+   IBKR connected:   10:09:09
+   All runners ready: 10:12:57
+   First bar:        10:16:00
+   First alert:      (none fired)
+   Startup→Ready:    229s
+
+─────────────────────────────────────────────
+6. RUNTIME EXCEPTIONS
+   ✗ 10:10:01 Error 200, reqId 901: No security definition has been found for the request, contract: Stock(symbol='BESI', exchange='SMART', currency='USD')
+   ✗ 10:10:01 Error 200, reqId 902: No security definition has been found for the request, contract: Stock(symbol='BESI', exchange='SMART', currency='USD')
+   ✗ 10:10:01 Error 200, reqId 903: No security definition has been found for the request, contract: Stock(symbol='BESI', exchange='SMART', currency='USD')
+   ✗ 10:13:10 Error 200, reqId 1022: No security definition has been found for the request, contract: Stock(symbol='BESI', exchange='SMART', currency='USD')
+   ✗ 10:17:28 Error 162, reqId 1058: Historical Market Data Service error message:API historical data query cancelled: 1058, contract: Stock(conId=591368776, symbol='AAA', exchange='SMART', primaryExchange='ARCA', currency='USD', localSymbol='AAA', tradingClass='AAA')
+   ✗ 10:17:29 Error 162, reqId 1061: Historical Market Data Service error message:API historical data query cancelled: 1061, contract: Stock(conId=9939, symbol='MU', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='MU', tradingClass='NMS')
+   ✗ 10:17:31 Error 162, reqId 1064: Historical Market Data Service error message:API historical data query cancelled: 1064, contract: Stock(conId=13681, symbol='WDC', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='WDC', tradingClass='NMS')
+   ✗ 10:17:39 Error 162, reqId 1067: Historical Market Data Service error message:API historical data query cancelled: 1067, contract: Stock(conId=13206, symbol='UHS', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='UHS', tradingClass='UHS')
+   ✗ 10:17:41 Error 162, reqId 1070: Historical Market Data Service error message:API historical data query cancelled: 1070, contract: Stock(conId=32943358, symbol='CE', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='CE', tradingClass='CE')
+   ✗ 10:17:42 Error 162, reqId 1073: Historical Market Data Service error message:API historical data query cancelled: 1073, contract: Stock(conId=491932113, symbol='STX', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='STX', tradingClass='NMS')
+   ✗ 10:17:52 Error 162, reqId 1076: Historical Market Data Service error message:API historical data query cancelled: 1076, contract: Stock(conId=270662, symbol='INTU', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='INTU', tradingClass='NMS')
+   ✗ 10:17:56 Error 162, reqId 1079: Historical Market Data Service error message:API historical data query cancelled: 1079, contract: Stock(conId=38559396, symbol='HIMX', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='HIMX', tradingClass='NMS')
+   Warnings: 9
+     10:10:01 Unknown contract: Stock(symbol='BESI', exchange='SMART', currency='USD')
+     10:17:28 reqHistoricalData: Timeout for Stock(conId=591368776, symbol='AAA', exchange='SMART', primaryExchange='ARCA', currency='USD', localSymbol='AAA', tradingClass='AAA')
+     10:17:29 reqHistoricalData: Timeout for Stock(conId=9939, symbol='MU', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='MU', tradingClass='NMS')
+     10:17:31 reqHistoricalData: Timeout for Stock(conId=13681, symbol='WDC', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='WDC', tradingClass='NMS')
+     10:17:39 reqHistoricalData: Timeout for Stock(conId=13206, symbol='UHS', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='UHS', tradingClass='UHS')
+
+─────────────────────────────────────────────
+7. IN-PLAY / UNIVERSE TAGGING
+   In-play symbols loaded: 33
+   STATIC: 53 symbols
+   IN_PLAY: 33 symbols
+
+─────────────────────────────────────────────
+BAR PROGRESS
+   Symbols receiving bars: 19
+   Min bars: 1030  Max bars: 2160  Avg: 1878
+   ⚠ Zero bars received: AAPL, ADBE, AMD, AMZN, ARM, BABA, BAC, C, CRSP, CVX
+
+=================================================================
+VERDICT: 12 issue(s) found — review above
+=================================================================

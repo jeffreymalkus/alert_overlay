@@ -1,0 +1,76 @@
+=================================================================
+  STRATEGYMANAGER — FIRST SESSION VALIDATION REPORT
+=================================================================
+
+Engine:    StrategyManager (step)
+Session:   11:35:49 → 11:45:27
+Runners:   118
+
+─────────────────────────────────────────────
+1. TOTAL ALERT COUNT
+   Alerts fired:   0
+   Alerts blocked: 0 (tape permission gate)
+   LONG:  0
+   SHORT: 0
+
+─────────────────────────────────────────────
+2. ALERTS BY STRATEGY
+   (none)
+
+
+─────────────────────────────────────────────
+3. BAD ENTRY/STOP/TARGET VALUES
+   PASS — no suspicious values detected
+
+─────────────────────────────────────────────
+4. DUPLICATE / SPAM BEHAVIOR
+   PASS — no rapid-fire duplicates detected
+
+─────────────────────────────────────────────
+5. STARTUP & OPEN LATENCY
+   Dashboard start:  11:35:49
+   IBKR connected:   11:35:50
+   All runners ready: 11:42:32
+   First bar:        (none seen)
+   First alert:      (none fired)
+   Startup→Ready:    403s
+
+─────────────────────────────────────────────
+6. RUNTIME EXCEPTIONS
+   ✗ 11:35:50 Error 162, reqId 768: Historical Market Data Service error message:Trading TWS session is connected from a different IP address, contract: Stock(conId=756733, symbol='SPY', exchange='SMART', primaryExchange='ARCA', currency='USD', localSymbol='SPY', tradingClass='SPY')
+   ✗ 11:35:50 Error 162, reqId 770: Historical Market Data Service error message:Trading TWS session is connected from a different IP address, contract: Stock(conId=320227571, symbol='QQQ', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='QQQ', tradingClass='NMS')
+   ✗ 11:35:52 Error 162, reqId 774: Historical Market Data Service error message:Trading TWS session is connected from a different IP address, contract: Stock(conId=265598, symbol='AAPL', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='AAPL', tradingClass='NMS')
+   ✗ 11:35:53 Error 162, reqId 775: Historical Market Data Service error message:Trading TWS session is connected from a different IP address, contract: Stock(conId=265598, symbol='AAPL', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='AAPL', tradingClass='NMS')
+   ✗ 11:35:53 Error 162, reqId 777: Historical Market Data Service error message:Trading TWS session is connected from a different IP address, contract: Stock(conId=265768, symbol='ADBE', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='ADBE', tradingClass='NMS')
+   ✗ 11:35:53 Error 162, reqId 778: Historical Market Data Service error message:Trading TWS session is connected from a different IP address, contract: Stock(conId=265768, symbol='ADBE', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='ADBE', tradingClass='NMS')
+   ✗ 11:35:54 Error 162, reqId 780: Historical Market Data Service error message:Trading TWS session is connected from a different IP address, contract: Stock(conId=465119069, symbol='AFRM', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='AFRM', tradingClass='NMS')
+   ✗ 11:35:54 Error 162, reqId 781: Historical Market Data Service error message:Trading TWS session is connected from a different IP address, contract: Stock(conId=465119069, symbol='AFRM', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='AFRM', tradingClass='NMS')
+   ✗ 11:35:55 Error 162, reqId 783: Historical Market Data Service error message:Trading TWS session is connected from a different IP address, contract: Stock(conId=4391, symbol='AMD', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='AMD', tradingClass='NMS')
+   ✗ 11:35:55 Error 162, reqId 784: Historical Market Data Service error message:Trading TWS session is connected from a different IP address, contract: Stock(conId=4391, symbol='AMD', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='AMD', tradingClass='NMS')
+   ✗ 11:35:55 Error 10197, reqId 772: No market data during competing live session, contract: Stock(conId=320227571, symbol='QQQ', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='QQQ', tradingClass='NMS')
+   ✗ 11:35:55 Error 10197, reqId 771: No market data during competing live session, contract: Stock(conId=756733, symbol='SPY', exchange='SMART', primaryExchange='ARCA', currency='USD', localSymbol='SPY', tradingClass='SPY')
+   ✗ 11:35:55 Error 162, reqId 786: Historical Market Data Service error message:Trading TWS session is connected from a different IP address, contract: Stock(conId=3691937, symbol='AMZN', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='AMZN', tradingClass='NMS')
+   ✗ 11:35:56 Error 162, reqId 787: Historical Market Data Service error message:Trading TWS session is connected from a different IP address, contract: Stock(conId=3691937, symbol='AMZN', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='AMZN', tradingClass='NMS')
+   ✗ 11:35:56 Error 162, reqId 789: Historical Market Data Service error message:Trading TWS session is connected from a different IP address, contract: Stock(conId=653400472, symbol='ARM', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='ARM', tradingClass='NMS')
+   ✗ 11:35:57 Error 162, reqId 790: Historical Market Data Service error message:Trading TWS session is connected from a different IP address, contract: Stock(conId=653400472, symbol='ARM', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='ARM', tradingClass='NMS')
+   ✗ 11:35:57 Error 162, reqId 792: Historical Market Data Service error message:Trading TWS session is connected from a different IP address, contract: Stock(conId=166090175, symbol='BABA', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='BABA', tradingClass='BABA')
+   ✗ 11:35:57 Error 162, reqId 793: Historical Market Data Service error message:Trading TWS session is connected from a different IP address, contract: Stock(conId=166090175, symbol='BABA', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='BABA', tradingClass='BABA')
+   ✗ 11:35:58 Error 162, reqId 795: Historical Market Data Service error message:Trading TWS session is connected from a different IP address, contract: Stock(conId=10098, symbol='BAC', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='BAC', tradingClass='BAC')
+   ✗ 11:35:58 Error 162, reqId 796: Historical Market Data Service error message:Trading TWS session is connected from a different IP address, contract: Stock(conId=10098, symbol='BAC', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='BAC', tradingClass='BAC')
+   ... and 475 more
+   Warnings: 15
+     11:36:19 PER-SYMBOL STALE: 35 stale symbols detected. Resubscribing batch of 5: ['AAPL', 'ADBE', 'AFRM', 'AMD', 'AMZN']
+     11:36:49 PER-SYMBOL STALE: 70 stale symbols detected. Resubscribing batch of 5: ['AAPL', 'ADBE', 'AFRM', 'AMD', 'AMZN']
+     11:37:19 PER-SYMBOL STALE: 74 stale symbols detected. Resubscribing batch of 5: ['AAPL', 'ADBE', 'AFRM', 'AMD', 'AMZN']
+     11:37:49 PER-SYMBOL STALE: 76 stale symbols detected. Resubscribing batch of 5: ['AAPL', 'ADBE', 'AFRM', 'AMD', 'AMZN']
+     11:38:19 PER-SYMBOL STALE: 80 stale symbols detected. Resubscribing batch of 5: ['AAPL', 'ADBE', 'AFRM', 'AMD', 'AMZN']
+
+─────────────────────────────────────────────
+7. IN-PLAY / UNIVERSE TAGGING
+   In-play symbols loaded: 67
+   IN_PLAY: 67 symbols
+   STATIC: 51 symbols
+
+=================================================================
+VERDICT: 495 issue(s) found — review above
+=================================================================

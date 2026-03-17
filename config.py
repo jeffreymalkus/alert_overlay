@@ -74,7 +74,7 @@ class OverlayConfig:
     commission_per_share: float = 0.0  # IBKR tiered: ~$0.005/share; set if desired
 
     # ── Second Chance parameters ──
-    show_second_chance: bool = True
+    show_second_chance: bool = False    # RETIRED: PF 0.48, sc_repair_study exhaustive, no fix
     sc_time_start: int = 945             # earliest signal time
     sc_time_end: int = 1430              # latest signal time
     sc_break_atr_min: float = 0.10       # min close distance above level as frac of intra ATR
@@ -248,7 +248,7 @@ class OverlayConfig:
     show_trend_setups: bool = False      # VWAP_KISS retired: not in validated 3-setup model
     show_ema_retest: bool = False        # EMA_RETEST — disabled: 29% WR unsalvageable
     show_ema_mean_rev: bool = False      # EMA9_SEP — disabled after backtest analysis
-    show_ema_pullback: bool = True       # EMA_PULL short early-session: PF 1.45, 72 trades
+    show_ema_pullback: bool = False      # SHELVED: PF 0.90, N=26 — insufficient signal volume
     vk_long_only: bool = True            # VWAP KISS long only (shorts 23% WR, net negative)
     vk_max_opposing_wick_pct: float = 1.0   # disabled (was 0.20, no incremental value on locked baseline)
     sc_long_only: bool = True            # Second Chance long only (shorts lose money)
@@ -476,3 +476,169 @@ class OverlayConfig:
 
     # Quality gate
     ema_fpip_min_quality: int = 4              # lower than RECLAIM's 6 because hard gates already strict
+
+    # ─── HITCHHIKER ──────────────────────────────────────────────
+    show_hitchhiker: bool = False
+    hh_time_start: int = 935            # setup begins forming pre-10am
+    hh_time_end: int = 1200             # opening-drive trade; extends into late morning
+    hh_consol_min_bars: int = 3         # min consolidation bars (3 bars = 15 min)
+    hh_consol_max_bars: int = 24        # max consolidation bars (2 hours)
+    hh_consol_max_range_atr: float = 2.0  # consolidation range ≤ 2.0× intra ATR
+    hh_consol_upper_pct: float = 0.50   # consol low must be in upper half of day range (longs)
+    hh_break_vol_frac: float = 1.10     # breakout bar vol ≥ 110% of consol avg vol
+    hh_require_drive: bool = True       # require prior directional drive off open
+    hh_drive_min_atr: float = 1.0       # drive distance ≥ 1.0× intra ATR
+    hh_max_wick_pct: float = 0.70       # reject choppy consol: max avg wick % of bar range
+    hh_require_market_align: bool = False  # SPY/QQQ must trend in direction
+    hh_min_quality: int = 3
+    hh_time_stop_bars: int = 20         # exit on time if no wave detected
+
+    # ─── FASHIONABLY LATE ────────────────────────────────────────
+    show_fashionably_late: bool = False
+    fl_time_start: int = 1000           # after initial open chop settles
+    fl_time_end: int = 1330             # morning + midday
+    fl_ema_slope_min: float = 0.02      # 9EMA must be rising: (e9 - e9_prev) / ATR > this
+    fl_vwap_slope_max: float = 0.01     # VWAP must be flat/opposing: abs(slope) < this
+    fl_no_flat_ema_bars: int = 3        # reject if 9EMA was flat for > N bars before cross
+    fl_stop_frac: float = 0.33          # stop = 1/3 distance from VWAP to LOD (longs)
+    fl_target_measured_move: bool = True  # target = measured move from LOD to cross
+    fl_require_market_align: bool = True
+    fl_min_quality: int = 4
+    fl_time_stop_bars: int = 16
+
+    # ─── BACKSIDE ────────────────────────────────────────────────
+    show_backside: bool = False
+    bs_time_start: int = 1000
+    bs_time_end: int = 1330
+    bs_min_extension_atr: float = 1.5   # must be extended from VWAP by ≥ 1.5× ATR
+    bs_require_hh_hl: bool = True       # must see at least 1 HH + 1 HL (longs)
+    bs_consol_min_bars: int = 3         # consolidation above 9EMA before break
+    bs_consol_max_bars: int = 12
+    bs_require_above_ema9: bool = True  # consol must be above rising 9EMA (longs)
+    bs_break_vol_frac: float = 1.20     # breakout bar vol ≥ 120% consol avg
+    bs_target_vwap: bool = True         # exit entire position at VWAP
+    bs_halfway_gate: bool = True        # consol must be > halfway between LOD and VWAP
+    bs_require_market_align: bool = True
+    bs_min_quality: int = 4
+    bs_one_attempt: bool = True         # hard stop, one and done
+    bs_time_stop_bars: int = 20
+
+    # ─── RUBBERBAND ──────────────────────────────────────────────
+    show_rubberband: bool = False
+    rb_time_start: int = 1000
+    rb_time_end: int = 1330
+    rb_min_extension_atr: float = 3.0   # price extended ≥ 3 ATR from open
+    rb_min_rvol: float = 3.0            # relative volume ≥ 3 (source says 5, relaxed for 5-min)
+    rb_accel_vol_increase: float = 1.30  # last leg vol ≥ 130% of prior leg vol (acceleration)
+    rb_accel_range_increase: float = 1.20  # last leg bar ranges increasing
+    rb_snapback_bars: int = 2           # snapback candle clears highs of ≥ 2 prior candles
+    rb_snapback_vol_top_n: int = 5      # snapback bar among top-N volume bars of day
+    rb_target_rr_1: float = 1.0         # exit 1/3 at 1:1 R:R
+    rb_target_rr_2: float = 2.0         # exit 1/3 at 2:1 R:R
+    rb_target_vwap: bool = True         # exit final 1/3 at VWAP
+    rb_max_attempts: int = 2            # 2 strikes and out
+    rb_require_no_trend_fade: bool = True  # don't fade a cleanly trending market
+    rb_require_market_align: bool = False  # counter-trend by nature; no market align
+    rb_min_quality: int = 4
+    rb_time_stop_bars: int = 20
+
+    # ─── FL MOMENTUM REBUILD (long-only) ─────────────────────────
+    # 9EMA crosses above VWAP after meaningful decline + turn
+    show_fl_momentum_rebuild: bool = True   # PROMOTED: PF 1.11, N=664, 4-bar turn + 0.50 stop
+    flr_time_start: int = 1030           # optimized: late morning only (10:30+)
+    flr_time_end: int = 1130             # optimized: 10:30-11:30 sweet spot
+    # Meaningful decline definition
+    flr_min_decline_atr: float = 3.0     # optimized: 3.0 ATR (was 1.5) — much more selective
+    flr_min_decline_bars: int = 4        # decline must span ≥ 4 bars (20 min)
+    # Turn / higher-low detection
+    flr_hl_tolerance_atr: float = 0.3    # HL must be > decline_low + 0.3 ATR
+    flr_max_base_bars: int = 20          # turn must lead to cross within 20 bars
+    # Cross trigger gates
+    flr_ema_slope_min: float = 0.02      # 9EMA must be rising: (e9 - e9_prev) / ATR > this
+    flr_cross_vol_min_rvol: float = 1.0  # cross bar rvol_tod ≥ this (convergence volume)
+    flr_cross_body_pct: float = 0.60     # optimized: 60% body (was 50%) — cleaner bars
+    flr_cross_close_above_vwap: bool = True  # cross bar must close above VWAP
+    # Choppiness filter
+    flr_max_chop_bars: int = 3           # max bars where 9EMA was flat before cross
+    flr_chop_threshold: float = 0.01     # |e9 - e9_prev| / ATR < this = "flat"
+    # Stop and target
+    flr_stop_frac: float = 0.50          # promoted: 50% of measured move (was 40%, orig 33%) — wider stop reduces stop-out rate
+    flr_target_measured_move: bool = True # target = measured move above entry
+    flr_target_r: float = 2.0            # fallback R:R if measured move disabled
+    # Gating
+    flr_require_market_align: bool = False  # optimized: disabled (was True) — counter-trend recovery
+    flr_require_above_ema20: bool = False # close above EMA20 at cross time
+    flr_min_quality: int = 4
+    flr_time_stop_bars: int = 16         # time exit if no target hit
+    # Structural improvement: EMA slope acceleration
+    flr_require_ema_accel: bool = False   # require 9EMA slope to be accelerating (2nd deriv > 0)
+    flr_ema_accel_min: float = 0.005     # minimum slope increase per bar (normalized by ATR)
+    # Structural improvement: 2-bar turn confirmation
+    flr_turn_confirm_bars: int = 4       # promoted: 4-bar HL confirmation (was 1) — filters choppy turns
+    # Structural improvement: adaptive stop sizing
+    flr_adaptive_stop: bool = False      # scale stop with decline magnitude
+    flr_stop_min_frac: float = 0.25      # minimum stop fraction (for huge declines)
+    flr_stop_max_frac: float = 0.50      # maximum stop fraction (for small declines)
+    # Structural improvement: volatility regime filter
+    flr_require_high_vol_regime: bool = False  # only trade when intraday vol is elevated
+    flr_vol_regime_min: float = 1.2      # intraday ATR / daily ATR ratio >= this
+
+    # ─── EMA9 FIRST PULLBACK (long-only) ─────────────────────────
+    # First meaningful pullback to rising 9EMA after opening drive
+    show_ema9_first_pb: bool = False
+    e9pb_time_start: int = 945           # drive must start early
+    e9pb_time_end: int = 1200            # pullback entry before noon
+    # Opening drive definition
+    e9pb_min_drive_atr: float = 1.5      # optimized: 1.5 ATR (was 1.0) — stronger drives only
+    e9pb_min_drive_bars: int = 3         # drive spans ≥ 3 bars (15 min)
+    e9pb_max_drive_bars: int = 12        # drive must complete within 12 bars
+    e9pb_drive_close_above_vwap: bool = True  # drive high bar must be above VWAP
+    # Pullback constraints
+    e9pb_max_pb_depth_pct: float = 0.50  # PB depth ≤ 50% of drive distance
+    e9pb_max_pb_bars: int = 6            # PB must resolve within 6 bars
+    e9pb_max_pb_closes_below_e9: int = 2 # max 2 closes below 9EMA during PB
+    e9pb_pb_vol_decline: bool = True     # PB avg vol should be lower than drive avg vol
+    # Trigger bar quality
+    e9pb_trigger_close_pct: float = 0.60 # trigger bar closes in upper 60% of range
+    e9pb_trigger_body_pct: float = 0.50  # trigger bar body ≥ 50% of range
+    e9pb_trigger_above_e9: bool = True   # trigger bar must close above 9EMA
+    # Gating
+    e9pb_require_ema9_rising: bool = True  # 9EMA must be rising at trigger time
+    e9pb_require_market_align: bool = True # SPY bullish
+    e9pb_require_rvol: float = 1.5       # optimized: 1.5 (was 1.2) — stock must be in play
+    e9pb_min_quality: int = 4
+    e9pb_time_stop_bars: int = 12        # time exit
+    e9pb_target_r: float = 2.0           # target in R-multiples
+    e9pb_first_pb_only: bool = True      # only first pullback — no second retests
+    e9pb_exit_mode: str = "hybrid_target_time"  # NEW: use target+time instead of EMA trail
+
+    # ─── EMA9 BACKSIDE RANGE BREAK (long-only) ───────────────────
+    # Extended below VWAP → HH/HL recovery → range above rising 9EMA → break
+    show_ema9_backside_rb: bool = False
+    e9rb_time_start: int = 1000
+    e9rb_time_end: int = 1330
+    # Extension definition
+    e9rb_min_extension_atr: float = 2.0  # optimized: 2.0 ATR (was 1.5) — more selective
+    # HH/HL recovery requirements
+    e9rb_require_hh: int = 1             # minimum higher highs
+    e9rb_require_hl: int = 1             # minimum higher lows
+    e9rb_hl_tolerance_atr: float = 0.2   # HL must be > prev_low + 0.2 ATR
+    # Range formation
+    e9rb_range_min_bars: int = 3         # range must span ≥ 3 bars
+    e9rb_range_max_bars: int = 12        # range must resolve within 12 bars
+    e9rb_range_max_width_atr: float = 2.0  # range width ≤ 2 ATR
+    e9rb_require_above_e9: bool = True   # range must be above rising 9EMA
+    # Breakout trigger
+    e9rb_break_vol_frac: float = 1.50    # optimized: 150% (was 120%) — stronger breakout volume
+    e9rb_break_close_pct: float = 0.60   # breakout bar close in upper 60% of range
+    # Stop and target
+    e9rb_stop_below_range: bool = True   # stop below range low
+    e9rb_stop_buffer_atr: float = 0.15   # stop buffer below range low
+    e9rb_target_vwap: bool = True        # target = VWAP
+    e9rb_target_r: float = 2.0           # fallback R:R if VWAP target disabled
+    # Gating
+    e9rb_require_market_align: bool = False  # optimized: disabled — counter-trend recovery
+    e9rb_require_ema9_rising: bool = True # 9EMA must be rising during range
+    e9rb_halfway_gate: bool = True       # range must be > halfway from ext low to VWAP
+    e9rb_min_quality: int = 4
+    e9rb_time_stop_bars: int = 20

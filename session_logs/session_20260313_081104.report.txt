@@ -1,0 +1,55 @@
+=================================================================
+  STRATEGYMANAGER — FIRST SESSION VALIDATION REPORT
+=================================================================
+
+Engine:    StrategyManager (step)
+Session:   08:11:04 → 08:18:13
+Runners:   80
+
+─────────────────────────────────────────────
+1. TOTAL ALERT COUNT
+   Alerts fired:   0
+   Alerts blocked: 0 (tape permission gate)
+   LONG:  0
+   SHORT: 0
+
+─────────────────────────────────────────────
+2. ALERTS BY STRATEGY
+   (none)
+
+
+─────────────────────────────────────────────
+3. BAD ENTRY/STOP/TARGET VALUES
+   PASS — no suspicious values detected
+
+─────────────────────────────────────────────
+4. DUPLICATE / SPAM BEHAVIOR
+   PASS — no rapid-fire duplicates detected
+
+─────────────────────────────────────────────
+5. STARTUP & OPEN LATENCY
+   Dashboard start:  08:11:04
+   IBKR connected:   08:11:04
+   All runners ready: 08:13:28
+   First bar:        (none seen)
+   First alert:      (none fired)
+   Startup→Ready:    144s
+
+─────────────────────────────────────────────
+6. RUNTIME EXCEPTIONS
+   ✗ 08:15:28 Error 200, reqId 657: No security definition has been found for the request, contract: Stock(symbol='BESI', exchange='SMART', currency='USD')
+   ✗ 08:15:28 Error 200, reqId 658: No security definition has been found for the request, contract: Stock(symbol='BESI', exchange='SMART', currency='USD')
+   ✗ 08:15:28 Error 200, reqId 659: No security definition has been found for the request, contract: Stock(symbol='BESI', exchange='SMART', currency='USD')
+   ✗ 08:15:28 Error 200, reqId 660: No security definition has been found for the request, contract: Stock(symbol='BESI', exchange='SMART', currency='USD')
+   Warnings: 1
+     08:15:28 Unknown contract: Stock(symbol='BESI', exchange='SMART', currency='USD')
+
+─────────────────────────────────────────────
+7. IN-PLAY / UNIVERSE TAGGING
+   In-play symbols loaded: 25
+   STATIC: 55 symbols
+   IN_PLAY: 25 symbols
+
+=================================================================
+VERDICT: 4 issue(s) found — review above
+=================================================================

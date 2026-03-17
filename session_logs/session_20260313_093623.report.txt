@@ -1,0 +1,97 @@
+=================================================================
+  STRATEGYMANAGER — FIRST SESSION VALIDATION REPORT
+=================================================================
+
+Engine:    StrategyManager (step)
+Session:   09:36:23 → 16:33:17
+Runners:   84
+
+─────────────────────────────────────────────
+1. TOTAL ALERT COUNT
+   Alerts fired:   26
+   Alerts blocked: 4 (tape permission gate)
+   LONG:  17
+   SHORT: 9
+
+─────────────────────────────────────────────
+2. ALERTS BY STRATEGY
+   EMA9_FIRST_TOUCH        15 fired
+   BDR_SHORT                8 fired
+   EMA_FPIP                 1 fired  (1 blocked)
+   ORL_FBD_LONG             1 fired  (3 blocked)
+   ORH_FBO_V2_A             1 fired
+
+   By symbol (top 10):
+     V          2
+     NKE        1
+     C          1
+     SOXL       1
+     PG         1
+     RTX        1
+     NAIL       1
+     TGT        1
+     NBIS       1
+     SNOW       1
+
+─────────────────────────────────────────────
+3. BAD ENTRY/STOP/TARGET VALUES
+   PASS — no suspicious values detected
+
+─────────────────────────────────────────────
+4. DUPLICATE / SPAM BEHAVIOR
+   PASS — no rapid-fire duplicates detected
+
+─────────────────────────────────────────────
+5. STARTUP & OPEN LATENCY
+   Dashboard start:  09:36:23
+   IBKR connected:   09:36:24
+   All runners ready: 09:38:52
+   First bar:        09:41:00
+   First alert:      09:40:00
+   Startup→Ready:    149s
+
+─────────────────────────────────────────────
+6. RUNTIME EXCEPTIONS
+   ✗ 09:38:17 Error 200, reqId 517: No security definition has been found for the request, contract: Stock(symbol='BESI', exchange='SMART', currency='USD')
+   ✗ 09:38:17 Error 200, reqId 518: No security definition has been found for the request, contract: Stock(symbol='BESI', exchange='SMART', currency='USD')
+   ✗ 09:38:17 Error 200, reqId 519: No security definition has been found for the request, contract: Stock(symbol='BESI', exchange='SMART', currency='USD')
+   ✗ 09:39:05 Error 200, reqId 641: No security definition has been found for the request, contract: Stock(symbol='BESI', exchange='SMART', currency='USD')
+   ✗ 09:42:53 Error 10349, reqId 662: Order TIF was set to DAY based on order preset.
+   ✗ 09:42:53 Error 10349, reqId 663: Order TIF was set to DAY based on order preset.
+   ✗ 09:42:53 Error 10349, reqId 664: Order TIF was set to DAY based on order preset.
+   ✗ 09:43:00 Error 10349, reqId 666: Order TIF was set to DAY based on order preset.
+   ✗ 09:43:00 Error 10349, reqId 667: Order TIF was set to DAY based on order preset.
+   ✗ 09:43:00 Error 10349, reqId 668: Order TIF was set to DAY based on order preset.
+   ✗ 09:43:13 Error 10349, reqId 670: Order TIF was set to DAY based on order preset.
+   ✗ 09:43:13 Error 10349, reqId 671: Order TIF was set to DAY based on order preset.
+   ✗ 09:43:14 Error 10349, reqId 672: Order TIF was set to DAY based on order preset.
+   ✗ 09:43:18 Error 10349, reqId 674: Order TIF was set to DAY based on order preset.
+   ✗ 09:43:18 Error 10349, reqId 675: Order TIF was set to DAY based on order preset.
+   ✗ 09:43:18 Error 10349, reqId 676: Order TIF was set to DAY based on order preset.
+   ✗ 09:43:20 Error 10349, reqId 678: Order TIF was set to DAY based on order preset.
+   ✗ 09:43:20 Error 10349, reqId 679: Order TIF was set to DAY based on order preset.
+   ✗ 09:43:20 Error 10349, reqId 680: Order TIF was set to DAY based on order preset.
+   ✗ 09:43:24 Error 10349, reqId 682: Order TIF was set to DAY based on order preset.
+   ... and 62 more
+   Warnings: 79
+     09:38:17 Unknown contract: Stock(symbol='BESI', exchange='SMART', currency='USD')
+     09:42:53 Canceled order: Trade(contract=Stock(conId=56539091, symbol='TECL', exchange='SMART', primaryExchange='ARCA', currency='USD', localSymbol='TECL', tradingClass='TECL'), order=LimitOrder(orderId=662, clientId=10, action='BUY', totalQuantity=112, lmtPrice=100.75, transmit=False), orderStatus=OrderStatus(orderId=662, status='Cancelled', filled=0.0, remaining=0.0, avgFillPrice=0.0, permId=0, parentId=0, lastFillPrice=0.0, clientId=0, whyHeld='', mktCapPrice=0.0), fills=[], log=[TradeLogEntry(time=datetime.datetime(2026, 3, 13, 13, 42, 52, 990146, tzinfo=datetime.timezone.utc), status='PendingSubmit', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 13, 13, 42, 53, 43881, tzinfo=datetime.timezone.utc), status='Cancelled', message='Error 10349, reqId 662: Order TIF was set to DAY based on order preset.', errorCode=10349)], advancedError='')
+     09:42:53 Canceled order: Trade(contract=Stock(conId=56539091, symbol='TECL', exchange='SMART', primaryExchange='ARCA', currency='USD', localSymbol='TECL', tradingClass='TECL'), order=LimitOrder(orderId=663, clientId=10, action='SELL', totalQuantity=112, lmtPrice=102.52, transmit=False, parentId=662), orderStatus=OrderStatus(orderId=663, status='Cancelled', filled=0.0, remaining=0.0, avgFillPrice=0.0, permId=0, parentId=0, lastFillPrice=0.0, clientId=0, whyHeld='', mktCapPrice=0.0), fills=[], log=[TradeLogEntry(time=datetime.datetime(2026, 3, 13, 13, 42, 52, 991716, tzinfo=datetime.timezone.utc), status='PendingSubmit', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 13, 13, 42, 53, 112606, tzinfo=datetime.timezone.utc), status='Cancelled', message='Error 10349, reqId 663: Order TIF was set to DAY based on order preset.', errorCode=10349)], advancedError='')
+     09:42:53 Canceled order: Trade(contract=Stock(conId=56539091, symbol='TECL', exchange='SMART', primaryExchange='ARCA', currency='USD', localSymbol='TECL', tradingClass='TECL'), order=StopOrder(orderId=664, clientId=10, action='SELL', totalQuantity=112, auxPrice=99.86, parentId=662), orderStatus=OrderStatus(orderId=664, status='Cancelled', filled=0.0, remaining=0.0, avgFillPrice=0.0, permId=0, parentId=0, lastFillPrice=0.0, clientId=0, whyHeld='', mktCapPrice=0.0), fills=[], log=[TradeLogEntry(time=datetime.datetime(2026, 3, 13, 13, 42, 52, 992099, tzinfo=datetime.timezone.utc), status='PendingSubmit', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 13, 13, 42, 53, 216078, tzinfo=datetime.timezone.utc), status='Cancelled', message='Error 10349, reqId 664: Order TIF was set to DAY based on order preset.', errorCode=10349)], advancedError='')
+     09:43:00 Canceled order: Trade(contract=Stock(conId=444884769, symbol='SNOW', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='SNOW', tradingClass='SNOW'), order=LimitOrder(orderId=666, clientId=10, action='BUY', totalQuantity=76, lmtPrice=180.53, transmit=False), orderStatus=OrderStatus(orderId=666, status='Cancelled', filled=0.0, remaining=0.0, avgFillPrice=0.0, permId=0, parentId=0, lastFillPrice=0.0, clientId=0, whyHeld='', mktCapPrice=0.0), fills=[], log=[TradeLogEntry(time=datetime.datetime(2026, 3, 13, 13, 43, 0, 71664, tzinfo=datetime.timezone.utc), status='PendingSubmit', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 13, 13, 43, 0, 77512, tzinfo=datetime.timezone.utc), status='Cancelled', message='Error 10349, reqId 666: Order TIF was set to DAY based on order preset.', errorCode=10349)], advancedError='')
+
+─────────────────────────────────────────────
+7. IN-PLAY / UNIVERSE TAGGING
+   In-play symbols loaded: 31
+   STATIC: 53 symbols
+   IN_PLAY: 31 symbols
+
+─────────────────────────────────────────────
+BAR PROGRESS
+   Symbols receiving bars: 83
+   Min bars: 390  Max bars: 390  Avg: 390
+   ⚠ Zero bars received: BESI
+
+=================================================================
+VERDICT: 82 issue(s) found — review above
+=================================================================

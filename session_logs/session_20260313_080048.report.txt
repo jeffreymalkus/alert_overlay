@@ -1,0 +1,50 @@
+=================================================================
+  STRATEGYMANAGER — FIRST SESSION VALIDATION REPORT
+=================================================================
+
+Engine:    StrategyManager (step)
+Session:   08:00:48 → 08:10:47
+Runners:   83
+
+─────────────────────────────────────────────
+1. TOTAL ALERT COUNT
+   Alerts fired:   0
+   Alerts blocked: 0 (tape permission gate)
+   LONG:  0
+   SHORT: 0
+
+─────────────────────────────────────────────
+2. ALERTS BY STRATEGY
+   (none)
+
+
+─────────────────────────────────────────────
+3. BAD ENTRY/STOP/TARGET VALUES
+   PASS — no suspicious values detected
+
+─────────────────────────────────────────────
+4. DUPLICATE / SPAM BEHAVIOR
+   PASS — no rapid-fire duplicates detected
+
+─────────────────────────────────────────────
+5. STARTUP & OPEN LATENCY
+   Dashboard start:  08:00:48
+   IBKR connected:   08:00:49
+   All runners ready: 08:03:28
+   First bar:        (none seen)
+   First alert:      (none fired)
+   Startup→Ready:    160s
+
+─────────────────────────────────────────────
+6. RUNTIME EXCEPTIONS
+   PASS — zero errors
+
+─────────────────────────────────────────────
+7. IN-PLAY / UNIVERSE TAGGING
+   In-play symbols loaded: 25
+   STATIC: 58 symbols
+   IN_PLAY: 25 symbols
+
+=================================================================
+VERDICT: CLEAN SESSION — no issues detected
+=================================================================

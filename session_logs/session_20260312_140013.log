@@ -1,0 +1,6 @@
+09:30:00 [INFO] Dashboard running at http://localhost:8877
+09:30:01 [INFO] Loaded 25 in-play symbols: AAL, ADBE...
+09:30:05 [INFO] All 10 runners set up. Starting reqMktData subscriptions...
+09:35:00 [INFO] [AAPL] bar #10 @ 09:35 C=175.50 | signals=1
+09:35:00 [INFO] [AAPL] ALERT: LONG SECOND_CHANCE @ 175.50 perm=0.300
+09:36:00 [INFO] Portfolio D monitoring 10/10 symbols. Engine: StrategyManager (step). Dashboard: http://localhost:8877

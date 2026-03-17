@@ -1,0 +1,48 @@
+=================================================================
+  STRATEGYMANAGER — FIRST SESSION VALIDATION REPORT
+=================================================================
+
+Engine:    UNKNOWN
+Session:   08:55:35 → 08:55:38
+Runners:   0
+
+─────────────────────────────────────────────
+1. TOTAL ALERT COUNT
+   Alerts fired:   0
+   Alerts blocked: 0 (tape permission gate)
+   LONG:  0
+   SHORT: 0
+
+─────────────────────────────────────────────
+2. ALERTS BY STRATEGY
+   (none)
+
+
+─────────────────────────────────────────────
+3. BAD ENTRY/STOP/TARGET VALUES
+   PASS — no suspicious values detected
+
+─────────────────────────────────────────────
+4. DUPLICATE / SPAM BEHAVIOR
+   PASS — no rapid-fire duplicates detected
+
+─────────────────────────────────────────────
+5. STARTUP & OPEN LATENCY
+   Dashboard start:  08:55:35
+   IBKR connected:   N/A (offline?)
+   All runners ready: ?
+   First bar:        (none seen)
+   First alert:      (none fired)
+
+─────────────────────────────────────────────
+6. RUNTIME EXCEPTIONS
+   PASS — zero errors
+
+─────────────────────────────────────────────
+7. IN-PLAY / UNIVERSE TAGGING
+   In-play symbols loaded: 31
+   (no setup data — offline mode?)
+
+=================================================================
+VERDICT: CLEAN SESSION — no issues detected
+=================================================================

@@ -1306,6 +1306,151 @@ class SignalEngine:
         rsi_long_fits = True if not cfg.rsi_require_regime else long_fits_regime
         rsi_short_fits = True if not cfg.rsi_require_regime else short_fits_regime
 
+        # ── HitchHiker Detection ──
+        hh_long_signal, hh_short_signal = False, False
+        hh_long_stop, hh_short_stop = NaN, NaN
+        hh_long_quality, hh_short_quality = 0, 0
+        in_hh_time = (bar.time_hhmm >= cfg.hh_time_start and
+                      bar.time_hhmm <= cfg.hh_time_end)
+
+        if cfg.show_hitchhiker and after_or and i_atr_ready:
+            # Detect BEFORE update: update expands consol bounds on breakout bar
+            hh_long_signal, hh_long_stop, hh_long_quality = self._detect_hitchhiker(
+                bar, ds, cfg, 1, e9, vw, i_atr_safe, d_atr_safe,
+                in_hh_time, htf_bull)
+            hh_short_signal, hh_short_stop, hh_short_quality = self._detect_hitchhiker(
+                bar, ds, cfg, -1, e9, vw, i_atr_safe, d_atr_safe,
+                in_hh_time, htf_bear)
+            self._update_hitchhiker_state(bar, ds, cfg, 1, e9, vw, i_atr_safe)
+            self._update_hitchhiker_state(bar, ds, cfg, -1, e9, vw, i_atr_safe)
+            # Market alignment gate
+            if cfg.hh_require_market_align:
+                if not mkt_bull:
+                    hh_long_signal = False
+                if not mkt_bear:
+                    hh_short_signal = False
+
+        # ── Fashionably Late Detection ──
+        fl_long_signal, fl_short_signal = False, False
+        fl_long_stop, fl_short_stop = NaN, NaN
+        fl_long_quality, fl_short_quality = 0, 0
+        in_fl_time = (bar.time_hhmm >= cfg.fl_time_start and
+                      bar.time_hhmm <= cfg.fl_time_end)
+
+        if cfg.show_fashionably_late and after_or and i_atr_ready:
+            self._update_fashionably_late_state(bar, ds, cfg, e9, vw, i_atr_safe)
+            fl_long_signal, fl_long_stop, fl_long_quality = self._detect_fashionably_late(
+                bar, ds, cfg, 1, e9, vw, i_atr_safe, d_atr_safe,
+                in_fl_time, htf_bull)
+            fl_short_signal, fl_short_stop, fl_short_quality = self._detect_fashionably_late(
+                bar, ds, cfg, -1, e9, vw, i_atr_safe, d_atr_safe,
+                in_fl_time, htf_bear)
+
+        # ── Back$ide Detection ──
+        bs_long_signal, bs_short_signal = False, False
+        bs_long_stop, bs_short_stop = NaN, NaN
+        bs_long_quality, bs_short_quality = 0, 0
+        in_bs_time = (bar.time_hhmm >= cfg.bs_time_start and
+                      bar.time_hhmm <= cfg.bs_time_end)
+
+        if cfg.show_backside and after_or and i_atr_ready:
+            # Detect BEFORE update: update expands consol bounds on breakout bar
+            bs_long_signal, bs_long_stop, bs_long_quality = self._detect_backside(
+                bar, ds, cfg, 1, e9, vw, i_atr_safe, d_atr_safe,
+                in_bs_time, htf_bull)
+            bs_short_signal, bs_short_stop, bs_short_quality = self._detect_backside(
+                bar, ds, cfg, -1, e9, vw, i_atr_safe, d_atr_safe,
+                in_bs_time, htf_bear)
+            self._update_backside_state(bar, ds, cfg, 1, e9, vw, i_atr_safe)
+            self._update_backside_state(bar, ds, cfg, -1, e9, vw, i_atr_safe)
+
+        # ── RubberBand Detection ──
+        rb_long_signal, rb_short_signal = False, False
+        rb_long_stop, rb_short_stop = NaN, NaN
+        rb_long_quality, rb_short_quality = 0, 0
+        in_rb_time = (bar.time_hhmm >= cfg.rb_time_start and
+                      bar.time_hhmm <= cfg.rb_time_end)
+
+        if cfg.show_rubberband and after_or and i_atr_ready:
+            self._update_rubberband_state(bar, ds, cfg, i_atr_safe, rvol_tod)
+            rb_long_signal, rb_long_stop, rb_long_quality = self._detect_rubberband(
+                bar, ds, cfg, 1, e9, vw, i_atr_safe, d_atr_safe,
+                rvol_tod, in_rb_time, htf_bull)
+            rb_short_signal, rb_short_stop, rb_short_quality = self._detect_rubberband(
+                bar, ds, cfg, -1, e9, vw, i_atr_safe, d_atr_safe,
+                rvol_tod, in_rb_time, htf_bear)
+
+        # ── FL Momentum Rebuild Detection (long-only) ──
+        flr_signal = False
+        flr_stop = NaN
+        flr_quality = 0
+        in_flr_time = (bar.time_hhmm >= cfg.flr_time_start and
+                       bar.time_hhmm <= cfg.flr_time_end)
+
+        if cfg.show_fl_momentum_rebuild and after_or and i_atr_ready:
+            self._update_fl_momentum_rebuild_state(bar, ds, cfg, e9, vw, i_atr_safe)
+            flr_signal, flr_stop, flr_quality = self._detect_fl_momentum_rebuild(
+                bar, ds, cfg, e9, vw, i_atr_safe, d_atr_safe,
+                in_flr_time, mkt_bull, rvol_tod)
+            if cfg.flr_require_market_align and not mkt_bull:
+                flr_signal = False
+
+        # ── EMA9 First Pullback Detection (long-only) ──
+        e9pb_signal = False
+        e9pb_stop = NaN
+        e9pb_quality = 0
+        in_e9pb_time = (bar.time_hhmm >= cfg.e9pb_time_start and
+                        bar.time_hhmm <= cfg.e9pb_time_end)
+        e9_prev_val = self._bars[-1]._e9 if self._bars else e9
+
+        if cfg.show_ema9_first_pb and after_or and i_atr_ready:
+            self._update_ema9_first_pb_state(bar, ds, cfg, e9, vw, i_atr_safe,
+                                              vol_ma if vol_ma > 0 else 1.0)
+            e9pb_signal, e9pb_stop, e9pb_quality = self._detect_ema9_first_pb(
+                bar, ds, cfg, e9, vw, i_atr_safe, d_atr_safe,
+                in_e9pb_time, mkt_bull, rvol_tod, e9_prev_val)
+
+        # ── EMA9 Backside Range Break Detection (long-only) ──
+        e9rb_signal = False
+        e9rb_stop = NaN
+        e9rb_quality = 0
+        in_e9rb_time = (bar.time_hhmm >= cfg.e9rb_time_start and
+                        bar.time_hhmm <= cfg.e9rb_time_end)
+
+        if cfg.show_ema9_backside_rb and after_or and i_atr_ready:
+            # Detect BEFORE update: update expands range bounds on breakout bar
+            e9rb_signal, e9rb_stop, e9rb_quality = self._detect_ema9_backside_rb(
+                bar, ds, cfg, e9, vw, i_atr_safe, d_atr_safe,
+                in_e9rb_time, mkt_bull, e9_prev_val)
+            self._update_ema9_backside_rb_state(bar, ds, cfg, e9, vw, i_atr_safe)
+
+        # Regime fit for new setups
+        # HitchHiker is a breakout-continuation: fits trend days
+        hh_long_fits = self._fits_regime(after_late_grace, ds.regime_known, is_trend_day,
+                                          is_rotation_day, True, False, False)
+        hh_short_fits = hh_long_fits
+        # Fashionably Late is a momentum-convergence breakout: fits trend days
+        fl_long_fits = self._fits_regime(after_late_grace, ds.regime_known, is_trend_day,
+                                          is_rotation_day, True, False, False)
+        fl_short_fits = fl_long_fits
+        # Back$ide is a counter-trend reversion to VWAP: fits rotation days
+        bs_long_fits = self._fits_regime(after_late_grace, ds.regime_known, is_trend_day,
+                                          is_rotation_day, False, True, False)
+        bs_short_fits = bs_long_fits
+        # RubberBand is a counter-trend snapback: fits rotation days
+        rb_long_fits = self._fits_regime(after_late_grace, ds.regime_known, is_trend_day,
+                                          is_rotation_day, False, True, False)
+        rb_short_fits = rb_long_fits
+        # FL Momentum Rebuild is a momentum-convergence: fits trend days
+        flr_fits = self._fits_regime(after_late_grace, ds.regime_known, is_trend_day,
+                                      is_rotation_day, True, False, False)
+        # EMA9 First Pullback is a continuation: fits trend days
+        e9pb_fits = self._fits_regime(after_late_grace, ds.regime_known, is_trend_day,
+                                       is_rotation_day, True, False, False)
+        # EMA9 Backside Range Break is a counter-trend recovery: fits rotation days
+        e9rb_fits = self._fits_regime(after_late_grace, ds.regime_known, is_trend_day,
+                                       is_rotation_day, False, True, False)
+
         # ── Emit breakout + short-struct + ema_scalp + vwap_reclaim + vka signals ──
         breakout_signals = []
 
@@ -1326,6 +1471,17 @@ class SignalEngine:
             (vka_signal, 1, SetupId.VKA, vka_stop, vka_quality, vka_fits),
             (rsi_long_signal, 1, SetupId.RSI_MIDLINE_LONG, rsi_long_stop, rsi_long_quality, rsi_long_fits),
             (rsi_short_signal, -1, SetupId.RSI_BOUNCEFAIL_SHORT, rsi_short_stop, rsi_short_quality, rsi_short_fits),
+            (hh_long_signal, 1, SetupId.HITCHHIKER, hh_long_stop, hh_long_quality, hh_long_fits),
+            (hh_short_signal, -1, SetupId.HITCHHIKER, hh_short_stop, hh_short_quality, hh_short_fits),
+            (fl_long_signal, 1, SetupId.FASHIONABLY_LATE, fl_long_stop, fl_long_quality, fl_long_fits),
+            (fl_short_signal, -1, SetupId.FASHIONABLY_LATE, fl_short_stop, fl_short_quality, fl_short_fits),
+            (bs_long_signal, 1, SetupId.BACKSIDE, bs_long_stop, bs_long_quality, bs_long_fits),
+            (bs_short_signal, -1, SetupId.BACKSIDE, bs_short_stop, bs_short_quality, bs_short_fits),
+            (rb_long_signal, 1, SetupId.RUBBERBAND, rb_long_stop, rb_long_quality, rb_long_fits),
+            (rb_short_signal, -1, SetupId.RUBBERBAND, rb_short_stop, rb_short_quality, rb_short_fits),
+            (flr_signal, 1, SetupId.FL_MOMENTUM_REBUILD, flr_stop, flr_quality, flr_fits),
+            (e9pb_signal, 1, SetupId.EMA9_FIRST_PB, e9pb_stop, e9pb_quality, e9pb_fits),
+            (e9rb_signal, 1, SetupId.EMA9_BACKSIDE_RB, e9rb_stop, e9rb_quality, e9rb_fits),
         ]:
             if not has_sig:
                 continue
@@ -1368,6 +1524,20 @@ class SignalEngine:
                 q_gate = cfg.sc2_min_quality
             elif setup_id in (SetupId.RSI_MIDLINE_LONG, SetupId.RSI_BOUNCEFAIL_SHORT):
                 q_gate = 0  # RSI setups are self-gated by alignment filters
+            elif setup_id == SetupId.HITCHHIKER:
+                q_gate = cfg.hh_min_quality
+            elif setup_id == SetupId.FASHIONABLY_LATE:
+                q_gate = cfg.fl_min_quality
+            elif setup_id == SetupId.BACKSIDE:
+                q_gate = cfg.bs_min_quality
+            elif setup_id == SetupId.RUBBERBAND:
+                q_gate = cfg.rb_min_quality
+            elif setup_id == SetupId.FL_MOMENTUM_REBUILD:
+                q_gate = cfg.flr_min_quality
+            elif setup_id == SetupId.EMA9_FIRST_PB:
+                q_gate = cfg.e9pb_min_quality
+            elif setup_id == SetupId.EMA9_BACKSIDE_RB:
+                q_gate = cfg.e9rb_min_quality
             else:
                 q_gate = cfg.min_quality
             if quality < q_gate:
@@ -1403,6 +1573,52 @@ class SignalEngine:
                 target = bar.close + direction * cfg.rsi_target_r * risk
                 reward = abs(target - bar.close)
                 rr = reward / risk if risk > 0 else 0.0
+            elif setup_id == SetupId.BACKSIDE:
+                # Back$ide: use 2R target (recovery continuation past consolidation)
+                # VWAP target is wrong — by breakout time, price has crossed VWAP
+                target = bar.close + direction * 2.0 * risk
+                reward = 2.0 * risk
+                rr = 2.0
+            elif setup_id == SetupId.RUBBERBAND:
+                # RubberBand: use VWAP as target if configured, else R:R
+                if cfg.rb_target_vwap and not _isnan(vw):
+                    target = vw
+                    reward = abs(target - bar.close)
+                    rr = reward / risk if risk > 0 else 0.0
+                else:
+                    target = bar.close + direction * cfg.rb_target_rr_2 * risk
+                    reward = cfg.rb_target_rr_2 * risk
+                    rr = cfg.rb_target_rr_2
+            elif setup_id == SetupId.FASHIONABLY_LATE:
+                # FL computes its own target in the detector; use 2R fallback here
+                target = bar.close + direction * 2.0 * risk
+                reward = 2.0 * risk
+                rr = 2.0
+            elif setup_id == SetupId.FL_MOMENTUM_REBUILD:
+                # Measured move target: decline distance projected above entry
+                if cfg.flr_target_measured_move and not _isnan(ds.flr_decline_high):
+                    measured = ds.flr_decline_high - ds.flr_decline_low
+                    target = bar.close + measured
+                    reward = target - bar.close
+                    rr = reward / risk if risk > 0 else 0.0
+                else:
+                    target = bar.close + cfg.flr_target_r * risk
+                    reward = cfg.flr_target_r * risk
+                    rr = cfg.flr_target_r
+            elif setup_id == SetupId.EMA9_FIRST_PB:
+                target = bar.close + cfg.e9pb_target_r * risk
+                reward = cfg.e9pb_target_r * risk
+                rr = cfg.e9pb_target_r
+            elif setup_id == SetupId.EMA9_BACKSIDE_RB:
+                # Target VWAP if configured, else R:R
+                if cfg.e9rb_target_vwap and not _isnan(vw) and vw > bar.close:
+                    target = vw
+                    reward = vw - bar.close
+                    rr = reward / risk if risk > 0 else 0.0
+                else:
+                    target = bar.close + cfg.e9rb_target_r * risk
+                    reward = cfg.e9rb_target_r * risk
+                    rr = cfg.e9rb_target_r
             else:
                 # Breakout setups do NOT use static-target RR gating.
                 # Exit is trail/time-based; a fake OR-range target would suppress valid trades.
@@ -1421,6 +1637,10 @@ class SignalEngine:
                 cd_attr = f"cd_{'long' if direction == 1 else 'short'}_ema_scalp"
             elif family == SetupFamily.TREND:
                 cd_attr = f"cd_{'long' if direction == 1 else 'short'}_trend"
+            elif family == SetupFamily.MOMENTUM:
+                cd_attr = f"cd_{'long' if direction == 1 else 'short'}_momentum"
+            elif family == SetupFamily.CONSOL_BREAK:
+                cd_attr = f"cd_{'long' if direction == 1 else 'short'}_consol_break"
             else:
                 cd_attr = f"cd_{'long' if direction == 1 else 'short'}_breakout"
             cd_val = getattr(ds, cd_attr, 999)
@@ -1685,6 +1905,10 @@ class SignalEngine:
             return ds.cd_short_struct
         if family == SetupFamily.EMA_SCALP:
             return ds.cd_long_ema_scalp if direction == 1 else ds.cd_short_ema_scalp
+        if family == SetupFamily.MOMENTUM:
+            return ds.cd_long_momentum if direction == 1 else ds.cd_short_momentum
+        if family == SetupFamily.CONSOL_BREAK:
+            return ds.cd_long_consol_break if direction == 1 else ds.cd_short_consol_break
         if direction == 1:
             if family == SetupFamily.REVERSAL:
                 return ds.cd_long_rev
@@ -1714,6 +1938,18 @@ class SignalEngine:
             else:
                 ds.cd_short_ema_scalp = 0
             return
+        if family == SetupFamily.MOMENTUM:
+            if direction == 1:
+                ds.cd_long_momentum = 0
+            else:
+                ds.cd_short_momentum = 0
+            return
+        if family == SetupFamily.CONSOL_BREAK:
+            if direction == 1:
+                ds.cd_long_consol_break = 0
+            else:
+                ds.cd_short_consol_break = 0
+            return
         if direction == 1:
             if family == SetupFamily.REVERSAL:
                 ds.cd_long_rev = 0
@@ -1739,7 +1975,9 @@ class SignalEngine:
                       'cd_short_rev', 'cd_short_trend', 'cd_short_ema',
                       'cd_long_breakout', 'cd_short_breakout',
                       'cd_short_struct',
-                      'cd_long_ema_scalp', 'cd_short_ema_scalp']:
+                      'cd_long_ema_scalp', 'cd_short_ema_scalp',
+                      'cd_long_momentum', 'cd_short_momentum',
+                      'cd_long_consol_break', 'cd_short_consol_break']:
             val = getattr(ds, attr)
             if 0 < val < 999:  # 0 means just reset this bar, skip
                 setattr(ds, attr, val + 1)
@@ -3862,3 +4100,1118 @@ class SignalEngine:
         if htf_aligned:
             score += 1
         return min(score, 6)
+
+    # ═══════════════════════════════════════════════════════════════════
+    #  HITCHHIKER — Opening drive → tight consolidation → breakout
+    # ═══════════════════════════════════════════════════════════════════
+
+    def _update_hitchhiker_state(self, bar: Bar, ds: DayState, cfg, direction: int,
+                                  e9: float, vw: float, i_atr: float):
+        """Track opening drive and consolidation for HitchHiker setup."""
+        if direction == 1:
+            pfx = "hh_long"
+        else:
+            pfx = "hh_short"
+
+        drive_confirmed = getattr(ds, f"{pfx}_drive_confirmed")
+        consol_active = getattr(ds, f"{pfx}_consol_active")
+        triggered = getattr(ds, f"{pfx}_triggered")
+
+        if triggered:
+            return
+
+        day_range = ds.session_high - ds.session_low if not _isnan(ds.session_high) else 0.0
+
+        # Phase 1: Detect opening drive
+        if not drive_confirmed and not consol_active:
+            if not _isnan(ds.session_open) and i_atr > 0:
+                if direction == 1:
+                    drive_dist = bar.high - ds.session_open
+                    if drive_dist >= cfg.hh_drive_min_atr * i_atr:
+                        setattr(ds, f"{pfx}_drive_confirmed", True)
+                        setattr(ds, f"{pfx}_drive_high", bar.high)
+                else:
+                    drive_dist = ds.session_open - bar.low
+                    if drive_dist >= cfg.hh_drive_min_atr * i_atr:
+                        setattr(ds, f"{pfx}_drive_confirmed", True)
+                        setattr(ds, f"{pfx}_drive_low", bar.low)
+            return
+
+        # Phase 2: Track consolidation
+        if drive_confirmed and not consol_active:
+            # Start consolidation when bar doesn't extend the drive meaningfully
+            if direction == 1:
+                drive_high = getattr(ds, f"{pfx}_drive_high")
+                # Bar close is within the recent range (not extending)
+                if bar.close < drive_high:
+                    setattr(ds, f"{pfx}_consol_active", True)
+                    setattr(ds, f"{pfx}_consol_bars", 1)
+                    setattr(ds, f"{pfx}_consol_high", bar.high)
+                    setattr(ds, f"{pfx}_consol_low", bar.low)
+                    setattr(ds, f"{pfx}_consol_total_vol", bar.volume)
+                    bar_range = bar.high - bar.low
+                    wick = (bar_range - abs(bar.close - bar.open)) / bar_range if bar_range > 0 else 0
+                    setattr(ds, f"{pfx}_consol_total_wick", wick)
+                else:
+                    setattr(ds, f"{pfx}_drive_high", max(drive_high, bar.high))
+            else:
+                drive_low = getattr(ds, f"{pfx}_drive_low")
+                if bar.close > drive_low:
+                    setattr(ds, f"{pfx}_consol_active", True)
+                    setattr(ds, f"{pfx}_consol_bars", 1)
+                    setattr(ds, f"{pfx}_consol_high", bar.high)
+                    setattr(ds, f"{pfx}_consol_low", bar.low)
+                    setattr(ds, f"{pfx}_consol_total_vol", bar.volume)
+                    bar_range = bar.high - bar.low
+                    wick = (bar_range - abs(bar.close - bar.open)) / bar_range if bar_range > 0 else 0
+                    setattr(ds, f"{pfx}_consol_total_wick", wick)
+                else:
+                    setattr(ds, f"{pfx}_drive_low", min(drive_low, bar.low))
+            return
+
+        if consol_active:
+            c_high = getattr(ds, f"{pfx}_consol_high")
+            c_low = getattr(ds, f"{pfx}_consol_low")
+            c_bars = getattr(ds, f"{pfx}_consol_bars")
+            c_vol = getattr(ds, f"{pfx}_consol_total_vol")
+            c_wick = getattr(ds, f"{pfx}_consol_total_wick")
+
+            # Check if bar breaks out (handled in detect, not here)
+            # Update consolidation bounds
+            new_high = max(c_high, bar.high)
+            new_low = min(c_low, bar.low)
+            consol_range = new_high - new_low
+
+            # If consolidation gets too wide, reset
+            if i_atr > 0 and consol_range > cfg.hh_consol_max_range_atr * i_atr:
+                setattr(ds, f"{pfx}_consol_active", False)
+                setattr(ds, f"{pfx}_drive_confirmed", False)
+                return
+
+            # If too many bars, reset
+            if c_bars >= cfg.hh_consol_max_bars:
+                setattr(ds, f"{pfx}_consol_active", False)
+                setattr(ds, f"{pfx}_drive_confirmed", False)
+                return
+
+            setattr(ds, f"{pfx}_consol_high", new_high)
+            setattr(ds, f"{pfx}_consol_low", new_low)
+            setattr(ds, f"{pfx}_consol_bars", c_bars + 1)
+            setattr(ds, f"{pfx}_consol_total_vol", c_vol + bar.volume)
+            bar_range = bar.high - bar.low
+            wick = (bar_range - abs(bar.close - bar.open)) / bar_range if bar_range > 0 else 0
+            setattr(ds, f"{pfx}_consol_total_wick", c_wick + wick)
+
+    def _detect_hitchhiker(self, bar: Bar, ds: DayState, cfg, direction: int,
+                            e9: float, vw: float, i_atr: float, d_atr: float,
+                            in_time: bool, htf_aligned: bool):
+        """Detect HitchHiker breakout from opening-drive consolidation."""
+        if direction == 1:
+            pfx = "hh_long"
+        else:
+            pfx = "hh_short"
+
+        consol_active = getattr(ds, f"{pfx}_consol_active")
+        triggered = getattr(ds, f"{pfx}_triggered")
+
+        if not consol_active or triggered or not in_time:
+            return False, NaN, 0
+
+        c_high = getattr(ds, f"{pfx}_consol_high")
+        c_low = getattr(ds, f"{pfx}_consol_low")
+        c_bars = getattr(ds, f"{pfx}_consol_bars")
+        c_vol = getattr(ds, f"{pfx}_consol_total_vol")
+        c_wick = getattr(ds, f"{pfx}_consol_total_wick")
+
+        # Need minimum consolidation bars
+        if c_bars < cfg.hh_consol_min_bars:
+            return False, NaN, 0
+
+        consol_avg_vol = c_vol / c_bars if c_bars > 0 else 0
+        avg_wick = c_wick / c_bars if c_bars > 0 else 0
+
+        # Reject choppy consolidation
+        if avg_wick > cfg.hh_max_wick_pct:
+            return False, NaN, 0
+
+        day_range = ds.session_high - ds.session_low if not _isnan(ds.session_high) else 0
+
+        # Check consolidation is in upper/lower 1/3 of day range
+        if day_range > 0:
+            if direction == 1:
+                # Consol low should be in upper 1/3
+                threshold = ds.session_low + day_range * cfg.hh_consol_upper_pct
+                if c_low < threshold:
+                    return False, NaN, 0
+            else:
+                # Consol high should be in lower 1/3
+                threshold = ds.session_high - day_range * cfg.hh_consol_upper_pct
+                if c_high > threshold:
+                    return False, NaN, 0
+
+        # Check breakout
+        if direction == 1:
+            if bar.high <= c_high:
+                return False, NaN, 0
+            # Volume confirmation
+            if consol_avg_vol > 0 and bar.volume < cfg.hh_break_vol_frac * consol_avg_vol:
+                return False, NaN, 0
+            stop = c_low - 0.02
+        else:
+            if bar.low >= c_low:
+                return False, NaN, 0
+            if consol_avg_vol > 0 and bar.volume < cfg.hh_break_vol_frac * consol_avg_vol:
+                return False, NaN, 0
+            stop = c_high + 0.02
+
+        # Quality scoring
+        quality = 3  # base
+        if htf_aligned:
+            quality += 1
+        if consol_avg_vol > 0 and bar.volume >= 1.5 * consol_avg_vol:
+            quality += 1  # strong volume
+        if c_bars >= 8:
+            quality += 1  # extended consolidation is better
+
+        setattr(ds, f"{pfx}_triggered", True)
+        return True, stop, quality
+
+    # ═══════════════════════════════════════════════════════════════════
+    #  FASHIONABLY LATE — 9EMA crosses VWAP (momentum convergence)
+    # ═══════════════════════════════════════════════════════════════════
+
+    def _update_fashionably_late_state(self, bar: Bar, ds: DayState, cfg,
+                                        e9: float, vw: float, i_atr: float):
+        """Track 9EMA/VWAP relationship for Fashionably Late cross detection."""
+        prev_e9 = ds.fl_long_prior_e9
+        prev_vw = ds.fl_long_prior_vwap
+
+        # Track flat EMA bars (for rejection filter)
+        if not _isnan(prev_e9) and i_atr > 0:
+            e9_change = abs(e9 - prev_e9) / i_atr
+            if e9_change < 0.01:  # basically flat
+                ds.fl_long_flat_ema_bars += 1
+                ds.fl_short_flat_ema_bars += 1
+            else:
+                ds.fl_long_flat_ema_bars = 0
+                ds.fl_short_flat_ema_bars = 0
+
+        # Detect long cross: 9EMA crosses above VWAP
+        if not ds.fl_long_triggered and not ds.fl_long_crossed:
+            if not _isnan(prev_e9) and not _isnan(prev_vw):
+                was_below = prev_e9 <= prev_vw
+                now_above = e9 > vw
+                if was_below and now_above:
+                    # Check 9EMA is rising
+                    if i_atr > 0 and (e9 - prev_e9) / i_atr >= cfg.fl_ema_slope_min:
+                        # Check VWAP is flat or downsloping
+                        vwap_slope = abs(vw - prev_vw) / i_atr if i_atr > 0 else 0
+                        if vwap_slope <= cfg.fl_vwap_slope_max or vw <= prev_vw:
+                            ds.fl_long_crossed = True
+                            ds.fl_long_cross_price = bar.close
+                            ds.fl_long_lod_at_cross = ds.session_low if not _isnan(ds.session_low) else bar.low
+
+        # Detect short cross: 9EMA crosses below VWAP
+        if not ds.fl_short_triggered and not ds.fl_short_crossed:
+            if not _isnan(prev_e9) and not _isnan(prev_vw):
+                was_above = prev_e9 >= prev_vw
+                now_below = e9 < vw
+                if was_above and now_below:
+                    if i_atr > 0 and (prev_e9 - e9) / i_atr >= cfg.fl_ema_slope_min:
+                        vwap_slope = abs(vw - prev_vw) / i_atr if i_atr > 0 else 0
+                        if vwap_slope <= cfg.fl_vwap_slope_max or vw >= prev_vw:
+                            ds.fl_short_crossed = True
+                            ds.fl_short_cross_price = bar.close
+                            ds.fl_short_hod_at_cross = ds.session_high if not _isnan(ds.session_high) else bar.high
+
+        # Store current values for next bar
+        ds.fl_long_prior_e9 = e9
+        ds.fl_long_prior_vwap = vw
+        ds.fl_short_prior_e9 = e9
+        ds.fl_short_prior_vwap = vw
+
+    def _detect_fashionably_late(self, bar: Bar, ds: DayState, cfg, direction: int,
+                                  e9: float, vw: float, i_atr: float, d_atr: float,
+                                  in_time: bool, htf_aligned: bool):
+        """Detect Fashionably Late entry on 9EMA/VWAP cross."""
+        if not in_time:
+            return False, NaN, 0
+
+        if direction == 1:
+            if not ds.fl_long_crossed or ds.fl_long_triggered:
+                return False, NaN, 0
+            # Reject if EMA was flat too long before cross
+            if ds.fl_long_flat_ema_bars > cfg.fl_no_flat_ema_bars:
+                return False, NaN, 0
+            # Entry on the cross bar
+            cross_price = ds.fl_long_cross_price
+            lod = ds.fl_long_lod_at_cross
+            if _isnan(cross_price) or _isnan(lod):
+                return False, NaN, 0
+            # Stop: 1/3 distance from VWAP to LOD below VWAP
+            vwap_to_lod = vw - lod
+            if vwap_to_lod <= 0:
+                return False, NaN, 0
+            stop = vw - cfg.fl_stop_frac * vwap_to_lod
+            # Target: measured move (LOD to cross) projected above cross
+            if cfg.fl_target_measured_move:
+                measured = cross_price - lod
+                target = cross_price + measured
+            else:
+                target = cross_price + 2.0 * (cross_price - stop)  # 2R
+        else:
+            if not ds.fl_short_crossed or ds.fl_short_triggered:
+                return False, NaN, 0
+            if ds.fl_short_flat_ema_bars > cfg.fl_no_flat_ema_bars:
+                return False, NaN, 0
+            cross_price = ds.fl_short_cross_price
+            hod = ds.fl_short_hod_at_cross
+            if _isnan(cross_price) or _isnan(hod):
+                return False, NaN, 0
+            hod_to_vwap = hod - vw
+            if hod_to_vwap <= 0:
+                return False, NaN, 0
+            stop = vw + cfg.fl_stop_frac * hod_to_vwap
+            if cfg.fl_target_measured_move:
+                measured = hod - cross_price
+                target = cross_price - measured
+            else:
+                target = cross_price - 2.0 * (stop - cross_price)
+
+        # Quality scoring
+        quality = 3  # base
+        if htf_aligned:
+            quality += 1
+        # Volume during convergence > divergence (approximated: current vol above avg)
+        if bar.volume > 0:
+            quality += 1
+        risk = abs(bar.close - stop)
+        if risk > 0:
+            rr = abs(target - bar.close) / risk
+            if rr >= 2.5:
+                quality += 1
+
+        if direction == 1:
+            ds.fl_long_triggered = True
+        else:
+            ds.fl_short_triggered = True
+
+        return True, stop, quality
+
+    # ═══════════════════════════════════════════════════════════════════
+    #  BACKSIDE — Extended from VWAP → HH/HL → consolidation → snap
+    # ═══════════════════════════════════════════════════════════════════
+
+    def _update_backside_state(self, bar: Bar, ds: DayState, cfg, direction: int,
+                                e9: float, vw: float, i_atr: float):
+        """Track extension, HH/HL pattern, and consolidation for Back$ide setup."""
+        if direction == 1:
+            pfx = "bs_long"
+        else:
+            pfx = "bs_short"
+
+        triggered = getattr(ds, f"{pfx}_triggered")
+        if triggered:
+            return
+
+        extended = getattr(ds, f"{pfx}_extended")
+        consol_active = getattr(ds, f"{pfx}_consol_active")
+
+        # Phase 1: Detect extension from VWAP
+        if not extended:
+            if i_atr > 0 and not _isnan(vw):
+                if direction == 1:
+                    # For long backside: stock was extended BELOW VWAP
+                    extension = vw - bar.low
+                    if extension >= cfg.bs_min_extension_atr * i_atr:
+                        setattr(ds, f"{pfx}_extended", True)
+                        setattr(ds, f"{pfx}_prev_swing_low", bar.low)
+                        setattr(ds, f"{pfx}_prev_swing_high", bar.high)
+                else:
+                    # For short backside: stock was extended ABOVE VWAP
+                    extension = bar.high - vw
+                    if extension >= cfg.bs_min_extension_atr * i_atr:
+                        setattr(ds, f"{pfx}_extended", True)
+                        setattr(ds, f"{pfx}_prev_swing_high", bar.high)
+                        setattr(ds, f"{pfx}_prev_swing_low", bar.low)
+            return
+
+        # Phase 2: Track HH/HL (longs) or LL/LH (shorts)
+        if extended and not consol_active:
+            prev_high = getattr(ds, f"{pfx}_prev_swing_high")
+            prev_low = getattr(ds, f"{pfx}_prev_swing_low")
+            hh_count = getattr(ds, f"{pfx}_hh_count" if direction == 1 else f"{pfx}_ll_count")
+            hl_count = getattr(ds, f"{pfx}_hl_count" if direction == 1 else f"{pfx}_lh_count")
+
+            if direction == 1:
+                if bar.high > prev_high:
+                    ds.bs_long_hh_count += 1
+                    ds.bs_long_prev_swing_high = bar.high
+                if bar.low > prev_low:
+                    ds.bs_long_hl_count += 1
+                    ds.bs_long_prev_swing_low = bar.low
+
+                # Check if HH + HL requirement met AND price above 9EMA
+                if ds.bs_long_hh_count >= 1 and ds.bs_long_hl_count >= 1:
+                    if bar.close > e9:
+                        # Start consolidation tracking
+                        ds.bs_long_consol_active = True
+                        ds.bs_long_consol_bars = 1
+                        ds.bs_long_consol_high = bar.high
+                        ds.bs_long_consol_low = bar.low
+                        ds.bs_long_consol_total_vol = bar.volume
+            else:
+                if bar.low < prev_low:
+                    ds.bs_short_ll_count += 1
+                    ds.bs_short_prev_swing_low = bar.low
+                if bar.high < prev_high:
+                    ds.bs_short_lh_count += 1
+                    ds.bs_short_prev_swing_high = bar.high
+
+                if ds.bs_short_ll_count >= 1 and ds.bs_short_lh_count >= 1:
+                    if bar.close < e9:
+                        ds.bs_short_consol_active = True
+                        ds.bs_short_consol_bars = 1
+                        ds.bs_short_consol_high = bar.high
+                        ds.bs_short_consol_low = bar.low
+                        ds.bs_short_consol_total_vol = bar.volume
+            return
+
+        # Phase 3: Track consolidation
+        if consol_active:
+            c_bars = getattr(ds, f"{pfx}_consol_bars")
+            c_vol = getattr(ds, f"{pfx}_consol_total_vol")
+
+            if c_bars >= cfg.bs_consol_max_bars:
+                setattr(ds, f"{pfx}_consol_active", False)
+                return
+
+            setattr(ds, f"{pfx}_consol_high", max(getattr(ds, f"{pfx}_consol_high"), bar.high))
+            setattr(ds, f"{pfx}_consol_low", min(getattr(ds, f"{pfx}_consol_low"), bar.low))
+            setattr(ds, f"{pfx}_consol_bars", c_bars + 1)
+            setattr(ds, f"{pfx}_consol_total_vol", c_vol + bar.volume)
+
+    def _detect_backside(self, bar: Bar, ds: DayState, cfg, direction: int,
+                          e9: float, vw: float, i_atr: float, d_atr: float,
+                          in_time: bool, htf_aligned: bool):
+        """Detect Back$ide breakout from consolidation toward VWAP."""
+        if direction == 1:
+            pfx = "bs_long"
+        else:
+            pfx = "bs_short"
+
+        consol_active = getattr(ds, f"{pfx}_consol_active")
+        triggered = getattr(ds, f"{pfx}_triggered")
+
+        if not consol_active or triggered or not in_time:
+            return False, NaN, 0
+
+        c_high = getattr(ds, f"{pfx}_consol_high")
+        c_low = getattr(ds, f"{pfx}_consol_low")
+        c_bars = getattr(ds, f"{pfx}_consol_bars")
+        c_vol = getattr(ds, f"{pfx}_consol_total_vol")
+
+        if c_bars < cfg.bs_consol_min_bars:
+            return False, NaN, 0
+
+        consol_avg_vol = c_vol / c_bars if c_bars > 0 else 0
+
+        # Halfway gate: consolidation must be > halfway between extreme and VWAP
+        if cfg.bs_halfway_gate and not _isnan(vw):
+            if direction == 1:
+                lod = ds.session_low if not _isnan(ds.session_low) else c_low
+                midpoint = (lod + vw) / 2.0
+                if c_low < midpoint:
+                    return False, NaN, 0
+            else:
+                hod = ds.session_high if not _isnan(ds.session_high) else c_high
+                midpoint = (hod + vw) / 2.0
+                if c_high > midpoint:
+                    return False, NaN, 0
+
+        # Check breakout
+        if direction == 1:
+            if bar.high <= c_high:
+                return False, NaN, 0
+            if consol_avg_vol > 0 and bar.volume < cfg.bs_break_vol_frac * consol_avg_vol:
+                return False, NaN, 0
+            # Stop below most recent higher low (consol low)
+            stop = c_low - 0.02
+        else:
+            if bar.low >= c_low:
+                return False, NaN, 0
+            if consol_avg_vol > 0 and bar.volume < cfg.bs_break_vol_frac * consol_avg_vol:
+                return False, NaN, 0
+            stop = c_high + 0.02
+
+        # Quality scoring
+        quality = 3
+        if htf_aligned:
+            quality += 1
+        if c_bars >= 5:
+            quality += 1  # longer consolidation
+        if consol_avg_vol > 0 and bar.volume >= 1.4 * consol_avg_vol:
+            quality += 1
+
+        setattr(ds, f"{pfx}_triggered", True)
+        return True, stop, quality
+
+    # ═══════════════════════════════════════════════════════════════════
+    #  RUBBERBAND — Overextended acceleration → snapback
+    # ═══════════════════════════════════════════════════════════════════
+
+    def _update_rubberband_state(self, bar: Bar, ds: DayState, cfg, i_atr: float,
+                                  rvol_tod: float):
+        """Track extension, acceleration, and volume for RubberBand setup."""
+        # Always track volume bars for top-N check
+        ds.rb_volume_bars.append(bar.volume)
+
+        if _isnan(ds.session_open) or i_atr <= 0:
+            return
+
+        # ── Long RubberBand: stock extended DOWN, snapback UP ──
+        if not ds.rb_long_triggered and ds.rb_long_attempts < cfg.rb_max_attempts:
+            extension_down = ds.session_open - bar.low
+            if extension_down >= cfg.rb_min_extension_atr * i_atr:
+                # Track bars in downtrend for acceleration detection
+                ds.rb_long_trend_bars += 1
+
+                # Detect acceleration: last few bars have increasing vol + range
+                if ds.rb_long_trend_bars >= 4:
+                    recent_bars = list(self._bars)[-4:] if len(self._bars) >= 4 else list(self._bars)
+                    if len(recent_bars) >= 4:
+                        first_half_vol = sum(b.volume for b in recent_bars[:2]) / 2.0
+                        second_half_vol = sum(b.volume for b in recent_bars[2:]) / 2.0
+                        first_half_range = sum(b.high - b.low for b in recent_bars[:2]) / 2.0
+                        second_half_range = sum(b.high - b.low for b in recent_bars[2:]) / 2.0
+
+                        if (first_half_vol > 0 and
+                            second_half_vol >= cfg.rb_accel_vol_increase * first_half_vol and
+                            first_half_range > 0 and
+                            second_half_range >= cfg.rb_accel_range_increase * first_half_range):
+                            ds.rb_long_accel_detected = True
+                            ds.rb_long_prev_leg_avg_vol = first_half_vol
+                            ds.rb_long_prev_leg_avg_range = first_half_range
+            else:
+                # Not extended enough, keep tracking
+                if bar.close > ds.session_open:
+                    ds.rb_long_trend_bars = 0
+                    ds.rb_long_accel_detected = False
+
+        # ── Short RubberBand: stock extended UP, snapback DOWN ──
+        if not ds.rb_short_triggered and ds.rb_short_attempts < cfg.rb_max_attempts:
+            extension_up = bar.high - ds.session_open
+            if extension_up >= cfg.rb_min_extension_atr * i_atr:
+                ds.rb_short_trend_bars += 1
+
+                if ds.rb_short_trend_bars >= 4:
+                    recent_bars = list(self._bars)[-4:] if len(self._bars) >= 4 else list(self._bars)
+                    if len(recent_bars) >= 4:
+                        first_half_vol = sum(b.volume for b in recent_bars[:2]) / 2.0
+                        second_half_vol = sum(b.volume for b in recent_bars[2:]) / 2.0
+                        first_half_range = sum(b.high - b.low for b in recent_bars[:2]) / 2.0
+                        second_half_range = sum(b.high - b.low for b in recent_bars[2:]) / 2.0
+
+                        if (first_half_vol > 0 and
+                            second_half_vol >= cfg.rb_accel_vol_increase * first_half_vol and
+                            first_half_range > 0 and
+                            second_half_range >= cfg.rb_accel_range_increase * first_half_range):
+                            ds.rb_short_accel_detected = True
+                            ds.rb_short_prev_leg_avg_vol = first_half_vol
+                            ds.rb_short_prev_leg_avg_range = first_half_range
+            else:
+                if bar.close < ds.session_open:
+                    ds.rb_short_trend_bars = 0
+                    ds.rb_short_accel_detected = False
+
+    def _detect_rubberband(self, bar: Bar, ds: DayState, cfg, direction: int,
+                            e9: float, vw: float, i_atr: float, d_atr: float,
+                            rvol_tod: float, in_time: bool, htf_aligned: bool):
+        """Detect RubberBand snapback after overextended acceleration."""
+        if not in_time:
+            return False, NaN, 0
+
+        if direction == 1:
+            # Long snapback: was extended down, snapping up
+            if not ds.rb_long_accel_detected or ds.rb_long_triggered:
+                return False, NaN, 0
+            if ds.rb_long_attempts >= cfg.rb_max_attempts:
+                return False, NaN, 0
+
+            # RVOL gate
+            if not _isnan(rvol_tod) and rvol_tod < cfg.rb_min_rvol:
+                return False, NaN, 0
+
+            # Snapback candle: single green candle clears highs of N prior candles
+            if len(self._bars) < cfg.rb_snapback_bars + 1:
+                return False, NaN, 0
+            if bar.close <= bar.open:
+                return False, NaN, 0  # must be green/bullish
+
+            _bars_list = list(self._bars)
+            prior_highs = [b.high for b in _bars_list[-(cfg.rb_snapback_bars + 1):-1]]
+            if not all(bar.high > h for h in prior_highs):
+                return False, NaN, 0
+
+            # Snapback bar volume should be among top-N of day
+            if len(ds.rb_volume_bars) >= cfg.rb_snapback_vol_top_n:
+                sorted_vols = sorted(ds.rb_volume_bars, reverse=True)
+                threshold = sorted_vols[min(cfg.rb_snapback_vol_top_n - 1, len(sorted_vols) - 1)]
+                if bar.volume < threshold:
+                    return False, NaN, 0
+
+            # Don't fade a cleanly trending market
+            if cfg.rb_require_no_trend_fade and htf_aligned is False:
+                # htf_aligned for longs means market is bullish
+                # For rubberband long, we're buying a dip — market trending DOWN is bad
+                pass  # This is counter-trend by nature; skip aggressive market gating
+
+            stop = ds.session_low - 0.02 if not _isnan(ds.session_low) else bar.low - 0.02
+
+        else:
+            # Short snapback: was extended up, snapping down
+            if not ds.rb_short_accel_detected or ds.rb_short_triggered:
+                return False, NaN, 0
+            if ds.rb_short_attempts >= cfg.rb_max_attempts:
+                return False, NaN, 0
+
+            if not _isnan(rvol_tod) and rvol_tod < cfg.rb_min_rvol:
+                return False, NaN, 0
+
+            if len(self._bars) < cfg.rb_snapback_bars + 1:
+                return False, NaN, 0
+            if bar.close >= bar.open:
+                return False, NaN, 0  # must be red/bearish
+
+            _bars_list = list(self._bars)
+            prior_lows = [b.low for b in _bars_list[-(cfg.rb_snapback_bars + 1):-1]]
+            if not all(bar.low < lo for lo in prior_lows):
+                return False, NaN, 0
+
+            if len(ds.rb_volume_bars) >= cfg.rb_snapback_vol_top_n:
+                sorted_vols = sorted(ds.rb_volume_bars, reverse=True)
+                threshold = sorted_vols[min(cfg.rb_snapback_vol_top_n - 1, len(sorted_vols) - 1)]
+                if bar.volume < threshold:
+                    return False, NaN, 0
+
+            stop = ds.session_high + 0.02 if not _isnan(ds.session_high) else bar.high + 0.02
+
+        # Quality scoring
+        quality = 3  # base
+        if not _isnan(rvol_tod) and rvol_tod >= 5.0:
+            quality += 1  # very in play
+        if i_atr > 0:
+            extension = abs(bar.close - ds.session_open) / i_atr
+            if extension >= 4.0:
+                quality += 1  # massive extension
+        if len(ds.rb_volume_bars) >= 3:
+            sorted_vols = sorted(ds.rb_volume_bars, reverse=True)
+            if bar.volume >= sorted_vols[min(2, len(sorted_vols) - 1)]:
+                quality += 1  # top-3 volume bar
+
+        if direction == 1:
+            ds.rb_long_attempts += 1
+            ds.rb_long_triggered = True
+        else:
+            ds.rb_short_attempts += 1
+            ds.rb_short_triggered = True
+
+        return True, stop, quality
+
+    # ════════════════════════════════════════════════════════════════
+    # FL MOMENTUM REBUILD (long-only)
+    # 9EMA crosses above VWAP after meaningful decline + turn
+    # ════════════════════════════════════════════════════════════════
+
+    def _update_fl_momentum_rebuild_state(self, bar: Bar, ds, cfg, e9: float,
+                                           vw: float, i_atr: float):
+        """Track decline → turn → cross phases for FL Momentum Rebuild."""
+        if _isnan(e9) or _isnan(vw) or i_atr <= 0:
+            return
+
+        # Track session high
+        if _isnan(ds.flr_session_high) or bar.high > ds.flr_session_high:
+            ds.flr_session_high = bar.high
+
+        # ── Phase 1: Meaningful decline detection ──
+        if not _isnan(ds.flr_session_high):
+            decline_dist = ds.flr_session_high - bar.low
+            decline_atr = decline_dist / i_atr if i_atr > 0 else 0.0
+
+            if decline_atr >= cfg.flr_min_decline_atr and not ds.flr_decline_active:
+                ds.flr_decline_active = True
+                ds.flr_decline_high = ds.flr_session_high
+                ds.flr_decline_low = bar.low
+                ds.flr_decline_atr = decline_atr
+
+            if ds.flr_decline_active and bar.low < ds.flr_decline_low:
+                ds.flr_decline_low = bar.low
+                ds.flr_decline_atr = (ds.flr_decline_high - bar.low) / i_atr
+
+        # ── Phase 2: Turn detection with N-bar confirmation ──
+        if ds.flr_decline_active and not ds.flr_turn_detected:
+            hl_threshold = ds.flr_decline_low + cfg.flr_hl_tolerance_atr * i_atr
+            if bar.low > hl_threshold and bar.close > bar.open:
+                ds.flr_turn_confirm_bars += 1
+                if ds.flr_turn_confirm_bars >= cfg.flr_turn_confirm_bars:
+                    ds.flr_turn_detected = True
+                    ds.flr_turn_low = bar.low
+                    ds.flr_base_bars = 0
+            else:
+                # Reset confirmation counter on failure
+                ds.flr_turn_confirm_bars = 0
+
+        # Count base bars after turn
+        if ds.flr_turn_detected and not ds.flr_cross_fired:
+            ds.flr_base_bars += 1
+            if ds.flr_base_bars > cfg.flr_max_base_bars:
+                ds.flr_turn_detected = False
+                ds.flr_base_bars = 0
+
+        # ── Phase 3: Track prior e9/vwap for cross detection ──
+        if not _isnan(ds.flr_prior_e9) and i_atr > 0:
+            # Detect cross: prior e9 <= prior vwap, current e9 > current vwap
+            if (not _isnan(ds.flr_prior_vwap) and
+                ds.flr_prior_e9 <= ds.flr_prior_vwap and e9 > vw):
+                ds.flr_cross_fired = True
+                ds.flr_cross_bar_close = bar.close
+                ds.flr_cross_bar_vol = bar.volume
+
+        # Track slope history for acceleration detection
+        ds.flr_prior_prior_e9 = ds.flr_prior_e9
+        ds.flr_prior_e9 = e9
+        ds.flr_prior_vwap = vw
+
+    def _detect_fl_momentum_rebuild(self, bar: Bar, ds, cfg, e9: float,
+                                     vw: float, i_atr: float, d_atr: float,
+                                     in_time: bool, mkt_bull: bool,
+                                     rvol_tod: float) -> tuple:
+        """Detect FL Momentum Rebuild signal. Returns (signal, stop, quality)."""
+        if ds.flr_triggered:
+            return False, NaN, 0
+        if not in_time:
+            return False, NaN, 0
+        if not ds.flr_cross_fired:
+            return False, NaN, 0
+        if not ds.flr_turn_detected:
+            return False, NaN, 0
+        if not ds.flr_decline_active:
+            return False, NaN, 0
+
+        # Gate: cross bar must close above VWAP
+        if cfg.flr_cross_close_above_vwap and bar.close <= vw:
+            return False, NaN, 0
+
+        # Gate: clean cross bar (body percentage)
+        bar_range = bar.high - bar.low
+        if bar_range > 0:
+            body_pct = abs(bar.close - bar.open) / bar_range
+            if body_pct < cfg.flr_cross_body_pct:
+                return False, NaN, 0
+
+        # Gate: convergence volume
+        if rvol_tod < cfg.flr_cross_vol_min_rvol:
+            return False, NaN, 0
+
+        # Gate: market alignment
+        if cfg.flr_require_market_align and not mkt_bull:
+            return False, NaN, 0
+
+        # ── NEW: EMA slope acceleration gate ──
+        # Require 9EMA slope to be increasing (2nd derivative > 0)
+        # slope_current = (e9 - prior_e9) / atr
+        # slope_prev    = (prior_e9 - prior_prior_e9) / atr
+        # acceleration  = slope_current - slope_prev
+        ema_accel_bonus = False
+        if cfg.flr_require_ema_accel and i_atr > 0:
+            if (not _isnan(ds.flr_prior_e9) and not _isnan(ds.flr_prior_prior_e9)):
+                slope_cur = (e9 - ds.flr_prior_e9) / i_atr
+                slope_prev = (ds.flr_prior_e9 - ds.flr_prior_prior_e9) / i_atr
+                accel = slope_cur - slope_prev
+                if accel < cfg.flr_ema_accel_min:
+                    return False, NaN, 0
+                ema_accel_bonus = accel > cfg.flr_ema_accel_min * 2  # extra credit
+            else:
+                return False, NaN, 0  # need 3 bars of e9 history
+
+        # ── NEW: Volatility regime filter ──
+        if cfg.flr_require_high_vol_regime and d_atr > 0 and i_atr > 0:
+            vol_ratio = i_atr / d_atr
+            if vol_ratio < cfg.flr_vol_regime_min:
+                return False, NaN, 0
+
+        # ── Compute stop ──
+        measured_move = ds.flr_decline_high - ds.flr_decline_low
+
+        # NEW: Adaptive stop sizing — scale stop fraction with decline magnitude
+        if cfg.flr_adaptive_stop and i_atr > 0:
+            # Larger decline → tighter fraction (more room in absolute terms)
+            # decline_atr ranges from ~3 to ~8; map to stop_frac
+            norm = min(max((ds.flr_decline_atr - 2.0) / 6.0, 0.0), 1.0)  # 0..1
+            stop_frac = cfg.flr_stop_max_frac - norm * (cfg.flr_stop_max_frac - cfg.flr_stop_min_frac)
+        else:
+            stop_frac = cfg.flr_stop_frac
+
+        stop_dist = measured_move * stop_frac
+        stop = bar.close - stop_dist
+
+        if stop >= bar.close:
+            return False, NaN, 0
+
+        # ── Quality scoring ──
+        quality = 4  # base quality for meeting all gates
+
+        # +1 for deep decline (> 4 ATR when threshold is 3)
+        if ds.flr_decline_atr > cfg.flr_min_decline_atr + 1.0:
+            quality += 1
+
+        # +1 for strong rvol
+        if rvol_tod >= 1.5:
+            quality += 1
+
+        # +1 for close well above VWAP
+        if i_atr > 0 and (bar.close - vw) / i_atr > 0.3:
+            quality += 1
+
+        # +1 for EMA slope acceleration
+        if ema_accel_bonus:
+            quality += 1
+
+        # +1 for 2-bar confirmed turn (extra conviction)
+        if ds.flr_turn_confirm_bars >= 2:
+            quality += 1
+
+        ds.flr_triggered = True
+        return True, stop, min(quality, 10)
+
+    # ════════════════════════════════════════════════════════════════
+    # EMA9 FIRST PULLBACK (long-only)
+    # First meaningful pullback to rising 9EMA after opening drive
+    # ════════════════════════════════════════════════════════════════
+
+    def _update_ema9_first_pb_state(self, bar: Bar, ds, cfg, e9: float,
+                                     vw: float, i_atr: float, vol_ma: float):
+        """Track opening drive → pullback → trigger phases."""
+        if _isnan(e9) or i_atr <= 0:
+            return
+
+        open_price = ds.or_open if not _isnan(ds.or_open) else bar.open
+
+        # ── Phase 1: Opening drive detection ──
+        if not ds.e9pb_drive_confirmed and not ds.e9pb_pb_active:
+            # Track upward movement from open
+            if bar.close > bar.open and bar.close > e9:
+                if not ds.e9pb_drive_active:
+                    ds.e9pb_drive_active = True
+                    ds.e9pb_drive_bars = 1
+                    ds.e9pb_drive_high = bar.high
+                else:
+                    ds.e9pb_drive_bars += 1
+                    if bar.high > ds.e9pb_drive_high:
+                        ds.e9pb_drive_high = bar.high
+
+                # Check if drive meets criteria
+                if not _isnan(open_price):
+                    drive_dist = ds.e9pb_drive_high - open_price
+                    ds.e9pb_drive_distance = drive_dist / i_atr if i_atr > 0 else 0
+                    if (ds.e9pb_drive_distance >= cfg.e9pb_min_drive_atr and
+                        ds.e9pb_drive_bars >= cfg.e9pb_min_drive_bars):
+                        # Check VWAP gate
+                        if not cfg.e9pb_drive_close_above_vwap or (not _isnan(vw) and bar.close > vw):
+                            ds.e9pb_drive_confirmed = True
+            else:
+                # Down bar during drive tracking — reset if too early
+                if ds.e9pb_drive_active and ds.e9pb_drive_bars < cfg.e9pb_min_drive_bars:
+                    # Allow 1 down bar, but if it goes below 9EMA, reset
+                    if bar.close < e9:
+                        ds.e9pb_drive_active = False
+                        ds.e9pb_drive_bars = 0
+                        ds.e9pb_drive_high = NaN
+
+            # Expire drive if too many bars
+            if ds.e9pb_drive_active and ds.e9pb_drive_bars > cfg.e9pb_max_drive_bars:
+                ds.e9pb_drive_active = False
+
+        # ── Phase 2: Pullback tracking ──
+        if ds.e9pb_drive_confirmed and not ds.e9pb_triggered:
+            if not ds.e9pb_pb_active:
+                # Detect pullback start: bar pulls toward 9EMA
+                # Close below drive high AND close near/below 9EMA or retraces
+                if bar.close < ds.e9pb_drive_high and bar.low <= e9 + 0.3 * i_atr:
+                    ds.e9pb_pb_active = True
+                    ds.e9pb_pb_bars = 1
+                    ds.e9pb_pb_low = bar.low
+                    ds.e9pb_pb_vol_total = bar.volume
+                    ds.e9pb_pb_closed_below_e9 = 1 if bar.close < e9 else 0
+            else:
+                ds.e9pb_pb_bars += 1
+                ds.e9pb_pb_vol_total += bar.volume
+                if bar.low < ds.e9pb_pb_low:
+                    ds.e9pb_pb_low = bar.low
+                if bar.close < e9:
+                    ds.e9pb_pb_closed_below_e9 += 1
+
+                # Compute depth
+                if not _isnan(ds.e9pb_drive_high) and not _isnan(open_price):
+                    drive_range = ds.e9pb_drive_high - open_price
+                    if drive_range > 0:
+                        ds.e9pb_pb_depth_pct = (ds.e9pb_drive_high - ds.e9pb_pb_low) / drive_range
+
+                # Expire pullback if too many bars
+                if ds.e9pb_pb_bars > cfg.e9pb_max_pb_bars:
+                    ds.e9pb_pb_active = False
+                    ds.e9pb_pb_bars = 0
+
+    def _detect_ema9_first_pb(self, bar: Bar, ds, cfg, e9: float,
+                               vw: float, i_atr: float, d_atr: float,
+                               in_time: bool, mkt_bull: bool,
+                               rvol_tod: float, e9_prev: float) -> tuple:
+        """Detect EMA9 First Pullback signal. Returns (signal, stop, quality)."""
+        if ds.e9pb_triggered:
+            return False, NaN, 0
+        if not in_time:
+            return False, NaN, 0
+        if not ds.e9pb_drive_confirmed:
+            return False, NaN, 0
+        if not ds.e9pb_pb_active:
+            return False, NaN, 0
+        if ds.e9pb_pb_bars < 1:
+            return False, NaN, 0
+
+        # Gate: pullback depth not too deep
+        if ds.e9pb_pb_depth_pct > cfg.e9pb_max_pb_depth_pct:
+            return False, NaN, 0
+
+        # Gate: not too many closes below 9EMA
+        if ds.e9pb_pb_closed_below_e9 > cfg.e9pb_max_pb_closes_below_e9:
+            return False, NaN, 0
+
+        # Trigger bar quality: must be a bounce bar
+        # Close above 9EMA, in upper portion of range, decent body
+        if cfg.e9pb_trigger_above_e9 and bar.close <= e9:
+            return False, NaN, 0
+
+        bar_range = bar.high - bar.low
+        if bar_range > 0:
+            close_pct = (bar.close - bar.low) / bar_range
+            body_pct = abs(bar.close - bar.open) / bar_range
+            if close_pct < cfg.e9pb_trigger_close_pct:
+                return False, NaN, 0
+            if body_pct < cfg.e9pb_trigger_body_pct:
+                return False, NaN, 0
+
+        # Close must be above open (bullish bar)
+        if bar.close <= bar.open:
+            return False, NaN, 0
+
+        # Gate: 9EMA must be rising
+        if cfg.e9pb_require_ema9_rising and not _isnan(e9_prev):
+            if e9 <= e9_prev:
+                return False, NaN, 0
+
+        # Gate: market alignment
+        if cfg.e9pb_require_market_align and not mkt_bull:
+            return False, NaN, 0
+
+        # Gate: RVOL
+        if rvol_tod < cfg.e9pb_require_rvol:
+            return False, NaN, 0
+
+        # ── Compute stop ──
+        # Stop below pullback low
+        stop = ds.e9pb_pb_low - 0.15 * i_atr
+        if stop >= bar.close:
+            return False, NaN, 0
+
+        # ── Quality scoring ──
+        quality = 4  # base
+
+        # +1 for shallow pullback (< 30% depth)
+        if ds.e9pb_pb_depth_pct < 0.30:
+            quality += 1
+
+        # +1 for volume decline during pullback
+        if cfg.e9pb_pb_vol_decline and ds.e9pb_pb_bars > 0:
+            pb_avg_vol = ds.e9pb_pb_vol_total / ds.e9pb_pb_bars
+            if ds.e9pb_drive_bars > 0:
+                # Rough drive avg vol (use bar.volume as proxy for recent)
+                if pb_avg_vol < bar.volume:
+                    quality += 1
+
+        # +1 for above VWAP
+        if not _isnan(vw) and bar.close > vw:
+            quality += 1
+
+        # +1 for strong rvol
+        if rvol_tod >= 1.5:
+            quality += 1
+
+        ds.e9pb_triggered = True
+        return True, stop, min(quality, 10)
+
+    # ════════════════════════════════════════════════════════════════
+    # EMA9 BACKSIDE RANGE BREAK (long-only)
+    # Extended below VWAP → HH/HL recovery → range above rising 9EMA → break
+    # ════════════════════════════════════════════════════════════════
+
+    def _update_ema9_backside_rb_state(self, bar: Bar, ds, cfg, e9: float,
+                                        vw: float, i_atr: float):
+        """Track extension → recovery → range → breakout phases."""
+        if _isnan(e9) or _isnan(vw) or i_atr <= 0:
+            return
+
+        # ── Phase 1: Extension detection ──
+        # Price extended below VWAP
+        dist_below_vwap = vw - bar.low
+        ext_atr = dist_below_vwap / i_atr if i_atr > 0 else 0.0
+
+        if ext_atr >= cfg.e9rb_min_extension_atr and not ds.e9rb_extended:
+            ds.e9rb_extended = True
+            ds.e9rb_extension_low = bar.low
+            ds.e9rb_extension_distance = ext_atr
+
+        # Update extension low
+        if ds.e9rb_extended and bar.low < ds.e9rb_extension_low:
+            ds.e9rb_extension_low = bar.low
+            ds.e9rb_extension_distance = (vw - bar.low) / i_atr
+
+        # ── Phase 2: HH/HL recovery tracking ──
+        if ds.e9rb_extended and not ds.e9rb_recovery_confirmed:
+            # Track swing highs and lows for HH/HL
+            # Simple: compare current bar to previous swing points
+            if not _isnan(ds.e9rb_prev_swing_high):
+                if bar.high > ds.e9rb_prev_swing_high + cfg.e9rb_hl_tolerance_atr * i_atr:
+                    ds.e9rb_hh_count += 1
+            if not _isnan(ds.e9rb_prev_swing_low):
+                if bar.low > ds.e9rb_prev_swing_low + cfg.e9rb_hl_tolerance_atr * i_atr:
+                    ds.e9rb_hl_count += 1
+
+            # Update swing references every 2 bars (simple approach)
+            # Use bar highs/lows as swing references
+            if bar.high > bar.open:  # up bar — record high as potential swing high
+                ds.e9rb_prev_swing_high = bar.high
+            if bar.low < bar.open:  # down bar — record low as potential swing low
+                ds.e9rb_prev_swing_low = bar.low
+
+            # Initialize swing references
+            if _isnan(ds.e9rb_prev_swing_high):
+                ds.e9rb_prev_swing_high = bar.high
+            if _isnan(ds.e9rb_prev_swing_low):
+                ds.e9rb_prev_swing_low = bar.low
+
+            # Check recovery confirmation
+            if (ds.e9rb_hh_count >= cfg.e9rb_require_hh and
+                ds.e9rb_hl_count >= cfg.e9rb_require_hl):
+                ds.e9rb_recovery_confirmed = True
+
+        # ── Phase 3: Range above 9EMA ──
+        if ds.e9rb_recovery_confirmed and not ds.e9rb_triggered:
+            # Price must be above 9EMA to form range
+            if bar.close > e9 and bar.low > e9 - 0.2 * i_atr:
+                if not ds.e9rb_range_active:
+                    ds.e9rb_range_active = True
+                    ds.e9rb_range_bars = 1
+                    ds.e9rb_range_high = bar.high
+                    ds.e9rb_range_low = bar.low
+                    ds.e9rb_range_vol_total = bar.volume
+                else:
+                    ds.e9rb_range_bars += 1
+                    ds.e9rb_range_vol_total += bar.volume
+                    if bar.high > ds.e9rb_range_high:
+                        ds.e9rb_range_high = bar.high
+                    if bar.low < ds.e9rb_range_low:
+                        ds.e9rb_range_low = bar.low
+
+                    # Expire range if too wide or too many bars
+                    range_width = ds.e9rb_range_high - ds.e9rb_range_low
+                    if range_width / i_atr > cfg.e9rb_range_max_width_atr:
+                        ds.e9rb_range_active = False
+                        ds.e9rb_range_bars = 0
+                    if ds.e9rb_range_bars > cfg.e9rb_range_max_bars:
+                        ds.e9rb_range_active = False
+                        ds.e9rb_range_bars = 0
+            else:
+                # Bar went below 9EMA — reset range if not yet established
+                if ds.e9rb_range_active and ds.e9rb_range_bars < cfg.e9rb_range_min_bars:
+                    ds.e9rb_range_active = False
+                    ds.e9rb_range_bars = 0
+
+    def _detect_ema9_backside_rb(self, bar: Bar, ds, cfg, e9: float,
+                                  vw: float, i_atr: float, d_atr: float,
+                                  in_time: bool, mkt_bull: bool,
+                                  e9_prev: float) -> tuple:
+        """Detect EMA9 Backside Range Break. Returns (signal, stop, quality)."""
+        if ds.e9rb_triggered:
+            return False, NaN, 0
+        if not in_time:
+            return False, NaN, 0
+        if not ds.e9rb_recovery_confirmed:
+            return False, NaN, 0
+        if not ds.e9rb_range_active:
+            return False, NaN, 0
+        if ds.e9rb_range_bars < cfg.e9rb_range_min_bars:
+            return False, NaN, 0
+
+        # Gate: breakout — bar.close must exceed range high
+        if bar.close <= ds.e9rb_range_high:
+            return False, NaN, 0
+
+        # Gate: breakout bar volume
+        if ds.e9rb_range_bars > 0:
+            range_avg_vol = ds.e9rb_range_vol_total / ds.e9rb_range_bars
+            if range_avg_vol > 0 and bar.volume < cfg.e9rb_break_vol_frac * range_avg_vol:
+                return False, NaN, 0
+
+        # Gate: breakout bar close quality
+        bar_range = bar.high - bar.low
+        if bar_range > 0:
+            close_pct = (bar.close - bar.low) / bar_range
+            if close_pct < cfg.e9rb_break_close_pct:
+                return False, NaN, 0
+
+        # Gate: 9EMA rising
+        if cfg.e9rb_require_ema9_rising and not _isnan(e9_prev):
+            if e9 <= e9_prev:
+                return False, NaN, 0
+
+        # Gate: market alignment
+        if cfg.e9rb_require_market_align and not mkt_bull:
+            return False, NaN, 0
+
+        # Gate: halfway to VWAP
+        if cfg.e9rb_halfway_gate and not _isnan(vw):
+            halfway = (ds.e9rb_extension_low + vw) / 2.0
+            if ds.e9rb_range_low < halfway:
+                return False, NaN, 0
+
+        # ── Compute stop ──
+        if cfg.e9rb_stop_below_range:
+            stop = ds.e9rb_range_low - cfg.e9rb_stop_buffer_atr * i_atr
+        else:
+            stop = bar.close - 1.0 * i_atr  # fallback ATR stop
+
+        if stop >= bar.close:
+            return False, NaN, 0
+
+        # ── Quality scoring ──
+        quality = 4  # base
+
+        # +1 for tight range (< 1 ATR wide)
+        range_width = ds.e9rb_range_high - ds.e9rb_range_low
+        if i_atr > 0 and range_width / i_atr < 1.0:
+            quality += 1
+
+        # +1 for deep prior extension (> 2 ATR)
+        if ds.e9rb_extension_distance > 2.0:
+            quality += 1
+
+        # +1 for strong HH/HL count (> minimum)
+        if ds.e9rb_hh_count >= 2 and ds.e9rb_hl_count >= 2:
+            quality += 1
+
+        # +1 for close above VWAP (already recovered)
+        if not _isnan(vw) and bar.close > vw:
+            quality += 1
+
+        ds.e9rb_triggered = True
+        return True, stop, min(quality, 10)

@@ -1,0 +1,62 @@
+=================================================================
+  STRATEGYMANAGER — FIRST SESSION VALIDATION REPORT
+=================================================================
+
+Engine:    StrategyManager (step)
+Session:   13:09:12 → 07:29:48
+Runners:   118
+
+─────────────────────────────────────────────
+1. TOTAL ALERT COUNT
+   Alerts fired:   0
+   Alerts blocked: 0 (tape permission gate)
+   LONG:  0
+   SHORT: 0
+
+─────────────────────────────────────────────
+2. ALERTS BY STRATEGY
+   (none)
+
+
+─────────────────────────────────────────────
+3. BAD ENTRY/STOP/TARGET VALUES
+   PASS — no suspicious values detected
+
+─────────────────────────────────────────────
+4. DUPLICATE / SPAM BEHAVIOR
+   PASS — no rapid-fire duplicates detected
+
+─────────────────────────────────────────────
+5. STARTUP & OPEN LATENCY
+   Dashboard start:  13:09:12
+   IBKR connected:   13:09:12
+   All runners ready: 13:10:50
+   First bar:        13:16:00
+   First alert:      (none fired)
+   Startup→Ready:    98s
+
+─────────────────────────────────────────────
+6. RUNTIME EXCEPTIONS
+   ✗ 23:45:00 Peer closed connection.
+   Warnings: 6
+     13:09:42 MASS STALE: 30/30 symbols (100%) stale. Full resubscribe of all runners + SPY/QQQ.
+     13:10:12 MASS STALE: 61/63 symbols (97%) stale. Full resubscribe of all runners + SPY/QQQ.
+     13:10:42 MASS STALE: 104/106 symbols (98%) stale. Full resubscribe of all runners + SPY/QQQ.
+     13:10:50 MARKET DATA BUDGET: 120 lines needed (2 market + 118 symbols). Check your IBKR account's market data line limit (usually 100, can be lower). Excess subscriptions will be silently dropped by IBKR.
+     13:11:12 PER-SYMBOL STALE: 10 stale symbols detected. Resubscribing batch of 5: ['TRI', 'TROW', 'TSAT', 'UHS', 'ULTA']
+
+─────────────────────────────────────────────
+7. IN-PLAY / UNIVERSE TAGGING
+   In-play symbols loaded: 67
+   IN_PLAY: 67 symbols
+   STATIC: 51 symbols
+
+─────────────────────────────────────────────
+BAR PROGRESS
+   Symbols receiving bars: 117
+   Min bars: 630  Max bars: 2040  Avg: 1802
+   ⚠ Zero bars received: AAA
+
+=================================================================
+VERDICT: 1 issue(s) found — review above
+=================================================================

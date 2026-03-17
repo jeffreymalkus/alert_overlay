@@ -1,0 +1,61 @@
+=================================================================
+  STRATEGYMANAGER — FIRST SESSION VALIDATION REPORT
+=================================================================
+
+Engine:    StrategyManager (step)
+Session:   12:04:54 → 13:08:57
+Runners:   118
+
+─────────────────────────────────────────────
+1. TOTAL ALERT COUNT
+   Alerts fired:   0
+   Alerts blocked: 0 (tape permission gate)
+   LONG:  0
+   SHORT: 0
+
+─────────────────────────────────────────────
+2. ALERTS BY STRATEGY
+   (none)
+
+
+─────────────────────────────────────────────
+3. BAD ENTRY/STOP/TARGET VALUES
+   PASS — no suspicious values detected
+
+─────────────────────────────────────────────
+4. DUPLICATE / SPAM BEHAVIOR
+   PASS — no rapid-fire duplicates detected
+
+─────────────────────────────────────────────
+5. STARTUP & OPEN LATENCY
+   Dashboard start:  12:04:54
+   IBKR connected:   12:04:54
+   All runners ready: 12:06:19
+   First bar:        12:11:00
+   First alert:      (none fired)
+   Startup→Ready:    85s
+
+─────────────────────────────────────────────
+6. RUNTIME EXCEPTIONS
+   PASS — zero errors
+   Warnings: 14
+     12:05:24 MASS STALE: 35/35 symbols (100%) stale. Full resubscribe of all runners + SPY/QQQ.
+     12:05:54 MASS STALE: 73/75 symbols (97%) stale. Full resubscribe of all runners + SPY/QQQ.
+     12:06:19 MARKET DATA BUDGET: 120 lines needed (2 market + 118 symbols). Check your IBKR account's market data line limit (usually 100, can be lower). Excess subscriptions will be silently dropped by IBKR.
+     12:06:24 MASS STALE: 93/118 symbols (79%) stale. Full resubscribe of all runners + SPY/QQQ.
+     12:11:54 PER-SYMBOL STALE: 1 stale symbols detected. Resubscribing batch of 1: ['AAA']
+
+─────────────────────────────────────────────
+7. IN-PLAY / UNIVERSE TAGGING
+   In-play symbols loaded: 67
+   IN_PLAY: 67 symbols
+   STATIC: 51 symbols
+
+─────────────────────────────────────────────
+BAR PROGRESS
+   Symbols receiving bars: 118
+   Min bars: 510  Max bars: 2350  Avg: 1720
+
+=================================================================
+VERDICT: CLEAN SESSION — no issues detected
+=================================================================

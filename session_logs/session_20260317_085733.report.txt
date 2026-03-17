@@ -1,0 +1,63 @@
+=================================================================
+  STRATEGYMANAGER — FIRST SESSION VALIDATION REPORT
+=================================================================
+
+Engine:    StrategyManager (step)
+Session:   08:57:33 → 09:21:11
+Runners:   141
+
+─────────────────────────────────────────────
+1. TOTAL ALERT COUNT
+   Alerts fired:   0
+   Alerts blocked: 0 (tape permission gate)
+   LONG:  0
+   SHORT: 0
+
+─────────────────────────────────────────────
+2. ALERTS BY STRATEGY
+   (none)
+
+
+─────────────────────────────────────────────
+3. BAD ENTRY/STOP/TARGET VALUES
+   PASS — no suspicious values detected
+
+─────────────────────────────────────────────
+4. DUPLICATE / SPAM BEHAVIOR
+   PASS — no rapid-fire duplicates detected
+
+─────────────────────────────────────────────
+5. STARTUP & OPEN LATENCY
+   Dashboard start:  08:57:33
+   IBKR connected:   08:57:34
+   All runners ready: 09:09:33
+   First bar:        09:11:00
+   First alert:      (none fired)
+   Startup→Ready:    720s
+
+─────────────────────────────────────────────
+6. RUNTIME EXCEPTIONS
+   ✗ 09:05:43 Error 200, reqId 1088: No security definition has been found for the request, contract: Stock(symbol='MRO', exchange='SMART', currency='USD')
+   ✗ 09:05:43 Error 200, reqId 1089: No security definition has been found for the request, contract: Stock(symbol='MRO', exchange='SMART', currency='USD')
+   ✗ 09:05:43 Error 200, reqId 1090: No security definition has been found for the request, contract: Stock(symbol='MRO', exchange='SMART', currency='USD')
+   ✗ 09:09:54 Error 200, reqId 1301: No security definition has been found for the request, contract: Stock(symbol='MRO', exchange='SMART', currency='USD')
+   ✗ 09:10:06 Error 300, reqId 1301: Can't find EId with tickerId:1301
+   Warnings: 2
+     09:05:43 Unknown contract: Stock(symbol='MRO', exchange='SMART', currency='USD')
+     09:09:33 MARKET DATA BUDGET: 143 lines needed (2 market + 141 symbols). Check your IBKR account's market data line limit (usually 100, can be lower). Excess subscriptions will be silently dropped by IBKR.
+
+─────────────────────────────────────────────
+7. IN-PLAY / UNIVERSE TAGGING
+   In-play symbols loaded: 93
+   IN_PLAY: 93 symbols
+   STATIC: 48 symbols
+
+─────────────────────────────────────────────
+BAR PROGRESS
+   Symbols receiving bars: 13
+   Min bars: 1380  Max bars: 1950  Avg: 1899
+   ⚠ Zero bars received: ARM, BABA, BAC, C, COIN, CRSP, DASH, DKNG, FNGU, GOOG
+
+=================================================================
+VERDICT: 5 issue(s) found — review above
+=================================================================

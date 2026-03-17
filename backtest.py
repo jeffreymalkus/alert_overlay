@@ -208,7 +208,21 @@ def load_bars_from_csv(filepath: str, dt_format: str = "%Y-%m-%d %H:%M:%S",
                 bars.append(bar)
             except (ValueError, KeyError) as e:
                 continue  # skip malformed rows
-    return bars
+
+    # ── RTH filter: keep only regular-trading-hours bars (9:30–15:59 ET) ──
+    # Non-RTH bars (premarket, after-hours) contaminate day_open, prev_close,
+    # pct_from_open, RS, regime, gap, and in-play calculations.
+    rth_bars = []
+    for b in bars:
+        hhmm = b.timestamp.hour * 100 + b.timestamp.minute
+        if 930 <= hhmm <= 1559:
+            rth_bars.append(b)
+    if len(rth_bars) < len(bars):
+        import logging
+        logging.getLogger(__name__).info(
+            f"RTH filter: {len(bars)} → {len(rth_bars)} bars "
+            f"(dropped {len(bars) - len(rth_bars)} non-RTH bars) from {filepath}")
+    return rth_bars
 
 
 def _compute_dynamic_slippage(cfg: 'OverlayConfig', bar: Bar, family: SetupFamily,
@@ -434,6 +448,9 @@ def run_backtest(bars: List[Bar],
                 elif is_ema_scalp and sig.setup_id == SetupId.EMA_FPIP:
                     exit_mode = cfg.ema_fpip_exit_mode
                     time_stop_bars = cfg.ema_fpip_time_stop_bars
+                elif is_ema_scalp and sig.setup_id == SetupId.EMA9_FIRST_PB:
+                    exit_mode = cfg.e9pb_exit_mode
+                    time_stop_bars = cfg.e9pb_time_stop_bars
                 elif is_ema_scalp:
                     exit_mode = cfg.ema_scalp_exit_mode
                     time_stop_bars = cfg.ema_scalp_time_stop_bars

@@ -33,6 +33,13 @@ class SetupId(IntEnum):
     VKA = 18             # VWAP Kiss Accept (touch VWAP → hold near → expansion trigger)
     RSI_MIDLINE_LONG = 19    # RSI midline reclaim long (AM range-shift continuation)
     RSI_BOUNCEFAIL_SHORT = 20  # RSI bounce-fail short (AM weak-bounce rollover)
+    HITCHHIKER = 21          # Opening drive → tight consolidation → breakout (institutional program)
+    FASHIONABLY_LATE = 22    # 9EMA crosses VWAP after reversal (momentum convergence)
+    BACKSIDE = 23            # Extended from VWAP → HH/HL → consolidation above 9EMA → snap to VWAP
+    RUBBERBAND = 24          # Overextended acceleration → snapback candle (double-bar break)
+    FL_MOMENTUM_REBUILD = 25  # 9EMA crosses above VWAP after meaningful decline + turn (long only)
+    EMA9_FIRST_PB = 26        # First meaningful pullback to rising 9EMA after opening drive (long only)
+    EMA9_BACKSIDE_RB = 27     # Extended below VWAP → HH/HL → range above rising 9EMA → break (long only)
 
 
 class SetupFamily(IntEnum):
@@ -42,6 +49,8 @@ class SetupFamily(IntEnum):
     BREAKOUT = 4    # SECOND_CHANCE, SPENCER
     SHORT_STRUCT = 5  # FAILED_BOUNCE — dedicated short-side family
     EMA_SCALP = 6     # EMA_RECLAIM, EMA_CONFIRM — tight 9EMA continuation scalps
+    MOMENTUM = 7      # FASHIONABLY_LATE, RUBBERBAND — momentum/mean-rev snapback
+    CONSOL_BREAK = 8  # HITCHHIKER, BACKSIDE — consolidation breakout patterns
 
 
 SETUP_FAMILY_MAP = {
@@ -65,6 +74,13 @@ SETUP_FAMILY_MAP = {
     SetupId.VKA: SetupFamily.TREND,
     SetupId.RSI_MIDLINE_LONG: SetupFamily.TREND,
     SetupId.RSI_BOUNCEFAIL_SHORT: SetupFamily.SHORT_STRUCT,
+    SetupId.HITCHHIKER: SetupFamily.CONSOL_BREAK,
+    SetupId.FASHIONABLY_LATE: SetupFamily.MOMENTUM,
+    SetupId.BACKSIDE: SetupFamily.CONSOL_BREAK,
+    SetupId.RUBBERBAND: SetupFamily.MOMENTUM,
+    SetupId.FL_MOMENTUM_REBUILD: SetupFamily.MOMENTUM,
+    SetupId.EMA9_FIRST_PB: SetupFamily.EMA_SCALP,
+    SetupId.EMA9_BACKSIDE_RB: SetupFamily.CONSOL_BREAK,
 }
 
 # Display names matching TOS alert strings exactly
@@ -90,6 +106,13 @@ SETUP_DISPLAY_NAME = {
     SetupId.VKA: "VK ACCEPT",
     SetupId.RSI_MIDLINE_LONG: "RSI MIDLINE LONG",
     SetupId.RSI_BOUNCEFAIL_SHORT: "RSI BOUNCEFAIL SHORT",
+    SetupId.HITCHHIKER: "HITCHHIKER",
+    SetupId.FASHIONABLY_LATE: "FASH LATE",
+    SetupId.BACKSIDE: "BACKSIDE",
+    SetupId.RUBBERBAND: "RUBBERBAND",
+    SetupId.FL_MOMENTUM_REBUILD: "FL 9EMA REBUILD",
+    SetupId.EMA9_FIRST_PB: "9EMA 1ST PB",
+    SetupId.EMA9_BACKSIDE_RB: "9EMA BACKSIDE RB",
 }
 
 # Sound per family (matches TOS: Ding=reversal, Ring=trend, Chimes=mean-rev)
@@ -100,6 +123,8 @@ FAMILY_SOUND = {
     SetupFamily.BREAKOUT: "Bell",
     SetupFamily.SHORT_STRUCT: "Alert",
     SetupFamily.EMA_SCALP: "Ring",
+    SetupFamily.MOMENTUM: "Chimes",
+    SetupFamily.CONSOL_BREAK: "Bell",
 }
 
 
@@ -418,6 +443,158 @@ class DayState:
     vka_hold_low: float = NaN           # lowest low during hold period (becomes stop)
     vka_hold_high: float = NaN          # highest high during hold period (micro-high)
     vka_triggered: bool = False         # already fired one trade today
+
+    # ── HitchHiker state ──
+    hh_long_drive_confirmed: bool = False     # opening drive higher detected
+    hh_long_drive_high: float = NaN           # high of the drive
+    hh_long_consol_active: bool = False       # in consolidation phase
+    hh_long_consol_start_bar: int = 0         # bar index consol started
+    hh_long_consol_bars: int = 0              # bars in consolidation
+    hh_long_consol_high: float = NaN          # range high of consolidation
+    hh_long_consol_low: float = NaN           # range low of consolidation
+    hh_long_consol_total_vol: float = 0.0     # total vol in consolidation
+    hh_long_consol_total_wick: float = 0.0    # total wick ratio (choppiness)
+    hh_long_triggered: bool = False
+    hh_short_drive_confirmed: bool = False
+    hh_short_drive_low: float = NaN
+    hh_short_consol_active: bool = False
+    hh_short_consol_start_bar: int = 0
+    hh_short_consol_bars: int = 0
+    hh_short_consol_high: float = NaN
+    hh_short_consol_low: float = NaN
+    hh_short_consol_total_vol: float = 0.0
+    hh_short_consol_total_wick: float = 0.0
+    hh_short_triggered: bool = False
+
+    # ── Fashionably Late state ──
+    fl_long_prior_e9: float = NaN             # previous bar 9EMA
+    fl_long_prior_vwap: float = NaN           # previous bar VWAP
+    fl_long_crossed: bool = False             # 9EMA crossed above VWAP
+    fl_long_cross_price: float = NaN          # price at cross
+    fl_long_lod_at_cross: float = NaN         # low of day at time of cross
+    fl_long_flat_ema_bars: int = 0            # consecutive bars 9EMA was flat before cross
+    fl_long_triggered: bool = False
+    fl_short_prior_e9: float = NaN
+    fl_short_prior_vwap: float = NaN
+    fl_short_crossed: bool = False
+    fl_short_cross_price: float = NaN
+    fl_short_hod_at_cross: float = NaN
+    fl_short_flat_ema_bars: int = 0
+    fl_short_triggered: bool = False
+
+    # ── Back$ide state ──
+    bs_long_extended: bool = False            # was extended below VWAP
+    bs_long_hh_count: int = 0                 # higher highs counted
+    bs_long_hl_count: int = 0                 # higher lows counted
+    bs_long_prev_swing_high: float = NaN
+    bs_long_prev_swing_low: float = NaN
+    bs_long_consol_active: bool = False
+    bs_long_consol_bars: int = 0
+    bs_long_consol_high: float = NaN
+    bs_long_consol_low: float = NaN
+    bs_long_consol_total_vol: float = 0.0
+    bs_long_triggered: bool = False
+    bs_short_extended: bool = False
+    bs_short_ll_count: int = 0
+    bs_short_lh_count: int = 0
+    bs_short_prev_swing_high: float = NaN
+    bs_short_prev_swing_low: float = NaN
+    bs_short_consol_active: bool = False
+    bs_short_consol_bars: int = 0
+    bs_short_consol_high: float = NaN
+    bs_short_consol_low: float = NaN
+    bs_short_consol_total_vol: float = 0.0
+    bs_short_triggered: bool = False
+
+    # ── RubberBand state ──
+    rb_long_trend_bars: int = 0               # bars in controlled downtrend
+    rb_long_accel_detected: bool = False       # acceleration phase detected
+    rb_long_accel_start_bar: int = 0
+    rb_long_prev_leg_avg_vol: float = 0.0     # avg vol of pre-acceleration leg
+    rb_long_prev_leg_avg_range: float = 0.0   # avg range of pre-acceleration leg
+    rb_long_attempts: int = 0                 # snapback attempts today (max 2)
+    rb_long_triggered: bool = False
+    rb_short_trend_bars: int = 0
+    rb_short_accel_detected: bool = False
+    rb_short_accel_start_bar: int = 0
+    rb_short_prev_leg_avg_vol: float = 0.0
+    rb_short_prev_leg_avg_range: float = 0.0
+    rb_short_attempts: int = 0
+    rb_short_triggered: bool = False
+
+    # Per-family cooldown: momentum and consol_break
+    cd_long_momentum: int = 999
+    cd_short_momentum: int = 999
+    cd_long_consol_break: int = 999
+    cd_short_consol_break: int = 999
+
+    # Volume bars history for RubberBand top-N check
+    rb_volume_bars: list = field(default_factory=list)  # list of volumes today
+
+    # ── FL Momentum Rebuild state (long-only) ──
+    # Phase 1: Meaningful decline tracking
+    flr_session_high: float = NaN             # running session high
+    flr_decline_active: bool = False          # currently in decline phase
+    flr_decline_high: float = NaN             # high before decline started
+    flr_decline_low: float = NaN              # lowest point of decline
+    flr_decline_atr: float = 0.0             # decline distance in ATR at time of decline
+    # Phase 2: Turn / base detection
+    flr_turn_detected: bool = False           # HL confirmed after decline
+    flr_turn_hl_bar: int = 0                 # bar index of the HL
+    flr_turn_low: float = NaN                # the higher low price
+    flr_turn_confirm_bars: int = 0           # consecutive bars confirming HL (for 2-bar confirm)
+    flr_base_bars: int = 0                   # bars since turn (for time gate)
+    # Phase 3: Cross trigger tracking
+    flr_prior_e9: float = NaN                # previous bar 9EMA (for cross detection)
+    flr_prior_vwap: float = NaN              # previous bar VWAP
+    flr_prior_prior_e9: float = NaN          # 2-bars-ago 9EMA (for slope acceleration)
+    flr_cross_fired: bool = False            # cross happened — waiting for confirm bar
+    flr_cross_bar_close: float = NaN         # close of the cross bar
+    flr_cross_bar_vol: float = 0.0           # volume of cross bar
+    # Gating
+    flr_triggered: bool = False              # one signal per day
+
+    # ── EMA9 First Pullback state (long-only) ──
+    # Phase 1: Opening drive detection
+    e9pb_drive_active: bool = False           # opening drive higher detected
+    e9pb_drive_high: float = NaN              # high of the drive
+    e9pb_drive_bars: int = 0                 # bars of upward movement from open
+    e9pb_drive_distance: float = 0.0          # distance from open to drive high in ATR
+    e9pb_drive_confirmed: bool = False        # drive meets criteria (distance + bars)
+    # Phase 2: Pullback tracking
+    e9pb_pb_active: bool = False              # in pullback phase
+    e9pb_pb_bars: int = 0                    # bars in pullback
+    e9pb_pb_low: float = NaN                 # lowest point of pullback
+    e9pb_pb_depth_pct: float = 0.0           # pullback depth as % of drive
+    e9pb_pb_vol_total: float = 0.0           # total volume during pullback
+    e9pb_pb_closed_below_e9: int = 0         # closes below 9EMA during PB
+    # Phase 3: Trigger
+    e9pb_triggered: bool = False             # one signal per day
+
+    # ── EMA9 Backside Range Break state (long-only) ──
+    # Phase 1: Extension below VWAP
+    e9rb_extended: bool = False               # was extended below VWAP
+    e9rb_extension_low: float = NaN           # lowest point of extension
+    e9rb_extension_distance: float = 0.0      # extension in ATR
+    # Phase 2: HH/HL recovery
+    e9rb_hh_count: int = 0                   # higher highs counted
+    e9rb_hl_count: int = 0                   # higher lows counted
+    e9rb_prev_swing_high: float = NaN
+    e9rb_prev_swing_low: float = NaN
+    e9rb_recovery_confirmed: bool = False     # HH+HL requirements met
+    # Phase 3: Range above 9EMA
+    e9rb_range_active: bool = False           # consolidation range forming
+    e9rb_range_bars: int = 0
+    e9rb_range_high: float = NaN
+    e9rb_range_low: float = NaN
+    e9rb_range_vol_total: float = 0.0
+    # Gating
+    e9rb_triggered: bool = False             # one signal per day
+
+    # Per-family cooldown for new strategies (reuse existing family cooldowns)
+    # FL_MOMENTUM_REBUILD uses cd_long_momentum (MOMENTUM family)
+    # EMA9_FIRST_PB uses cd_long_ema_scalp (EMA_SCALP family)
+    # EMA9_BACKSIDE_RB uses cd_long_consol_break (CONSOL_BREAK family)
 
     # Previous bar values needed for [1] references
     prev_has_long_signal: bool = False

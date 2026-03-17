@@ -1,0 +1,82 @@
+=================================================================
+  STRATEGYMANAGER — FIRST SESSION VALIDATION REPORT
+=================================================================
+
+Engine:    StrategyManager (step)
+Session:   08:42:06 → 08:57:13
+Runners:   115
+
+─────────────────────────────────────────────
+1. TOTAL ALERT COUNT
+   Alerts fired:   0
+   Alerts blocked: 0 (tape permission gate)
+   LONG:  0
+   SHORT: 0
+
+─────────────────────────────────────────────
+2. ALERTS BY STRATEGY
+   (none)
+
+
+─────────────────────────────────────────────
+3. BAD ENTRY/STOP/TARGET VALUES
+   PASS — no suspicious values detected
+
+─────────────────────────────────────────────
+4. DUPLICATE / SPAM BEHAVIOR
+   PASS — no rapid-fire duplicates detected
+
+─────────────────────────────────────────────
+5. STARTUP & OPEN LATENCY
+   Dashboard start:  08:42:06
+   IBKR connected:   08:42:06
+   All runners ready: 08:44:07
+   First bar:        08:46:00
+   First alert:      (none fired)
+   Startup→Ready:    121s
+
+─────────────────────────────────────────────
+6. RUNTIME EXCEPTIONS
+   ✗ 08:52:49 Error 200, reqId 1264: No security definition has been found for the request, contract: Stock(symbol='MRO', exchange='SMART', currency='USD')
+   ✗ 08:52:50 Error 200, reqId 1303: No security definition has been found for the request, contract: Stock(symbol='MRO', exchange='SMART', currency='USD')
+   ✗ 08:52:50 Error 200, reqId 1329: No security definition has been found for the request, contract: Stock(symbol='MRO', exchange='SMART', currency='USD')
+   ✗ 08:52:51 Error 200, reqId 1339: No security definition has been found for the request, contract: Stock(symbol='MRO', exchange='SMART', currency='USD')
+   ✗ 08:53:49 Error 162, reqId 1301: Historical Market Data Service error message:API historical data query cancelled: 1301, contract: Stock(conId=448389035, symbol='ASO', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='ASO', tradingClass='NMS')
+   ✗ 08:53:49 Error 162, reqId 1304: Historical Market Data Service error message:API historical data query cancelled: 1304, contract: Stock(conId=3655896, symbol='SMTC', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='SMTC', tradingClass='NMS')
+   ✗ 08:53:49 Error 162, reqId 1309: Historical Market Data Service error message:API historical data query cancelled: 1309, contract: Stock(conId=254032874, symbol='GDS', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='GDS', tradingClass='NMS')
+   ✗ 08:53:49 Error 162, reqId 1310: Historical Market Data Service error message:API historical data query cancelled: 1310, contract: Stock(conId=304958839, symbol='CAAP', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='CAAP', tradingClass='CAAP')
+   ✗ 08:53:50 Error 162, reqId 1312: Historical Market Data Service error message:API historical data query cancelled: 1312, contract: Stock(conId=6478305, symbol='ESLT', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='ESLT', tradingClass='NMS')
+   ✗ 08:53:50 Error 162, reqId 1322: Historical Market Data Service error message:API historical data query cancelled: 1322, contract: Stock(conId=7930, symbol='HD', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='HD', tradingClass='HD')
+   ✗ 08:53:50 Error 162, reqId 1323: Historical Market Data Service error message:API historical data query cancelled: 1323, contract: Stock(conId=40773257, symbol='WU', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='WU', tradingClass='WU')
+   ✗ 08:53:50 Error 162, reqId 1324: Historical Market Data Service error message:API historical data query cancelled: 1324, contract: Stock(conId=210810670, symbol='FCPT', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='FCPT', tradingClass='FCPT')
+   ✗ 08:53:50 Error 162, reqId 1325: Historical Market Data Service error message:API historical data query cancelled: 1325, contract: Stock(conId=10880, symbol='OXY', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='OXY', tradingClass='OXY')
+   ✗ 08:53:50 Error 162, reqId 1326: Historical Market Data Service error message:API historical data query cancelled: 1326, contract: Stock(conId=349869083, symbol='STNG', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='STNG', tradingClass='STNG')
+   ✗ 08:53:50 Error 162, reqId 1327: Historical Market Data Service error message:API historical data query cancelled: 1327, contract: Stock(conId=4728003, symbol='LNG', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='LNG', tradingClass='LNG')
+   ✗ 08:53:50 Error 162, reqId 1328: Historical Market Data Service error message:API historical data query cancelled: 1328, contract: Stock(conId=604736961, symbol='FRO', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='FRO', tradingClass='FRO')
+   ✗ 08:53:50 Error 162, reqId 1330: Historical Market Data Service error message:API historical data query cancelled: 1330, contract: Stock(conId=611191, symbol='LMT', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='LMT', tradingClass='LMT')
+   ✗ 08:53:50 Error 162, reqId 1332: Historical Market Data Service error message:API historical data query cancelled: 1332, contract: Stock(conId=10376, symbol='NOC', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='NOC', tradingClass='NOC')
+   ✗ 08:53:51 Error 162, reqId 1333: Historical Market Data Service error message:API historical data query cancelled: 1333, contract: Stock(conId=7496, symbol='GD', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='GD', tradingClass='GD')
+   ✗ 08:53:51 Error 162, reqId 1334: Historical Market Data Service error message:API historical data query cancelled: 1334, contract: Stock(conId=390332324, symbol='GEN', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='GEN', tradingClass='NMS')
+   ... and 20 more
+   Warnings: 38
+     08:44:07 MARKET DATA BUDGET: 117 lines needed (2 market + 115 symbols). Check your IBKR account's market data line limit (usually 100, can be lower). Excess subscriptions will be silently dropped by IBKR.
+     08:52:49 Unknown contract: Stock(symbol='MRO', exchange='SMART', currency='USD')
+     08:53:49 reqHistoricalData: Timeout for Stock(conId=448389035, symbol='ASO', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='ASO', tradingClass='NMS')
+     08:53:49 reqHistoricalData: Timeout for Stock(conId=3655896, symbol='SMTC', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='SMTC', tradingClass='NMS')
+     08:53:49 reqHistoricalData: Timeout for Stock(conId=254032874, symbol='GDS', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='GDS', tradingClass='NMS')
+
+─────────────────────────────────────────────
+7. IN-PLAY / UNIVERSE TAGGING
+   In-play symbols loaded: 66
+   IN_PLAY: 65 symbols
+   STATIC: 52 symbols
+
+─────────────────────────────────────────────
+BAR PROGRESS
+   Symbols receiving bars: 13
+   Min bars: 1380  Max bars: 1950  Avg: 1899
+   ⚠ Zero bars received: AAPL, ADBE, AMZN, ARM, BABA, BAC, C, COIN, CRSP, CVX
+
+=================================================================
+VERDICT: 40 issue(s) found — review above
+=================================================================

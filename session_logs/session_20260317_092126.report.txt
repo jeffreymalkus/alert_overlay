@@ -1,0 +1,57 @@
+=================================================================
+  STRATEGYMANAGER — FIRST SESSION VALIDATION REPORT
+=================================================================
+
+Engine:    StrategyManager (step)
+Session:   09:21:26 → 10:50:33
+Runners:   138
+
+─────────────────────────────────────────────
+1. TOTAL ALERT COUNT
+   Alerts fired:   0
+   Alerts blocked: 0 (tape permission gate)
+   LONG:  0
+   SHORT: 0
+
+─────────────────────────────────────────────
+2. ALERTS BY STRATEGY
+   (none)
+
+
+─────────────────────────────────────────────
+3. BAD ENTRY/STOP/TARGET VALUES
+   PASS — no suspicious values detected
+
+─────────────────────────────────────────────
+4. DUPLICATE / SPAM BEHAVIOR
+   PASS — no rapid-fire duplicates detected
+
+─────────────────────────────────────────────
+5. STARTUP & OPEN LATENCY
+   Dashboard start:  09:21:26
+   IBKR connected:   09:21:27
+   All runners ready: 09:23:22
+   First bar:        09:26:00
+   First alert:      (none fired)
+   Startup→Ready:    116s
+
+─────────────────────────────────────────────
+6. RUNTIME EXCEPTIONS
+   PASS — zero errors
+   Warnings: 1
+     09:23:22 MARKET DATA BUDGET: 140 lines needed (2 market + 138 symbols). Check your IBKR account's market data line limit (usually 100, can be lower). Excess subscriptions will be silently dropped by IBKR.
+
+─────────────────────────────────────────────
+7. IN-PLAY / UNIVERSE TAGGING
+   In-play symbols loaded: 90
+   IN_PLAY: 90 symbols
+   STATIC: 48 symbols
+
+─────────────────────────────────────────────
+BAR PROGRESS
+   Symbols receiving bars: 138
+   Min bars: 570  Max bars: 1964  Avg: 1715
+
+=================================================================
+VERDICT: CLEAN SESSION — no issues detected
+=================================================================

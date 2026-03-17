@@ -1,0 +1,82 @@
+=================================================================
+  STRATEGYMANAGER — FIRST SESSION VALIDATION REPORT
+=================================================================
+
+Engine:    StrategyManager (step)
+Session:   10:28:23 → 11:35:35
+Runners:   97
+
+─────────────────────────────────────────────
+1. TOTAL ALERT COUNT
+   Alerts fired:   0
+   Alerts blocked: 0 (tape permission gate)
+   LONG:  0
+   SHORT: 0
+
+─────────────────────────────────────────────
+2. ALERTS BY STRATEGY
+   (none)
+
+
+─────────────────────────────────────────────
+3. BAD ENTRY/STOP/TARGET VALUES
+   PASS — no suspicious values detected
+
+─────────────────────────────────────────────
+4. DUPLICATE / SPAM BEHAVIOR
+   PASS — no rapid-fire duplicates detected
+
+─────────────────────────────────────────────
+5. STARTUP & OPEN LATENCY
+   Dashboard start:  10:28:23
+   IBKR connected:   10:28:23
+   All runners ready: 10:29:35
+   First bar:        10:31:00
+   First alert:      (none fired)
+   Startup→Ready:    72s
+
+─────────────────────────────────────────────
+6. RUNTIME EXCEPTIONS
+   ✗ 10:31:26 Error 200, reqId 1077: No security definition has been found for the request, contract: Stock(symbol='EFN', exchange='SMART', currency='USD')
+   ✗ 10:31:26 Error 200, reqId 1079: No security definition has been found for the request, contract: Stock(symbol='EQB', exchange='SMART', currency='USD')
+   ✗ 10:31:26 Error 200, reqId 1100: No security definition has been found for the request, contract: Stock(symbol='EFN', exchange='SMART', currency='USD')
+   ✗ 10:31:27 Error 200, reqId 1101: No security definition has been found for the request, contract: Stock(symbol='EQB', exchange='SMART', currency='USD')
+   ✗ 10:31:27 Error 200, reqId 1124: No security definition has been found for the request, contract: Stock(symbol='EFN', exchange='SMART', currency='USD')
+   ✗ 10:31:27 Error 200, reqId 1125: No security definition has been found for the request, contract: Stock(symbol='EQB', exchange='SMART', currency='USD')
+   ✗ 10:31:28 Error 200, reqId 1134: No security definition has been found for the request, contract: Stock(symbol='EFN', exchange='SMART', currency='USD')
+   ✗ 10:31:28 Error 200, reqId 1135: No security definition has been found for the request, contract: Stock(symbol='EQB', exchange='SMART', currency='USD')
+   ✗ 10:32:26 Error 162, reqId 1106: Historical Market Data Service error message:API historical data query cancelled: 1106, contract: Stock(conId=702882678, symbol='MDA', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='MDA', tradingClass='MDA')
+   ✗ 10:32:26 Error 162, reqId 1115: Historical Market Data Service error message:API historical data query cancelled: 1115, contract: Stock(conId=10174, symbol='NEM', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='NEM', tradingClass='NEM')
+   ✗ 10:32:26 Error 162, reqId 1116: Historical Market Data Service error message:API historical data query cancelled: 1116, contract: Stock(conId=12002, symbol='PSA', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='PSA', tradingClass='PSA')
+   ✗ 10:32:26 Error 162, reqId 1117: Historical Market Data Service error message:API historical data query cancelled: 1117, contract: Stock(conId=356576040, symbol='DOW', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='DOW', tradingClass='DOW')
+   ✗ 10:32:26 Error 162, reqId 1118: Historical Market Data Service error message:API historical data query cancelled: 1118, contract: Stock(conId=275321, symbol='TROW', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='TROW', tradingClass='NMS')
+   ✗ 10:32:26 Error 162, reqId 1119: Historical Market Data Service error message:API historical data query cancelled: 1119, contract: Stock(conId=74866700, symbol='LYB', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='LYB', tradingClass='LYB')
+   ✗ 10:32:26 Error 162, reqId 1120: Historical Market Data Service error message:API historical data query cancelled: 1120, contract: Stock(conId=3265376, symbol='FE', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='FE', tradingClass='FE')
+   ✗ 10:32:27 Error 162, reqId 1121: Historical Market Data Service error message:API historical data query cancelled: 1121, contract: Stock(conId=483311199, symbol='PATH', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='PATH', tradingClass='PATH')
+   ✗ 10:32:27 Error 162, reqId 1123: Historical Market Data Service error message:API historical data query cancelled: 1123, contract: Stock(conId=683779067, symbol='SOC', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='SOC', tradingClass='SOC')
+   ✗ 10:32:27 Error 162, reqId 1126: Historical Market Data Service error message:API historical data query cancelled: 1126, contract: Stock(conId=389700396, symbol='DOC', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='DOC', tradingClass='DOC')
+   ✗ 10:32:27 Error 162, reqId 1127: Historical Market Data Service error message:API historical data query cancelled: 1127, contract: Stock(conId=466188387, symbol='HIMS', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='HIMS', tradingClass='HIMS')
+   ✗ 10:32:27 Error 162, reqId 1128: Historical Market Data Service error message:API historical data query cancelled: 1128, contract: Stock(conId=784233662, symbol='GLXY', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='GLXY', tradingClass='NMS')
+   ... and 619 more
+   Warnings: 24
+     10:31:26 Unknown contract: Stock(symbol='EFN', exchange='SMART', currency='USD')
+     10:31:26 Unknown contract: Stock(symbol='EQB', exchange='SMART', currency='USD')
+     10:32:26 reqHistoricalData: Timeout for Stock(conId=702882678, symbol='MDA', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='MDA', tradingClass='MDA')
+     10:32:26 reqHistoricalData: Timeout for Stock(conId=10174, symbol='NEM', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='NEM', tradingClass='NEM')
+     10:32:26 reqHistoricalData: Timeout for Stock(conId=12002, symbol='PSA', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='PSA', tradingClass='PSA')
+
+─────────────────────────────────────────────
+7. IN-PLAY / UNIVERSE TAGGING
+   In-play symbols loaded: 45
+   STATIC: 52 symbols
+   IN_PLAY: 45 symbols
+
+─────────────────────────────────────────────
+BAR PROGRESS
+   Symbols receiving bars: 119
+   Min bars: 10  Max bars: 2330  Avg: 1439
+   ⚠ Zero bars received: AAA
+
+=================================================================
+VERDICT: 639 issue(s) found — review above
+=================================================================

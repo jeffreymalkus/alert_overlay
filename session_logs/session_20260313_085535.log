@@ -1,0 +1,7 @@
+08:55:35 [INFO] Dashboard running at http://localhost:8878
+08:55:35 [INFO] Loaded 31 in-play symbols: AAPL, ADBE, AMZN, BESI, BOIL, CF, CRWV, CVX, DKS, FFIV...
+08:55:35 [INFO] Running in OFFLINE mode (--no-ibkr). No market data.
+08:55:35 [INFO] In-play panel, test alerts, history capture, and export all operational.
+08:55:35 [INFO] Registered 84 symbols in offline mode
+08:55:35 [INFO] Dashboard OFFLINE at http://localhost:8878 with 64 symbols
+08:55:38 [INFO] Shutting down offline dashboard...

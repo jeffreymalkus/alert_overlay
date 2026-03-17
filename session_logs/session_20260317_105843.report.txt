@@ -1,0 +1,62 @@
+=================================================================
+  STRATEGYMANAGER — FIRST SESSION VALIDATION REPORT
+=================================================================
+
+Engine:    StrategyManager (step)
+Session:   10:58:43 → 11:19:36
+Runners:   138
+
+─────────────────────────────────────────────
+1. TOTAL ALERT COUNT
+   Alerts fired:   0
+   Alerts blocked: 0 (tape permission gate)
+   LONG:  0
+   SHORT: 0
+
+─────────────────────────────────────────────
+2. ALERTS BY STRATEGY
+   (none)
+
+
+─────────────────────────────────────────────
+3. BAD ENTRY/STOP/TARGET VALUES
+   PASS — no suspicious values detected
+
+─────────────────────────────────────────────
+4. DUPLICATE / SPAM BEHAVIOR
+   PASS — no rapid-fire duplicates detected
+
+─────────────────────────────────────────────
+5. STARTUP & OPEN LATENCY
+   Dashboard start:  10:58:43
+   IBKR connected:   10:58:44
+   All runners ready: 11:00:22
+   First bar:        11:06:00
+   First alert:      (none fired)
+   Startup→Ready:    99s
+
+─────────────────────────────────────────────
+6. RUNTIME EXCEPTIONS
+   PASS — zero errors
+   Warnings: 5
+     10:59:13 MASS STALE: 33/34 symbols (97%) stale. Full resubscribe of all runners + SPY/QQQ.
+     10:59:43 MASS STALE: 75/77 symbols (97%) stale. Full resubscribe of all runners + SPY/QQQ.
+     11:00:13 MASS STALE: 122/124 symbols (98%) stale. Full resubscribe of all runners + SPY/QQQ.
+     11:00:22 MARKET DATA BUDGET: 140 lines needed (2 market + 138 symbols). Check your IBKR account's market data line limit (usually 100, can be lower). Excess subscriptions will be silently dropped by IBKR.
+     11:00:43 PER-SYMBOL STALE: 35 stale symbols detected. Resubscribing batch of 5: ['MPC', 'NBIS', 'NEM', 'NET', 'NOC']
+
+─────────────────────────────────────────────
+7. IN-PLAY / UNIVERSE TAGGING
+   In-play symbols loaded: 90
+   IN_PLAY: 90 symbols
+   STATIC: 48 symbols
+
+─────────────────────────────────────────────
+BAR PROGRESS
+   Symbols receiving bars: 126
+   Min bars: 560  Max bars: 1890  Avg: 1682
+   ⚠ Zero bars received: ARM, CRSP, FAS, LABD, LUNR, NUGT, SNOW, SOXS, SPXS, TGT
+
+=================================================================
+VERDICT: CLEAN SESSION — no issues detected
+=================================================================

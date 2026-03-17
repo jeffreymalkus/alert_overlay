@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Portfolio D — Full Spec vs Code Audit</title>
+<style>
+body{font-family:-apple-system,system-ui,sans-serif;max-width:1200px;margin:20px auto;padding:0 20px;background:#0d1117;color:#c9d1d9}
+h1{color:#58a6ff;border-bottom:1px solid #30363d;padding-bottom:10px}
+h2{color:#ff7b72;margin-top:40px;border-bottom:1px solid #21262d;padding-bottom:6px}
+h3{color:#d2a8ff;margin-top:20px}
+table{border-collapse:collapse;width:100%;margin:15px 0;font-size:13px}
+th{background:#161b22;color:#58a6ff;padding:8px 10px;text-align:left;border:1px solid #30363d}
+td{padding:6px 10px;border:1px solid #21262d;vertical-align:top}
+tr:nth-child(even){background:#161b22}
+.crit{color:#f85149;font-weight:bold}
+.major{color:#d29922;font-weight:bold}
+.minor{color:#58a6ff}
+.ok{color:#3fb950;font-weight:bold}
+.box{background:#161b22;border:1px solid #30363d;padding:15px;border-radius:8px;margin:15px 0}
+.box h3{margin-top:0}
+.summary-box{background:#1c2128;border-left:4px solid #f85149;padding:15px;margin:20px 0;border-radius:0 8px 8px 0}
+.summary-box h3{color:#f85149;margin-top:0}
+.clean-box{background:#1c2128;border-left:4px solid #3fb950;padding:15px;margin:20px 0;border-radius:0 8px 8px 0}
+.clean-box h3{color:#3fb950;margin-top:0}
+code{background:#1c2128;padding:2px 6px;border-radius:4px;font-size:12px}
+.severity{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:bold}
+.sev-crit{background:#f8514922;color:#f85149;border:1px solid #f85149}
+.sev-major{background:#d2992222;color:#d29922;border:1px solid #d29922}
+.sev-minor{background:#58a6ff22;color:#58a6ff;border:1px solid #58a6ff}
+.sev-extra{background:#8b949e22;color:#8b949e;border:1px solid #8b949e}
+.tag{display:inline-block;padding:1px 6px;border-radius:3px;font-size:11px;margin:1px}
+.tag-live{background:#3fb95033;color:#3fb950}
+.tag-replay{background:#58a6ff33;color:#58a6ff}
+.tag-both{background:#d2a8ff33;color:#d2a8ff}
+</style></head><body>
+
+<h1>Portfolio D — Full Spec vs Code Audit</h1>
+<p>Every strategy audited against its specification. Covers both live and replay implementations.</p>
+
+<div class="summary-box">
+<h3>Executive Summary</h3>
+<p><strong>12 strategies audited. 0 are fully correct.</strong></p>
+<p>Found: <span class="sev-crit">9 CRITICAL</span> &nbsp; <span class="sev-major">5 MAJOR</span> &nbsp; <span class="sev-minor">6 MINOR</span> &nbsp; <span class="sev-extra">4 EXTRA CODE</span></p>
+<p>The most impacted strategies are <strong>BDR_SHORT</strong> (5 critical issues), <strong>EMA_FPIP</strong> (2 critical), and <strong>HH_QUALITY</strong> (1 critical). Two strategies are clean: <strong>ORL_FBD_LONG</strong> and <strong>FFT_NEWLOW_REV</strong>.</p>
+</div>
+
+<!-- ════════════════════════════════════════ -->
+<h2>1. BDR_SHORT — Breakdown-Retest Short</h2>
+<p><span class="tag tag-live">live: bdr_short_live.py</span></p>
+
+<table>
+<tr><th style="width:90px">Severity</th><th style="width:200px">Issue</th><th>Spec Says</th><th>Code Does</th><th>Impact</th></tr>
+
+<tr><td><span class="sev-crit">CRITICAL</span></td>
+<td>Swing low lookback wrong</td>
+<td>10-bar lookback for swing low identification</td>
+<td>Uses 6-bar lookback (<code>bdr_swing_lookback=6</code>)</td>
+<td>Detects different (shallower) support levels. Fewer valid breakdown setups identified.</td></tr>
+
+<tr><td><span class="sev-crit">CRITICAL</span></td>
+<td>AM-only entry not enforced at signal time</td>
+<td>Entry time must be before 11:00 AM</td>
+<td>AM check only happens during breakdown detection, not at the final signal/rejection bar. A breakdown at 10:55 with a rejection bar at 11:15 would still fire.</td>
+<td>Late entries on fading momentum. Short book taking trades outside its edge window.</td></tr>
+
+<tr><td><span class="sev-crit">CRITICAL</span></td>
+<td>Close position threshold inverted</td>
+<td>Breakdown bar close in lower 60% of bar range (close_pos &le; 0.60)</td>
+<td>Uses <code>close_position &le; 0.40</code> — the lower 40%. This is MORE restrictive than spec.</td>
+<td>Rejects valid breakdown bars that close in the 40-60% zone. Reduces signal count.</td></tr>
+
+<tr><td><span class="sev-crit">CRITICAL</span></td>
+<td>Median range check too early</td>
+<td>Breakdown bar range &ge; 70% of median-10 bar range</td>
+<td>Uses 5-bar median instead of 10-bar median</td>
+<td>Shorter lookback makes the threshold more volatile and less representative.</td></tr>
+
+<tr><td><span class="sev-crit">CRITICAL</span></td>
+<td>RED+TREND regime gate missing</td>
+<td>Short entries require RED+TREND: SPY open-to-close &lt; -0.05% AND close in bottom 25% of day range</td>
+<td>No regime check in strategy code. Relies on external regime filter in replay/engine, but the strategy itself has no guard.</td>
+<td>If called outside the correct regime context, it will generate signals on any day.</td></tr>
+</table>
+
+<!-- ════════════════════════════════════════ -->
+<h2>2. EMA_FPIP — EMA First Pullback in Play</h2>
+<p><span class="tag tag-live">live: ema_fpip_live.py</span> <span class="tag tag-replay">replay: ema_fpip.py (strategies/)</span></p>
+
+<table>
+<tr><th style="width:90px">Severity</th><th style="width:200px">Issue</th><th>Spec Says</th><th>Code Does</th><th>Impact</th></tr>
+
+<tr><td><span class="sev-crit">CRITICAL</span></td>
+<td><code>exp_low</code> never updated during expansion</td>
+<td>Track expansion leg low (pullback reference point). The expansion distance = exp_high - exp_low.</td>
+<td><code>exp_low</code> is initialized but never updated as the expansion develops. It stays at the first bar's value.</td>
+<td>Systematic underestimation of expansion distance. Affects pullback depth checks and measured move calculations. Every EMA_FPIP trade has wrong expansion geometry.</td></tr>
+
+<tr><td><span class="sev-crit">CRITICAL</span></td>
+<td>Missing volume decline check during pullback</td>
+<td>"Clean pullback on DECLINING VOLUME" — volume should decrease during the pullback phase</td>
+<td>No volume trend check during pullback. Only checks volume expansion on the confirmation bar.</td>
+<td>Accepts pullbacks on increasing volume (distribution/continuation selling), which are NOT clean pullbacks. This is a core part of the pattern definition.</td></tr>
+
+<tr><td><span class="sev-minor">MINOR</span></td>
+<td>Structural targets missing some levels</td>
+<td>Primary: expansion leg high. Secondary: measured move from pullback low.</td>
+<td>Uses pdh, exp_high, session_high. Has exp_high but measured_move is computed differently than spec describes.</td>
+<td>Low impact — exp_high is the primary target and is present.</td></tr>
+</table>
+
+<!-- ════════════════════════════════════════ -->
+<h2>3. HH_QUALITY — HitchHiker Consolidation Breakout</h2>
+<p><span class="tag tag-live">live: hitchhiker_live.py</span> <span class="tag tag-replay">replay: hitchhiker_quality.py</span></p>
+
+<table>
+<tr><th style="width:90px">Severity</th><th style="width:200px">Issue</th><th>Spec Says</th><th>Code Does</th><th>Impact</th></tr>
+
+<tr><td><span class="sev-crit">CRITICAL</span></td>
+<td>measured_move MISSING from structural targets</td>
+<td>Targets should be: drive_high, measured_move (consol breakout + opening drive distance), session_high</td>
+<td>Only has measured_move (consol breakout + consol range) in some paths. The spec's "opening drive distance" measured move is not computed.</td>
+<td>152 trades with 83% fallback rate. The correct measured_move target would give many of these trades a valid structural exit.</td></tr>
+
+<tr><td><span class="sev-minor">MINOR</span></td>
+<td>EMA9 deque alignment risk</td>
+<td>EMA9 computed from 5-min bars</td>
+<td>Uses a deque-based EMA with potential alignment issues across day boundaries</td>
+<td>Low impact if day resets are clean, but could produce stale EMA values on first bars of day.</td></tr>
+</table>
+
+<!-- ════════════════════════════════════════ -->
+<h2>4. SC_SNIPER — Second Chance Sniper</h2>
+<p><span class="tag tag-live">live: sc_sniper_live.py</span> <span class="tag tag-replay">replay: second_chance_sniper.py</span></p>
+
+<table>
+<tr><th style="width:90px">Severity</th><th style="width:200px">Issue</th><th>Spec Says</th><th>Code Does</th><th>Impact</th></tr>
+
+<tr><td><span class="sev-crit">CRITICAL</span></td>
+<td>Replay missing measured_move in target candidates</td>
+<td>Structural targets: session_high, PDH, measured_move</td>
+<td>Live version has measured_move. Replay version (<code>second_chance_sniper.py</code>) omits it from the candidate list passed to <code>compute_structural_target_long()</code>.</td>
+<td>Replay produces different (worse) results than live. 84% fallback rate may be inflated by missing this target level. Live/replay divergence undermines backtest validity.</td></tr>
+
+<tr><td><span class="sev-major">MAJOR</span></td>
+<td>Stop buffer uses config instead of spec constant</td>
+<td>Stop = $0.02 below retest low</td>
+<td>Uses <code>cfg.sc_stop_buffer</code> which defaults to $0.02 but is configurable. If ever changed, stop logic diverges from spec.</td>
+<td>Currently matching spec if default unchanged. Risk of silent drift.</td></tr>
+
+<tr><td><span class="sev-extra">EXTRA CODE</span></td>
+<td>Retest rejects bearish expansion bars</td>
+<td>Spec does not mention filtering retest bars by bearish expansion</td>
+<td>Code rejects retest bars that are "bearish expansion" (large red bars). This is an undocumented filter.</td>
+<td>May reject valid retest setups. Not in spec — should be documented or removed.</td></tr>
+
+<tr><td><span class="sev-extra">EXTRA CODE</span></td>
+<td>Confirmation requires bar_bullish</td>
+<td>Spec: "close above retest high AND above both VWAP and EMA9"</td>
+<td>Also requires <code>close > open</code> (bullish bar). Spec doesn't mention bar color.</td>
+<td>May reject valid confirmations where close is above all required levels but bar is red (gap-up scenarios).</td></tr>
+</table>
+
+<!-- ════════════════════════════════════════ -->
+<h2>5. FL_ANTICHOP — Failed Low / Anti-Chop Recovery</h2>
+<p><span class="tag tag-live">live: fl_antichop_live.py</span> <span class="tag tag-replay">replay: fl_antichop_only.py</span></p>
+
+<table>
+<tr><th style="width:90px">Severity</th><th style="width:200px">Issue</th><th>Spec Says</th><th>Code Does</th><th>Impact</th></tr>
+
+<tr><td><span class="sev-major">MAJOR</span></td>
+<td>Live/replay stop logic inconsistent</td>
+<td>Stop = decline_distance &times; fl_stop_frac (0.50) below entry</td>
+<td>Live uses <code>turn_low</code> (the higher-low level). Replay uses <code>measured_move</code> calculation. Different stop prices for the same trade.</td>
+<td>Backtest stop behavior doesn't match live. Win rates and P&L are non-comparable.</td></tr>
+
+<tr><td><span class="sev-major">MAJOR</span></td>
+<td>Live/replay target candidates inconsistent</td>
+<td>Primary: VWAP or decline origin. Secondary: session high.</td>
+<td>Live includes PDH in target candidates. Replay does not. Different target prices for same trade.</td>
+<td>Live may find structural targets that replay misses, creating divergent trade outcomes.</td></tr>
+
+<tr><td><span class="sev-major">MAJOR</span></td>
+<td>VWAP missing from target candidates</td>
+<td>"VWAP or decline origin as the target (whichever gives better R:R). This is a mean-reversion play — the target is the mean (VWAP)"</td>
+<td>Neither live nor replay include raw VWAP as a target candidate. Uses decline_high, pdh, session_high instead.</td>
+<td>Mean-reversion strategy without mean-reversion target. VWAP is the natural exit for this pattern. Its absence forces either structural misses or suboptimal targets.</td></tr>
+
+<tr><td><span class="sev-minor">MINOR</span></td>
+<td>Hardcoded min stop</td>
+<td>Not specified in config</td>
+<td>Min stop = 0.15 &times; ATR hardcoded, not in config</td>
+<td>Can't tune without code change. Low urgency but inconsistent with other strategies.</td></tr>
+</table>
+
+<!-- ════════════════════════════════════════ -->
+<h2>6. SP_ATIER — Spencer A-Tier Consolidation Breakout</h2>
+<p><span class="tag tag-live">live: spencer_atier_live.py</span> <span class="tag tag-replay">replay: spencer_atier.py</span></p>
+
+<table>
+<tr><th style="width:90px">Severity</th><th style="width:200px">Issue</th><th>Spec Says</th><th>Code Does</th><th>Impact</th></tr>
+
+<tr><td><span class="sev-minor">MINOR</span></td>
+<td>Daily ATR silent failure</td>
+<td>Trend advance check uses daily ATR</td>
+<td>If daily ATR computation fails (insufficient data), falls back to intra ATR with a multiplier. No warning logged.</td>
+<td>Trend advance threshold may be miscalibrated on early data. Should log when fallback is used.</td></tr>
+
+<tr><td><span class="sev-minor">MINOR</span></td>
+<td>EMA9 deque alignment</td>
+<td>EMA9 from 5-min bars</td>
+<td>Same deque-based implementation as HH_QUALITY with potential day-boundary issues</td>
+<td>Low impact with clean day resets.</td></tr>
+</table>
+
+<!-- ════════════════════════════════════════ -->
+<h2>7. ORH_FBO_V2_A / V2_B — Opening Range High Failed Breakout</h2>
+<p><span class="tag tag-live">live: orh_fbo_v2_live.py</span></p>
+
+<table>
+<tr><th style="width:90px">Severity</th><th style="width:200px">Issue</th><th>Spec Says</th><th>Code Does</th><th>Impact</th></tr>
+
+<tr><td><span class="sev-minor">MINOR</span></td>
+<td>Hard-coded failure body ratio</td>
+<td>Spec describes rejection bar with upper wick &ge; 30%</td>
+<td>Additional hard-coded <code>body_ratio &le; 0.25</code> check not in spec</td>
+<td>More restrictive than spec. May reject valid rejection bars with moderate bodies.</td></tr>
+</table>
+
+<!-- ════════════════════════════════════════ -->
+<h2>8. PDH_FBO_B — Prior Day High Failed Breakout</h2>
+<p><span class="tag tag-live">live: pdh_fbo_live.py</span></p>
+
+<table>
+<tr><th style="width:90px">Severity</th><th style="width:200px">Issue</th><th>Spec Says</th><th>Code Does</th><th>Impact</th></tr>
+
+<tr><td><span class="sev-minor">MINOR</span></td>
+<td>Same hard-coded body ratio as ORH_FBO</td>
+<td>Same spec pattern</td>
+<td>Same hard-coded constraint</td>
+<td>Same impact — marginally more restrictive.</td></tr>
+</table>
+
+<!-- ════════════════════════════════════════ -->
+<h2>9. BS_STRUCT — Backside Structure Long</h2>
+<p><span class="tag tag-live">live: bs_struct_live.py</span></p>
+
+<table>
+<tr><th style="width:90px">Severity</th><th style="width:200px">Issue</th><th>Spec Says</th><th>Code Does</th><th>Impact</th></tr>
+
+<tr><td><span class="sev-major">MAJOR</span></td>
+<td>Min stop undersized</td>
+<td>Min stop = 0.30 &times; ATR (per EXIT_ARCHITECTURE_AUDIT spec)</td>
+<td>Uses <code>min_stop = 0.15 &times; ATR</code></td>
+<td>Stops are half the specified minimum. Tighter stops mean more stop-outs AND higher friction-as-percent-of-R. Directly worsens both win rate and economics.</td></tr>
+</table>
+
+<!-- ════════════════════════════════════════ -->
+<h2 style="color:#3fb950">10. Clean Strategies</h2>
+
+<div class="clean-box">
+<h3>ORL_FBD_LONG — Opening Range Low Failed Breakdown Long</h3>
+<p>Full compliance with spec. Entry logic, stop placement, target selection, and time windows all match. N=1 in current dataset (rare pattern).</p>
+</div>
+
+<div class="clean-box">
+<h3>FFT_NEWLOW_REV — Failed First Touch / New Low Reversal</h3>
+<p>Full compliance with spec. All detection, confirmation, and exit logic matches. 80% structural target rate (lowest fallback rate among non-ORH strategies).</p>
+</div>
+
+<!-- ════════════════════════════════════════ -->
+<h2>11. EMA9_FT — EMA9 First Touch Long</h2>
+<p><span class="tag tag-live">live: ema9_ft_live.py</span></p>
+
+<table>
+<tr><th style="width:90px">Severity</th><th style="width:200px">Issue</th><th>Spec Says</th><th>Code Does</th><th>Impact</th></tr>
+
+<tr><td><span class="sev-extra">EXTRA CODE</span></td>
+<td>drive_high source ambiguity</td>
+<td>Drive high = high of the initial opening drive move</td>
+<td>Some paths use <code>snap.session_high</code>, others use <code>bar.high</code>. These should be equivalent during the drive phase, but can diverge if session_high updates from a different bar.</td>
+<td>Low impact in practice. Could cause subtle target misplacement on edge cases.</td></tr>
+</table>
+
+<!-- ════════════════════════════════════════ -->
+<h2>Summary: All Issues by Severity</h2>
+
+<table>
+<tr><th>Strategy</th><th><span class="sev-crit">CRITICAL</span></th><th><span class="sev-major">MAJOR</span></th><th><span class="sev-minor">MINOR</span></th><th><span class="sev-extra">EXTRA</span></th><th>Verdict</th></tr>
+<tr><td>BDR_SHORT</td><td class="crit">5</td><td>0</td><td>0</td><td>0</td><td class="crit">Fundamentally broken</td></tr>
+<tr><td>EMA_FPIP</td><td class="crit">2</td><td>0</td><td>1</td><td>0</td><td class="crit">Core logic wrong</td></tr>
+<tr><td>HH_QUALITY</td><td class="crit">1</td><td>0</td><td>1</td><td>0</td><td class="crit">Missing key target</td></tr>
+<tr><td>SC_SNIPER</td><td class="crit">1</td><td>1</td><td>0</td><td>2</td><td class="crit">Live/replay diverge</td></tr>
+<tr><td>FL_ANTICHOP</td><td>0</td><td class="major">3</td><td>1</td><td>0</td><td class="major">Structurally inconsistent</td></tr>
+<tr><td>BS_STRUCT</td><td>0</td><td class="major">1</td><td>0</td><td>0</td><td class="major">Stop undersized</td></tr>
+<tr><td>SP_ATIER</td><td>0</td><td>0</td><td>2</td><td>0</td><td class="minor">Minor issues</td></tr>
+<tr><td>ORH_FBO_V2</td><td>0</td><td>0</td><td>1</td><td>0</td><td class="minor">Minor restriction</td></tr>
+<tr><td>PDH_FBO_B</td><td>0</td><td>0</td><td>1</td><td>0</td><td class="minor">Minor restriction</td></tr>
+<tr><td>EMA9_FT</td><td>0</td><td>0</td><td>0</td><td>1</td><td class="minor">Edge case only</td></tr>
+<tr><td>ORL_FBD_LONG</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="ok">CLEAN</td></tr>
+<tr><td>FFT_NEWLOW_REV</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="ok">CLEAN</td></tr>
+</table>
+
+<!-- ════════════════════════════════════════ -->
+<h2>Recommended Fix Order</h2>
+
+<div class="box">
+<h3>Phase 1 — Critical Fixes (highest impact on simulation accuracy)</h3>
+<table>
+<tr><th>#</th><th>Strategy</th><th>Fix</th><th>Expected Impact</th></tr>
+<tr><td>1</td><td>BDR_SHORT</td><td>Swing lookback 6→10, AM-only at signal time, close_pos 0.40→0.60, median range 5→10 bars, add regime gate</td><td>Completely different trade selection. May produce valid short signals on RED+TREND days.</td></tr>
+<tr><td>2</td><td>EMA_FPIP</td><td>Fix exp_low tracking (update during expansion), add volume decline check during pullback</td><td>Better expansion geometry → better pullback detection → cleaner entries. This was the ONLY positive strategy (PF 1.93) on structural trades — fixing it could improve further.</td></tr>
+<tr><td>3</td><td>HH_QUALITY</td><td>Add measured_move (consol_high + drive_distance) to structural targets</td><td>152 trades at 83% fallback → significantly more structural targets available. May dramatically change HH results.</td></tr>
+<tr><td>4</td><td>SC_SNIPER</td><td>Add measured_move to replay target candidates (match live)</td><td>25 trades at 84% fallback → more structural exits. Live/replay convergence.</td></tr>
+</table>
+</div>
+
+<div class="box">
+<h3>Phase 2 — Major Fixes (structural inconsistencies)</h3>
+<table>
+<tr><th>#</th><th>Strategy</th><th>Fix</th><th>Expected Impact</th></tr>
+<tr><td>5</td><td>FL_ANTICHOP</td><td>Align live/replay stops (use turn_low consistently), align target candidates (add PDH to replay, add VWAP to both)</td><td>Mean-reversion strategy gets its natural target (VWAP). Live/replay convergence.</td></tr>
+<tr><td>6</td><td>BS_STRUCT</td><td>Min stop 0.15→0.30 ATR</td><td>Fewer stop-outs, lower friction-as-pct-of-R. Better economics per trade.</td></tr>
+</table>
+</div>
+
+<div class="box">
+<h3>Phase 3 — Minor Fixes (optional, lower priority)</h3>
+<p>ORH_FBO_V2 / PDH_FBO body_ratio constraint, SP_ATIER daily ATR logging, EMA9_FT drive_high source cleanup.</p>
+</div>
+
+<p style="color:#484f58;font-size:11px;margin-top:40px">Generated: 2026-03-14 | Spec vs Code Audit — All 12 Strategies</p>
+</body></html>

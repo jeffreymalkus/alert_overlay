@@ -774,7 +774,7 @@
 <div class="header">
   <div>
     <h1>Portfolio D</h1>
-    <div class="subtitle">Long (VK+SC, Tape≥0.40) + Short (BDR RED+TREND AM)</div>
+    <div class="subtitle">Long (VK+SC, Tape≥0.40) + Short (ORH_FBO_A + PDH_FBO_B, RED only)</div>
   </div>
   <div style="display: flex; align-items: center; gap: 12px;">
     <button class="sound-toggle" onclick="exportCSV()">Export CSV</button>
@@ -847,8 +847,16 @@
         <input class="in-play-input" id="inPlayInput" type="text" placeholder="Add in-play..." maxlength="10"
                onkeydown="if(event.key==='Enter')addInPlay()">
         <button class="in-play-btn" onclick="addInPlay()">+ Add</button>
+        <button class="in-play-btn" onclick="toggleBulkPaste()" id="bulkPasteToggle">Paste List</button>
         <button class="in-play-btn clear" onclick="clearInPlay()">Clear All</button>
         <span class="in-play-msg" id="inPlayMsg"></span>
+      </div>
+      <div id="bulkPasteBox" style="display:none; margin-top:8px;">
+        <textarea id="bulkPasteInput" rows="4" placeholder="Paste symbols here — comma, space, or newline separated&#10;e.g. AAPL, TSLA, NVDA, COIN" style="width:100%; background:#0f172a; color:#e2e8f0; border:1px solid #334155; border-radius:6px; padding:8px; font-family:monospace; font-size:12px; resize:vertical;"></textarea>
+        <div style="margin-top:6px; display:flex; gap:8px; align-items:center;">
+          <button class="in-play-btn" onclick="submitBulkPaste()">Add All</button>
+          <span class="in-play-msg" id="bulkPasteMsg"></span>
+        </div>
       </div>
       <div class="in-play-badges" id="inPlayBadges">
         <span class="in-play-empty">No in-play symbols. Add symbols for today's session.</span>
@@ -1490,6 +1498,55 @@
       msg.className = 'in-play-msg error';
     });
     input.focus();
+  }
+
+  function toggleBulkPaste() {
+    const box = document.getElementById('bulkPasteBox');
+    const btn = document.getElementById('bulkPasteToggle');
+    if (box.style.display === 'none') {
+      box.style.display = 'block';
+      btn.style.background = '#3b82f622';
+      btn.style.borderColor = '#3b82f644';
+      document.getElementById('bulkPasteInput').focus();
+    } else {
+      box.style.display = 'none';
+      btn.style.background = '';
+      btn.style.borderColor = '';
+    }
+  }
+
+  function submitBulkPaste() {
+    const textarea = document.getElementById('bulkPasteInput');
+    const msg = document.getElementById('bulkPasteMsg');
+    const raw = textarea.value.trim();
+    if (!raw) return;
+    msg.textContent = 'Adding...';
+    msg.className = 'in-play-msg';
+
+    fetch('/api/bulk-add-in-play', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({symbols: raw})
+    })
+    .then(r => r.json())
+    .then(d => {
+      if (d.ok) {
+        const parts = [];
+        if (d.added && d.added.length) parts.push(`Added ${d.added.length}`);
+        if (d.skipped && d.skipped.length) parts.push(`${d.skipped.length} already tracked`);
+        msg.textContent = parts.join(', ') || 'Done';
+        msg.className = 'in-play-msg success';
+        textarea.value = '';
+      } else {
+        msg.textContent = d.error || 'Failed';
+        msg.className = 'in-play-msg error';
+      }
+      setTimeout(() => { msg.textContent = ''; }, 5000);
+    })
+    .catch(() => {
+      msg.textContent = 'Network error';
+      msg.className = 'in-play-msg error';
+    });
   }
 
   function removeInPlay(symbol) {

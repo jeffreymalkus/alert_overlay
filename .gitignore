@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# Data files (too large for git)
+data/
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+*.swp
+*~
+~$*
+
+# In-play snapshots (runtime artifacts)
+in_play_snapshots/
+
+# Outputs (regenerable — keep structure but ignore contents)
+outputs/*.csv
+outputs/*.json
+outputs/*.xlsx
+outputs/*.docx

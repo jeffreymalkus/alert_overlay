@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Portfolio D — Trade Economics Audit</title>
+<style>
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; padding: 24px; background: #0d1117; color: #c9d1d9; }
+h1 { font-size: 20px; color: #58a6ff; margin-bottom: 4px; }
+h2 { font-size: 14px; color: #8b949e; font-weight: normal; margin-top: 0; margin-bottom: 24px; }
+h3 { font-size: 16px; color: #58a6ff; margin-top: 32px; }
+.box { background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 16px; margin: 16px 0; font-family: monospace; font-size: 13px; line-height: 1.6; white-space: pre; }
+table { border-collapse: collapse; width: 100%; margin-top: 16px; font-size: 13px; }
+th { background: #161b22; color: #58a6ff; padding: 8px 10px; text-align: right; border-bottom: 2px solid #30363d; font-weight: 600; white-space: nowrap; }
+th:first-child { text-align: left; }
+td { padding: 7px 10px; border-bottom: 1px solid #21262d; text-align: right; font-family: monospace; }
+td:first-child { text-align: left; font-weight: 600; }
+tr:hover { background: #161b22; }
+.neg { color: #f85149; }
+.pos { color: #3fb950; }
+.warn { color: #d29922; }
+.dead { background: #1c1012; }
+.rule { font-size: 12px; color: #8b949e; margin-top: 8px; }
+</style></head><body>
+<h1>Portfolio D — Trade Economics Audit</h1>
+<h2>8 bps/side (16 bps round-trip) · Structural targets · Max-bars exit fix</h2>
+
+<h3>1. Cost Model Verification</h3>
+<div class="box">Trade: ORH_FBO_V2_A SHORT RIVN 2026-03-10
+Entry:  $14.23
+Stop:   $17.38
+Risk:   $0.1407  (0.99% of price)
+
+Cost calculation:
+  Round-trip dollars = $14.23 × 2 × 8/10000 = $0.0228
+  Cost in R          = $0.0228 / $0.1407 = 0.162R
+  Raw stop P&L       = -1.000R
+  Final P&L          = -1.000 - 0.162 = -1.162R
+  CSV P&L            = -1.1618R  ✓ Match
+
+One deduction. No double-counting.
+Entry cost + exit cost bundled into single round-trip.</div>
+<h3>2. Stop-Size Economics Table</h3>
+<p class="rule">Viability rule: median Cost/R should be below ~0.15R. Anything above 0.30R is structurally non-viable under 16bps round-trip.</p>
+<table>
+<tr>
+  <th>Strategy</th><th>N</th><th>PF</th><th>WR%</th><th>Total R</th>
+  <th>Med Entry</th><th>Med Risk</th><th>Stop %</th>
+  <th>Med Cost/R</th><th>P75 Cost/R</th>
+  <th>Tgt RR</th><th>Med Win</th><th>Viable?</th>
+</tr>
+<tr class="dead"><td>BS_STRUCT</td><td>6</td><td class="pos">1.09</td><td>50.0</td><td class="pos">+0.3</td><td>$48</td><td>$0.93</td><td>1.06%</td><td class="warn">0.177</td><td class="warn">0.302</td><td>2.00</td><td>+1.09</td><td class="neg"><strong>NO</strong></td></tr>
+<tr class="dead"><td>EMA9_FT</td><td>6</td><td class="warn">0.84</td><td>50.0</td><td class="neg">-0.6</td><td>$31</td><td>$0.16</td><td>0.84%</td><td class="warn">0.192</td><td class="warn">0.344</td><td>2.00</td><td>+0.86</td><td class="neg"><strong>NO</strong></td></tr>
+<tr class="dead"><td>EMA_FPIP</td><td>83</td><td class="neg">0.76</td><td>39.8</td><td class="neg">-12.3</td><td>$54</td><td>$0.32</td><td>0.63%</td><td class="warn">0.253</td><td class="warn">0.389</td><td>2.00</td><td>+1.26</td><td class="neg"><strong>NO</strong></td></tr>
+<tr class="dead"><td>FFT_NEWLOW_REV</td><td>25</td><td class="neg">0.51</td><td>36.0</td><td class="neg">-9.1</td><td>$42</td><td>$0.27</td><td>0.72%</td><td class="warn">0.221</td><td class="warn">0.363</td><td>1.89</td><td>+0.96</td><td class="neg"><strong>NO</strong></td></tr>
+<tr class="dead"><td>FL_ANTICHOP</td><td>70</td><td class="warn">0.84</td><td>48.6</td><td class="neg">-7.5</td><td>$59</td><td>$0.53</td><td>0.59%</td><td class="warn">0.270</td><td class="neg">0.487</td><td>1.50</td><td>+1.15</td><td class="neg"><strong>NO</strong></td></tr>
+<tr class="dead"><td>HH_QUALITY</td><td>152</td><td class="neg">0.47</td><td>38.2</td><td class="neg">-45.5</td><td>$67</td><td>$0.64</td><td>0.78%</td><td class="warn">0.206</td><td class="warn">0.309</td><td>1.50</td><td>+0.68</td><td class="neg"><strong>NO</strong></td></tr>
+<tr class="dead"><td>ORH_FBO_V2_A</td><td>338</td><td class="neg">0.67</td><td>39.3</td><td class="neg">-87.5</td><td>$55</td><td>$0.29</td><td>0.51%</td><td class="neg">0.312</td><td class="neg">0.553</td><td>2.08</td><td>+1.36</td><td class="neg"><strong>NO</strong></td></tr>
+<tr class="dead"><td>ORH_FBO_V2_B</td><td>207</td><td class="neg">0.78</td><td>43.5</td><td class="neg">-28.8</td><td>$60</td><td>$0.51</td><td>0.74%</td><td class="warn">0.216</td><td class="warn">0.393</td><td>1.54</td><td>+1.03</td><td class="neg"><strong>NO</strong></td></tr>
+<tr class="dead"><td>PDH_FBO_B</td><td>37</td><td class="neg">0.60</td><td>43.2</td><td class="neg">-10.2</td><td>$45</td><td>$0.52</td><td>0.46%</td><td class="neg">0.345</td><td class="neg">0.553</td><td>1.50</td><td>+1.10</td><td class="neg"><strong>NO</strong></td></tr>
+<tr class="dead"><td>SC_SNIPER</td><td>25</td><td class="neg">0.37</td><td>28.0</td><td class="neg">-13.3</td><td>$42</td><td>$0.37</td><td>0.68%</td><td class="warn">0.236</td><td class="warn">0.312</td><td>2.00</td><td>+0.98</td><td class="neg"><strong>NO</strong></td></tr>
+<tr class="dead"><td>SP_ATIER</td><td>21</td><td class="neg">0.69</td><td>47.6</td><td class="neg">-3.9</td><td>$34</td><td>$0.25</td><td>0.90%</td><td class="warn">0.178</td><td class="warn">0.274</td><td>3.00</td><td>+0.49</td><td class="neg"><strong>NO</strong></td></tr>
+</table>
+
+<h3>3. Key Findings</h3>
+<div class="box">VIABLE strategies (median Cost/R < 0.15):  0
+NON-VIABLE strategies (median Cost/R >= 0.15): 11
+
+  BS_STRUCT         stop=1.06%  cost/R=0.177  → NON-VIABLE
+  EMA9_FT           stop=0.84%  cost/R=0.192  → NON-VIABLE
+  EMA_FPIP          stop=0.63%  cost/R=0.253  → NON-VIABLE
+  FFT_NEWLOW_REV    stop=0.72%  cost/R=0.221  → NON-VIABLE
+  FL_ANTICHOP       stop=0.59%  cost/R=0.270  → NON-VIABLE
+  HH_QUALITY        stop=0.78%  cost/R=0.206  → NON-VIABLE
+  ORH_FBO_V2_A      stop=0.51%  cost/R=0.312  → NON-VIABLE
+  ORH_FBO_V2_B      stop=0.74%  cost/R=0.216  → NON-VIABLE
+  PDH_FBO_B         stop=0.46%  cost/R=0.345  → NON-VIABLE
+  SC_SNIPER         stop=0.68%  cost/R=0.236  → NON-VIABLE
+  SP_ATIER          stop=0.90%  cost/R=0.178  → NON-VIABLE
+
+The core problem: most strategies set stops at 0.2-0.5% of price.
+At 16bps round-trip, that consumes 30-80% of the risk budget in friction.
+
+To be viable under this cost structure, strategies need:
+  • Stop distance > 1.0% of price  (cost/R < 0.16)
+  • OR target lower-priced stocks   ($20-50 range)
+  • OR wider ATR-based stops        (0.5-1.0 ATR minimum)
+</div>
+</body></html>

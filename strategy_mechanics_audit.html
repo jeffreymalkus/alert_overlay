@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Strategy Mechanics Audit</title>
+<style>
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; padding: 24px; background: #0d1117; color: #c9d1d9; max-width: 1200px; margin: 0 auto; }
+h1 { font-size: 22px; color: #58a6ff; margin-bottom: 4px; }
+h2 { font-size: 17px; color: #58a6ff; margin-top: 36px; border-bottom: 1px solid #30363d; padding-bottom: 6px; }
+h3 { font-size: 14px; color: #d29922; margin-top: 24px; margin-bottom: 8px; }
+.subtitle { font-size: 14px; color: #8b949e; margin-top: 0; margin-bottom: 24px; }
+table { border-collapse: collapse; width: 100%; margin: 12px 0 20px 0; font-size: 13px; }
+th { background: #161b22; color: #58a6ff; padding: 8px 10px; text-align: left; border-bottom: 2px solid #30363d; font-weight: 600; white-space: nowrap; }
+td { padding: 7px 10px; border-bottom: 1px solid #21262d; vertical-align: top; }
+td:first-child { font-weight: 600; font-family: monospace; white-space: nowrap; }
+tr:hover { background: #161b22; }
+code { background: #161b22; padding: 2px 6px; border-radius: 3px; font-size: 12px; color: #f0883e; }
+.box { background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 14px 16px; margin: 12px 0; font-size: 13px; line-height: 1.7; }
+.neg { color: #f85149; }
+.pos { color: #3fb950; }
+.warn { color: #d29922; }
+.dim { color: #8b949e; }
+.label { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 11px; font-weight: 600; }
+.long { background: #0d2818; color: #3fb950; }
+.short { background: #1c1012; color: #f85149; }
+ol, ul { margin: 4px 0 4px 20px; }
+li { margin: 3px 0; }
+</style></head><body>
+
+<h1>Strategy Mechanics Audit — Complete Reference</h1>
+<p class="subtitle">How every strategy sets stops, targets, and exits. Answers all 5 questions.</p>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<h2>Q1. How is stop price chosen?</h2>
+
+<table>
+<tr><th>Strategy</th><th>Dir</th><th>Stop Anchor</th><th>Buffer</th><th>Min Floor</th><th>Notes</th></tr>
+<tr><td>FL_ANTICHOP</td><td><span class="label long">LONG</span></td>
+    <td>Turn low (structural swing)</td><td>0.10 × ATR</td><td>0.15 ATR</td>
+    <td>Fallback: measured_move × 0.50 if no turn low</td></tr>
+<tr><td>SP_ATIER</td><td><span class="label long">LONG</span></td>
+    <td>Box low (consolidation floor)</td><td>$0.02 fixed</td><td>0.15 ATR</td>
+    <td>Very tight on high-priced stocks</td></tr>
+<tr><td>EMA_FPIP</td><td><span class="label long">LONG</span></td>
+    <td>Pullback low</td><td>$0.02 fixed</td><td>0.20 ATR</td>
+    <td>Tight dollar buffer → crushed by friction</td></tr>
+<tr><td>BS_STRUCT</td><td><span class="label long">LONG</span></td>
+    <td>Most recent higher-low</td><td>$0.02 fixed</td><td>0.15 ATR</td>
+    <td>Fallback: range_low if no HL found</td></tr>
+<tr><td>EMA9_FT</td><td><span class="label long">LONG</span></td>
+    <td>Pullback low</td><td>$0.02 fixed</td><td>0.15 ATR</td>
+    <td>1-min timeframe, uses 1m ATR</td></tr>
+<tr><td>SC_SNIPER</td><td><span class="label long">LONG</span></td>
+    <td>Lowest since retest</td><td>$0.02 fixed</td><td>0.15 ATR</td>
+    <td>—</td></tr>
+<tr><td>HH_QUALITY</td><td><span class="label long">LONG</span></td>
+    <td>Consolidation low</td><td>$0.02 fixed</td><td>0.15 ATR</td>
+    <td>—</td></tr>
+<tr><td>ORL_FBD</td><td><span class="label long">LONG</span></td>
+    <td>Lowest since breakdown</td><td>0.30 × ATR</td><td>0.40 ATR</td>
+    <td>Wider floor — better economics</td></tr>
+<tr><td>FFT_NEWLOW</td><td><span class="label long">LONG</span></td>
+    <td>Spring bar low (flush point)</td><td>0.10 × ATR</td><td>0.30 ATR</td>
+    <td>Also has max ceiling: skip if &gt; 2.5 ATR</td></tr>
+<tr><td>BDR_SHORT</td><td><span class="label short">SHORT</span></td>
+    <td>Retest bar high</td><td>0.30 × ATR</td><td>0.50 ATR</td>
+    <td>Widest floor — best cost economics</td></tr>
+<tr><td>ORH_FBO_V2</td><td><span class="label short">SHORT</span></td>
+    <td>Mode A: retest high<br>Mode B: OR high</td><td>0.20 × ATR</td><td>0.30 ATR</td>
+    <td>Dual mode entry with different anchors</td></tr>
+<tr><td>PDH_FBO</td><td><span class="label short">SHORT</span></td>
+    <td>Mode A: retest high<br>Mode B: PDH</td><td>0.20 × ATR</td><td>0.30 ATR</td>
+    <td>Same structure as ORH_FBO_V2</td></tr>
+</table>
+
+<div class="box">
+<strong class="warn">Key finding:</strong> 7 of 12 strategies use a <code>$0.02 fixed</code> buffer with only <code>0.15 ATR</code> minimum floor.
+On a $50 stock with 5-min ATR of $0.30, the minimum stop is $0.045 — that's <strong>0.09% of price</strong>.
+At 16bps round-trip friction, cost/R = 0.0016 × $50 / $0.045 = <strong>1.78R</strong>. The trade is dead before it starts.<br><br>
+The short strategies (BDR, ORH, PDH) use ATR-based buffers with wider floors (0.30–0.50 ATR), giving much better cost economics — but still not enough.
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<h2>Q2. How is target price chosen?</h2>
+
+<p>Every strategy uses <code>compute_structural_target_long()</code> or <code>_short()</code> with this logic:</p>
+<ol>
+<li>Collect candidate structural levels (VWAP, session high/low, PDH/PDL, measured moves, etc.)</li>
+<li>Filter: keep only candidates that are <code>&gt;= min_rr</code> away from entry (all strategies: <strong>min_rr = 1.0</strong>)</li>
+<li>Cap: clamp each candidate at <code>max_rr</code> (all strategies: <strong>max_rr = 3.0</strong>)</li>
+<li>Select: pick the <strong>nearest viable</strong> candidate (smallest R:R that meets min_rr)</li>
+<li>Fallback: if no structural candidate qualifies, use <code>fallback_rr</code> as a fixed target</li>
+</ol>
+
+<table>
+<tr><th>Strategy</th><th>Structural Candidates</th><th>fallback_rr</th></tr>
+<tr><td>FL_ANTICHOP</td><td>decline_high, session_high, PDH</td><td>1.5</td></tr>
+<tr><td>SP_ATIER</td><td>measured_move (box), session_high, PDH</td><td>3.0</td></tr>
+<tr><td>EMA_FPIP</td><td>expansion_high, session_high, PDH</td><td>2.0</td></tr>
+<tr><td>BS_STRUCT</td><td>VWAP, session_high</td><td>2.0</td></tr>
+<tr><td>EMA9_FT</td><td>drive_high, session_high</td><td>2.0</td></tr>
+<tr><td>SC_SNIPER</td><td>measured_move, session_high, PDH</td><td>2.0</td></tr>
+<tr><td>HH_QUALITY</td><td>measured_move (consol), drive_high, session_high</td><td>1.5</td></tr>
+<tr><td>ORL_FBD</td><td>VWAP, ORH, session_high</td><td>2.0</td></tr>
+<tr><td>FFT_NEWLOW</td><td>VWAP, ORH, session_high, PDL, PDH</td><td>2.0</td></tr>
+<tr><td>BDR_SHORT</td><td>session_low, PDL, bd_extension</td><td>2.0</td></tr>
+<tr><td>ORH_FBO_V2</td><td>VWAP, ORL, session_low</td><td>1.5</td></tr>
+<tr><td>PDH_FBO</td><td>VWAP, ORL, session_low</td><td>1.5</td></tr>
+</table>
+
+<div class="box">
+<strong>All targets are structural or structural-fallback.</strong> No strategy forces a fixed R:R anymore.
+The <code>actual_rr</code> stored in metadata reflects the real structural distance (1.0 to 3.0 range).
+The fallback_rr only kicks in when no structural candidate meets min_rr = 1.0.
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<h2>Q3. What does "Target RR" in the economics table represent?</h2>
+
+<div class="box">
+The <code>tgtRR</code> column in the economics table shows the <strong>median actual_rr</strong> across all trades for that strategy — i.e., the median structural target distance selected by <code>compute_structural_target</code>.<br><br>
+This is NOT the fixed configured fallback. It is the real distance to the structural level that was chosen for each trade, capped at max_rr=3.0 and floored at min_rr=1.0.<br><br>
+The <code>STRATEGY_TARGET_RR</code> dict in replay_live_path.py stores the <em>fallback</em> values used when <code>actual_rr</code> is missing from metadata. But for most trades, the metadata <code>actual_rr</code> is present and reflects the real structural target.
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<h2>Q4. When target is hit in simulation, how is it filled?</h2>
+
+<div class="box" style="border-color: #f85149;">
+<strong class="neg">Exact touch = full fill. No buffer. No confirmation.</strong><br><br>
+The code (helpers.py lines 301-313):
+<ul>
+<li>LONG: <code>if b.high &gt;= target</code> → fill at target price, pnl = target_rr - cost_rr</li>
+<li>SHORT: <code>if b.low &lt;= target</code> → fill at target price, pnl = target_rr - cost_rr</li>
+</ul>
+This means:
+<ul>
+<li>If the bar's high <em>just touches</em> the target and reverses, the sim counts it as a full fill</li>
+<li>No "trade through" requirement — a wick to the level = filled</li>
+<li>No slippage buffer on the target fill itself</li>
+<li>The exit fill price is exactly <code>target_price</code>, never worse</li>
+</ul>
+<strong>This overstates target hit rate.</strong> In live trading, limit orders at a level only fill if price trades through. Some percentage of these "target hits" would become EOD or stop exits in reality.
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<h2>Q5. When no target/stop is hit, how is exit handled?</h2>
+
+<div class="box">
+Three paths to exit without target/stop:
+
+<h3 style="margin-top:8px">A. EOD exit (time of day)</h3>
+<code>if hhmm &gt;= 1555</code> → exit at bar's close price.<br>
+P&L = (close - entry) × direction / risk - cost_rr.<br>
+This is the primary time-based exit. Realistic.
+
+<h3>B. Max bars fallthrough</h3>
+If the loop exhausts <code>max_bars</code> iterations without hitting EOD/stop/target, exit at the last bar's close price.<br>
+P&L = (last_bar.close - entry) × direction / risk - cost_rr.<br><br>
+<strong class="pos">This was fixed in the current session.</strong> Previously, the fallthrough assigned <code>pnl_rr = 0.0</code> — a free pass that masked real losses. Now it computes actual P&L from the close price.
+
+<h3>C. Max bars per strategy</h3>
+Each strategy has a configured max_bars limit:
+<table style="width:auto; margin:8px 0;">
+<tr><th>Strategy</th><th>max_bars</th><th>~Duration</th></tr>
+<tr><td>BDR_SHORT</td><td>8</td><td>~40 min (5m bars)</td></tr>
+<tr><td>HH_QUALITY</td><td>20</td><td>~1.7 hrs (5m bars)</td></tr>
+<tr><td>EMA_FPIP</td><td>24</td><td>~2 hrs (5m bars)</td></tr>
+<tr><td>ORL_FBD</td><td>24</td><td>~2 hrs (5m bars)</td></tr>
+<tr><td>BS_STRUCT</td><td>30</td><td>~2.5 hrs (5m bars)</td></tr>
+<tr><td>FL_ANTICHOP</td><td>52</td><td>~4.3 hrs (5m bars)</td></tr>
+<tr><td>ORH_FBO_V2</td><td>60</td><td>~5 hrs (5m bars)</td></tr>
+<tr><td>PDH_FBO</td><td>60</td><td>~5 hrs (5m bars)</td></tr>
+<tr><td>FFT_NEWLOW</td><td>60</td><td>~5 hrs (5m/1m)</td></tr>
+<tr><td>SC_SNIPER</td><td>78</td><td>~full day (5m)</td></tr>
+<tr><td>SP_ATIER</td><td>78</td><td>~full day (5m)</td></tr>
+<tr><td>EMA9_FT</td><td>120</td><td>~2 hrs (1m bars)</td></tr>
+</table>
+
+<h3>D. Trail exit (EMA9)</h3>
+Only active if <code>trail_ema9=True</code> (currently NOT used by any strategy in replay_live_path).
+When enabled: after trade reaches +1.0R, close below EMA9 triggers exit at close price.
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<h2>Summary: What's Real vs What's Optimistic</h2>
+
+<table>
+<tr><th>Mechanic</th><th>Status</th><th>Assessment</th></tr>
+<tr><td>Stop anchors</td><td class="pos">Structural</td><td>Based on real invalidation levels — realistic</td></tr>
+<tr><td>Stop buffers</td><td class="neg">Too tight</td><td>$0.02 fixed on 7/12 strategies. Produces 0.09-0.5% stops that friction destroys</td></tr>
+<tr><td>Stop min floors</td><td class="warn">Exists but weak</td><td>0.15 ATR floor is too small. Need 0.50+ ATR for cost viability</td></tr>
+<tr><td>Target levels</td><td class="pos">Structural</td><td>Real VWAP/session/PDH levels — not forced R:R</td></tr>
+<tr><td>Target selection</td><td class="pos">Nearest viable</td><td>Picks closest level within 1.0-3.0R — reasonable</td></tr>
+<tr><td>Target fill</td><td class="neg">Optimistic</td><td>Touch = fill. No trade-through requirement. Overstates hit rate</td></tr>
+<tr><td>Stop fill</td><td class="warn">Exact price</td><td>No slippage on stop. Real stops slip — but cost model partially captures this</td></tr>
+<tr><td>Transaction costs</td><td class="pos">Now included</td><td>8 bps/side, 16 bps RT. Applied as single round-trip deduction</td></tr>
+<tr><td>EOD exit</td><td class="pos">Realistic</td><td>Exit at 15:55 close price with friction</td></tr>
+<tr><td>Max bars fallthrough</td><td class="pos">Fixed</td><td>Now computes real P&L instead of 0.0R free pass</td></tr>
+</table>
+
+</body></html>

@@ -1,0 +1,61 @@
+=================================================================
+  STRATEGYMANAGER — FIRST SESSION VALIDATION REPORT
+=================================================================
+
+Engine:    StrategyManager (step)
+Session:   08:18:27 → 09:14:00
+Runners:   85
+
+─────────────────────────────────────────────
+1. TOTAL ALERT COUNT
+   Alerts fired:   0
+   Alerts blocked: 0 (tape permission gate)
+   LONG:  0
+   SHORT: 0
+
+─────────────────────────────────────────────
+2. ALERTS BY STRATEGY
+   (none)
+
+
+─────────────────────────────────────────────
+3. BAD ENTRY/STOP/TARGET VALUES
+   PASS — no suspicious values detected
+
+─────────────────────────────────────────────
+4. DUPLICATE / SPAM BEHAVIOR
+   PASS — no rapid-fire duplicates detected
+
+─────────────────────────────────────────────
+5. STARTUP & OPEN LATENCY
+   Dashboard start:  08:18:27
+   IBKR connected:   08:18:27
+   All runners ready: 08:20:59
+   First bar:        09:11:00
+   First alert:      (none fired)
+   Startup→Ready:    152s
+
+─────────────────────────────────────────────
+6. RUNTIME EXCEPTIONS
+   ✗ 08:20:23 Error 200, reqId 517: No security definition has been found for the request, contract: Stock(symbol='BESI', exchange='SMART', currency='USD')
+   ✗ 08:20:23 Error 200, reqId 518: No security definition has been found for the request, contract: Stock(symbol='BESI', exchange='SMART', currency='USD')
+   ✗ 08:20:23 Error 200, reqId 519: No security definition has been found for the request, contract: Stock(symbol='BESI', exchange='SMART', currency='USD')
+   ✗ 08:21:12 Error 200, reqId 644: No security definition has been found for the request, contract: Stock(symbol='BESI', exchange='SMART', currency='USD')
+   Warnings: 1
+     08:20:23 Unknown contract: Stock(symbol='BESI', exchange='SMART', currency='USD')
+
+─────────────────────────────────────────────
+7. IN-PLAY / UNIVERSE TAGGING
+   In-play symbols loaded: 32
+   STATIC: 53 symbols
+   IN_PLAY: 32 symbols
+
+─────────────────────────────────────────────
+BAR PROGRESS
+   Symbols receiving bars: 72
+   Min bars: 400  Max bars: 400  Avg: 400
+   ⚠ Zero bars received: DASH, DKNG, MS, BESI, DKS, FFIV, GIII, MCY, META, MLAB
+
+=================================================================
+VERDICT: 4 issue(s) found — review above
+=================================================================

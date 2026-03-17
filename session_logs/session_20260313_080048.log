@@ -1,0 +1,1866 @@
+08:00:48 [INFO] Dashboard running at http://localhost:8877
+08:00:48 [INFO] Loaded 25 in-play symbols: AAL, ADBE, CAPR, CPB, DG, DKS, DTIL, EXR, HIMS, HUM...
+08:00:48 [INFO] Connecting to IBKR at 127.0.0.1:7497...
+08:00:48 [INFO] Connecting to 127.0.0.1:7497 with clientId 10...
+08:00:48 [INFO] Connected
+08:00:48 [INFO] Logged on to server version 176
+08:00:48 [INFO] API connection ready
+08:00:48 [INFO] Warning 2104, reqId -1: Market data farm connection is OK:hfarm
+08:00:48 [INFO] Warning 2104, reqId -1: Market data farm connection is OK:usfarm.nj
+08:00:48 [INFO] Warning 2104, reqId -1: Market data farm connection is OK:jfarm
+08:00:48 [INFO] Warning 2104, reqId -1: Market data farm connection is OK:usfuture
+08:00:48 [INFO] Warning 2104, reqId -1: Market data farm connection is OK:usopt.nj
+08:00:48 [INFO] Warning 2104, reqId -1: Market data farm connection is OK:cashfarm
+08:00:48 [INFO] Warning 2104, reqId -1: Market data farm connection is OK:eufarmnj
+08:00:48 [INFO] Warning 2104, reqId -1: Market data farm connection is OK:usfarm
+08:00:48 [INFO] Warning 2106, reqId -1: HMDS data farm connection is OK:euhmds
+08:00:48 [INFO] Warning 2106, reqId -1: HMDS data farm connection is OK:fundfarm
+08:00:48 [INFO] Warning 2106, reqId -1: HMDS data farm connection is OK:ushmds
+08:00:48 [INFO] Warning 2158, reqId -1: Sec-def data farm connection is OK:secdefnj
+08:00:49 [INFO] Synchronization complete
+08:00:49 [INFO] Connected.
+08:00:49 [INFO] Order manager ready (port 7497— PAPER)
+08:00:49 [INFO] Setting up market context (SPY + QQQ)...
+08:00:49 [INFO] [MKT:SPY] Contract qualified
+08:00:49 [INFO] [MKT:SPY] Caught up: 390 1-min bars → 78 5-min bars
+08:00:49 [INFO] [MKT:QQQ] Contract qualified
+08:00:49 [INFO] [MKT:QQQ] Caught up: 390 1-min bars → 78 5-min bars
+08:00:49 [INFO] [MKT:SPY] reqMktData subscribed for market context
+08:00:49 [INFO] [SPY] Market context subscribed (reqMktData)
+08:00:49 [INFO] [MKT:QQQ] reqMktData subscribed for market context
+08:00:49 [INFO] [QQQ] Market context subscribed (reqMktData)
+08:00:49 [INFO] Regime: RED+TREND
+08:00:49 [INFO] Pausing 2s before symbol setup...
+08:00:51 [INFO] [AAPL] Contract qualified: Stock(conId=265598, symbol='AAPL', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='AAPL', tradingClass='NMS')
+08:00:51 [INFO] [AAPL] ATR warmed: 30 days, PD H:258.95 L:254.18
+08:00:52 [INFO] [AAPL] 5m bar #50 @1335 ind=7μs strat=12μs total=19μs (8 active)
+08:00:52 [INFO] [AAPL] 5m bar #100 @1115 ind=7μs strat=73μs total=80μs (8 active)
+08:00:52 [INFO] [AAPL] 5m bar #102 @1125 ind=9μs strat=68μs total=77μs (8 active) | SIGNALS: HH_QUALITY, EMA_FPIP
+08:00:52 [INFO] [AAPL] 5m bar #150 @1525 ind=7μs strat=10μs total=16μs (8 active)
+08:00:52 [INFO] [AAPL] 5m bar #200 @1305 ind=7μs strat=14μs total=21μs (8 active)
+08:00:52 [INFO] [AAPL] 5m bar #244 @1015 ind=7μs strat=20μs total=26μs (8 active) | SIGNALS: BDR_SHORT
+08:00:52 [INFO] [AAPL] 5m bar #250 @1045 ind=14μs strat=29μs total=43μs (8 active)
+08:00:52 [INFO] [AAPL] 5m bar #252 @1055 ind=17μs strat=46μs total=63μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:00:52 [INFO] [AAPL] 5m bar #300 @1455 ind=8μs strat=10μs total=18μs (8 active)
+08:00:52 [INFO] [AAPL] 5m bar #350 @1235 ind=6μs strat=13μs total=19μs (8 active)
+08:00:52 [INFO] [AAPL] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:00:52 [INFO] [AAPL] Ready (1/83, universe=STATIC).
+08:00:53 [INFO] [ADBE] Contract qualified: Stock(conId=265768, symbol='ADBE', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='ADBE', tradingClass='NMS')
+08:00:53 [INFO] [ADBE] ATR warmed: 30 days, PD H:276.28 L:269.20
+08:00:53 [INFO] [ADBE] 5m bar #50 @1335 ind=6μs strat=11μs total=17μs (8 active)
+08:00:53 [INFO] [ADBE] 5m bar #100 @1115 ind=7μs strat=17μs total=24μs (8 active)
+08:00:53 [INFO] [ADBE] 5m bar #150 @1525 ind=6μs strat=11μs total=17μs (8 active)
+08:00:53 [INFO] [ADBE] 5m bar #185 @1150 ind=6μs strat=17μs total=23μs (8 active) | SIGNALS: FL_ANTICHOP
+08:00:53 [INFO] [ADBE] 5m bar #200 @1305 ind=6μs strat=11μs total=17μs (8 active)
+08:00:53 [INFO] [ADBE] 5m bar #250 @1045 ind=7μs strat=14μs total=21μs (8 active)
+08:00:53 [INFO] [ADBE] 5m bar #300 @1455 ind=9μs strat=13μs total=22μs (8 active)
+08:00:53 [INFO] [ADBE] 5m bar #330 @1055 ind=9μs strat=28μs total=37μs (8 active) | SIGNALS: FL_ANTICHOP
+08:00:53 [INFO] [ADBE] 5m bar #350 @1235 ind=6μs strat=10μs total=16μs (8 active)
+08:00:53 [INFO] [ADBE] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:00:53 [INFO] [ADBE] Ready (2/83, universe=IN_PLAY).
+08:00:55 [INFO] [AFRM] Contract qualified: Stock(conId=465119069, symbol='AFRM', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='AFRM', tradingClass='NMS')
+08:00:55 [INFO] [AFRM] ATR warmed: 30 days, PD H:51.21 L:46.11
+08:00:55 [INFO] [AFRM] 1m bar #74 @1043 ind=16μs strat=42μs total=58μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:00:55 [INFO] [AFRM] 1m bar #233 @1322 ind=7μs strat=44μs total=51μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:00:55 [INFO] [AFRM] 5m bar #50 @1335 ind=6μs strat=13μs total=19μs (8 active)
+08:00:55 [INFO] [AFRM] 5m bar #100 @1115 ind=7μs strat=16μs total=23μs (8 active)
+08:00:55 [INFO] [AFRM] 5m bar #103 @1130 ind=7μs strat=34μs total=41μs (8 active) | SIGNALS: FL_ANTICHOP
+08:00:55 [INFO] [AFRM] 5m bar #150 @1525 ind=7μs strat=10μs total=17μs (8 active)
+08:00:55 [INFO] [AFRM] 5m bar #200 @1305 ind=11μs strat=19μs total=30μs (8 active)
+08:00:55 [INFO] [AFRM] 5m bar #249 @1040 ind=9μs strat=25μs total=33μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:00:55 [INFO] [AFRM] 5m bar #250 @1045 ind=9μs strat=22μs total=31μs (8 active)
+08:00:55 [INFO] [AFRM] 5m bar #254 @1105 ind=9μs strat=29μs total=38μs (8 active) | SIGNALS: FL_ANTICHOP
+08:00:55 [INFO] [AFRM] 5m bar #300 @1455 ind=9μs strat=13μs total=23μs (8 active)
+08:00:55 [INFO] [AFRM] 5m bar #350 @1235 ind=8μs strat=15μs total=23μs (8 active)
+08:00:55 [INFO] [AFRM] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:00:55 [INFO] [AFRM] Ready (3/83, universe=STATIC).
+08:00:57 [INFO] [AMD] Contract qualified: Stock(conId=4391, symbol='AMD', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='AMD', tradingClass='NMS')
+08:00:57 [INFO] [AMD] ATR warmed: 30 days, PD H:203.62 L:196.67
+08:00:57 [INFO] [AMD] 5m bar #26 @1135 ind=8μs strat=27μs total=35μs (8 active) | SIGNALS: HH_QUALITY
+08:00:57 [INFO] [AMD] 1m bar #186 @1235 ind=7μs strat=17μs total=24μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:00:57 [INFO] [AMD] 5m bar #50 @1335 ind=10μs strat=17μs total=27μs (8 active)
+08:00:57 [INFO] [AMD] 5m bar #100 @1115 ind=8μs strat=25μs total=34μs (8 active)
+08:00:57 [INFO] [AMD] 5m bar #107 @1150 ind=6μs strat=20μs total=25μs (8 active) | SIGNALS: SC_SNIPER, HH_QUALITY
+08:00:57 [INFO] [AMD] 5m bar #150 @1525 ind=6μs strat=10μs total=15μs (8 active)
+08:00:57 [INFO] [AMD] 5m bar #194 @1235 ind=7μs strat=20μs total=27μs (8 active) | SIGNALS: FL_ANTICHOP
+08:00:57 [INFO] [AMD] 5m bar #200 @1305 ind=7μs strat=16μs total=22μs (8 active)
+08:00:57 [INFO] [AMD] 5m bar #250 @1045 ind=6μs strat=13μs total=20μs (8 active)
+08:00:57 [INFO] [AMD] 5m bar #300 @1455 ind=6μs strat=9μs total=15μs (8 active)
+08:00:57 [INFO] [AMD] 5m bar #350 @1235 ind=7μs strat=17μs total=23μs (8 active)
+08:00:57 [INFO] [AMD] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:00:57 [INFO] [AMD] Ready (4/83, universe=STATIC).
+08:00:59 [INFO] [AMZN] Contract qualified: Stock(conId=3691937, symbol='AMZN', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='AMZN', tradingClass='NMS')
+08:00:59 [INFO] [AMZN] ATR warmed: 30 days, PD H:211.71 L:208.15
+08:00:59 [INFO] [AMZN] 5m bar #50 @1335 ind=8μs strat=14μs total=23μs (8 active)
+08:00:59 [INFO] [AMZN] 5m bar #100 @1115 ind=10μs strat=20μs total=29μs (8 active)
+08:00:59 [INFO] [AMZN] 5m bar #150 @1525 ind=9μs strat=18μs total=27μs (8 active)
+08:00:59 [INFO] [AMZN] 5m bar #175 @1100 ind=8μs strat=32μs total=40μs (8 active) | SIGNALS: HH_QUALITY
+08:00:59 [INFO] [AMZN] 1m bar #905 @1134 ind=10μs strat=22μs total=32μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:00:59 [INFO] [AMZN] 5m bar #193 @1230 ind=10μs strat=30μs total=40μs (8 active) | SIGNALS: FL_ANTICHOP
+08:00:59 [INFO] [AMZN] 5m bar #195 @1240 ind=10μs strat=45μs total=55μs (8 active) | SIGNALS: SP_ATIER
+08:00:59 [INFO] [AMZN] 5m bar #200 @1305 ind=9μs strat=14μs total=24μs (8 active)
+08:00:59 [INFO] [AMZN] 5m bar #250 @1045 ind=9μs strat=18μs total=27μs (8 active)
+08:00:59 [INFO] [AMZN] 5m bar #300 @1455 ind=8μs strat=13μs total=21μs (8 active)
+08:00:59 [INFO] [AMZN] 5m bar #339 @1140 ind=7μs strat=25μs total=33μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:00:59 [INFO] [AMZN] 5m bar #350 @1235 ind=7μs strat=20μs total=28μs (8 active)
+08:00:59 [INFO] [AMZN] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:00:59 [INFO] [AMZN] Ready (5/83, universe=STATIC).
+08:01:01 [INFO] [ARM] Contract qualified: Stock(conId=653400472, symbol='ARM', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='ARM', tradingClass='NMS')
+08:01:01 [INFO] [ARM] ATR warmed: 30 days, PD H:119.25 L:114.45
+08:01:01 [INFO] [ARM] 5m bar #50 @1335 ind=7μs strat=13μs total=20μs (8 active)
+08:01:01 [INFO] [ARM] 5m bar #100 @1115 ind=68μs strat=68μs total=136μs (8 active)
+08:01:01 [INFO] [ARM] 5m bar #101 @1120 ind=7μs strat=33μs total=40μs (8 active) | SIGNALS: HH_QUALITY
+08:01:01 [INFO] [ARM] 5m bar #150 @1525 ind=7μs strat=11μs total=18μs (8 active)
+08:01:01 [INFO] [ARM] 5m bar #172 @1045 ind=6μs strat=23μs total=29μs (8 active) | SIGNALS: HH_QUALITY
+08:01:01 [INFO] [ARM] 5m bar #197 @1250 ind=7μs strat=19μs total=26μs (8 active) | SIGNALS: SC_SNIPER
+08:01:01 [INFO] [ARM] 5m bar #200 @1305 ind=7μs strat=13μs total=20μs (8 active)
+08:01:01 [INFO] [ARM] 5m bar #250 @1045 ind=7μs strat=15μs total=22μs (8 active)
+08:01:01 [INFO] [ARM] 5m bar #300 @1455 ind=6μs strat=8μs total=14μs (8 active)
+08:01:01 [INFO] [ARM] 5m bar #350 @1235 ind=6μs strat=10μs total=16μs (8 active)
+08:01:01 [INFO] [ARM] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:01:01 [INFO] [ARM] Ready (6/83, universe=STATIC).
+08:01:02 [INFO] [BABA] Contract qualified: Stock(conId=166090175, symbol='BABA', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='BABA', tradingClass='BABA')
+08:01:03 [INFO] [BABA] ATR warmed: 30 days, PD H:136.00 L:133.45
+08:01:03 [INFO] [BABA] 5m bar #26 @1135 ind=6μs strat=28μs total=34μs (8 active) | SIGNALS: HH_QUALITY
+08:01:03 [INFO] [BABA] 5m bar #50 @1335 ind=6μs strat=10μs total=16μs (8 active)
+08:01:03 [INFO] [BABA] 5m bar #89 @1020 ind=7μs strat=18μs total=25μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:01:03 [INFO] [BABA] 5m bar #99 @1110 ind=7μs strat=26μs total=33μs (8 active) | SIGNALS: FL_ANTICHOP
+08:01:03 [INFO] [BABA] 5m bar #100 @1115 ind=9μs strat=47μs total=56μs (8 active)
+08:01:03 [INFO] [BABA] 1m bar #510 @1129 ind=8μs strat=16μs total=24μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:01:03 [INFO] [BABA] 5m bar #150 @1525 ind=6μs strat=9μs total=14μs (8 active)
+08:01:03 [INFO] [BABA] 5m bar #171 @1040 ind=6μs strat=19μs total=25μs (8 active) | SIGNALS: HH_QUALITY
+08:01:03 [INFO] [BABA] 5m bar #200 @1305 ind=6μs strat=13μs total=19μs (8 active)
+08:01:03 [INFO] [BABA] 1m bar #1223 @1022 ind=7μs strat=18μs total=25μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:01:03 [INFO] [BABA] 5m bar #250 @1045 ind=6μs strat=12μs total=18μs (8 active)
+08:01:03 [INFO] [BABA] 5m bar #300 @1455 ind=6μs strat=11μs total=17μs (8 active)
+08:01:03 [INFO] [BABA] 5m bar #349 @1230 ind=6μs strat=14μs total=20μs (8 active) | SIGNALS: FL_ANTICHOP
+08:01:03 [INFO] [BABA] 5m bar #350 @1235 ind=32μs strat=18μs total=50μs (8 active)
+08:01:03 [INFO] [BABA] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:01:03 [INFO] [BABA] Ready (7/83, universe=STATIC).
+08:01:04 [INFO] [BAC] Contract qualified: Stock(conId=10098, symbol='BAC', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='BAC', tradingClass='BAC')
+08:01:04 [INFO] [BAC] ATR warmed: 30 days, PD H:47.79 L:46.79
+08:01:05 [INFO] [BAC] 5m bar #50 @1335 ind=7μs strat=13μs total=20μs (8 active)
+08:01:05 [INFO] [BAC] 5m bar #100 @1115 ind=7μs strat=13μs total=20μs (8 active)
+08:01:05 [INFO] [BAC] 5m bar #101 @1120 ind=7μs strat=22μs total=29μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:01:05 [INFO] [BAC] 5m bar #109 @1200 ind=6μs strat=18μs total=24μs (8 active) | SIGNALS: FL_ANTICHOP
+08:01:05 [INFO] [BAC] 5m bar #150 @1525 ind=7μs strat=10μs total=17μs (8 active)
+08:01:05 [INFO] [BAC] 5m bar #169 @1030 ind=6μs strat=28μs total=34μs (8 active) | SIGNALS: FL_ANTICHOP
+08:01:05 [INFO] [BAC] 1m bar #883 @1112 ind=7μs strat=15μs total=22μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:01:05 [INFO] [BAC] 5m bar #200 @1305 ind=6μs strat=13μs total=19μs (8 active)
+08:01:05 [INFO] [BAC] 1m bar #1211 @1010 ind=7μs strat=15μs total=23μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:01:05 [INFO] [BAC] 5m bar #249 @1040 ind=7μs strat=18μs total=25μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:01:05 [INFO] [BAC] 5m bar #250 @1045 ind=6μs strat=14μs total=20μs (8 active)
+08:01:05 [INFO] [BAC] 5m bar #281 @1320 ind=7μs strat=34μs total=41μs (8 active) | SIGNALS: BS_STRUCT
+08:01:05 [INFO] [BAC] 5m bar #300 @1455 ind=6μs strat=9μs total=16μs (8 active)
+08:01:05 [INFO] [BAC] 5m bar #334 @1115 ind=7μs strat=19μs total=25μs (8 active) | SIGNALS: BDR_SHORT
+08:01:05 [INFO] [BAC] 5m bar #338 @1135 ind=6μs strat=16μs total=22μs (8 active) | SIGNALS: FL_ANTICHOP
+08:01:05 [INFO] [BAC] 5m bar #350 @1235 ind=6μs strat=11μs total=17μs (8 active)
+08:01:05 [INFO] [BAC] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:01:05 [INFO] [BAC] Ready (8/83, universe=STATIC).
+08:01:06 [INFO] [C] Contract qualified: Stock(conId=87335484, symbol='C', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='C', tradingClass='C')
+08:01:06 [INFO] [C] ATR warmed: 30 days, PD H:107.00 L:104.64
+08:01:07 [INFO] [C] 1m bar #118 @1127 ind=7μs strat=16μs total=23μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:01:07 [INFO] [C] 5m bar #28 @1145 ind=6μs strat=18μs total=24μs (8 active) | SIGNALS: HH_QUALITY
+08:01:07 [INFO] [C] 5m bar #50 @1335 ind=6μs strat=10μs total=16μs (8 active)
+08:01:07 [INFO] [C] 5m bar #99 @1110 ind=8μs strat=16μs total=24μs (8 active) | SIGNALS: FL_ANTICHOP
+08:01:07 [INFO] [C] 5m bar #100 @1115 ind=6μs strat=14μs total=20μs (8 active)
+08:01:07 [INFO] [C] 5m bar #150 @1525 ind=6μs strat=9μs total=15μs (8 active)
+08:01:07 [INFO] [C] 5m bar #179 @1120 ind=6μs strat=19μs total=25μs (8 active) | SIGNALS: HH_QUALITY
+08:01:07 [INFO] [C] 5m bar #182 @1135 ind=6μs strat=17μs total=23μs (8 active) | SIGNALS: FL_ANTICHOP
+08:01:07 [INFO] [C] 5m bar #200 @1305 ind=6μs strat=12μs total=18μs (8 active)
+08:01:07 [INFO] [C] 5m bar #250 @1045 ind=6μs strat=12μs total=18μs (8 active)
+08:01:07 [INFO] [C] 5m bar #252 @1055 ind=6μs strat=16μs total=22μs (8 active) | SIGNALS: FL_ANTICHOP
+08:01:07 [INFO] [C] 5m bar #300 @1455 ind=9μs strat=14μs total=23μs (8 active)
+08:01:07 [INFO] [C] 5m bar #340 @1145 ind=7μs strat=19μs total=26μs (8 active) | SIGNALS: FL_ANTICHOP
+08:01:07 [INFO] [C] 5m bar #350 @1235 ind=7μs strat=14μs total=21μs (8 active)
+08:01:07 [INFO] [C] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:01:07 [INFO] [C] Ready (9/83, universe=STATIC).
+08:01:08 [INFO] [COIN] Contract qualified: Stock(conId=481691285, symbol='COIN', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='COIN', tradingClass='NMS')
+08:01:08 [INFO] [COIN] ATR warmed: 30 days, PD H:198.00 L:192.46
+08:01:08 [INFO] [COIN] 5m bar #50 @1335 ind=7μs strat=52μs total=59μs (8 active)
+08:01:09 [INFO] [COIN] 5m bar #92 @1035 ind=13μs strat=39μs total=51μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:01:09 [INFO] [COIN] 5m bar #100 @1115 ind=9μs strat=16μs total=25μs (8 active)
+08:01:09 [INFO] [COIN] 5m bar #150 @1525 ind=8μs strat=13μs total=20μs (8 active)
+08:01:09 [INFO] [COIN] 5m bar #173 @1050 ind=9μs strat=25μs total=34μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:01:09 [INFO] [COIN] 5m bar #190 @1215 ind=10μs strat=23μs total=33μs (8 active) | SIGNALS: FL_ANTICHOP
+08:01:09 [INFO] [COIN] 5m bar #200 @1305 ind=9μs strat=17μs total=26μs (8 active)
+08:01:09 [INFO] [COIN] 5m bar #244 @1015 ind=8μs strat=20μs total=28μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:01:09 [INFO] [COIN] 5m bar #250 @1045 ind=8μs strat=14μs total=22μs (8 active)
+08:01:09 [INFO] [COIN] 5m bar #300 @1455 ind=8μs strat=11μs total=19μs (8 active)
+08:01:09 [INFO] [COIN] 5m bar #328 @1045 ind=7μs strat=19μs total=26μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:01:09 [INFO] [COIN] 5m bar #338 @1135 ind=26μs strat=30μs total=56μs (8 active) | SIGNALS: FL_ANTICHOP
+08:01:09 [INFO] [COIN] 5m bar #350 @1235 ind=7μs strat=14μs total=22μs (8 active)
+08:01:09 [INFO] [COIN] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:01:09 [INFO] [COIN] Ready (10/83, universe=STATIC).
+08:01:10 [INFO] [CRSP] Contract qualified: Stock(conId=252260612, symbol='CRSP', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='CRSP', tradingClass='NMS')
+08:01:10 [INFO] [CRSP] ATR warmed: 30 days, PD H:49.50 L:48.20
+08:01:10 [INFO] [CRSP] 5m bar #50 @1335 ind=11μs strat=26μs total=37μs (8 active)
+08:01:10 [INFO] [CRSP] 5m bar #100 @1115 ind=11μs strat=31μs total=41μs (8 active)
+08:01:10 [INFO] [CRSP] 1m bar #522 @1141 ind=12μs strat=27μs total=39μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:01:10 [INFO] [CRSP] 5m bar #106 @1145 ind=10μs strat=34μs total=44μs (8 active) | SIGNALS: FL_ANTICHOP
+08:01:10 [INFO] [CRSP] 5m bar #118 @1245 ind=10μs strat=24μs total=34μs (8 active) | SIGNALS: SC_SNIPER
+08:01:10 [INFO] [CRSP] 5m bar #150 @1525 ind=11μs strat=17μs total=28μs (8 active)
+08:01:10 [INFO] [CRSP] 5m bar #200 @1305 ind=9μs strat=17μs total=26μs (8 active)
+08:01:10 [INFO] [CRSP] 5m bar #250 @1045 ind=8μs strat=18μs total=26μs (8 active)
+08:01:10 [INFO] [CRSP] 5m bar #300 @1455 ind=7μs strat=11μs total=19μs (8 active)
+08:01:10 [INFO] [CRSP] 1m bar #1629 @1038 ind=9μs strat=21μs total=29μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:01:10 [INFO] [CRSP] 1m bar #1697 @1146 ind=9μs strat=12μs total=21μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:01:10 [INFO] [CRSP] 5m bar #350 @1235 ind=7μs strat=18μs total=25μs (8 active) | SIGNALS: FL_ANTICHOP
+08:01:10 [INFO] [CRSP] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:01:10 [INFO] [CRSP] Ready (11/83, universe=STATIC).
+08:01:12 [INFO] [CVX] Contract qualified: Stock(conId=5684, symbol='CVX', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='CVX', tradingClass='CVX')
+08:01:12 [INFO] [CVX] ATR warmed: 30 days, PD H:198.88 L:191.77
+08:01:12 [INFO] [CVX] 5m bar #50 @1335 ind=7μs strat=15μs total=22μs (8 active)
+08:01:12 [INFO] [CVX] 1m bar #476 @1055 ind=13μs strat=31μs total=44μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:01:12 [INFO] [CVX] 1m bar #496 @1115 ind=14μs strat=18μs total=32μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:01:12 [INFO] [CVX] 5m bar #100 @1115 ind=13μs strat=24μs total=37μs (8 active)
+08:01:12 [INFO] [CVX] 5m bar #150 @1525 ind=11μs strat=16μs total=28μs (8 active)
+08:01:12 [INFO] [CVX] 5m bar #171 @1040 ind=7μs strat=21μs total=28μs (8 active) | SIGNALS: HH_QUALITY
+08:01:12 [INFO] [CVX] 1m bar #992 @1301 ind=12μs strat=22μs total=34μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:01:12 [INFO] [CVX] 5m bar #200 @1305 ind=9μs strat=17μs total=26μs (8 active)
+08:01:12 [INFO] [CVX] 5m bar #247 @1030 ind=7μs strat=23μs total=30μs (8 active) | SIGNALS: HH_QUALITY
+08:01:12 [INFO] [CVX] 5m bar #250 @1045 ind=9μs strat=22μs total=31μs (8 active)
+08:01:12 [INFO] [CVX] 5m bar #293 @1420 ind=7μs strat=22μs total=28μs (8 active) | SIGNALS: SP_ATIER
+08:01:12 [INFO] [CVX] 5m bar #300 @1455 ind=7μs strat=11μs total=18μs (8 active)
+08:01:12 [INFO] [CVX] 5m bar #329 @1050 ind=7μs strat=24μs total=31μs (8 active) | SIGNALS: FL_ANTICHOP
+08:01:12 [INFO] [CVX] 5m bar #343 @1200 ind=7μs strat=16μs total=23μs (8 active) | SIGNALS: HH_QUALITY
+08:01:12 [INFO] [CVX] 5m bar #350 @1235 ind=7μs strat=12μs total=20μs (8 active)
+08:01:12 [INFO] [CVX] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:01:12 [INFO] [CVX] Ready (12/83, universe=STATIC).
+08:01:14 [INFO] [DASH] Contract qualified: Stock(conId=459309417, symbol='DASH', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='DASH', tradingClass='NMS')
+08:01:14 [INFO] [DASH] ATR warmed: 30 days, PD H:169.30 L:161.45
+08:01:14 [INFO] [DASH] 5m bar #50 @1335 ind=12μs strat=24μs total=36μs (8 active)
+08:01:14 [INFO] [DASH] 5m bar #100 @1115 ind=11μs strat=43μs total=54μs (8 active)
+08:01:14 [INFO] [DASH] 5m bar #150 @1525 ind=10μs strat=18μs total=28μs (8 active)
+08:01:14 [INFO] [DASH] 5m bar #187 @1200 ind=10μs strat=35μs total=45μs (8 active) | SIGNALS: FL_ANTICHOP
+08:01:14 [INFO] [DASH] 5m bar #200 @1305 ind=9μs strat=26μs total=36μs (8 active)
+08:01:14 [INFO] [DASH] 5m bar #250 @1045 ind=8μs strat=18μs total=26μs (8 active)
+08:01:14 [INFO] [DASH] 5m bar #300 @1455 ind=7μs strat=12μs total=20μs (8 active)
+08:01:14 [INFO] [DASH] 5m bar #350 @1235 ind=7μs strat=13μs total=20μs (8 active)
+08:01:14 [INFO] [DASH] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:01:14 [INFO] [DASH] Ready (13/83, universe=STATIC).
+08:01:16 [INFO] [DKNG] Contract qualified: Stock(conId=560105364, symbol='DKNG', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='DKNG', tradingClass='NMS')
+08:01:16 [INFO] [DKNG] ATR warmed: 30 days, PD H:26.50 L:25.26
+08:01:16 [INFO] [DKNG] 5m bar #50 @1335 ind=9μs strat=17μs total=26μs (8 active)
+08:01:16 [INFO] [DKNG] 5m bar #100 @1115 ind=13μs strat=30μs total=43μs (8 active)
+08:01:16 [INFO] [DKNG] 5m bar #123 @1310 ind=10μs strat=34μs total=44μs (8 active) | SIGNALS: EMA_FPIP
+08:01:16 [INFO] [DKNG] 5m bar #150 @1525 ind=10μs strat=15μs total=25μs (8 active)
+08:01:16 [INFO] [DKNG] 1m bar #957 @1226 ind=11μs strat=29μs total=40μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:01:16 [INFO] [DKNG] 5m bar #200 @1305 ind=9μs strat=18μs total=27μs (8 active)
+08:01:16 [INFO] [DKNG] 5m bar #250 @1045 ind=8μs strat=18μs total=27μs (8 active)
+08:01:16 [INFO] [DKNG] 5m bar #300 @1455 ind=7μs strat=12μs total=20μs (8 active)
+08:01:16 [INFO] [DKNG] 5m bar #319 @1000 ind=8μs strat=39μs total=46μs (8 active) | SIGNALS: HH_QUALITY
+08:01:16 [INFO] [DKNG] 1m bar #1615 @1024 ind=8μs strat=20μs total=28μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:01:16 [INFO] [DKNG] 5m bar #350 @1235 ind=7μs strat=13μs total=20μs (8 active)
+08:01:16 [INFO] [DKNG] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:01:16 [INFO] [DKNG] Ready (14/83, universe=STATIC).
+08:01:18 [INFO] [FAS] Contract qualified: Stock(conId=97276826, symbol='FAS', exchange='SMART', primaryExchange='ARCA', currency='USD', localSymbol='FAS', tradingClass='FAS')
+08:01:18 [INFO] [FAS] ATR warmed: 30 days, PD H:117.39 L:114.33
+08:01:18 [INFO] [FAS] 5m bar #50 @1335 ind=15μs strat=29μs total=44μs (8 active)
+08:01:18 [INFO] [FAS] 5m bar #95 @1050 ind=7μs strat=23μs total=30μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:01:18 [INFO] [FAS] 5m bar #100 @1115 ind=7μs strat=13μs total=20μs (8 active)
+08:01:18 [INFO] [FAS] 5m bar #113 @1220 ind=13μs strat=35μs total=47μs (8 active) | SIGNALS: FL_ANTICHOP
+08:01:18 [INFO] [FAS] 5m bar #150 @1525 ind=11μs strat=16μs total=27μs (8 active)
+08:01:18 [INFO] [FAS] 5m bar #170 @1035 ind=8μs strat=28μs total=36μs (8 active) | SIGNALS: FL_ANTICHOP
+08:01:18 [INFO] [FAS] 5m bar #193 @1230 ind=8μs strat=32μs total=39μs (8 active) | SIGNALS: SP_ATIER
+08:01:18 [INFO] [FAS] 5m bar #200 @1305 ind=9μs strat=20μs total=29μs (8 active)
+08:01:18 [INFO] [FAS] 5m bar #250 @1045 ind=8μs strat=24μs total=32μs (8 active)
+08:01:18 [INFO] [FAS] 5m bar #300 @1455 ind=8μs strat=12μs total=20μs (8 active)
+08:01:18 [INFO] [FAS] 5m bar #350 @1235 ind=7μs strat=14μs total=20μs (8 active)
+08:01:18 [INFO] [FAS] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:01:18 [INFO] [FAS] Ready (15/83, universe=STATIC).
+08:01:19 [INFO] [FNGU] Contract qualified: Stock(conId=756373390, symbol='FNGU', exchange='SMART', primaryExchange='ARCA', currency='USD', localSymbol='FNGU', tradingClass='FNGU')
+08:01:19 [INFO] [FNGU] ATR warmed: 30 days, PD H:20.34 L:19.55
+08:01:20 [INFO] [FNGU] 1m bar #58 @1027 ind=14μs strat=20μs total=34μs (2 active) | SIGNALS: EMA9_FT
+08:01:20 [INFO] [FNGU] 1m bar #88 @1057 ind=11μs strat=25μs total=36μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:01:20 [INFO] [FNGU] 5m bar #26 @1135 ind=9μs strat=25μs total=34μs (8 active) | SIGNALS: HH_QUALITY
+08:01:20 [INFO] [FNGU] 5m bar #50 @1335 ind=13μs strat=24μs total=37μs (8 active)
+08:01:20 [INFO] [FNGU] 5m bar #100 @1115 ind=10μs strat=28μs total=38μs (8 active)
+08:01:20 [INFO] [FNGU] 5m bar #150 @1525 ind=10μs strat=17μs total=27μs (8 active)
+08:01:20 [INFO] [FNGU] 5m bar #175 @1100 ind=9μs strat=32μs total=41μs (8 active) | SIGNALS: FL_ANTICHOP
+08:01:20 [INFO] [FNGU] 5m bar #200 @1305 ind=9μs strat=15μs total=24μs (8 active)
+08:01:20 [INFO] [FNGU] 1m bar #1208 @1007 ind=9μs strat=20μs total=29μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:01:20 [INFO] [FNGU] 5m bar #250 @1045 ind=8μs strat=15μs total=23μs (8 active)
+08:01:20 [INFO] [FNGU] 5m bar #300 @1455 ind=7μs strat=11μs total=18μs (8 active)
+08:01:20 [INFO] [FNGU] 5m bar #339 @1140 ind=7μs strat=20μs total=26μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:01:20 [INFO] [FNGU] 5m bar #350 @1235 ind=7μs strat=17μs total=24μs (8 active)
+08:01:20 [INFO] [FNGU] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:01:20 [INFO] [FNGU] Ready (16/83, universe=STATIC).
+08:01:21 [INFO] [GE] Contract qualified: Stock(conId=498843743, symbol='GE', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='GE', tradingClass='GE')
+08:01:21 [INFO] [GE] ATR warmed: 30 days, PD H:318.64 L:301.13
+08:01:22 [INFO] [GE] 1m bar #105 @1114 ind=20μs strat=34μs total=55μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:01:22 [INFO] [GE] 5m bar #50 @1335 ind=7μs strat=15μs total=23μs (8 active)
+08:01:22 [INFO] [GE] 5m bar #98 @1105 ind=11μs strat=30μs total=41μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:01:22 [INFO] [GE] 5m bar #100 @1115 ind=12μs strat=22μs total=34μs (8 active)
+08:01:22 [INFO] [GE] 5m bar #101 @1120 ind=11μs strat=29μs total=40μs (8 active) | SIGNALS: FL_ANTICHOP
+08:01:22 [INFO] [GE] 1m bar #616 @1315 ind=9μs strat=15μs total=24μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:01:22 [INFO] [GE] 5m bar #150 @1525 ind=8μs strat=11μs total=19μs (8 active)
+08:01:22 [INFO] [GE] 5m bar #180 @1125 ind=7μs strat=25μs total=33μs (8 active) | SIGNALS: HH_QUALITY
+08:01:22 [INFO] [GE] 5m bar #200 @1305 ind=7μs strat=14μs total=21μs (8 active)
+08:01:22 [INFO] [GE] 1m bar #1211 @1010 ind=8μs strat=19μs total=27μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:01:22 [INFO] [GE] 5m bar #250 @1045 ind=7μs strat=17μs total=24μs (8 active)
+08:01:22 [INFO] [GE] 5m bar #300 @1455 ind=8μs strat=15μs total=23μs (8 active)
+08:01:22 [INFO] [GE] 5m bar #343 @1200 ind=8μs strat=20μs total=28μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:01:22 [INFO] [GE] 5m bar #350 @1235 ind=7μs strat=12μs total=19μs (8 active)
+08:01:22 [INFO] [GE] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:01:22 [INFO] [GE] Ready (17/83, universe=STATIC).
+08:01:23 [INFO] [GOOG] Contract qualified: Stock(conId=208813720, symbol='GOOG', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='GOOG', tradingClass='NMS')
+08:01:23 [INFO] [GOOG] ATR warmed: 30 days, PD H:308.64 L:300.84
+08:01:23 [INFO] [GOOG] 1m bar #205 @1254 ind=10μs strat=33μs total=43μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:01:23 [INFO] [GOOG] 5m bar #50 @1335 ind=8μs strat=19μs total=26μs (8 active)
+08:01:23 [INFO] [GOOG] 1m bar #460 @1039 ind=9μs strat=21μs total=29μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:01:23 [INFO] [GOOG] 1m bar #470 @1049 ind=9μs strat=11μs total=21μs (2 active) | SIGNALS: EMA9_FT
+08:01:23 [INFO] [GOOG] 5m bar #100 @1115 ind=8μs strat=20μs total=28μs (8 active)
+08:01:23 [INFO] [GOOG] 5m bar #150 @1525 ind=10μs strat=17μs total=27μs (8 active)
+08:01:23 [INFO] [GOOG] 1m bar #911 @1140 ind=10μs strat=25μs total=34μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:01:23 [INFO] [GOOG] 5m bar #200 @1305 ind=8μs strat=18μs total=26μs (8 active)
+08:01:23 [INFO] [GOOG] 1m bar #1216 @1015 ind=11μs strat=21μs total=32μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:01:23 [INFO] [GOOG] 5m bar #246 @1025 ind=9μs strat=26μs total=36μs (8 active) | SIGNALS: SC_SNIPER
+08:01:23 [INFO] [GOOG] 5m bar #250 @1045 ind=9μs strat=25μs total=35μs (8 active)
+08:01:23 [INFO] [GOOG] 1m bar #1283 @1122 ind=10μs strat=15μs total=25μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:01:23 [INFO] [GOOG] 5m bar #300 @1455 ind=8μs strat=11μs total=19μs (8 active)
+08:01:23 [INFO] [GOOG] 5m bar #350 @1235 ind=7μs strat=17μs total=24μs (8 active)
+08:01:23 [INFO] [GOOG] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:01:23 [INFO] [GOOG] Ready (18/83, universe=STATIC).
+08:01:25 [INFO] [HOOD] Contract qualified: Stock(conId=504546674, symbol='HOOD', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='HOOD', tradingClass='NMS')
+08:01:25 [INFO] [HOOD] ATR warmed: 30 days, PD H:77.82 L:75.07
+08:01:25 [INFO] [HOOD] 1m bar #97 @1106 ind=10μs strat=23μs total=34μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:01:25 [INFO] [HOOD] 5m bar #30 @1155 ind=7μs strat=20μs total=27μs (8 active) | SIGNALS: HH_QUALITY
+08:01:25 [INFO] [HOOD] 5m bar #50 @1335 ind=7μs strat=14μs total=20μs (8 active)
+08:01:25 [INFO] [HOOD] 1m bar #431 @1010 ind=10μs strat=28μs total=38μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:01:25 [INFO] [HOOD] 5m bar #100 @1115 ind=9μs strat=26μs total=35μs (8 active)
+08:01:25 [INFO] [HOOD] 5m bar #121 @1300 ind=7μs strat=21μs total=28μs (8 active) | SIGNALS: FL_ANTICHOP
+08:01:25 [INFO] [HOOD] 5m bar #150 @1525 ind=11μs strat=17μs total=28μs (8 active)
+08:01:25 [INFO] [HOOD] 5m bar #168 @1025 ind=9μs strat=25μs total=34μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:01:25 [INFO] [HOOD] 5m bar #172 @1045 ind=9μs strat=41μs total=50μs (8 active) | SIGNALS: FL_ANTICHOP
+08:01:25 [INFO] [HOOD] 5m bar #200 @1305 ind=7μs strat=14μs total=21μs (8 active)
+08:01:25 [INFO] [HOOD] 5m bar #250 @1045 ind=7μs strat=15μs total=22μs (8 active)
+08:01:25 [INFO] [HOOD] 5m bar #300 @1455 ind=8μs strat=14μs total=22μs (8 active)
+08:01:25 [INFO] [HOOD] 5m bar #350 @1235 ind=8μs strat=15μs total=22μs (8 active)
+08:01:25 [INFO] [HOOD] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:01:25 [INFO] [HOOD] Ready (19/83, universe=STATIC).
+08:01:27 [INFO] [INTC] Contract qualified: Stock(conId=270639, symbol='INTC', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='INTC', tradingClass='NMS')
+08:01:27 [INFO] [INTC] ATR warmed: 30 days, PD H:47.44 L:45.17
+08:01:27 [INFO] [INTC] 5m bar #50 @1335 ind=8μs strat=18μs total=25μs (8 active)
+08:01:27 [INFO] [INTC] 5m bar #94 @1045 ind=8μs strat=27μs total=36μs (8 active) | SIGNALS: HH_QUALITY
+08:01:27 [INFO] [INTC] 1m bar #472 @1051 ind=13μs strat=21μs total=35μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:01:27 [INFO] [INTC] 5m bar #100 @1115 ind=13μs strat=30μs total=43μs (8 active)
+08:01:27 [INFO] [INTC] 5m bar #113 @1220 ind=8μs strat=26μs total=35μs (8 active) | SIGNALS: EMA_FPIP
+08:01:27 [INFO] [INTC] 5m bar #150 @1525 ind=10μs strat=14μs total=23μs (8 active)
+08:01:27 [INFO] [INTC] 5m bar #178 @1115 ind=8μs strat=33μs total=41μs (8 active) | SIGNALS: HH_QUALITY
+08:01:27 [INFO] [INTC] 5m bar #183 @1140 ind=9μs strat=45μs total=54μs (8 active) | SIGNALS: SC_SNIPER, BS_STRUCT
+08:01:27 [INFO] [INTC] 5m bar #200 @1305 ind=8μs strat=17μs total=26μs (8 active)
+08:01:27 [INFO] [INTC] 5m bar #249 @1040 ind=8μs strat=28μs total=36μs (8 active) | SIGNALS: FL_ANTICHOP
+08:01:27 [INFO] [INTC] 5m bar #250 @1045 ind=9μs strat=21μs total=29μs (8 active)
+08:01:27 [INFO] [INTC] 5m bar #254 @1105 ind=8μs strat=26μs total=35μs (8 active) | SIGNALS: HH_QUALITY
+08:01:27 [INFO] [INTC] 1m bar #1302 @1141 ind=10μs strat=19μs total=29μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:01:27 [INFO] [INTC] 1m bar #1329 @1208 ind=9μs strat=12μs total=21μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:01:27 [INFO] [INTC] 5m bar #300 @1455 ind=7μs strat=10μs total=17μs (8 active)
+08:01:27 [INFO] [INTC] 5m bar #325 @1030 ind=7μs strat=22μs total=30μs (8 active) | SIGNALS: BDR_SHORT
+08:01:27 [INFO] [INTC] 5m bar #350 @1235 ind=7μs strat=13μs total=21μs (8 active)
+08:01:27 [INFO] [INTC] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:01:27 [INFO] [INTC] Ready (20/83, universe=STATIC).
+08:01:29 [INFO] [IONQ] Contract qualified: Stock(conId=517593749, symbol='IONQ', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='IONQ', tradingClass='IONQ')
+08:01:29 [INFO] [IONQ] ATR warmed: 30 days, PD H:34.72 L:33.03
+08:01:29 [INFO] [IONQ] 1m bar #159 @1208 ind=10μs strat=33μs total=43μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:01:29 [INFO] [IONQ] 1m bar #186 @1235 ind=11μs strat=22μs total=32μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:01:29 [INFO] [IONQ] 5m bar #50 @1335 ind=12μs strat=27μs total=39μs (8 active)
+08:01:29 [INFO] [IONQ] 5m bar #100 @1115 ind=9μs strat=19μs total=28μs (8 active)
+08:01:29 [INFO] [IONQ] 5m bar #107 @1150 ind=10μs strat=30μs total=40μs (8 active) | SIGNALS: FL_ANTICHOP
+08:01:29 [INFO] [IONQ] 1m bar #610 @1309 ind=10μs strat=22μs total=33μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:01:29 [INFO] [IONQ] 5m bar #150 @1525 ind=9μs strat=13μs total=22μs (8 active)
+08:01:29 [INFO] [IONQ] 5m bar #200 @1305 ind=9μs strat=17μs total=26μs (8 active)
+08:01:29 [INFO] [IONQ] 5m bar #250 @1045 ind=8μs strat=15μs total=22μs (8 active)
+08:01:29 [INFO] [IONQ] 5m bar #271 @1230 ind=8μs strat=25μs total=33μs (8 active) | SIGNALS: FL_ANTICHOP
+08:01:29 [INFO] [IONQ] 5m bar #300 @1455 ind=7μs strat=10μs total=17μs (8 active)
+08:01:29 [INFO] [IONQ] 5m bar #350 @1235 ind=7μs strat=24μs total=31μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:01:29 [INFO] [IONQ] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:01:29 [INFO] [IONQ] Ready (21/83, universe=STATIC).
+08:01:31 [INFO] [JNUG] Contract qualified: Stock(conId=416854773, symbol='JNUG', exchange='SMART', primaryExchange='ARCA', currency='USD', localSymbol='JNUG', tradingClass='JNUG')
+08:01:31 [INFO] [JNUG] ATR warmed: 30 days, PD H:261.44 L:245.11
+08:01:31 [INFO] [JNUG] 1m bar #61 @1030 ind=10μs strat=14μs total=25μs (2 active) | SIGNALS: EMA9_FT
+08:01:31 [INFO] [JNUG] 5m bar #28 @1145 ind=9μs strat=26μs total=34μs (8 active) | SIGNALS: HH_QUALITY
+08:01:31 [INFO] [JNUG] 5m bar #50 @1335 ind=14μs strat=25μs total=40μs (8 active)
+08:01:31 [INFO] [JNUG] 5m bar #89 @1020 ind=10μs strat=26μs total=35μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:01:31 [INFO] [JNUG] 5m bar #100 @1115 ind=10μs strat=18μs total=28μs (8 active)
+08:01:31 [INFO] [JNUG] 5m bar #150 @1525 ind=10μs strat=14μs total=24μs (8 active)
+08:01:31 [INFO] [JNUG] 5m bar #200 @1305 ind=10μs strat=29μs total=39μs (8 active)
+08:01:31 [INFO] [JNUG] 5m bar #250 @1045 ind=8μs strat=17μs total=25μs (8 active)
+08:01:31 [INFO] [JNUG] 5m bar #300 @1455 ind=8μs strat=13μs total=21μs (8 active)
+08:01:31 [INFO] [JNUG] 5m bar #350 @1235 ind=8μs strat=25μs total=33μs (8 active)
+08:01:31 [INFO] [JNUG] 5m bar #351 @1240 ind=7μs strat=41μs total=48μs (8 active) | SIGNALS: FL_ANTICHOP
+08:01:31 [INFO] [JNUG] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:01:31 [INFO] [JNUG] Ready (22/83, universe=STATIC).
+08:01:32 [INFO] [JPM] Contract qualified: Stock(conId=1520593, symbol='JPM', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='JPM', tradingClass='JPM')
+08:01:33 [INFO] [JPM] ATR warmed: 30 days, PD H:283.88 L:279.10
+08:01:33 [INFO] [JPM] 1m bar #99 @1108 ind=7μs strat=23μs total=30μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:01:33 [INFO] [JPM] 1m bar #156 @1205 ind=16μs strat=24μs total=40μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:01:33 [INFO] [JPM] 5m bar #50 @1335 ind=7μs strat=13μs total=20μs (8 active)
+08:01:33 [INFO] [JPM] 5m bar #100 @1115 ind=13μs strat=27μs total=40μs (8 active)
+08:01:33 [INFO] [JPM] 5m bar #150 @1525 ind=11μs strat=18μs total=29μs (8 active)
+08:01:33 [INFO] [JPM] 1m bar #873 @1102 ind=9μs strat=20μs total=29μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:01:33 [INFO] [JPM] 5m bar #175 @1100 ind=8μs strat=28μs total=36μs (8 active) | SIGNALS: FL_ANTICHOP
+08:01:33 [INFO] [JPM] 5m bar #200 @1305 ind=9μs strat=22μs total=31μs (8 active)
+08:01:33 [INFO] [JPM] 5m bar #249 @1040 ind=9μs strat=22μs total=30μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:01:33 [INFO] [JPM] 5m bar #250 @1045 ind=8μs strat=16μs total=24μs (8 active)
+08:01:33 [INFO] [JPM] 5m bar #275 @1250 ind=8μs strat=21μs total=29μs (8 active) | SIGNALS: FL_ANTICHOP
+08:01:33 [INFO] [JPM] 5m bar #300 @1455 ind=8μs strat=11μs total=18μs (8 active)
+08:01:33 [INFO] [JPM] 5m bar #328 @1045 ind=8μs strat=20μs total=27μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:01:33 [INFO] [JPM] 5m bar #338 @1135 ind=8μs strat=17μs total=24μs (8 active) | SIGNALS: FL_ANTICHOP
+08:01:33 [INFO] [JPM] 5m bar #350 @1235 ind=7μs strat=15μs total=22μs (8 active)
+08:01:33 [INFO] [JPM] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:01:33 [INFO] [JPM] Ready (23/83, universe=STATIC).
+08:01:34 [INFO] [LABD] Contract qualified: Stock(conId=812475642, symbol='LABD', exchange='SMART', primaryExchange='ARCA', currency='USD', localSymbol='LABD', tradingClass='LABD')
+08:01:34 [INFO] [LABD] ATR warmed: 30 days, PD H:19.89 L:18.42
+08:01:35 [INFO] [LABD] 5m bar #50 @1335 ind=10μs strat=18μs total=28μs (8 active)
+08:01:35 [INFO] [LABD] 1m bar #466 @1045 ind=12μs strat=30μs total=42μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:01:35 [INFO] [LABD] 5m bar #100 @1115 ind=11μs strat=20μs total=31μs (8 active)
+08:01:35 [INFO] [LABD] 5m bar #106 @1145 ind=11μs strat=28μs total=39μs (8 active) | SIGNALS: FL_ANTICHOP
+08:01:35 [INFO] [LABD] 5m bar #150 @1525 ind=11μs strat=15μs total=25μs (8 active)
+08:01:35 [INFO] [LABD] 5m bar #200 @1305 ind=9μs strat=17μs total=26μs (8 active)
+08:01:35 [INFO] [LABD] 5m bar #246 @1025 ind=8μs strat=28μs total=36μs (8 active) | SIGNALS: BDR_SHORT
+08:01:35 [INFO] [LABD] 5m bar #250 @1045 ind=9μs strat=16μs total=25μs (8 active)
+08:01:35 [INFO] [LABD] 5m bar #264 @1155 ind=8μs strat=42μs total=50μs (8 active) | SIGNALS: FL_ANTICHOP
+08:01:35 [INFO] [LABD] 1m bar #1345 @1224 ind=9μs strat=20μs total=29μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:01:35 [INFO] [LABD] 5m bar #300 @1455 ind=8μs strat=12μs total=20μs (8 active)
+08:01:35 [INFO] [LABD] 5m bar #322 @1015 ind=7μs strat=22μs total=29μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:01:35 [INFO] [LABD] 5m bar #326 @1035 ind=7μs strat=27μs total=34μs (8 active) | SIGNALS: FL_ANTICHOP
+08:01:35 [INFO] [LABD] 5m bar #350 @1235 ind=7μs strat=12μs total=19μs (8 active)
+08:01:35 [INFO] [LABD] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:01:35 [INFO] [LABD] Ready (24/83, universe=STATIC).
+08:01:36 [INFO] [LABU] Contract qualified: Stock(conId=665380967, symbol='LABU', exchange='SMART', primaryExchange='ARCA', currency='USD', localSymbol='LABU', tradingClass='LABU')
+08:01:36 [INFO] [LABU] ATR warmed: 30 days, PD H:161.52 L:149.00
+08:01:36 [INFO] [LABU] 1m bar #82 @1051 ind=10μs strat=20μs total=30μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:01:36 [INFO] [LABU] 5m bar #50 @1335 ind=8μs strat=17μs total=25μs (8 active)
+08:01:36 [INFO] [LABU] 5m bar #100 @1115 ind=9μs strat=23μs total=31μs (8 active)
+08:01:36 [INFO] [LABU] 5m bar #102 @1125 ind=10μs strat=31μs total=41μs (8 active) | SIGNALS: HH_QUALITY
+08:01:36 [INFO] [LABU] 5m bar #109 @1200 ind=10μs strat=40μs total=49μs (8 active) | SIGNALS: FL_ANTICHOP
+08:01:36 [INFO] [LABU] 5m bar #150 @1525 ind=8μs strat=12μs total=20μs (8 active)
+08:01:36 [INFO] [LABU] 1m bar #891 @1120 ind=9μs strat=20μs total=29μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:01:36 [INFO] [LABU] 5m bar #179 @1120 ind=8μs strat=27μs total=35μs (8 active) | SIGNALS: HH_QUALITY
+08:01:36 [INFO] [LABU] 5m bar #200 @1305 ind=8μs strat=29μs total=37μs (8 active)
+08:01:36 [INFO] [LABU] 5m bar #250 @1045 ind=8μs strat=17μs total=25μs (8 active)
+08:01:36 [INFO] [LABU] 5m bar #270 @1225 ind=8μs strat=21μs total=29μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:01:36 [INFO] [LABU] 5m bar #300 @1455 ind=8μs strat=11μs total=19μs (8 active)
+08:01:36 [INFO] [LABU] 1m bar #1619 @1028 ind=9μs strat=19μs total=27μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:01:36 [INFO] [LABU] 5m bar #350 @1235 ind=7μs strat=14μs total=22μs (8 active)
+08:01:36 [INFO] [LABU] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:01:36 [INFO] [LABU] Ready (25/83, universe=STATIC).
+08:01:38 [INFO] [LULU] Contract qualified: Stock(conId=45157951, symbol='LULU', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS')
+08:01:38 [INFO] [LULU] ATR warmed: 30 days, PD H:163.03 L:157.95
+08:01:38 [INFO] [LULU] 5m bar #33 @1210 ind=9μs strat=34μs total=43μs (8 active) | SIGNALS: EMA_FPIP
+08:01:38 [INFO] [LULU] 5m bar #50 @1335 ind=8μs strat=14μs total=22μs (8 active)
+08:01:38 [INFO] [LULU] 1m bar #438 @1017 ind=10μs strat=21μs total=31μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:01:38 [INFO] [LULU] 5m bar #100 @1115 ind=9μs strat=28μs total=37μs (8 active)
+08:01:38 [INFO] [LULU] 5m bar #103 @1130 ind=10μs strat=34μs total=44μs (8 active) | SIGNALS: HH_QUALITY
+08:01:38 [INFO] [LULU] 5m bar #117 @1240 ind=8μs strat=33μs total=41μs (8 active) | SIGNALS: SC_SNIPER, SP_ATIER
+08:01:38 [INFO] [LULU] 5m bar #150 @1525 ind=11μs strat=18μs total=29μs (8 active)
+08:01:38 [INFO] [LULU] 1m bar #897 @1126 ind=10μs strat=21μs total=31μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:01:38 [INFO] [LULU] 5m bar #200 @1305 ind=8μs strat=19μs total=27μs (8 active)
+08:01:38 [INFO] [LULU] 5m bar #250 @1045 ind=8μs strat=16μs total=24μs (8 active)
+08:01:38 [INFO] [LULU] 5m bar #300 @1455 ind=8μs strat=12μs total=20μs (8 active)
+08:01:38 [INFO] [LULU] 5m bar #339 @1140 ind=8μs strat=28μs total=36μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:01:38 [INFO] [LULU] 5m bar #350 @1235 ind=7μs strat=14μs total=21μs (8 active)
+08:01:38 [INFO] [LULU] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:01:38 [INFO] [LULU] Ready (26/83, universe=STATIC).
+08:01:40 [INFO] [LUNR] Contract qualified: Stock(conId=613910262, symbol='LUNR', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='LUNR', tradingClass='NMS')
+08:01:40 [INFO] [LUNR] ATR warmed: 30 days, PD H:18.72 L:17.41
+08:01:40 [INFO] [LUNR] 1m bar #116 @1125 ind=11μs strat=31μs total=42μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:01:40 [INFO] [LUNR] 5m bar #50 @1335 ind=11μs strat=21μs total=32μs (8 active)
+08:01:40 [INFO] [LUNR] 5m bar #100 @1115 ind=13μs strat=24μs total=37μs (8 active)
+08:01:40 [INFO] [LUNR] 5m bar #116 @1235 ind=11μs strat=37μs total=49μs (8 active) | SIGNALS: FL_ANTICHOP
+08:01:40 [INFO] [LUNR] 5m bar #118 @1245 ind=11μs strat=51μs total=62μs (8 active) | SIGNALS: BS_STRUCT
+08:01:40 [INFO] [LUNR] 5m bar #150 @1525 ind=11μs strat=16μs total=27μs (8 active)
+08:01:40 [INFO] [LUNR] 1m bar #821 @1010 ind=12μs strat=47μs total=58μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:01:40 [INFO] [LUNR] 1m bar #884 @1113 ind=11μs strat=14μs total=25μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:01:40 [INFO] [LUNR] 5m bar #200 @1305 ind=9μs strat=16μs total=25μs (8 active)
+08:01:40 [INFO] [LUNR] 5m bar #247 @1030 ind=9μs strat=32μs total=41μs (8 active) | SIGNALS: FL_ANTICHOP
+08:01:40 [INFO] [LUNR] 5m bar #250 @1045 ind=8μs strat=18μs total=26μs (8 active)
+08:01:40 [INFO] [LUNR] 5m bar #300 @1455 ind=7μs strat=10μs total=18μs (8 active)
+08:01:40 [INFO] [LUNR] 5m bar #339 @1140 ind=8μs strat=22μs total=30μs (8 active) | SIGNALS: FL_ANTICHOP
+08:01:40 [INFO] [LUNR] 5m bar #350 @1235 ind=7μs strat=16μs total=23μs (8 active)
+08:01:40 [INFO] [LUNR] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:01:40 [INFO] [LUNR] Ready (27/83, universe=STATIC).
+08:01:42 [INFO] [MRNA] Contract qualified: Stock(conId=344809106, symbol='MRNA', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='MRNA', tradingClass='NMS')
+08:01:42 [INFO] [MRNA] ATR warmed: 30 days, PD H:55.02 L:53.20
+08:01:42 [INFO] [MRNA] 5m bar #50 @1335 ind=9μs strat=21μs total=30μs (8 active)
+08:01:42 [INFO] [MRNA] 5m bar #100 @1115 ind=11μs strat=22μs total=33μs (8 active)
+08:01:42 [INFO] [MRNA] 5m bar #150 @1525 ind=9μs strat=14μs total=23μs (8 active)
+08:01:42 [INFO] [MRNA] 5m bar #200 @1305 ind=8μs strat=18μs total=27μs (8 active)
+08:01:42 [INFO] [MRNA] 1m bar #1231 @1030 ind=8μs strat=25μs total=33μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:01:42 [INFO] [MRNA] 5m bar #247 @1030 ind=8μs strat=27μs total=35μs (8 active) | SIGNALS: FL_ANTICHOP
+08:01:42 [INFO] [MRNA] 5m bar #250 @1045 ind=8μs strat=19μs total=27μs (8 active)
+08:01:42 [INFO] [MRNA] 5m bar #254 @1105 ind=8μs strat=26μs total=34μs (8 active) | SIGNALS: HH_QUALITY
+08:01:42 [INFO] [MRNA] 1m bar #1321 @1200 ind=9μs strat=13μs total=22μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:01:42 [INFO] [MRNA] 5m bar #300 @1455 ind=7μs strat=10μs total=17μs (8 active)
+08:01:42 [INFO] [MRNA] 5m bar #337 @1130 ind=7μs strat=22μs total=29μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:01:42 [INFO] [MRNA] 5m bar #350 @1235 ind=6μs strat=24μs total=31μs (8 active) | SIGNALS: FL_ANTICHOP
+08:01:42 [INFO] [MRNA] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:01:42 [INFO] [MRNA] Ready (28/83, universe=STATIC).
+08:01:44 [INFO] [MS] Contract qualified: Stock(conId=2841574, symbol='MS', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='MS', tradingClass='MS')
+08:01:44 [INFO] [MS] ATR warmed: 30 days, PD H:156.25 L:152.80
+08:01:44 [INFO] [MS] 1m bar #108 @1117 ind=16μs strat=33μs total=50μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:01:44 [INFO] [MS] 1m bar #165 @1214 ind=8μs strat=18μs total=25μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:01:44 [INFO] [MS] 5m bar #50 @1335 ind=7μs strat=14μs total=22μs (8 active)
+08:01:44 [INFO] [MS] 5m bar #91 @1030 ind=12μs strat=33μs total=46μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:01:44 [INFO] [MS] 5m bar #100 @1115 ind=13μs strat=25μs total=38μs (8 active)
+08:01:44 [INFO] [MS] 5m bar #103 @1130 ind=13μs strat=30μs total=43μs (8 active) | SIGNALS: FL_ANTICHOP
+08:01:44 [INFO] [MS] 1m bar #582 @1241 ind=10μs strat=23μs total=33μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:01:44 [INFO] [MS] 5m bar #117 @1240 ind=8μs strat=27μs total=35μs (8 active) | SIGNALS: EMA_FPIP
+08:01:44 [INFO] [MS] 5m bar #150 @1525 ind=11μs strat=14μs total=25μs (8 active)
+08:01:44 [INFO] [MS] 5m bar #183 @1140 ind=9μs strat=27μs total=36μs (8 active) | SIGNALS: HH_QUALITY
+08:01:44 [INFO] [MS] 5m bar #200 @1305 ind=8μs strat=17μs total=25μs (8 active)
+08:01:44 [INFO] [MS] 1m bar #1211 @1010 ind=10μs strat=23μs total=32μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:01:44 [INFO] [MS] 5m bar #250 @1045 ind=8μs strat=18μs total=27μs (8 active)
+08:01:44 [INFO] [MS] 5m bar #300 @1455 ind=8μs strat=13μs total=20μs (8 active)
+08:01:44 [INFO] [MS] 5m bar #337 @1130 ind=7μs strat=20μs total=28μs (8 active) | SIGNALS: FL_ANTICHOP
+08:01:44 [INFO] [MS] 5m bar #350 @1235 ind=7μs strat=12μs total=20μs (8 active)
+08:01:44 [INFO] [MS] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:01:44 [INFO] [MS] Ready (29/83, universe=STATIC).
+08:01:45 [INFO] [MSFT] Contract qualified: Stock(conId=272093, symbol='MSFT', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='MSFT', tradingClass='NMS')
+08:01:46 [INFO] [MSFT] ATR warmed: 30 days, PD H:406.12 L:401.71
+08:01:46 [INFO] [MSFT] 5m bar #29 @1150 ind=9μs strat=30μs total=39μs (8 active) | SIGNALS: HH_QUALITY
+08:01:46 [INFO] [MSFT] 5m bar #50 @1335 ind=7μs strat=13μs total=20μs (8 active)
+08:01:46 [INFO] [MSFT] 5m bar #100 @1115 ind=13μs strat=25μs total=38μs (8 active)
+08:01:46 [INFO] [MSFT] 5m bar #150 @1525 ind=26μs strat=30μs total=56μs (8 active)
+08:01:46 [INFO] [MSFT] 5m bar #169 @1030 ind=11μs strat=31μs total=42μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:01:46 [INFO] [MSFT] 5m bar #192 @1225 ind=10μs strat=30μs total=41μs (8 active) | SIGNALS: FL_ANTICHOP
+08:01:46 [INFO] [MSFT] 5m bar #200 @1305 ind=8μs strat=12μs total=20μs (8 active)
+08:01:46 [INFO] [MSFT] 5m bar #250 @1045 ind=8μs strat=17μs total=25μs (8 active)
+08:01:46 [INFO] [MSFT] 5m bar #300 @1455 ind=8μs strat=13μs total=21μs (8 active)
+08:01:46 [INFO] [MSFT] 5m bar #329 @1050 ind=8μs strat=32μs total=40μs (8 active) | SIGNALS: FL_ANTICHOP
+08:01:46 [INFO] [MSFT] 5m bar #350 @1235 ind=8μs strat=20μs total=28μs (8 active)
+08:01:46 [INFO] [MSFT] 1m bar #1763 @1252 ind=8μs strat=22μs total=31μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:01:46 [INFO] [MSFT] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:01:46 [INFO] [MSFT] Ready (30/83, universe=STATIC).
+08:01:47 [INFO] [NAIL] Contract qualified: Stock(conId=203435133, symbol='NAIL', exchange='SMART', primaryExchange='ARCA', currency='USD', localSymbol='NAIL', tradingClass='NAIL')
+08:01:47 [INFO] [NAIL] ATR warmed: 30 days, PD H:43.86 L:40.96
+08:01:48 [INFO] [NAIL] 5m bar #50 @1335 ind=9μs strat=21μs total=30μs (8 active)
+08:01:48 [INFO] [NAIL] 5m bar #92 @1035 ind=8μs strat=30μs total=38μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:01:48 [INFO] [NAIL] 5m bar #100 @1115 ind=12μs strat=25μs total=36μs (8 active)
+08:01:48 [INFO] [NAIL] 5m bar #150 @1525 ind=10μs strat=15μs total=26μs (8 active)
+08:01:48 [INFO] [NAIL] 5m bar #200 @1305 ind=10μs strat=22μs total=32μs (8 active)
+08:01:48 [INFO] [NAIL] 5m bar #210 @1355 ind=9μs strat=34μs total=44μs (8 active) | SIGNALS: EMA_FPIP
+08:01:48 [INFO] [NAIL] 5m bar #248 @1035 ind=8μs strat=23μs total=32μs (8 active) | SIGNALS: FL_ANTICHOP
+08:01:48 [INFO] [NAIL] 5m bar #250 @1045 ind=9μs strat=19μs total=28μs (8 active)
+08:01:48 [INFO] [NAIL] 5m bar #300 @1455 ind=8μs strat=11μs total=18μs (8 active)
+08:01:48 [INFO] [NAIL] 5m bar #330 @1055 ind=7μs strat=21μs total=28μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:01:48 [INFO] [NAIL] 5m bar #338 @1135 ind=7μs strat=17μs total=24μs (8 active) | SIGNALS: FL_ANTICHOP
+08:01:48 [INFO] [NAIL] 5m bar #350 @1235 ind=7μs strat=12μs total=20μs (8 active)
+08:01:48 [INFO] [NAIL] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:01:48 [INFO] [NAIL] Ready (31/83, universe=STATIC).
+08:01:49 [INFO] [NFLX] Contract qualified: Stock(conId=15124833, symbol='NFLX', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='NFLX', tradingClass='NMS')
+08:01:49 [INFO] [NFLX] ATR warmed: 30 days, PD H:95.40 L:93.87
+08:01:49 [INFO] [NFLX] 5m bar #50 @1335 ind=17μs strat=29μs total=46μs (8 active)
+08:01:49 [INFO] [NFLX] 5m bar #100 @1115 ind=8μs strat=16μs total=24μs (8 active)
+08:01:49 [INFO] [NFLX] 5m bar #150 @1525 ind=8μs strat=14μs total=22μs (8 active)
+08:01:49 [INFO] [NFLX] 5m bar #172 @1045 ind=8μs strat=26μs total=34μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:01:49 [INFO] [NFLX] 5m bar #192 @1225 ind=10μs strat=28μs total=39μs (8 active) | SIGNALS: FL_ANTICHOP
+08:01:49 [INFO] [NFLX] 5m bar #200 @1305 ind=10μs strat=17μs total=27μs (8 active)
+08:01:49 [INFO] [NFLX] 5m bar #250 @1045 ind=8μs strat=16μs total=24μs (8 active)
+08:01:49 [INFO] [NFLX] 5m bar #300 @1455 ind=8μs strat=11μs total=19μs (8 active)
+08:01:49 [INFO] [NFLX] 5m bar #333 @1110 ind=7μs strat=21μs total=29μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:01:49 [INFO] [NFLX] 5m bar #350 @1235 ind=8μs strat=15μs total=23μs (8 active)
+08:01:49 [INFO] [NFLX] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:01:49 [INFO] [NFLX] Ready (32/83, universe=STATIC).
+08:01:51 [INFO] [NKE] Contract qualified: Stock(conId=10291, symbol='NKE', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='NKE', tradingClass='NKE')
+08:01:51 [INFO] [NKE] ATR warmed: 30 days, PD H:55.46 L:54.03
+08:01:51 [INFO] [NKE] 5m bar #50 @1335 ind=14μs strat=25μs total=39μs (8 active)
+08:01:51 [INFO] [NKE] 5m bar #100 @1115 ind=13μs strat=27μs total=40μs (8 active)
+08:01:51 [INFO] [NKE] 5m bar #101 @1120 ind=14μs strat=49μs total=63μs (8 active) | SIGNALS: HH_QUALITY
+08:01:51 [INFO] [NKE] 5m bar #150 @1525 ind=17μs strat=72μs total=89μs (8 active)
+08:01:51 [INFO] [NKE] 5m bar #200 @1305 ind=7μs strat=21μs total=28μs (8 active)
+08:01:51 [INFO] [NKE] 5m bar #203 @1320 ind=7μs strat=37μs total=44μs (8 active) | SIGNALS: SP_ATIER
+08:01:51 [INFO] [NKE] 5m bar #250 @1045 ind=7μs strat=16μs total=23μs (8 active)
+08:01:51 [INFO] [NKE] 5m bar #300 @1455 ind=8μs strat=13μs total=20μs (8 active)
+08:01:51 [INFO] [NKE] 5m bar #350 @1235 ind=7μs strat=14μs total=21μs (8 active)
+08:01:51 [INFO] [NKE] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:01:51 [INFO] [NKE] Ready (33/83, universe=IN_PLAY).
+08:01:53 [INFO] [NU] Contract qualified: Stock(conId=531212348, symbol='NU', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='NU', tradingClass='NU')
+08:01:53 [INFO] [NU] ATR warmed: 30 days, PD H:14.35 L:13.88
+08:01:53 [INFO] [NU] 5m bar #22 @1115 ind=7μs strat=19μs total=26μs (8 active) | SIGNALS: SC_SNIPER
+08:01:53 [INFO] [NU] 5m bar #28 @1145 ind=7μs strat=16μs total=23μs (8 active) | SIGNALS: HH_QUALITY
+08:01:53 [INFO] [NU] 5m bar #50 @1335 ind=7μs strat=10μs total=16μs (8 active)
+08:01:53 [INFO] [NU] 1m bar #489 @1108 ind=8μs strat=22μs total=29μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:01:53 [INFO] [NU] 5m bar #99 @1110 ind=7μs strat=29μs total=36μs (8 active) | SIGNALS: SP_ATIER
+08:01:53 [INFO] [NU] 5m bar #100 @1115 ind=7μs strat=17μs total=24μs (8 active)
+08:01:53 [INFO] [NU] 5m bar #102 @1125 ind=7μs strat=19μs total=26μs (8 active) | SIGNALS: FL_ANTICHOP
+08:01:53 [INFO] [NU] 5m bar #150 @1525 ind=6μs strat=10μs total=16μs (8 active)
+08:01:53 [INFO] [NU] 5m bar #169 @1030 ind=7μs strat=30μs total=37μs (8 active) | SIGNALS: FL_ANTICHOP
+08:01:53 [INFO] [NU] 1m bar #859 @1048 ind=8μs strat=10μs total=18μs (2 active) | SIGNALS: EMA9_FT
+08:01:53 [INFO] [NU] 5m bar #200 @1305 ind=6μs strat=16μs total=22μs (8 active)
+08:01:53 [INFO] [NU] 5m bar #203 @1320 ind=6μs strat=24μs total=30μs (8 active) | SIGNALS: SP_ATIER
+08:01:53 [INFO] [NU] 5m bar #250 @1045 ind=6μs strat=13μs total=19μs (8 active)
+08:01:53 [INFO] [NU] 5m bar #300 @1455 ind=7μs strat=13μs total=19μs (8 active)
+08:01:53 [INFO] [NU] 5m bar #346 @1215 ind=8μs strat=22μs total=30μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:01:53 [INFO] [NU] 5m bar #350 @1235 ind=6μs strat=11μs total=17μs (8 active)
+08:01:53 [INFO] [NU] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:01:53 [INFO] [NU] Ready (34/83, universe=STATIC).
+08:01:55 [INFO] [NUGT] Contract qualified: Stock(conId=416854763, symbol='NUGT', exchange='SMART', primaryExchange='ARCA', currency='USD', localSymbol='NUGT', tradingClass='NUGT')
+08:01:55 [INFO] [NUGT] ATR warmed: 30 days, PD H:235.85 L:223.03
+08:01:55 [INFO] [NUGT] 1m bar #60 @1029 ind=17μs strat=18μs total=35μs (2 active) | SIGNALS: EMA9_FT
+08:01:55 [INFO] [NUGT] 5m bar #50 @1335 ind=8μs strat=17μs total=25μs (8 active)
+08:01:55 [INFO] [NUGT] 5m bar #89 @1020 ind=8μs strat=21μs total=29μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:01:55 [INFO] [NUGT] 5m bar #100 @1115 ind=8μs strat=15μs total=23μs (8 active)
+08:01:55 [INFO] [NUGT] 5m bar #109 @1200 ind=7μs strat=35μs total=42μs (8 active) | SIGNALS: HH_QUALITY
+08:01:55 [INFO] [NUGT] 5m bar #150 @1525 ind=8μs strat=12μs total=20μs (8 active)
+08:01:55 [INFO] [NUGT] 5m bar #180 @1125 ind=8μs strat=26μs total=34μs (8 active) | SIGNALS: HH_QUALITY
+08:01:55 [INFO] [NUGT] 5m bar #200 @1305 ind=8μs strat=26μs total=35μs (8 active)
+08:01:55 [INFO] [NUGT] 5m bar #250 @1045 ind=9μs strat=20μs total=29μs (8 active)
+08:01:55 [INFO] [NUGT] 5m bar #275 @1250 ind=8μs strat=24μs total=32μs (8 active) | SIGNALS: FL_ANTICHOP
+08:01:55 [INFO] [NUGT] 5m bar #300 @1455 ind=7μs strat=11μs total=18μs (8 active)
+08:01:55 [INFO] [NUGT] 5m bar #328 @1045 ind=8μs strat=27μs total=34μs (8 active) | SIGNALS: BDR_SHORT
+08:01:55 [INFO] [NUGT] 5m bar #350 @1235 ind=8μs strat=17μs total=25μs (8 active)
+08:01:55 [INFO] [NUGT] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:01:55 [INFO] [NUGT] Ready (35/83, universe=STATIC).
+08:01:57 [INFO] [NVDA] Contract qualified: Stock(conId=4815747, symbol='NVDA', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='NVDA', tradingClass='NMS')
+08:01:57 [INFO] [NVDA] ATR warmed: 30 days, PD H:184.94 L:181.75
+08:01:57 [INFO] [NVDA] 5m bar #28 @1145 ind=15μs strat=47μs total=62μs (8 active) | SIGNALS: HH_QUALITY
+08:01:57 [INFO] [NVDA] 5m bar #50 @1335 ind=7μs strat=13μs total=20μs (8 active)
+08:01:57 [INFO] [NVDA] 5m bar #100 @1115 ind=7μs strat=16μs total=23μs (8 active)
+08:01:57 [INFO] [NVDA] 5m bar #106 @1145 ind=7μs strat=23μs total=30μs (8 active) | SIGNALS: HH_QUALITY
+08:01:57 [INFO] [NVDA] 5m bar #150 @1525 ind=70μs strat=46μs total=117μs (8 active)
+08:01:57 [INFO] [NVDA] 5m bar #200 @1305 ind=7μs strat=17μs total=24μs (8 active)
+08:01:57 [INFO] [NVDA] 1m bar #1231 @1030 ind=8μs strat=27μs total=36μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:01:57 [INFO] [NVDA] 5m bar #250 @1045 ind=7μs strat=14μs total=21μs (8 active)
+08:01:57 [INFO] [NVDA] 5m bar #300 @1455 ind=9μs strat=13μs total=22μs (8 active)
+08:01:57 [INFO] [NVDA] 5m bar #341 @1150 ind=7μs strat=28μs total=34μs (8 active) | SIGNALS: FL_ANTICHOP
+08:01:57 [INFO] [NVDA] 5m bar #343 @1200 ind=18μs strat=95μs total=113μs (8 active) | SIGNALS: BS_STRUCT
+08:01:57 [INFO] [NVDA] 5m bar #350 @1235 ind=7μs strat=18μs total=25μs (8 active)
+08:01:57 [INFO] [NVDA] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:01:57 [INFO] [NVDA] Ready (36/83, universe=IN_PLAY).
+08:01:59 [INFO] [ORCL] Contract qualified: Stock(conId=272800, symbol='ORCL', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='ORCL', tradingClass='ORCL')
+08:01:59 [INFO] [ORCL] ATR warmed: 30 days, PD H:167.83 L:158.61
+08:01:59 [INFO] [ORCL] 5m bar #50 @1335 ind=7μs strat=15μs total=22μs (8 active)
+08:01:59 [INFO] [ORCL] 5m bar #100 @1115 ind=7μs strat=14μs total=21μs (8 active)
+08:01:59 [INFO] [ORCL] 5m bar #150 @1525 ind=7μs strat=11μs total=18μs (8 active)
+08:01:59 [INFO] [ORCL] 5m bar #167 @1020 ind=17μs strat=79μs total=96μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:01:59 [INFO] [ORCL] 5m bar #176 @1105 ind=7μs strat=27μs total=34μs (8 active) | SIGNALS: FL_ANTICHOP
+08:01:59 [INFO] [ORCL] 5m bar #200 @1305 ind=7μs strat=13μs total=20μs (8 active)
+08:01:59 [INFO] [ORCL] 5m bar #248 @1035 ind=11μs strat=22μs total=33μs (8 active) | SIGNALS: BDR_SHORT
+08:01:59 [INFO] [ORCL] 5m bar #250 @1045 ind=7μs strat=13μs total=20μs (8 active)
+08:01:59 [INFO] [ORCL] 5m bar #300 @1455 ind=6μs strat=10μs total=17μs (8 active)
+08:01:59 [INFO] [ORCL] 5m bar #350 @1235 ind=7μs strat=13μs total=20μs (8 active)
+08:01:59 [INFO] [ORCL] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:01:59 [INFO] [ORCL] Ready (37/83, universe=IN_PLAY).
+08:02:01 [INFO] [PLTR] Contract qualified: Stock(conId=444857009, symbol='PLTR', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='PLTR', tradingClass='NMS')
+08:02:01 [INFO] [PLTR] ATR warmed: 30 days, PD H:155.88 L:150.98
+08:02:01 [INFO] [PLTR] 1m bar #90 @1059 ind=8μs strat=33μs total=40μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:02:01 [INFO] [PLTR] 5m bar #18 @1055 ind=10μs strat=27μs total=37μs (8 active) | SIGNALS: HH_QUALITY
+08:02:01 [INFO] [PLTR] 5m bar #50 @1335 ind=7μs strat=11μs total=18μs (8 active)
+08:02:01 [INFO] [PLTR] 5m bar #52 @1345 ind=7μs strat=18μs total=25μs (8 active) | SIGNALS: EMA_FPIP
+08:02:01 [INFO] [PLTR] 5m bar #100 @1115 ind=7μs strat=18μs total=25μs (8 active)
+08:02:01 [INFO] [PLTR] 5m bar #117 @1240 ind=7μs strat=20μs total=26μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:02:01 [INFO] [PLTR] 5m bar #150 @1525 ind=7μs strat=11μs total=17μs (8 active)
+08:02:01 [INFO] [PLTR] 5m bar #200 @1305 ind=7μs strat=12μs total=19μs (8 active)
+08:02:01 [INFO] [PLTR] 5m bar #249 @1040 ind=8μs strat=21μs total=28μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:02:01 [INFO] [PLTR] 5m bar #250 @1045 ind=7μs strat=15μs total=22μs (8 active)
+08:02:01 [INFO] [PLTR] 5m bar #300 @1455 ind=6μs strat=10μs total=17μs (8 active)
+08:02:01 [INFO] [PLTR] 1m bar #1616 @1025 ind=8μs strat=23μs total=31μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:02:01 [INFO] [PLTR] 5m bar #350 @1235 ind=7μs strat=15μs total=22μs (8 active)
+08:02:01 [INFO] [PLTR] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:02:01 [INFO] [PLTR] Ready (38/83, universe=STATIC).
+08:02:03 [INFO] [QQQ] Contract qualified: Stock(conId=320227571, symbol='QQQ', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='QQQ', tradingClass='NMS')
+08:02:03 [INFO] [QQQ] ATR warmed: 30 days, PD H:604.14 L:597.05
+08:02:03 [INFO] [QQQ] 5m bar #26 @1135 ind=7μs strat=20μs total=27μs (8 active) | SIGNALS: HH_QUALITY
+08:02:03 [INFO] [QQQ] 5m bar #50 @1335 ind=7μs strat=14μs total=21μs (8 active)
+08:02:03 [INFO] [QQQ] 5m bar #100 @1115 ind=6μs strat=17μs total=23μs (8 active)
+08:02:03 [INFO] [QQQ] 5m bar #109 @1200 ind=6μs strat=20μs total=26μs (8 active) | SIGNALS: HH_QUALITY
+08:02:03 [INFO] [QQQ] 5m bar #150 @1525 ind=6μs strat=9μs total=15μs (8 active)
+08:02:03 [INFO] [QQQ] 5m bar #170 @1035 ind=6μs strat=28μs total=35μs (8 active) | SIGNALS: FL_ANTICHOP
+08:02:03 [INFO] [QQQ] 5m bar #175 @1100 ind=6μs strat=20μs total=26μs (8 active) | SIGNALS: HH_QUALITY
+08:02:03 [INFO] [QQQ] 5m bar #200 @1305 ind=7μs strat=14μs total=21μs (8 active)
+08:02:03 [INFO] [QQQ] 1m bar #1216 @1015 ind=7μs strat=29μs total=36μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:02:03 [INFO] [QQQ] 5m bar #250 @1045 ind=6μs strat=12μs total=18μs (8 active)
+08:02:03 [INFO] [QQQ] 5m bar #300 @1455 ind=6μs strat=9μs total=15μs (8 active)
+08:02:03 [INFO] [QQQ] 5m bar #332 @1105 ind=7μs strat=21μs total=27μs (8 active) | SIGNALS: BDR_SHORT
+08:02:03 [INFO] [QQQ] 5m bar #346 @1215 ind=7μs strat=16μs total=23μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:02:03 [INFO] [QQQ] 5m bar #350 @1235 ind=7μs strat=17μs total=24μs (8 active)
+08:02:03 [INFO] [QQQ] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:02:03 [INFO] [QQQ] Ready (39/83, universe=STATIC).
+08:02:05 [INFO] [RBLX] Contract qualified: Stock(conId=476026060, symbol='RBLX', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='RBLX', tradingClass='RBLX')
+08:02:05 [INFO] [RBLX] ATR warmed: 30 days, PD H:60.13 L:56.30
+08:02:05 [INFO] [RBLX] 5m bar #50 @1335 ind=14μs strat=25μs total=40μs (8 active)
+08:02:05 [INFO] [RBLX] 5m bar #91 @1030 ind=10μs strat=30μs total=40μs (8 active) | SIGNALS: BDR_SHORT
+08:02:05 [INFO] [RBLX] 5m bar #100 @1115 ind=10μs strat=18μs total=28μs (8 active)
+08:02:05 [INFO] [RBLX] 5m bar #150 @1525 ind=11μs strat=16μs total=27μs (8 active)
+08:02:05 [INFO] [RBLX] 5m bar #200 @1305 ind=9μs strat=17μs total=26μs (8 active)
+08:02:05 [INFO] [RBLX] 5m bar #250 @1045 ind=9μs strat=25μs total=34μs (8 active)
+08:02:05 [INFO] [RBLX] 5m bar #300 @1455 ind=7μs strat=13μs total=20μs (8 active)
+08:02:05 [INFO] [RBLX] 5m bar #332 @1105 ind=7μs strat=22μs total=29μs (8 active) | SIGNALS: BDR_SHORT
+08:02:05 [INFO] [RBLX] 5m bar #350 @1235 ind=7μs strat=14μs total=21μs (8 active)
+08:02:05 [INFO] [RBLX] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:02:05 [INFO] [RBLX] Ready (40/83, universe=STATIC).
+08:02:07 [INFO] [RGTI] Contract qualified: Stock(conId=547605251, symbol='RGTI', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='RGTI', tradingClass='SCM')
+08:02:07 [INFO] [RGTI] ATR warmed: 30 days, PD H:16.73 L:15.84
+08:02:07 [INFO] [RGTI] 5m bar #28 @1145 ind=10μs strat=31μs total=41μs (8 active) | SIGNALS: FL_ANTICHOP
+08:02:07 [INFO] [RGTI] 5m bar #45 @1310 ind=15μs strat=47μs total=62μs (8 active) | SIGNALS: BS_STRUCT
+08:02:07 [INFO] [RGTI] 5m bar #50 @1335 ind=14μs strat=25μs total=40μs (8 active)
+08:02:07 [INFO] [RGTI] 5m bar #100 @1115 ind=9μs strat=20μs total=29μs (8 active)
+08:02:07 [INFO] [RGTI] 5m bar #110 @1205 ind=9μs strat=31μs total=40μs (8 active) | SIGNALS: FL_ANTICHOP
+08:02:07 [INFO] [RGTI] 5m bar #150 @1525 ind=9μs strat=15μs total=24μs (8 active)
+08:02:07 [INFO] [RGTI] 5m bar #185 @1150 ind=9μs strat=30μs total=39μs (8 active) | SIGNALS: HH_QUALITY
+08:02:07 [INFO] [RGTI] 5m bar #200 @1305 ind=9μs strat=19μs total=28μs (8 active)
+08:02:07 [INFO] [RGTI] 5m bar #250 @1045 ind=8μs strat=21μs total=30μs (8 active)
+08:02:07 [INFO] [RGTI] 5m bar #271 @1230 ind=8μs strat=36μs total=44μs (8 active) | SIGNALS: FL_ANTICHOP, BS_STRUCT
+08:02:07 [INFO] [RGTI] 5m bar #300 @1455 ind=7μs strat=10μs total=18μs (8 active)
+08:02:07 [INFO] [RGTI] 5m bar #347 @1220 ind=7μs strat=27μs total=34μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:02:07 [INFO] [RGTI] 5m bar #350 @1235 ind=8μs strat=27μs total=35μs (8 active)
+08:02:07 [INFO] [RGTI] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:02:07 [INFO] [RGTI] Ready (41/83, universe=STATIC).
+08:02:08 [INFO] [RIVN] Contract qualified: Stock(conId=525768800, symbol='RIVN', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='RIVN', tradingClass='NMS')
+08:02:08 [INFO] [RIVN] ATR warmed: 30 days, PD H:16.79 L:15.24
+08:02:09 [INFO] [RIVN] 5m bar #50 @1335 ind=7μs strat=13μs total=20μs (8 active)
+08:02:09 [INFO] [RIVN] 5m bar #97 @1100 ind=8μs strat=39μs total=47μs (8 active) | SIGNALS: FL_ANTICHOP
+08:02:09 [INFO] [RIVN] 5m bar #100 @1115 ind=6μs strat=13μs total=19μs (8 active)
+08:02:09 [INFO] [RIVN] 5m bar #117 @1240 ind=6μs strat=26μs total=32μs (8 active) | SIGNALS: SP_ATIER
+08:02:09 [INFO] [RIVN] 1m bar #594 @1253 ind=7μs strat=18μs total=25μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:02:09 [INFO] [RIVN] 5m bar #122 @1305 ind=6μs strat=13μs total=20μs (8 active) | SIGNALS: EMA_FPIP
+08:02:09 [INFO] [RIVN] 5m bar #150 @1525 ind=6μs strat=7μs total=13μs (8 active)
+08:02:09 [INFO] [RIVN] 1m bar #830 @1019 ind=7μs strat=15μs total=22μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:02:09 [INFO] [RIVN] 1m bar #865 @1054 ind=8μs strat=11μs total=18μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:02:09 [INFO] [RIVN] 5m bar #200 @1305 ind=6μs strat=12μs total=18μs (8 active)
+08:02:09 [INFO] [RIVN] 5m bar #250 @1045 ind=15μs strat=37μs total=52μs (8 active)
+08:02:09 [INFO] [RIVN] 5m bar #300 @1455 ind=6μs strat=10μs total=15μs (8 active)
+08:02:09 [INFO] [RIVN] 5m bar #350 @1235 ind=6μs strat=12μs total=18μs (8 active)
+08:02:09 [INFO] [RIVN] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:02:09 [INFO] [RIVN] Ready (42/83, universe=STATIC).
+08:02:09 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.hfarm
+08:02:09 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.hfarm
+08:02:09 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.jfarm
+08:02:09 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.jfarm
+08:02:09 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.usfuture
+08:02:09 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.usfuture
+08:02:09 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.eufarmnj
+08:02:09 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.eufarmnj
+08:02:10 [INFO] [RTX] Contract qualified: Stock(conId=415342104, symbol='RTX', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX')
+08:02:10 [INFO] [RTX] ATR warmed: 30 days, PD H:206.77 L:201.84
+08:02:11 [INFO] [RTX] 5m bar #50 @1335 ind=6μs strat=12μs total=17μs (8 active)
+08:02:11 [INFO] [RTX] 5m bar #100 @1115 ind=6μs strat=13μs total=18μs (8 active)
+08:02:11 [INFO] [RTX] 5m bar #101 @1120 ind=7μs strat=24μs total=31μs (8 active) | SIGNALS: FL_ANTICHOP
+08:02:11 [INFO] [RTX] 5m bar #150 @1525 ind=6μs strat=10μs total=16μs (8 active)
+08:02:11 [INFO] [RTX] 5m bar #200 @1305 ind=7μs strat=16μs total=23μs (8 active)
+08:02:11 [INFO] [RTX] 5m bar #249 @1040 ind=6μs strat=22μs total=28μs (8 active) | SIGNALS: HH_QUALITY
+08:02:11 [INFO] [RTX] 5m bar #250 @1045 ind=6μs strat=18μs total=24μs (8 active)
+08:02:11 [INFO] [RTX] 5m bar #300 @1455 ind=6μs strat=8μs total=14μs (8 active)
+08:02:11 [INFO] [RTX] 5m bar #348 @1225 ind=6μs strat=24μs total=30μs (8 active) | SIGNALS: FL_ANTICHOP
+08:02:11 [INFO] [RTX] 5m bar #350 @1235 ind=7μs strat=14μs total=21μs (8 active)
+08:02:11 [INFO] [RTX] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:02:11 [INFO] [RTX] Ready (43/83, universe=STATIC).
+08:02:12 [INFO] [SHOP] Contract qualified: Stock(conId=195014116, symbol='SHOP', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='SHOP', tradingClass='NMS')
+08:02:12 [INFO] [SHOP] ATR warmed: 30 days, PD H:131.68 L:125.67
+08:02:12 [INFO] [SHOP] 5m bar #50 @1335 ind=7μs strat=14μs total=21μs (8 active)
+08:02:12 [INFO] [SHOP] 5m bar #100 @1115 ind=7μs strat=19μs total=25μs (8 active)
+08:02:12 [INFO] [SHOP] 5m bar #105 @1140 ind=7μs strat=37μs total=43μs (8 active) | SIGNALS: FL_ANTICHOP
+08:02:12 [INFO] [SHOP] 1m bar #532 @1151 ind=8μs strat=18μs total=26μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:02:12 [INFO] [SHOP] 1m bar #610 @1309 ind=10μs strat=18μs total=28μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:02:12 [INFO] [SHOP] 5m bar #150 @1525 ind=7μs strat=10μs total=17μs (8 active)
+08:02:12 [INFO] [SHOP] 5m bar #192 @1225 ind=7μs strat=23μs total=30μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:02:12 [INFO] [SHOP] 5m bar #200 @1305 ind=7μs strat=12μs total=19μs (8 active)
+08:02:12 [INFO] [SHOP] 5m bar #250 @1045 ind=7μs strat=16μs total=23μs (8 active)
+08:02:12 [INFO] [SHOP] 5m bar #300 @1455 ind=7μs strat=10μs total=17μs (8 active)
+08:02:12 [INFO] [SHOP] 5m bar #350 @1235 ind=7μs strat=14μs total=21μs (8 active)
+08:02:12 [INFO] [SHOP] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:02:12 [INFO] [SHOP] Ready (44/83, universe=STATIC).
+08:02:14 [INFO] [SMCI] Contract qualified: Stock(conId=731466419, symbol='SMCI', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='SMCI', tradingClass='NMS')
+08:02:14 [INFO] [SMCI] ATR warmed: 30 days, PD H:31.81 L:30.80
+08:02:14 [INFO] [SMCI] 1m bar #107 @1116 ind=8μs strat=25μs total=33μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:02:14 [INFO] [SMCI] 5m bar #50 @1335 ind=6μs strat=12μs total=18μs (8 active)
+08:02:14 [INFO] [SMCI] 5m bar #100 @1115 ind=6μs strat=12μs total=18μs (8 active)
+08:02:14 [INFO] [SMCI] 5m bar #108 @1155 ind=7μs strat=25μs total=31μs (8 active) | SIGNALS: HH_QUALITY
+08:02:14 [INFO] [SMCI] 5m bar #150 @1525 ind=6μs strat=10μs total=16μs (8 active)
+08:02:14 [INFO] [SMCI] 5m bar #167 @1020 ind=6μs strat=21μs total=27μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:02:14 [INFO] [SMCI] 5m bar #200 @1305 ind=6μs strat=14μs total=20μs (8 active)
+08:02:14 [INFO] [SMCI] 5m bar #250 @1045 ind=6μs strat=14μs total=20μs (8 active)
+08:02:14 [INFO] [SMCI] 5m bar #300 @1455 ind=6μs strat=8μs total=14μs (8 active)
+08:02:14 [INFO] [SMCI] 5m bar #350 @1235 ind=6μs strat=14μs total=20μs (8 active)
+08:02:14 [INFO] [SMCI] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:02:14 [INFO] [SMCI] Ready (45/83, universe=STATIC).
+08:02:16 [INFO] [SNOW] Contract qualified: Stock(conId=444884769, symbol='SNOW', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='SNOW', tradingClass='SNOW')
+08:02:16 [INFO] [SNOW] ATR warmed: 30 days, PD H:184.74 L:176.70
+08:02:16 [INFO] [SNOW] 5m bar #18 @1055 ind=7μs strat=22μs total=29μs (8 active) | SIGNALS: HH_QUALITY
+08:02:16 [INFO] [SNOW] 5m bar #50 @1335 ind=15μs strat=28μs total=43μs (8 active)
+08:02:16 [INFO] [SNOW] 1m bar #442 @1021 ind=15μs strat=25μs total=41μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:02:16 [INFO] [SNOW] 5m bar #96 @1055 ind=7μs strat=18μs total=25μs (8 active) | SIGNALS: FL_ANTICHOP
+08:02:16 [INFO] [SNOW] 5m bar #100 @1115 ind=7μs strat=14μs total=21μs (8 active)
+08:02:16 [INFO] [SNOW] 5m bar #150 @1525 ind=11μs strat=17μs total=27μs (8 active)
+08:02:16 [INFO] [SNOW] 5m bar #185 @1150 ind=10μs strat=23μs total=33μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:02:16 [INFO] [SNOW] 5m bar #200 @1305 ind=7μs strat=12μs total=19μs (8 active)
+08:02:16 [INFO] [SNOW] 5m bar #250 @1045 ind=9μs strat=20μs total=29μs (8 active)
+08:02:16 [INFO] [SNOW] 5m bar #300 @1455 ind=7μs strat=11μs total=18μs (8 active)
+08:02:16 [INFO] [SNOW] 5m bar #328 @1045 ind=7μs strat=20μs total=28μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:02:16 [INFO] [SNOW] 5m bar #350 @1235 ind=7μs strat=14μs total=21μs (8 active)
+08:02:16 [INFO] [SNOW] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:02:16 [INFO] [SNOW] Ready (46/83, universe=STATIC).
+08:02:18 [INFO] [SOXL] Contract qualified: Stock(conId=73340487, symbol='SOXL', exchange='SMART', primaryExchange='ARCA', currency='USD', localSymbol='SOXL', tradingClass='SOXL')
+08:02:18 [INFO] [SOXL] ATR warmed: 30 days, PD H:53.88 L:49.53
+08:02:18 [INFO] [SOXL] 1m bar #47 @1016 ind=7μs strat=16μs total=23μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:02:18 [INFO] [SOXL] 1m bar #48 @1017 ind=16μs strat=14μs total=30μs (2 active) | SIGNALS: EMA9_FT
+08:02:18 [INFO] [SOXL] 5m bar #50 @1335 ind=6μs strat=12μs total=18μs (8 active)
+08:02:18 [INFO] [SOXL] 1m bar #453 @1032 ind=7μs strat=18μs total=25μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:02:18 [INFO] [SOXL] 5m bar #99 @1110 ind=12μs strat=42μs total=54μs (8 active) | SIGNALS: HH_QUALITY
+08:02:18 [INFO] [SOXL] 5m bar #100 @1115 ind=8μs strat=19μs total=27μs (8 active)
+08:02:18 [INFO] [SOXL] 5m bar #113 @1220 ind=13μs strat=46μs total=59μs (8 active) | SIGNALS: SP_ATIER
+08:02:18 [INFO] [SOXL] 5m bar #150 @1525 ind=6μs strat=12μs total=18μs (8 active)
+08:02:18 [INFO] [SOXL] 5m bar #175 @1100 ind=6μs strat=22μs total=28μs (8 active) | SIGNALS: HH_QUALITY
+08:02:18 [INFO] [SOXL] 5m bar #182 @1135 ind=6μs strat=22μs total=28μs (8 active) | SIGNALS: BS_STRUCT
+08:02:18 [INFO] [SOXL] 5m bar #200 @1305 ind=12μs strat=25μs total=37μs (8 active)
+08:02:18 [INFO] [SOXL] 1m bar #1247 @1046 ind=9μs strat=20μs total=29μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:02:18 [INFO] [SOXL] 5m bar #250 @1045 ind=7μs strat=17μs total=24μs (8 active)
+08:02:18 [INFO] [SOXL] 5m bar #300 @1455 ind=9μs strat=14μs total=22μs (8 active)
+08:02:18 [INFO] [SOXL] 5m bar #350 @1235 ind=7μs strat=17μs total=24μs (8 active)
+08:02:18 [INFO] [SOXL] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:02:18 [INFO] [SOXL] Ready (47/83, universe=STATIC).
+08:02:19 [INFO] [SOXS] Contract qualified: Stock(conId=854072548, symbol='SOXS', exchange='SMART', primaryExchange='ARCA', currency='USD', localSymbol='SOXS', tradingClass='SOXS')
+08:02:20 [INFO] [SOXS] ATR warmed: 30 days, PD H:42.30 L:39.34
+08:02:20 [INFO] [SOXS] 5m bar #50 @1335 ind=7μs strat=16μs total=22μs (8 active)
+08:02:20 [INFO] [SOXS] 5m bar #89 @1020 ind=7μs strat=22μs total=28μs (8 active) | SIGNALS: BDR_SHORT
+08:02:20 [INFO] [SOXS] 5m bar #100 @1115 ind=6μs strat=12μs total=18μs (8 active)
+08:02:20 [INFO] [SOXS] 5m bar #150 @1525 ind=17μs strat=51μs total=68μs (8 active)
+08:02:20 [INFO] [SOXS] 5m bar #170 @1035 ind=7μs strat=21μs total=27μs (8 active) | SIGNALS: BDR_SHORT
+08:02:20 [INFO] [SOXS] 5m bar #200 @1305 ind=6μs strat=10μs total=16μs (8 active)
+08:02:20 [INFO] [SOXS] 5m bar #250 @1045 ind=14μs strat=13μs total=27μs (8 active)
+08:02:20 [INFO] [SOXS] 5m bar #261 @1140 ind=16μs strat=108μs total=124μs (8 active) | SIGNALS: FL_ANTICHOP
+08:02:20 [INFO] [SOXS] 5m bar #300 @1455 ind=6μs strat=8μs total=14μs (8 active)
+08:02:20 [INFO] [SOXS] 5m bar #350 @1235 ind=8μs strat=17μs total=25μs (8 active)
+08:02:20 [INFO] [SOXS] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:02:20 [INFO] [SOXS] Ready (48/83, universe=STATIC).
+08:02:21 [INFO] [SPXL] Contract qualified: Stock(conId=55679428, symbol='SPXL', exchange='SMART', primaryExchange='ARCA', currency='USD', localSymbol='SPXL', tradingClass='SPXL')
+08:02:21 [INFO] [SPXL] ATR warmed: 30 days, PD H:205.13 L:199.78
+08:02:22 [INFO] [SPXL] 1m bar #90 @1059 ind=8μs strat=35μs total=43μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:02:22 [INFO] [SPXL] 1m bar #167 @1216 ind=8μs strat=19μs total=27μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:02:22 [INFO] [SPXL] 5m bar #50 @1335 ind=7μs strat=15μs total=22μs (8 active)
+08:02:22 [INFO] [SPXL] 5m bar #100 @1115 ind=6μs strat=15μs total=21μs (8 active)
+08:02:22 [INFO] [SPXL] 5m bar #107 @1150 ind=7μs strat=41μs total=48μs (8 active) | SIGNALS: HH_QUALITY
+08:02:22 [INFO] [SPXL] 5m bar #113 @1220 ind=8μs strat=26μs total=35μs (8 active) | SIGNALS: BS_STRUCT
+08:02:22 [INFO] [SPXL] 5m bar #150 @1525 ind=7μs strat=11μs total=17μs (8 active)
+08:02:22 [INFO] [SPXL] 5m bar #183 @1140 ind=7μs strat=23μs total=30μs (8 active) | SIGNALS: HH_QUALITY
+08:02:22 [INFO] [SPXL] 5m bar #200 @1305 ind=7μs strat=14μs total=21μs (8 active)
+08:02:22 [INFO] [SPXL] 1m bar #1208 @1007 ind=8μs strat=20μs total=27μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:02:22 [INFO] [SPXL] 5m bar #250 @1045 ind=7μs strat=14μs total=21μs (8 active)
+08:02:22 [INFO] [SPXL] 5m bar #300 @1455 ind=6μs strat=9μs total=15μs (8 active)
+08:02:22 [INFO] [SPXL] 5m bar #326 @1035 ind=8μs strat=23μs total=31μs (8 active) | SIGNALS: BDR_SHORT
+08:02:22 [INFO] [SPXL] 5m bar #346 @1215 ind=7μs strat=19μs total=26μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:02:22 [INFO] [SPXL] 5m bar #350 @1235 ind=6μs strat=15μs total=22μs (8 active)
+08:02:22 [INFO] [SPXL] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:02:22 [INFO] [SPXL] Ready (49/83, universe=STATIC).
+08:02:23 [INFO] [SPXS] Contract qualified: Stock(conId=812475659, symbol='SPXS', exchange='SMART', primaryExchange='ARCA', currency='USD', localSymbol='SPXS', tradingClass='SPXS')
+08:02:23 [INFO] [SPXS] ATR warmed: 30 days, PD H:38.55 L:37.60
+08:02:24 [INFO] [SPXS] 5m bar #50 @1335 ind=6μs strat=10μs total=16μs (8 active)
+08:02:24 [INFO] [SPXS] 5m bar #95 @1050 ind=6μs strat=22μs total=28μs (8 active) | SIGNALS: BDR_SHORT
+08:02:24 [INFO] [SPXS] 5m bar #100 @1115 ind=6μs strat=12μs total=18μs (8 active)
+08:02:24 [INFO] [SPXS] 5m bar #150 @1525 ind=6μs strat=9μs total=15μs (8 active)
+08:02:24 [INFO] [SPXS] 5m bar #200 @1305 ind=7μs strat=12μs total=19μs (8 active)
+08:02:24 [INFO] [SPXS] 1m bar #1235 @1034 ind=7μs strat=19μs total=26μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:02:24 [INFO] [SPXS] 5m bar #250 @1045 ind=6μs strat=14μs total=20μs (8 active)
+08:02:24 [INFO] [SPXS] 5m bar #259 @1130 ind=6μs strat=20μs total=26μs (8 active) | SIGNALS: HH_QUALITY
+08:02:24 [INFO] [SPXS] 5m bar #300 @1455 ind=6μs strat=8μs total=14μs (8 active)
+08:02:24 [INFO] [SPXS] 1m bar #1644 @1053 ind=7μs strat=15μs total=22μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:02:24 [INFO] [SPXS] 1m bar #1731 @1220 ind=7μs strat=10μs total=17μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:02:24 [INFO] [SPXS] 5m bar #350 @1235 ind=6μs strat=11μs total=16μs (8 active)
+08:02:24 [INFO] [SPXS] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:02:24 [INFO] [SPXS] Ready (50/83, universe=STATIC).
+08:02:25 [INFO] [SPY] Contract qualified: Stock(conId=756733, symbol='SPY', exchange='SMART', primaryExchange='ARCA', currency='USD', localSymbol='SPY', tradingClass='SPY')
+08:02:25 [INFO] [SPY] ATR warmed: 30 days, PD H:671.65 L:665.90
+08:02:25 [INFO] [SPY] 1m bar #82 @1051 ind=7μs strat=20μs total=27μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:02:25 [INFO] [SPY] 1m bar #125 @1134 ind=7μs strat=12μs total=19μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:02:25 [INFO] [SPY] 5m bar #50 @1335 ind=6μs strat=14μs total=20μs (8 active)
+08:02:25 [INFO] [SPY] 1m bar #487 @1106 ind=7μs strat=11μs total=18μs (2 active) | SIGNALS: EMA9_FT
+08:02:25 [INFO] [SPY] 5m bar #100 @1115 ind=6μs strat=15μs total=21μs (8 active)
+08:02:25 [INFO] [SPY] 5m bar #113 @1220 ind=6μs strat=28μs total=34μs (8 active) | SIGNALS: BS_STRUCT
+08:02:25 [INFO] [SPY] 5m bar #150 @1525 ind=8μs strat=14μs total=22μs (8 active)
+08:02:25 [INFO] [SPY] 1m bar #852 @1041 ind=10μs strat=10μs total=20μs (2 active) | SIGNALS: EMA9_FT
+08:02:25 [INFO] [SPY] 5m bar #183 @1140 ind=7μs strat=22μs total=30μs (8 active) | SIGNALS: HH_QUALITY
+08:02:25 [INFO] [SPY] 5m bar #200 @1305 ind=6μs strat=13μs total=18μs (8 active)
+08:02:25 [INFO] [SPY] 5m bar #204 @1325 ind=6μs strat=15μs total=21μs (8 active) | SIGNALS: SC_SNIPER
+08:02:25 [INFO] [SPY] 1m bar #1216 @1015 ind=7μs strat=19μs total=26μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:02:25 [INFO] [SPY] 5m bar #250 @1045 ind=6μs strat=12μs total=18μs (8 active)
+08:02:25 [INFO] [SPY] 5m bar #300 @1455 ind=6μs strat=9μs total=15μs (8 active)
+08:02:25 [INFO] [SPY] 5m bar #325 @1030 ind=15μs strat=24μs total=39μs (8 active) | SIGNALS: BDR_SHORT
+08:02:25 [INFO] [SPY] 5m bar #346 @1215 ind=6μs strat=15μs total=22μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:02:25 [INFO] [SPY] 5m bar #350 @1235 ind=6μs strat=14μs total=20μs (8 active)
+08:02:25 [INFO] [SPY] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:02:25 [INFO] [SPY] Ready (51/83, universe=STATIC).
+08:02:27 [INFO] [TECL] Contract qualified: Stock(conId=56539091, symbol='TECL', exchange='SMART', primaryExchange='ARCA', currency='USD', localSymbol='TECL', tradingClass='TECL')
+08:02:27 [INFO] [TECL] ATR warmed: 30 days, PD H:102.24 L:97.66
+08:02:27 [INFO] [TECL] 5m bar #18 @1055 ind=8μs strat=23μs total=31μs (8 active) | SIGNALS: HH_QUALITY
+08:02:27 [INFO] [TECL] 5m bar #50 @1335 ind=7μs strat=15μs total=21μs (8 active)
+08:02:27 [INFO] [TECL] 5m bar #99 @1110 ind=7μs strat=22μs total=29μs (8 active) | SIGNALS: HH_QUALITY
+08:02:27 [INFO] [TECL] 5m bar #100 @1115 ind=7μs strat=18μs total=25μs (8 active)
+08:02:27 [INFO] [TECL] 5m bar #150 @1525 ind=7μs strat=12μs total=20μs (8 active)
+08:02:27 [INFO] [TECL] 5m bar #170 @1035 ind=7μs strat=35μs total=42μs (8 active) | SIGNALS: FL_ANTICHOP
+08:02:27 [INFO] [TECL] 5m bar #175 @1100 ind=7μs strat=25μs total=33μs (8 active) | SIGNALS: HH_QUALITY
+08:02:27 [INFO] [TECL] 5m bar #200 @1305 ind=11μs strat=23μs total=34μs (8 active)
+08:02:27 [INFO] [TECL] 1m bar #1210 @1009 ind=8μs strat=22μs total=31μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:02:27 [INFO] [TECL] 5m bar #250 @1045 ind=7μs strat=14μs total=21μs (8 active)
+08:02:27 [INFO] [TECL] 5m bar #251 @1050 ind=7μs strat=21μs total=28μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:02:27 [INFO] [TECL] 5m bar #300 @1455 ind=8μs strat=12μs total=20μs (8 active)
+08:02:27 [INFO] [TECL] 5m bar #338 @1135 ind=7μs strat=20μs total=27μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:02:27 [INFO] [TECL] 5m bar #350 @1235 ind=7μs strat=15μs total=22μs (8 active)
+08:02:27 [INFO] [TECL] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:02:27 [INFO] [TECL] Ready (52/83, universe=STATIC).
+08:02:29 [INFO] [TGT] Contract qualified: Stock(conId=6437, symbol='TGT', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='TGT', tradingClass='TGT')
+08:02:29 [INFO] [TGT] ATR warmed: 30 days, PD H:117.91 L:115.19
+08:02:29 [INFO] [TGT] 5m bar #31 @1200 ind=7μs strat=34μs total=40μs (8 active) | SIGNALS: BS_STRUCT
+08:02:29 [INFO] [TGT] 5m bar #37 @1230 ind=7μs strat=17μs total=25μs (8 active) | SIGNALS: EMA_FPIP
+08:02:29 [INFO] [TGT] 1m bar #189 @1238 ind=8μs strat=15μs total=23μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:02:29 [INFO] [TGT] 5m bar #50 @1335 ind=14μs strat=26μs total=41μs (8 active)
+08:02:29 [INFO] [TGT] 5m bar #94 @1045 ind=7μs strat=18μs total=25μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:02:29 [INFO] [TGT] 5m bar #100 @1115 ind=8μs strat=22μs total=30μs (8 active) | SIGNALS: FL_ANTICHOP
+08:02:29 [INFO] [TGT] 5m bar #150 @1525 ind=11μs strat=16μs total=28μs (8 active)
+08:02:29 [INFO] [TGT] 5m bar #169 @1030 ind=10μs strat=36μs total=47μs (8 active) | SIGNALS: HH_QUALITY
+08:02:29 [INFO] [TGT] 1m bar #853 @1042 ind=12μs strat=20μs total=32μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:02:29 [INFO] [TGT] 5m bar #200 @1305 ind=7μs strat=13μs total=20μs (8 active)
+08:02:29 [INFO] [TGT] 5m bar #250 @1045 ind=9μs strat=22μs total=31μs (8 active)
+08:02:29 [INFO] [TGT] 5m bar #270 @1225 ind=8μs strat=22μs total=31μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:02:29 [INFO] [TGT] 5m bar #271 @1230 ind=9μs strat=20μs total=29μs (8 active) | SIGNALS: FL_ANTICHOP
+08:02:29 [INFO] [TGT] 5m bar #300 @1455 ind=8μs strat=10μs total=17μs (8 active)
+08:02:29 [INFO] [TGT] 1m bar #1655 @1104 ind=9μs strat=16μs total=25μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:02:29 [INFO] [TGT] 1m bar #1680 @1129 ind=10μs strat=71μs total=81μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:02:29 [INFO] [TGT] 5m bar #350 @1235 ind=7μs strat=14μs total=21μs (8 active)
+08:02:29 [INFO] [TGT] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:02:29 [INFO] [TGT] Ready (53/83, universe=STATIC).
+08:02:31 [INFO] [TNA] Contract qualified: Stock(conId=55679435, symbol='TNA', exchange='SMART', primaryExchange='ARCA', currency='USD', localSymbol='TNA', tradingClass='TNA')
+08:02:31 [INFO] [TNA] ATR warmed: 30 days, PD H:45.68 L:43.89
+08:02:31 [INFO] [TNA] 1m bar #88 @1057 ind=8μs strat=27μs total=34μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:02:31 [INFO] [TNA] 1m bar #111 @1120 ind=7μs strat=10μs total=17μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:02:31 [INFO] [TNA] 5m bar #50 @1335 ind=7μs strat=14μs total=21μs (8 active)
+08:02:31 [INFO] [TNA] 1m bar #497 @1116 ind=8μs strat=17μs total=25μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:02:31 [INFO] [TNA] 5m bar #100 @1115 ind=7μs strat=16μs total=23μs (8 active)
+08:02:31 [INFO] [TNA] 5m bar #150 @1525 ind=7μs strat=11μs total=18μs (8 active)
+08:02:31 [INFO] [TNA] 5m bar #200 @1305 ind=10μs strat=21μs total=32μs (8 active)
+08:02:31 [INFO] [TNA] 1m bar #1232 @1031 ind=10μs strat=21μs total=30μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:02:31 [INFO] [TNA] 5m bar #250 @1045 ind=7μs strat=21μs total=28μs (8 active)
+08:02:31 [INFO] [TNA] 5m bar #300 @1455 ind=7μs strat=12μs total=19μs (8 active)
+08:02:31 [INFO] [TNA] 5m bar #340 @1145 ind=7μs strat=25μs total=32μs (8 active) | SIGNALS: FL_ANTICHOP
+08:02:31 [INFO] [TNA] 5m bar #350 @1235 ind=7μs strat=16μs total=23μs (8 active)
+08:02:31 [INFO] [TNA] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:02:31 [INFO] [TNA] Ready (54/83, universe=STATIC).
+08:02:33 [INFO] [TSLA] Contract qualified: Stock(conId=76792991, symbol='TSLA', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='TSLA', tradingClass='NMS')
+08:02:33 [INFO] [TSLA] ATR warmed: 30 days, PD H:406.50 L:394.65
+08:02:33 [INFO] [TSLA] 1m bar #138 @1147 ind=9μs strat=18μs total=26μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:02:33 [INFO] [TSLA] 5m bar #50 @1335 ind=7μs strat=16μs total=23μs (8 active)
+08:02:33 [INFO] [TSLA] 5m bar #97 @1100 ind=7μs strat=21μs total=29μs (8 active) | SIGNALS: FL_ANTICHOP
+08:02:33 [INFO] [TSLA] 5m bar #100 @1115 ind=9μs strat=17μs total=26μs (8 active)
+08:02:33 [INFO] [TSLA] 5m bar #150 @1525 ind=7μs strat=12μs total=19μs (8 active)
+08:02:33 [INFO] [TSLA] 5m bar #170 @1035 ind=10μs strat=27μs total=37μs (8 active) | SIGNALS: BDR_SHORT
+08:02:33 [INFO] [TSLA] 5m bar #192 @1225 ind=10μs strat=24μs total=34μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:02:33 [INFO] [TSLA] 5m bar #195 @1240 ind=9μs strat=24μs total=34μs (8 active) | SIGNALS: FL_ANTICHOP
+08:02:33 [INFO] [TSLA] 5m bar #200 @1305 ind=10μs strat=18μs total=29μs (8 active)
+08:02:33 [INFO] [TSLA] 1m bar #1218 @1017 ind=9μs strat=21μs total=30μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:02:33 [INFO] [TSLA] 5m bar #248 @1035 ind=9μs strat=26μs total=36μs (8 active) | SIGNALS: FL_ANTICHOP
+08:02:33 [INFO] [TSLA] 5m bar #250 @1045 ind=8μs strat=17μs total=24μs (8 active)
+08:02:33 [INFO] [TSLA] 5m bar #300 @1455 ind=8μs strat=11μs total=19μs (8 active)
+08:02:33 [INFO] [TSLA] 5m bar #350 @1235 ind=8μs strat=18μs total=26μs (8 active)
+08:02:33 [INFO] [TSLA] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:02:33 [INFO] [TSLA] Ready (55/83, universe=IN_PLAY).
+08:02:34 [INFO] [TSLL] Contract qualified: Stock(conId=578561429, symbol='TSLL', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='TSLL', tradingClass='NMS')
+08:02:34 [INFO] [TSLL] ATR warmed: 30 days, PD H:14.89 L:14.02
+08:02:35 [INFO] [TSLL] 1m bar #132 @1141 ind=36μs strat=55μs total=90μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:02:35 [INFO] [TSLL] 5m bar #50 @1335 ind=7μs strat=18μs total=25μs (8 active)
+08:02:35 [INFO] [TSLL] 5m bar #97 @1100 ind=23μs strat=66μs total=89μs (8 active) | SIGNALS: FL_ANTICHOP
+08:02:35 [INFO] [TSLL] 5m bar #100 @1115 ind=15μs strat=30μs total=45μs (8 active)
+08:02:35 [INFO] [TSLL] 5m bar #136 @1415 ind=7μs strat=30μs total=36μs (8 active) | SIGNALS: SP_ATIER
+08:02:35 [INFO] [TSLL] 5m bar #150 @1525 ind=6μs strat=9μs total=14μs (8 active)
+08:02:35 [INFO] [TSLL] 5m bar #170 @1035 ind=6μs strat=15μs total=21μs (8 active) | SIGNALS: BDR_SHORT
+08:02:35 [INFO] [TSLL] 5m bar #192 @1225 ind=6μs strat=15μs total=21μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:02:35 [INFO] [TSLL] 5m bar #200 @1305 ind=7μs strat=14μs total=21μs (8 active)
+08:02:35 [INFO] [TSLL] 5m bar #250 @1045 ind=7μs strat=19μs total=26μs (8 active)
+08:02:35 [INFO] [TSLL] 5m bar #300 @1455 ind=7μs strat=11μs total=18μs (8 active)
+08:02:35 [INFO] [TSLL] 5m bar #350 @1235 ind=6μs strat=15μs total=20μs (8 active)
+08:02:35 [INFO] [TSLL] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:02:35 [INFO] [TSLL] Ready (56/83, universe=STATIC).
+08:02:36 [INFO] [UBER] Contract qualified: Stock(conId=365207014, symbol='UBER', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='UBER', tradingClass='UBER')
+08:02:36 [INFO] [UBER] ATR warmed: 30 days, PD H:75.85 L:72.59
+08:02:36 [INFO] [UBER] 5m bar #18 @1055 ind=12μs strat=32μs total=44μs (8 active) | SIGNALS: HH_QUALITY
+08:02:36 [INFO] [UBER] 1m bar #137 @1146 ind=8μs strat=20μs total=29μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:02:36 [INFO] [UBER] 5m bar #50 @1335 ind=7μs strat=13μs total=20μs (8 active)
+08:02:36 [INFO] [UBER] 5m bar #100 @1115 ind=7μs strat=14μs total=21μs (8 active)
+08:02:36 [INFO] [UBER] 5m bar #150 @1525 ind=7μs strat=12μs total=19μs (8 active)
+08:02:36 [INFO] [UBER] 5m bar #200 @1305 ind=10μs strat=22μs total=32μs (8 active)
+08:02:36 [INFO] [UBER] 5m bar #250 @1045 ind=7μs strat=18μs total=25μs (8 active)
+08:02:36 [INFO] [UBER] 5m bar #276 @1255 ind=9μs strat=25μs total=34μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:02:36 [INFO] [UBER] 5m bar #300 @1455 ind=7μs strat=10μs total=17μs (8 active)
+08:02:36 [INFO] [UBER] 5m bar #350 @1235 ind=8μs strat=14μs total=22μs (8 active)
+08:02:36 [INFO] [UBER] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:02:36 [INFO] [UBER] Ready (57/83, universe=IN_PLAY).
+08:02:38 [INFO] [UPRO] Contract qualified: Stock(conId=61228752, symbol='UPRO', exchange='SMART', primaryExchange='ARCA', currency='USD', localSymbol='UPRO', tradingClass='UPRO')
+08:02:38 [INFO] [UPRO] ATR warmed: 30 days, PD H:107.62 L:104.81
+08:02:39 [INFO] [UPRO] 1m bar #82 @1051 ind=8μs strat=41μs total=50μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:02:39 [INFO] [UPRO] 1m bar #186 @1235 ind=40μs strat=63μs total=104μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:02:39 [INFO] [UPRO] 5m bar #50 @1335 ind=28μs strat=64μs total=92μs (8 active)
+08:02:39 [INFO] [UPRO] 5m bar #100 @1115 ind=7μs strat=18μs total=25μs (8 active)
+08:02:39 [INFO] [UPRO] 5m bar #108 @1155 ind=6μs strat=23μs total=29μs (8 active) | SIGNALS: HH_QUALITY
+08:02:39 [INFO] [UPRO] 5m bar #113 @1220 ind=6μs strat=21μs total=28μs (8 active) | SIGNALS: BS_STRUCT
+08:02:39 [INFO] [UPRO] 5m bar #117 @1240 ind=6μs strat=16μs total=22μs (8 active) | SIGNALS: SC_SNIPER
+08:02:39 [INFO] [UPRO] 5m bar #150 @1525 ind=7μs strat=11μs total=18μs (8 active)
+08:02:39 [INFO] [UPRO] 1m bar #859 @1048 ind=7μs strat=10μs total=16μs (2 active) | SIGNALS: EMA9_FT
+08:02:39 [INFO] [UPRO] 5m bar #183 @1140 ind=9μs strat=27μs total=36μs (8 active) | SIGNALS: HH_QUALITY
+08:02:39 [INFO] [UPRO] 5m bar #200 @1305 ind=10μs strat=22μs total=31μs (8 active)
+08:02:39 [INFO] [UPRO] 5m bar #204 @1325 ind=10μs strat=24μs total=34μs (8 active) | SIGNALS: SC_SNIPER
+08:02:39 [INFO] [UPRO] 1m bar #1216 @1015 ind=8μs strat=21μs total=29μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:02:39 [INFO] [UPRO] 5m bar #250 @1045 ind=7μs strat=15μs total=22μs (8 active)
+08:02:39 [INFO] [UPRO] 5m bar #300 @1455 ind=6μs strat=10μs total=16μs (8 active)
+08:02:39 [INFO] [UPRO] 5m bar #346 @1215 ind=7μs strat=18μs total=25μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:02:39 [INFO] [UPRO] 5m bar #350 @1235 ind=6μs strat=15μs total=21μs (8 active)
+08:02:39 [INFO] [UPRO] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:02:39 [INFO] [UPRO] Ready (58/83, universe=STATIC).
+08:02:40 [INFO] [WEBL] Contract qualified: Stock(conId=390616555, symbol='WEBL', exchange='SMART', primaryExchange='ARCA', currency='USD', localSymbol='WEBL', tradingClass='WEBL')
+08:02:40 [INFO] [WEBL] ATR warmed: 30 days, PD H:19.87 L:18.66
+08:02:40 [INFO] [WEBL] 5m bar #28 @1145 ind=7μs strat=22μs total=30μs (8 active) | SIGNALS: HH_QUALITY
+08:02:40 [INFO] [WEBL] 5m bar #50 @1335 ind=7μs strat=12μs total=19μs (8 active)
+08:02:40 [INFO] [WEBL] 5m bar #89 @1020 ind=18μs strat=30μs total=48μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:02:40 [INFO] [WEBL] 5m bar #100 @1115 ind=9μs strat=20μs total=29μs (8 active)
+08:02:40 [INFO] [WEBL] 5m bar #150 @1525 ind=7μs strat=11μs total=17μs (8 active)
+08:02:40 [INFO] [WEBL] 5m bar #169 @1030 ind=7μs strat=19μs total=26μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:02:40 [INFO] [WEBL] 5m bar #172 @1045 ind=7μs strat=25μs total=32μs (8 active) | SIGNALS: FL_ANTICHOP
+08:02:40 [INFO] [WEBL] 5m bar #200 @1305 ind=7μs strat=22μs total=29μs (8 active)
+08:02:40 [INFO] [WEBL] 5m bar #250 @1045 ind=7μs strat=14μs total=20μs (8 active)
+08:02:40 [INFO] [WEBL] 5m bar #300 @1455 ind=8μs strat=13μs total=20μs (8 active)
+08:02:40 [INFO] [WEBL] 5m bar #350 @1235 ind=7μs strat=13μs total=20μs (8 active)
+08:02:40 [INFO] [WEBL] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:02:40 [INFO] [WEBL] Ready (59/83, universe=STATIC).
+08:02:42 [INFO] [WMT] Contract qualified: Stock(conId=13824, symbol='WMT', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='WMT', tradingClass='NMS')
+08:02:42 [INFO] [WMT] ATR warmed: 30 days, PD H:125.39 L:122.28
+08:02:42 [INFO] [WMT] 1m bar #82 @1051 ind=9μs strat=22μs total=31μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:02:42 [INFO] [WMT] 1m bar #98 @1107 ind=8μs strat=14μs total=22μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:02:42 [INFO] [WMT] 5m bar #26 @1135 ind=7μs strat=21μs total=28μs (8 active) | SIGNALS: HH_QUALITY
+08:02:42 [INFO] [WMT] 5m bar #50 @1335 ind=15μs strat=26μs total=40μs (8 active)
+08:02:42 [INFO] [WMT] 5m bar #100 @1115 ind=7μs strat=18μs total=26μs (8 active)
+08:02:42 [INFO] [WMT] 5m bar #101 @1120 ind=8μs strat=28μs total=36μs (8 active) | SIGNALS: FL_ANTICHOP
+08:02:42 [INFO] [WMT] 5m bar #150 @1525 ind=7μs strat=11μs total=18μs (8 active)
+08:02:42 [INFO] [WMT] 1m bar #861 @1050 ind=8μs strat=17μs total=25μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:02:42 [INFO] [WMT] 5m bar #200 @1305 ind=8μs strat=18μs total=25μs (8 active)
+08:02:42 [INFO] [WMT] 1m bar #1217 @1016 ind=8μs strat=17μs total=24μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:02:42 [INFO] [WMT] 5m bar #250 @1045 ind=6μs strat=13μs total=19μs (8 active)
+08:02:42 [INFO] [WMT] 5m bar #269 @1220 ind=7μs strat=16μs total=23μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:02:42 [INFO] [WMT] 5m bar #300 @1455 ind=6μs strat=9μs total=15μs (8 active)
+08:02:42 [INFO] [WMT] 5m bar #332 @1105 ind=7μs strat=32μs total=38μs (8 active) | SIGNALS: HH_QUALITY
+08:02:42 [INFO] [WMT] 5m bar #350 @1235 ind=7μs strat=15μs total=22μs (8 active)
+08:02:42 [INFO] [WMT] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:02:42 [INFO] [WMT] Ready (60/83, universe=STATIC).
+08:02:44 [INFO] [XBI] Contract qualified: Stock(conId=45540828, symbol='XBI', exchange='SMART', primaryExchange='ARCA', currency='USD', localSymbol='XBI', tradingClass='XBI')
+08:02:44 [INFO] [XBI] ATR warmed: 30 days, PD H:124.85 L:121.80
+08:02:44 [INFO] [XBI] 1m bar #82 @1051 ind=9μs strat=23μs total=32μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:02:44 [INFO] [XBI] 5m bar #50 @1335 ind=13μs strat=27μs total=40μs (8 active)
+08:02:44 [INFO] [XBI] 5m bar #100 @1115 ind=10μs strat=17μs total=27μs (8 active)
+08:02:44 [INFO] [XBI] 5m bar #109 @1200 ind=7μs strat=23μs total=31μs (8 active) | SIGNALS: FL_ANTICHOP
+08:02:44 [INFO] [XBI] 5m bar #150 @1525 ind=7μs strat=10μs total=17μs (8 active)
+08:02:44 [INFO] [XBI] 1m bar #938 @1207 ind=99μs strat=67μs total=166μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:02:44 [INFO] [XBI] 5m bar #200 @1305 ind=7μs strat=15μs total=22μs (8 active)
+08:02:44 [INFO] [XBI] 5m bar #250 @1045 ind=7μs strat=19μs total=26μs (8 active)
+08:02:44 [INFO] [XBI] 1m bar #1268 @1107 ind=8μs strat=20μs total=28μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:02:44 [INFO] [XBI] 5m bar #270 @1225 ind=7μs strat=16μs total=23μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:02:44 [INFO] [XBI] 5m bar #300 @1455 ind=7μs strat=12μs total=19μs (8 active)
+08:02:44 [INFO] [XBI] 1m bar #1606 @1015 ind=8μs strat=23μs total=30μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:02:44 [INFO] [XBI] 5m bar #350 @1235 ind=12μs strat=20μs total=32μs (8 active)
+08:02:44 [INFO] [XBI] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:02:44 [INFO] [XBI] Ready (61/83, universe=STATIC).
+08:02:46 [INFO] [XLE] Contract qualified: Stock(conId=4215217, symbol='XLE', exchange='SMART', primaryExchange='ARCA', currency='USD', localSymbol='XLE', tradingClass='XLE')
+08:02:46 [INFO] [XLE] ATR warmed: 30 days, PD H:58.22 L:57.06
+08:02:46 [INFO] [XLE] 5m bar #50 @1335 ind=10μs strat=31μs total=41μs (8 active)
+08:02:46 [INFO] [XLE] 1m bar #470 @1049 ind=8μs strat=34μs total=41μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:02:46 [INFO] [XLE] 1m bar #497 @1116 ind=8μs strat=12μs total=21μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:02:46 [INFO] [XLE] 5m bar #100 @1115 ind=8μs strat=17μs total=24μs (8 active)
+08:02:46 [INFO] [XLE] 5m bar #150 @1525 ind=11μs strat=16μs total=27μs (8 active)
+08:02:46 [INFO] [XLE] 5m bar #169 @1030 ind=9μs strat=25μs total=34μs (8 active) | SIGNALS: HH_QUALITY
+08:02:46 [INFO] [XLE] 1m bar #992 @1301 ind=11μs strat=21μs total=32μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:02:46 [INFO] [XLE] 5m bar #200 @1305 ind=9μs strat=16μs total=25μs (8 active)
+08:02:46 [INFO] [XLE] 5m bar #250 @1045 ind=9μs strat=30μs total=39μs (8 active)
+08:02:46 [INFO] [XLE] 5m bar #300 @1455 ind=8μs strat=14μs total=21μs (8 active)
+08:02:46 [INFO] [XLE] 5m bar #338 @1135 ind=7μs strat=20μs total=28μs (8 active) | SIGNALS: FL_ANTICHOP
+08:02:46 [INFO] [XLE] 5m bar #343 @1200 ind=8μs strat=19μs total=27μs (8 active) | SIGNALS: EMA_FPIP
+08:02:46 [INFO] [XLE] 5m bar #350 @1235 ind=7μs strat=12μs total=19μs (8 active)
+08:02:46 [INFO] [XLE] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:02:46 [INFO] [XLE] Ready (62/83, universe=STATIC).
+08:02:48 [INFO] [XOM] Contract qualified: Stock(conId=13977, symbol='XOM', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='XOM', tradingClass='XOM')
+08:02:48 [INFO] [XOM] ATR warmed: 30 days, PD H:155.00 L:151.63
+08:02:48 [INFO] [XOM] 5m bar #50 @1335 ind=14μs strat=36μs total=51μs (8 active)
+08:02:48 [INFO] [XOM] 5m bar #92 @1035 ind=6μs strat=23μs total=30μs (8 active) | SIGNALS: HH_QUALITY
+08:02:48 [INFO] [XOM] 1m bar #496 @1115 ind=14μs strat=25μs total=39μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:02:48 [INFO] [XOM] 5m bar #100 @1115 ind=13μs strat=24μs total=37μs (8 active)
+08:02:48 [INFO] [XOM] 5m bar #150 @1525 ind=8μs strat=10μs total=18μs (8 active)
+08:02:48 [INFO] [XOM] 1m bar #834 @1023 ind=7μs strat=19μs total=26μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:02:48 [INFO] [XOM] 5m bar #169 @1030 ind=7μs strat=23μs total=30μs (8 active) | SIGNALS: HH_QUALITY
+08:02:48 [INFO] [XOM] 1m bar #903 @1132 ind=8μs strat=19μs total=27μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:02:48 [INFO] [XOM] 5m bar #200 @1305 ind=11μs strat=19μs total=30μs (8 active)
+08:02:48 [INFO] [XOM] 5m bar #250 @1045 ind=7μs strat=28μs total=35μs (8 active)
+08:02:48 [INFO] [XOM] 5m bar #269 @1220 ind=7μs strat=23μs total=30μs (8 active) | SIGNALS: FL_ANTICHOP
+08:02:48 [INFO] [XOM] 5m bar #300 @1455 ind=9μs strat=14μs total=23μs (8 active)
+08:02:48 [INFO] [XOM] 5m bar #343 @1200 ind=8μs strat=24μs total=32μs (8 active) | SIGNALS: HH_QUALITY
+08:02:48 [INFO] [XOM] 5m bar #350 @1235 ind=8μs strat=15μs total=23μs (8 active)
+08:02:48 [INFO] [XOM] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:02:48 [INFO] [XOM] Ready (63/83, universe=STATIC).
+08:02:50 [INFO] [XYZ] Contract qualified: Stock(conId=212671971, symbol='XYZ', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='XYZ', tradingClass='XYZ')
+08:02:50 [INFO] [XYZ] ATR warmed: 30 days, PD H:65.07 L:59.74
+08:02:50 [INFO] [XYZ] 5m bar #50 @1335 ind=7μs strat=12μs total=19μs (8 active)
+08:02:50 [INFO] [XYZ] 5m bar #95 @1050 ind=8μs strat=41μs total=49μs (8 active) | SIGNALS: FL_ANTICHOP
+08:02:50 [INFO] [XYZ] 5m bar #100 @1115 ind=7μs strat=16μs total=22μs (8 active)
+08:02:50 [INFO] [XYZ] 5m bar #150 @1525 ind=8μs strat=36μs total=44μs (8 active)
+08:02:50 [INFO] [XYZ] 1m bar #856 @1045 ind=30μs strat=68μs total=98μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:02:50 [INFO] [XYZ] 5m bar #180 @1125 ind=7μs strat=32μs total=39μs (8 active) | SIGNALS: HH_QUALITY
+08:02:50 [INFO] [XYZ] 5m bar #200 @1305 ind=9μs strat=29μs total=38μs (8 active)
+08:02:50 [INFO] [XYZ] 5m bar #250 @1045 ind=14μs strat=45μs total=59μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:02:50 [INFO] [XYZ] 5m bar #300 @1455 ind=7μs strat=9μs total=16μs (8 active)
+08:02:50 [INFO] [XYZ] 5m bar #350 @1235 ind=8μs strat=15μs total=23μs (8 active)
+08:02:50 [INFO] [XYZ] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:02:50 [INFO] [XYZ] Ready (64/83, universe=STATIC).
+08:02:52 [INFO] [AAL] Contract qualified: Stock(conId=139673266, symbol='AAL', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='AAL', tradingClass='NMS')
+08:02:52 [INFO] [AAL] ATR warmed: 30 days, PD H:10.83 L:10.51
+08:02:52 [INFO] [AAL] 1m bar #103 @1112 ind=8μs strat=23μs total=31μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:02:52 [INFO] [AAL] 5m bar #50 @1335 ind=7μs strat=12μs total=19μs (8 active)
+08:02:52 [INFO] [AAL] 5m bar #100 @1115 ind=7μs strat=13μs total=20μs (8 active)
+08:02:52 [INFO] [AAL] 5m bar #115 @1230 ind=7μs strat=46μs total=53μs (8 active) | SIGNALS: SP_ATIER
+08:02:52 [INFO] [AAL] 1m bar #586 @1245 ind=8μs strat=18μs total=27μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:02:52 [INFO] [AAL] 5m bar #123 @1310 ind=18μs strat=91μs total=109μs (8 active) | SIGNALS: SC_SNIPER
+08:02:52 [INFO] [AAL] 5m bar #150 @1525 ind=15μs strat=30μs total=45μs (8 active)
+08:02:52 [INFO] [AAL] 5m bar #200 @1305 ind=16μs strat=53μs total=69μs (8 active)
+08:02:52 [INFO] [AAL] 1m bar #1210 @1009 ind=8μs strat=22μs total=30μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:02:52 [INFO] [AAL] 5m bar #250 @1045 ind=6μs strat=11μs total=17μs (8 active)
+08:02:52 [INFO] [AAL] 5m bar #257 @1120 ind=7μs strat=19μs total=26μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:02:52 [INFO] [AAL] 5m bar #300 @1455 ind=7μs strat=10μs total=16μs (8 active)
+08:02:52 [INFO] [AAL] 5m bar #326 @1035 ind=7μs strat=19μs total=26μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:02:52 [INFO] [AAL] 5m bar #350 @1235 ind=7μs strat=13μs total=19μs (8 active)
+08:02:52 [INFO] [AAL] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:02:52 [INFO] [AAL] Ready (65/83, universe=IN_PLAY).
+08:02:54 [INFO] [CAPR] Contract qualified: Stock(conId=369897882, symbol='CAPR', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='CAPR', tradingClass='NMS')
+08:02:54 [INFO] [CAPR] ATR warmed: 30 days, PD H:34.22 L:32.25
+08:02:54 [INFO] [CAPR] 1m bar #138 @1147 ind=7μs strat=37μs total=45μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:02:54 [INFO] [CAPR] 5m bar #38 @1235 ind=7μs strat=20μs total=27μs (8 active) | SIGNALS: FL_ANTICHOP
+08:02:54 [INFO] [CAPR] 5m bar #50 @1335 ind=8μs strat=17μs total=25μs (8 active)
+08:02:54 [INFO] [CAPR] 5m bar #100 @1115 ind=45μs strat=78μs total=124μs (8 active) | SIGNALS: FL_ANTICHOP
+08:02:54 [INFO] [CAPR] 1m bar #552 @1211 ind=64μs strat=83μs total=147μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:02:54 [INFO] [CAPR] 5m bar #150 @1525 ind=7μs strat=10μs total=17μs (8 active)
+08:02:54 [INFO] [CAPR] 5m bar #170 @1035 ind=9μs strat=26μs total=36μs (8 active) | SIGNALS: HH_QUALITY
+08:02:54 [INFO] [CAPR] 1m bar #862 @1051 ind=8μs strat=15μs total=24μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:02:54 [INFO] [CAPR] 5m bar #200 @1305 ind=7μs strat=21μs total=28μs (8 active)
+08:02:54 [INFO] [CAPR] 5m bar #250 @1045 ind=7μs strat=16μs total=23μs (8 active)
+08:02:54 [INFO] [CAPR] 1m bar #1336 @1215 ind=8μs strat=19μs total=26μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:02:54 [INFO] [CAPR] 5m bar #300 @1455 ind=7μs strat=10μs total=16μs (8 active)
+08:02:54 [INFO] [CAPR] 5m bar #343 @1200 ind=6μs strat=20μs total=26μs (8 active) | SIGNALS: FL_ANTICHOP
+08:02:54 [INFO] [CAPR] 5m bar #350 @1235 ind=6μs strat=14μs total=20μs (8 active)
+08:02:54 [INFO] [CAPR] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:02:54 [INFO] [CAPR] Ready (66/83, universe=IN_PLAY).
+08:02:56 [INFO] [CPB] Contract qualified: Stock(conId=5980, symbol='CPB', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='CPB', tradingClass='NMS')
+08:02:56 [INFO] [CPB] ATR warmed: 30 days, PD H:22.83 L:21.59
+08:02:56 [INFO] [CPB] 5m bar #23 @1120 ind=8μs strat=32μs total=40μs (8 active) | SIGNALS: HH_QUALITY
+08:02:56 [INFO] [CPB] 5m bar #50 @1335 ind=7μs strat=13μs total=20μs (8 active)
+08:02:56 [INFO] [CPB] 5m bar #98 @1105 ind=13μs strat=56μs total=69μs (8 active) | SIGNALS: FL_ANTICHOP
+08:02:56 [INFO] [CPB] 5m bar #100 @1115 ind=13μs strat=34μs total=47μs (8 active)
+08:02:56 [INFO] [CPB] 5m bar #150 @1525 ind=8μs strat=11μs total=19μs (8 active)
+08:02:56 [INFO] [CPB] 1m bar #954 @1223 ind=32μs strat=26μs total=58μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:02:56 [INFO] [CPB] 5m bar #200 @1305 ind=10μs strat=36μs total=46μs (8 active)
+08:02:56 [INFO] [CPB] 5m bar #250 @1045 ind=8μs strat=21μs total=29μs (8 active)
+08:02:56 [INFO] [CPB] 5m bar #275 @1250 ind=8μs strat=32μs total=39μs (8 active) | SIGNALS: FL_ANTICHOP
+08:02:56 [INFO] [CPB] 5m bar #300 @1455 ind=7μs strat=10μs total=17μs (8 active)
+08:02:56 [INFO] [CPB] 1m bar #1664 @1113 ind=10μs strat=18μs total=28μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:02:56 [INFO] [CPB] 5m bar #350 @1235 ind=8μs strat=14μs total=21μs (8 active)
+08:02:56 [INFO] [CPB] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:02:56 [INFO] [CPB] Ready (67/83, universe=IN_PLAY).
+08:02:58 [INFO] [DG] Contract qualified: Stock(conId=70212228, symbol='DG', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='DG', tradingClass='DG')
+08:02:58 [INFO] [DG] ATR warmed: 30 days, PD H:140.01 L:128.84
+08:02:58 [INFO] [DG] 5m bar #50 @1335 ind=7μs strat=14μs total=21μs (8 active)
+08:02:58 [INFO] [DG] 5m bar #92 @1035 ind=6μs strat=17μs total=23μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:02:58 [INFO] [DG] 5m bar #99 @1110 ind=7μs strat=17μs total=24μs (8 active) | SIGNALS: FL_ANTICHOP
+08:02:58 [INFO] [DG] 5m bar #100 @1115 ind=7μs strat=21μs total=28μs (8 active)
+08:02:58 [INFO] [DG] 5m bar #150 @1525 ind=11μs strat=14μs total=24μs (8 active)
+08:02:58 [INFO] [DG] 5m bar #169 @1030 ind=6μs strat=31μs total=37μs (8 active) | SIGNALS: HH_QUALITY
+08:02:58 [INFO] [DG] 5m bar #174 @1055 ind=6μs strat=20μs total=26μs (8 active) | SIGNALS: FL_ANTICHOP
+08:02:58 [INFO] [DG] 5m bar #183 @1140 ind=7μs strat=23μs total=30μs (8 active) | SIGNALS: SP_ATIER
+08:02:58 [INFO] [DG] 5m bar #200 @1305 ind=6μs strat=11μs total=17μs (8 active)
+08:02:58 [INFO] [DG] 5m bar #250 @1045 ind=7μs strat=14μs total=21μs (8 active)
+08:02:58 [INFO] [DG] 5m bar #268 @1215 ind=7μs strat=18μs total=26μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:02:58 [INFO] [DG] 5m bar #271 @1230 ind=7μs strat=18μs total=25μs (8 active) | SIGNALS: FL_ANTICHOP
+08:02:58 [INFO] [DG] 5m bar #300 @1455 ind=6μs strat=7μs total=13μs (8 active)
+08:02:58 [INFO] [DG] 1m bar #1612 @1021 ind=10μs strat=24μs total=34μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:02:58 [INFO] [DG] 5m bar #334 @1115 ind=9μs strat=22μs total=32μs (8 active) | SIGNALS: HH_QUALITY
+08:02:58 [INFO] [DG] 5m bar #350 @1235 ind=9μs strat=15μs total=24μs (8 active)
+08:02:58 [INFO] [DG] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:02:58 [INFO] [DG] Ready (68/83, universe=IN_PLAY).
+08:03:00 [INFO] [DKS] Contract qualified: Stock(conId=16310970, symbol='DKS', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='DKS', tradingClass='DKS')
+08:03:00 [INFO] [DKS] ATR warmed: 30 days, PD H:204.68 L:192.32
+08:03:00 [INFO] [DKS] 5m bar #50 @1335 ind=10μs strat=20μs total=30μs (8 active)
+08:03:00 [INFO] [DKS] 5m bar #91 @1030 ind=8μs strat=24μs total=31μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:03:00 [INFO] [DKS] 5m bar #95 @1050 ind=8μs strat=23μs total=31μs (8 active) | SIGNALS: FL_ANTICHOP
+08:03:00 [INFO] [DKS] 5m bar #100 @1115 ind=8μs strat=13μs total=21μs (8 active)
+08:03:00 [INFO] [DKS] 5m bar #150 @1525 ind=10μs strat=14μs total=25μs (8 active)
+08:03:00 [INFO] [DKS] 5m bar #175 @1100 ind=8μs strat=28μs total=37μs (8 active) | SIGNALS: HH_QUALITY
+08:03:00 [INFO] [DKS] 5m bar #200 @1305 ind=9μs strat=20μs total=29μs (8 active)
+08:03:00 [INFO] [DKS] 5m bar #250 @1045 ind=8μs strat=28μs total=36μs (8 active) | SIGNALS: FL_ANTICHOP
+08:03:00 [INFO] [DKS] 1m bar #1263 @1102 ind=10μs strat=19μs total=28μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:03:00 [INFO] [DKS] 5m bar #300 @1455 ind=8μs strat=11μs total=19μs (8 active)
+08:03:00 [INFO] [DKS] 1m bar #1618 @1027 ind=9μs strat=34μs total=43μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:03:00 [INFO] [DKS] 5m bar #343 @1200 ind=7μs strat=20μs total=27μs (8 active) | SIGNALS: FL_ANTICHOP
+08:03:00 [INFO] [DKS] 5m bar #350 @1235 ind=7μs strat=16μs total=24μs (8 active)
+08:03:00 [INFO] [DKS] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:03:00 [INFO] [DKS] Ready (69/83, universe=IN_PLAY).
+08:03:02 [INFO] [DTIL] Contract qualified: Stock(conId=683765525, symbol='DTIL', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='DTIL', tradingClass='SCM')
+08:03:02 [INFO] [DTIL] ATR warmed: 30 days, PD H:5.73 L:5.12
+08:03:02 [INFO] [DTIL] 1m bar #106 @1115 ind=9μs strat=34μs total=43μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:03:02 [INFO] [DTIL] 5m bar #50 @1335 ind=8μs strat=20μs total=27μs (8 active)
+08:03:02 [INFO] [DTIL] 5m bar #100 @1115 ind=8μs strat=16μs total=24μs (8 active)
+08:03:02 [INFO] [DTIL] 5m bar #111 @1210 ind=8μs strat=25μs total=32μs (8 active) | SIGNALS: FL_ANTICHOP
+08:03:02 [INFO] [DTIL] 1m bar #593 @1252 ind=9μs strat=19μs total=28μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:03:02 [INFO] [DTIL] 5m bar #150 @1525 ind=11μs strat=16μs total=27μs (8 active)
+08:03:02 [INFO] [DTIL] 5m bar #172 @1045 ind=10μs strat=45μs total=55μs (8 active) | SIGNALS: FL_ANTICHOP, HH_QUALITY, EMA_FPIP
+08:03:02 [INFO] [DTIL] 5m bar #175 @1100 ind=9μs strat=29μs total=38μs (8 active) | SIGNALS: BS_STRUCT
+08:03:02 [INFO] [DTIL] 5m bar #200 @1305 ind=30μs strat=22μs total=52μs (8 active)
+08:03:02 [INFO] [DTIL] 5m bar #250 @1045 ind=8μs strat=19μs total=27μs (8 active)
+08:03:02 [INFO] [DTIL] 5m bar #300 @1455 ind=8μs strat=11μs total=19μs (8 active)
+08:03:02 [INFO] [DTIL] 5m bar #333 @1110 ind=7μs strat=21μs total=28μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:03:02 [INFO] [DTIL] 5m bar #350 @1235 ind=7μs strat=20μs total=26μs (8 active)
+08:03:02 [INFO] [DTIL] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:03:02 [INFO] [DTIL] Ready (70/83, universe=IN_PLAY).
+08:03:03 [INFO] [EXR] Contract qualified: Stock(conId=30351205, symbol='EXR', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='EXR', tradingClass='EXR')
+08:03:04 [INFO] [EXR] ATR warmed: 30 days, PD H:141.60 L:138.76
+08:03:04 [INFO] [EXR] 5m bar #50 @1335 ind=8μs strat=18μs total=26μs (8 active)
+08:03:04 [INFO] [EXR] 5m bar #100 @1115 ind=8μs strat=31μs total=38μs (8 active)
+08:03:04 [INFO] [EXR] 5m bar #118 @1245 ind=7μs strat=40μs total=47μs (8 active) | SIGNALS: SP_ATIER, BS_STRUCT
+08:03:04 [INFO] [EXR] 5m bar #150 @1525 ind=7μs strat=10μs total=17μs (8 active)
+08:03:04 [INFO] [EXR] 5m bar #173 @1050 ind=15μs strat=76μs total=90μs (8 active) | SIGNALS: HH_QUALITY
+08:03:04 [INFO] [EXR] 5m bar #200 @1305 ind=16μs strat=52μs total=69μs (8 active)
+08:03:04 [INFO] [EXR] 5m bar #208 @1345 ind=7μs strat=30μs total=37μs (8 active) | SIGNALS: EMA_FPIP
+08:03:04 [INFO] [EXR] 5m bar #250 @1045 ind=26μs strat=26μs total=52μs (8 active)
+08:03:04 [INFO] [EXR] 5m bar #300 @1455 ind=17μs strat=44μs total=61μs (8 active)
+08:03:04 [INFO] [EXR] 5m bar #350 @1235 ind=7μs strat=14μs total=21μs (8 active)
+08:03:04 [INFO] [EXR] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:03:04 [INFO] [EXR] Ready (71/83, universe=IN_PLAY).
+08:03:05 [INFO] [HIMS] Contract qualified: Stock(conId=466188387, symbol='HIMS', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='HIMS', tradingClass='HIMS')
+08:03:06 [INFO] [HIMS] ATR warmed: 30 days, PD H:27.24 L:23.76
+08:03:06 [INFO] [HIMS] 5m bar #19 @1100 ind=7μs strat=19μs total=26μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:03:06 [INFO] [HIMS] 5m bar #33 @1210 ind=7μs strat=20μs total=27μs (8 active) | SIGNALS: FL_ANTICHOP
+08:03:06 [INFO] [HIMS] 1m bar #194 @1243 ind=8μs strat=14μs total=22μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:03:06 [INFO] [HIMS] 5m bar #50 @1335 ind=7μs strat=14μs total=21μs (8 active)
+08:03:06 [INFO] [HIMS] 5m bar #91 @1030 ind=7μs strat=22μs total=28μs (8 active) | SIGNALS: BDR_SHORT
+08:03:06 [INFO] [HIMS] 5m bar #100 @1115 ind=24μs strat=21μs total=45μs (8 active)
+08:03:06 [INFO] [HIMS] 5m bar #101 @1120 ind=8μs strat=18μs total=26μs (8 active) | SIGNALS: FL_ANTICHOP
+08:03:06 [INFO] [HIMS] 5m bar #150 @1525 ind=6μs strat=9μs total=16μs (8 active)
+08:03:06 [INFO] [HIMS] 5m bar #200 @1305 ind=7μs strat=13μs total=20μs (8 active)
+08:03:06 [INFO] [HIMS] 5m bar #243 @1010 ind=7μs strat=19μs total=26μs (8 active) | SIGNALS: SC_SNIPER
+08:03:06 [INFO] [HIMS] 1m bar #1227 @1026 ind=9μs strat=16μs total=25μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:03:06 [INFO] [HIMS] 5m bar #247 @1030 ind=6μs strat=16μs total=22μs (8 active) | SIGNALS: FL_ANTICHOP
+08:03:06 [INFO] [HIMS] 5m bar #249 @1040 ind=6μs strat=16μs total=22μs (8 active) | SIGNALS: HH_QUALITY
+08:03:06 [INFO] [HIMS] 5m bar #250 @1045 ind=7μs strat=11μs total=18μs (8 active)
+08:03:06 [INFO] [HIMS] 5m bar #300 @1455 ind=11μs strat=31μs total=42μs (8 active)
+08:03:06 [INFO] [HIMS] 5m bar #350 @1235 ind=7μs strat=13μs total=20μs (8 active)
+08:03:06 [INFO] [HIMS] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:03:06 [INFO] [HIMS] Ready (72/83, universe=IN_PLAY).
+08:03:07 [INFO] [HUM] Contract qualified: Stock(conId=8251, symbol='HUM', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='HUM', tradingClass='HUM')
+08:03:07 [INFO] [HUM] ATR warmed: 30 days, PD H:170.94 L:163.60
+08:03:08 [INFO] [HUM] 5m bar #50 @1335 ind=7μs strat=15μs total=21μs (8 active)
+08:03:08 [INFO] [HUM] 5m bar #100 @1115 ind=7μs strat=16μs total=23μs (8 active)
+08:03:08 [INFO] [HUM] 5m bar #111 @1210 ind=7μs strat=37μs total=43μs (8 active) | SIGNALS: FL_ANTICHOP
+08:03:08 [INFO] [HUM] 5m bar #150 @1525 ind=8μs strat=21μs total=29μs (8 active)
+08:03:08 [INFO] [HUM] 5m bar #173 @1050 ind=6μs strat=20μs total=26μs (8 active) | SIGNALS: FL_ANTICHOP
+08:03:08 [INFO] [HUM] 5m bar #200 @1305 ind=17μs strat=59μs total=77μs (8 active)
+08:03:08 [INFO] [HUM] 5m bar #250 @1045 ind=9μs strat=69μs total=78μs (8 active)
+08:03:08 [INFO] [HUM] 5m bar #300 @1455 ind=9μs strat=17μs total=26μs (8 active)
+08:03:08 [INFO] [HUM] 5m bar #323 @1020 ind=7μs strat=22μs total=29μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:03:08 [INFO] [HUM] 5m bar #350 @1235 ind=7μs strat=12μs total=19μs (8 active)
+08:03:08 [INFO] [HUM] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:03:08 [INFO] [HUM] Ready (73/83, universe=IN_PLAY).
+08:03:09 [INFO] [INO] Contract qualified: Stock(conId=679966965, symbol='INO', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='INO', tradingClass='SCM')
+08:03:09 [INFO] [INO] ATR warmed: 30 days, PD H:1.71 L:1.65
+08:03:09 [INFO] [INO] 1m bar #84 @1053 ind=7μs strat=15μs total=22μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:03:09 [INFO] [INO] 5m bar #50 @1335 ind=6μs strat=15μs total=21μs (8 active)
+08:03:09 [INFO] [INO] 5m bar #51 @1340 ind=7μs strat=22μs total=29μs (8 active) | SIGNALS: EMA_FPIP
+08:03:09 [INFO] [INO] 5m bar #100 @1115 ind=6μs strat=13μs total=20μs (8 active)
+08:03:09 [INFO] [INO] 5m bar #150 @1525 ind=7μs strat=10μs total=17μs (8 active)
+08:03:09 [INFO] [INO] 5m bar #200 @1305 ind=6μs strat=12μs total=18μs (8 active)
+08:03:09 [INFO] [INO] 5m bar #250 @1045 ind=7μs strat=101μs total=109μs (8 active)
+08:03:09 [INFO] [INO] 5m bar #300 @1455 ind=7μs strat=11μs total=17μs (8 active)
+08:03:09 [INFO] [INO] 5m bar #350 @1235 ind=7μs strat=17μs total=24μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:03:10 [INFO] [INO] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:03:10 [INFO] [INO] Ready (74/83, universe=IN_PLAY).
+08:03:11 [INFO] [KMX] Contract qualified: Stock(conId=2586156, symbol='KMX', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='KMX', tradingClass='KMX')
+08:03:11 [INFO] [KMX] ATR warmed: 30 days, PD H:42.60 L:40.83
+08:03:11 [INFO] [KMX] 5m bar #50 @1335 ind=10μs strat=20μs total=30μs (8 active)
+08:03:11 [INFO] [KMX] 5m bar #100 @1115 ind=22μs strat=65μs total=87μs (8 active)
+08:03:11 [INFO] [KMX] 1m bar #521 @1140 ind=8μs strat=80μs total=88μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:03:11 [INFO] [KMX] 5m bar #150 @1525 ind=9μs strat=12μs total=21μs (8 active)
+08:03:11 [INFO] [KMX] 5m bar #173 @1050 ind=6μs strat=22μs total=28μs (8 active) | SIGNALS: FL_ANTICHOP
+08:03:11 [INFO] [KMX] 5m bar #200 @1305 ind=7μs strat=16μs total=23μs (8 active)
+08:03:11 [INFO] [KMX] 5m bar #202 @1315 ind=8μs strat=35μs total=43μs (8 active) | SIGNALS: EMA_FPIP
+08:03:11 [INFO] [KMX] 5m bar #250 @1045 ind=7μs strat=13μs total=20μs (8 active)
+08:03:11 [INFO] [KMX] 5m bar #300 @1455 ind=6μs strat=10μs total=16μs (8 active)
+08:03:11 [INFO] [KMX] 5m bar #338 @1135 ind=8μs strat=22μs total=30μs (8 active) | SIGNALS: FL_ANTICHOP
+08:03:11 [INFO] [KMX] 5m bar #350 @1235 ind=6μs strat=11μs total=17μs (8 active)
+08:03:11 [INFO] [KMX] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:03:11 [INFO] [KMX] Ready (75/83, universe=IN_PLAY).
+08:03:13 [INFO] [LEN] Contract qualified: Stock(conId=9091, symbol='LEN', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='LEN', tradingClass='LEN')
+08:03:13 [INFO] [LEN] ATR warmed: 30 days, PD H:95.67 L:92.17
+08:03:13 [INFO] [LEN] 5m bar #27 @1140 ind=8μs strat=21μs total=30μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:03:13 [INFO] [LEN] 5m bar #50 @1335 ind=7μs strat=15μs total=22μs (8 active)
+08:03:13 [INFO] [LEN] 5m bar #100 @1115 ind=13μs strat=25μs total=38μs (8 active)
+08:03:13 [INFO] [LEN] 5m bar #150 @1525 ind=8μs strat=12μs total=20μs (8 active)
+08:03:13 [INFO] [LEN] 1m bar #881 @1110 ind=10μs strat=22μs total=32μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:03:13 [INFO] [LEN] 1m bar #927 @1156 ind=11μs strat=14μs total=25μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:03:13 [INFO] [LEN] 5m bar #198 @1255 ind=10μs strat=40μs total=51μs (8 active) | SIGNALS: SP_ATIER
+08:03:13 [INFO] [LEN] 5m bar #200 @1305 ind=9μs strat=16μs total=25μs (8 active)
+08:03:13 [INFO] [LEN] 5m bar #204 @1325 ind=9μs strat=20μs total=29μs (8 active) | SIGNALS: SC_SNIPER
+08:03:13 [INFO] [LEN] 5m bar #250 @1045 ind=8μs strat=14μs total=22μs (8 active)
+08:03:13 [INFO] [LEN] 5m bar #300 @1455 ind=8μs strat=12μs total=20μs (8 active)
+08:03:13 [INFO] [LEN] 5m bar #322 @1015 ind=8μs strat=23μs total=31μs (8 active) | SIGNALS: BDR_SHORT
+08:03:13 [INFO] [LEN] 5m bar #350 @1235 ind=7μs strat=14μs total=21μs (8 active)
+08:03:13 [INFO] [LEN] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:03:13 [INFO] [LEN] Ready (76/83, universe=IN_PLAY).
+08:03:15 [INFO] [LI] Contract qualified: Stock(conId=436980133, symbol='LI', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='LI', tradingClass='NMS')
+08:03:15 [INFO] [LI] ATR warmed: 30 days, PD H:18.51 L:17.52
+08:03:15 [INFO] [LI] 5m bar #18 @1055 ind=8μs strat=41μs total=48μs (8 active) | SIGNALS: HH_QUALITY
+08:03:15 [INFO] [LI] 5m bar #50 @1335 ind=10μs strat=18μs total=28μs (8 active)
+08:03:15 [INFO] [LI] 5m bar #100 @1115 ind=8μs strat=18μs total=26μs (8 active)
+08:03:15 [INFO] [LI] 5m bar #150 @1525 ind=7μs strat=12μs total=19μs (8 active)
+08:03:15 [INFO] [LI] 5m bar #173 @1050 ind=8μs strat=36μs total=44μs (8 active) | SIGNALS: FL_ANTICHOP
+08:03:15 [INFO] [LI] 5m bar #179 @1120 ind=8μs strat=34μs total=42μs (8 active) | SIGNALS: HH_QUALITY, EMA_FPIP
+08:03:15 [INFO] [LI] 5m bar #200 @1305 ind=8μs strat=12μs total=20μs (8 active)
+08:03:15 [INFO] [LI] 5m bar #250 @1045 ind=8μs strat=18μs total=26μs (8 active)
+08:03:15 [INFO] [LI] 5m bar #300 @1455 ind=7μs strat=13μs total=20μs (8 active)
+08:03:15 [INFO] [LI] 1m bar #1632 @1041 ind=9μs strat=21μs total=30μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:03:15 [INFO] [LI] 1m bar #1698 @1147 ind=8μs strat=11μs total=19μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:03:15 [INFO] [LI] 5m bar #350 @1235 ind=7μs strat=13μs total=20μs (8 active)
+08:03:15 [INFO] [LI] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:03:15 [INFO] [LI] Ready (77/83, universe=IN_PLAY).
+08:03:17 [INFO] [MOS] Contract qualified: Stock(conId=88292752, symbol='MOS', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='MOS', tradingClass='MOS')
+08:03:17 [INFO] [MOS] ATR warmed: 30 days, PD H:32.25 L:30.28
+08:03:17 [INFO] [MOS] 5m bar #50 @1335 ind=15μs strat=35μs total=50μs (8 active)
+08:03:17 [INFO] [MOS] 5m bar #100 @1115 ind=8μs strat=20μs total=28μs (8 active)
+08:03:17 [INFO] [MOS] 5m bar #109 @1200 ind=7μs strat=35μs total=42μs (8 active) | SIGNALS: HH_QUALITY
+08:03:17 [INFO] [MOS] 5m bar #150 @1525 ind=11μs strat=16μs total=27μs (8 active)
+08:03:17 [INFO] [MOS] 5m bar #194 @1235 ind=8μs strat=31μs total=39μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:03:17 [INFO] [MOS] 5m bar #200 @1305 ind=8μs strat=14μs total=22μs (8 active)
+08:03:17 [INFO] [MOS] 5m bar #250 @1045 ind=8μs strat=19μs total=27μs (8 active)
+08:03:17 [INFO] [MOS] 5m bar #252 @1055 ind=8μs strat=24μs total=32μs (8 active) | SIGNALS: HH_QUALITY
+08:03:17 [INFO] [MOS] 5m bar #300 @1455 ind=8μs strat=13μs total=21μs (8 active)
+08:03:17 [INFO] [MOS] 5m bar #323 @1020 ind=8μs strat=41μs total=49μs (8 active) | SIGNALS: BS_STRUCT
+08:03:17 [INFO] [MOS] 5m bar #334 @1115 ind=8μs strat=18μs total=26μs (8 active) | SIGNALS: SC_SNIPER
+08:03:17 [INFO] [MOS] 5m bar #350 @1235 ind=7μs strat=12μs total=19μs (8 active)
+08:03:17 [INFO] [MOS] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:03:17 [INFO] [MOS] Ready (78/83, universe=IN_PLAY).
+08:03:19 [INFO] [NIO] Contract qualified: Stock(conId=332794741, symbol='NIO', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='NIO', tradingClass='NIO')
+08:03:19 [INFO] [NIO] ATR warmed: 30 days, PD H:5.82 L:5.52
+08:03:19 [INFO] [NIO] 1m bar #62 @1031 ind=17μs strat=28μs total=45μs (2 active) | SIGNALS: EMA9_FT
+08:03:19 [INFO] [NIO] 5m bar #18 @1055 ind=14μs strat=56μs total=70μs (8 active) | SIGNALS: HH_QUALITY
+08:03:19 [INFO] [NIO] 5m bar #50 @1335 ind=8μs strat=14μs total=22μs (8 active)
+08:03:19 [INFO] [NIO] 5m bar #95 @1050 ind=15μs strat=46μs total=60μs (8 active) | SIGNALS: FL_ANTICHOP
+08:03:19 [INFO] [NIO] 5m bar #98 @1105 ind=13μs strat=43μs total=56μs (8 active) | SIGNALS: HH_QUALITY
+08:03:19 [INFO] [NIO] 5m bar #100 @1115 ind=13μs strat=28μs total=41μs (8 active)
+08:03:19 [INFO] [NIO] 5m bar #108 @1155 ind=13μs strat=36μs total=48μs (8 active) | SIGNALS: EMA_FPIP
+08:03:19 [INFO] [NIO] 1m bar #594 @1253 ind=9μs strat=28μs total=37μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:03:19 [INFO] [NIO] 5m bar #150 @1525 ind=7μs strat=9μs total=17μs (8 active)
+08:03:19 [INFO] [NIO] 1m bar #851 @1040 ind=9μs strat=22μs total=31μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:03:19 [INFO] [NIO] 5m bar #170 @1035 ind=10μs strat=27μs total=38μs (8 active) | SIGNALS: EMA_FPIP
+08:03:19 [INFO] [NIO] 5m bar #174 @1055 ind=7μs strat=22μs total=29μs (8 active) | SIGNALS: HH_QUALITY
+08:03:19 [INFO] [NIO] 5m bar #200 @1305 ind=7μs strat=13μs total=20μs (8 active)
+08:03:19 [INFO] [NIO] 5m bar #201 @1310 ind=8μs strat=18μs total=25μs (8 active) | SIGNALS: SC_SNIPER
+08:03:19 [INFO] [NIO] 5m bar #250 @1045 ind=9μs strat=24μs total=33μs (8 active)
+08:03:19 [INFO] [NIO] 5m bar #300 @1455 ind=9μs strat=46μs total=55μs (8 active)
+08:03:19 [INFO] [NIO] 5m bar #324 @1025 ind=7μs strat=31μs total=38μs (8 active) | SIGNALS: SC_SNIPER
+08:03:19 [INFO] [NIO] 5m bar #338 @1135 ind=8μs strat=42μs total=49μs (8 active) | SIGNALS: FL_ANTICHOP
+08:03:19 [INFO] [NIO] 5m bar #350 @1235 ind=7μs strat=10μs total=17μs (8 active)
+08:03:19 [INFO] [NIO] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:03:19 [INFO] [NIO] Ready (79/83, universe=IN_PLAY).
+08:03:21 [INFO] [PATH] Contract qualified: Stock(conId=483311199, symbol='PATH', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='PATH', tradingClass='PATH')
+08:03:21 [INFO] [PATH] ATR warmed: 30 days, PD H:11.98 L:10.70
+08:03:21 [INFO] [PATH] 5m bar #31 @1200 ind=7μs strat=21μs total=27μs (8 active) | SIGNALS: HH_QUALITY
+08:03:21 [INFO] [PATH] 5m bar #50 @1335 ind=7μs strat=12μs total=18μs (8 active)
+08:03:21 [INFO] [PATH] 5m bar #89 @1020 ind=8μs strat=105μs total=113μs (8 active) | SIGNALS: BDR_SHORT
+08:03:21 [INFO] [PATH] 5m bar #100 @1115 ind=7μs strat=17μs total=24μs (8 active)
+08:03:21 [INFO] [PATH] 5m bar #150 @1525 ind=11μs strat=19μs total=30μs (8 active)
+08:03:21 [INFO] [PATH] 5m bar #168 @1025 ind=7μs strat=76μs total=83μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:03:21 [INFO] [PATH] 5m bar #170 @1035 ind=7μs strat=23μs total=30μs (8 active) | SIGNALS: FL_ANTICHOP
+08:03:21 [INFO] [PATH] 5m bar #200 @1305 ind=10μs strat=20μs total=30μs (8 active)
+08:03:21 [INFO] [PATH] 5m bar #250 @1045 ind=9μs strat=22μs total=31μs (8 active)
+08:03:21 [INFO] [PATH] 5m bar #271 @1230 ind=7μs strat=39μs total=47μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:03:21 [INFO] [PATH] 5m bar #273 @1240 ind=8μs strat=21μs total=29μs (8 active) | SIGNALS: FL_ANTICHOP
+08:03:21 [INFO] [PATH] 5m bar #300 @1455 ind=8μs strat=10μs total=17μs (8 active)
+08:03:21 [INFO] [PATH] 1m bar #1616 @1025 ind=9μs strat=19μs total=28μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:03:21 [INFO] [PATH] 1m bar #1674 @1123 ind=8μs strat=11μs total=20μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:03:21 [INFO] [PATH] 5m bar #338 @1135 ind=7μs strat=22μs total=30μs (8 active) | SIGNALS: HH_QUALITY
+08:03:21 [INFO] [PATH] 5m bar #350 @1235 ind=7μs strat=13μs total=20μs (8 active)
+08:03:21 [INFO] [PATH] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:03:21 [INFO] [PATH] Ready (80/83, universe=IN_PLAY).
+08:03:23 [INFO] [SFTBY] Contract qualified: Stock(conId=54940183, symbol='SFTBY', exchange='SMART', primaryExchange='PINK', currency='USD', localSymbol='SFTBY', tradingClass='LIMITED')
+08:03:23 [INFO] [SFTBY] ATR warmed: 30 days, PD H:11.15 L:11.10
+08:03:23 [INFO] [SFTBY] 1m bar #137 @1016 ind=17μs strat=48μs total=64μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:03:23 [INFO] [SFTBY] 5m bar #47 @1150 ind=8μs strat=24μs total=32μs (8 active) | SIGNALS: FL_ANTICHOP
+08:03:23 [INFO] [SFTBY] 5m bar #50 @1205 ind=15μs strat=34μs total=49μs (8 active)
+08:03:23 [INFO] [SFTBY] 5m bar #100 @0815 ind=12μs strat=17μs total=30μs (8 active)
+08:03:23 [INFO] [SFTBY] 5m bar #127 @1030 ind=8μs strat=24μs total=32μs (8 active) | SIGNALS: FL_ANTICHOP
+08:03:23 [INFO] [SFTBY] 5m bar #150 @1225 ind=9μs strat=40μs total=50μs (8 active)
+08:03:23 [INFO] [SFTBY] 5m bar #200 @0940 ind=10μs strat=17μs total=27μs (8 active)
+08:03:23 [INFO] [SFTBY] 5m bar #250 @1350 ind=8μs strat=15μs total=24μs (8 active)
+08:03:23 [INFO] [SFTBY] 5m bar #300 @1000 ind=8μs strat=23μs total=31μs (8 active)
+08:03:23 [INFO] [SFTBY] 5m bar #350 @1410 ind=8μs strat=11μs total=19μs (8 active)
+08:03:23 [INFO] [SFTBY] Warmed: 1855 1-min → 372 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:03:23 [INFO] [SFTBY] Ready (81/83, universe=IN_PLAY).
+08:03:24 [INFO] [ULTA] Contract qualified: Stock(conId=46970422, symbol='ULTA', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='ULTA', tradingClass='NMS')
+08:03:24 [INFO] [ULTA] ATR warmed: 30 days, PD H:655.20 L:622.30
+08:03:25 [INFO] [ULTA] 5m bar #45 @1310 ind=15μs strat=80μs total=95μs (8 active) | SIGNALS: BS_STRUCT
+08:03:25 [INFO] [ULTA] 5m bar #50 @1335 ind=8μs strat=23μs total=30μs (8 active)
+08:03:25 [INFO] [ULTA] 5m bar #94 @1045 ind=12μs strat=39μs total=51μs (8 active) | SIGNALS: FL_ANTICHOP
+08:03:25 [INFO] [ULTA] 5m bar #100 @1115 ind=12μs strat=22μs total=34μs (8 active)
+08:03:25 [INFO] [ULTA] 5m bar #150 @1525 ind=8μs strat=11μs total=19μs (8 active)
+08:03:25 [INFO] [ULTA] 1m bar #906 @1135 ind=9μs strat=20μs total=28μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:03:25 [INFO] [ULTA] 5m bar #199 @1300 ind=8μs strat=27μs total=34μs (8 active) | SIGNALS: FL_ANTICHOP
+08:03:25 [INFO] [ULTA] 5m bar #200 @1305 ind=10μs strat=21μs total=30μs (8 active)
+08:03:25 [INFO] [ULTA] 5m bar #203 @1320 ind=9μs strat=23μs total=33μs (8 active) | SIGNALS: SC_SNIPER
+08:03:25 [INFO] [ULTA] 1m bar #1246 @1045 ind=10μs strat=11μs total=21μs (2 active) | SIGNALS: EMA9_FT
+08:03:25 [INFO] [ULTA] 5m bar #250 @1045 ind=8μs strat=26μs total=35μs (8 active)
+08:03:25 [INFO] [ULTA] 5m bar #254 @1105 ind=8μs strat=22μs total=31μs (8 active) | SIGNALS: FL_ANTICHOP
+08:03:25 [INFO] [ULTA] 1m bar #1273 @1112 ind=10μs strat=16μs total=27μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:03:25 [INFO] [ULTA] 5m bar #280 @1315 ind=8μs strat=19μs total=27μs (8 active) | SIGNALS: SC_SNIPER
+08:03:25 [INFO] [ULTA] 5m bar #300 @1455 ind=8μs strat=10μs total=18μs (8 active)
+08:03:25 [INFO] [ULTA] 5m bar #350 @1235 ind=7μs strat=14μs total=21μs (8 active)
+08:03:25 [INFO] [ULTA] 5m bar #359 @1320 ind=7μs strat=19μs total=26μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:03:25 [INFO] [ULTA] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:03:25 [INFO] [ULTA] Ready (82/83, universe=IN_PLAY).
+08:03:26 [INFO] [WPM] Contract qualified: Stock(conId=274836867, symbol='WPM', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='WPM', tradingClass='WPM')
+08:03:26 [INFO] [WPM] ATR warmed: 30 days, PD H:149.50 L:144.20
+08:03:26 [INFO] [WPM] 5m bar #50 @1335 ind=16μs strat=29μs total=44μs (8 active)
+08:03:26 [INFO] [WPM] 5m bar #51 @1340 ind=15μs strat=41μs total=56μs (8 active) | SIGNALS: SC_SNIPER
+08:03:27 [INFO] [WPM] 5m bar #100 @1115 ind=7μs strat=15μs total=23μs (8 active)
+08:03:27 [INFO] [WPM] 5m bar #150 @1525 ind=11μs strat=16μs total=27μs (8 active)
+08:03:27 [INFO] [WPM] 1m bar #841 @1030 ind=8μs strat=10μs total=19μs (2 active) | SIGNALS: EMA9_FT
+08:03:27 [INFO] [WPM] 5m bar #171 @1040 ind=7μs strat=26μs total=33μs (8 active) | SIGNALS: FL_ANTICHOP
+08:03:27 [INFO] [WPM] 1m bar #980 @1249 ind=10μs strat=29μs total=39μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:03:27 [INFO] [WPM] 5m bar #200 @1305 ind=9μs strat=20μs total=29μs (8 active)
+08:03:27 [INFO] [WPM] 5m bar #250 @1045 ind=9μs strat=18μs total=27μs (8 active)
+08:03:27 [INFO] [WPM] 1m bar #1272 @1111 ind=10μs strat=16μs total=26μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:03:27 [INFO] [WPM] 5m bar #277 @1300 ind=8μs strat=40μs total=48μs (8 active) | SIGNALS: FL_ANTICHOP
+08:03:27 [INFO] [WPM] 1m bar #1405 @1324 ind=8μs strat=16μs total=25μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:03:27 [INFO] [WPM] 5m bar #300 @1455 ind=8μs strat=11μs total=18μs (8 active)
+08:03:27 [INFO] [WPM] 5m bar #350 @1235 ind=7μs strat=19μs total=26μs (8 active)
+08:03:27 [INFO] [WPM] 5m bar #351 @1240 ind=7μs strat=23μs total=31μs (8 active) | SIGNALS: FL_ANTICHOP
+08:03:27 [INFO] [WPM] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:03:27 [INFO] [WPM] Ready (83/83, universe=IN_PLAY).
+08:03:28 [INFO] All 83 runners set up. Starting reqMktData subscriptions...
+08:03:28 [INFO] [AAPL] reqMktData subscribed. Waiting for ticks...
+08:03:28 [INFO] [ADBE] reqMktData subscribed. Waiting for ticks...
+08:03:28 [INFO] [AFRM] reqMktData subscribed. Waiting for ticks...
+08:03:29 [INFO] [AMD] reqMktData subscribed. Waiting for ticks...
+08:03:29 [INFO] [AMZN] reqMktData subscribed. Waiting for ticks...
+08:03:29 [INFO] [ARM] reqMktData subscribed. Waiting for ticks...
+08:03:29 [INFO] [BABA] reqMktData subscribed. Waiting for ticks...
+08:03:29 [INFO] [BAC] reqMktData subscribed. Waiting for ticks...
+08:03:30 [INFO] [C] reqMktData subscribed. Waiting for ticks...
+08:03:30 [INFO] [COIN] reqMktData subscribed. Waiting for ticks...
+08:03:30 [INFO] [CRSP] reqMktData subscribed. Waiting for ticks...
+08:03:30 [INFO] [CVX] reqMktData subscribed. Waiting for ticks...
+08:03:30 [INFO] [DASH] reqMktData subscribed. Waiting for ticks...
+08:03:31 [INFO] [DKNG] reqMktData subscribed. Waiting for ticks...
+08:03:31 [INFO] [FAS] reqMktData subscribed. Waiting for ticks...
+08:03:31 [INFO] [FNGU] reqMktData subscribed. Waiting for ticks...
+08:03:31 [INFO] [GE] reqMktData subscribed. Waiting for ticks...
+08:03:31 [INFO] [GOOG] reqMktData subscribed. Waiting for ticks...
+08:03:32 [INFO] [HOOD] reqMktData subscribed. Waiting for ticks...
+08:03:32 [INFO] [INTC] reqMktData subscribed. Waiting for ticks...
+08:03:32 [INFO] [IONQ] reqMktData subscribed. Waiting for ticks...
+08:03:32 [INFO] [JNUG] reqMktData subscribed. Waiting for ticks...
+08:03:32 [INFO] [JPM] reqMktData subscribed. Waiting for ticks...
+08:03:33 [INFO] [LABD] reqMktData subscribed. Waiting for ticks...
+08:03:33 [INFO] [LABU] reqMktData subscribed. Waiting for ticks...
+08:03:33 [INFO] [LULU] reqMktData subscribed. Waiting for ticks...
+08:03:33 [INFO] [LUNR] reqMktData subscribed. Waiting for ticks...
+08:03:33 [INFO] [MRNA] reqMktData subscribed. Waiting for ticks...
+08:03:34 [INFO] [MS] reqMktData subscribed. Waiting for ticks...
+08:03:34 [INFO] [MSFT] reqMktData subscribed. Waiting for ticks...
+08:03:34 [INFO] [NAIL] reqMktData subscribed. Waiting for ticks...
+08:03:34 [INFO] [NFLX] reqMktData subscribed. Waiting for ticks...
+08:03:35 [INFO] [NKE] reqMktData subscribed. Waiting for ticks...
+08:03:35 [INFO] [NU] reqMktData subscribed. Waiting for ticks...
+08:03:35 [INFO] [NUGT] reqMktData subscribed. Waiting for ticks...
+08:03:35 [INFO] [NVDA] reqMktData subscribed. Waiting for ticks...
+08:03:35 [INFO] [ORCL] reqMktData subscribed. Waiting for ticks...
+08:03:36 [INFO] [PLTR] reqMktData subscribed. Waiting for ticks...
+08:03:36 [INFO] [QQQ] reqMktData subscribed. Waiting for ticks...
+08:03:36 [INFO] [RBLX] reqMktData subscribed. Waiting for ticks...
+08:03:36 [INFO] [RGTI] reqMktData subscribed. Waiting for ticks...
+08:03:36 [INFO] [RIVN] reqMktData subscribed. Waiting for ticks...
+08:03:37 [INFO] [RTX] reqMktData subscribed. Waiting for ticks...
+08:03:37 [INFO] [SHOP] reqMktData subscribed. Waiting for ticks...
+08:03:37 [INFO] [SMCI] reqMktData subscribed. Waiting for ticks...
+08:03:37 [INFO] [SNOW] reqMktData subscribed. Waiting for ticks...
+08:03:37 [INFO] [SOXL] reqMktData subscribed. Waiting for ticks...
+08:03:38 [INFO] [SOXS] reqMktData subscribed. Waiting for ticks...
+08:03:38 [INFO] [SPXL] reqMktData subscribed. Waiting for ticks...
+08:03:38 [INFO] [SPXS] reqMktData subscribed. Waiting for ticks...
+08:03:38 [INFO] [SPY] reqMktData subscribed. Waiting for ticks...
+08:03:38 [INFO] [TECL] reqMktData subscribed. Waiting for ticks...
+08:03:39 [INFO] [TGT] reqMktData subscribed. Waiting for ticks...
+08:03:39 [INFO] [TNA] reqMktData subscribed. Waiting for ticks...
+08:03:39 [INFO] [TSLA] reqMktData subscribed. Waiting for ticks...
+08:03:39 [INFO] [TSLL] reqMktData subscribed. Waiting for ticks...
+08:03:39 [INFO] [UBER] reqMktData subscribed. Waiting for ticks...
+08:03:40 [INFO] [UPRO] reqMktData subscribed. Waiting for ticks...
+08:03:40 [INFO] [WEBL] reqMktData subscribed. Waiting for ticks...
+08:03:40 [INFO] [WMT] reqMktData subscribed. Waiting for ticks...
+08:03:40 [INFO] [XBI] reqMktData subscribed. Waiting for ticks...
+08:03:40 [INFO] [XLE] reqMktData subscribed. Waiting for ticks...
+08:03:41 [INFO] [XOM] reqMktData subscribed. Waiting for ticks...
+08:03:41 [INFO] [XYZ] reqMktData subscribed. Waiting for ticks...
+08:03:41 [INFO] [AAL] reqMktData subscribed. Waiting for ticks...
+08:03:41 [INFO] [CAPR] reqMktData subscribed. Waiting for ticks...
+08:03:41 [INFO] [CPB] reqMktData subscribed. Waiting for ticks...
+08:03:42 [INFO] [DG] reqMktData subscribed. Waiting for ticks...
+08:03:42 [INFO] [DKS] reqMktData subscribed. Waiting for ticks...
+08:03:42 [INFO] [DTIL] reqMktData subscribed. Waiting for ticks...
+08:03:42 [INFO] [EXR] reqMktData subscribed. Waiting for ticks...
+08:03:42 [INFO] [HIMS] reqMktData subscribed. Waiting for ticks...
+08:03:43 [INFO] [HUM] reqMktData subscribed. Waiting for ticks...
+08:03:43 [INFO] [INO] reqMktData subscribed. Waiting for ticks...
+08:03:43 [INFO] [KMX] reqMktData subscribed. Waiting for ticks...
+08:03:43 [INFO] [LEN] reqMktData subscribed. Waiting for ticks...
+08:03:43 [INFO] [LI] reqMktData subscribed. Waiting for ticks...
+08:03:44 [INFO] [MOS] reqMktData subscribed. Waiting for ticks...
+08:03:44 [INFO] [NIO] reqMktData subscribed. Waiting for ticks...
+08:03:44 [INFO] [PATH] reqMktData subscribed. Waiting for ticks...
+08:03:44 [INFO] [SFTBY] reqMktData subscribed. Waiting for ticks...
+08:03:44 [INFO] [ULTA] reqMktData subscribed. Waiting for ticks...
+08:03:45 [INFO] [WPM] reqMktData subscribed. Waiting for ticks...
+08:03:45 [INFO] Portfolio D monitoring 83/83 symbols. Engine: StrategyManager (step). Dashboard: http://localhost:8877
+08:03:45 [INFO] Main event loop captured for cross-thread IB scheduling.
+08:05:41 [INFO] In-play snapshot saved: 2026-03-13.txt (0 symbols)
+08:05:41 [INFO] [AAL] Unsubscribed and removed (async).
+08:05:41 [INFO] [CAPR] Unsubscribed and removed (async).
+08:05:41 [INFO] [CPB] Unsubscribed and removed (async).
+08:05:41 [INFO] [DG] Unsubscribed and removed (async).
+08:05:41 [INFO] [DKS] Unsubscribed and removed (async).
+08:05:41 [INFO] [DTIL] Unsubscribed and removed (async).
+08:05:42 [INFO] [EXR] Unsubscribed and removed (async).
+08:05:42 [INFO] [HIMS] Unsubscribed and removed (async).
+08:05:42 [INFO] [HUM] Unsubscribed and removed (async).
+08:05:42 [INFO] [INO] Unsubscribed and removed (async).
+08:05:42 [INFO] [KMX] Unsubscribed and removed (async).
+08:05:42 [INFO] [LEN] Unsubscribed and removed (async).
+08:05:42 [INFO] [LI] Unsubscribed and removed (async).
+08:05:42 [INFO] [MOS] Unsubscribed and removed (async).
+08:05:42 [INFO] [NIO] Unsubscribed and removed (async).
+08:05:42 [INFO] [PATH] Unsubscribed and removed (async).
+08:05:42 [INFO] [SFTBY] Unsubscribed and removed (async).
+08:05:42 [INFO] [ULTA] Unsubscribed and removed (async).
+08:05:42 [INFO] [WPM] Unsubscribed and removed (async).
+08:05:42 [INFO] Clear in-play: unsubscribed 19 in-play-only symbols.
+08:06:00 [INFO] [MKT:QQQ] Bar #79 closed @ 08:00 C=599.99
+08:06:00 [INFO] [MKT:SPY] Bar #79 closed @ 08:00 C=669.09
+08:06:24 [INFO] In-play snapshot saved: 2026-03-13.txt (1 symbols)
+08:06:24 [INFO] [LEN] Contract qualified: Stock(conId=9091, symbol='LEN', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='LEN', tradingClass='LEN')
+08:06:24 [INFO] [LEN] ATR warmed: 30 days, PD H:95.67 L:92.17
+08:06:24 [INFO] [LEN] 5m bar #27 @1140 ind=6μs strat=31μs total=37μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:06:24 [INFO] [LEN] 5m bar #50 @1335 ind=8μs strat=20μs total=28μs (8 active)
+08:06:24 [INFO] [LEN] 5m bar #100 @1115 ind=6μs strat=12μs total=18μs (8 active)
+08:06:24 [INFO] [LEN] 5m bar #150 @1525 ind=7μs strat=11μs total=18μs (8 active)
+08:06:24 [INFO] [LEN] 1m bar #881 @1110 ind=7μs strat=24μs total=31μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:06:24 [INFO] [LEN] 1m bar #927 @1156 ind=8μs strat=11μs total=18μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:06:24 [INFO] [LEN] 5m bar #198 @1255 ind=6μs strat=25μs total=31μs (8 active) | SIGNALS: SP_ATIER
+08:06:24 [INFO] [LEN] 5m bar #200 @1305 ind=6μs strat=11μs total=17μs (8 active)
+08:06:24 [INFO] [LEN] 5m bar #204 @1325 ind=9μs strat=25μs total=34μs (8 active) | SIGNALS: SC_SNIPER
+08:06:24 [INFO] [LEN] 5m bar #250 @1045 ind=7μs strat=35μs total=42μs (8 active)
+08:06:24 [INFO] [LEN] 5m bar #300 @1455 ind=6μs strat=9μs total=14μs (8 active)
+08:06:24 [INFO] [LEN] 5m bar #322 @1015 ind=6μs strat=18μs total=24μs (8 active) | SIGNALS: BDR_SHORT
+08:06:25 [INFO] [LEN] 5m bar #350 @1235 ind=220μs strat=41μs total=262μs (8 active)
+08:06:25 [INFO] [LEN] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:06:25 [INFO] [LEN] reqMktData subscribed (async). Waiting for ticks...
+08:06:25 [INFO] [LEN] In-play symbol subscribed.
+08:06:29 [INFO] In-play snapshot saved: 2026-03-13.txt (2 symbols)
+08:06:29 [INFO] [DKS] Contract qualified: Stock(conId=16310970, symbol='DKS', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='DKS', tradingClass='DKS')
+08:06:29 [INFO] [DKS] ATR warmed: 30 days, PD H:204.68 L:192.32
+08:06:29 [INFO] [DKS] 5m bar #50 @1335 ind=6μs strat=11μs total=17μs (8 active)
+08:06:29 [INFO] [DKS] 5m bar #91 @1030 ind=7μs strat=33μs total=40μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:06:29 [INFO] [DKS] 5m bar #95 @1050 ind=7μs strat=21μs total=27μs (8 active) | SIGNALS: FL_ANTICHOP
+08:06:29 [INFO] [DKS] 5m bar #100 @1115 ind=7μs strat=14μs total=21μs (8 active)
+08:06:29 [INFO] [DKS] 5m bar #150 @1525 ind=7μs strat=10μs total=17μs (8 active)
+08:06:29 [INFO] [DKS] 5m bar #175 @1100 ind=6μs strat=21μs total=27μs (8 active) | SIGNALS: HH_QUALITY
+08:06:29 [INFO] [DKS] 5m bar #200 @1305 ind=6μs strat=13μs total=19μs (8 active)
+08:06:29 [INFO] [DKS] 5m bar #250 @1045 ind=8μs strat=27μs total=35μs (8 active) | SIGNALS: FL_ANTICHOP
+08:06:29 [INFO] [DKS] 1m bar #1263 @1102 ind=11μs strat=23μs total=34μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:06:29 [INFO] [DKS] 5m bar #300 @1455 ind=6μs strat=9μs total=15μs (8 active)
+08:06:29 [INFO] [DKS] 1m bar #1618 @1027 ind=7μs strat=16μs total=24μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:06:29 [INFO] [DKS] 5m bar #343 @1200 ind=7μs strat=18μs total=25μs (8 active) | SIGNALS: FL_ANTICHOP
+08:06:29 [INFO] [DKS] 5m bar #350 @1235 ind=7μs strat=15μs total=22μs (8 active)
+08:06:29 [INFO] [DKS] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:06:29 [INFO] [DKS] reqMktData subscribed (async). Waiting for ticks...
+08:06:29 [INFO] [DKS] In-play symbol subscribed.
+08:06:31 [INFO] In-play snapshot saved: 2026-03-13.txt (3 symbols)
+08:06:31 [INFO] [OLLI] Contract qualified: Stock(conId=199975711, symbol='OLLI', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='OLLI', tradingClass='NMS')
+08:06:32 [INFO] [OLLI] ATR warmed: 30 days, PD H:112.00 L:104.53
+08:06:32 [INFO] [OLLI] 5m bar #50 @1335 ind=7μs strat=12μs total=18μs (8 active)
+08:06:32 [INFO] [OLLI] 5m bar #100 @1115 ind=8μs strat=14μs total=21μs (8 active)
+08:06:32 [INFO] [OLLI] 5m bar #150 @1525 ind=6μs strat=10μs total=16μs (8 active)
+08:06:32 [INFO] [OLLI] 5m bar #177 @1110 ind=7μs strat=21μs total=29μs (8 active) | SIGNALS: FL_ANTICHOP
+08:06:32 [INFO] [OLLI] 5m bar #200 @1305 ind=6μs strat=23μs total=29μs (8 active)
+08:06:32 [INFO] [OLLI] 5m bar #250 @1045 ind=9μs strat=18μs total=27μs (8 active)
+08:06:32 [INFO] [OLLI] 5m bar #300 @1455 ind=8μs strat=12μs total=20μs (8 active)
+08:06:32 [INFO] [OLLI] 5m bar #321 @1010 ind=7μs strat=47μs total=54μs (8 active) | SIGNALS: SC_SNIPER
+08:06:32 [INFO] [OLLI] 1m bar #1635 @1044 ind=7μs strat=16μs total=23μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:06:32 [INFO] [OLLI] 5m bar #339 @1140 ind=8μs strat=25μs total=33μs (8 active) | SIGNALS: FL_ANTICHOP
+08:06:32 [INFO] [OLLI] 5m bar #350 @1235 ind=7μs strat=11μs total=18μs (8 active)
+08:06:32 [INFO] [OLLI] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:06:32 [INFO] [OLLI] reqMktData subscribed (async). Waiting for ticks...
+08:06:32 [INFO] [OLLI] In-play symbol subscribed.
+08:06:36 [INFO] In-play snapshot saved: 2026-03-13.txt (4 symbols)
+08:06:36 [INFO] [GIII] Contract qualified: Stock(conId=269747, symbol='GIII', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='GIII', tradingClass='NMS')
+08:06:36 [INFO] [GIII] ATR warmed: 30 days, PD H:26.94 L:24.61
+08:06:37 [INFO] [GIII] 5m bar #50 @1335 ind=15μs strat=32μs total=47μs (8 active)
+08:06:37 [INFO] [GIII] 5m bar #100 @1115 ind=39μs strat=76μs total=115μs (8 active)
+08:06:37 [INFO] [GIII] 5m bar #150 @1525 ind=11μs strat=18μs total=29μs (8 active)
+08:06:37 [INFO] [GIII] 1m bar #842 @1031 ind=13μs strat=35μs total=47μs (2 active) | SIGNALS: EMA9_FT
+08:06:37 [INFO] [GIII] 5m bar #169 @1030 ind=10μs strat=38μs total=48μs (8 active) | SIGNALS: FL_ANTICHOP
+08:06:37 [INFO] [GIII] 5m bar #175 @1100 ind=10μs strat=44μs total=54μs (8 active) | SIGNALS: HH_QUALITY
+08:06:37 [INFO] [GIII] 5m bar #187 @1200 ind=7μs strat=18μs total=26μs (8 active) | SIGNALS: EMA_FPIP
+08:06:37 [INFO] [GIII] 5m bar #200 @1305 ind=8μs strat=15μs total=23μs (8 active)
+08:06:37 [INFO] [GIII] 5m bar #250 @1045 ind=8μs strat=16μs total=24μs (8 active)
+08:06:37 [INFO] [GIII] 5m bar #300 @1455 ind=8μs strat=22μs total=30μs (8 active)
+08:06:37 [INFO] [GIII] 1m bar #1619 @1028 ind=8μs strat=24μs total=32μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:06:37 [INFO] [GIII] 5m bar #350 @1235 ind=7μs strat=15μs total=23μs (8 active)
+08:06:37 [INFO] [GIII] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:06:37 [INFO] [GIII] reqMktData subscribed (async). Waiting for ticks...
+08:06:37 [INFO] [GIII] In-play symbol subscribed.
+08:06:41 [INFO] In-play snapshot saved: 2026-03-13.txt (5 symbols)
+08:06:41 [INFO] [MCY] Contract qualified: Stock(conId=2585462, symbol='MCY', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='MCY', tradingClass='MCY')
+08:06:41 [INFO] [MCY] ATR warmed: 30 days, PD H:88.38 L:85.82
+08:06:41 [INFO] [MCY] 5m bar #50 @1335 ind=8μs strat=14μs total=22μs (8 active)
+08:06:41 [INFO] [MCY] 5m bar #100 @1115 ind=8μs strat=15μs total=22μs (8 active)
+08:06:41 [INFO] [MCY] 5m bar #150 @1525 ind=7μs strat=12μs total=19μs (8 active)
+08:06:41 [INFO] [MCY] 5m bar #186 @1155 ind=7μs strat=18μs total=25μs (8 active) | SIGNALS: FL_ANTICHOP
+08:06:41 [INFO] [MCY] 5m bar #200 @1305 ind=7μs strat=14μs total=21μs (8 active)
+08:06:41 [INFO] [MCY] 5m bar #249 @1040 ind=7μs strat=26μs total=32μs (8 active) | SIGNALS: HH_QUALITY
+08:06:41 [INFO] [MCY] 5m bar #250 @1045 ind=7μs strat=16μs total=23μs (8 active)
+08:06:41 [INFO] [MCY] 5m bar #257 @1120 ind=7μs strat=35μs total=42μs (8 active) | SIGNALS: SP_ATIER
+08:06:41 [INFO] [MCY] 5m bar #300 @1455 ind=6μs strat=9μs total=16μs (8 active)
+08:06:41 [INFO] [MCY] 5m bar #344 @1205 ind=6μs strat=20μs total=27μs (8 active) | SIGNALS: FL_ANTICHOP
+08:06:41 [INFO] [MCY] 5m bar #350 @1235 ind=7μs strat=15μs total=22μs (8 active)
+08:06:41 [INFO] [MCY] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:06:41 [INFO] [MCY] reqMktData subscribed (async). Waiting for ticks...
+08:06:41 [INFO] [MCY] In-play symbol subscribed.
+08:06:45 [INFO] In-play snapshot saved: 2026-03-13.txt (6 symbols)
+08:06:45 [INFO] [ROST] Contract qualified: Stock(conId=273939, symbol='ROST', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='ROST', tradingClass='NMS')
+08:06:45 [INFO] [ROST] ATR warmed: 30 days, PD H:213.17 L:209.40
+08:06:45 [INFO] [ROST] 5m bar #50 @1335 ind=7μs strat=14μs total=20μs (8 active)
+08:06:45 [INFO] [ROST] 5m bar #100 @1115 ind=6μs strat=13μs total=19μs (8 active)
+08:06:45 [INFO] [ROST] 5m bar #107 @1150 ind=6μs strat=30μs total=36μs (8 active) | SIGNALS: FL_ANTICHOP
+08:06:45 [INFO] [ROST] 5m bar #150 @1525 ind=6μs strat=9μs total=14μs (8 active)
+08:06:45 [INFO] [ROST] 5m bar #177 @1110 ind=7μs strat=35μs total=42μs (8 active) | SIGNALS: FL_ANTICHOP
+08:06:45 [INFO] [ROST] 5m bar #178 @1115 ind=7μs strat=24μs total=31μs (8 active) | SIGNALS: HH_QUALITY
+08:06:45 [INFO] [ROST] 5m bar #200 @1305 ind=7μs strat=12μs total=19μs (8 active)
+08:06:45 [INFO] [ROST] 5m bar #250 @1045 ind=6μs strat=19μs total=25μs (8 active)
+08:06:45 [INFO] [ROST] 1m bar #1276 @1115 ind=8μs strat=24μs total=31μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:06:45 [INFO] [ROST] 5m bar #300 @1455 ind=7μs strat=9μs total=16μs (8 active)
+08:06:45 [INFO] [ROST] 5m bar #350 @1235 ind=7μs strat=17μs total=24μs (8 active)
+08:06:45 [INFO] [ROST] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:06:45 [INFO] [ROST] reqMktData subscribed (async). Waiting for ticks...
+08:06:45 [INFO] [ROST] In-play symbol subscribed.
+08:06:48 [INFO] In-play snapshot saved: 2026-03-13.txt (7 symbols)
+08:06:48 [INFO] [SBUX] Contract qualified: Stock(conId=274105, symbol='SBUX', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='SBUX', tradingClass='NMS')
+08:06:49 [INFO] [SBUX] ATR warmed: 30 days, PD H:102.44 L:99.89
+08:06:49 [INFO] [SBUX] 1m bar #104 @1113 ind=8μs strat=24μs total=32μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:06:49 [INFO] [SBUX] 5m bar #31 @1200 ind=7μs strat=23μs total=30μs (8 active) | SIGNALS: HH_QUALITY
+08:06:49 [INFO] [SBUX] 5m bar #50 @1335 ind=7μs strat=13μs total=20μs (8 active)
+08:06:49 [INFO] [SBUX] 5m bar #89 @1020 ind=7μs strat=21μs total=29μs (8 active) | SIGNALS: BDR_SHORT
+08:06:49 [INFO] [SBUX] 5m bar #96 @1055 ind=7μs strat=16μs total=24μs (8 active) | SIGNALS: FL_ANTICHOP
+08:06:49 [INFO] [SBUX] 5m bar #100 @1115 ind=7μs strat=17μs total=24μs (8 active)
+08:06:49 [INFO] [SBUX] 5m bar #150 @1525 ind=6μs strat=9μs total=15μs (8 active)
+08:06:49 [INFO] [SBUX] 1m bar #888 @1117 ind=7μs strat=17μs total=23μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:06:49 [INFO] [SBUX] 5m bar #200 @1305 ind=6μs strat=20μs total=26μs (8 active)
+08:06:49 [INFO] [SBUX] 5m bar #250 @1045 ind=9μs strat=15μs total=24μs (8 active)
+08:06:49 [INFO] [SBUX] 5m bar #251 @1050 ind=7μs strat=26μs total=33μs (8 active) | SIGNALS: FL_ANTICHOP
+08:06:49 [INFO] [SBUX] 5m bar #300 @1455 ind=7μs strat=10μs total=17μs (8 active)
+08:06:49 [INFO] [SBUX] 5m bar #346 @1215 ind=6μs strat=18μs total=24μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:06:49 [INFO] [SBUX] 5m bar #350 @1235 ind=6μs strat=12μs total=18μs (8 active)
+08:06:49 [INFO] [SBUX] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:06:49 [INFO] [SBUX] reqMktData subscribed (async). Waiting for ticks...
+08:06:49 [INFO] [SBUX] In-play symbol subscribed.
+08:06:57 [INFO] In-play snapshot saved: 2026-03-13.txt (8 symbols)
+08:07:07 [INFO] In-play snapshot saved: 2026-03-13.txt (9 symbols)
+08:07:13 [INFO] In-play snapshot saved: 2026-03-13.txt (10 symbols)
+08:07:13 [INFO] [NBIS] Contract qualified: Stock(conId=88819736, symbol='NBIS', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='NBIS', tradingClass='NMS')
+08:07:14 [INFO] [NBIS] ATR warmed: 30 days, PD H:111.04 L:106.52
+08:07:14 [INFO] [NBIS] 1m bar #54 @1023 ind=9μs strat=33μs total=42μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:07:14 [INFO] [NBIS] 5m bar #50 @1335 ind=7μs strat=14μs total=21μs (8 active)
+08:07:14 [INFO] [NBIS] 1m bar #430 @1009 ind=9μs strat=18μs total=27μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:07:14 [INFO] [NBIS] 5m bar #97 @1100 ind=7μs strat=26μs total=33μs (8 active) | SIGNALS: HH_QUALITY
+08:07:14 [INFO] [NBIS] 5m bar #100 @1115 ind=7μs strat=16μs total=23μs (8 active)
+08:07:14 [INFO] [NBIS] 5m bar #150 @1525 ind=7μs strat=10μs total=17μs (8 active)
+08:07:14 [INFO] [NBIS] 5m bar #179 @1120 ind=7μs strat=23μs total=29μs (8 active) | SIGNALS: HH_QUALITY
+08:07:14 [INFO] [NBIS] 5m bar #200 @1305 ind=7μs strat=16μs total=22μs (8 active)
+08:07:14 [INFO] [NBIS] 1m bar #1232 @1031 ind=8μs strat=19μs total=27μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:07:14 [INFO] [NBIS] 5m bar #250 @1045 ind=7μs strat=16μs total=22μs (8 active)
+08:07:14 [INFO] [NBIS] 5m bar #300 @1455 ind=22μs strat=35μs total=56μs (8 active)
+08:07:14 [INFO] [NBIS] 5m bar #350 @1235 ind=6μs strat=12μs total=18μs (8 active)
+08:07:14 [INFO] [NBIS] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:07:14 [INFO] [NBIS] reqMktData subscribed (async). Waiting for ticks...
+08:07:14 [INFO] [NBIS] In-play symbol subscribed.
+08:07:19 [INFO] In-play snapshot saved: 2026-03-13.txt (11 symbols)
+08:07:19 [INFO] [CRWV] Contract qualified: Stock(conId=771759702, symbol='CRWV', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='CRWV', tradingClass='NMS')
+08:07:19 [INFO] [CRWV] ATR warmed: 30 days, PD H:82.38 L:78.40
+08:07:19 [INFO] [CRWV] 5m bar #25 @1130 ind=13μs strat=34μs total=47μs (8 active) | SIGNALS: HH_QUALITY
+08:07:19 [INFO] [CRWV] 5m bar #47 @1320 ind=8μs strat=20μs total=28μs (8 active) | SIGNALS: SC_SNIPER
+08:07:19 [INFO] [CRWV] 5m bar #50 @1335 ind=8μs strat=12μs total=20μs (8 active)
+08:07:19 [INFO] [CRWV] 5m bar #100 @1115 ind=13μs strat=25μs total=38μs (8 active)
+08:07:19 [INFO] [CRWV] 5m bar #120 @1255 ind=9μs strat=29μs total=38μs (8 active) | SIGNALS: EMA_FPIP
+08:07:19 [INFO] [CRWV] 5m bar #150 @1525 ind=8μs strat=11μs total=19μs (8 active)
+08:07:19 [INFO] [CRWV] 1m bar #879 @1108 ind=11μs strat=32μs total=43μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:07:19 [INFO] [CRWV] 5m bar #200 @1305 ind=7μs strat=17μs total=24μs (8 active)
+08:07:19 [INFO] [CRWV] 1m bar #1216 @1015 ind=9μs strat=23μs total=31μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:07:19 [INFO] [CRWV] 5m bar #250 @1045 ind=8μs strat=22μs total=30μs (8 active)
+08:07:19 [INFO] [CRWV] 1m bar #1291 @1130 ind=9μs strat=13μs total=22μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:07:19 [INFO] [CRWV] 5m bar #275 @1250 ind=8μs strat=25μs total=33μs (8 active) | SIGNALS: FL_ANTICHOP
+08:07:19 [INFO] [CRWV] 5m bar #300 @1455 ind=8μs strat=11μs total=19μs (8 active)
+08:07:19 [INFO] [CRWV] 5m bar #338 @1135 ind=8μs strat=47μs total=55μs (8 active) | SIGNALS: FL_ANTICHOP
+08:07:19 [INFO] [CRWV] 1m bar #1701 @1150 ind=8μs strat=19μs total=27μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:07:19 [INFO] [CRWV] 1m bar #1729 @1218 ind=8μs strat=12μs total=20μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:07:19 [INFO] [CRWV] 5m bar #350 @1235 ind=7μs strat=17μs total=24μs (8 active)
+08:07:19 [INFO] [CRWV] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:07:19 [INFO] [CRWV] reqMktData subscribed (async). Waiting for ticks...
+08:07:19 [INFO] [CRWV] In-play symbol subscribed.
+08:07:25 [INFO] In-play snapshot saved: 2026-03-13.txt (12 symbols)
+08:07:25 [INFO] [VELO] Contract qualified: Stock(conId=802469975, symbol='VELO', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='VELO', tradingClass='SCM')
+08:07:25 [INFO] [VELO] ATR warmed: 30 days, PD H:16.50 L:13.79
+08:07:25 [INFO] [VELO] 5m bar #50 @1335 ind=13μs strat=21μs total=34μs (8 active)
+08:07:25 [INFO] [VELO] 5m bar #100 @1115 ind=11μs strat=22μs total=33μs (8 active)
+08:07:25 [INFO] [VELO] 5m bar #110 @1205 ind=8μs strat=38μs total=47μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:07:25 [INFO] [VELO] 5m bar #150 @1525 ind=9μs strat=14μs total=23μs (8 active)
+08:07:25 [INFO] [VELO] 5m bar #168 @1025 ind=9μs strat=33μs total=42μs (8 active) | SIGNALS: HH_QUALITY
+08:07:25 [INFO] [VELO] 1m bar #858 @1047 ind=13μs strat=31μs total=44μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:07:25 [INFO] [VELO] 5m bar #194 @1235 ind=9μs strat=25μs total=34μs (8 active) | SIGNALS: EMA_FPIP
+08:07:25 [INFO] [VELO] 5m bar #200 @1305 ind=9μs strat=22μs total=31μs (8 active)
+08:07:25 [INFO] [VELO] 5m bar #247 @1030 ind=8μs strat=24μs total=33μs (8 active) | SIGNALS: FL_ANTICHOP
+08:07:25 [INFO] [VELO] 5m bar #250 @1045 ind=8μs strat=19μs total=27μs (8 active)
+08:07:25 [INFO] [VELO] 5m bar #300 @1455 ind=7μs strat=10μs total=17μs (8 active)
+08:07:25 [INFO] [VELO] 5m bar #328 @1045 ind=7μs strat=22μs total=29μs (8 active) | SIGNALS: FL_ANTICHOP
+08:07:25 [INFO] [VELO] 1m bar #1653 @1102 ind=8μs strat=14μs total=22μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:07:25 [INFO] [VELO] 5m bar #350 @1235 ind=7μs strat=17μs total=24μs (8 active)
+08:07:25 [INFO] [VELO] 5m bar #354 @1255 ind=7μs strat=20μs total=27μs (8 active) | SIGNALS: SC_SNIPER
+08:07:25 [INFO] [VELO] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:07:25 [INFO] [VELO] reqMktData subscribed (async). Waiting for ticks...
+08:07:25 [INFO] [VELO] In-play symbol subscribed.
+08:07:28 [INFO] In-play snapshot saved: 2026-03-13.txt (13 symbols)
+08:07:28 [INFO] [MLAB] Contract qualified: Stock(conId=4814960, symbol='MLAB', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='MLAB', tradingClass='NMS')
+08:07:28 [INFO] [MLAB] ATR warmed: 30 days, PD H:80.26 L:77.66
+08:07:29 [INFO] [MLAB] 5m bar #50 @1335 ind=7μs strat=12μs total=18μs (8 active)
+08:07:29 [INFO] [MLAB] 5m bar #100 @1115 ind=10μs strat=40μs total=51μs (8 active)
+08:07:29 [INFO] [MLAB] 5m bar #101 @1120 ind=12μs strat=39μs total=51μs (8 active) | SIGNALS: FL_ANTICHOP
+08:07:29 [INFO] [MLAB] 5m bar #150 @1525 ind=9μs strat=14μs total=23μs (8 active)
+08:07:29 [INFO] [MLAB] 5m bar #200 @1305 ind=21μs strat=25μs total=46μs (8 active)
+08:07:29 [INFO] [MLAB] 5m bar #250 @1045 ind=8μs strat=19μs total=27μs (8 active)
+08:07:29 [INFO] [MLAB] 5m bar #265 @1200 ind=7μs strat=19μs total=26μs (8 active) | SIGNALS: HH_QUALITY
+08:07:29 [INFO] [MLAB] 5m bar #300 @1455 ind=7μs strat=10μs total=17μs (8 active)
+08:07:29 [INFO] [MLAB] 5m bar #350 @1235 ind=7μs strat=16μs total=23μs (8 active)
+08:07:29 [INFO] [MLAB] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:07:29 [INFO] [MLAB] reqMktData subscribed (async). Waiting for ticks...
+08:07:29 [INFO] [MLAB] In-play symbol subscribed.
+08:07:37 [INFO] In-play snapshot saved: 2026-03-13.txt (14 symbols)
+08:07:37 [INFO] [BOIL] Contract qualified: Stock(conId=738523395, symbol='BOIL', exchange='SMART', primaryExchange='ARCA', currency='USD', localSymbol='BOIL', tradingClass='BOIL')
+08:07:37 [INFO] [BOIL] ATR warmed: 30 days, PD H:20.64 L:19.26
+08:07:37 [INFO] [BOIL] 5m bar #27 @1140 ind=6μs strat=34μs total=40μs (8 active) | SIGNALS: HH_QUALITY
+08:07:37 [INFO] [BOIL] 5m bar #50 @1335 ind=6μs strat=9μs total=15μs (8 active)
+08:07:37 [INFO] [BOIL] 5m bar #100 @1115 ind=7μs strat=14μs total=21μs (8 active)
+08:07:37 [INFO] [BOIL] 5m bar #150 @1525 ind=6μs strat=10μs total=16μs (8 active)
+08:07:37 [INFO] [BOIL] 1m bar #823 @1012 ind=7μs strat=21μs total=28μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:07:37 [INFO] [BOIL] 5m bar #176 @1105 ind=7μs strat=19μs total=25μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:07:37 [INFO] [BOIL] 1m bar #895 @1124 ind=7μs strat=13μs total=21μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:07:37 [INFO] [BOIL] 5m bar #200 @1305 ind=6μs strat=11μs total=18μs (8 active)
+08:07:37 [INFO] [BOIL] 5m bar #250 @1045 ind=6μs strat=14μs total=20μs (8 active)
+08:07:37 [INFO] [BOIL] 5m bar #300 @1455 ind=54μs strat=14μs total=68μs (8 active)
+08:07:37 [INFO] [BOIL] 1m bar #1635 @1044 ind=8μs strat=18μs total=26μs (2 active) | SIGNALS: EMA9_FT
+08:07:37 [INFO] [BOIL] 5m bar #350 @1235 ind=7μs strat=12μs total=19μs (8 active)
+08:07:37 [INFO] [BOIL] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:07:37 [INFO] [BOIL] reqMktData subscribed (async). Waiting for ticks...
+08:07:37 [INFO] [BOIL] In-play symbol subscribed.
+08:07:42 [INFO] In-play snapshot saved: 2026-03-13.txt (15 symbols)
+08:07:44 [INFO] In-play snapshot saved: 2026-03-13.txt (16 symbols)
+08:07:47 [INFO] In-play snapshot saved: 2026-03-13.txt (17 symbols)
+08:07:49 [INFO] In-play snapshot saved: 2026-03-13.txt (18 symbols)
+08:07:49 [INFO] [GOOGL] Contract qualified: Stock(conId=208813719, symbol='GOOGL', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='GOOGL', tradingClass='NMS')
+08:07:49 [INFO] [GOOGL] ATR warmed: 30 days, PD H:308.94 L:301.03
+08:07:49 [INFO] [GOOGL] 1m bar #197 @1246 ind=9μs strat=43μs total=53μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:07:49 [INFO] [GOOGL] 1m bar #215 @1304 ind=11μs strat=16μs total=27μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:07:49 [INFO] [GOOGL] 5m bar #50 @1335 ind=8μs strat=18μs total=26μs (8 active)
+08:07:49 [INFO] [GOOGL] 1m bar #436 @1015 ind=16μs strat=37μs total=53μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:07:49 [INFO] [GOOGL] 1m bar #470 @1049 ind=8μs strat=11μs total=19μs (2 active) | SIGNALS: EMA9_FT
+08:07:49 [INFO] [GOOGL] 5m bar #100 @1115 ind=7μs strat=18μs total=25μs (8 active)
+08:07:49 [INFO] [GOOGL] 5m bar #150 @1525 ind=7μs strat=11μs total=18μs (8 active)
+08:07:49 [INFO] [GOOGL] 1m bar #973 @1242 ind=8μs strat=21μs total=29μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:07:49 [INFO] [GOOGL] 1m bar #984 @1253 ind=8μs strat=13μs total=21μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:07:49 [INFO] [GOOGL] 5m bar #200 @1305 ind=7μs strat=14μs total=21μs (8 active)
+08:07:49 [INFO] [GOOGL] 1m bar #1220 @1019 ind=9μs strat=14μs total=24μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:07:49 [INFO] [GOOGL] 5m bar #246 @1025 ind=8μs strat=23μs total=32μs (8 active) | SIGNALS: SC_SNIPER
+08:07:49 [INFO] [GOOGL] 5m bar #250 @1045 ind=8μs strat=22μs total=30μs (8 active)
+08:07:49 [INFO] [GOOGL] 1m bar #1290 @1129 ind=18μs strat=21μs total=39μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:07:49 [INFO] [GOOGL] 5m bar #300 @1455 ind=7μs strat=11μs total=18μs (8 active)
+08:07:49 [INFO] [GOOGL] 5m bar #350 @1235 ind=7μs strat=16μs total=23μs (8 active)
+08:07:49 [INFO] [GOOGL] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:07:49 [INFO] [GOOGL] reqMktData subscribed (async). Waiting for ticks...
+08:07:49 [INFO] [GOOGL] In-play symbol subscribed.
+08:07:52 [INFO] In-play snapshot saved: 2026-03-13.txt (19 symbols)
+08:07:57 [INFO] In-play snapshot saved: 2026-03-13.txt (20 symbols)
+08:07:57 [INFO] [V] Contract qualified: Stock(conId=49462172, symbol='V', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='V', tradingClass='V')
+08:07:57 [INFO] [V] ATR warmed: 30 days, PD H:310.95 L:306.01
+08:07:57 [INFO] [V] 5m bar #50 @1335 ind=15μs strat=27μs total=42μs (8 active)
+08:07:57 [INFO] [V] 5m bar #100 @1115 ind=7μs strat=15μs total=22μs (8 active)
+08:07:57 [INFO] [V] 5m bar #109 @1200 ind=12μs strat=51μs total=63μs (8 active) | SIGNALS: FL_ANTICHOP
+08:07:57 [INFO] [V] 5m bar #115 @1230 ind=13μs strat=45μs total=58μs (8 active) | SIGNALS: BS_STRUCT
+08:07:57 [INFO] [V] 5m bar #150 @1525 ind=11μs strat=16μs total=27μs (8 active)
+08:07:57 [INFO] [V] 5m bar #171 @1040 ind=8μs strat=32μs total=40μs (8 active) | SIGNALS: FL_ANTICHOP
+08:07:57 [INFO] [V] 1m bar #895 @1124 ind=12μs strat=27μs total=39μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:07:57 [INFO] [V] 1m bar #938 @1207 ind=9μs strat=12μs total=22μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:07:57 [INFO] [V] 5m bar #197 @1250 ind=8μs strat=23μs total=31μs (8 active) | SIGNALS: EMA_FPIP
+08:07:57 [INFO] [V] 5m bar #200 @1305 ind=8μs strat=16μs total=25μs (8 active)
+08:07:57 [INFO] [V] 5m bar #250 @1045 ind=8μs strat=18μs total=26μs (8 active)
+08:07:57 [INFO] [V] 5m bar #300 @1455 ind=8μs strat=12μs total=19μs (8 active)
+08:07:57 [INFO] [V] 1m bar #1618 @1027 ind=9μs strat=17μs total=26μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:07:57 [INFO] [V] 1m bar #1663 @1112 ind=9μs strat=11μs total=20μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:07:57 [INFO] [V] 5m bar #350 @1235 ind=7μs strat=14μs total=22μs (8 active)
+08:07:57 [INFO] [V] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:07:57 [INFO] [V] reqMktData subscribed (async). Waiting for ticks...
+08:07:57 [INFO] [V] In-play symbol subscribed.
+08:08:00 [INFO] In-play snapshot saved: 2026-03-13.txt (21 symbols)
+08:08:04 [INFO] In-play snapshot saved: 2026-03-13.txt (22 symbols)
+08:08:06 [INFO] In-play snapshot saved: 2026-03-13.txt (23 symbols)
+08:08:06 [INFO] [JNJ] Contract qualified: Stock(conId=8719, symbol='JNJ', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='JNJ', tradingClass='JNJ')
+08:08:06 [INFO] [JNJ] ATR warmed: 30 days, PD H:244.40 L:240.30
+08:08:06 [INFO] [JNJ] 5m bar #12 @1025 ind=11μs strat=48μs total=59μs (8 active) | SIGNALS: BDR_SHORT
+08:08:06 [INFO] [JNJ] 5m bar #22 @1115 ind=7μs strat=23μs total=30μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:08:06 [INFO] [JNJ] 5m bar #50 @1335 ind=7μs strat=28μs total=35μs (8 active)
+08:08:06 [INFO] [JNJ] 5m bar #52 @1345 ind=13μs strat=34μs total=47μs (8 active) | SIGNALS: EMA_FPIP
+08:08:06 [INFO] [JNJ] 5m bar #100 @1115 ind=8μs strat=22μs total=30μs (8 active)
+08:08:06 [INFO] [JNJ] 1m bar #505 @1124 ind=9μs strat=26μs total=34μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:08:06 [INFO] [JNJ] 5m bar #102 @1125 ind=8μs strat=25μs total=33μs (8 active) | SIGNALS: HH_QUALITY
+08:08:06 [INFO] [JNJ] 5m bar #150 @1525 ind=10μs strat=16μs total=26μs (8 active)
+08:08:06 [INFO] [JNJ] 1m bar #851 @1040 ind=12μs strat=23μs total=35μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:08:06 [INFO] [JNJ] 5m bar #170 @1035 ind=13μs strat=39μs total=52μs (8 active) | SIGNALS: HH_QUALITY
+08:08:06 [INFO] [JNJ] 5m bar #200 @1305 ind=8μs strat=19μs total=27μs (8 active)
+08:08:06 [INFO] [JNJ] 5m bar #250 @1045 ind=8μs strat=18μs total=26μs (8 active)
+08:08:06 [INFO] [JNJ] 5m bar #269 @1220 ind=8μs strat=24μs total=33μs (8 active) | SIGNALS: FL_ANTICHOP
+08:08:06 [INFO] [JNJ] 5m bar #300 @1455 ind=7μs strat=10μs total=17μs (8 active)
+08:08:06 [INFO] [JNJ] 1m bar #1681 @1130 ind=8μs strat=19μs total=28μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:08:06 [INFO] [JNJ] 5m bar #350 @1235 ind=7μs strat=14μs total=21μs (8 active)
+08:08:06 [INFO] [JNJ] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:08:06 [INFO] [JNJ] reqMktData subscribed (async). Waiting for ticks...
+08:08:06 [INFO] [JNJ] In-play symbol subscribed.
+08:08:07 [INFO] In-play snapshot saved: 2026-03-13.txt (24 symbols)
+08:08:07 [INFO] [PG] Contract qualified: Stock(conId=11054, symbol='PG', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='PG', tradingClass='PG')
+08:08:07 [INFO] [PG] ATR warmed: 30 days, PD H:153.05 L:150.33
+08:08:07 [INFO] [PG] 5m bar #50 @1335 ind=7μs strat=12μs total=18μs (8 active)
+08:08:07 [INFO] [PG] 5m bar #100 @1115 ind=7μs strat=23μs total=30μs (8 active)
+08:08:07 [INFO] [PG] 5m bar #102 @1125 ind=7μs strat=26μs total=34μs (8 active) | SIGNALS: FL_ANTICHOP
+08:08:07 [INFO] [PG] 5m bar #108 @1155 ind=8μs strat=18μs total=26μs (8 active) | SIGNALS: HH_QUALITY
+08:08:07 [INFO] [PG] 1m bar #592 @1251 ind=9μs strat=28μs total=37μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:08:07 [INFO] [PG] 5m bar #150 @1525 ind=24μs strat=29μs total=53μs (8 active)
+08:08:07 [INFO] [PG] 5m bar #200 @1305 ind=7μs strat=15μs total=22μs (8 active)
+08:08:07 [INFO] [PG] 5m bar #204 @1325 ind=6μs strat=23μs total=30μs (8 active) | SIGNALS: SP_ATIER
+08:08:07 [INFO] [PG] 5m bar #243 @1010 ind=6μs strat=18μs total=24μs (8 active) | SIGNALS: BDR_SHORT
+08:08:07 [INFO] [PG] 5m bar #250 @1045 ind=7μs strat=14μs total=20μs (8 active)
+08:08:07 [INFO] [PG] 5m bar #259 @1130 ind=6μs strat=16μs total=22μs (8 active) | SIGNALS: ORL_FBD_LONG
+08:08:07 [INFO] [PG] 5m bar #271 @1230 ind=6μs strat=18μs total=24μs (8 active) | SIGNALS: FL_ANTICHOP
+08:08:07 [INFO] [PG] 5m bar #300 @1455 ind=6μs strat=7μs total=13μs (8 active)
+08:08:07 [INFO] [PG] 1m bar #1615 @1024 ind=9μs strat=21μs total=29μs (2 active) | SIGNALS: ORH_FBO_V2_B
+08:08:07 [INFO] [PG] 1m bar #1688 @1137 ind=7μs strat=14μs total=22μs (2 active) | SIGNALS: ORH_FBO_V2_A
+08:08:07 [INFO] [PG] 5m bar #350 @1235 ind=7μs strat=12μs total=19μs (8 active)
+08:08:07 [INFO] [PG] Warmed: 1950 1-min → 390 5-min bars | E9_5m=Y E20_5m=Y E9_1m=Y E20_1m=Y
+08:08:08 [INFO] [PG] reqMktData subscribed (async). Waiting for ticks...
+08:08:08 [INFO] [PG] In-play symbol subscribed.
+08:08:09 [INFO] In-play snapshot saved: 2026-03-13.txt (25 symbols)
+08:10:47 [INFO] Shutting down...
+08:10:47 [INFO] Disconnecting from 127.0.0.1:7497, 29.7 kB sent in 429 messages, 15.1 MB received in 47545 messages, session time 599 s.
+08:10:47 [INFO] Disconnecting
+08:10:47 [INFO] Disconnected.
