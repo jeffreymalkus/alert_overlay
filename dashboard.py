@@ -2316,7 +2316,11 @@ class DashboardHandler(SimpleHTTPRequestHandler):
         self._send_json_response(200, {"ok": True, "symbol": symbol})
 
     def _clear_in_play(self, data):
-        """Clear entire in-play list (morning reset)."""
+        """Clear entire in-play list (morning reset).
+
+        Static symbols that were also in-play (BOTH) revert to STATIC.
+        They are never removed from the static watchlist or the dashboard.
+        """
         global _in_play_symbols
         static_symbols = set(_load_watchlist())
 
@@ -2340,7 +2344,7 @@ class DashboardHandler(SimpleHTTPRequestHandler):
                             break
                     _status["symbols"].pop(symbol, None)
             else:
-                # Reset BOTH → STATIC
+                # Reset BOTH → STATIC (preserve the symbol)
                 with _lock:
                     if symbol in _status.get("symbols", {}):
                         _status["symbols"][symbol]["universe"] = "STATIC"
@@ -2350,6 +2354,18 @@ class DashboardHandler(SimpleHTTPRequestHandler):
                         if runner._legacy_engine is not None:
                             runner._legacy_engine._universe_source = "STATIC"
                         break
+                log.info(f"[{symbol}] Reverted BOTH → STATIC (preserved in watchlist)")
+
+        # Safety: ensure ALL static symbols are present in _status
+        # This catches any edge case where a static symbol was accidentally removed
+        with _lock:
+            for static_sym in static_symbols:
+                if static_sym not in _status.get("symbols", {}):
+                    _status["symbols"][static_sym] = {
+                        "bars": 0, "alerts": 0, "last_price": 0,
+                        "universe": "STATIC",
+                    }
+                    log.warning(f"[{static_sym}] Restored missing static symbol after in-play clear")
 
         # Immediate kill switch on all runners being removed
         for r in runners_to_unsub:
@@ -2368,6 +2384,8 @@ class DashboardHandler(SimpleHTTPRequestHandler):
 
         with _lock:
             _status["in_play"] = []
+        log.info(f"Clear in-play: cleared {len(symbols_to_clear)} symbols, "
+                 f"{len(static_symbols)} static symbols preserved")
         _broadcast_sse("in_play_updated", {
             "symbols": [],
             "action": "CLEAR", "cleared": symbols_to_clear,
