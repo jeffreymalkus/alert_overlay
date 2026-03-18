@@ -685,17 +685,13 @@ class BDRShortStrategy:
 
             # ── BREAKDOWN PHASE: detect new breakdown ──
             if not bd_active and time_start <= hhmm <= time_end:
-                level, tag = self._find_support_level(or_high, or_low, or_ready, vw, list(recent_bars))
-                if _isnan(level):
-                    continue
-
-                # V3 level filtering
-                allowed = (
-                    (tag == "ORL" and cfg.bdr_use_orl_level) or
-                    (tag == "SWING" and cfg.bdr_use_swing_low_level) or
-                    (tag == "VWAP" and cfg.bdr_use_vwap_level)
+                level, tag = self._find_support_level(
+                    or_high, or_low, or_ready, vw, list(recent_bars),
+                    use_orl=cfg.bdr_use_orl_level,
+                    use_vwap=cfg.bdr_use_vwap_level,
+                    use_swing=cfg.bdr_use_swing_low_level,
                 )
-                if not allowed:
+                if _isnan(level):
                     continue
 
                 broke = bar.close < level - cfg.bdr_break_atr_min * i_atr
@@ -810,21 +806,27 @@ class BDRShortStrategy:
         return target_price, actual_rr, tag, False
 
     @staticmethod
-    def _find_support_level(or_high, or_low, or_ready, vwap, recent_bars):
-        """Find support level for breakdown. Short: OR low, VWAP, or swing low."""
+    def _find_support_level(or_high, or_low, or_ready, vwap, recent_bars,
+                            use_orl=True, use_vwap=True, use_swing=True):
+        """Find support level for breakdown.
+
+        Filters candidates by enabled level flags (V3 disables VWAP).
+        Picks highest allowed support level (most likely to break for shorts).
+        """
         candidates = []
 
-        if or_ready and not _isnan(or_low):
+        if or_ready and not _isnan(or_low) and use_orl:
             candidates.append((or_low, "ORL"))
 
-        if not _isnan(vwap) and vwap > 0:
+        if not _isnan(vwap) and vwap > 0 and use_vwap:
             candidates.append((vwap, "VWAP"))
 
         # Swing low from recent bars (exclude current)
-        prior_bars = recent_bars[:-1] if len(recent_bars) > 1 else recent_bars
-        if len(prior_bars) >= 5:
-            swing_low = min(b.low for b in prior_bars)
-            candidates.append((swing_low, "SWING"))
+        if use_swing:
+            prior_bars = recent_bars[:-1] if len(recent_bars) > 1 else recent_bars
+            if len(prior_bars) >= 5:
+                swing_low = min(b.low for b in prior_bars)
+                candidates.append((swing_low, "SWING"))
 
         if not candidates:
             return NaN, ""

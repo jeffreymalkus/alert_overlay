@@ -150,6 +150,65 @@ class BDRShortLive(LiveStrategy):
                     confluence.append("below_ema9")
                 if self._bd_level_tag == "ORL":
                     confluence.append("or_level")
+                if self._bd_bar_vol >= 1.5 * vol_ma:
+                    confluence.append("strong_bd_vol")
+
+                _stop_meta = {
+                    "stop_ref_type": "retest_high",
+                    "stop_ref_price": self._retest_bar_high,
+                    "raw_stop": self._retest_bar_high + cfg.bdr_v3_stop_buffer,
+                    "buffer_type": "dollar",
+                    "buffer_value": cfg.bdr_v3_stop_buffer,
+                    "min_stop_rule_applied": risk == cfg.bdr_min_stop_atr * i_atr,
+                    "min_stop_distance": cfg.bdr_min_stop_atr * i_atr,
+                    "final_stop": stop,
+                }
+
+                # ── Quality pipeline (same as legacy BDR) ──
+                quality_score = 3
+                quality_tier = QualityTier.B_TIER
+                reject_reasons = []
+
+                if self.rejection and self.quality:
+                    # Build skip list — V3 skips trigger body/vol checks
+                    v3_skips = list(self.skip_rejections)
+                    if cfg.bdr_skip_generic_trigger_body_filter:
+                        v3_skips.append("trigger_weakness")
+                    if cfg.bdr_skip_generic_trigger_vol_filter:
+                        v3_skips.append("trigger_low_vol")
+
+                    reject_reasons = self.rejection.check_all(
+                        bar, snap.recent_bars, len(snap.recent_bars) - 1,
+                        i_atr, e9, vw, vol_ma,
+                        skip_filters=v3_skips
+                    )
+
+                    # Inverted scoring for shorts
+                    stock_factors = {
+                        "in_play_score": snap.in_play_score,
+                        "rs_market": -snap.rs_market,
+                        "rs_sector": 0.0,
+                        "volume_profile": min(bar.volume / vol_ma, 1.0) if vol_ma > 0 else 0.0,
+                    }
+                    market_factors = {
+                        "regime_score": 1.0 - snap.regime_score,
+                        "alignment_score": 1.0 - snap.alignment_score,
+                    }
+                    setup_factors = {
+                        "trigger_quality": trigger_bar_quality(bar, i_atr, vol_ma),
+                        "structure_quality": min(struct_q, 1.0),
+                        "confluence_count": len(confluence),
+                    }
+
+                    if not reject_reasons:
+                        quality_tier, quality_score = self.quality.score(
+                            stock_factors, market_factors, setup_factors
+                        )
+                    else:
+                        _, quality_score = self.quality.score(
+                            stock_factors, market_factors, setup_factors
+                        )
+                        quality_tier = QualityTier.B_TIER if quality_score >= self.cfg.quality_b_min else QualityTier.C_TIER
 
                 self._v3_waiting_trigger = False
                 self._bd_active = False
@@ -163,7 +222,7 @@ class BDRShortLive(LiveStrategy):
                     target_price=target,
                     bar_idx=snap.bar_idx,
                     hhmm=hhmm,
-                    quality=3,
+                    quality=quality_score,
                     metadata={
                         "level_type": self._bd_level_tag,
                         "level_price": self._bd_level,
@@ -173,7 +232,11 @@ class BDRShortLive(LiveStrategy):
                         "target_tag": "fixed_rr",
                         "structure_quality": min(struct_q, 1.0),
                         "confluence": confluence,
+                        "in_play_score": snap.in_play_score,
+                        "quality_tier": quality_tier.value,
+                        "reject_reasons": reject_reasons,
                         "entry_type": "retest_low_break",
+                        **_stop_meta,
                     },
                 )
             return None
@@ -218,14 +281,6 @@ class BDRShortLive(LiveStrategy):
         if not self._bd_active and self._time_start <= hhmm <= self._time_end:
             level, tag = self._find_support_level(snap)
             if _isnan(level):
-                return None
-
-            allowed = (
-                (tag == "ORL" and cfg.bdr_use_orl_level) or
-                (tag == "SWING" and cfg.bdr_use_swing_low_level) or
-                (tag == "VWAP" and cfg.bdr_use_vwap_level)
-            )
-            if not allowed:
                 return None
 
             broke = bar.close < level - cfg.bdr_break_atr_min * i_atr
@@ -569,21 +624,27 @@ class BDRShortLive(LiveStrategy):
         return target_price, actual_rr, tag
 
     def _find_support_level(self, snap: IndicatorSnapshot) -> tuple:
-        """Find support level for breakdown: OR low, VWAP, or swing low."""
+        """Find support level for breakdown.
+
+        Filters candidates by enabled level flags (V3 disables VWAP).
+        Picks highest allowed support level (most likely to break for shorts).
+        """
+        cfg = self.cfg
         candidates = []
 
-        if snap.or_ready and not _isnan(snap.or_low):
+        if snap.or_ready and not _isnan(snap.or_low) and cfg.bdr_use_orl_level:
             candidates.append((snap.or_low, "ORL"))
 
-        if not _isnan(snap.vwap) and snap.vwap > 0:
+        if not _isnan(snap.vwap) and snap.vwap > 0 and cfg.bdr_use_vwap_level:
             candidates.append((snap.vwap, "VWAP"))
 
         # Swing low from recent bars (10-bar lookback per spec)
-        recent = snap.recent_bars
-        if len(recent) >= 10:
-            prior_bars = recent[:-1]
-            swing_low = min(b.low for b in prior_bars)
-            candidates.append((swing_low, "SWING"))
+        if cfg.bdr_use_swing_low_level:
+            recent = snap.recent_bars
+            if len(recent) >= 10:
+                prior_bars = recent[:-1]
+                swing_low = min(b.low for b in prior_bars)
+                candidates.append((swing_low, "SWING"))
 
         if not candidates:
             return NaN, ""

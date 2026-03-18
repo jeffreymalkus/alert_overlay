@@ -6938,3 +6938,1155 @@
 09:36:00 [INFO] [LUNR] bar #1960 @ 09:30 C=18.68 | signals=0
 09:36:00 [INFO] [FAS] bar #1890 @ 09:30 C=118.38 | signals=0
 09:36:02 [INFO] [FIVE] bar #1570 @ 09:30 C=216.00 | signals=0
+09:40:15 [WARNING] PER-SYMBOL STALE: 1 stale symbols detected. Resubscribing batch of 1: ['MCRAA']
+09:40:15 [INFO] [MCRAA] reqMktData subscribed (async). Waiting for ticks...
+09:40:15 [INFO] [MCRAA] Per-symbol resubscribed.
+09:40:45 [WARNING] PER-SYMBOL STALE: 1 stale symbols detected. Resubscribing batch of 1: ['MCRAA']
+09:40:45 [INFO] [MCRAA] reqMktData subscribed (async). Waiting for ticks...
+09:40:45 [INFO] [MCRAA] Per-symbol resubscribed.
+09:41:00 [INFO] [NUGT] bar #1030 @ 09:35 C=181.68 | signals=0
+09:41:00 [INFO] [SOXS] bar #1880 @ 09:35 C=37.86 | signals=0
+09:41:00 [INFO] [MKT:SPY] Bar #94 closed @ 09:35 C=669.09
+09:41:00 [INFO] [MKT:QQQ] Bar #94 closed @ 09:35 C=602.26
+09:41:00 [INFO] [APH] bar #1570 @ 09:35 C=134.38 | signals=0
+09:41:00 [INFO] [AMR] bar #1570 @ 09:35 C=188.95 | signals=0
+09:41:00 [INFO] [WEBL] bar #1840 @ 09:35 C=19.65 | signals=0
+09:41:15 [WARNING] PER-SYMBOL STALE: 1 stale symbols detected. Resubscribing batch of 1: ['MCRAA']
+09:41:15 [INFO] [MCRAA] reqMktData subscribed (async). Waiting for ticks...
+09:41:15 [INFO] [MCRAA] Per-symbol resubscribed.
+09:41:16 [INFO] [SPIR] bar #1570 @ 09:35 C=11.03 | signals=0
+09:41:45 [WARNING] PER-SYMBOL STALE: 1 stale symbols detected. Resubscribing batch of 1: ['MCRAA']
+09:41:45 [INFO] [MCRAA] reqMktData subscribed (async). Waiting for ticks...
+09:41:45 [INFO] [MCRAA] Per-symbol resubscribed.
+09:42:15 [WARNING] PER-SYMBOL STALE: 1 stale symbols detected. Resubscribing batch of 1: ['MCRAA']
+09:42:15 [INFO] [MCRAA] reqMktData subscribed (async). Waiting for ticks...
+09:42:15 [INFO] [MCRAA] Per-symbol resubscribed.
+09:42:45 [WARNING] PER-SYMBOL STALE: 1 stale symbols detected. Resubscribing batch of 1: ['MCRAA']
+09:42:45 [INFO] [MCRAA] reqMktData subscribed (async). Waiting for ticks...
+09:42:45 [INFO] [MCRAA] Per-symbol resubscribed.
+09:43:15 [WARNING] PER-SYMBOL STALE: 1 stale symbols detected. Resubscribing batch of 1: ['MCRAA']
+09:43:15 [INFO] [MCRAA] reqMktData subscribed (async). Waiting for ticks...
+09:43:15 [INFO] [MCRAA] Per-symbol resubscribed.
+09:43:34 [INFO] In-play snapshot saved: 2026-03-18.txt (75 symbols)
+09:43:34 [INFO] [MCRAA] Unsubscribed and removed (async).
+09:45:00 [INFO] [WMT] IN-PLAY gap debug: prev_close=125.09, first_bar_open=124.62, computed_gap=-0.003757294747781588
+09:45:00 [INFO] [WMT] IN-PLAY eval: PASS(score=2.0)[gap=0.004<0.005,no_gate] | score=2.0 gap=-0.004 rvol=4.38 dolvol=$83,239,806 range_exp=0.59 data=FULL(vol_depth=20)
+09:45:00 [INFO] [TSLA] IN-PLAY gap debug: prev_close=399.22, first_bar_open=399.29, computed_gap=0.0001753419167376213
+09:45:00 [INFO] [TSLA] IN-PLAY eval: PASS(score=3.0)[gap=0.000<0.005,no_gate] | score=3.0 gap=+0.000 rvol=6.45 dolvol=$1,608,453,969 range_exp=0.70 data=FULL(vol_depth=20)
+09:45:00 [INFO] [GIS] IN-PLAY gap debug: prev_close=38.74, first_bar_open=38.60, computed_gap=-0.0036138358286009436
+09:45:00 [INFO] [GIS] IN-PLAY eval: PASS(score=4.0)[gap=0.004<0.005,no_gate] | score=4.0 gap=-0.004 rvol=3.91 dolvol=$65,668,143 range_exp=2.25 data=FULL(vol_depth=20)
+09:45:00 [INFO] [SPXL] IN-PLAY gap debug: prev_close=203.80, first_bar_open=201.52, computed_gap=-0.0111874386653582
+09:45:00 [INFO] [SPXL] IN-PLAY eval: FAIL(rvol=0.90<1.5) | score=0.0 gap=-0.011 rvol=0.90 dolvol=$38,158,905 range_exp=0.51 data=FULL(vol_depth=20)
+09:45:00 [INFO] [BABA] IN-PLAY gap debug: prev_close=136.57, first_bar_open=138.54, computed_gap=0.014424837079885766
+09:45:00 [INFO] [BABA] IN-PLAY eval: PASS(score=3.0) | score=3.0 gap=+0.014 rvol=14.67 dolvol=$240,837,505 range_exp=0.99 data=FULL(vol_depth=20)
+09:45:00 [INFO] [MSTR] IN-PLAY gap debug: prev_close=150.39, first_bar_open=145.00, computed_gap=-0.03584014894607346
+09:45:00 [INFO] [MSTR] IN-PLAY eval: FAIL(rvol=0.91<1.5) | score=0.0 gap=-0.036 rvol=0.91 dolvol=$181,809,085 range_exp=0.80 data=FULL(vol_depth=20)
+09:45:00 [INFO] [SOXL] IN-PLAY gap debug: prev_close=54.92, first_bar_open=55.09, computed_gap=0.0030954115076475184
+09:45:00 [INFO] [SOXL] IN-PLAY eval: FAIL(rvol=1.06<1.5) | score=0.0 gap=+0.003 rvol=1.06 dolvol=$322,271,583 range_exp=0.68 data=FULL(vol_depth=20)
+09:45:00 [INFO] [XBI] IN-PLAY gap debug: prev_close=124.20, first_bar_open=123.29, computed_gap=-0.007326892109500777
+09:45:00 [INFO] [XBI] IN-PLAY eval: PASS(score=3.0) | score=3.0 gap=-0.007 rvol=7.41 dolvol=$91,779,171 range_exp=0.86 data=FULL(vol_depth=20)
+09:45:00 [INFO] [MSFT] IN-PLAY gap debug: prev_close=399.50, first_bar_open=397.01, computed_gap=-0.006232790988735942
+09:45:00 [INFO] [MSFT] IN-PLAY eval: PASS(score=3.0) | score=3.0 gap=-0.006 rvol=5.01 dolvol=$636,035,627 range_exp=0.64 data=FULL(vol_depth=20)
+09:45:00 [INFO] [LABD] IN-PLAY gap debug: prev_close=18.82, first_bar_open=19.21, computed_gap=0.020722635494155185
+09:45:00 [INFO] [LABD] IN-PLAY eval: PASS(score=3.0) | score=3.0 gap=+0.021 rvol=7.11 dolvol=$8,405,479 range_exp=0.89 data=FULL(vol_depth=20)
+09:45:00 [INFO] [MU] IN-PLAY gap debug: prev_close=461.68, first_bar_open=465.02, computed_gap=0.007234448102581821
+09:45:00 [INFO] [MU] IN-PLAY eval: PASS(score=1.0) | score=1.0 gap=+0.007 rvol=1.61 dolvol=$2,200,435,386 range_exp=0.85 data=FULL(vol_depth=20)
+09:45:00 [INFO] [SOXS] IN-PLAY gap debug: prev_close=38.08, first_bar_open=38.02, computed_gap=-0.0015756302521007135
+09:45:00 [INFO] [SOXS] IN-PLAY eval: PASS(score=3.0)[gap=0.002<0.005,no_gate] | score=3.0 gap=-0.002 rvol=5.05 dolvol=$128,188,163 range_exp=0.79 data=FULL(vol_depth=20)
+09:45:00 [INFO] [SPY] IN-PLAY gap debug: prev_close=670.73, first_bar_open=668.34, computed_gap=-0.003563281797444555
+09:45:00 [INFO] [SPY] IN-PLAY eval: FAIL(rvol=1.18<1.5) | score=0.0 gap=-0.004 rvol=1.18 dolvol=$3,126,259,759 range_exp=0.58 data=FULL(vol_depth=20)
+09:45:00 [INFO] [ACN] IN-PLAY gap debug: prev_close=198.71, first_bar_open=198.75, computed_gap=0.00020129837451558574
+09:45:00 [INFO] [ACN] IN-PLAY eval: FAIL(rvol=1.37<1.5) | score=0.0 gap=+0.000 rvol=1.37 dolvol=$87,673,177 range_exp=0.44 data=FULL(vol_depth=20)
+09:45:00 [INFO] [C] IN-PLAY gap debug: prev_close=107.71, first_bar_open=107.10, computed_gap=-0.005663355305914023
+09:45:00 [INFO] [C] IN-PLAY eval: PASS(score=2.0) | score=2.0 gap=-0.006 rvol=4.12 dolvol=$57,395,978 range_exp=0.67 data=FULL(vol_depth=20)
+09:45:00 [INFO] [AMPX] IN-PLAY gap debug: prev_close=19.36, first_bar_open=19.38, computed_gap=0.0010330578512396473
+09:45:00 [INFO] [AMPX] IN-PLAY eval: FAIL(rvol=0.44<1.5) | score=0.0 gap=+0.001 rvol=0.44 dolvol=$8,263,181 range_exp=0.65 data=FULL(vol_depth=20)
+09:45:00 [INFO] [IONQ] IN-PLAY gap debug: prev_close=33.32, first_bar_open=33.05, computed_gap=-0.0081032412965187
+09:45:00 [INFO] [IONQ] IN-PLAY eval: FAIL(rvol=1.20<1.5) | score=1.0 gap=-0.008 rvol=1.20 dolvol=$52,784,620 range_exp=1.09 data=FULL(vol_depth=20)
+09:45:00 [INFO] [LULU] IN-PLAY gap debug: prev_close=159.27, first_bar_open=158.03, computed_gap=-0.007785521441577252
+09:45:00 [INFO] [LULU] IN-PLAY eval: PASS(score=6.0) | score=6.0 gap=-0.008 rvol=48.31 dolvol=$226,452,022 range_exp=3.26 data=FULL(vol_depth=20)
+09:45:00 [INFO] [CAVA] IN-PLAY gap debug: prev_close=90.49, first_bar_open=89.00, computed_gap=-0.016465907835119847
+09:45:00 [INFO] [CAVA] IN-PLAY eval: FAIL(rvol=0.56<1.5) | score=0.0 gap=-0.016 rvol=0.56 dolvol=$10,800,571 range_exp=0.91 data=FULL(vol_depth=20)
+09:45:00 [INFO] [GOOGL] IN-PLAY gap debug: prev_close=310.89, first_bar_open=309.20, computed_gap=-0.005436006304480678
+09:45:00 [INFO] [GOOGL] IN-PLAY eval: FAIL(rvol=0.90<1.5) | score=0.0 gap=-0.005 rvol=0.90 dolvol=$478,334,101 range_exp=0.90 data=FULL(vol_depth=20)
+09:45:00 [INFO] [NAIL] IN-PLAY gap debug: prev_close=43.57, first_bar_open=42.44, computed_gap=-0.02593527656644486
+09:45:00 [INFO] [NAIL] IN-PLAY eval: FAIL(rvol=0.57<1.5) | score=0.0 gap=-0.026 rvol=0.57 dolvol=$4,440,927 range_exp=0.46 data=FULL(vol_depth=20)
+09:45:00 [INFO] [RKLB] IN-PLAY gap debug: prev_close=78.58, first_bar_open=76.11, computed_gap=-0.031432934588953916
+09:45:00 [INFO] [RKLB] IN-PLAY eval: PASS(score=2.5) | score=2.5 gap=-0.031 rvol=2.98 dolvol=$283,974,262 range_exp=1.44 data=FULL(vol_depth=20)
+09:45:00 [INFO] [QQQ] IN-PLAY gap debug: prev_close=603.40, first_bar_open=601.41, computed_gap=-0.0032979781239642183
+09:45:00 [INFO] [QQQ] IN-PLAY eval: FAIL(rvol=1.03<1.5) | score=0.0 gap=-0.003 rvol=1.03 dolvol=$2,484,899,542 range_exp=0.57 data=FULL(vol_depth=20)
+09:45:00 [INFO] [GOOG] IN-PLAY gap debug: prev_close=309.37, first_bar_open=307.86, computed_gap=-0.004880886963829689
+09:45:00 [INFO] [GOOG] IN-PLAY eval: PASS(score=3.0)[gap=0.005<0.005,no_gate] | score=3.0 gap=-0.005 rvol=7.52 dolvol=$315,510,640 range_exp=0.86 data=FULL(vol_depth=20)
+09:45:00 [INFO] [UPRO] IN-PLAY gap debug: prev_close=106.92, first_bar_open=105.73, computed_gap=-0.01112981668537222
+09:45:00 [INFO] [UPRO] IN-PLAY eval: PASS(score=2.0) | score=2.0 gap=-0.011 rvol=4.54 dolvol=$35,318,833 range_exp=0.43 data=FULL(vol_depth=20)
+09:45:00 [INFO] [LYFT] IN-PLAY gap debug: prev_close=14.06, first_bar_open=13.85, computed_gap=-0.014935988620199207
+09:45:00 [INFO] [LYFT] IN-PLAY eval: FAIL(rvol=0.53<1.5) | score=0.0 gap=-0.015 rvol=0.53 dolvol=$7,414,730 range_exp=0.38 data=FULL(vol_depth=20)
+09:45:00 [INFO] [NFLX] IN-PLAY gap debug: prev_close=94.39, first_bar_open=94.49, computed_gap=0.0010594342621039763
+09:45:00 [INFO] [NFLX] IN-PLAY eval: FAIL(rvol=0.47<1.5) | score=0.0 gap=+0.001 rvol=0.47 dolvol=$200,591,360 range_exp=0.81 data=FULL(vol_depth=20)
+09:45:00 [INFO] [NVDA] IN-PLAY gap debug: prev_close=181.96, first_bar_open=182.57, computed_gap=0.0033523851395910378
+09:45:00 [INFO] [NVDA] IN-PLAY eval: FAIL(rvol=1.23<1.5) | score=0.0 gap=+0.003 rvol=1.23 dolvol=$2,470,907,312 range_exp=0.86 data=FULL(vol_depth=20)
+09:45:00 [INFO] [SNDK] IN-PLAY gap debug: prev_close=720.35, first_bar_open=730.01, computed_gap=0.013410147844797623
+09:45:00 [INFO] [SNDK] IN-PLAY eval: FAIL(rvol=1.35<1.5) | score=1.5 gap=+0.013 rvol=1.35 dolvol=$1,346,972,117 range_exp=1.69 data=FULL(vol_depth=20)
+09:45:00 [INFO] [TNA] IN-PLAY gap debug: prev_close=45.94, first_bar_open=45.01, computed_gap=-0.020243796255986064
+09:45:00 [INFO] [TNA] IN-PLAY eval: PASS(score=3.0) | score=3.0 gap=-0.020 rvol=6.61 dolvol=$50,931,871 range_exp=0.51 data=FULL(vol_depth=20)
+09:45:00 [INFO] [ARM] IN-PLAY gap debug: prev_close=127.32, first_bar_open=127.91, computed_gap=0.004633993088281522
+09:45:00 [INFO] [ARM] IN-PLAY eval: PASS(score=4.0)[gap=0.005<0.005,no_gate] | score=4.0 gap=+0.005 rvol=6.94 dolvol=$60,726,904 range_exp=1.05 data=FULL(vol_depth=20)
+09:45:00 [INFO] [BATL] IN-PLAY gap debug: prev_close=11.56, first_bar_open=12.85, computed_gap=0.11159169550173002
+09:45:00 [INFO] [BATL] IN-PLAY eval: PASS(score=2.5) | score=2.5 gap=+0.112 rvol=2.04 dolvol=$46,624,319 range_exp=1.32 data=FULL(vol_depth=20)
+09:45:00 [INFO] [COIN] IN-PLAY gap debug: prev_close=210.20, first_bar_open=206.77, computed_gap=-0.016317792578496568
+09:45:00 [INFO] [COIN] IN-PLAY eval: FAIL(rvol=0.94<1.5) | score=0.0 gap=-0.016 rvol=0.94 dolvol=$182,085,513 range_exp=0.84 data=FULL(vol_depth=20)
+09:45:00 [INFO] [PLTR] IN-PLAY gap debug: prev_close=155.11, first_bar_open=155.02, computed_gap=-0.0005802333827606435
+09:45:00 [INFO] [PLTR] IN-PLAY eval: PASS(score=3.0)[gap=0.001<0.005,no_gate] | score=3.0 gap=-0.001 rvol=5.21 dolvol=$382,363,484 range_exp=0.73 data=FULL(vol_depth=20)
+09:45:00 [INFO] [M] IN-PLAY gap debug: prev_close=16.94, first_bar_open=17.58, computed_gap=0.03778040141676487
+09:45:00 [INFO] [M] IN-PLAY eval: PASS(score=4.0) | score=4.0 gap=+0.038 rvol=5.12 dolvol=$37,438,533 range_exp=1.12 data=FULL(vol_depth=20)
+09:45:00 [INFO] [FNGU] IN-PLAY gap debug: prev_close=19.38, first_bar_open=19.13, computed_gap=-0.012899896800825594
+09:45:00 [INFO] [FNGU] IN-PLAY eval: PASS(score=2.0) | score=2.0 gap=-0.013 rvol=4.51 dolvol=$6,011,710 range_exp=0.86 data=FULL(vol_depth=20)
+09:45:00 [INFO] [SNOW] IN-PLAY gap debug: prev_close=174.45, first_bar_open=173.79, computed_gap=-0.0037833190025795163
+09:45:00 [INFO] [SNOW] IN-PLAY eval: FAIL(rvol=0.77<1.5) | score=0.0 gap=-0.004 rvol=0.77 dolvol=$43,040,659 range_exp=0.89 data=FULL(vol_depth=20)
+09:45:00 [INFO] [LABU] IN-PLAY gap debug: prev_close=157.42, first_bar_open=154.36, computed_gap=-0.019438444924405884
+09:45:00 [INFO] [LABU] IN-PLAY eval: PASS(score=3.0) | score=3.0 gap=-0.019 rvol=9.14 dolvol=$15,854,579 range_exp=0.83 data=FULL(vol_depth=20)
+09:45:00 [INFO] [SMX] IN-PLAY gap debug: prev_close=10.71, first_bar_open=10.80, computed_gap=0.008403361344537801
+09:45:00 [INFO] [SMX] IN-PLAY eval: PASS(score=3.0) | score=3.0 gap=+0.008 rvol=8.29 dolvol=$1,347,857 range_exp=0.61 data=FULL(vol_depth=20)
+09:45:00 [INFO] [XLE] IN-PLAY gap debug: prev_close=58.50, first_bar_open=58.70, computed_gap=0.0034188034188034674
+09:45:00 [INFO] [XLE] IN-PLAY eval: PASS(score=2.0)[gap=0.003<0.005,no_gate] | score=2.0 gap=+0.003 rvol=4.89 dolvol=$249,676,915 range_exp=0.45 data=FULL(vol_depth=20)
+09:45:00 [INFO] [WEBL] IN-PLAY gap debug: prev_close=19.55, first_bar_open=19.19, computed_gap=-0.018414322250639357
+09:45:00 [INFO] [WEBL] IN-PLAY eval: FAIL(rvol=0.41<1.5) | score=0.0 gap=-0.018 rvol=0.41 dolvol=$424,228 range_exp=0.92 data=FULL(vol_depth=20)
+09:45:00 [INFO] [TSLL] IN-PLAY gap debug: prev_close=14.31, first_bar_open=14.31, computed_gap=0.0
+09:45:00 [INFO] [TSLL] IN-PLAY eval: PASS(score=2.0)[gap=0.000<0.005,no_gate] | score=2.0 gap=+0.000 rvol=4.67 dolvol=$66,545,465 range_exp=0.72 data=FULL(vol_depth=20)
+09:45:00 [INFO] [AAPL] IN-PLAY gap debug: prev_close=254.23, first_bar_open=252.63, computed_gap=-0.00629351374739407
+09:45:00 [INFO] [AAPL] IN-PLAY eval: PASS(score=4.0) | score=4.0 gap=-0.006 rvol=5.32 dolvol=$457,795,921 range_exp=1.23 data=FULL(vol_depth=20)
+09:45:00 [INFO] [OKLO] IN-PLAY gap debug: prev_close=60.58, first_bar_open=60.36, computed_gap=-0.003631561571475716
+09:45:00 [INFO] [OKLO] IN-PLAY eval: PASS(score=2.5)[gap=0.004<0.005,no_gate] | score=2.5 gap=-0.004 rvol=2.34 dolvol=$79,687,824 range_exp=1.32 data=FULL(vol_depth=20)
+09:45:00 [INFO] [RGTI] IN-PLAY gap debug: prev_close=16.23, first_bar_open=15.95, computed_gap=-0.01755466584539576
+09:45:00 [INFO] [RGTI] IN-PLAY eval: PASS(score=3.0) | score=3.0 gap=-0.018 rvol=5.75 dolvol=$32,730,449 range_exp=0.93 data=FULL(vol_depth=20)
+09:45:00 [INFO] [BAC] IN-PLAY gap debug: prev_close=47.29, first_bar_open=47.43, computed_gap=0.002960456756185252
+09:45:00 [INFO] [BAC] IN-PLAY eval: PASS(score=3.0)[gap=0.003<0.005,no_gate] | score=3.0 gap=+0.003 rvol=5.09 dolvol=$123,931,829 range_exp=0.66 data=FULL(vol_depth=20)
+09:45:00 [INFO] [SPXS] IN-PLAY gap debug: prev_close=37.76, first_bar_open=38.18, computed_gap=0.011122881355932248
+09:45:00 [INFO] [SPXS] IN-PLAY eval: PASS(score=2.0) | score=2.0 gap=+0.011 rvol=4.26 dolvol=$35,980,358 range_exp=0.62 data=FULL(vol_depth=20)
+09:45:00 [INFO] [SMCI] IN-PLAY gap debug: prev_close=31.51, first_bar_open=31.28, computed_gap=-0.0072992700729927135
+09:45:00 [INFO] [SMCI] IN-PLAY eval: PASS(score=2.0) | score=2.0 gap=-0.007 rvol=4.71 dolvol=$62,505,030 range_exp=0.95 data=FULL(vol_depth=20)
+09:45:00 [INFO] [NIO] IN-PLAY gap debug: prev_close=5.96, first_bar_open=5.90, computed_gap=-0.010067114093959667
+09:45:00 [INFO] [NIO] IN-PLAY eval: FAIL(rvol=0.56<1.5) | score=0.0 gap=-0.010 rvol=0.56 dolvol=$18,697,268 range_exp=0.84 data=FULL(vol_depth=20)
+09:45:00 [INFO] [UBER] IN-PLAY gap debug: prev_close=77.80, first_bar_open=77.24, computed_gap=-0.007197943444730107
+09:45:00 [INFO] [UBER] IN-PLAY eval: PASS(score=1.5) | score=1.5 gap=-0.007 rvol=2.64 dolvol=$63,556,337 range_exp=0.59 data=FULL(vol_depth=20)
+09:45:00 [INFO] [AAOI] IN-PLAY gap debug: prev_close=86.29, first_bar_open=95.42, computed_gap=0.10580600301309531
+09:45:00 [INFO] [AAOI] IN-PLAY eval: PASS(score=1.0) | score=1.0 gap=+0.106 rvol=1.54 dolvol=$189,015,985 range_exp=0.89 data=FULL(vol_depth=20)
+09:45:00 [INFO] [DASH] IN-PLAY gap debug: prev_close=169.81, first_bar_open=168.10, computed_gap=-0.010070078322831447
+09:45:00 [INFO] [DASH] IN-PLAY eval: PASS(score=2.0) | score=2.0 gap=-0.010 rvol=3.10 dolvol=$22,046,497 range_exp=0.41 data=FULL(vol_depth=20)
+09:45:00 [INFO] [SWMR] IN-PLAY gap debug: prev_close=29.06, first_bar_open=39.96, computed_gap=0.3750860289057124
+09:45:00 [INFO] [SWMR] IN-PLAY eval: FAIL(rvol=0.00<1.5)[baseline_depth=1] | score=0.0 gap=+0.375 rvol=0.00 dolvol=$80,920,459 range_exp=0.00 data=PARTIAL(vol_depth=1)
+09:45:00 [INFO] [CRSP] IN-PLAY gap debug: prev_close=50.09, first_bar_open=49.73, computed_gap=-0.007187063286085177
+09:45:00 [INFO] [CRSP] IN-PLAY eval: FAIL(rvol=1.34<1.5) | score=0.0 gap=-0.007 rvol=1.34 dolvol=$4,841,803 range_exp=0.71 data=FULL(vol_depth=20)
+09:45:00 [INFO] [SOC] IN-PLAY gap debug: prev_close=17.23, first_bar_open=17.35, computed_gap=0.006964596633778351
+09:45:00 [INFO] [SOC] IN-PLAY eval: PASS(score=2.0) | score=2.0 gap=+0.007 rvol=1.98 dolvol=$14,888,166 range_exp=1.40 data=FULL(vol_depth=20)
+09:45:00 [INFO] [DKNG] IN-PLAY gap debug: prev_close=25.23, first_bar_open=25.10, computed_gap=-0.005152596115735196
+09:45:00 [INFO] [DKNG] IN-PLAY eval: FAIL(rvol=1.09<1.5) | score=1.0 gap=-0.005 rvol=1.09 dolvol=$16,441,860 range_exp=1.14 data=FULL(vol_depth=20)
+09:45:00 [INFO] [JPM] IN-PLAY gap debug: prev_close=286.89, first_bar_open=286.97, computed_gap=0.00027885252187263734
+09:45:00 [INFO] [JPM] IN-PLAY eval: PASS(score=2.0)[gap=0.000<0.005,no_gate] | score=2.0 gap=+0.000 rvol=4.88 dolvol=$126,588,167 range_exp=0.60 data=FULL(vol_depth=20)
+09:45:00 [INFO] [RIVN] IN-PLAY gap debug: prev_close=15.79, first_bar_open=15.67, computed_gap=-0.007599746675110781
+09:45:00 [INFO] [RIVN] IN-PLAY eval: PASS(score=2.0) | score=2.0 gap=-0.008 rvol=3.19 dolvol=$17,200,832 range_exp=0.95 data=FULL(vol_depth=20)
+09:45:00 [INFO] [TSM] IN-PLAY gap debug: prev_close=345.94, first_bar_open=345.58, computed_gap=-0.0010406428860496434
+09:45:00 [INFO] [TSM] IN-PLAY eval: FAIL(rvol=0.56<1.5) | score=0.0 gap=-0.001 rvol=0.56 dolvol=$225,806,319 range_exp=0.59 data=FULL(vol_depth=20)
+09:45:00 [INFO] [HIMS] IN-PLAY gap debug: prev_close=25.02, first_bar_open=24.71, computed_gap=-0.012390087929656225
+09:45:00 [INFO] [HIMS] IN-PLAY eval: FAIL(rvol=0.47<1.5) | score=0.0 gap=-0.012 rvol=0.47 dolvol=$53,659,603 range_exp=0.75 data=FULL(vol_depth=20)
+09:45:00 [INFO] [DAL] IN-PLAY gap debug: prev_close=64.82, first_bar_open=64.25, computed_gap=-0.008793582227707394
+09:45:00 [INFO] [DAL] IN-PLAY eval: FAIL(rvol=0.74<1.5) | score=0.0 gap=-0.009 rvol=0.74 dolvol=$40,263,923 range_exp=0.56 data=FULL(vol_depth=20)
+09:45:00 [INFO] [AGRO] IN-PLAY gap debug: prev_close=12.45, first_bar_open=12.60, computed_gap=0.012048192771084366
+09:45:00 [INFO] [AGRO] IN-PLAY eval: PASS(score=6.0) | score=6.0 gap=+0.012 rvol=8.56 dolvol=$8,932,051 range_exp=3.92 data=FULL(vol_depth=20)
+09:45:00 [INFO] [CF] IN-PLAY gap debug: prev_close=123.28, first_bar_open=126.84, computed_gap=0.028877352368591843
+09:45:00 [INFO] [CF] IN-PLAY eval: PASS(score=3.0) | score=3.0 gap=+0.029 rvol=1.94 dolvol=$100,899,998 range_exp=2.18 data=FULL(vol_depth=20)
+09:45:00 [INFO] [MS] IN-PLAY gap debug: prev_close=157.83, first_bar_open=156.21, computed_gap=-0.010264208325413448
+09:45:00 [INFO] [MS] IN-PLAY eval: PASS(score=2.0) | score=2.0 gap=-0.010 rvol=4.53 dolvol=$44,979,060 range_exp=0.72 data=FULL(vol_depth=20)
+09:45:00 [INFO] [NU] IN-PLAY gap debug: prev_close=14.25, first_bar_open=14.21, computed_gap=-0.0028070175438595895
+09:45:00 [INFO] [NU] IN-PLAY eval: PASS(score=2.0)[gap=0.003<0.005,no_gate] | score=2.0 gap=-0.003 rvol=3.45 dolvol=$21,699,812 range_exp=0.62 data=FULL(vol_depth=20)
+09:45:00 [INFO] [JNJ] IN-PLAY gap debug: prev_close=238.10, first_bar_open=238.00, computed_gap=-0.00041999160016797276
+09:45:00 [INFO] [JNJ] IN-PLAY eval: FAIL(rvol=0.75<1.5) | score=0.0 gap=-0.000 rvol=0.75 dolvol=$64,094,161 range_exp=0.86 data=FULL(vol_depth=20)
+09:45:00 [INFO] [ORCL] IN-PLAY gap debug: prev_close=154.70, first_bar_open=153.21, computed_gap=-0.009631544925662448
+09:45:00 [INFO] [ORCL] IN-PLAY eval: FAIL(rvol=0.60<1.5) | score=0.0 gap=-0.010 rvol=0.60 dolvol=$130,739,203 range_exp=0.42 data=FULL(vol_depth=20)
+09:45:00 [INFO] [COHR] IN-PLAY gap debug: prev_close=245.68, first_bar_open=250.56, computed_gap=0.019863236730706592
+09:45:00 [INFO] [COHR] IN-PLAY eval: FAIL(rvol=1.49<1.5) | score=0.0 gap=+0.020 rvol=1.49 dolvol=$236,118,345 range_exp=0.77 data=FULL(vol_depth=20)
+09:45:00 [INFO] [RTX] IN-PLAY gap debug: prev_close=203.33, first_bar_open=203.91, computed_gap=0.0028525057787831803
+09:45:00 [INFO] [RTX] IN-PLAY eval: FAIL(rvol=0.75<1.5) | score=0.0 gap=+0.003 rvol=0.75 dolvol=$41,890,816 range_exp=0.59 data=FULL(vol_depth=20)
+09:45:00 [INFO] [LITE] IN-PLAY gap debug: prev_close=649.74, first_bar_open=709.99, computed_gap=0.09272939945208852
+09:45:00 [INFO] [LITE] IN-PLAY eval: PASS(score=2.0) | score=2.0 gap=+0.093 rvol=3.63 dolvol=$1,316,392,055 range_exp=0.95 data=FULL(vol_depth=20)
+09:45:00 [INFO] [APH] IN-PLAY gap debug: prev_close=135.14, first_bar_open=136.06, computed_gap=0.006807754920822969
+09:45:00 [INFO] [APH] IN-PLAY eval: FAIL(rvol=1.24<1.5) | score=1.0 gap=+0.007 rvol=1.24 dolvol=$78,199,764 range_exp=1.26 data=FULL(vol_depth=20)
+09:45:00 [INFO] [DOCN] IN-PLAY gap debug: prev_close=77.60, first_bar_open=77.50, computed_gap=-0.0012886597938143599
+09:45:00 [INFO] [DOCN] IN-PLAY eval: PASS(score=3.5)[gap=0.001<0.005,no_gate] | score=3.5 gap=-0.001 rvol=3.72 dolvol=$50,662,094 range_exp=1.97 data=FULL(vol_depth=20)
+09:45:00 [INFO] [NKE] IN-PLAY gap debug: prev_close=55.13, first_bar_open=54.57, computed_gap=-0.010157808815526977
+09:45:00 [INFO] [NKE] IN-PLAY eval: FAIL(rvol=0.85<1.5) | score=0.0 gap=-0.010 rvol=0.85 dolvol=$40,344,318 range_exp=0.74 data=FULL(vol_depth=20)
+09:45:00 [INFO] [TGT] IN-PLAY gap debug: prev_close=116.79, first_bar_open=116.49, computed_gap=-0.0025687130747496477
+09:45:00 [INFO] [TGT] IN-PLAY eval: PASS(score=1.5)[gap=0.003<0.005,no_gate] | score=1.5 gap=-0.003 rvol=2.44 dolvol=$13,371,522 range_exp=0.65 data=FULL(vol_depth=20)
+09:45:00 [INFO] [TECL] IN-PLAY gap debug: prev_close=101.50, first_bar_open=100.94, computed_gap=-0.005517241379310367
+09:45:00 [INFO] [TECL] IN-PLAY eval: FAIL(rvol=0.32<1.5) | score=0.0 gap=-0.006 rvol=0.32 dolvol=$2,976,898 range_exp=0.51 data=FULL(vol_depth=20)
+09:45:00 [INFO] [JNUG] IN-PLAY gap debug: prev_close=225.19, first_bar_open=206.12, computed_gap=-0.084684044584573
+09:45:00 [INFO] [JNUG] IN-PLAY eval: PASS(score=3.0) | score=3.0 gap=-0.085 rvol=8.29 dolvol=$11,596,675 range_exp=0.58 data=PARTIAL(vol_depth=15)
+09:45:00 [INFO] [GE] IN-PLAY gap debug: prev_close=302.13, first_bar_open=301.92, computed_gap=-0.0006950650382285094
+09:45:00 [INFO] [GE] IN-PLAY eval: PASS(score=3.0)[gap=0.001<0.005,no_gate] | score=3.0 gap=-0.001 rvol=5.37 dolvol=$83,903,968 range_exp=0.47 data=FULL(vol_depth=20)
+09:45:00 [INFO] [JBL] IN-PLAY gap debug: prev_close=262.66, first_bar_open=243.01, computed_gap=-0.07481154344018896
+09:45:00 [INFO] [JBL] IN-PLAY eval: PASS(score=5.0) | score=5.0 gap=-0.075 rvol=12.53 dolvol=$79,561,218 range_exp=2.06 data=FULL(vol_depth=20)
+09:45:00 [INFO] [CELH] IN-PLAY gap debug: prev_close=43.95, first_bar_open=43.44, computed_gap=-0.011604095563140047
+09:45:00 [INFO] [CELH] IN-PLAY eval: FAIL(rvol=0.24<1.5) | score=0.0 gap=-0.012 rvol=0.24 dolvol=$4,330,095 range_exp=0.68 data=FULL(vol_depth=20)
+09:45:00 [INFO] [AFRM] IN-PLAY gap debug: prev_close=47.59, first_bar_open=47.02, computed_gap=-0.011977306156755626
+09:45:00 [INFO] [AFRM] IN-PLAY eval: FAIL(rvol=0.73<1.5) | score=1.0 gap=-0.012 rvol=0.73 dolvol=$10,064,178 range_exp=1.30 data=FULL(vol_depth=20)
+09:45:00 [INFO] [PATH] IN-PLAY gap debug: prev_close=11.98, first_bar_open=11.77, computed_gap=-0.017529215358931625
+09:45:00 [INFO] [PATH] IN-PLAY eval: FAIL(rvol=0.58<1.5) | score=1.0 gap=-0.018 rvol=0.58 dolvol=$19,762,268 range_exp=1.31 data=FULL(vol_depth=20)
+09:45:00 [INFO] [FAS] IN-PLAY gap debug: prev_close=119.72, first_bar_open=118.14, computed_gap=-0.01319746074173069
+09:45:00 [INFO] [FAS] IN-PLAY eval: FAIL(rvol=1.13<1.5) | score=0.0 gap=-0.013 rvol=1.13 dolvol=$14,115,949 range_exp=0.54 data=FULL(vol_depth=20)
+09:45:00 [INFO] [CRM] IN-PLAY gap debug: prev_close=195.29, first_bar_open=193.50, computed_gap=-0.0091658559066004
+09:45:00 [INFO] [CRM] IN-PLAY eval: FAIL(rvol=0.58<1.5) | score=0.0 gap=-0.009 rvol=0.58 dolvol=$116,776,517 range_exp=0.63 data=FULL(vol_depth=20)
+09:45:00 [INFO] [SMTC] IN-PLAY gap debug: prev_close=79.18, first_bar_open=80.07, computed_gap=0.011240212174791441
+09:45:00 [INFO] [SMTC] IN-PLAY eval: PASS(score=3.5) | score=3.5 gap=+0.011 rvol=4.14 dolvol=$17,368,723 range_exp=1.60 data=FULL(vol_depth=20)
+09:45:00 [INFO] [FDX] IN-PLAY gap debug: prev_close=354.61, first_bar_open=353.05, computed_gap=-0.0043991991201601825
+09:45:00 [INFO] [FDX] IN-PLAY eval: FAIL(rvol=0.58<1.5) | score=0.0 gap=-0.004 rvol=0.58 dolvol=$11,551,287 range_exp=0.60 data=FULL(vol_depth=20)
+09:45:00 [INFO] [LUNR] IN-PLAY gap debug: prev_close=18.89, first_bar_open=18.79, computed_gap=-0.005293806246691446
+09:45:00 [INFO] [LUNR] IN-PLAY eval: PASS(score=2.0) | score=2.0 gap=-0.005 rvol=3.79 dolvol=$9,505,611 range_exp=0.68 data=FULL(vol_depth=20)
+09:45:00 [INFO] [XYZ] IN-PLAY gap debug: prev_close=59.79, first_bar_open=60.00, computed_gap=0.003512293025589578
+09:45:00 [INFO] [XYZ] IN-PLAY eval: PASS(score=3.0)[gap=0.004<0.005,no_gate] | score=3.0 gap=+0.004 rvol=3.41 dolvol=$18,905,459 range_exp=1.19 data=FULL(vol_depth=20)
+09:45:00 [INFO] [BA] IN-PLAY gap debug: prev_close=210.86, first_bar_open=209.00, computed_gap=-0.00882101868538373
+09:45:00 [INFO] [BA] IN-PLAY eval: FAIL(rvol=0.75<1.5) | score=0.0 gap=-0.009 rvol=0.75 dolvol=$58,086,905 range_exp=0.50 data=FULL(vol_depth=20)
+09:45:00 [INFO] [BNAI] IN-PLAY gap debug: prev_close=40.32, first_bar_open=42.14, computed_gap=0.045138888888888895
+09:45:00 [INFO] [BNAI] IN-PLAY eval: FAIL(rvol=1.02<1.5) | score=1.0 gap=+0.045 rvol=1.02 dolvol=$3,376,298 range_exp=1.31 data=FULL(vol_depth=20)
+09:45:00 [INFO] [PGR] IN-PLAY gap debug: prev_close=203.74, first_bar_open=203.50, computed_gap=-0.0011779719250024987
+09:45:00 [INFO] [PGR] IN-PLAY eval: FAIL(rvol=1.20<1.5) | score=1.0 gap=-0.001 rvol=1.20 dolvol=$24,175,373 range_exp=1.26 data=FULL(vol_depth=20)
+09:45:00 [INFO] [MRNA] IN-PLAY gap debug: prev_close=53.92, first_bar_open=53.28, computed_gap=-0.011869436201780426
+09:45:00 [INFO] [MRNA] IN-PLAY eval: FAIL(rvol=0.62<1.5) | score=0.0 gap=-0.012 rvol=0.62 dolvol=$20,877,687 range_exp=0.63 data=FULL(vol_depth=20)
+09:45:00 [INFO] [DOCU] IN-PLAY gap debug: prev_close=47.50, first_bar_open=46.22, computed_gap=-0.026947368421052654
+09:45:00 [INFO] [DOCU] IN-PLAY eval: PASS(score=6.0) | score=6.0 gap=-0.027 rvol=8.82 dolvol=$98,464,297 range_exp=3.03 data=FULL(vol_depth=20)
+09:45:00 [INFO] [NUGT] IN-PLAY gap debug: prev_close=202.50, first_bar_open=185.03, computed_gap=-0.0862716049382716
+09:45:00 [INFO] [NUGT] IN-PLAY eval: PASS(score=3.0) | score=3.0 gap=-0.086 rvol=14.92 dolvol=$34,940,130 range_exp=0.61 data=FULL(vol_depth=20)
+09:45:00 [INFO] [AXTI] IN-PLAY gap debug: prev_close=44.30, first_bar_open=47.00, computed_gap=0.06094808126410842
+09:45:00 [INFO] [AXTI] IN-PLAY eval: FAIL(rvol=0.79<1.5) | score=0.0 gap=+0.061 rvol=0.79 dolvol=$46,355,539 range_exp=0.73 data=FULL(vol_depth=20)
+09:45:00 [INFO] [WSM] IN-PLAY gap debug: prev_close=182.26, first_bar_open=183.95, computed_gap=0.009272467902995709
+09:45:00 [INFO] [WSM] IN-PLAY eval: PASS(score=5.0) | score=5.0 gap=+0.009 rvol=8.39 dolvol=$69,147,068 range_exp=2.66 data=FULL(vol_depth=20)
+09:45:00 [INFO] [XPEV] IN-PLAY gap debug: prev_close=19.15, first_bar_open=19.00, computed_gap=-0.007832898172323686
+09:45:00 [INFO] [XPEV] IN-PLAY eval: FAIL(rvol=1.05<1.5) | score=0.0 gap=-0.008 rvol=1.05 dolvol=$10,536,288 range_exp=0.83 data=FULL(vol_depth=20)
+09:45:00 [INFO] [VNET] IN-PLAY gap debug: prev_close=9.32, first_bar_open=9.86, computed_gap=0.057372654155496
+09:45:00 [INFO] [VNET] IN-PLAY eval: PASS(score=1.5) | score=1.5 gap=+0.057 rvol=2.22 dolvol=$13,099,593 range_exp=0.91 data=FULL(vol_depth=20)
+09:45:00 [INFO] [KC] IN-PLAY gap debug: prev_close=13.12, first_bar_open=15.33, computed_gap=0.1688905833015631
+09:45:00 [INFO] [KC] IN-PLAY eval: PASS(score=3.5) | score=3.5 gap=+0.169 rvol=3.28 dolvol=$7,123,716 range_exp=1.73 data=FULL(vol_depth=20)
+09:45:00 [INFO] [FIVE] IN-PLAY gap debug: prev_close=213.74, first_bar_open=214.11, computed_gap=0.001731075138018174
+09:45:00 [INFO] [FIVE] IN-PLAY eval: PASS(score=2.5)[gap=0.002<0.005,no_gate] | score=2.5 gap=+0.002 rvol=2.75 dolvol=$15,890,891 range_exp=1.22 data=FULL(vol_depth=20)
+09:45:00 [INFO] [ASO] IN-PLAY gap debug: prev_close=49.89, first_bar_open=50.05, computed_gap=0.003207055522148659
+09:45:00 [INFO] [ASO] IN-PLAY eval: PASS(score=1.5)[gap=0.003<0.005,no_gate] | score=1.5 gap=+0.003 rvol=2.06 dolvol=$5,905,350 range_exp=0.96 data=FULL(vol_depth=20)
+09:45:00 [INFO] [HON] IN-PLAY gap debug: prev_close=231.41, first_bar_open=230.30, computed_gap=-0.0047966812151591775
+09:45:00 [INFO] [HON] IN-PLAY eval: FAIL(rvol=1.00<1.5) | score=0.0 gap=-0.005 rvol=1.00 dolvol=$27,671,760 range_exp=0.64 data=FULL(vol_depth=20)
+09:45:00 [INFO] [NET] IN-PLAY gap debug: prev_close=211.52, first_bar_open=209.75, computed_gap=-0.008368003025718657
+09:45:00 [INFO] [NET] IN-PLAY eval: FAIL(rvol=1.07<1.5) | score=1.0 gap=-0.008 rvol=1.07 dolvol=$47,945,624 range_exp=1.14 data=FULL(vol_depth=20)
+09:45:00 [INFO] [RBLX] IN-PLAY gap debug: prev_close=57.79, first_bar_open=57.48, computed_gap=-0.0053642498702198005
+09:45:00 [INFO] [RBLX] IN-PLAY eval: PASS(score=3.5) | score=3.5 gap=-0.005 rvol=4.61 dolvol=$22,828,024 range_exp=1.52 data=FULL(vol_depth=20)
+09:45:01 [INFO] [FTAI] IN-PLAY gap debug: prev_close=236.75, first_bar_open=235.83, computed_gap=-0.003885955649419166
+09:45:01 [INFO] [FTAI] IN-PLAY eval: FAIL(rvol=0.63<1.5) | score=0.0 gap=-0.004 rvol=0.63 dolvol=$12,176,558 range_exp=0.71 data=FULL(vol_depth=20)
+09:45:01 [INFO] [SEI] IN-PLAY gap debug: prev_close=63.16, first_bar_open=64.14, computed_gap=0.015516149461684675
+09:45:01 [INFO] [SEI] IN-PLAY eval: FAIL(rvol=1.36<1.5) | score=0.0 gap=+0.016 rvol=1.36 dolvol=$8,800,223 range_exp=0.75 data=FULL(vol_depth=20)
+09:45:02 [INFO] [IOT] IN-PLAY gap debug: prev_close=33.70, first_bar_open=33.50, computed_gap=-0.005934718100890291
+09:45:02 [INFO] [IOT] IN-PLAY eval: FAIL(rvol=0.59<1.5) | score=1.5 gap=-0.006 rvol=0.59 dolvol=$8,284,352 range_exp=1.57 data=FULL(vol_depth=20)
+09:45:02 [INFO] [DDOG] IN-PLAY gap debug: prev_close=128.86, first_bar_open=127.41, computed_gap=-0.011252522117026362
+09:45:02 [INFO] [DDOG] IN-PLAY eval: FAIL(rvol=0.78<1.5) | score=1.0 gap=-0.011 rvol=0.78 dolvol=$34,102,166 range_exp=1.12 data=FULL(vol_depth=20)
+09:45:02 [INFO] [SPIR] IN-PLAY gap debug: prev_close=10.85, first_bar_open=11.01, computed_gap=0.014746543778801857
+09:45:02 [INFO] [SPIR] IN-PLAY eval: PASS(score=3.0) | score=3.0 gap=+0.015 rvol=1.55 dolvol=$526,572 range_exp=2.13 data=FULL(vol_depth=20)
+09:45:02 [INFO] [BOBS] IN-PLAY gap debug: prev_close=14.74, first_bar_open=13.68, computed_gap=-0.0719131614654003
+09:45:02 [INFO] [BOBS] IN-PLAY eval: PASS(score=4.0) | score=4.0 gap=-0.072 rvol=3.44 dolvol=$1,161,554 range_exp=2.17 data=FULL(vol_depth=20)
+09:45:03 [INFO] [MUSA] IN-PLAY gap debug: prev_close=458.84, first_bar_open=456.45, computed_gap=-0.0052087873768633655
+09:45:03 [INFO] [MUSA] IN-PLAY eval: FAIL(rvol=0.37<1.5) | score=0.0 gap=-0.005 rvol=0.37 dolvol=$1,134,495 range_exp=0.59 data=FULL(vol_depth=20)
+09:45:04 [INFO] [SHOP] IN-PLAY gap debug: prev_close=127.86, first_bar_open=127.12, computed_gap=-0.005787580165806311
+09:45:04 [INFO] [SHOP] IN-PLAY eval: PASS(score=2.0) | score=2.0 gap=-0.006 rvol=3.84 dolvol=$37,226,706 range_exp=0.82 data=FULL(vol_depth=20)
+09:45:04 [INFO] [STLD] IN-PLAY gap debug: prev_close=172.68, first_bar_open=171.39, computed_gap=-0.007470465601112001
+09:45:04 [INFO] [STLD] IN-PLAY eval: PASS(score=1.5) | score=1.5 gap=-0.007 rvol=2.02 dolvol=$8,937,269 range_exp=0.63 data=FULL(vol_depth=20)
+09:45:04 [INFO] [GCT] IN-PLAY gap debug: prev_close=43.01, first_bar_open=43.35, computed_gap=0.007905138339921028
+09:45:04 [INFO] [GCT] IN-PLAY eval: FAIL(rvol=0.79<1.5) | score=1.0 gap=+0.008 rvol=0.79 dolvol=$1,815,158 range_exp=1.15 data=FULL(vol_depth=20)
+09:45:04 [INFO] [CMCO] IN-PLAY gap debug: prev_close=14.41, first_bar_open=14.86, computed_gap=0.031228313671061714
+09:45:04 [INFO] [CMCO] IN-PLAY eval: FAIL(rvol=1.22<1.5) | score=1.0 gap=+0.031 rvol=1.22 dolvol=$279,821 range_exp=1.05 data=FULL(vol_depth=20)
+09:45:07 [INFO] [RFIL] IN-PLAY gap debug: prev_close=13.04, first_bar_open=13.13, computed_gap=0.006901840490797672
+09:45:07 [INFO] [RFIL] IN-PLAY eval: PASS(score=2.0) | score=2.0 gap=+0.007 rvol=1.63 dolvol=$707,684 range_exp=1.11 data=FULL(vol_depth=20)
+09:45:08 [INFO] [SUNC] IN-PLAY gap debug: prev_close=60.91, first_bar_open=60.79, computed_gap=-0.0019701198489574362
+09:45:08 [INFO] [SUNC] IN-PLAY eval: FAIL(rvol=0.38<1.5) | score=0.0 gap=-0.002 rvol=0.38 dolvol=$338,349 range_exp=0.68 data=FULL(vol_depth=20)
+09:45:11 [INFO] [ATAT] IN-PLAY gap debug: prev_close=37.07, first_bar_open=37.00, computed_gap=-0.001888319395737801
+09:45:11 [INFO] [ATAT] IN-PLAY eval: PASS(score=3.5)[gap=0.002<0.005,no_gate] | score=3.5 gap=-0.002 rvol=3.78 dolvol=$12,099,450 range_exp=1.86 data=FULL(vol_depth=20)
+09:45:14 [INFO] [CTRN] IN-PLAY gap debug: prev_close=51.66, first_bar_open=51.00, computed_gap=-0.012775842044134662
+09:45:14 [INFO] [CTRN] IN-PLAY eval: FAIL(rvol=1.32<1.5) | score=3.0 gap=-0.013 rvol=1.32 dolvol=$296,496 range_exp=3.30 data=FULL(vol_depth=20)
+09:45:24 [INFO] [AMR] IN-PLAY gap debug: prev_close=191.02, first_bar_open=191.47, computed_gap=0.0023557742644748645
+09:45:24 [INFO] [AMR] IN-PLAY eval: FAIL(rvol=1.44<1.5) | score=0.0 gap=+0.002 rvol=1.44 dolvol=$3,189,047 range_exp=0.82 data=FULL(vol_depth=20)
+09:45:24 [INFO] [TSAT] IN-PLAY gap debug: prev_close=42.48, first_bar_open=43.14, computed_gap=0.015536723163841895
+09:45:24 [INFO] [TSAT] IN-PLAY eval: PASS(score=4.0) | score=4.0 gap=+0.016 rvol=3.27 dolvol=$754,640 range_exp=2.53 data=FULL(vol_depth=20)
+09:45:27 [INFO] [GLSI] IN-PLAY gap debug: prev_close=30.07, first_bar_open=29.15, computed_gap=-0.03059527768540079
+09:45:27 [INFO] [GLSI] IN-PLAY eval: FAIL(rvol=0.36<1.5) | score=1.0 gap=-0.031 rvol=0.36 dolvol=$122,700 range_exp=1.05 data=FULL(vol_depth=20)
+09:46:00 [INFO] [MKT:SPY] Bar #95 closed @ 09:40 C=668.75
+09:46:00 [INFO] [MKT:QQQ] Bar #95 closed @ 09:40 C=602.09
+09:46:00 [INFO] [LABD] bar #1960 @ 09:40 C=19.77 | signals=0
+09:46:00 [INFO] [ARM] bar #1940 @ 09:40 C=129.62 | signals=0
+09:46:19 [INFO] [MUSA] bar #1570 @ 09:40 C=458.80 | signals=0
+09:47:08 [INFO] [LWAY] IN-PLAY gap debug: prev_close=19.37, first_bar_open=18.88, computed_gap=-0.025554981930820907
+09:47:08 [INFO] [LWAY] IN-PLAY eval: PASS(score=4.0) | score=4.0 gap=-0.026 rvol=3.67 dolvol=$139,941 range_exp=2.32 data=FULL(vol_depth=20)
+09:51:00 [INFO] [MKT:SPY] Bar #96 closed @ 09:45 C=669.09
+09:51:00 [INFO] [MKT:QQQ] Bar #96 closed @ 09:45 C=602.40
+09:51:00 [INFO] [AGRO] bar #1570 @ 09:45 C=13.32 | signals=0
+09:51:01 [INFO] [BOBS] bar #1570 @ 09:45 C=14.59 | signals=0
+09:51:03 [INFO] [TGT] bar #1960 @ 09:45 C=116.89 | signals=0
+09:51:06 [INFO] [PGR] bar #1570 @ 09:45 C=205.25 | signals=0
+09:56:00 [INFO] [MKT:SPY] Bar #97 closed @ 09:50 C=668.75
+09:56:00 [INFO] [MKT:QQQ] Bar #97 closed @ 09:50 C=601.76
+09:56:00 [INFO] [CRSP] 5m bar #1950 @0950 ind=18μs strat=35μs total=54μs (5 active)
+09:56:00 [INFO] [CRSP] bar #1950 @ 09:50 C=49.24 | signals=0
+09:56:00 [INFO] [SPXS] bar #1920 @ 09:50 C=38.10 | signals=0
+09:56:02 [INFO] [AGRO] 5m bar #1571 @0950 ind=37μs strat=409μs total=446μs (5 active) | SIGNALS: HH_QUALITY
+09:56:02 [INFO] [AGRO] bar #1571 @ 09:50 C=13.49 | signals=1
+09:56:02 [ERROR] Value (Ticker(contract=Stock(conId=83512173, symbol='AGRO', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='AGRO', tradingClass='AGRO'), time=datetime.datetime(2026, 3, 18, 13, 56, 2, 46795, tzinfo=datetime.timezone.utc), minTick=0.01, bid=13.49, bidSize=600.0, bidExchange='NKT', ask=13.53, askSize=2000.0, askExchange='NV', last=13.51, lastSize=100.0, prevBid=13.5, prevBidSize=700.0, prevAsk=13.52, prevAskSize=1900.0, prevLast=13.5, prevLastSize=280.0, volume=1075251.0, open=12.61, high=13.54, low=12.48, close=12.45, ticks=[TickData(time=datetime.datetime(2026, 3, 18, 13, 56, 2, 46795, tzinfo=datetime.timezone.utc), tickType=3, price=13.53, size=2000.0)], bboExchange='a60001', snapshotPermissions=3),) caused exception for event Event<updateEvent, [[None, <weakref at 0x10886bcc0; to 'SymbolRunner' at 0x10823e370>, <function SymbolRunner._on_tick at 0x106951ee0>]]>
+Traceback (most recent call last):
+  File "/Users/jeffreymalkus/Library/Python/3.9/lib/python/site-packages/eventkit/event.py", line 205, in emit
+    result = func(obj, *args)
+  File "/Users/jeffreymalkus/Projects/alert_overlay/dashboard.py", line 1707, in _on_tick
+    price = _safe_price(ticker)
+NameError: name 'perm_reading' is not defined
+09:56:03 [INFO] [SNOW] bar #1960 @ 09:50 C=177.25 | signals=0
+09:56:05 [INFO] [CTRN] bar #1570 @ 09:50 C=53.65 | signals=0
+09:56:06 [INFO] [CMCO] bar #1570 @ 09:50 C=14.68 | signals=0
+10:01:00 [INFO] [TSLA] bar #1960 @ 09:55 C=403.00 | signals=0
+10:01:00 [INFO] [MKT:SPY] Bar #98 closed @ 09:55 C=669.28
+10:01:00 [INFO] [MKT:QQQ] Bar #98 closed @ 09:55 C=602.46
+10:01:00 [INFO] [AAPL] bar #1960 @ 09:55 C=253.43 | signals=0
+10:01:00 [INFO] [SMTC] 5m bar #1650 @0955 ind=23μs strat=34μs total=57μs (5 active)
+10:01:00 [INFO] [SMTC] bar #1650 @ 09:55 C=76.53 | signals=0
+10:01:00 [INFO] [SUNC] bar #1570 @ 09:55 C=60.60 | signals=0
+10:01:09 [INFO] [ATAT] bar #1570 @ 09:55 C=37.99 | signals=0
+10:06:00 [INFO] [MKT:SPY] Bar #99 closed @ 10:00 C=668.46
+10:06:00 [INFO] [MKT:QQQ] Bar #99 closed @ 10:00 C=601.76
+10:06:01 [INFO] [TSAT] 5m bar #1650 @1000 ind=29μs strat=86μs total=115μs (5 active)
+10:06:01 [INFO] [TSAT] bar #1650 @ 10:00 C=41.20 | signals=0
+10:06:02 [INFO] [RFIL] bar #1570 @ 10:00 C=12.66 | signals=0
+10:06:05 [INFO] [ASO] 5m bar #1650 @1000 ind=36μs strat=94μs total=130μs (5 active)
+10:06:05 [INFO] [ASO] bar #1650 @ 10:00 C=50.38 | signals=0
+10:06:10 [INFO] [GLSI] 5m bar #1650 @1000 ind=48μs strat=100μs total=148μs (5 active)
+10:06:10 [INFO] [GLSI] bar #1650 @ 10:00 C=28.74 | signals=0
+10:10:00 [INFO] [LULU] 1m bar #5321 @1009 ind=70μs strat=1136μs total=1206μs (3 active) | SIGNALS: ORH_FBO_V2_A
+10:10:00 [INFO] [LULU] 1m signal @ 10:09 C=164.53 | signals=1
+10:10:00 [INFO] [LULU] ALERT: SHORT ORH_FBO_RETEST @ 164.53
+10:11:00 [INFO] [NVDA] bar #1970 @ 10:05 C=183.12 | signals=0
+10:11:00 [INFO] [QQQ] bar #1970 @ 10:05 C=602.38 | signals=0
+10:11:00 [INFO] [MKT:QQQ] Bar #100 closed @ 10:05 C=602.38
+10:11:00 [INFO] [DKNG] bar #1970 @ 10:05 C=25.68 | signals=0
+10:11:00 [INFO] [SPXL] bar #1860 @ 10:05 C=202.11 | signals=0
+10:11:00 [INFO] [GIS] bar #1580 @ 10:05 C=38.37 | signals=0
+10:11:00 [INFO] [SOXL] bar #1970 @ 10:05 C=55.90 | signals=0
+10:11:00 [INFO] [BABA] 5m bar #1950 @1005 ind=32μs strat=94μs total=126μs (5 active)
+10:11:00 [INFO] [BABA] bar #1950 @ 10:05 C=137.75 | signals=0
+10:11:00 [INFO] [RIVN] bar #1970 @ 10:05 C=15.82 | signals=0
+10:11:00 [INFO] [C] bar #1970 @ 10:05 C=108.78 | signals=0
+10:11:00 [INFO] [SPY] bar #1970 @ 10:05 C=668.88 | signals=0
+10:11:00 [INFO] [AMPX] bar #1580 @ 10:05 C=19.52 | signals=0
+10:11:00 [INFO] [IONQ] bar #1970 @ 10:05 C=33.64 | signals=0
+10:11:00 [INFO] [UBER] bar #1970 @ 10:05 C=77.37 | signals=0
+10:11:00 [INFO] [DAL] bar #1580 @ 10:05 C=64.56 | signals=0
+10:11:00 [INFO] [NU] bar #1970 @ 10:05 C=14.24 | signals=0
+10:11:00 [INFO] [MKT:SPY] Bar #100 closed @ 10:05 C=668.88
+10:11:00 [INFO] [LYFT] bar #1580 @ 10:05 C=13.84 | signals=0
+10:11:00 [INFO] [RKLB] bar #1580 @ 10:05 C=71.92 | signals=0
+10:11:00 [INFO] [GOOG] bar #1970 @ 10:05 C=309.31 | signals=0
+10:11:00 [INFO] [WMT] bar #1970 @ 10:05 C=123.10 | signals=0
+10:11:00 [INFO] [XPEV] bar #1580 @ 10:05 C=18.91 | signals=0
+10:11:00 [INFO] [SNDK] bar #1580 @ 10:05 C=740.72 | signals=0
+10:11:00 [INFO] [MRNA] bar #1970 @ 10:05 C=51.78 | signals=0
+10:11:00 [INFO] [NFLX] bar #1970 @ 10:05 C=94.24 | signals=0
+10:11:00 [INFO] [COIN] bar #1970 @ 10:05 C=205.10 | signals=0
+10:11:00 [INFO] [SEI] bar #1580 @ 10:05 C=66.32 | signals=0
+10:11:00 [INFO] [PLTR] bar #1970 @ 10:05 C=156.62 | signals=0
+10:11:00 [INFO] [LABU] bar #1170 @ 10:05 C=148.32 | signals=0
+10:11:00 [INFO] [M] bar #1580 @ 10:05 C=18.03 | signals=0
+10:11:00 [INFO] [TECL] bar #1860 @ 10:05 C=102.39 | signals=0
+10:11:00 [INFO] [NKE] bar #1970 @ 10:05 C=54.47 | signals=0
+10:11:00 [INFO] [NAIL] 5m bar #1900 @1005 ind=20μs strat=28μs total=49μs (5 active)
+10:11:00 [INFO] [NAIL] bar #1900 @ 10:05 C=41.42 | signals=0
+10:11:00 [INFO] [XLE] bar #1970 @ 10:05 C=58.63 | signals=0
+10:11:00 [INFO] [BAC] bar #1970 @ 10:05 C=47.51 | signals=0
+10:11:00 [INFO] [BNAI] bar #1580 @ 10:05 C=45.28 | signals=0
+10:11:00 [INFO] [RGTI] bar #1970 @ 10:05 C=15.91 | signals=0
+10:11:00 [INFO] [SMCI] bar #1970 @ 10:05 C=31.48 | signals=0
+10:11:00 [INFO] [MSFT] bar #1970 @ 10:05 C=397.52 | signals=0
+10:11:00 [INFO] [DOCU] bar #1580 @ 10:05 C=48.36 | signals=0
+10:11:00 [INFO] [ACN] bar #1580 @ 10:05 C=198.19 | signals=0
+10:11:00 [INFO] [ORCL] bar #1970 @ 10:05 C=153.94 | signals=0
+10:11:00 [INFO] [DASH] bar #1970 @ 10:05 C=167.75 | signals=0
+10:11:00 [INFO] [DOCN] bar #1580 @ 10:05 C=82.95 | signals=0
+10:11:00 [INFO] [AAOI] bar #1580 @ 10:05 C=99.28 | signals=0
+10:11:00 [INFO] [IOT] bar #1580 @ 10:05 C=34.11 | signals=0
+10:11:00 [INFO] [HON] bar #1580 @ 10:05 C=229.96 | signals=0
+10:11:00 [INFO] [MSTR] bar #1580 @ 10:05 C=144.78 | signals=0
+10:11:00 [INFO] [DDOG] bar #1580 @ 10:05 C=132.05 | signals=0
+10:11:00 [INFO] [XYZ] bar #1970 @ 10:05 C=61.16 | signals=0
+10:11:00 [INFO] [CELH] bar #1580 @ 10:05 C=42.01 | signals=0
+10:11:00 [INFO] [JBL] bar #1580 @ 10:05 C=253.50 | signals=0
+10:11:00 [INFO] [AXTI] bar #1580 @ 10:05 C=50.67 | signals=0
+10:11:00 [INFO] [JPM] bar #1970 @ 10:05 C=287.53 | signals=0
+10:11:00 [INFO] [COHR] bar #1580 @ 10:05 C=264.92 | signals=0
+10:11:00 [INFO] [NIO] bar #1580 @ 10:05 C=5.97 | signals=0
+10:11:01 [INFO] [VNET] bar #1580 @ 10:05 C=9.64 | signals=0
+10:11:01 [INFO] [KC] bar #1580 @ 10:05 C=14.78 | signals=0
+10:11:01 [INFO] [BATL] bar #1580 @ 10:05 C=13.02 | signals=0
+10:11:01 [INFO] [LITE] bar #1580 @ 10:05 C=731.36 | signals=0
+10:11:03 [INFO] [CAVA] bar #1580 @ 10:05 C=91.57 | signals=0
+10:11:03 [INFO] [OKLO] bar #1580 @ 10:05 C=60.16 | signals=0
+10:11:06 [INFO] [FDX] bar #1580 @ 10:05 C=353.23 | signals=0
+10:11:22 [INFO] [ORDER] Qualifying contract for LULU...
+10:11:22 [INFO] [ORDER] Contract qualified: LULU conId=45157951
+10:11:22 [INFO] [ORDER] Placing parent SELL 52 LULU @ 164.53...
+10:11:22 [INFO] placeOrder: New order Trade(contract=Stock(conId=45157951, symbol='LULU', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), order=LimitOrder(orderId=1289, clientId=10, action='SELL', totalQuantity=52, lmtPrice=164.53, transmit=False), orderStatus=OrderStatus(orderId=1289, status='PendingSubmit', filled=0.0, remaining=0.0, avgFillPrice=0.0, permId=0, parentId=0, lastFillPrice=0.0, clientId=0, whyHeld='', mktCapPrice=0.0), fills=[], log=[TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 11, 22, 895298, tzinfo=datetime.timezone.utc), status='PendingSubmit', message='', errorCode=0)], advancedError='')
+10:11:22 [INFO] [ORDER] Parent placed: orderId=1289
+10:11:22 [INFO] [ORDER] Placing TP @ 158.84 (parentId=1289)...
+10:11:22 [INFO] placeOrder: New order Trade(contract=Stock(conId=45157951, symbol='LULU', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), order=LimitOrder(orderId=1290, clientId=10, action='BUY', totalQuantity=52, lmtPrice=158.84, transmit=False, parentId=1289), orderStatus=OrderStatus(orderId=1290, status='PendingSubmit', filled=0.0, remaining=0.0, avgFillPrice=0.0, permId=0, parentId=0, lastFillPrice=0.0, clientId=0, whyHeld='', mktCapPrice=0.0), fills=[], log=[TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 11, 22, 896467, tzinfo=datetime.timezone.utc), status='PendingSubmit', message='', errorCode=0)], advancedError='')
+10:11:22 [INFO] [ORDER] TP placed: orderId=1290
+10:11:22 [INFO] [ORDER] Placing SL @ 166.43 (parentId=1289, transmit=True)...
+10:11:22 [INFO] placeOrder: New order Trade(contract=Stock(conId=45157951, symbol='LULU', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), order=StopOrder(orderId=1291, clientId=10, action='BUY', totalQuantity=52, auxPrice=166.43, parentId=1289), orderStatus=OrderStatus(orderId=1291, status='PendingSubmit', filled=0.0, remaining=0.0, avgFillPrice=0.0, permId=0, parentId=0, lastFillPrice=0.0, clientId=0, whyHeld='', mktCapPrice=0.0), fills=[], log=[TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 11, 22, 897208, tzinfo=datetime.timezone.utc), status='PendingSubmit', message='', errorCode=0)], advancedError='')
+10:11:22 [INFO] [ORDER] SL placed: orderId=1291 — bracket transmitted!
+10:11:22 [INFO] [ORDER] Bracket complete: SELL 52 LULU @ 164.53 | Stop 166.43 | Target 158.84 | IDs: parent=1289 tp=1290 sl=1291
+10:11:23 [ERROR] Error 10349, reqId 1289: Order TIF was set to DAY based on order preset.
+10:11:23 [WARNING] Canceled order: Trade(contract=Stock(conId=45157951, symbol='LULU', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), order=LimitOrder(orderId=1289, clientId=10, action='SELL', totalQuantity=52, lmtPrice=164.53, transmit=False), orderStatus=OrderStatus(orderId=1289, status='Cancelled', filled=0.0, remaining=0.0, avgFillPrice=0.0, permId=0, parentId=0, lastFillPrice=0.0, clientId=0, whyHeld='', mktCapPrice=0.0), fills=[], log=[TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 11, 22, 895298, tzinfo=datetime.timezone.utc), status='PendingSubmit', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 11, 23, 54992, tzinfo=datetime.timezone.utc), status='Cancelled', message='Error 10349, reqId 1289: Order TIF was set to DAY based on order preset.', errorCode=10349)], advancedError='')
+10:11:23 [INFO] [ORDER] CANCELLED: LULU real-100900-2
+10:11:23 [ERROR] Error 10349, reqId 1290: Order TIF was set to DAY based on order preset.
+10:11:23 [WARNING] Canceled order: Trade(contract=Stock(conId=45157951, symbol='LULU', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), order=LimitOrder(orderId=1290, clientId=10, action='BUY', totalQuantity=52, lmtPrice=158.84, transmit=False, parentId=1289), orderStatus=OrderStatus(orderId=1290, status='Cancelled', filled=0.0, remaining=0.0, avgFillPrice=0.0, permId=0, parentId=0, lastFillPrice=0.0, clientId=0, whyHeld='', mktCapPrice=0.0), fills=[], log=[TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 11, 22, 896467, tzinfo=datetime.timezone.utc), status='PendingSubmit', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 11, 23, 74715, tzinfo=datetime.timezone.utc), status='Cancelled', message='Error 10349, reqId 1290: Order TIF was set to DAY based on order preset.', errorCode=10349)], advancedError='')
+10:11:23 [INFO] [ORDER] Child tp cancelled for real-100900-2 (orderId=1290)
+10:11:23 [ERROR] Error 10349, reqId 1291: Order TIF was set to DAY based on order preset.
+10:11:23 [WARNING] Canceled order: Trade(contract=Stock(conId=45157951, symbol='LULU', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), order=StopOrder(orderId=1291, clientId=10, action='BUY', totalQuantity=52, auxPrice=166.43, parentId=1289), orderStatus=OrderStatus(orderId=1291, status='Cancelled', filled=0.0, remaining=0.0, avgFillPrice=0.0, permId=0, parentId=0, lastFillPrice=0.0, clientId=0, whyHeld='', mktCapPrice=0.0), fills=[], log=[TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 11, 22, 897208, tzinfo=datetime.timezone.utc), status='PendingSubmit', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 11, 23, 156842, tzinfo=datetime.timezone.utc), status='Cancelled', message='Error 10349, reqId 1291: Order TIF was set to DAY based on order preset.', errorCode=10349)], advancedError='')
+10:11:23 [INFO] [ORDER] Child sl cancelled for real-100900-2 (orderId=1291)
+10:11:23 [INFO] orderStatus: Trade(contract=Stock(conId=45157951, symbol='LULU', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), order=LimitOrder(orderId=1290, clientId=10, permId=1555393086, action='BUY', totalQuantity=52.0, lmtPrice=158.84, auxPrice=0.0, transmit=False, parentId=1289), orderStatus=OrderStatus(orderId=1290, status='PreSubmitted', filled=0.0, remaining=52.0, avgFillPrice=0.0, permId=1555393086, parentId=1289, lastFillPrice=0.0, clientId=10, whyHeld='child', mktCapPrice=0.0), fills=[], log=[TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 11, 22, 896467, tzinfo=datetime.timezone.utc), status='PendingSubmit', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 11, 23, 74715, tzinfo=datetime.timezone.utc), status='Cancelled', message='Error 10349, reqId 1290: Order TIF was set to DAY based on order preset.', errorCode=10349), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 11, 23, 219422, tzinfo=datetime.timezone.utc), status='PreSubmitted', message='', errorCode=0)], advancedError='')
+10:11:23 [INFO] orderStatus: Trade(contract=Stock(conId=45157951, symbol='LULU', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), order=StopOrder(orderId=1291, clientId=10, permId=1555393087, action='BUY', totalQuantity=52.0, lmtPrice=0.0, auxPrice=166.43, parentId=1289), orderStatus=OrderStatus(orderId=1291, status='PreSubmitted', filled=0.0, remaining=52.0, avgFillPrice=0.0, permId=1555393087, parentId=1289, lastFillPrice=0.0, clientId=10, whyHeld='child,trigger', mktCapPrice=0.0), fills=[], log=[TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 11, 22, 897208, tzinfo=datetime.timezone.utc), status='PendingSubmit', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 11, 23, 156842, tzinfo=datetime.timezone.utc), status='Cancelled', message='Error 10349, reqId 1291: Order TIF was set to DAY based on order preset.', errorCode=10349), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 11, 23, 222406, tzinfo=datetime.timezone.utc), status='PreSubmitted', message='', errorCode=0)], advancedError='')
+10:11:23 [INFO] orderStatus: Trade(contract=Stock(conId=45157951, symbol='LULU', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), order=LimitOrder(orderId=1289, clientId=10, permId=1555393085, action='SELL', totalQuantity=52.0, lmtPrice=164.53, auxPrice=0.0, transmit=False), orderStatus=OrderStatus(orderId=1289, status='PreSubmitted', filled=0.0, remaining=52.0, avgFillPrice=0.0, permId=1555393085, parentId=0, lastFillPrice=0.0, clientId=10, whyHeld='', mktCapPrice=0.0), fills=[], log=[TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 11, 22, 895298, tzinfo=datetime.timezone.utc), status='PendingSubmit', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 11, 23, 54992, tzinfo=datetime.timezone.utc), status='Cancelled', message='Error 10349, reqId 1289: Order TIF was set to DAY based on order preset.', errorCode=10349), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 11, 23, 228927, tzinfo=datetime.timezone.utc), status='PreSubmitted', message='', errorCode=0)], advancedError='')
+10:11:23 [INFO] orderStatus: Trade(contract=Stock(conId=45157951, symbol='LULU', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), order=LimitOrder(orderId=1289, clientId=10, permId=1555393085, action='SELL', totalQuantity=52.0, lmtPrice=164.53, auxPrice=0.0, transmit=False), orderStatus=OrderStatus(orderId=1289, status='Submitted', filled=0.0, remaining=52.0, avgFillPrice=0.0, permId=1555393085, parentId=0, lastFillPrice=0.0, clientId=10, whyHeld='', mktCapPrice=0.0), fills=[], log=[TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 11, 22, 895298, tzinfo=datetime.timezone.utc), status='PendingSubmit', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 11, 23, 54992, tzinfo=datetime.timezone.utc), status='Cancelled', message='Error 10349, reqId 1289: Order TIF was set to DAY based on order preset.', errorCode=10349), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 11, 23, 228927, tzinfo=datetime.timezone.utc), status='PreSubmitted', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 11, 23, 233941, tzinfo=datetime.timezone.utc), status='Submitted', message='', errorCode=0)], advancedError='')
+10:12:00 [INFO] [BNAI] 1m bar #7898 @1011 ind=41μs strat=434μs total=476μs (3 active) | SIGNALS: ORH_FBO_V2_A
+10:12:00 [INFO] [BNAI] 1m signal @ 10:11 C=44.38 | signals=1
+10:12:00 [INFO] [BNAI] BLOCKED ORH_FBO_RETEST by in-play: FAIL(rvol=1.02<1.5)
+10:13:24 [INFO] orderStatus: Trade(contract=Stock(conId=45157951, symbol='LULU', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), order=LimitOrder(orderId=1289, clientId=10, permId=1555393085, action='SELL', totalQuantity=52.0, lmtPrice=164.53, auxPrice=0.0, transmit=False), orderStatus=OrderStatus(orderId=1289, status='Cancelled', filled=0.0, remaining=52.0, avgFillPrice=0.0, permId=1555393085, parentId=0, lastFillPrice=0.0, clientId=10, whyHeld='', mktCapPrice=0.0), fills=[], log=[TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 11, 22, 895298, tzinfo=datetime.timezone.utc), status='PendingSubmit', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 11, 23, 54992, tzinfo=datetime.timezone.utc), status='Cancelled', message='Error 10349, reqId 1289: Order TIF was set to DAY based on order preset.', errorCode=10349), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 11, 23, 228927, tzinfo=datetime.timezone.utc), status='PreSubmitted', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 11, 23, 233941, tzinfo=datetime.timezone.utc), status='Submitted', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 13, 24, 123846, tzinfo=datetime.timezone.utc), status='Cancelled', message='', errorCode=0)], advancedError='')
+10:13:24 [INFO] [ORDER] CANCELLED: LULU real-100900-2
+10:13:24 [INFO] Warning 202, reqId 1289: Order Canceled - reason:
+10:13:24 [INFO] orderStatus: Trade(contract=Stock(conId=45157951, symbol='LULU', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), order=LimitOrder(orderId=1290, clientId=10, permId=1555393086, action='BUY', totalQuantity=52.0, lmtPrice=158.84, auxPrice=0.0, transmit=False, parentId=1289), orderStatus=OrderStatus(orderId=1290, status='Cancelled', filled=0.0, remaining=52.0, avgFillPrice=0.0, permId=1555393086, parentId=1289, lastFillPrice=0.0, clientId=10, whyHeld='', mktCapPrice=0.0), fills=[], log=[TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 11, 22, 896467, tzinfo=datetime.timezone.utc), status='PendingSubmit', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 11, 23, 74715, tzinfo=datetime.timezone.utc), status='Cancelled', message='Error 10349, reqId 1290: Order TIF was set to DAY based on order preset.', errorCode=10349), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 11, 23, 219422, tzinfo=datetime.timezone.utc), status='PreSubmitted', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 13, 24, 162779, tzinfo=datetime.timezone.utc), status='Cancelled', message='', errorCode=0)], advancedError='')
+10:13:24 [INFO] [ORDER] Child tp cancelled for real-100900-2 (orderId=1290)
+10:13:24 [INFO] Warning 202, reqId 1290: Order Canceled - reason:
+10:13:24 [INFO] orderStatus: Trade(contract=Stock(conId=45157951, symbol='LULU', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), order=StopOrder(orderId=1291, clientId=10, permId=1555393087, action='BUY', totalQuantity=52.0, lmtPrice=0.0, auxPrice=166.43, parentId=1289), orderStatus=OrderStatus(orderId=1291, status='Cancelled', filled=0.0, remaining=52.0, avgFillPrice=0.0, permId=1555393087, parentId=1289, lastFillPrice=0.0, clientId=10, whyHeld='', mktCapPrice=0.0), fills=[], log=[TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 11, 22, 897208, tzinfo=datetime.timezone.utc), status='PendingSubmit', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 11, 23, 156842, tzinfo=datetime.timezone.utc), status='Cancelled', message='Error 10349, reqId 1291: Order TIF was set to DAY based on order preset.', errorCode=10349), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 11, 23, 222406, tzinfo=datetime.timezone.utc), status='PreSubmitted', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 13, 24, 163594, tzinfo=datetime.timezone.utc), status='Cancelled', message='', errorCode=0)], advancedError='')
+10:13:24 [INFO] [ORDER] Child sl cancelled for real-100900-2 (orderId=1291)
+10:13:24 [INFO] Warning 202, reqId 1291: Order Canceled - reason:
+10:14:00 [INFO] [DKNG] 1m bar #9772 @1013 ind=152μs strat=311μs total=463μs (3 active) | SIGNALS: PDH_FBO_B
+10:14:00 [INFO] [DKNG] 1m signal @ 10:13 C=25.60 | signals=1
+10:14:00 [INFO] [DKNG] BLOCKED PDH_FBO_CONT by in-play: FAIL(rvol=1.09<1.5)
+10:14:00 [INFO] [XYZ] 1m bar #9258 @1013 ind=39μs strat=228μs total=268μs (3 active) | SIGNALS: ORH_FBO_V2_A
+10:14:00 [INFO] [XYZ] 1m signal @ 10:13 C=60.59 | signals=1
+10:14:00 [INFO] [XYZ] BLOCKED ORH_FBO_RETEST by in-play score: 3.0 < 4.5
+10:14:01 [INFO] [NET] 1m bar #8286 @1013 ind=58μs strat=113μs total=170μs (3 active) | SIGNALS: PDH_FBO_B
+10:14:01 [INFO] [NET] 1m signal @ 10:13 C=213.60 | signals=1
+10:14:01 [INFO] [NET] BLOCKED PDH_FBO_CONT by in-play: FAIL(rvol=1.07<1.5)
+10:14:01 [INFO] [DOCU] 1m bar #7900 @1013 ind=141μs strat=326μs total=467μs (3 active) | SIGNALS: PDH_FBO_B
+10:14:01 [INFO] [DOCU] 1m signal @ 10:13 C=48.26 | signals=1
+10:14:01 [INFO] [DOCU] BLOCKED PDH_FBO_CONT by quality: tier=B (need A_TIER)
+10:15:00 [INFO] [NVDA] 1m bar #9851 @1014 ind=50μs strat=462μs total=511μs (3 active) | SIGNALS: ORH_FBO_V2_A
+10:15:00 [INFO] [NVDA] 1m signal @ 10:14 C=182.42 | signals=1
+10:15:00 [INFO] [NVDA] BLOCKED ORH_FBO_RETEST by in-play: FAIL(rvol=1.23<1.5)
+10:15:00 [INFO] [ARM] 1m bar #7385 @1014 ind=62μs strat=306μs total=369μs (3 active) | SIGNALS: ORH_FBO_V2_A
+10:15:00 [INFO] [ARM] 1m signal @ 10:14 C=129.56 | signals=1
+10:15:00 [INFO] [ARM] BLOCKED ORH_FBO_RETEST by in-play score: 4.0 < 4.5
+10:15:03 [INFO] [RTX] 1m bar #9539 @1014 ind=69μs strat=281μs total=350μs (3 active) | SIGNALS: ORH_FBO_V2_A
+10:15:03 [INFO] [RTX] 1m signal @ 10:14 C=205.77 | signals=1
+10:15:03 [INFO] [RTX] BLOCKED ORH_FBO_RETEST by in-play: FAIL(rvol=0.75<1.5)
+10:16:00 [INFO] [LULU] bar #1830 @ 10:10 C=163.94 | signals=0
+10:16:00 [INFO] [WSM] bar #1580 @ 10:10 C=192.09 | signals=0
+10:16:00 [INFO] [MKT:SPY] Bar #101 closed @ 10:10 C=667.16
+10:16:00 [INFO] [MKT:QQQ] Bar #101 closed @ 10:10 C=600.65
+10:16:00 [INFO] [TSLL] bar #1970 @ 10:10 C=14.36 | signals=0
+10:16:00 [INFO] [FNGU] bar #1860 @ 10:10 C=19.26 | signals=0
+10:16:00 [INFO] [SWMR] bar #80 @ 10:10 C=39.01 | signals=0
+10:16:00 [INFO] [STLD] bar #1580 @ 10:10 C=171.59 | signals=0
+10:16:00 [INFO] [RTX] bar #1970 @ 10:10 C=205.77 | signals=0
+10:16:00 [INFO] [JNUG] bar #640 @ 10:10 C=203.00 | signals=0
+10:16:01 [INFO] [SHOP] bar #1970 @ 10:10 C=127.23 | signals=0
+10:16:02 [INFO] [GCT] bar #1580 @ 10:10 C=43.10 | signals=0
+10:16:07 [INFO] [FTAI] bar #1580 @ 10:10 C=245.48 | signals=0
+10:18:00 [INFO] [XYZ] 1m bar #9262 @1017 ind=369μs strat=402μs total=771μs (3 active) | SIGNALS: PDH_FBO_B
+10:18:00 [INFO] [XYZ] 1m signal @ 10:17 C=60.48 | signals=1
+10:18:00 [INFO] [XYZ] BLOCKED PDH_FBO_CONT by in-play score: 3.0 < 4.5
+10:19:00 [INFO] [AMPX] 1m bar #7905 @1018 ind=56μs strat=560μs total=616μs (3 active) | SIGNALS: PDH_FBO_B
+10:19:00 [INFO] [AMPX] 1m signal @ 10:18 C=19.45 | signals=1
+10:19:00 [INFO] [AMPX] BLOCKED PDH_FBO_CONT by in-play: FAIL(rvol=0.44<1.5)
+10:19:01 [INFO] [AXTI] 1m bar #7905 @1018 ind=104μs strat=297μs total=401μs (3 active) | SIGNALS: ORH_FBO_V2_A
+10:19:01 [INFO] [AXTI] 1m signal @ 10:18 C=49.62 | signals=1
+10:19:01 [INFO] [AXTI] BLOCKED ORH_FBO_RETEST by in-play: FAIL(rvol=0.79<1.5)
+10:19:21 [INFO] [ORDER] Qualifying contract for LULU...
+10:19:21 [INFO] [ORDER] Contract qualified: LULU conId=45157951
+10:19:21 [INFO] [ORDER] Placing parent SELL 52 LULU @ 164.53...
+10:19:21 [INFO] placeOrder: New order Trade(contract=Stock(conId=45157951, symbol='LULU', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), order=LimitOrder(orderId=1293, clientId=10, action='SELL', totalQuantity=52, lmtPrice=164.53, transmit=False), orderStatus=OrderStatus(orderId=1293, status='PendingSubmit', filled=0.0, remaining=0.0, avgFillPrice=0.0, permId=0, parentId=0, lastFillPrice=0.0, clientId=0, whyHeld='', mktCapPrice=0.0), fills=[], log=[TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 69442, tzinfo=datetime.timezone.utc), status='PendingSubmit', message='', errorCode=0)], advancedError='')
+10:19:21 [INFO] [ORDER] Parent placed: orderId=1293
+10:19:21 [INFO] [ORDER] Placing TP @ 158.84 (parentId=1293)...
+10:19:21 [INFO] placeOrder: New order Trade(contract=Stock(conId=45157951, symbol='LULU', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), order=LimitOrder(orderId=1294, clientId=10, action='BUY', totalQuantity=52, lmtPrice=158.84, transmit=False, parentId=1293), orderStatus=OrderStatus(orderId=1294, status='PendingSubmit', filled=0.0, remaining=0.0, avgFillPrice=0.0, permId=0, parentId=0, lastFillPrice=0.0, clientId=0, whyHeld='', mktCapPrice=0.0), fills=[], log=[TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 70196, tzinfo=datetime.timezone.utc), status='PendingSubmit', message='', errorCode=0)], advancedError='')
+10:19:21 [INFO] [ORDER] TP placed: orderId=1294
+10:19:21 [INFO] [ORDER] Placing SL @ 166.43 (parentId=1293, transmit=True)...
+10:19:21 [INFO] placeOrder: New order Trade(contract=Stock(conId=45157951, symbol='LULU', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), order=StopOrder(orderId=1295, clientId=10, action='BUY', totalQuantity=52, auxPrice=166.43, parentId=1293), orderStatus=OrderStatus(orderId=1295, status='PendingSubmit', filled=0.0, remaining=0.0, avgFillPrice=0.0, permId=0, parentId=0, lastFillPrice=0.0, clientId=0, whyHeld='', mktCapPrice=0.0), fills=[], log=[TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 70646, tzinfo=datetime.timezone.utc), status='PendingSubmit', message='', errorCode=0)], advancedError='')
+10:19:21 [INFO] [ORDER] SL placed: orderId=1295 — bracket transmitted!
+10:19:21 [INFO] [ORDER] Bracket complete: SELL 52 LULU @ 164.53 | Stop 166.43 | Target 158.84 | IDs: parent=1293 tp=1294 sl=1295
+10:19:21 [ERROR] Error 10349, reqId 1293: Order TIF was set to DAY based on order preset.
+10:19:21 [WARNING] Canceled order: Trade(contract=Stock(conId=45157951, symbol='LULU', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), order=LimitOrder(orderId=1293, clientId=10, action='SELL', totalQuantity=52, lmtPrice=164.53, transmit=False), orderStatus=OrderStatus(orderId=1293, status='Cancelled', filled=0.0, remaining=0.0, avgFillPrice=0.0, permId=0, parentId=0, lastFillPrice=0.0, clientId=0, whyHeld='', mktCapPrice=0.0), fills=[], log=[TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 69442, tzinfo=datetime.timezone.utc), status='PendingSubmit', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 79016, tzinfo=datetime.timezone.utc), status='Cancelled', message='Error 10349, reqId 1293: Order TIF was set to DAY based on order preset.', errorCode=10349)], advancedError='')
+10:19:21 [INFO] [ORDER] CANCELLED: LULU real-100900-2
+10:19:21 [ERROR] Error 10349, reqId 1294: Order TIF was set to DAY based on order preset.
+10:19:21 [WARNING] Canceled order: Trade(contract=Stock(conId=45157951, symbol='LULU', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), order=LimitOrder(orderId=1294, clientId=10, action='BUY', totalQuantity=52, lmtPrice=158.84, transmit=False, parentId=1293), orderStatus=OrderStatus(orderId=1294, status='Cancelled', filled=0.0, remaining=0.0, avgFillPrice=0.0, permId=0, parentId=0, lastFillPrice=0.0, clientId=0, whyHeld='', mktCapPrice=0.0), fills=[], log=[TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 70196, tzinfo=datetime.timezone.utc), status='PendingSubmit', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 179339, tzinfo=datetime.timezone.utc), status='Cancelled', message='Error 10349, reqId 1294: Order TIF was set to DAY based on order preset.', errorCode=10349)], advancedError='')
+10:19:21 [INFO] [ORDER] Child tp cancelled for real-100900-2 (orderId=1294)
+10:19:21 [ERROR] Error 10349, reqId 1295: Order TIF was set to DAY based on order preset.
+10:19:21 [WARNING] Canceled order: Trade(contract=Stock(conId=45157951, symbol='LULU', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), order=StopOrder(orderId=1295, clientId=10, action='BUY', totalQuantity=52, auxPrice=166.43, parentId=1293), orderStatus=OrderStatus(orderId=1295, status='Cancelled', filled=0.0, remaining=0.0, avgFillPrice=0.0, permId=0, parentId=0, lastFillPrice=0.0, clientId=0, whyHeld='', mktCapPrice=0.0), fills=[], log=[TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 70646, tzinfo=datetime.timezone.utc), status='PendingSubmit', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 274062, tzinfo=datetime.timezone.utc), status='Cancelled', message='Error 10349, reqId 1295: Order TIF was set to DAY based on order preset.', errorCode=10349)], advancedError='')
+10:19:21 [INFO] [ORDER] Child sl cancelled for real-100900-2 (orderId=1295)
+10:19:21 [INFO] orderStatus: Trade(contract=Stock(conId=45157951, symbol='LULU', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), order=LimitOrder(orderId=1294, clientId=10, permId=1555393096, action='BUY', totalQuantity=52.0, lmtPrice=158.84, auxPrice=0.0, transmit=False, parentId=1293), orderStatus=OrderStatus(orderId=1294, status='PreSubmitted', filled=0.0, remaining=52.0, avgFillPrice=0.0, permId=1555393096, parentId=1293, lastFillPrice=0.0, clientId=10, whyHeld='child', mktCapPrice=0.0), fills=[], log=[TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 70196, tzinfo=datetime.timezone.utc), status='PendingSubmit', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 179339, tzinfo=datetime.timezone.utc), status='Cancelled', message='Error 10349, reqId 1294: Order TIF was set to DAY based on order preset.', errorCode=10349), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 296842, tzinfo=datetime.timezone.utc), status='PreSubmitted', message='', errorCode=0)], advancedError='')
+10:19:21 [INFO] orderStatus: Trade(contract=Stock(conId=45157951, symbol='LULU', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), order=StopOrder(orderId=1295, clientId=10, permId=1555393097, action='BUY', totalQuantity=52.0, lmtPrice=0.0, auxPrice=166.43, parentId=1293), orderStatus=OrderStatus(orderId=1295, status='PreSubmitted', filled=0.0, remaining=52.0, avgFillPrice=0.0, permId=1555393097, parentId=1293, lastFillPrice=0.0, clientId=10, whyHeld='child,trigger', mktCapPrice=0.0), fills=[], log=[TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 70646, tzinfo=datetime.timezone.utc), status='PendingSubmit', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 274062, tzinfo=datetime.timezone.utc), status='Cancelled', message='Error 10349, reqId 1295: Order TIF was set to DAY based on order preset.', errorCode=10349), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 601182, tzinfo=datetime.timezone.utc), status='PreSubmitted', message='', errorCode=0)], advancedError='')
+10:19:21 [INFO] orderStatus: Trade(contract=Stock(conId=45157951, symbol='LULU', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), order=LimitOrder(orderId=1293, clientId=10, permId=1555393095, action='SELL', totalQuantity=52.0, lmtPrice=164.53, auxPrice=0.0, transmit=False), orderStatus=OrderStatus(orderId=1293, status='Submitted', filled=0.0, remaining=52.0, avgFillPrice=0.0, permId=1555393095, parentId=0, lastFillPrice=0.0, clientId=10, whyHeld='', mktCapPrice=0.0), fills=[], log=[TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 69442, tzinfo=datetime.timezone.utc), status='PendingSubmit', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 79016, tzinfo=datetime.timezone.utc), status='Cancelled', message='Error 10349, reqId 1293: Order TIF was set to DAY based on order preset.', errorCode=10349), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 604518, tzinfo=datetime.timezone.utc), status='Submitted', message='', errorCode=0)], advancedError='')
+10:19:21 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-52.0, avgCost=164.53)
+10:19:21 [INFO] execDetails Execution(execId='0000dc8f.6a008426.01.01', time=datetime.datetime(2026, 3, 18, 18, 19, 21, tzinfo=datetime.timezone.utc), acctNumber='DUP326100', exchange='IBKRATS', side='SLD', shares=52.0, price=164.53, permId=1555393095, clientId=10, orderId=1293, liquidation=0, cumQty=52.0, avgPrice=164.53, orderRef='', evRule='', evMultiplier=0.0, modelCode='', lastLiquidity=2)
+10:19:21 [INFO] execDetails: Fill(contract=Stock(conId=45157951, symbol='LULU', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), execution=Execution(execId='0000dc8f.6a008426.01.01', time=datetime.datetime(2026, 3, 18, 18, 19, 21, tzinfo=datetime.timezone.utc), acctNumber='DUP326100', exchange='IBKRATS', side='SLD', shares=52.0, price=164.53, permId=1555393095, clientId=10, orderId=1293, liquidation=0, cumQty=52.0, avgPrice=164.53, orderRef='', evRule='', evMultiplier=0.0, modelCode='', lastLiquidity=2), commissionReport=CommissionReport(execId='', commission=0.0, currency='', realizedPNL=0.0, yield_=0.0, yieldRedemptionDate=0), time=datetime.datetime(2026, 3, 18, 14, 19, 21, 956910, tzinfo=datetime.timezone.utc))
+10:19:21 [INFO] orderStatus: Trade(contract=Stock(conId=45157951, symbol='LULU', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), order=LimitOrder(orderId=1293, clientId=10, permId=1555393095, action='SELL', totalQuantity=52.0, lmtPrice=164.53, auxPrice=0.0, transmit=False), orderStatus=OrderStatus(orderId=1293, status='Filled', filled=52.0, remaining=0.0, avgFillPrice=164.53, permId=1555393095, parentId=0, lastFillPrice=164.53, clientId=10, whyHeld='', mktCapPrice=0.0), fills=[Fill(contract=Stock(conId=45157951, symbol='LULU', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), execution=Execution(execId='0000dc8f.6a008426.01.01', time=datetime.datetime(2026, 3, 18, 18, 19, 21, tzinfo=datetime.timezone.utc), acctNumber='DUP326100', exchange='IBKRATS', side='SLD', shares=52.0, price=164.53, permId=1555393095, clientId=10, orderId=1293, liquidation=0, cumQty=52.0, avgPrice=164.53, orderRef='', evRule='', evMultiplier=0.0, modelCode='', lastLiquidity=2), commissionReport=CommissionReport(execId='', commission=0.0, currency='', realizedPNL=0.0, yield_=0.0, yieldRedemptionDate=0), time=datetime.datetime(2026, 3, 18, 14, 19, 21, 956910, tzinfo=datetime.timezone.utc))], log=[TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 69442, tzinfo=datetime.timezone.utc), status='PendingSubmit', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 79016, tzinfo=datetime.timezone.utc), status='Cancelled', message='Error 10349, reqId 1293: Order TIF was set to DAY based on order preset.', errorCode=10349), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 604518, tzinfo=datetime.timezone.utc), status='Submitted', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 956910, tzinfo=datetime.timezone.utc), status='Submitted', message='Fill 52.0@164.53', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 958441, tzinfo=datetime.timezone.utc), status='Filled', message='', errorCode=0)], advancedError='')
+10:19:21 [INFO] [ORDER] ENTRY FILLED: LULU SHORT 52sh @ 164.53
+10:19:21 [INFO] orderStatus: Trade(contract=Stock(conId=45157951, symbol='LULU', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), order=LimitOrder(orderId=1294, clientId=10, permId=1555393096, action='BUY', totalQuantity=52.0, lmtPrice=158.84, auxPrice=0.0, transmit=False, parentId=1293), orderStatus=OrderStatus(orderId=1294, status='PreSubmitted', filled=0.0, remaining=52.0, avgFillPrice=0.0, permId=1555393096, parentId=1293, lastFillPrice=0.0, clientId=10, whyHeld='', mktCapPrice=0.0), fills=[], log=[TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 70196, tzinfo=datetime.timezone.utc), status='PendingSubmit', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 179339, tzinfo=datetime.timezone.utc), status='Cancelled', message='Error 10349, reqId 1294: Order TIF was set to DAY based on order preset.', errorCode=10349), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 296842, tzinfo=datetime.timezone.utc), status='PreSubmitted', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 961094, tzinfo=datetime.timezone.utc), status='PreSubmitted', message='', errorCode=0)], advancedError='')
+10:19:21 [INFO] orderStatus: Trade(contract=Stock(conId=45157951, symbol='LULU', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), order=StopOrder(orderId=1295, clientId=10, permId=1555393097, action='BUY', totalQuantity=52.0, lmtPrice=0.0, auxPrice=166.43, parentId=1293), orderStatus=OrderStatus(orderId=1295, status='PreSubmitted', filled=0.0, remaining=52.0, avgFillPrice=0.0, permId=1555393097, parentId=1293, lastFillPrice=0.0, clientId=10, whyHeld='trigger', mktCapPrice=0.0), fills=[], log=[TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 70646, tzinfo=datetime.timezone.utc), status='PendingSubmit', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 274062, tzinfo=datetime.timezone.utc), status='Cancelled', message='Error 10349, reqId 1295: Order TIF was set to DAY based on order preset.', errorCode=10349), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 601182, tzinfo=datetime.timezone.utc), status='PreSubmitted', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 964113, tzinfo=datetime.timezone.utc), status='PreSubmitted', message='', errorCode=0)], advancedError='')
+10:19:21 [INFO] commissionReport: CommissionReport(execId='0000dc8f.6a008426.01.01', commission=1.01014, currency='USD', realizedPNL=0.0, yield_=0.0, yieldRedemptionDate=0)
+10:19:21 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-52.0, avgCost=164.51057423076924)
+10:19:21 [INFO] orderStatus: Trade(contract=Stock(conId=45157951, symbol='LULU', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), order=LimitOrder(orderId=1294, clientId=10, permId=1555393096, action='BUY', totalQuantity=52.0, lmtPrice=158.84, auxPrice=0.0, transmit=False, parentId=1293), orderStatus=OrderStatus(orderId=1294, status='Submitted', filled=0.0, remaining=52.0, avgFillPrice=0.0, permId=1555393096, parentId=1293, lastFillPrice=0.0, clientId=10, whyHeld='', mktCapPrice=0.0), fills=[], log=[TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 70196, tzinfo=datetime.timezone.utc), status='PendingSubmit', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 179339, tzinfo=datetime.timezone.utc), status='Cancelled', message='Error 10349, reqId 1294: Order TIF was set to DAY based on order preset.', errorCode=10349), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 296842, tzinfo=datetime.timezone.utc), status='PreSubmitted', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 961094, tzinfo=datetime.timezone.utc), status='PreSubmitted', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 975871, tzinfo=datetime.timezone.utc), status='Submitted', message='', errorCode=0)], advancedError='')
+10:19:22 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-52.0, marketPrice=164.6904297, marketValue=-8563.9, averageCost=164.51057425, unrealizedPNL=-9.35, realizedPNL=0.0, account='DUP326100')
+10:20:00 [INFO] [PLTR] 1m bar #9674 @1019 ind=55μs strat=451μs total=506μs (3 active) | SIGNALS: ORH_FBO_V2_B
+10:20:00 [INFO] [PLTR] 1m signal @ 10:19 C=155.65 | signals=1
+10:20:00 [INFO] [PLTR] BLOCKED ORH_FBO_CONT by in-play score: 3.0 < 4.5
+10:21:00 [INFO] [MKT:SPY] Bar #102 closed @ 10:15 C=667.54
+10:21:00 [INFO] [XBI] bar #1970 @ 10:15 C=122.08 | signals=0
+10:21:00 [INFO] [TSM] bar #1660 @ 10:15 C=344.55 | signals=0
+10:21:00 [INFO] [CF] bar #1660 @ 10:15 C=122.90 | signals=0
+10:21:00 [INFO] [UPRO] bar #1430 @ 10:15 C=105.40 | signals=0
+10:21:00 [INFO] [GOOGL] bar #1660 @ 10:15 C=310.01 | signals=0
+10:21:00 [INFO] [MKT:QQQ] Bar #102 closed @ 10:15 C=600.87
+10:21:00 [INFO] [GE] bar #1970 @ 10:15 C=302.74 | signals=0
+10:21:00 [INFO] [PATH] bar #1660 @ 10:15 C=12.14 | signals=0
+10:21:00 [INFO] [CRM] bar #1660 @ 10:15 C=193.40 | signals=0
+10:21:00 [INFO] [HIMS] bar #1660 @ 10:15 C=23.97 | signals=0
+10:21:00 [INFO] [RBLX] bar #1970 @ 10:15 C=59.18 | signals=0
+10:21:00 [INFO] [RIVN] 5m bar #1972 @1015 ind=22μs strat=264μs total=286μs (5 active) | SIGNALS: BDR_SHORT
+10:21:00 [INFO] [RIVN] bar #1972 @ 10:15 C=15.74 | signals=1
+10:21:00 [INFO] [RIVN] BLOCKED BDR_SHORT by regime: regime_SPY_above_VWAP(pct=+0.03%)
+10:21:00 [INFO] [MU] bar #1660 @ 10:15 C=463.32 | signals=0
+10:21:00 [INFO] [BA] bar #1660 @ 10:15 C=207.90 | signals=0
+10:21:00 [INFO] [SOC] bar #1660 @ 10:15 C=17.52 | signals=0
+10:21:00 [INFO] [NET] bar #1660 @ 10:15 C=214.75 | signals=0
+10:21:00 [INFO] [MS] bar #1960 @ 10:15 C=157.92 | signals=0
+10:21:00 [INFO] [DOCN] 1m bar #7897 @1020 ind=89μs strat=440μs total=529μs (3 active) | SIGNALS: ORH_FBO_V2_B
+10:21:00 [INFO] [DOCN] bar #1582 @ 10:15 C=82.24 | signals=1
+10:21:00 [INFO] [DOCN] BLOCKED ORH_FBO_CONT by in-play score: 3.5 < 4.5
+10:21:01 [INFO] [AFRM] bar #1970 @ 10:15 C=48.21 | signals=0
+10:21:02 [INFO] [JNJ] bar #1660 @ 10:15 C=238.55 | signals=0
+10:21:09 [INFO] [SMX] bar #1660 @ 10:15 C=9.05 | signals=0
+10:21:16 [INFO] [LWAY] bar #1570 @ 10:15 C=19.00 | signals=0
+10:22:23 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-52.0, marketPrice=164.1759491, marketValue=-8537.15, averageCost=164.51057425, unrealizedPNL=17.4, realizedPNL=0.0, account='DUP326100')
+10:23:00 [INFO] [TSLA] 1m bar #9811 @1022 ind=182μs strat=587μs total=769μs (3 active) | SIGNALS: PDH_FBO_B
+10:23:00 [INFO] [TSLA] 1m signal @ 10:22 C=399.68 | signals=1
+10:23:00 [INFO] [TSLA] BLOCKED PDH_FBO_CONT by in-play score: 3.0 < 4.5
+10:23:00 [INFO] [TSLL] 1m bar #9188 @1022 ind=62μs strat=163μs total=225μs (3 active) | SIGNALS: PDH_FBO_B
+10:23:00 [INFO] [TSLL] 1m signal @ 10:22 C=14.35 | signals=1
+10:23:00 [INFO] [TSLL] BLOCKED PDH_FBO_CONT by in-play score: 2.0 < 4.5
+10:24:00 [INFO] [VNET] 1m bar #7904 @1023 ind=70μs strat=284μs total=354μs (3 active) | SIGNALS: PDH_FBO_B
+10:24:00 [INFO] [VNET] 1m signal @ 10:23 C=9.56 | signals=1
+10:24:00 [INFO] [VNET] BLOCKED PDH_FBO_CONT by in-play score: 1.5 < 4.5
+10:24:24 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-52.0, avgCost=164.51057425)
+10:24:24 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-52.0, avgCost=164.51057425)
+10:25:00 [INFO] [LULU] 1m bar #5336 @1024 ind=78μs strat=726μs total=804μs (3 active) | SIGNALS: PDH_FBO_B
+10:25:00 [INFO] [LULU] 1m signal @ 10:24 C=163.79 | signals=1
+10:25:00 [INFO] [LULU] ALERT: SHORT PDH_FBO_CONT @ 163.79
+10:25:23 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-52.0, marketPrice=163.51434325, marketValue=-8502.75, averageCost=164.51057425, unrealizedPNL=51.8, realizedPNL=0.0, account='DUP326100')
+10:26:00 [INFO] [MKT:SPY] Bar #103 closed @ 10:20 C=667.28
+10:26:00 [INFO] [SOXL] 5m bar #1973 @1020 ind=23μs strat=235μs total=257μs (5 active) | SIGNALS: BDR_SHORT
+10:26:00 [INFO] [SOXL] bar #1973 @ 10:20 C=54.73 | signals=1
+10:26:00 [INFO] [SOXL] BLOCKED BDR_SHORT by regime: regime_SPY_not_bearish(pct=-0.04%>-0.32%)
+10:26:00 [INFO] [MKT:QQQ] Bar #103 closed @ 10:20 C=600.61
+10:26:00 [INFO] [TNA] bar #1840 @ 10:20 C=44.71 | signals=0
+10:26:00 [INFO] [LUNR] bar #1970 @ 10:20 C=18.41 | signals=0
+10:26:00 [INFO] [FIVE] bar #1580 @ 10:20 C=214.79 | signals=0
+10:26:00 [INFO] [FAS] 5m bar #1900 @1020 ind=18μs strat=46μs total=64μs (5 active)
+10:26:00 [INFO] [FAS] bar #1900 @ 10:20 C=118.33 | signals=0
+10:28:23 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-52.0, marketPrice=163.4054413, marketValue=-8497.08, averageCost=164.51057425, unrealizedPNL=57.47, realizedPNL=0.0, account='DUP326100')
+10:31:00 [INFO] [NUGT] bar #1040 @ 10:25 C=181.54 | signals=0
+10:31:00 [INFO] [SOXS] bar #1890 @ 10:25 C=38.37 | signals=0
+10:31:00 [INFO] [MKT:SPY] Bar #104 closed @ 10:25 C=665.96
+10:31:00 [INFO] [MKT:QQQ] Bar #104 closed @ 10:25 C=598.97
+10:31:00 [INFO] [WEBL] 5m bar #1850 @1025 ind=16μs strat=24μs total=40μs (5 active)
+10:31:00 [INFO] [WEBL] bar #1850 @ 10:25 C=19.18 | signals=0
+10:31:00 [INFO] [APH] bar #1580 @ 10:25 C=131.39 | signals=0
+10:31:00 [INFO] [LUNR] 5m bar #1971 @1025 ind=17μs strat=229μs total=246μs (5 active) | SIGNALS: BDR_SHORT
+10:31:00 [INFO] [LUNR] bar #1971 @ 10:25 C=18.38 | signals=1
+10:31:00 [INFO] [LUNR] BLOCKED BDR_SHORT by regime: regime_SPY_not_bearish(pct=-0.15%>-0.32%)
+10:31:08 [INFO] [AMR] bar #1580 @ 10:25 C=193.72 | signals=0
+10:31:14 [INFO] [SPIR] bar #1580 @ 10:25 C=10.20 | signals=0
+10:31:23 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-52.0, marketPrice=163.06303405, marketValue=-8479.28, averageCost=164.51057425, unrealizedPNL=75.27, realizedPNL=0.0, account='DUP326100')
+10:31:24 [INFO] orderStatus: Trade(contract=Stock(conId=45157951, symbol='LULU', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), order=StopOrder(orderId=1295, clientId=10, permId=1555393097, action='BUY', totalQuantity=52.0, lmtPrice=0.0, auxPrice=162.82, parentId=1293), orderStatus=OrderStatus(orderId=1295, status='Submitted', filled=0.0, remaining=52.0, avgFillPrice=0.0, permId=1555393097, parentId=1293, lastFillPrice=0.0, clientId=10, whyHeld='', mktCapPrice=0.0), fills=[], log=[TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 70646, tzinfo=datetime.timezone.utc), status='PendingSubmit', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 274062, tzinfo=datetime.timezone.utc), status='Cancelled', message='Error 10349, reqId 1295: Order TIF was set to DAY based on order preset.', errorCode=10349), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 601182, tzinfo=datetime.timezone.utc), status='PreSubmitted', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 964113, tzinfo=datetime.timezone.utc), status='PreSubmitted', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 31, 24, 496847, tzinfo=datetime.timezone.utc), status='Submitted', message='', errorCode=0)], advancedError='')
+10:31:24 [INFO] orderStatus: Trade(contract=Stock(conId=45157951, symbol='LULU', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), order=LimitOrder(orderId=1294, clientId=10, permId=1555393096, action='BUY', lmtPrice=158.84, auxPrice=0.0, transmit=False, parentId=1293), orderStatus=OrderStatus(orderId=1294, status='PendingCancel', filled=0.0, remaining=0.0, avgFillPrice=0.0, permId=1555393096, parentId=1293, lastFillPrice=0.0, clientId=10, whyHeld='', mktCapPrice=0.0), fills=[], log=[TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 70196, tzinfo=datetime.timezone.utc), status='PendingSubmit', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 179339, tzinfo=datetime.timezone.utc), status='Cancelled', message='Error 10349, reqId 1294: Order TIF was set to DAY based on order preset.', errorCode=10349), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 296842, tzinfo=datetime.timezone.utc), status='PreSubmitted', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 961094, tzinfo=datetime.timezone.utc), status='PreSubmitted', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 975871, tzinfo=datetime.timezone.utc), status='Submitted', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 31, 24, 501918, tzinfo=datetime.timezone.utc), status='PendingCancel', message='', errorCode=0)], advancedError='')
+10:31:24 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, avgCost=0.0)
+10:31:24 [INFO] execDetails Execution(execId='0000dc8f.6a009dbe.01.01', time=datetime.datetime(2026, 3, 18, 18, 31, 24, tzinfo=datetime.timezone.utc), acctNumber='DUP326100', exchange='IBKRATS', side='BOT', shares=52.0, price=163.06, permId=1555393097, clientId=10, orderId=1295, liquidation=0, cumQty=52.0, avgPrice=163.06, orderRef='', evRule='', evMultiplier=0.0, modelCode='', lastLiquidity=2)
+10:31:24 [INFO] execDetails: Fill(contract=Stock(conId=45157951, symbol='LULU', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), execution=Execution(execId='0000dc8f.6a009dbe.01.01', time=datetime.datetime(2026, 3, 18, 18, 31, 24, tzinfo=datetime.timezone.utc), acctNumber='DUP326100', exchange='IBKRATS', side='BOT', shares=52.0, price=163.06, permId=1555393097, clientId=10, orderId=1295, liquidation=0, cumQty=52.0, avgPrice=163.06, orderRef='', evRule='', evMultiplier=0.0, modelCode='', lastLiquidity=2), commissionReport=CommissionReport(execId='', commission=0.0, currency='', realizedPNL=0.0, yield_=0.0, yieldRedemptionDate=0), time=datetime.datetime(2026, 3, 18, 14, 31, 24, 507858, tzinfo=datetime.timezone.utc))
+10:31:24 [INFO] orderStatus: Trade(contract=Stock(conId=45157951, symbol='LULU', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), order=StopOrder(orderId=1295, clientId=10, permId=1555393097, action='BUY', totalQuantity=52.0, lmtPrice=0.0, auxPrice=162.82, parentId=1293), orderStatus=OrderStatus(orderId=1295, status='Filled', filled=52.0, remaining=0.0, avgFillPrice=163.06, permId=1555393097, parentId=1293, lastFillPrice=163.06, clientId=10, whyHeld='', mktCapPrice=0.0), fills=[Fill(contract=Stock(conId=45157951, symbol='LULU', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), execution=Execution(execId='0000dc8f.6a009dbe.01.01', time=datetime.datetime(2026, 3, 18, 18, 31, 24, tzinfo=datetime.timezone.utc), acctNumber='DUP326100', exchange='IBKRATS', side='BOT', shares=52.0, price=163.06, permId=1555393097, clientId=10, orderId=1295, liquidation=0, cumQty=52.0, avgPrice=163.06, orderRef='', evRule='', evMultiplier=0.0, modelCode='', lastLiquidity=2), commissionReport=CommissionReport(execId='', commission=0.0, currency='', realizedPNL=0.0, yield_=0.0, yieldRedemptionDate=0), time=datetime.datetime(2026, 3, 18, 14, 31, 24, 507858, tzinfo=datetime.timezone.utc))], log=[TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 70646, tzinfo=datetime.timezone.utc), status='PendingSubmit', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 274062, tzinfo=datetime.timezone.utc), status='Cancelled', message='Error 10349, reqId 1295: Order TIF was set to DAY based on order preset.', errorCode=10349), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 601182, tzinfo=datetime.timezone.utc), status='PreSubmitted', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 964113, tzinfo=datetime.timezone.utc), status='PreSubmitted', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 31, 24, 496847, tzinfo=datetime.timezone.utc), status='Submitted', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 31, 24, 507858, tzinfo=datetime.timezone.utc), status='Submitted', message='Fill 52.0@163.06', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 31, 24, 509437, tzinfo=datetime.timezone.utc), status='Filled', message='', errorCode=0)], advancedError='')
+10:31:24 [INFO] [ORDER] STOPPED OUT: LULU SHORT exit @ 163.06
+10:31:24 [INFO] orderStatus: Trade(contract=Stock(conId=45157951, symbol='LULU', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), order=LimitOrder(orderId=1294, clientId=10, permId=1555393096, action='BUY', lmtPrice=158.84, auxPrice=0.0, transmit=False, parentId=1293), orderStatus=OrderStatus(orderId=1294, status='Cancelled', filled=0.0, remaining=0.0, avgFillPrice=0.0, permId=1555393096, parentId=1293, lastFillPrice=0.0, clientId=10, whyHeld='', mktCapPrice=0.0), fills=[], log=[TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 70196, tzinfo=datetime.timezone.utc), status='PendingSubmit', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 179339, tzinfo=datetime.timezone.utc), status='Cancelled', message='Error 10349, reqId 1294: Order TIF was set to DAY based on order preset.', errorCode=10349), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 296842, tzinfo=datetime.timezone.utc), status='PreSubmitted', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 961094, tzinfo=datetime.timezone.utc), status='PreSubmitted', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 19, 21, 975871, tzinfo=datetime.timezone.utc), status='Submitted', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 31, 24, 501918, tzinfo=datetime.timezone.utc), status='PendingCancel', message='', errorCode=0), TradeLogEntry(time=datetime.datetime(2026, 3, 18, 14, 31, 24, 518079, tzinfo=datetime.timezone.utc), status='Cancelled', message='', errorCode=0)], advancedError='')
+10:31:24 [INFO] [ORDER] Child tp cancelled for real-100900-2 (orderId=1294)
+10:31:24 [INFO] Warning 202, reqId 1294: Order Canceled - reason:
+10:31:24 [INFO] commissionReport: CommissionReport(execId='0000dc8f.6a009dbe.01.01', commission=1.0, currency='USD', realizedPNL=74.42986, yield_=0.0, yieldRedemptionDate=0)
+10:31:24 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, avgCost=0.0)
+10:31:24 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, avgCost=0.0)
+10:31:25 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, marketPrice=163.05000305, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=74.43, account='DUP326100')
+10:34:01 [INFO] [BNAI] 1m bar #7920 @1033 ind=117μs strat=1010μs total=1127μs (3 active) | SIGNALS: ORH_FBO_V2_B
+10:34:01 [INFO] [BNAI] 1m signal @ 10:33 C=44.20 | signals=1
+10:34:01 [INFO] [BNAI] BLOCKED ORH_FBO_CONT by in-play: FAIL(rvol=1.02<1.5)
+10:34:25 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, marketPrice=163.16297915, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=74.43, account='DUP326100')
+10:35:00 [INFO] [ATAT] 1m bar #7874 @1034 ind=39μs strat=241μs total=280μs (3 active) | SIGNALS: PDH_FBO_B
+10:35:00 [INFO] [ATAT] 1m signal @ 10:34 C=37.83 | signals=1
+10:35:00 [INFO] [ATAT] BLOCKED PDH_FBO_CONT by in-play score: 3.5 < 4.5
+10:36:00 [INFO] [MKT:QQQ] Bar #105 closed @ 10:30 C=599.33
+10:36:00 [INFO] [MKT:SPY] Bar #105 closed @ 10:30 C=666.22
+10:36:00 [INFO] [LABD] bar #1970 @ 10:30 C=19.80 | signals=0
+10:36:01 [INFO] [MUSA] bar #1580 @ 10:30 C=452.05 | signals=0
+10:36:02 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, avgCost=0.0)
+10:36:02 [INFO] [ARM] 5m bar #1950 @1030 ind=44μs strat=71μs total=115μs (5 active)
+10:36:02 [INFO] [ARM] bar #1950 @ 10:30 C=127.77 | signals=0
+10:37:25 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, marketPrice=163.598526, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=74.43, account='DUP326100')
+10:40:06 [INFO] [DDOG] 1m bar #7922 @1039 ind=89μs strat=370μs total=459μs (3 active) | SIGNALS: PDH_FBO_B
+10:40:06 [INFO] [DDOG] 1m signal @ 10:39 C=131.43 | signals=1
+10:40:06 [INFO] [DDOG] BLOCKED PDH_FBO_CONT by in-play: FAIL(rvol=0.78<1.5)
+10:40:25 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, marketPrice=164.3677368, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=74.43, account='DUP326100')
+10:40:53 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, marketPrice=164.59243775, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=74.43, account='DUP326100')
+10:41:00 [INFO] [MKT:QQQ] Bar #106 closed @ 10:35 C=599.32
+10:41:00 [INFO] [MKT:SPY] Bar #106 closed @ 10:35 C=666.11
+10:41:00 [INFO] [PLTR] 5m bar #1976 @1035 ind=18μs strat=203μs total=221μs (5 active) | SIGNALS: BDR_SHORT
+10:41:00 [INFO] [PLTR] bar #1976 @ 10:35 C=154.12 | signals=1
+10:41:00 [INFO] [PLTR] BLOCKED BDR_SHORT by regime: regime_SPY_not_bearish(pct=-0.02%>-0.63%)
+10:41:00 [INFO] [TGT] bar #1970 @ 10:35 C=115.31 | signals=0
+10:41:00 [INFO] [AGRO] bar #1580 @ 10:35 C=13.55 | signals=0
+10:41:00 [INFO] [PGR] bar #1580 @ 10:35 C=203.17 | signals=0
+10:41:02 [INFO] [BOBS] bar #1580 @ 10:35 C=15.50 | signals=0
+10:43:15 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-100.0, avgCost=164.88)
+10:43:15 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-100.0, avgCost=164.86980499999999)
+10:43:16 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-100.0, marketPrice=164.8600006, marketValue=-16486.0, averageCost=164.869805, unrealizedPNL=0.98, realizedPNL=74.43, account='DUP326100')
+10:46:00 [INFO] [MKT:SPY] Bar #107 closed @ 10:40 C=665.94
+10:46:00 [INFO] [MKT:QQQ] Bar #107 closed @ 10:40 C=599.20
+10:46:00 [INFO] [SPXS] bar #1930 @ 10:40 C=38.58 | signals=0
+10:46:00 [INFO] [SNOW] bar #1970 @ 10:40 C=174.00 | signals=0
+10:46:01 [INFO] [CRSP] bar #1960 @ 10:40 C=48.58 | signals=0
+10:46:03 [INFO] [CAVA] 5m bar #1587 @1040 ind=23μs strat=313μs total=336μs (5 active) | SIGNALS: BDR_SHORT
+10:46:03 [INFO] [CAVA] bar #1587 @ 10:40 C=90.13 | signals=1
+10:46:03 [INFO] [CAVA] BLOCKED BDR_SHORT by regime: regime_SPY_not_bearish(pct=+0.02%>-0.63%)
+10:46:12 [INFO] [CMCO] bar #1580 @ 10:40 C=14.33 | signals=0
+10:46:15 [INFO] [CTRN] bar #1580 @ 10:40 C=50.73 | signals=0
+10:46:16 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-100.0, marketPrice=165.1040039, marketValue=-16510.4, averageCost=164.869805, unrealizedPNL=-23.42, realizedPNL=74.43, account='DUP326100')
+10:47:43 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, avgCost=0.0)
+10:47:43 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, avgCost=0.0)
+10:47:43 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, avgCost=0.0)
+10:47:44 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, marketPrice=164.30726625, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=132.41, account='DUP326100')
+10:47:55 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, avgCost=0.0)
+10:50:44 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, marketPrice=164.86109925, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=132.41, account='DUP326100')
+10:51:00 [INFO] [MKT:SPY] Bar #108 closed @ 10:45 C=665.92
+10:51:00 [INFO] [TSLA] bar #1970 @ 10:45 C=398.09 | signals=0
+10:51:00 [INFO] [MKT:QQQ] Bar #108 closed @ 10:45 C=599.14
+10:51:00 [INFO] [ATAT] bar #1580 @ 10:45 C=37.66 | signals=0
+10:51:00 [INFO] [AAPL] bar #1970 @ 10:45 C=252.25 | signals=0
+10:51:01 [INFO] [SMTC] bar #1660 @ 10:45 C=74.51 | signals=0
+10:51:06 [INFO] [SUNC] bar #1580 @ 10:45 C=60.95 | signals=0
+10:53:44 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, marketPrice=165.011734, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=132.41, account='DUP326100')
+10:56:00 [INFO] [MKT:SPY] Bar #109 closed @ 10:50 C=666.23
+10:56:00 [INFO] [MKT:QQQ] Bar #109 closed @ 10:50 C=599.49
+10:56:00 [INFO] [ASO] bar #1660 @ 10:50 C=51.61 | signals=0
+10:56:01 [INFO] [RTX] 5m bar #1978 @1050 ind=21μs strat=500μs total=521μs (5 active) | SIGNALS: HH_QUALITY
+10:56:01 [INFO] [RTX] bar #1978 @ 10:50 C=205.88 | signals=1
+10:56:01 [INFO] [RTX] BLOCKED HITCHHIKER by in-play: FAIL(rvol=0.75<1.5)
+10:56:03 [INFO] [BNAI] 5m bar #1589 @1050 ind=25μs strat=196μs total=221μs (5 active) | SIGNALS: BDR_SHORT
+10:56:03 [INFO] [BNAI] bar #1589 @ 10:50 C=43.19 | signals=1
+10:56:03 [INFO] [BNAI] BLOCKED BDR_SHORT by regime: regime_SPY_above_VWAP(pct=+0.09%)
+10:56:05 [INFO] [TSAT] bar #1660 @ 10:50 C=39.80 | signals=0
+10:56:11 [INFO] [RFIL] bar #1580 @ 10:50 C=12.24 | signals=0
+10:56:34 [INFO] [GLSI] bar #1660 @ 10:50 C=28.39 | signals=0
+10:56:44 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, marketPrice=164.4576416, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=132.41, account='DUP326100')
+10:57:12 [INFO] Warning 2104, reqId -1: Market data farm connection is OK:eufarm
+10:57:13 [INFO] Warning 2104, reqId -1: Market data farm connection is OK:jfarm
+10:57:13 [INFO] Warning 2104, reqId -1: Market data farm connection is OK:hfarm
+10:58:16 [INFO] position: Position(account='DUP326100', contract=Stock(conId=837874837, symbol='BNAI', exchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=100.0, avgCost=42.79)
+10:58:16 [INFO] position: Position(account='DUP326100', contract=Stock(conId=837874837, symbol='BNAI', exchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=100.0, avgCost=42.8)
+10:58:17 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, marketPrice=163.66000365, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=132.41, account='DUP326100')
+10:58:17 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=100.0, marketPrice=42.89686965, marketValue=4289.69, averageCost=42.8, unrealizedPNL=9.69, realizedPNL=0.0, account='DUP326100')
+11:01:00 [INFO] [XPEV] bar #1590 @ 10:55 C=19.01 | signals=0
+11:01:00 [INFO] [COIN] bar #1980 @ 10:55 C=202.18 | signals=0
+11:01:00 [INFO] [DKNG] bar #1980 @ 10:55 C=25.46 | signals=0
+11:01:00 [INFO] [SPXL] bar #1870 @ 10:55 C=200.48 | signals=0
+11:01:00 [INFO] [MSFT] bar #1980 @ 10:55 C=395.23 | signals=0
+11:01:00 [INFO] [SOXL] bar #1980 @ 10:55 C=55.51 | signals=0
+11:01:00 [INFO] [BABA] bar #1960 @ 10:55 C=137.24 | signals=0
+11:01:00 [INFO] [MSTR] bar #1590 @ 10:55 C=142.12 | signals=0
+11:01:00 [INFO] [VNET] bar #1590 @ 10:55 C=9.81 | signals=0
+11:01:00 [INFO] [XYZ] bar #1980 @ 10:55 C=59.69 | signals=0
+11:01:00 [INFO] [IONQ] bar #1980 @ 10:55 C=33.42 | signals=0
+11:01:00 [INFO] [SPY] bar #1980 @ 10:55 C=667.14 | signals=0
+11:01:00 [INFO] [UBER] bar #1980 @ 10:55 C=76.81 | signals=0
+11:01:00 [INFO] [AMPX] bar #1590 @ 10:55 C=19.62 | signals=0
+11:01:00 [INFO] [NU] bar #1980 @ 10:55 C=14.15 | signals=0
+11:01:00 [INFO] [QQQ] bar #1980 @ 10:55 C=600.41 | signals=0
+11:01:00 [INFO] [MKT:SPY] Bar #110 closed @ 10:55 C=667.14
+11:01:00 [INFO] [GOOG] bar #1980 @ 10:55 C=309.20 | signals=0
+11:01:00 [INFO] [WMT] bar #1980 @ 10:55 C=122.89 | signals=0
+11:01:00 [INFO] [ORCL] bar #1980 @ 10:55 C=152.76 | signals=0
+11:01:00 [INFO] [RKLB] bar #1590 @ 10:55 C=72.61 | signals=0
+11:01:00 [INFO] [SNDK] bar #1590 @ 10:55 C=737.14 | signals=0
+11:01:00 [INFO] [BATL] bar #1590 @ 10:55 C=12.35 | signals=0
+11:01:00 [INFO] [NVDA] bar #1980 @ 10:55 C=182.76 | signals=0
+11:01:00 [INFO] [MKT:QQQ] Bar #110 closed @ 10:55 C=600.41
+11:01:00 [INFO] [NFLX] bar #1980 @ 10:55 C=93.86 | signals=0
+11:01:00 [INFO] [COHR] bar #1590 @ 10:55 C=260.10 | signals=0
+11:01:00 [INFO] [PLTR] bar #1980 @ 10:55 C=153.90 | signals=0
+11:01:00 [INFO] [AAOI] bar #1590 @ 10:55 C=94.67 | signals=0
+11:01:00 [INFO] [NKE] bar #1980 @ 10:55 C=54.11 | signals=0
+11:01:00 [INFO] [M] bar #1590 @ 10:55 C=17.70 | signals=0
+11:01:00 [INFO] [LYFT] bar #1590 @ 10:55 C=13.72 | signals=0
+11:01:00 [INFO] [XLE] bar #1980 @ 10:55 C=58.65 | signals=0
+11:01:00 [INFO] [AXTI] bar #1590 @ 10:55 C=49.10 | signals=0
+11:01:00 [INFO] [RGTI] bar #1980 @ 10:55 C=16.05 | signals=0
+11:01:00 [INFO] [NIO] bar #1590 @ 10:55 C=5.94 | signals=0
+11:01:00 [INFO] [FDX] bar #1590 @ 10:55 C=353.06 | signals=0
+11:01:00 [INFO] [HON] bar #1590 @ 10:55 C=229.90 | signals=0
+11:01:00 [INFO] [RIVN] bar #1980 @ 10:55 C=15.58 | signals=0
+11:01:00 [INFO] [CAVA] bar #1590 @ 10:55 C=90.63 | signals=0
+11:01:00 [INFO] [OKLO] bar #1590 @ 10:55 C=60.67 | signals=0
+11:01:00 [INFO] [GIS] bar #1590 @ 10:55 C=38.15 | signals=0
+11:01:00 [INFO] [JPM] bar #1980 @ 10:55 C=288.03 | signals=0
+11:01:00 [INFO] [ACN] bar #1590 @ 10:55 C=194.87 | signals=0
+11:01:00 [INFO] [NAIL] bar #1910 @ 10:55 C=41.79 | signals=0
+11:01:00 [INFO] [BAC] bar #1980 @ 10:55 C=47.55 | signals=0
+11:01:00 [INFO] [MRNA] bar #1980 @ 10:55 C=52.30 | signals=0
+11:01:00 [INFO] [SMCI] bar #1980 @ 10:55 C=31.06 | signals=0
+11:01:00 [INFO] [C] bar #1980 @ 10:55 C=108.54 | signals=0
+11:01:00 [INFO] [DAL] bar #1590 @ 10:55 C=64.44 | signals=0
+11:01:00 [INFO] [DOCN] bar #1590 @ 10:55 C=83.75 | signals=0
+11:01:00 [INFO] [TECL] bar #1870 @ 10:55 C=100.98 | signals=0
+11:01:00 [INFO] [LABU] bar #1180 @ 10:55 C=149.42 | signals=0
+11:01:00 [INFO] [JBL] bar #1590 @ 10:55 C=259.31 | signals=0
+11:01:00 [INFO] [CELH] bar #1590 @ 10:55 C=41.61 | signals=0
+11:01:00 [INFO] [LITE] bar #1590 @ 10:55 C=715.61 | signals=0
+11:01:01 [INFO] [SEI] bar #1590 @ 10:55 C=68.56 | signals=0
+11:01:01 [INFO] [DOCU] bar #1590 @ 10:55 C=48.08 | signals=0
+11:01:01 [INFO] [DASH] bar #1980 @ 10:55 C=166.43 | signals=0
+11:01:01 [INFO] [IOT] bar #1590 @ 10:55 C=33.37 | signals=0
+11:01:01 [INFO] [KC] bar #1590 @ 10:55 C=14.89 | signals=0
+11:01:04 [INFO] [DDOG] bar #1590 @ 10:55 C=130.71 | signals=0
+11:01:04 [INFO] [BNAI] bar #1590 @ 10:55 C=42.75 | signals=0
+11:01:17 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, marketPrice=164.30999755, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=132.41, account='DUP326100')
+11:01:17 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=100.0, marketPrice=42.68074415, marketValue=4268.07, averageCost=42.8, unrealizedPNL=-11.93, realizedPNL=0.0, account='DUP326100')
+11:02:54 [INFO] position: Position(account='DUP326100', contract=Stock(conId=837874837, symbol='BNAI', exchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=100.0, avgCost=42.8)
+11:02:54 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, avgCost=0.0)
+11:02:54 [INFO] position: Position(account='DUP326100', contract=Stock(conId=837874837, symbol='BNAI', exchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=100.0, avgCost=42.8)
+11:04:17 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, marketPrice=163.8659363, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=132.41, account='DUP326100')
+11:04:17 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=100.0, marketPrice=42.74549865, marketValue=4274.55, averageCost=42.8, unrealizedPNL=-5.45, realizedPNL=0.0, account='DUP326100')
+11:06:00 [INFO] [SWMR] bar #90 @ 11:00 C=53.97 | signals=0
+11:06:00 [INFO] [MKT:SPY] Bar #111 closed @ 11:00 C=667.19
+11:06:00 [INFO] [MKT:QQQ] Bar #111 closed @ 11:00 C=600.56
+11:06:00 [INFO] [FNGU] bar #1870 @ 11:00 C=19.10 | signals=0
+11:06:00 [INFO] [TSLL] bar #1980 @ 11:00 C=14.26 | signals=0
+11:06:00 [INFO] [FTAI] bar #1590 @ 11:00 C=245.24 | signals=0
+11:06:00 [INFO] [LULU] bar #1840 @ 11:00 C=163.82 | signals=0
+11:06:00 [INFO] [RTX] bar #1980 @ 11:00 C=206.30 | signals=0
+11:06:01 [INFO] [STLD] bar #1590 @ 11:00 C=170.38 | signals=0
+11:06:01 [INFO] [SHOP] bar #1980 @ 11:00 C=125.74 | signals=0
+11:06:02 [INFO] [WSM] bar #1590 @ 11:00 C=189.03 | signals=0
+11:06:02 [INFO] [JNUG] 5m bar #650 @1100 ind=31μs strat=90μs total=120μs (5 active)
+11:06:02 [INFO] [JNUG] bar #650 @ 11:00 C=203.96 | signals=0
+11:06:04 [INFO] [GCT] bar #1590 @ 11:00 C=43.62 | signals=0
+11:07:17 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, marketPrice=163.7465973, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=132.41, account='DUP326100')
+11:07:17 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=100.0, marketPrice=42.6920929, marketValue=4269.21, averageCost=42.8, unrealizedPNL=-10.79, realizedPNL=0.0, account='DUP326100')
+11:10:17 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, marketPrice=163.95495605, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=132.41, account='DUP326100')
+11:10:17 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=100.0, marketPrice=42.6406517, marketValue=4264.07, averageCost=42.8, unrealizedPNL=-15.93, realizedPNL=0.0, account='DUP326100')
+11:11:00 [INFO] [MU] bar #1670 @ 11:05 C=469.89 | signals=0
+11:11:00 [INFO] [XBI] bar #1980 @ 11:05 C=121.86 | signals=0
+11:11:00 [INFO] [TSM] bar #1670 @ 11:05 C=344.36 | signals=0
+11:11:00 [INFO] [HIMS] bar #1670 @ 11:05 C=24.16 | signals=0
+11:11:00 [INFO] [MKT:SPY] Bar #112 closed @ 11:05 C=667.94
+11:11:00 [INFO] [CF] bar #1670 @ 11:05 C=124.32 | signals=0
+11:11:00 [INFO] [JNJ] bar #1670 @ 11:05 C=238.78 | signals=0
+11:11:00 [INFO] [GOOGL] bar #1670 @ 11:05 C=310.91 | signals=0
+11:11:00 [INFO] [UPRO] bar #1440 @ 11:05 C=105.57 | signals=0
+11:11:00 [INFO] [MKT:QQQ] Bar #112 closed @ 11:05 C=601.51
+11:11:00 [INFO] [CRM] bar #1670 @ 11:05 C=194.37 | signals=0
+11:11:00 [INFO] [BA] bar #1670 @ 11:05 C=207.24 | signals=0
+11:11:00 [INFO] [PATH] bar #1670 @ 11:05 C=12.31 | signals=0
+11:11:00 [INFO] [GE] bar #1980 @ 11:05 C=303.67 | signals=0
+11:11:01 [INFO] [NET] bar #1670 @ 11:05 C=215.74 | signals=0
+11:11:01 [INFO] [MS] bar #1970 @ 11:05 C=159.67 | signals=0
+11:11:01 [INFO] [AFRM] bar #1980 @ 11:05 C=48.31 | signals=0
+11:11:02 [INFO] [SOC] bar #1670 @ 11:05 C=17.19 | signals=0
+11:11:06 [INFO] [RBLX] bar #1980 @ 11:05 C=58.85 | signals=0
+11:11:15 [INFO] [SMX] bar #1670 @ 11:05 C=8.86 | signals=0
+11:11:16 [INFO] [LWAY] bar #1580 @ 11:05 C=19.06 | signals=0
+11:13:17 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, marketPrice=163.74990845, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=132.41, account='DUP326100')
+11:13:17 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=100.0, marketPrice=42.7368126, marketValue=4273.68, averageCost=42.8, unrealizedPNL=-6.32, realizedPNL=0.0, account='DUP326100')
+11:16:00 [INFO] [MKT:QQQ] Bar #113 closed @ 11:10 C=600.90
+11:16:00 [INFO] [MKT:SPY] Bar #113 closed @ 11:10 C=667.51
+11:16:00 [INFO] [LUNR] bar #1980 @ 11:10 C=18.61 | signals=0
+11:16:00 [INFO] [FIVE] bar #1590 @ 11:10 C=215.25 | signals=0
+11:16:00 [INFO] [TNA] 5m bar #1850 @1110 ind=35μs strat=56μs total=90μs (5 active)
+11:16:00 [INFO] [TNA] bar #1850 @ 11:10 C=44.99 | signals=0
+11:16:00 [INFO] [FAS] bar #1910 @ 11:10 C=118.05 | signals=0
+11:16:17 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, marketPrice=163.8276062, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=132.41, account='DUP326100')
+11:16:17 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=100.0, marketPrice=42.98225405, marketValue=4298.23, averageCost=42.8, unrealizedPNL=18.23, realizedPNL=0.0, account='DUP326100')
+11:19:00 [INFO] [SOXL] 1m bar #9912 @1118 ind=45μs strat=550μs total=595μs (3 active) | SIGNALS: ORH_FBO_V2_A
+11:19:00 [INFO] [SOXL] 1m signal @ 11:18 C=55.69 | signals=1
+11:19:00 [INFO] [SOXL] BLOCKED ORH_FBO_RETEST by in-play: FAIL(rvol=1.06<1.5)
+11:19:17 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, marketPrice=164.2961426, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=132.41, account='DUP326100')
+11:19:17 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=100.0, marketPrice=42.80430605, marketValue=4280.43, averageCost=42.8, unrealizedPNL=0.43, realizedPNL=0.0, account='DUP326100')
+11:20:00 [INFO] [RTX] 1m bar #9604 @1119 ind=42μs strat=980μs total=1022μs (3 active) | SIGNALS: ORH_FBO_V2_B
+11:20:00 [INFO] [RTX] 1m signal @ 11:19 C=205.52 | signals=1
+11:20:00 [INFO] [RTX] BLOCKED ORH_FBO_CONT by in-play: FAIL(rvol=0.75<1.5)
+11:21:00 [INFO] [MKT:SPY] Bar #114 closed @ 11:15 C=666.86
+11:21:00 [INFO] [SOXS] 5m bar #1900 @1115 ind=44μs strat=27μs total=71μs (5 active)
+11:21:00 [INFO] [SOXS] bar #1900 @ 11:15 C=37.57 | signals=0
+11:21:00 [INFO] [MKT:QQQ] Bar #114 closed @ 11:15 C=600.29
+11:21:00 [INFO] [APH] bar #1590 @ 11:15 C=131.18 | signals=0
+11:21:00 [INFO] [WEBL] bar #1860 @ 11:15 C=19.47 | signals=0
+11:21:02 [INFO] [NUGT] 5m bar #1050 @1115 ind=34μs strat=62μs total=96μs (5 active)
+11:21:02 [INFO] [NUGT] bar #1050 @ 11:15 C=182.90 | signals=0
+11:21:03 [INFO] [SPIR] bar #1590 @ 11:15 C=10.55 | signals=0
+11:21:16 [INFO] [AMR] bar #1590 @ 11:15 C=194.00 | signals=0
+11:22:17 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, marketPrice=164.210083, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=132.41, account='DUP326100')
+11:22:17 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=100.0, marketPrice=42.62029265, marketValue=4262.03, averageCost=42.8, unrealizedPNL=-17.97, realizedPNL=0.0, account='DUP326100')
+11:25:17 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, marketPrice=164.3169861, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=132.41, account='DUP326100')
+11:25:17 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=100.0, marketPrice=42.33371735, marketValue=4233.37, averageCost=42.8, unrealizedPNL=-46.63, realizedPNL=0.0, account='DUP326100')
+11:25:57 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.hfarm
+11:25:57 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.hfarm
+11:25:57 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.jfarm
+11:25:57 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.jfarm
+11:25:57 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.eufarm
+11:25:57 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.eufarm
+11:25:58 [INFO] Warning 2104, reqId -1: Market data farm connection is OK:eufarm
+11:25:59 [INFO] Warning 2104, reqId -1: Market data farm connection is OK:jfarm
+11:26:00 [INFO] [MKT:QQQ] Bar #115 closed @ 11:20 C=600.65
+11:26:00 [INFO] [MKT:SPY] Bar #115 closed @ 11:20 C=667.13
+11:26:00 [INFO] Warning 2103, reqId -1: Market data farm connection is broken:hfarm
+11:26:00 [INFO] [LABD] bar #1980 @ 11:20 C=20.08 | signals=0
+11:26:02 [INFO] [ARM] bar #1960 @ 11:20 C=128.29 | signals=0
+11:26:04 [INFO] [MUSA] bar #1590 @ 11:20 C=453.65 | signals=0
+11:26:06 [INFO] Warning 2104, reqId -1: Market data farm connection is OK:hfarm
+11:26:38 [INFO] Warning 2103, reqId -1: Market data farm connection is broken:hfarm
+11:26:38 [INFO] Warning 2104, reqId -1: Market data farm connection is OK:hfarm
+11:27:13 [INFO] position: Position(account='DUP326100', contract=Stock(conId=415342104, symbol='RTX', exchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=100.0, avgCost=205.3)
+11:27:13 [INFO] position: Position(account='DUP326100', contract=Stock(conId=415342104, symbol='RTX', exchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=100.0, avgCost=205.31)
+11:27:14 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, marketPrice=164.6300049, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=132.41, account='DUP326100')
+11:27:14 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=100.0, marketPrice=205.33999635, marketValue=20534.0, averageCost=205.31, unrealizedPNL=3.0, realizedPNL=0.0, account='DUP326100')
+11:27:14 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=100.0, marketPrice=41.88300705, marketValue=4188.3, averageCost=42.8, unrealizedPNL=-91.7, realizedPNL=0.0, account='DUP326100')
+11:30:14 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, marketPrice=164.37390135, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=132.41, account='DUP326100')
+11:30:14 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=100.0, marketPrice=205.22940065, marketValue=20522.94, averageCost=205.31, unrealizedPNL=-8.06, realizedPNL=0.0, account='DUP326100')
+11:31:00 [INFO] [MKT:QQQ] Bar #116 closed @ 11:25 C=600.53
+11:31:00 [INFO] [MKT:SPY] Bar #116 closed @ 11:25 C=666.92
+11:31:00 [INFO] [BOBS] bar #1590 @ 11:25 C=14.97 | signals=0
+11:31:00 [INFO] [AGRO] bar #1590 @ 11:25 C=13.89 | signals=0
+11:31:00 [INFO] [TGT] bar #1980 @ 11:25 C=115.56 | signals=0
+11:31:02 [INFO] [PGR] bar #1590 @ 11:25 C=202.06 | signals=0
+11:32:00 [INFO] position: Position(account='DUP326100', contract=Stock(conId=415342104, symbol='RTX', exchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=100.0, avgCost=205.31)
+11:32:00 [INFO] position: Position(account='DUP326100', contract=Stock(conId=837874837, symbol='BNAI', exchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=100.0, avgCost=42.8)
+11:32:00 [INFO] position: Position(account='DUP326100', contract=Stock(conId=415342104, symbol='RTX', exchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=100.0, avgCost=205.31)
+11:33:14 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, marketPrice=163.89700315, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=132.41, account='DUP326100')
+11:33:14 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=100.0, marketPrice=205.56295775, marketValue=20556.3, averageCost=205.31, unrealizedPNL=25.3, realizedPNL=0.0, account='DUP326100')
+11:33:14 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=100.0, marketPrice=42.20946885, marketValue=4220.95, averageCost=42.8, unrealizedPNL=-59.05, realizedPNL=0.0, account='DUP326100')
+11:36:00 [INFO] [MKT:SPY] Bar #117 closed @ 11:30 C=667.33
+11:36:00 [INFO] [MKT:QQQ] Bar #117 closed @ 11:30 C=600.89
+11:36:00 [INFO] [SPXS] bar #1940 @ 11:30 C=38.34 | signals=0
+11:36:00 [INFO] [CRSP] bar #1970 @ 11:30 C=48.27 | signals=0
+11:36:03 [INFO] [SNOW] bar #1980 @ 11:30 C=175.33 | signals=0
+11:36:04 [INFO] [CMCO] bar #1590 @ 11:30 C=14.45 | signals=0
+11:36:07 [INFO] [CTRN] bar #1590 @ 11:30 C=49.79 | signals=0
+11:36:14 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, marketPrice=163.87968445, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=132.41, account='DUP326100')
+11:36:14 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=100.0, marketPrice=205.46315, marketValue=20546.32, averageCost=205.31, unrealizedPNL=15.32, realizedPNL=0.0, account='DUP326100')
+11:36:14 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=100.0, marketPrice=42.7100754, marketValue=4271.01, averageCost=42.8, unrealizedPNL=-8.99, realizedPNL=0.0, account='DUP326100')
+11:39:14 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, marketPrice=164.3214264, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=132.41, account='DUP326100')
+11:39:14 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=100.0, marketPrice=205.5257721, marketValue=20552.58, averageCost=205.31, unrealizedPNL=21.58, realizedPNL=0.0, account='DUP326100')
+11:39:14 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=100.0, marketPrice=42.29999925, marketValue=4230.0, averageCost=42.8, unrealizedPNL=-50.0, realizedPNL=0.0, account='DUP326100')
+11:41:00 [INFO] [MKT:QQQ] Bar #118 closed @ 11:35 C=600.94
+11:41:00 [INFO] [TSLA] bar #1980 @ 11:35 C=397.82 | signals=0
+11:41:00 [INFO] [MKT:SPY] Bar #118 closed @ 11:35 C=667.35
+11:41:00 [INFO] [AAPL] bar #1980 @ 11:35 C=251.92 | signals=0
+11:41:01 [INFO] [SMTC] bar #1670 @ 11:35 C=75.39 | signals=0
+11:41:01 [INFO] [ATAT] bar #1590 @ 11:35 C=37.46 | signals=0
+11:41:04 [INFO] [SUNC] bar #1590 @ 11:35 C=60.92 | signals=0
+11:41:24 [INFO] [LWAY] 5m bar #1586 @1135 ind=43μs strat=1154μs total=1197μs (5 active) | SIGNALS: SP_ATIER
+11:41:24 [INFO] [LWAY] bar #1586 @ 11:35 C=19.16 | signals=1
+11:41:24 [INFO] [LWAY] BLOCKED SPENCER by in-play score: 4.0 < 4.5
+11:42:14 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, marketPrice=164.26734925, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=132.41, account='DUP326100')
+11:42:14 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=100.0, marketPrice=205.49642945, marketValue=20549.64, averageCost=205.31, unrealizedPNL=18.64, realizedPNL=0.0, account='DUP326100')
+11:42:14 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=100.0, marketPrice=42.1908188, marketValue=4219.08, averageCost=42.8, unrealizedPNL=-60.92, realizedPNL=0.0, account='DUP326100')
+11:43:20 [INFO] In-play snapshot saved: 2026-03-18.txt (74 symbols)
+11:43:20 [INFO] [LWAY] Unsubscribed and removed (async).
+11:45:14 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, marketPrice=164.34135435, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=132.41, account='DUP326100')
+11:45:14 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=100.0, marketPrice=205.5951538, marketValue=20559.52, averageCost=205.31, unrealizedPNL=28.52, realizedPNL=0.0, account='DUP326100')
+11:45:14 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=100.0, marketPrice=42.553627, marketValue=4255.36, averageCost=42.8, unrealizedPNL=-24.64, realizedPNL=0.0, account='DUP326100')
+11:46:00 [INFO] [MKT:QQQ] Bar #119 closed @ 11:40 C=600.71
+11:46:00 [INFO] [MKT:SPY] Bar #119 closed @ 11:40 C=667.13
+11:46:01 [INFO] [ASO] bar #1670 @ 11:40 C=52.08 | signals=0
+11:46:04 [INFO] [TSAT] bar #1670 @ 11:40 C=41.35 | signals=0
+11:46:05 [INFO] [RFIL] bar #1590 @ 11:40 C=12.31 | signals=0
+11:46:13 [INFO] [GLSI] bar #1670 @ 11:40 C=27.67 | signals=0
+11:47:58 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.hfarm
+11:47:58 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.hfarm
+11:47:58 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.eufarm
+11:47:58 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.eufarm
+11:47:58 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.jfarm
+11:47:58 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.jfarm
+11:47:59 [INFO] Warning 2104, reqId -1: Market data farm connection is OK:eufarm
+11:48:00 [INFO] Warning 2104, reqId -1: Market data farm connection is OK:jfarm
+11:48:00 [INFO] Warning 2104, reqId -1: Market data farm connection is OK:hfarm
+11:48:14 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, marketPrice=164.79177855, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=132.41, account='DUP326100')
+11:48:14 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=100.0, marketPrice=205.43418885, marketValue=20543.42, averageCost=205.31, unrealizedPNL=12.42, realizedPNL=0.0, account='DUP326100')
+11:48:14 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=100.0, marketPrice=42.5946846, marketValue=4259.47, averageCost=42.8, unrealizedPNL=-20.53, realizedPNL=0.0, account='DUP326100')
+11:50:34 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.hfarm
+11:50:34 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.hfarm
+11:50:34 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.eufarm
+11:50:34 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.eufarm
+11:50:34 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.jfarm
+11:50:34 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.jfarm
+11:51:00 [INFO] [SPY] bar #1990 @ 11:45 C=666.87 | signals=0
+11:51:00 [INFO] [LYFT] 5m bar #1600 @1145 ind=27μs strat=78μs total=105μs (5 active)
+11:51:00 [INFO] [LYFT] bar #1600 @ 11:45 C=13.68 | signals=0
+11:51:00 [INFO] [COIN] bar #1990 @ 11:45 C=202.69 | signals=0
+11:51:00 [INFO] [DKNG] bar #1990 @ 11:45 C=25.93 | signals=0
+11:51:00 [INFO] [SPXL] bar #1880 @ 11:45 C=200.25 | signals=0
+11:51:00 [INFO] [BABA] bar #1970 @ 11:45 C=135.98 | signals=0
+11:51:00 [INFO] [SOXL] bar #1990 @ 11:45 C=55.90 | signals=0
+11:51:00 [INFO] [IONQ] bar #1990 @ 11:45 C=33.21 | signals=0
+11:51:00 [INFO] [ACN] 5m bar #1600 @1145 ind=33μs strat=38μs total=71μs (5 active)
+11:51:00 [INFO] [ACN] bar #1600 @ 11:45 C=197.31 | signals=0
+11:51:00 [INFO] [AMPX] 5m bar #1600 @1145 ind=19μs strat=28μs total=47μs (5 active)
+11:51:00 [INFO] [AMPX] bar #1600 @ 11:45 C=19.31 | signals=0
+11:51:00 [INFO] [UBER] bar #1990 @ 11:45 C=77.11 | signals=0
+11:51:00 [INFO] [C] bar #1990 @ 11:45 C=108.64 | signals=0
+11:51:00 [INFO] [QQQ] bar #1990 @ 11:45 C=600.39 | signals=0
+11:51:00 [INFO] [XPEV] 5m bar #1600 @1145 ind=19μs strat=30μs total=49μs (5 active)
+11:51:00 [INFO] [XPEV] bar #1600 @ 11:45 C=18.95 | signals=0
+11:51:00 [INFO] [RKLB] 5m bar #1600 @1145 ind=20μs strat=28μs total=48μs (5 active)
+11:51:00 [INFO] [RKLB] bar #1600 @ 11:45 C=71.51 | signals=0
+11:51:00 [INFO] [GOOG] bar #1990 @ 11:45 C=308.84 | signals=0
+11:51:00 [INFO] [MKT:SPY] Bar #120 closed @ 11:45 C=666.87
+11:51:00 [INFO] [NVDA] bar #1990 @ 11:45 C=182.36 | signals=0
+11:51:00 [INFO] [MKT:QQQ] Bar #120 closed @ 11:45 C=600.39
+11:51:00 [INFO] [DOCN] 5m bar #1600 @1145 ind=37μs strat=141μs total=178μs (5 active)
+11:51:00 [INFO] [DOCN] bar #1600 @ 11:45 C=83.81 | signals=0
+11:51:00 [INFO] [MRNA] bar #1990 @ 11:45 C=52.23 | signals=0
+11:51:00 [INFO] [COHR] 5m bar #1600 @1145 ind=17μs strat=23μs total=40μs (5 active)
+11:51:00 [INFO] [COHR] bar #1600 @ 11:45 C=258.11 | signals=0
+11:51:00 [INFO] [M] 5m bar #1600 @1145 ind=17μs strat=26μs total=42μs (5 active)
+11:51:00 [INFO] [M] bar #1600 @ 11:45 C=17.69 | signals=0
+11:51:00 [INFO] [NKE] bar #1990 @ 11:45 C=54.01 | signals=0
+11:51:00 [INFO] [XLE] bar #1990 @ 11:45 C=58.60 | signals=0
+11:51:00 [INFO] [BAC] bar #1990 @ 11:45 C=47.48 | signals=0
+11:51:00 [INFO] [NFLX] bar #1990 @ 11:45 C=94.94 | signals=0
+11:51:00 [INFO] [RIVN] bar #1990 @ 11:45 C=15.66 | signals=0
+11:51:00 [INFO] [MSFT] bar #1990 @ 11:45 C=395.02 | signals=0
+11:51:00 [INFO] [VNET] 5m bar #1600 @1145 ind=22μs strat=47μs total=69μs (5 active)
+11:51:00 [INFO] [VNET] bar #1600 @ 11:45 C=9.58 | signals=0
+11:51:00 [INFO] [DAL] 5m bar #1600 @1145 ind=29μs strat=84μs total=113μs (5 active)
+11:51:00 [INFO] [DAL] bar #1600 @ 11:45 C=64.76 | signals=0
+11:51:00 [INFO] [NU] bar #1990 @ 11:45 C=14.13 | signals=0
+11:51:00 [INFO] [DASH] bar #1990 @ 11:45 C=166.49 | signals=0
+11:51:00 [INFO] [ORCL] bar #1990 @ 11:45 C=153.23 | signals=0
+11:51:00 [INFO] [SNDK] 5m bar #1600 @1145 ind=21μs strat=80μs total=101μs (5 active)
+11:51:00 [INFO] [SNDK] bar #1600 @ 11:45 C=742.47 | signals=0
+11:51:00 [INFO] [DDOG] 5m bar #1600 @1145 ind=27μs strat=77μs total=104μs (5 active)
+11:51:00 [INFO] [DDOG] bar #1600 @ 11:45 C=131.84 | signals=0
+11:51:00 [INFO] [PLTR] bar #1990 @ 11:45 C=153.97 | signals=0
+11:51:00 [INFO] [TECL] bar #1880 @ 11:45 C=101.25 | signals=0
+11:51:00 [INFO] [NAIL] bar #1920 @ 11:45 C=41.68 | signals=0
+11:51:00 [INFO] [DOCU] 5m bar #1600 @1145 ind=30μs strat=98μs total=128μs (5 active)
+11:51:00 [INFO] [DOCU] bar #1600 @ 11:45 C=48.36 | signals=0
+11:51:00 [INFO] [BATL] 5m bar #1600 @1145 ind=24μs strat=59μs total=84μs (5 active)
+11:51:00 [INFO] [BATL] bar #1600 @ 11:45 C=12.55 | signals=0
+11:51:00 [INFO] [NIO] 5m bar #1600 @1145 ind=26μs strat=58μs total=84μs (5 active)
+11:51:00 [INFO] [NIO] bar #1600 @ 11:45 C=5.91 | signals=0
+11:51:00 [INFO] [JPM] bar #1990 @ 11:45 C=287.51 | signals=0
+11:51:00 [INFO] [MSTR] 5m bar #1600 @1145 ind=50μs strat=66μs total=116μs (5 active)
+11:51:00 [INFO] [MSTR] bar #1600 @ 11:45 C=141.88 | signals=0
+11:51:00 [INFO] [SEI] 5m bar #1600 @1145 ind=41μs strat=125μs total=166μs (5 active)
+11:51:00 [INFO] [SEI] bar #1600 @ 11:45 C=67.51 | signals=0
+11:51:00 [INFO] [LITE] 5m bar #1600 @1145 ind=24μs strat=71μs total=95μs (5 active)
+11:51:00 [INFO] [LITE] bar #1600 @ 11:45 C=708.89 | signals=0
+11:51:00 [INFO] [AAOI] 5m bar #1600 @1145 ind=25μs strat=87μs total=111μs (5 active)
+11:51:00 [INFO] [AAOI] bar #1600 @ 11:45 C=94.76 | signals=0
+11:51:00 [INFO] [SMCI] bar #1990 @ 11:45 C=30.92 | signals=0
+11:51:00 [INFO] [RGTI] bar #1990 @ 11:45 C=15.89 | signals=0
+11:51:00 [INFO] [CAVA] 5m bar #1600 @1145 ind=27μs strat=80μs total=107μs (5 active)
+11:51:00 [INFO] [CAVA] bar #1600 @ 11:45 C=91.04 | signals=0
+11:51:00 [INFO] [OKLO] 5m bar #1600 @1145 ind=20μs strat=49μs total=69μs (5 active)
+11:51:00 [INFO] [OKLO] bar #1600 @ 11:45 C=60.68 | signals=0
+11:51:00 [INFO] [GIS] 5m bar #1600 @1145 ind=19μs strat=70μs total=90μs (5 active)
+11:51:00 [INFO] [GIS] bar #1600 @ 11:45 C=38.64 | signals=0
+11:51:01 [INFO] [FDX] 5m bar #1600 @1145 ind=29μs strat=69μs total=99μs (5 active)
+11:51:01 [INFO] [FDX] bar #1600 @ 11:45 C=353.52 | signals=0
+11:51:01 [INFO] [KC] 5m bar #1600 @1145 ind=24μs strat=62μs total=85μs (5 active)
+11:51:01 [INFO] [KC] bar #1600 @ 11:45 C=14.85 | signals=0
+11:51:01 [INFO] [WMT] bar #1990 @ 11:45 C=122.83 | signals=0
+11:51:01 [INFO] [CELH] 5m bar #1600 @1145 ind=26μs strat=48μs total=73μs (5 active)
+11:51:01 [INFO] [CELH] bar #1600 @ 11:45 C=41.49 | signals=0
+11:51:01 [INFO] [LABU] bar #1190 @ 11:45 C=146.60 | signals=0
+11:51:01 [INFO] [AXTI] 5m bar #1600 @1145 ind=25μs strat=112μs total=137μs (5 active)
+11:51:01 [INFO] [AXTI] bar #1600 @ 11:45 C=49.77 | signals=0
+11:51:02 [INFO] [IOT] 5m bar #1600 @1145 ind=25μs strat=59μs total=85μs (5 active)
+11:51:02 [INFO] [IOT] bar #1600 @ 11:45 C=33.85 | signals=0
+11:51:02 [INFO] [HON] 5m bar #1600 @1145 ind=23μs strat=76μs total=99μs (5 active)
+11:51:02 [INFO] [HON] bar #1600 @ 11:45 C=230.79 | signals=0
+11:51:02 [INFO] [XYZ] bar #1990 @ 11:45 C=59.59 | signals=0
+11:51:04 [INFO] [JBL] 5m bar #1600 @1145 ind=23μs strat=93μs total=116μs (5 active)
+11:51:04 [INFO] [JBL] bar #1600 @ 11:45 C=260.50 | signals=0
+11:51:04 [INFO] [BNAI] 5m bar #1600 @1145 ind=24μs strat=56μs total=81μs (5 active)
+11:51:04 [INFO] [BNAI] bar #1600 @ 11:45 C=42.22 | signals=0
+11:51:14 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, marketPrice=165.10998535, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=132.41, account='DUP326100')
+11:51:14 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=100.0, marketPrice=205.51142885, marketValue=20551.14, averageCost=205.31, unrealizedPNL=20.14, realizedPNL=0.0, account='DUP326100')
+11:51:14 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=100.0, marketPrice=42.12173845, marketValue=4212.17, averageCost=42.8, unrealizedPNL=-67.83, realizedPNL=0.0, account='DUP326100')
+11:52:11 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-100.0, avgCost=165.03)
+11:52:11 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-100.0, avgCost=165.019805)
+11:52:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-100.0, marketPrice=165.0299988, marketValue=-16503.0, averageCost=165.019805, unrealizedPNL=-1.02, realizedPNL=132.41, account='DUP326100')
+11:52:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=100.0, marketPrice=205.37358095, marketValue=20537.36, averageCost=205.31, unrealizedPNL=6.36, realizedPNL=0.0, account='DUP326100')
+11:52:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=100.0, marketPrice=42.1178589, marketValue=4211.79, averageCost=42.8, unrealizedPNL=-68.21, realizedPNL=0.0, account='DUP326100')
+11:54:00 [INFO] [NFLX] 1m bar #9950 @1153 ind=34μs strat=400μs total=434μs (3 active) | SIGNALS: ORH_FBO_V2_A
+11:54:00 [INFO] [NFLX] 1m signal @ 11:53 C=94.94 | signals=1
+11:54:00 [INFO] [NFLX] BLOCKED ORH_FBO_RETEST by in-play: FAIL(rvol=0.47<1.5)
+11:54:34 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.usopt.nj
+11:54:34 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.usopt.nj
+11:55:13 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-100.0, marketPrice=164.92962645, marketValue=-16492.96, averageCost=165.019805, unrealizedPNL=9.02, realizedPNL=132.41, account='DUP326100')
+11:55:13 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=100.0, marketPrice=205.52767945, marketValue=20552.77, averageCost=205.31, unrealizedPNL=21.77, realizedPNL=0.0, account='DUP326100')
+11:55:13 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=100.0, marketPrice=42.15489195, marketValue=4215.49, averageCost=42.8, unrealizedPNL=-64.51, realizedPNL=0.0, account='DUP326100')
+11:56:00 [INFO] [MKT:SPY] Bar #121 closed @ 11:50 C=667.32
+11:56:00 [INFO] [RTX] bar #1990 @ 11:50 C=205.54 | signals=0
+11:56:00 [INFO] [SHOP] bar #1990 @ 11:50 C=126.03 | signals=0
+11:56:00 [INFO] [MKT:QQQ] Bar #121 closed @ 11:50 C=601.10
+11:56:00 [INFO] [FNGU] bar #1880 @ 11:50 C=19.20 | signals=0
+11:56:00 [INFO] [JNUG] bar #660 @ 11:50 C=198.82 | signals=0
+11:56:00 [INFO] [TSLL] bar #1990 @ 11:50 C=14.23 | signals=0
+11:56:00 [INFO] [LULU] 5m bar #1850 @1150 ind=27μs strat=57μs total=84μs (5 active)
+11:56:00 [INFO] [LULU] bar #1850 @ 11:50 C=164.92 | signals=0
+11:56:01 [INFO] [SWMR] 5m bar #100 @1150 ind=20μs strat=68μs total=88μs (5 active)
+11:56:01 [INFO] [SWMR] bar #100 @ 11:50 C=59.44 | signals=0
+11:56:07 [INFO] [GCT] 5m bar #1600 @1150 ind=29μs strat=57μs total=86μs (5 active)
+11:56:07 [INFO] [GCT] bar #1600 @ 11:50 C=43.03 | signals=0
+11:56:07 [INFO] [FTAI] 5m bar #1600 @1150 ind=25μs strat=54μs total=79μs (5 active)
+11:56:07 [INFO] [FTAI] bar #1600 @ 11:50 C=243.40 | signals=0
+11:56:18 [INFO] [WSM] 5m bar #1600 @1150 ind=36μs strat=75μs total=111μs (5 active)
+11:56:18 [INFO] [WSM] bar #1600 @ 11:50 C=193.04 | signals=0
+11:56:22 [INFO] [STLD] 5m bar #1600 @1150 ind=22μs strat=53μs total=75μs (5 active)
+11:56:22 [INFO] [STLD] bar #1600 @ 11:50 C=169.54 | signals=0
+11:56:28 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-100.0, avgCost=165.019805)
+11:56:29 [INFO] Warning 2104, reqId -1: Market data farm connection is OK:usopt.nj
+11:58:13 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-100.0, marketPrice=165.18634035, marketValue=-16518.63, averageCost=165.019805, unrealizedPNL=-16.65, realizedPNL=132.41, account='DUP326100')
+11:58:13 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=100.0, marketPrice=205.50616455, marketValue=20550.62, averageCost=205.31, unrealizedPNL=19.62, realizedPNL=0.0, account='DUP326100')
+11:58:30 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-200.0, avgCost=165.1599025)
+11:58:30 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-200.0, avgCost=165.15480499999998)
+11:58:32 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-200.0, marketPrice=165.2819977, marketValue=-33056.4, averageCost=165.154805, unrealizedPNL=-25.44, realizedPNL=132.41, account='DUP326100')
+11:58:32 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=100.0, marketPrice=205.5168915, marketValue=20551.69, averageCost=205.31, unrealizedPNL=20.69, realizedPNL=0.0, account='DUP326100')
+12:00:19 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.usopt.nj
+12:00:19 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.usopt.nj
+12:00:31 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-300.0, avgCost=165.36987)
+12:00:32 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-300.0, avgCost=165.36647166666665)
+12:00:32 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-300.0, marketPrice=165.7559662, marketValue=-49726.79, averageCost=165.36647165, unrealizedPNL=-116.85, realizedPNL=132.41, account='DUP326100')
+12:00:32 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=100.0, marketPrice=205.4009552, marketValue=20540.1, averageCost=205.31, unrealizedPNL=9.1, realizedPNL=0.0, account='DUP326100')
+12:00:32 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=100.0, marketPrice=41.855999, marketValue=4185.6, averageCost=42.8, unrealizedPNL=-94.4, realizedPNL=0.0, account='DUP326100')
+12:01:00 [INFO] [MU] bar #1680 @ 11:55 C=467.37 | signals=0
+12:01:00 [INFO] [XBI] bar #1990 @ 11:55 C=121.45 | signals=0
+12:01:00 [INFO] [UPRO] 5m bar #1450 @1155 ind=34μs strat=45μs total=79μs (5 active)
+12:01:00 [INFO] [UPRO] bar #1450 @ 11:55 C=105.15 | signals=0
+12:01:00 [INFO] [MKT:SPY] Bar #122 closed @ 11:55 C=667.03
+12:01:00 [INFO] [GOOGL] bar #1680 @ 11:55 C=310.54 | signals=0
+12:01:00 [INFO] [MKT:QQQ] Bar #122 closed @ 11:55 C=600.77
+12:01:00 [INFO] [RBLX] bar #1990 @ 11:55 C=58.97 | signals=0
+12:01:00 [INFO] [BA] bar #1680 @ 11:55 C=206.43 | signals=0
+12:01:00 [INFO] [PATH] bar #1680 @ 11:55 C=12.39 | signals=0
+12:01:00 [INFO] [HIMS] bar #1680 @ 11:55 C=24.27 | signals=0
+12:01:00 [INFO] [CF] bar #1680 @ 11:55 C=124.78 | signals=0
+12:01:00 [INFO] [AFRM] bar #1990 @ 11:55 C=48.02 | signals=0
+12:01:00 [INFO] [MS] bar #1980 @ 11:55 C=159.90 | signals=0
+12:01:00 [INFO] [TSM] bar #1680 @ 11:55 C=344.57 | signals=0
+12:01:00 [INFO] [JNJ] bar #1680 @ 11:55 C=237.34 | signals=0
+12:01:00 [INFO] [GE] bar #1990 @ 11:55 C=302.80 | signals=0
+12:01:00 [INFO] [CRM] bar #1680 @ 11:55 C=194.33 | signals=0
+12:01:00 [INFO] [SOC] bar #1680 @ 11:55 C=17.03 | signals=0
+12:01:01 [INFO] [SMX] bar #1680 @ 11:55 C=8.90 | signals=0
+12:01:01 [INFO] [NET] bar #1680 @ 11:55 C=217.90 | signals=0
+12:03:00 [INFO] [MU] 1m bar #8399 @1202 ind=68μs strat=582μs total=651μs (3 active) | SIGNALS: ORH_FBO_V2_A
+12:03:00 [INFO] [MU] 1m signal @ 12:02 C=466.18 | signals=1
+12:03:00 [INFO] [MU] BLOCKED ORH_FBO_RETEST by in-play score: 1.0 < 4.5
+12:03:33 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-300.0, marketPrice=165.71240235, marketValue=-49713.72, averageCost=165.36647165, unrealizedPNL=-103.78, realizedPNL=132.41, account='DUP326100')
+12:03:33 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=100.0, marketPrice=205.3476715, marketValue=20534.77, averageCost=205.31, unrealizedPNL=3.77, realizedPNL=0.0, account='DUP326100')
+12:03:33 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=100.0, marketPrice=41.6880722, marketValue=4168.81, averageCost=42.8, unrealizedPNL=-111.19, realizedPNL=0.0, account='DUP326100')
+12:04:28 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-300.0, avgCost=165.36647165)
+12:05:59 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-400.0, avgCost=165.6823537375)
+12:05:59 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-400.0, avgCost=165.6798049875)
+12:06:00 [INFO] [MKT:SPY] Bar #123 closed @ 12:00 C=666.88
+12:06:00 [INFO] [SOXL] 1m bar #9959 @1205 ind=98μs strat=387μs total=486μs (3 active) | SIGNALS: ORH_FBO_V2_B
+12:06:00 [INFO] [SOXL] bar #1993 @ 12:00 C=55.95 | signals=1
+12:06:00 [INFO] [SOXL] BLOCKED ORH_FBO_CONT by in-play: FAIL(rvol=1.06<1.5)
+12:06:00 [INFO] [MKT:QQQ] Bar #123 closed @ 12:00 C=600.62
+12:06:00 [INFO] [TNA] bar #1860 @ 12:00 C=44.57 | signals=0
+12:06:00 [INFO] [LUNR] bar #1990 @ 12:00 C=18.34 | signals=0
+12:06:00 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-400.0, marketPrice=166.6399994, marketValue=-66656.0, averageCost=165.679805, unrealizedPNL=-384.08, realizedPNL=132.41, account='DUP326100')
+12:06:00 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=100.0, marketPrice=205.4536133, marketValue=20545.36, averageCost=205.31, unrealizedPNL=14.36, realizedPNL=0.0, account='DUP326100')
+12:06:00 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=100.0, marketPrice=42.1524582, marketValue=4215.25, averageCost=42.8, unrealizedPNL=-64.75, realizedPNL=0.0, account='DUP326100')
+12:06:00 [INFO] [FAS] bar #1920 @ 12:00 C=117.09 | signals=0
+12:06:04 [INFO] [FIVE] 5m bar #1600 @1200 ind=27μs strat=45μs total=72μs (5 active)
+12:06:04 [INFO] [FIVE] bar #1600 @ 12:00 C=213.90 | signals=0
+12:06:22 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-500.0, avgCost=165.90584399)
+12:06:22 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-500.0, avgCost=165.90380499)
+12:06:23 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-500.0, marketPrice=166.88952635, marketValue=-83444.76, averageCost=165.903805, unrealizedPNL=-492.86, realizedPNL=132.41, account='DUP326100')
+12:09:23 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-500.0, marketPrice=166.66848755, marketValue=-83334.24, averageCost=165.903805, unrealizedPNL=-382.34, realizedPNL=132.41, account='DUP326100')
+12:09:23 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=100.0, marketPrice=205.50424195, marketValue=20550.42, averageCost=205.31, unrealizedPNL=19.42, realizedPNL=0.0, account='DUP326100')
+12:09:23 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=100.0, marketPrice=42.3210945, marketValue=4232.11, averageCost=42.8, unrealizedPNL=-47.89, realizedPNL=0.0, account='DUP326100')
+12:09:29 [INFO] Warning 2104, reqId -1: Market data farm connection is OK:usopt.nj
+12:09:30 [INFO] Warning 2104, reqId -1: Market data farm connection is OK:eufarm
+12:09:30 [INFO] Warning 2104, reqId -1: Market data farm connection is OK:jfarm
+12:09:31 [INFO] Warning 2104, reqId -1: Market data farm connection is OK:hfarm
+12:10:46 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-500.0, avgCost=165.903805)
+12:11:00 [INFO] [MKT:SPY] Bar #124 closed @ 12:05 C=666.71
+12:11:00 [INFO] [MKT:QQQ] Bar #124 closed @ 12:05 C=600.24
+12:11:00 [INFO] [SOXS] bar #1910 @ 12:05 C=37.57 | signals=0
+12:11:00 [INFO] [APH] 5m bar #1600 @1205 ind=23μs strat=30μs total=52μs (5 active)
+12:11:00 [INFO] [APH] bar #1600 @ 12:05 C=130.86 | signals=0
+12:11:02 [INFO] [WEBL] bar #1870 @ 12:05 C=19.55 | signals=0
+12:11:02 [INFO] [SPIR] 5m bar #1600 @1205 ind=26μs strat=51μs total=77μs (5 active)
+12:11:02 [INFO] [SPIR] bar #1600 @ 12:05 C=10.38 | signals=0
+12:11:02 [INFO] [NUGT] bar #1060 @ 12:05 C=183.31 | signals=0
+12:11:05 [INFO] [AMR] 5m bar #1600 @1205 ind=27μs strat=43μs total=71μs (5 active)
+12:11:05 [INFO] [AMR] bar #1600 @ 12:05 C=191.47 | signals=0
+12:12:23 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-500.0, marketPrice=166.7146454, marketValue=-83357.32, averageCost=165.903805, unrealizedPNL=-405.42, realizedPNL=132.41, account='DUP326100')
+12:12:23 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=100.0, marketPrice=205.3690796, marketValue=20536.91, averageCost=205.31, unrealizedPNL=5.91, realizedPNL=0.0, account='DUP326100')
+12:12:23 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=100.0, marketPrice=42.1929016, marketValue=4219.29, averageCost=42.8, unrealizedPNL=-60.71, realizedPNL=0.0, account='DUP326100')
+12:14:46 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-558.0, avgCost=166.015667562724)
+12:14:46 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-600.0, avgCost=166.0831708333333)
+12:14:46 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-600.0, avgCost=166.08148531666663)
+12:14:46 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-600.0, avgCost=166.08147166666663)
+12:14:47 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-600.0, marketPrice=166.94776915, marketValue=-100168.66, averageCost=166.08147165, unrealizedPNL=-519.78, realizedPNL=132.41, account='DUP326100')
+12:14:47 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=100.0, marketPrice=205.50032045, marketValue=20550.03, averageCost=205.31, unrealizedPNL=19.03, realizedPNL=0.0, account='DUP326100')
+12:14:47 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=100.0, marketPrice=42.1535721, marketValue=4215.36, averageCost=42.8, unrealizedPNL=-64.64, realizedPNL=0.0, account='DUP326100')
+12:15:05 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.hfarm
+12:15:05 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.hfarm
+12:15:05 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.eufarm
+12:15:05 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.eufarm
+12:15:05 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.jfarm
+12:15:05 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.jfarm
+12:15:05 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.usopt.nj
+12:15:05 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.usopt.nj
+12:16:00 [INFO] [LABD] bar #1990 @ 12:10 C=19.95 | signals=0
+12:16:00 [INFO] [MKT:SPY] Bar #125 closed @ 12:10 C=667.30
+12:16:00 [INFO] [MKT:QQQ] Bar #125 closed @ 12:10 C=600.87
+12:16:00 [INFO] [MS] 5m bar #1983 @1210 ind=17μs strat=357μs total=374μs (5 active) | SIGNALS: SP_ATIER
+12:16:00 [INFO] [MS] bar #1983 @ 12:10 C=160.18 | signals=1
+12:16:00 [INFO] [MS] BLOCKED SPENCER by in-play score: 2.0 < 4.5
+12:16:08 [INFO] [ARM] bar #1970 @ 12:10 C=128.76 | signals=0
+12:16:08 [INFO] [MUSA] 5m bar #1600 @1210 ind=39μs strat=60μs total=99μs (5 active)
+12:16:08 [INFO] [MUSA] bar #1600 @ 12:10 C=464.21 | signals=0
+12:16:08 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-700.0, avgCost=166.2384042857143)
+12:16:08 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-700.0, avgCost=166.23694785714287)
+12:16:09 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-700.0, marketPrice=167.10569765, marketValue=-116973.99, averageCost=166.23694785, unrealizedPNL=-608.12, realizedPNL=132.41, account='DUP326100')
+12:16:09 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=100.0, marketPrice=205.40200805, marketValue=20540.2, averageCost=205.31, unrealizedPNL=9.2, realizedPNL=0.0, account='DUP326100')
+12:19:10 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-700.0, marketPrice=166.89094545, marketValue=-116823.66, averageCost=166.23694785, unrealizedPNL=-457.8, realizedPNL=132.41, account='DUP326100')
+12:19:10 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=100.0, marketPrice=205.41600035, marketValue=20541.6, averageCost=205.31, unrealizedPNL=10.6, realizedPNL=0.0, account='DUP326100')
+12:19:10 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=100.0, marketPrice=42.27383805, marketValue=4227.38, averageCost=42.8, unrealizedPNL=-52.62, realizedPNL=0.0, account='DUP326100')
+12:19:16 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-700.0, avgCost=166.23694785)
+12:21:00 [INFO] [MKT:SPY] Bar #126 closed @ 12:15 C=667.35
+12:21:00 [INFO] [MKT:QQQ] Bar #126 closed @ 12:15 C=600.86
+12:21:00 [INFO] [TGT] bar #1990 @ 12:15 C=115.72 | signals=0
+12:21:01 [INFO] [AGRO] 5m bar #1600 @1215 ind=29μs strat=67μs total=96μs (5 active)
+12:21:01 [INFO] [AGRO] bar #1600 @ 12:15 C=14.10 | signals=0
+12:21:02 [INFO] [BOBS] 5m bar #1600 @1215 ind=44μs strat=108μs total=152μs (5 active)
+12:21:02 [INFO] [BOBS] bar #1600 @ 12:15 C=15.08 | signals=0
+12:21:02 [INFO] [PGR] 5m bar #1600 @1215 ind=35μs strat=54μs total=88μs (5 active)
+12:21:02 [INFO] [PGR] bar #1600 @ 12:15 C=201.87 | signals=0
+12:22:10 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-700.0, marketPrice=166.432251, marketValue=-116502.58, averageCost=166.23694785, unrealizedPNL=-136.71, realizedPNL=132.41, account='DUP326100')
+12:22:10 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=100.0, marketPrice=205.5138092, marketValue=20551.38, averageCost=205.31, unrealizedPNL=20.38, realizedPNL=0.0, account='DUP326100')
+12:22:10 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=100.0, marketPrice=42.2292061, marketValue=4222.92, averageCost=42.8, unrealizedPNL=-57.08, realizedPNL=0.0, account='DUP326100')
