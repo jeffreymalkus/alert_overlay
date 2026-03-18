@@ -29,6 +29,7 @@ class StrategyConfig:
     ip_v2_provisional_hhmm: int = 940
     ip_v2_confirmed_hhmm: int = 1000
     ip_v2_recompute_confirmed_each_bar: bool = True
+    ip_v2_allow_provisional_promotion: bool = False  # provisional trades are net -12.2R; disabled by default
     ip_v2_debug_logging: bool = True
 
     # ── Market regime ──

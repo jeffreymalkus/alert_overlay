@@ -789,13 +789,24 @@ def main():
                     if _USE_IP_V2:
                         # V2 gate: percentile-ranked, two-stage
                         _ip_v2_result = in_play_v2.get_result(sym, bar_date, hhmm=sig_hhmm)
+
+                        # Block if not passed
                         if not _ip_v2_result.active_passed:
                             funnel["blocked_inplay"] += 1
                             per_strategy_funnel[sig.strategy_name]["blocked_inplay"] += 1
                             if _ip_v2_result.active_score_kind == "NONE":
                                 funnel["ip_pending_blocked"] = funnel.get("ip_pending_blocked", 0) + 1
                             continue
-                        # V2 doesn't use a separate score minimum — the threshold IS the gate
+
+                        # Block provisional promotion unless explicitly allowed
+                        # (provisional trades are net -12.2R in testing)
+                        if (_ip_v2_result.active_score_kind == "PROVISIONAL" and
+                                not ip_cfg.ip_v2_allow_provisional_promotion):
+                            funnel["blocked_inplay"] += 1
+                            per_strategy_funnel[sig.strategy_name]["blocked_inplay"] += 1
+                            funnel["ip_provisional_blocked"] = funnel.get("ip_provisional_blocked", 0) + 1
+                            continue
+
                         ip_score = _ip_v2_result.active_score
                     else:
                         # V1 gate: hard gate + per-strategy score minimum

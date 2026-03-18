@@ -8401,3 +8401,248 @@ NameError: name 'perm_reading' is not defined
 13:07:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, marketPrice=167.3995514, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=311.27, account='DUP326100')
 13:07:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=0.0, marketPrice=206.9091339, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=46.98, account='DUP326100')
 13:07:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=0.0, marketPrice=43.53367995, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=3.98, account='DUP326100')
+13:10:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, marketPrice=167.3031616, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=311.27, account='DUP326100')
+13:10:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=0.0, marketPrice=206.61647035, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=46.98, account='DUP326100')
+13:10:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=0.0, marketPrice=43.54777145, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=3.98, account='DUP326100')
+13:11:00 [INFO] [MKT:SPY] Bar #136 closed @ 13:05 C=665.93
+13:11:00 [INFO] [MKT:QQQ] Bar #136 closed @ 13:05 C=598.72
+13:11:00 [INFO] [BOBS] bar #1610 @ 13:05 C=15.19 | signals=0
+13:11:00 [INFO] [AGRO] bar #1610 @ 13:05 C=14.07 | signals=0
+13:11:00 [INFO] [TGT] 5m bar #2000 @1305 ind=32μs strat=47μs total=78μs (5 active)
+13:11:00 [INFO] [TGT] bar #2000 @ 13:05 C=115.44 | signals=0
+13:11:05 [INFO] [SUNC] 5m bar #1608 @1305 ind=47μs strat=474μs total=521μs (5 active) | SIGNALS: EMA_FPIP
+13:11:05 [INFO] [SUNC] bar #1608 @ 13:05 C=61.80 | signals=1
+13:11:05 [INFO] [SUNC] BLOCKED EMA_FPIP by in-play: FAIL(rvol=0.38<1.5)
+13:11:07 [INFO] [PGR] bar #1610 @ 13:05 C=202.41 | signals=0
+13:12:00 [INFO] [SOXL] 1m bar #10025 @1311 ind=63μs strat=406μs total=469μs (3 active) | SIGNALS: PDH_FBO_B
+13:12:00 [INFO] [SOXL] 1m signal @ 13:11 C=55.18 | signals=1
+13:12:00 [INFO] [SOXL] BLOCKED PDH_FBO_CONT by in-play: FAIL(rvol=1.06<1.5)
+13:13:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, marketPrice=167.65800475, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=311.27, account='DUP326100')
+13:13:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=0.0, marketPrice=205.8843994, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=46.98, account='DUP326100')
+13:13:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=0.0, marketPrice=43.4809952, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=3.98, account='DUP326100')
+13:16:00 [INFO] [SNOW] 5m bar #2000 @1310 ind=31μs strat=41μs total=72μs (5 active)
+13:16:00 [INFO] [SNOW] bar #2000 @ 13:10 C=174.20 | signals=0
+13:16:00 [INFO] [SPXS] bar #1960 @ 13:10 C=38.63 | signals=0
+13:16:00 [INFO] [PATH] 5m bar #1695 @1310 ind=30μs strat=3741μs total=3770μs (5 active) | SIGNALS: SP_ATIER
+13:16:00 [INFO] [PATH] bar #1695 @ 13:10 C=12.51 | signals=1
+13:16:00 [INFO] [PATH] BLOCKED SPENCER by in-play: FAIL(rvol=0.58<1.5)
+13:16:00 [INFO] [MKT:SPY] Bar #137 closed @ 13:10 C=665.65
+13:16:00 [INFO] [MKT:QQQ] Bar #137 closed @ 13:10 C=598.53
+13:16:01 [INFO] [CRSP] bar #1990 @ 13:10 C=48.35 | signals=0
+13:16:07 [INFO] [CTRN] bar #1610 @ 13:10 C=50.78 | signals=0
+13:16:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, marketPrice=167.6404724, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=311.27, account='DUP326100')
+13:16:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=0.0, marketPrice=205.8712158, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=46.98, account='DUP326100')
+13:16:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=0.0, marketPrice=43.44760515, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=3.98, account='DUP326100')
+13:16:12 [INFO] [CMCO] bar #1610 @ 13:10 C=14.43 | signals=0
+13:19:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, marketPrice=167.88864135, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=311.27, account='DUP326100')
+13:19:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=0.0, marketPrice=206.05018615, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=46.98, account='DUP326100')
+13:19:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=0.0, marketPrice=43.4607506, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=3.98, account='DUP326100')
+13:20:01 [INFO] [RTX] 1m bar #9724 @1319 ind=75μs strat=416μs total=491μs (3 active) | SIGNALS: PDH_FBO_B
+13:20:01 [INFO] [RTX] 1m signal @ 13:19 C=205.99 | signals=1
+13:20:01 [INFO] [RTX] BLOCKED PDH_FBO_CONT by in-play: FAIL(rvol=0.75<1.5)
+13:21:00 [INFO] [MKT:QQQ] Bar #138 closed @ 13:15 C=598.88
+13:21:00 [INFO] [AAPL] 5m bar #2000 @1315 ind=23μs strat=40μs total=63μs (5 active)
+13:21:00 [INFO] [AAPL] bar #2000 @ 13:15 C=250.67 | signals=0
+13:21:00 [INFO] [TSLA] 5m bar #2000 @1315 ind=20μs strat=45μs total=65μs (5 active)
+13:21:00 [INFO] [TSLA] bar #2000 @ 13:15 C=396.68 | signals=0
+13:21:00 [INFO] [MKT:SPY] Bar #138 closed @ 13:15 C=665.95
+13:21:04 [INFO] [SUNC] bar #1610 @ 13:15 C=61.73 | signals=0
+13:21:04 [INFO] [SMTC] bar #1690 @ 13:15 C=74.67 | signals=0
+13:21:08 [INFO] [ATAT] bar #1610 @ 13:15 C=37.02 | signals=0
+13:22:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, marketPrice=168.234848, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=311.27, account='DUP326100')
+13:22:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=0.0, marketPrice=206.11286925, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=46.98, account='DUP326100')
+13:22:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=0.0, marketPrice=43.97850035, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=3.98, account='DUP326100')
+13:25:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, marketPrice=168.193573, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=311.27, account='DUP326100')
+13:25:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=0.0, marketPrice=206.0865631, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=46.98, account='DUP326100')
+13:25:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=0.0, marketPrice=43.91754915, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=3.98, account='DUP326100')
+13:26:00 [INFO] [MKT:SPY] Bar #139 closed @ 13:20 C=666.07
+13:26:00 [INFO] [MKT:QQQ] Bar #139 closed @ 13:20 C=599.18
+13:26:01 [INFO] [ASO] bar #1690 @ 13:20 C=51.84 | signals=0
+13:26:04 [INFO] [PGR] 5m bar #1613 @1320 ind=35μs strat=366μs total=400μs (5 active) | SIGNALS: BS_STRUCT
+13:26:04 [INFO] [PGR] bar #1613 @ 13:20 C=202.56 | signals=1
+13:26:04 [INFO] [PGR] BLOCKED BACKSIDE_STRUCT by in-play: FAIL(rvol=1.20<1.5)
+13:26:17 [INFO] [GLSI] bar #1690 @ 13:20 C=28.15 | signals=0
+13:26:18 [INFO] [RFIL] bar #1610 @ 13:20 C=12.01 | signals=0
+13:26:28 [INFO] [TSAT] bar #1690 @ 13:20 C=41.25 | signals=0
+13:28:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, marketPrice=167.72154235, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=311.27, account='DUP326100')
+13:28:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=0.0, marketPrice=205.9933014, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=46.98, account='DUP326100')
+13:28:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=0.0, marketPrice=43.99040985, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=3.98, account='DUP326100')
+13:31:00 [INFO] [GIS] bar #1620 @ 13:25 C=37.93 | signals=0
+13:31:00 [INFO] [SOXL] bar #2010 @ 13:25 C=55.78 | signals=0
+13:31:00 [INFO] [VNET] bar #1620 @ 13:25 C=9.67 | signals=0
+13:31:00 [INFO] [MSTR] bar #1620 @ 13:25 C=141.84 | signals=0
+13:31:00 [INFO] [SPY] bar #2010 @ 13:25 C=665.84 | signals=0
+13:31:00 [INFO] [C] bar #2010 @ 13:25 C=108.69 | signals=0
+13:31:00 [INFO] [QQQ] bar #2010 @ 13:25 C=599.15 | signals=0
+13:31:00 [INFO] [GOOG] bar #2010 @ 13:25 C=307.42 | signals=0
+13:31:00 [INFO] [XPEV] bar #1620 @ 13:25 C=18.94 | signals=0
+13:31:00 [INFO] [MKT:SPY] Bar #140 closed @ 13:25 C=665.84
+13:31:00 [INFO] [NU] bar #2010 @ 13:25 C=14.15 | signals=0
+13:31:00 [INFO] [NAIL] bar #1940 @ 13:25 C=41.31 | signals=0
+13:31:00 [INFO] [COHR] bar #1620 @ 13:25 C=262.19 | signals=0
+13:31:00 [INFO] [MKT:QQQ] Bar #140 closed @ 13:25 C=599.15
+13:31:00 [INFO] [NFLX] bar #2010 @ 13:25 C=94.76 | signals=0
+13:31:00 [INFO] [SNDK] bar #1620 @ 13:25 C=746.12 | signals=0
+13:31:00 [INFO] [LITE] bar #1620 @ 13:25 C=710.66 | signals=0
+13:31:00 [INFO] [NVDA] bar #2010 @ 13:25 C=182.07 | signals=0
+13:31:00 [INFO] [NKE] bar #2010 @ 13:25 C=53.92 | signals=0
+13:31:00 [INFO] [TECL] 5m bar #1900 @1325 ind=18μs strat=64μs total=83μs (5 active)
+13:31:00 [INFO] [TECL] bar #1900 @ 13:25 C=100.53 | signals=0
+13:31:00 [INFO] [PLTR] bar #2010 @ 13:25 C=153.52 | signals=0
+13:31:00 [INFO] [XLE] bar #2010 @ 13:25 C=58.78 | signals=0
+13:31:00 [INFO] [NIO] bar #1620 @ 13:25 C=5.90 | signals=0
+13:31:00 [INFO] [OKLO] bar #1620 @ 13:25 C=59.34 | signals=0
+13:31:00 [INFO] [AXTI] bar #1620 @ 13:25 C=50.26 | signals=0
+13:31:00 [INFO] [DKNG] bar #2010 @ 13:25 C=25.58 | signals=0
+13:31:00 [INFO] [MSFT] bar #2010 @ 13:25 C=392.74 | signals=0
+13:31:00 [INFO] [JPM] bar #2010 @ 13:25 C=287.73 | signals=0
+13:31:00 [INFO] [RIVN] bar #2010 @ 13:25 C=15.68 | signals=0
+13:31:00 [INFO] [IONQ] bar #2010 @ 13:25 C=33.24 | signals=0
+13:31:00 [INFO] [WMT] bar #2010 @ 13:25 C=122.40 | signals=0
+13:31:00 [INFO] [ORCL] bar #2010 @ 13:25 C=153.07 | signals=0
+13:31:00 [INFO] [BATL] bar #1620 @ 13:25 C=12.22 | signals=0
+13:31:00 [INFO] [M] bar #1620 @ 13:25 C=17.77 | signals=0
+13:31:00 [INFO] [COIN] bar #2010 @ 13:25 C=205.55 | signals=0
+13:31:00 [INFO] [DAL] bar #1620 @ 13:25 C=64.63 | signals=0
+13:31:00 [INFO] [SPXL] 5m bar #1900 @1325 ind=32μs strat=76μs total=108μs (5 active)
+13:31:00 [INFO] [SPXL] bar #1900 @ 13:25 C=199.28 | signals=0
+13:31:00 [INFO] [BABA] bar #1990 @ 13:25 C=135.52 | signals=0
+13:31:00 [INFO] [UBER] bar #2010 @ 13:25 C=77.21 | signals=0
+13:31:00 [INFO] [RKLB] bar #1620 @ 13:25 C=71.73 | signals=0
+13:31:00 [INFO] [MRNA] bar #2010 @ 13:25 C=52.58 | signals=0
+13:31:00 [INFO] [LABU] bar #1210 @ 13:25 C=150.12 | signals=0
+13:31:00 [INFO] [SMCI] bar #2010 @ 13:25 C=30.62 | signals=0
+13:31:00 [INFO] [BAC] bar #2010 @ 13:25 C=47.22 | signals=0
+13:31:00 [INFO] [RGTI] bar #2010 @ 13:25 C=15.91 | signals=0
+13:31:00 [INFO] [IOT] bar #1620 @ 13:25 C=33.76 | signals=0
+13:31:00 [INFO] [DOCU] bar #1620 @ 13:25 C=48.50 | signals=0
+13:31:00 [INFO] [XYZ] bar #2010 @ 13:25 C=57.96 | signals=0
+13:31:00 [INFO] [CELH] bar #1620 @ 13:25 C=42.19 | signals=0
+13:31:01 [INFO] [HON] bar #1620 @ 13:25 C=232.36 | signals=0
+13:31:01 [INFO] [AMPX] bar #1620 @ 13:25 C=19.22 | signals=0
+13:31:01 [INFO] [DASH] bar #2010 @ 13:25 C=166.41 | signals=0
+13:31:01 [INFO] [DDOG] bar #1620 @ 13:25 C=132.26 | signals=0
+13:31:01 [INFO] [SEI] bar #1620 @ 13:25 C=69.51 | signals=0
+13:31:01 [INFO] [LYFT] bar #1620 @ 13:25 C=13.69 | signals=0
+13:31:01 [INFO] [ACN] bar #1620 @ 13:25 C=196.32 | signals=0
+13:31:02 [INFO] [AAOI] bar #1620 @ 13:25 C=93.91 | signals=0
+13:31:02 [INFO] [FDX] bar #1620 @ 13:25 C=353.13 | signals=0
+13:31:02 [INFO] [KC] bar #1620 @ 13:25 C=14.99 | signals=0
+13:31:03 [INFO] [DOCN] bar #1620 @ 13:25 C=83.67 | signals=0
+13:31:03 [INFO] [CAVA] bar #1620 @ 13:25 C=90.20 | signals=0
+13:31:12 [INFO] [JBL] bar #1620 @ 13:25 C=257.82 | signals=0
+13:31:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, marketPrice=168.03233335, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=311.27, account='DUP326100')
+13:31:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=0.0, marketPrice=205.8307953, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=46.98, account='DUP326100')
+13:31:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=0.0, marketPrice=44.21479035, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=3.98, account='DUP326100')
+13:31:14 [INFO] [BNAI] bar #1620 @ 13:25 C=44.38 | signals=0
+13:34:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, marketPrice=167.8600006, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=311.27, account='DUP326100')
+13:34:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=0.0, marketPrice=205.8536072, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=46.98, account='DUP326100')
+13:34:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=0.0, marketPrice=44.3288498, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=3.98, account='DUP326100')
+13:36:00 [INFO] [MKT:SPY] Bar #141 closed @ 13:30 C=666.01
+13:36:00 [INFO] [LULU] bar #1870 @ 13:30 C=168.00 | signals=0
+13:36:00 [INFO] [MKT:QQQ] Bar #141 closed @ 13:30 C=599.41
+13:36:00 [INFO] [RTX] bar #2010 @ 13:30 C=205.85 | signals=0
+13:36:00 [INFO] [TSLL] bar #2010 @ 13:30 C=14.18 | signals=0
+13:36:00 [INFO] [SWMR] bar #120 @ 13:30 C=56.29 | signals=0
+13:36:00 [INFO] [JNUG] bar #680 @ 13:30 C=201.66 | signals=0
+13:36:00 [INFO] [FNGU] 5m bar #1900 @1330 ind=28μs strat=44μs total=72μs (5 active)
+13:36:00 [INFO] [FNGU] bar #1900 @ 13:30 C=19.02 | signals=0
+13:36:01 [INFO] [SHOP] bar #2010 @ 13:30 C=124.72 | signals=0
+13:36:02 [INFO] [STLD] bar #1620 @ 13:30 C=171.24 | signals=0
+13:36:07 [INFO] [GCT] bar #1620 @ 13:30 C=43.10 | signals=0
+13:36:07 [INFO] [FTAI] bar #1620 @ 13:30 C=242.64 | signals=0
+13:36:11 [INFO] [WSM] bar #1620 @ 13:30 C=193.18 | signals=0
+13:37:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, marketPrice=167.9221344, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=311.27, account='DUP326100')
+13:37:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=0.0, marketPrice=205.5921173, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=46.98, account='DUP326100')
+13:37:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=0.0, marketPrice=44.2990875, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=3.98, account='DUP326100')
+13:40:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, marketPrice=167.6325836, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=311.27, account='DUP326100')
+13:40:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=0.0, marketPrice=205.6574402, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=46.98, account='DUP326100')
+13:40:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=0.0, marketPrice=44.27737425, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=3.98, account='DUP326100')
+13:41:00 [INFO] [XBI] bar #2010 @ 13:35 C=122.42 | signals=0
+13:41:00 [INFO] [TSM] 5m bar #1700 @1335 ind=25μs strat=36μs total=61μs (5 active)
+13:41:00 [INFO] [TSM] bar #1700 @ 13:35 C=343.59 | signals=0
+13:41:00 [INFO] [MU] 5m bar #1700 @1335 ind=24μs strat=48μs total=72μs (5 active)
+13:41:00 [INFO] [MU] bar #1700 @ 13:35 C=466.12 | signals=0
+13:41:00 [INFO] [MS] 5m bar #2000 @1335 ind=24μs strat=52μs total=76μs (5 active)
+13:41:00 [INFO] [MS] bar #2000 @ 13:35 C=160.47 | signals=0
+13:41:00 [INFO] [MKT:SPY] Bar #142 closed @ 13:35 C=666.37
+13:41:00 [INFO] [JNJ] 5m bar #1700 @1335 ind=22μs strat=35μs total=57μs (5 active)
+13:41:00 [INFO] [JNJ] bar #1700 @ 13:35 C=237.33 | signals=0
+13:41:00 [INFO] [MKT:QQQ] Bar #142 closed @ 13:35 C=599.93
+13:41:00 [INFO] [RBLX] bar #2010 @ 13:35 C=59.01 | signals=0
+13:41:00 [INFO] [SMX] 5m bar #1700 @1335 ind=19μs strat=46μs total=65μs (5 active)
+13:41:00 [INFO] [SMX] bar #1700 @ 13:35 C=8.77 | signals=0
+13:41:00 [INFO] [PATH] 5m bar #1700 @1335 ind=23μs strat=43μs total=65μs (5 active)
+13:41:00 [INFO] [PATH] bar #1700 @ 13:35 C=12.61 | signals=0
+13:41:00 [INFO] [AFRM] bar #2010 @ 13:35 C=44.28 | signals=0
+13:41:00 [INFO] [CF] 5m bar #1700 @1335 ind=47μs strat=80μs total=127μs (5 active)
+13:41:00 [INFO] [CF] bar #1700 @ 13:35 C=124.32 | signals=0
+13:41:00 [INFO] [C] 5m bar #2012 @1335 ind=29μs strat=487μs total=516μs (5 active) | SIGNALS: SP_ATIER
+13:41:00 [INFO] [C] bar #2012 @ 13:35 C=109.13 | signals=1
+13:41:00 [INFO] [C] BLOCKED SPENCER by in-play score: 2.0 < 4.5
+13:41:00 [INFO] [GOOGL] 5m bar #1700 @1335 ind=27μs strat=67μs total=94μs (5 active)
+13:41:00 [INFO] [GOOGL] bar #1700 @ 13:35 C=308.95 | signals=0
+13:41:00 [INFO] [GE] bar #2010 @ 13:35 C=302.54 | signals=0
+13:41:00 [INFO] [CRM] 5m bar #1700 @1335 ind=21μs strat=61μs total=83μs (5 active)
+13:41:00 [INFO] [CRM] bar #1700 @ 13:35 C=195.37 | signals=0
+13:41:00 [INFO] [HIMS] 5m bar #1700 @1335 ind=18μs strat=33μs total=51μs (5 active)
+13:41:00 [INFO] [HIMS] bar #1700 @ 13:35 C=23.93 | signals=0
+13:41:00 [INFO] [NET] 5m bar #1700 @1335 ind=52μs strat=158μs total=210μs (5 active)
+13:41:00 [INFO] [NET] bar #1700 @ 13:35 C=225.77 | signals=0
+13:41:00 [INFO] [UPRO] bar #1470 @ 13:35 C=104.83 | signals=0
+13:41:01 [INFO] [SOC] 5m bar #1700 @1335 ind=52μs strat=126μs total=178μs (5 active)
+13:41:01 [INFO] [SOC] bar #1700 @ 13:35 C=17.36 | signals=0
+13:41:01 [INFO] [BA] 5m bar #1700 @1335 ind=21μs strat=43μs total=64μs (5 active)
+13:41:01 [INFO] [BA] bar #1700 @ 13:35 C=207.31 | signals=0
+13:43:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, marketPrice=167.65382385, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=311.27, account='DUP326100')
+13:43:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=0.0, marketPrice=205.56718445, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=46.98, account='DUP326100')
+13:43:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=0.0, marketPrice=44.2327118, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=3.98, account='DUP326100')
+13:46:00 [INFO] [MKT:SPY] Bar #143 closed @ 13:40 C=665.92
+13:46:00 [INFO] [MKT:QQQ] Bar #143 closed @ 13:40 C=599.59
+13:46:00 [INFO] [LUNR] bar #2010 @ 13:40 C=18.50 | signals=0
+13:46:00 [INFO] [TNA] bar #1880 @ 13:40 C=45.18 | signals=0
+13:46:00 [INFO] [FAS] bar #1940 @ 13:40 C=116.85 | signals=0
+13:46:04 [INFO] [FIVE] bar #1620 @ 13:40 C=215.25 | signals=0
+13:46:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, marketPrice=167.42399595, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=311.27, account='DUP326100')
+13:46:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=0.0, marketPrice=205.97306825, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=46.98, account='DUP326100')
+13:46:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=0.0, marketPrice=44.24768065, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=3.98, account='DUP326100')
+13:49:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, marketPrice=167.83172605, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=311.27, account='DUP326100')
+13:49:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=0.0, marketPrice=206.06307985, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=46.98, account='DUP326100')
+13:49:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=0.0, marketPrice=44.34493635, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=3.98, account='DUP326100')
+13:51:00 [INFO] [MKT:QQQ] Bar #144 closed @ 13:45 C=599.82
+13:51:00 [INFO] [SOXS] bar #1930 @ 13:45 C=37.36 | signals=0
+13:51:00 [INFO] [MKT:SPY] Bar #144 closed @ 13:45 C=666.15
+13:51:00 [INFO] [AMR] bar #1620 @ 13:45 C=195.98 | signals=0
+13:51:00 [INFO] [WEBL] bar #1890 @ 13:45 C=19.57 | signals=0
+13:51:01 [INFO] [APH] bar #1620 @ 13:45 C=129.44 | signals=0
+13:51:01 [INFO] [SPIR] bar #1620 @ 13:45 C=10.88 | signals=0
+13:51:02 [INFO] [DDOG] 5m bar #1624 @1345 ind=29μs strat=427μs total=456μs (5 active) | SIGNALS: SP_ATIER
+13:51:02 [INFO] [DDOG] bar #1624 @ 13:45 C=132.90 | signals=1
+13:51:02 [INFO] [DDOG] BLOCKED SPENCER by in-play: FAIL(rvol=0.78<1.5)
+13:51:02 [INFO] [NUGT] bar #1080 @ 13:45 C=183.62 | signals=0
+13:52:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, marketPrice=167.74284365, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=311.27, account='DUP326100')
+13:52:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=0.0, marketPrice=206.02790835, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=46.98, account='DUP326100')
+13:52:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=0.0, marketPrice=44.0894661, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=3.98, account='DUP326100')
+13:55:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, marketPrice=167.9042511, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=311.27, account='DUP326100')
+13:55:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=0.0, marketPrice=206.4024353, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=46.98, account='DUP326100')
+13:55:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=0.0, marketPrice=44.34244535, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=3.98, account='DUP326100')
+13:56:00 [INFO] [MKT:SPY] Bar #145 closed @ 13:50 C=666.51
+13:56:00 [INFO] [MKT:QQQ] Bar #145 closed @ 13:50 C=600.11
+13:56:00 [INFO] [LABD] bar #2010 @ 13:50 C=19.64 | signals=0
+13:56:01 [INFO] [ARM] bar #1990 @ 13:50 C=128.99 | signals=0
+13:56:08 [INFO] [MUSA] bar #1620 @ 13:50 C=470.01 | signals=0
+13:58:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, marketPrice=167.7051544, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=311.27, account='DUP326100')
+13:58:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=0.0, marketPrice=206.3507843, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=46.98, account='DUP326100')
+13:58:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=0.0, marketPrice=44.19750595, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=3.98, account='DUP326100')
+14:01:00 [INFO] [MKT:SPY] Bar #146 closed @ 13:55 C=666.72
+14:01:00 [INFO] [MKT:QQQ] Bar #146 closed @ 13:55 C=600.26
+14:01:00 [INFO] [PGR] bar #1620 @ 13:55 C=202.55 | signals=0
+14:01:01 [INFO] [TGT] bar #2010 @ 13:55 C=115.31 | signals=0
+14:01:02 [INFO] [BOBS] bar #1620 @ 13:55 C=14.89 | signals=0
+14:01:04 [INFO] [AGRO] bar #1620 @ 13:55 C=13.57 | signals=0
+14:01:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, marketPrice=168.075119, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=311.27, account='DUP326100')
+14:01:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=0.0, marketPrice=206.6269531, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=46.98, account='DUP326100')
+14:01:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=0.0, marketPrice=44.18531035, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=3.98, account='DUP326100')
+14:04:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=0.0, marketPrice=168.1167755, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=311.27, account='DUP326100')
+14:04:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=0.0, marketPrice=206.55519105, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=46.98, account='DUP326100')
+14:04:12 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=0.0, marketPrice=43.97055055, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=3.98, account='DUP326100')
