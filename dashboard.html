@@ -793,6 +793,14 @@
   Connection lost. Attempting to reconnect...
 </div>
 
+<div class="disconnected-banner" id="deferredBanner" style="display:none; background:#1e3a5f; cursor:default;">
+  <span id="deferredText">Set up your in-play list, then click Connect when ready.</span>
+  <button id="connectBtn" onclick="connectIBKR()" style="
+    margin-left:16px; padding:8px 24px; background:#22c55e; color:#fff;
+    border:none; border-radius:6px; font-weight:700; font-size:14px;
+    cursor:pointer;">Connect to IBKR</button>
+</div>
+
 <div class="regime-bar" id="regimeBar">
   <span style="color:#64748b; font-weight:600;">REGIME:</span>
   <span class="regime-label unknown" id="regimeLabel">CONNECTING...</span>
@@ -1133,21 +1141,61 @@
     }).join('');
   }
 
+  function connectIBKR() {
+    const btn = document.getElementById('connectBtn');
+    const txt = document.getElementById('deferredText');
+    btn.disabled = true;
+    btn.textContent = 'Connecting...';
+    btn.style.background = '#6b7280';
+    txt.textContent = 'Connecting to IBKR... this may take a few minutes.';
+    fetch('/api/connect', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({})
+    }).then(r => r.json()).then(d => {
+      if (!d.ok) {
+        btn.textContent = 'Retry';
+        btn.disabled = false;
+        btn.style.background = '#ef4444';
+        txt.textContent = 'Connection failed: ' + (d.error || 'unknown');
+      }
+    }).catch(e => {
+      btn.textContent = 'Retry';
+      btn.disabled = false;
+      btn.style.background = '#ef4444';
+      txt.textContent = 'Connection error: ' + e.message;
+    });
+  }
+
   function updateConnectionStatus(connected) {
     const dot = document.getElementById('statusDot');
     const text = document.getElementById('statusText');
     const banner = document.getElementById('disconnectedBanner');
+    const deferredBanner = document.getElementById('deferredBanner');
     const marketEl = document.getElementById('marketStatus');
     const updateEl = document.getElementById('lastUpdate');
+    const mode = status.mode || '';
 
     if (connected) {
       dot.classList.add('connected');
       text.textContent = `Connected${status.started_at ? ' since ' + status.started_at : ''}`;
       banner.classList.remove('show');
+      deferredBanner.style.display = 'none';
+    } else if (mode === 'DEFERRED') {
+      dot.classList.remove('connected');
+      text.textContent = 'Deferred — set up symbols, then Connect';
+      banner.classList.remove('show');
+      deferredBanner.style.display = 'block';
+    } else if (mode === 'CONNECTING') {
+      dot.classList.remove('connected');
+      text.textContent = 'Connecting to IBKR...';
+      banner.classList.remove('show');
+      deferredBanner.style.display = 'block';
     } else {
       dot.classList.remove('connected');
       text.textContent = 'Disconnected';
       banner.classList.add('show');
+      deferredBanner.style.display = 'none';
     }
 
     // Market status

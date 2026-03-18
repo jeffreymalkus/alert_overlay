@@ -201,6 +201,180 @@ _EMA9FT_SPY_MIN_PCT = 0.50       # SPY must be >= +0.50% from open at signal tim
 _ema9ft_daily_count = 0           # counter, reset on date change
 _ema9ft_last_date = None          # date of last reset
 
+# ── Deferred IBKR connection (called from /api/connect or main) ──
+
+_deferred_args = None  # Stored by main() for deferred connect
+
+def _run_ibkr_connection(host="127.0.0.1", port=7497, client_id=10):
+    """Run full IBKR connection + warmup sequence.
+
+    Called either from main() (normal startup) or from a background thread
+    when the user clicks Connect in deferred mode.
+    """
+    global _ib, _cfg, _runners, _spy_engine, _qqq_engine, _spy_snap, _qqq_snap
+    global _order_manager, _spy_runner, _qqq_runner, _main_loop
+
+    cfg = _cfg
+
+    # Build symbol list from current state (static watchlist + in-play)
+    symbols = _load_watchlist()
+    if not symbols:
+        symbols = ["AAPL", "TSLA", "TSLL", "SPY", "QQQ"]
+    for required in ["SPY", "QQQ"]:
+        if required not in symbols:
+            symbols.append(required)
+    # Add in-play symbols not already in static list
+    static_set = set(symbols)
+    for ip_sym in _in_play_symbols:
+        if ip_sym not in static_set and ip_sym not in ("SPY", "QQQ"):
+            symbols.append(ip_sym)
+
+    ib = IB()
+    _ib = ib
+    log.info(f"Connecting to IBKR at {host}:{port}...")
+    try:
+        ib.connect(host, port, clientId=client_id)
+    except Exception as e:
+        log.error(f"IBKR connection failed: {e}")
+        with _lock:
+            _status["connected"] = False
+            _status["mode"] = "OFFLINE"
+        _broadcast_sse("status", _status)
+        return
+    log.info("Connected.")
+
+    with _lock:
+        _status["connected"] = True
+        _status["mode"] = "LIVE"
+    _broadcast_sse("status", _status)
+
+    _order_manager = OrderManager(ib, _broadcast_sse)
+    log.info(f"Order manager ready (port {port}{'— PAPER' if port == 7497 else ''})")
+
+    # SPY/QQQ market context
+    log.info("Setting up market context (SPY + QQQ)...")
+    spy_tracker = MarketBarTracker("SPY", ib, cfg)
+    qqq_tracker = MarketBarTracker("QQQ", ib, cfg)
+    try:
+        spy_tracker.setup()
+        _spy_snap = spy_tracker.snapshot
+        _spy_engine = spy_tracker.market_engine
+    except Exception as e:
+        log.error(f"[SPY] Market tracker failed: {e}")
+    try:
+        qqq_tracker.setup()
+        _qqq_snap = qqq_tracker.snapshot
+        _qqq_engine = qqq_tracker.market_engine
+    except Exception as e:
+        log.error(f"[QQQ] Market tracker failed: {e}")
+
+    # Regime hooks
+    _orig_spy_on_tick = spy_tracker._on_tick
+    def _spy_tick_with_regime(ticker):
+        global _spy_snap
+        _orig_spy_on_tick(ticker)
+        _spy_snap = spy_tracker.snapshot
+        with _lock:
+            _status["regime"] = _get_regime_label()
+            regime = _status["regime"]
+            if regime.startswith("RED+TREND"):
+                _status["active_books"] = "SHORT only (BDR)"
+                _status["long_active"] = False
+                _status["short_active"] = True
+            elif regime.startswith("RED"):
+                _status["active_books"] = "NONE (RED+CHOPPY)"
+                _status["long_active"] = False
+                _status["short_active"] = False
+            else:
+                _status["active_books"] = "LONG only (VK+SC)"
+                _status["long_active"] = True
+                _status["short_active"] = False
+        _broadcast_sse("status", _status)
+    spy_tracker._on_tick = _spy_tick_with_regime
+
+    _orig_qqq_on_tick = qqq_tracker._on_tick
+    def _qqq_tick_with_snap(ticker):
+        global _qqq_snap
+        _orig_qqq_on_tick(ticker)
+        _qqq_snap = qqq_tracker.snapshot
+    qqq_tracker._on_tick = _qqq_tick_with_snap
+
+    try:
+        spy_tracker.subscribe()
+        log.info("[SPY] Market context subscribed")
+    except Exception as e:
+        log.error(f"[SPY] Subscribe failed: {e}")
+    try:
+        qqq_tracker.subscribe()
+        log.info("[QQQ] Market context subscribed")
+    except Exception as e:
+        log.error(f"[QQQ] Subscribe failed: {e}")
+    _spy_runner = spy_tracker
+    _qqq_runner = qqq_tracker
+
+    log.info(f"Regime: {_get_regime_label()}")
+    ib.sleep(2.0)
+
+    # Symbol runner setup with pacing
+    SETUP_PACE_CACHED = 0.3
+    SETUP_PACE_FULL = 1.5
+    SUB_PACE = 0.2
+
+    cached_set = set()
+    for sym in symbols:
+        csv_path = _CACHE_DIR_1MIN / f"{sym}_1min.csv"
+        if csv_path.exists():
+            cached_set.add(sym)
+    n_cached = len(cached_set)
+    n_new = len(symbols) - n_cached
+    est_time = n_cached * SETUP_PACE_CACHED + n_new * SETUP_PACE_FULL
+    log.info(f"Starting setup: {n_cached} cached + {n_new} new symbols "
+             f"(est. {est_time:.0f}s)")
+
+    for i, symbol in enumerate(symbols):
+        try:
+            universe = _get_universe(symbol)
+            runner = SymbolRunner(symbol, ib, cfg, universe=universe)
+            runner.setup()
+            _runners.append(runner)
+            with _lock:
+                _status["symbols"][symbol] = {
+                    "bars": getattr(runner, '_bar_count', 0),
+                    "alerts": 0, "last_price": 0, "universe": universe,
+                }
+            if (i + 1) % 10 == 0:
+                _broadcast_sse("status", _status)
+        except Exception as e:
+            log.error(f"[{symbol}] Failed to set up: {e}")
+        pace = SETUP_PACE_CACHED if symbol in cached_set else SETUP_PACE_FULL
+        ib.sleep(pace)
+
+    log.info(f"All {len(_runners)} runners set up. Subscribing...")
+
+    for runner in _runners:
+        try:
+            runner.subscribe()
+        except Exception as e:
+            log.error(f"[{runner.symbol}] Failed to subscribe: {e}")
+        ib.sleep(SUB_PACE)
+
+    _main_loop = asyncio.get_event_loop()
+    log.info("Main event loop captured.")
+    log.info(f"LIVE: monitoring {len(_runners)} symbols. "
+             f"Dashboard: http://localhost:{DASHBOARD_PORT}")
+    _broadcast_sse("status", _status)
+
+    try:
+        ib.run()
+    except KeyboardInterrupt:
+        log.info("Shutting down...")
+    finally:
+        if ib.isConnected():
+            ib.disconnect()
+        log.info("Disconnected.")
+        _print_session_report()
+
+
 # ── Schedule IB work on the main event loop ──
 
 def _schedule_on_main(coro_func):
@@ -1816,6 +1990,8 @@ class DashboardHandler(SimpleHTTPRequestHandler):
             self._bulk_add_in_play(data)
         elif path == "/api/clear-in-play":
             self._clear_in_play(data)
+        elif path == "/api/connect":
+            self._connect_ibkr(data)
         else:
             self.send_error(404)
 
@@ -2198,6 +2374,37 @@ class DashboardHandler(SimpleHTTPRequestHandler):
         })
         _broadcast_sse("status", _status)
         self._send_json_response(200, {"ok": True, "cleared": len(symbols_to_clear)})
+
+    def _connect_ibkr(self, data):
+        """Trigger IBKR connection from deferred mode.
+
+        Called when user clicks the Connect button after setting up their symbol list.
+        Starts the full IBKR connection + warmup on a background thread.
+        """
+        with _lock:
+            if _status.get("connected"):
+                self._send_json_response(409, {"ok": False, "error": "Already connected"})
+                return
+            if _status.get("mode") == "CONNECTING":
+                self._send_json_response(409, {"ok": False, "error": "Connection already in progress"})
+                return
+            _status["mode"] = "CONNECTING"
+        _broadcast_sse("status", _status)
+
+        # Use stored deferred params as defaults, allow override from request
+        host = data.get("host", _status.get("_deferred_host", "127.0.0.1"))
+        port = int(data.get("port", _status.get("_deferred_port", 7497)))
+        client_id = int(data.get("client_id", _status.get("_deferred_client_id", 10)))
+
+        # Run connection on a background thread (IBKR blocking calls)
+        connect_thread = threading.Thread(
+            target=_run_ibkr_connection,
+            args=(host, port, client_id),
+            daemon=True,
+        )
+        connect_thread.start()
+        self._send_json_response(200, {"ok": True, "message": "Connecting to IBKR..."})
+
 
     def _export_alert_history(self):
         """Export alert history as CSV download."""
@@ -2805,6 +3012,8 @@ def main():
     parser.add_argument("--client-id", type=int, default=10)
     parser.add_argument("--no-ibkr", action="store_true",
                         help="Run dashboard without IBKR connection (offline/demo mode)")
+    parser.add_argument("--deferred", action="store_true",
+                        help="Start dashboard immediately, defer IBKR connection until user clicks Connect")
     parser.add_argument("--internal-port", type=int, default=None,
                         help="Override HTTP port (used by launcher for internal routing)")
     args = parser.parse_args()
@@ -2851,15 +3060,17 @@ def main():
         _status["started_at"] = datetime.now(EASTERN).strftime("%H:%M:%S")
     _refresh_ipl_in_status()  # Load in-play log for dashboard widget
 
-    # ── Offline/demo mode: no IBKR, but HTTP server + in-play panel fully functional ──
-    if args.no_ibkr:
-        log.info("Running in OFFLINE mode (--no-ibkr). No market data.")
-        log.info("In-play panel, test alerts, history capture, and export all operational.")
+    # ── Offline or Deferred mode ──
+    if args.no_ibkr or args.deferred:
+        mode_label = "DEFERRED" if args.deferred else "OFFLINE"
+        log.info(f"Running in {mode_label} mode. Dashboard available immediately.")
+        if args.deferred:
+            log.info("Click 'Connect' in the dashboard when ready to start IBKR.")
         with _lock:
             _status["connected"] = False
-            _status["mode"] = "OFFLINE"
+            _status["mode"] = mode_label
             # Register ALL symbols (static + in-play) with placeholder status
-            all_syms = list(symbols)  # static watchlist + SPY/QQQ
+            all_syms = list(symbols)
             for ip_sym in _in_play_symbols:
                 if ip_sym not in all_syms:
                     all_syms.append(ip_sym)
@@ -2876,15 +3087,23 @@ def main():
                     "bars": 0, "alerts": 0, "last_price": 0,
                     "universe": uni,
                 }
-            log.info(f"Registered {len(_status['symbols'])} symbols in offline mode")
+            log.info(f"Registered {len(_status['symbols'])} symbols in {mode_label} mode")
+            # Store connection params for deferred connect
+            _status["_deferred_host"] = args.host
+            _status["_deferred_port"] = args.port
+            _status["_deferred_client_id"] = args.client_id
         _broadcast_sse("status", _status)
-        log.info(f"Dashboard OFFLINE at http://localhost:{DASHBOARD_PORT} with {len(symbols)} symbols")
+        log.info(f"Dashboard {mode_label} at http://localhost:{DASHBOARD_PORT}")
+
+        if args.deferred:
+            import webbrowser
+            webbrowser.open(f"http://localhost:{DASHBOARD_PORT}")
+
         try:
-            # Keep the main thread alive so HTTP daemon threads stay up
             while True:
                 time.sleep(60)
         except KeyboardInterrupt:
-            log.info("Shutting down offline dashboard...")
+            log.info("Shutting down...")
         _print_session_report()
         return
 
