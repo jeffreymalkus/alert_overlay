@@ -7,12 +7,18 @@ Score = mean(rank(gap_abs_pct), rank(abs_move_from_open_pct), rank(abs_rs_vs_spy
 
 Two stages:
   Provisional: available at 9:40 ET (uses first 10 minutes of data)
-  Confirmed:   available at 10:00 ET (uses first 30 minutes, then rolls with each bar)
+  Confirmed:   available at 10:00 ET (uses first 30 minutes of data)
+
+IMPORTANT — replay vs live behavior difference:
+  Replay: confirmed score is a SNAPSHOT at 10:00 cutoff. It does NOT re-rank
+  after 10:00 because cross-sectional ranking requires all symbols simultaneously,
+  which is impractical to recompute on every bar in the batch replay loop.
+  Live: confirmed score CAN be re-ranked via update_live() on each bar.
 
 Key properties:
   - Direction-agnostic (uses absolute values)
   - Never zeros failed names (raw score always preserved)
-  - Rolling confirmed score updates after 10:00
+  - Replay confirmed = fixed snapshot at 10:00 (not rolling)
   - Cross-sectional percentile rank across same-day universe
   - Unified pass/fail logic (one source of truth)
 """
