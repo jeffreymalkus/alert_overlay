@@ -1642,6 +1642,15 @@ class SymbolRunner:
             f"data={result.data_status}(vol_depth={baselines['vol_baseline_depth']})"
         )
 
+        # Surface IP result to dashboard status
+        with _lock:
+            sym_status = _status.get("symbols", {}).get(self.symbol)
+            if sym_status is not None:
+                sym_status["ip_passed"] = result.passed
+                sym_status["ip_score"] = round(result.score, 1)
+                sym_status["ip_reason"] = result.reason
+        _broadcast_sse("status", _status)
+
         # Structured CSV log (Step 6)
         hhmm = bar.timestamp.hour * 100 + bar.timestamp.minute
         spy_pct = ""

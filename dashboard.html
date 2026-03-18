@@ -192,36 +192,56 @@
   }
   .symbol-bar {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-    gap: 8px;
-    padding: 8px 24px 16px 24px;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 4px;
+    padding: 4px 16px 8px 16px;
     background: #0f1629;
   }
   .symbol-card {
     background: #1a2235;
     border: 1px solid #2a3550;
-    border-radius: 8px;
-    padding: 10px 12px;
+    border-radius: 6px;
+    padding: 4px 6px;
     text-align: center;
     transition: border-color 0.3s;
     position: relative;
   }
   .symbol-card .ticker {
-    font-size: 13px;
+    font-size: 11px;
     font-weight: 700;
     color: #f8fafc;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.3px;
   }
   .symbol-card .price {
-    font-size: 16px;
+    font-size: 12px;
     font-weight: 600;
     color: #60a5fa;
-    margin: 4px 0;
+    margin: 1px 0;
     font-variant-numeric: tabular-nums;
   }
   .symbol-card .meta {
-    font-size: 10px;
+    font-size: 9px;
     color: #64748b;
+  }
+  .symbol-card .ip-badge {
+    font-size: 8px;
+    font-weight: 700;
+    padding: 1px 4px;
+    border-radius: 3px;
+    margin-top: 2px;
+    display: inline-block;
+  }
+  .symbol-card .ip-badge.passed {
+    background: #22c55e22;
+    color: #4ade80;
+    border: 1px solid #22c55e44;
+  }
+  .symbol-card .ip-badge.failed {
+    background: #ef444411;
+    color: #64748b;
+  }
+  .symbol-card .ip-badge.pending {
+    color: #475569;
   }
   .symbol-card.has-alert {
     border-color: #f59e0b;
@@ -1017,12 +1037,17 @@
       const s = status.symbols[sym];
       const hasAlert = s.alerts > 0;
       const warmingUp = s.warming_up === true;
+      const ipBadge = s.ip_passed === true
+        ? `<div class="ip-badge passed">IP ${s.ip_score}</div>`
+        : s.ip_passed === false
+          ? ``
+          : ``;
       return `
         <div class="symbol-card ${hasAlert ? 'has-alert' : ''} ${warmingUp ? 'warming-up' : ''}">
           <button class="remove-btn" onclick="removeSymbol('${sym}')" title="Remove ${sym}">&times;</button>
           <div class="ticker">${sym}</div>
           <div class="price">${warmingUp ? '...' : '$' + (s.last_price || 0).toFixed(2)}</div>
-          <div class="meta">${warmingUp ? 'connecting...' : (s.bars || 0) + ' bars &middot; ' + (s.alerts || 0) + ' alerts'}</div>
+          ${ipBadge}
         </div>
       `;
     }).join('');
@@ -1485,7 +1510,12 @@
   function renderInPlayCards() {
     const container = document.getElementById('inPlayBadges');
     const summary = document.getElementById('inPlaySummary');
-    summary.textContent = inPlaySymbols.length + ' symbol' + (inPlaySymbols.length !== 1 ? 's' : '');
+    // Count how many pass the IP gate
+    const allSyms = Object.keys(status.symbols || {});
+    const ipPassed = allSyms.filter(s => status.symbols[s].ip_passed === true).length;
+    const ipTotal = inPlaySymbols.length;
+    summary.textContent = ipTotal + ' symbol' + (ipTotal !== 1 ? 's' : '') +
+      (ipPassed > 0 ? ` · ${ipPassed} passing gate` : '');
 
     if (!inPlaySymbols.length) {
       container.innerHTML = '<span class="in-play-empty">No in-play symbols. Add symbols for today\'s session.</span>';
@@ -1506,12 +1536,17 @@
       }
       const hasAlert = s.alerts > 0;
       const warmingUp = s.warming_up === true;
+      const ipBadge = s.ip_passed === true
+        ? `<div class="ip-badge passed">IP ${s.ip_score}</div>`
+        : s.ip_passed === false
+          ? ``
+          : ``;
       return `
         <div class="symbol-card in-play-card ${hasAlert ? 'has-alert' : ''} ${warmingUp ? 'warming-up' : ''}">
           <button class="remove-btn" onclick="removeInPlay('${sym}')" title="Remove ${sym}">&times;</button>
           <div class="ticker">${sym}</div>
           <div class="price">${warmingUp ? '...' : '$' + (s.last_price || 0).toFixed(2)}</div>
-          <div class="meta">${warmingUp ? 'connecting...' : (s.bars || 0) + ' bars &middot; ' + (s.alerts || 0) + ' alerts'}</div>
+          ${ipBadge}
         </div>`;
     }).join('');
   }
