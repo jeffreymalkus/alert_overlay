@@ -497,7 +497,7 @@ def main():
             c.ema9_v4_time_start = 1000
             c.ema9_v4_time_end = 1045
             c.ema9_require_relative_impulse_vs_spy = True
-            c.ema9_min_relative_impulse_vs_spy = 0.02
+            c.ema9_min_relative_impulse_vs_spy = 2.0  # percent-points (stock outperforms SPY by 2%+)
             c.ema9_stop_mode_v4 = "two_bar_low"
             c.ema9_stop_buffer_v4 = 0.01
             c.ema9_target_mode_v4 = "fixed_rr"
@@ -511,7 +511,7 @@ def main():
 
         def _make_ema9_v4_c(base):
             c = _make_ema9_v4_a(base)
-            c.ema9_min_relative_impulse_vs_spy = 0.04
+            c.ema9_min_relative_impulse_vs_spy = 4.0  # percent-points (stricter: stock outperforms SPY by 4%+)
             return c
 
         def _make_ema9_v4_d(base):
@@ -845,7 +845,7 @@ def main():
                 sig.metadata["body_fraction"] = _body
                 sig.metadata["counter_wick_fraction"] = _counter_wick
                 sig.metadata["bar_return_pct"] = _bar_ret
-                sig.metadata["relative_impulse_vs_spy"] = _rel_impulse
+                sig.metadata["replay_relative_impulse_vs_spy"] = _rel_impulse  # audit-only, don't overwrite strategy value
 
                 strat_sig = raw_signal_to_strategy_signal(
                     sig, sym, alert_bar.timestamp,

@@ -8090,3 +8090,99 @@ NameError: name 'perm_reading' is not defined
 12:22:10 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-700.0, marketPrice=166.432251, marketValue=-116502.58, averageCost=166.23694785, unrealizedPNL=-136.71, realizedPNL=132.41, account='DUP326100')
 12:22:10 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=100.0, marketPrice=205.5138092, marketValue=20551.38, averageCost=205.31, unrealizedPNL=20.38, realizedPNL=0.0, account='DUP326100')
 12:22:10 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=100.0, marketPrice=42.2292061, marketValue=4222.92, averageCost=42.8, unrealizedPNL=-57.08, realizedPNL=0.0, account='DUP326100')
+12:25:02 [INFO] position: Position(account='DUP326100', contract=Stock(conId=415342104, symbol='RTX', exchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=0.0, avgCost=0.0)
+12:25:02 [INFO] position: Position(account='DUP326100', contract=Stock(conId=415342104, symbol='RTX', exchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=0.0, avgCost=0.0)
+12:25:02 [INFO] position: Position(account='DUP326100', contract=Stock(conId=415342104, symbol='RTX', exchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=0.0, avgCost=0.0)
+12:25:03 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-700.0, marketPrice=166.6461334, marketValue=-116652.29, averageCost=166.23694785, unrealizedPNL=-286.43, realizedPNL=132.41, account='DUP326100')
+12:25:03 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=0.0, marketPrice=205.83343505, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=46.98, account='DUP326100')
+12:25:03 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=100.0, marketPrice=42.2346573, marketValue=4223.47, averageCost=42.8, unrealizedPNL=-56.53, realizedPNL=0.0, account='DUP326100')
+12:25:15 [INFO] Warning 2104, reqId -1: Market data farm connection is OK:usopt.nj
+12:26:00 [INFO] [MKT:SPY] Bar #127 closed @ 12:20 C=667.41
+12:26:00 [INFO] [MKT:QQQ] Bar #127 closed @ 12:20 C=600.80
+12:26:00 [INFO] [SPXS] 5m bar #1950 @1220 ind=18μs strat=34μs total=52μs (5 active)
+12:26:00 [INFO] [SPXS] bar #1950 @ 12:20 C=38.34 | signals=0
+12:26:01 [INFO] [SNOW] bar #1990 @ 12:20 C=174.99 | signals=0
+12:26:02 [INFO] [CRSP] bar #1980 @ 12:20 C=48.33 | signals=0
+12:26:05 [INFO] Warning 2104, reqId -1: Market data farm connection is OK:eufarm
+12:26:05 [INFO] Warning 2104, reqId -1: Market data farm connection is OK:jfarm
+12:26:05 [INFO] Warning 2104, reqId -1: Market data farm connection is OK:hfarm
+12:26:05 [INFO] [CMCO] 5m bar #1600 @1220 ind=53μs strat=116μs total=169μs (5 active)
+12:26:05 [INFO] [CMCO] bar #1600 @ 12:20 C=14.35 | signals=0
+12:26:15 [INFO] [CTRN] 5m bar #1600 @1220 ind=64μs strat=124μs total=189μs (5 active)
+12:26:15 [INFO] [CTRN] bar #1600 @ 12:20 C=50.75 | signals=0
+12:28:03 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-700.0, marketPrice=166.29737855, marketValue=-116408.16, averageCost=166.23694785, unrealizedPNL=-42.3, realizedPNL=132.41, account='DUP326100')
+12:28:03 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=0.0, marketPrice=205.79200745, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=46.98, account='DUP326100')
+12:28:03 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=100.0, marketPrice=42.7812958, marketValue=4278.13, averageCost=42.8, unrealizedPNL=-1.87, realizedPNL=0.0, account='DUP326100')
+12:29:23 [INFO] position: Position(account='DUP326100', contract=Stock(conId=837874837, symbol='BNAI', exchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=0.0, avgCost=0.0)
+12:29:23 [INFO] position: Position(account='DUP326100', contract=Stock(conId=837874837, symbol='BNAI', exchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=0.0, avgCost=0.0)
+12:29:23 [INFO] position: Position(account='DUP326100', contract=Stock(conId=837874837, symbol='BNAI', exchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=0.0, avgCost=0.0)
+12:29:24 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-700.0, marketPrice=166.2527313, marketValue=-116376.91, averageCost=166.23694785, unrealizedPNL=-11.05, realizedPNL=132.41, account='DUP326100')
+12:29:24 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=0.0, marketPrice=205.80703735, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=46.98, account='DUP326100')
+12:29:24 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=0.0, marketPrice=42.84999845, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=3.98, account='DUP326100')
+12:31:00 [INFO] [TSLA] bar #1990 @ 12:25 C=397.85 | signals=0
+12:31:00 [INFO] [MKT:SPY] Bar #128 closed @ 12:25 C=667.07
+12:31:00 [INFO] [MKT:QQQ] Bar #128 closed @ 12:25 C=600.50
+12:31:00 [INFO] [AAPL] bar #1990 @ 12:25 C=251.57 | signals=0
+12:31:00 [INFO] position: Position(account='DUP326100', contract=Stock(conId=837874837, symbol='BNAI', exchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=0.0, avgCost=0.0)
+12:31:00 [INFO] position: Position(account='DUP326100', contract=Stock(conId=415342104, symbol='RTX', exchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=0.0, avgCost=0.0)
+12:31:02 [INFO] [SMTC] bar #1680 @ 12:25 C=75.45 | signals=0
+12:31:13 [INFO] [ATAT] 5m bar #1600 @1225 ind=29μs strat=58μs total=88μs (5 active)
+12:31:13 [INFO] [ATAT] bar #1600 @ 12:25 C=37.31 | signals=0
+12:31:17 [INFO] [SUNC] 5m bar #1600 @1225 ind=29μs strat=79μs total=108μs (5 active)
+12:31:17 [INFO] [SUNC] bar #1600 @ 12:25 C=61.50 | signals=0
+12:32:02 [INFO] [BOBS] 1m bar #7995 @1231 ind=65μs strat=372μs total=437μs (3 active) | SIGNALS: ORH_FBO_V2_A
+12:32:02 [INFO] [BOBS] 1m signal @ 12:31 C=15.00 | signals=1
+12:32:02 [INFO] [BOBS] BLOCKED ORH_FBO_RETEST by in-play score: 4.0 < 4.5
+12:32:05 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-600.0, avgCost=166.23694785)
+12:32:05 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-600.0, avgCost=166.23694785)
+12:32:05 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-600.0, avgCost=166.23694785)
+12:32:05 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.hfarm
+12:32:05 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.hfarm
+12:32:05 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.eufarm
+12:32:05 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.eufarm
+12:32:05 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.jfarm
+12:32:05 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.jfarm
+12:32:05 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.usopt.nj
+12:32:05 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.usopt.nj
+12:32:06 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-600.0, marketPrice=166.1100006, marketValue=-99666.0, averageCost=166.23694785, unrealizedPNL=76.17, realizedPNL=146.11, account='DUP326100')
+12:32:06 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=0.0, marketPrice=205.90434265, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=46.98, account='DUP326100')
+12:32:06 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=0.0, marketPrice=42.97672655, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=3.98, account='DUP326100')
+12:33:00 [INFO] Warning 2104, reqId -1: Market data farm connection is OK:usopt.nj
+12:33:00 [INFO] Warning 2104, reqId -1: Market data farm connection is OK:eufarm
+12:33:01 [INFO] Warning 2104, reqId -1: Market data farm connection is OK:jfarm
+12:33:01 [INFO] Warning 2104, reqId -1: Market data farm connection is OK:hfarm
+12:35:06 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-600.0, marketPrice=166.2047577, marketValue=-99722.85, averageCost=166.23694785, unrealizedPNL=19.31, realizedPNL=146.11, account='DUP326100')
+12:35:06 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=0.0, marketPrice=205.76020815, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=46.98, account='DUP326100')
+12:35:06 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=0.0, marketPrice=43.2904167, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=3.98, account='DUP326100')
+12:36:00 [INFO] [MKT:SPY] Bar #129 closed @ 12:30 C=666.35
+12:36:00 [INFO] [MKT:QQQ] Bar #129 closed @ 12:30 C=599.69
+12:36:01 [INFO] [ASO] bar #1680 @ 12:30 C=51.63 | signals=0
+12:36:05 [INFO] [RFIL] 5m bar #1600 @1230 ind=24μs strat=44μs total=68μs (5 active)
+12:36:05 [INFO] [RFIL] bar #1600 @ 12:30 C=12.06 | signals=0
+12:36:08 [INFO] [GLSI] bar #1680 @ 12:30 C=27.77 | signals=0
+12:36:09 [INFO] [TSAT] bar #1680 @ 12:30 C=41.12 | signals=0
+12:36:11 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.hfarm
+12:36:11 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.hfarm
+12:36:11 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.eufarm
+12:36:11 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.eufarm
+12:36:11 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.jfarm
+12:36:11 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.jfarm
+12:36:11 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.usopt.nj
+12:36:11 [INFO] Warning 2108, reqId -1: Market data farm connection is inactive but should be available upon demand.usopt.nj
+12:36:32 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-597.0, avgCost=166.23694785)
+12:36:32 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-500.0, avgCost=166.23694785)
+12:36:32 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-500.0, avgCost=166.23694785)
+12:36:32 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-500.0, avgCost=166.23694785)
+12:36:32 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-500.0, avgCost=166.23694785)
+12:36:32 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-500.0, avgCost=166.23694785)
+12:36:33 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-500.0, marketPrice=166.0496216, marketValue=-83024.81, averageCost=166.23694785, unrealizedPNL=93.66, realizedPNL=164.8, account='DUP326100')
+12:36:33 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=0.0, marketPrice=205.77397155, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=46.98, account='DUP326100')
+12:36:33 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=837874837, symbol='BNAI', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='BNAI', tradingClass='SCM'), position=0.0, marketPrice=43.4045105, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=3.98, account='DUP326100')
+12:37:01 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-400.0, avgCost=166.23694785)
+12:37:01 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-300.0, avgCost=166.23694785)
+12:37:01 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-300.0, avgCost=166.23694785)
+12:37:01 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-300.0, avgCost=166.23694785)
+12:37:01 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-300.0, avgCost=166.23694785)
+12:37:01 [INFO] position: Position(account='DUP326100', contract=Stock(conId=45157951, symbol='LULU', exchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-300.0, avgCost=166.23694785)
+12:37:02 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=45157951, symbol='LULU', right='0', primaryExchange='NASDAQ', currency='USD', localSymbol='LULU', tradingClass='NMS'), position=-300.0, marketPrice=165.8737488, marketValue=-49762.12, averageCost=166.23694785, unrealizedPNL=108.96, realizedPNL=256.19, account='DUP326100')
+12:37:02 [INFO] updatePortfolio: PortfolioItem(contract=Stock(conId=415342104, symbol='RTX', right='0', primaryExchange='NYSE', currency='USD', localSymbol='RTX', tradingClass='RTX'), position=0.0, marketPrice=205.86027525, marketValue=0.0, averageCost=0.0, unrealizedPNL=0.0, realizedPNL=46.98, account='DUP326100')

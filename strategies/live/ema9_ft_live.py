@@ -155,20 +155,22 @@ class EMA9FirstTouchLive(LiveStrategy):
                     if cfg.e9ft_above_vwap and not _isnan(vw) and bar.close <= vw:
                         return None
 
-                    # RS check (simplified for live — uses market_ctx if available)
-                    stock_pct = (bar.close - snap.session_open) / snap.session_open if not _isnan(snap.session_open) and snap.session_open > 0 else 0
+                    # RS check — both values in percent units
+                    stock_pct = ((bar.close - snap.session_open) / snap.session_open * 100.0
+                                 if not _isnan(snap.session_open) and snap.session_open > 0 else 0.0)
                     spy_pct = 0.0
                     if market_ctx and hasattr(market_ctx, 'spy_pct_from_open'):
-                        spy_pct = market_ctx.spy_pct_from_open
-                    rs = stock_pct - spy_pct
+                        spy_pct = market_ctx.spy_pct_from_open  # already in percent
+                    rs_pct = stock_pct - spy_pct  # relative strength in percent
 
-                    if rs < cfg.e9ft_min_rs_vs_spy:
+                    # Legacy RS gate (threshold is in fraction, convert)
+                    if rs_pct / 100.0 < cfg.e9ft_min_rs_vs_spy:
                         self._prev_prev_bar_low = self._prev_bar_low
                         self._prev_bar_low = bar.low
                         return None
 
-                    # V4: relative impulse vs SPY filter
-                    relative_impulse_vs_spy = rs
+                    # V4: relative impulse vs SPY (in percent, threshold in percent)
+                    relative_impulse_vs_spy = rs_pct
                     if cfg.ema9_require_relative_impulse_vs_spy:
                         if relative_impulse_vs_spy < cfg.ema9_min_relative_impulse_vs_spy:
                             self._prev_prev_bar_low = self._prev_bar_low
@@ -179,6 +181,22 @@ class EMA9FirstTouchLive(LiveStrategy):
                     if cfg.ema9_require_soft_trigger_bar:
                         if (close_pct > cfg.ema9_max_trigger_close_location or
                                 body_pct > cfg.ema9_max_trigger_body_fraction):
+                            self._prev_prev_bar_low = self._prev_bar_low
+                            self._prev_bar_low = bar.low
+                            return None
+
+                    # V4_D: optional 5-minute context sleeve
+                    if cfg.ema9_require_5m_context:
+                        context_ok = True
+                        if cfg.ema9_5m_require_above_vwap:
+                            # 5m close above VWAP (use last 5m bar's close via snap)
+                            if _isnan(snap.vwap) or bar.close <= snap.vwap:
+                                context_ok = False
+                        if cfg.ema9_5m_require_ema9_gt_ema20:
+                            if (_isnan(snap.ema9_5m) or _isnan(snap.ema20_5m) or
+                                    snap.ema9_5m <= snap.ema20_5m):
+                                context_ok = False
+                        if not context_ok:
                             self._prev_prev_bar_low = self._prev_bar_low
                             self._prev_bar_low = bar.low
                             return None
@@ -278,7 +296,7 @@ class EMA9FirstTouchLive(LiveStrategy):
                         confluence.append("above_ema9")
                     if e9 > e20:
                         confluence.append("ema_aligned")
-                    if rs > 0.005:
+                    if rs_pct > 0.5:  # 0.5 percent-points
                         confluence.append("strong_rs")
                     if drive_dist >= 1.5 * i_atr:
                         confluence.append("strong_drive")
@@ -299,7 +317,7 @@ class EMA9FirstTouchLive(LiveStrategy):
                         if not reject_reasons:
                             stock_factors = {
                                 "in_play_score": snap.in_play_score,
-                                "rs_market": rs,
+                                "rs_market": rs_pct,
                                 "rs_sector": 0.0,
                                 "volume_profile": min(bar.volume / vol_ma, 1.0) if vol_ma > 0 else 0.0,
                             }
@@ -319,7 +337,7 @@ class EMA9FirstTouchLive(LiveStrategy):
                             # Rejected signals get B or C tier
                             stock_factors = {
                                 "in_play_score": snap.in_play_score,
-                                "rs_market": rs,
+                                "rs_market": rs_pct,
                                 "rs_sector": 0.0,
                                 "volume_profile": min(bar.volume / vol_ma, 1.0) if vol_ma > 0 else 0.0,
                             }
@@ -355,7 +373,7 @@ class EMA9FirstTouchLive(LiveStrategy):
                             "pullback_low": self._pullback_low,
                             "pb_depth": pb_depth,
                             "pb_depth_atr": pb_depth / i_atr if i_atr > 0 else 0,
-                            "rs_vs_spy": rs,
+                            "rs_vs_spy": rs_pct,
                             "actual_rr": actual_rr,
                             "target_tag": target_tag,
                             "structure_quality": min(struct_q, 1.0),

@@ -371,22 +371,25 @@ class EMA9FirstTouchStrategy:
                             prev_bar = bar
                             continue
 
-                        # RS check: stock pct_from_open > SPY pct_from_open
-                        stock_pct = (bar.close - session_open) / session_open if session_open > 0 else 0
+                        # RS check — all values in percent units for V4 compatibility
+                        stock_pct = ((bar.close - session_open) / session_open * 100.0
+                                     if session_open > 0 else 0.0)
                         spy_pct = 0.0
                         if spy_bars:
                             for sb in spy_bars:
                                 if sb.timestamp <= bar.timestamp and sb.timestamp.date() == day:
-                                    spy_pct = (sb.close - spy_open_today) / spy_open_today if not _isnan(spy_open_today) and spy_open_today > 0 else 0
-                        rs = stock_pct - spy_pct
+                                    spy_pct = ((sb.close - spy_open_today) / spy_open_today * 100.0
+                                               if not _isnan(spy_open_today) and spy_open_today > 0 else 0.0)
+                        rs_pct = stock_pct - spy_pct  # percent-points
 
-                        if rs < cfg.e9ft_min_rs_vs_spy:
+                        # Legacy RS gate (threshold in fraction, convert to percent)
+                        if rs_pct / 100.0 < cfg.e9ft_min_rs_vs_spy:
                             prev_prev_bar = prev_bar
                             prev_bar = bar
                             continue
 
-                        # V4: relative impulse vs SPY filter
-                        relative_impulse_vs_spy = rs  # same as RS for now
+                        # V4: relative impulse vs SPY filter (in percent-points)
+                        relative_impulse_vs_spy = rs_pct
                         if cfg.ema9_require_relative_impulse_vs_spy:
                             if relative_impulse_vs_spy < cfg.ema9_min_relative_impulse_vs_spy:
                                 prev_prev_bar = prev_bar
@@ -397,6 +400,21 @@ class EMA9FirstTouchStrategy:
                         if cfg.ema9_require_soft_trigger_bar:
                             if (close_pct > cfg.ema9_max_trigger_close_location or
                                     body_pct > cfg.ema9_max_trigger_body_fraction):
+                                prev_prev_bar = prev_bar
+                                prev_bar = bar
+                                continue
+
+                        # V4_D: optional 5-minute context sleeve
+                        # Replay runs on 5m bars, so e9/e20/vw ARE the 5m values
+                        if cfg.ema9_require_5m_context:
+                            context_ok = True
+                            if cfg.ema9_5m_require_above_vwap:
+                                if _isnan(vw) or bar.close <= vw:
+                                    context_ok = False
+                            if cfg.ema9_5m_require_ema9_gt_ema20:
+                                if _isnan(e9) or _isnan(e20) or e9 <= e20:
+                                    context_ok = False
+                            if not context_ok:
                                 prev_prev_bar = prev_bar
                                 prev_bar = bar
                                 continue
@@ -483,7 +501,7 @@ class EMA9FirstTouchStrategy:
                             confluence.append("above_ema9")
                         if e9 > e20:
                             confluence.append("ema_aligned")
-                        if rs > 0.005:
+                        if rs_pct > 0.5:  # 0.5 percent-points
                             confluence.append("strong_rs")
                         if drive_dist >= 1.5 * i_atr:
                             confluence.append("strong_drive")
@@ -504,8 +522,8 @@ class EMA9FirstTouchStrategy:
                                 "pullback_low": pullback_low,
                                 "pb_depth": pb_depth,
                                 "pb_depth_atr": pb_depth / i_atr if i_atr > 0 else 0,
-                                "rs_vs_spy": rs,
-                                "relative_impulse_vs_spy": relative_impulse_vs_spy if cfg.ema9_v4_enabled else rs,
+                                "rs_vs_spy": rs_pct,
+                                "relative_impulse_vs_spy": relative_impulse_vs_spy,
                                 "close_location": close_pct,
                                 "body_fraction": body_pct,
                                 "structure_quality": min(struct_q, 1.0),
