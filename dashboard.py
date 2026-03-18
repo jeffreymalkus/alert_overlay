@@ -57,14 +57,18 @@ from .strategies.live.orh_fbo_short_v2_live import ORHFBOShortV2Live as _ORHFBOS
 from .strategies.live.pdh_fbo_short_live import PDHFBOShortLive as _PDHFBOShortLive
 from .strategies.live.fft_newlow_reversal_live import FFTNewlowReversalLive as _FFTNewlowReversalLive
 
-# ── In-play proxy (shared logic with replay) ──
+# ── In-play proxy ──
+# V2 is the active base gate. V1 kept only for emergency rollback.
 from .strategies.shared.in_play_proxy import InPlayProxy as _InPlayProxy
 from .strategies.shared.in_play_proxy import SessionSnapshot as _SessionSnapshot
 from .strategies.shared.in_play_proxy import InPlayResult as _InPlayResult
+from .strategies.shared.in_play_proxy_v2 import InPlayProxyV2 as _InPlayProxyV2
+from .strategies.shared.in_play_proxy_v2 import InPlayResultV2 as _InPlayResultV2
 
-# In-play config uses timeframe_min=1 because we evaluate from 1-min bars (first 15).
 _IP_CFG = _StrategyConfig(timeframe_min=1)
-_in_play_proxy = _InPlayProxy(_IP_CFG)
+_in_play_proxy = _InPlayProxy(_IP_CFG)  # V1 — kept for rollback only
+_in_play_v2 = _InPlayProxyV2(_IP_CFG)   # V2 — active base gate
+_USE_IP_V2_LIVE = _IP_CFG.ip_v2_enabled  # True = V2 is active
 
 # ── In-play eligibility log (structured CSV) ──
 import csv as _csv
@@ -1581,74 +1585,111 @@ class SymbolRunner:
         log.info(f"[{self.symbol}] Unsubscribed and removed (async).")
 
     def _maybe_evaluate_in_play(self, bar: Bar):
-        """Evaluate in-play status once per session after first N bars collected.
+        """Evaluate in-play status using V2 percentile-ranked base gate.
 
-        Uses SharedIndicators' rolling baselines + InPlayProxy.evaluate_session()
-        (same scoring logic as replay). Result cached for the day.
-        Session reset: _ip_result clears on day change so stale prior-day
-        results never block/allow incorrectly.
+        V2 computes: gap_abs%, abs_move_from_open%, abs_RS_vs_SPY%
+        then ranks cross-sectionally across the live universe.
+
+        Two stages:
+          Provisional (9:40): informational only, not promotable by default
+          Confirmed (10:00+): active promotable gate, re-evaluated each bar
+
+        Failed names are never zeroed — strategies see the raw score.
         """
         si = self._strategy_mgr.indicators
+        hhmm = bar.timestamp.hour * 100 + bar.timestamp.minute
 
-        # Session reset: clear prior-day result on day change
+        # Session reset on day change
         date_int = bar.timestamp.year * 10000 + bar.timestamp.month * 100 + bar.timestamp.day
         if self._ip_eval_date is not None and self._ip_eval_date != date_int:
-            self._ip_result = None  # force re-evaluation for new day
+            self._ip_result = None
+            self._ip_eval_date = None
 
-        if not si.ip_session_evaluated:
-            return  # first N bars not yet collected
-
-        if self._ip_eval_date == date_int:
-            return  # already evaluated today
-
-        self._ip_eval_date = date_int
-
-        # Build SessionSnapshot from SharedIndicators baselines
+        # Need session open and prior close
         baselines = si.get_in_play_baselines()
-        snapshot = _SessionSnapshot(
+        session_open = NaN
+        prior_close = baselines.get("prev_close", NaN)
+        session_bars = baselines.get("session_bars", [])
+        if session_bars:
+            session_open = session_bars[0].open
+
+        if math.isnan(session_open) or session_open <= 0:
+            return  # can't evaluate without open price
+
+        # Get SPY data
+        spy_open = NaN
+        spy_close = NaN
+        if _spy_snap is not None:
+            spy_open = getattr(_spy_snap, 'day_open', NaN)
+            spy_close = getattr(_spy_snap, 'last_close', NaN)
+            if math.isnan(spy_close):
+                spy_close = getattr(_spy_snap, 'close', NaN)
+
+        # Build universe features for cross-sectional ranking
+        # Collect features from all active runners
+        universe_features = {}
+        for runner in _runners:
+            r_si = runner._strategy_mgr.indicators if hasattr(runner, '_strategy_mgr') else None
+            if r_si is None:
+                continue
+            r_baselines = r_si.get_in_play_baselines()
+            r_bars = r_baselines.get("session_bars", [])
+            r_pc = r_baselines.get("prev_close", NaN)
+            if not r_bars:
+                continue
+            r_open = r_bars[0].open
+            if runner.symbol == self.symbol:
+                r_close = bar.close
+            else:
+                with _lock:
+                    r_close = _status.get("symbols", {}).get(runner.symbol, {}).get("last_price", NaN)
+                if r_close == 0:
+                    r_close = NaN
+            if math.isnan(r_open) or r_open <= 0 or math.isnan(r_close) or r_close <= 0:
+                continue
+            feat = _InPlayProxyV2._compute_features_direct(
+                r_open, r_pc, r_close, spy_open, spy_close
+            )
+            if feat is not None:
+                universe_features[runner.symbol] = feat
+
+        # Evaluate this symbol using V2
+        result = _in_play_v2.update_live(
             symbol=self.symbol,
             session_date=bar.timestamp.date(),
-            open_bars=baselines["session_bars"],
-            prev_close=baselines["prev_close"],
-            vol_baseline=baselines["vol_baseline"],
-            range_baseline=baselines["range_baseline"],
-            vol_baseline_depth=baselines["vol_baseline_depth"],
-            range_baseline_depth=baselines["range_baseline_depth"],
+            sym_open=session_open,
+            prior_close=prior_close,
+            current_close=bar.close,
+            current_hhmm=hhmm,
+            spy_open=spy_open,
+            spy_current_close=spy_close,
+            universe_features=universe_features,
         )
-
-        # Evaluate using shared logic (same as replay)
-        result = _in_play_proxy.evaluate_session(snapshot)
         self._ip_result = result
+        self._ip_eval_date = date_int
 
-        # Surface in-play score to SharedIndicators → flows into IndicatorSnapshot
-        # so live strategies can use real score instead of hardcoded 5.0
-        si.in_play_score = result.score if result.passed else 0.0
+        # Surface V2 score to strategies — NEVER zero failed names
+        si.in_play_score = result.active_score if not math.isnan(result.active_score) else 0.0
+        si.in_play_passed = result.active_passed
 
-        # Diagnostic: log prev_close and first bar's open for gap debugging
-        if snapshot.open_bars:
-            _first_open = snapshot.open_bars[0].open
-            _pc = snapshot.prev_close
-            log.info(f"[{self.symbol}] IN-PLAY gap debug: prev_close={_pc:.2f}, "
-                     f"first_bar_open={_first_open:.2f}, "
-                     f"computed_gap={((_first_open - _pc) / _pc) if _pc > 0 and not math.isnan(_pc) else 'NaN'}")
+        # Log on stage transitions or first eval
+        if result.active_score_kind != "NONE":
+            log.info(
+                f"[{self.symbol}] IN-PLAY V2: {result.reason_flags} | "
+                f"kind={result.active_score_kind} score={result.active_score:.3f} "
+                f"passed={result.active_passed} | "
+                f"gap={result.gap_abs_pct:.2f}% move={result.abs_move_from_open_pct:.2f}% "
+                f"rs={result.abs_rs_vs_spy_pct:.2f}%"
+            )
 
-        # Log the evaluation (human-readable)
-        st = result.stats
-        log.info(
-            f"[{self.symbol}] IN-PLAY eval: {result.reason} | "
-            f"score={result.score:.1f} gap={st.gap_pct:+.3f} "
-            f"rvol={st.rvol:.2f} dolvol=${st.dolvol:,.0f} "
-            f"range_exp={st.range_expansion:.2f} "
-            f"data={result.data_status}(vol_depth={baselines['vol_baseline_depth']})"
-        )
-
-        # Surface IP result to dashboard status
+        # Surface to dashboard status
         with _lock:
             sym_status = _status.get("symbols", {}).get(self.symbol)
             if sym_status is not None:
-                sym_status["ip_passed"] = result.passed
-                sym_status["ip_score"] = round(result.score, 1)
-                sym_status["ip_reason"] = result.reason
+                sym_status["ip_passed"] = result.active_passed
+                sym_status["ip_score"] = round(result.active_score, 3) if not math.isnan(result.active_score) else None
+                sym_status["ip_reason"] = result.reason_flags
+                sym_status["ip_kind"] = result.active_score_kind
         _broadcast_sse("status", _status)
 
         # Structured CSV log (Step 6)
@@ -1805,28 +1846,35 @@ class SymbolRunner:
                 log.info(f"[{self.symbol}] BLOCKED {setup_name} by regime: {regime_reason}")
                 continue
 
-            # ── Gate 0.5: In-play gate (blanket suppression) ──
-            # Suppress ALL alerts if symbol not in-play for this session.
-            # Same AND-gate as replay: gap >= min, rvol >= min, dolvol >= min.
-            # Match replay logic: block when ip_result is None (not yet evaluated)
-            # OR when evaluated and failed.
-            _IP_SCORE_MIN = 4.5  # v3: data-driven minimum (2026-03-17)
-            if self._ip_result is None or not self._ip_result.passed:
+            # ── Gate 0.5: In-play V2 base gate ──
+            # V2 percentile-ranked gate. Confirmed-only promotion by default.
+            # Provisional is informational — blocked unless per-strategy override.
+            if self._ip_result is None or not hasattr(self._ip_result, 'active_passed'):
                 setup_name = _STRATEGY_SETUP_MAP.get(
                     sig.strategy_name, (sig.strategy_name,))[0]
-                if self._ip_result is None:
-                    log.info(f"[{self.symbol}] BLOCKED {setup_name} by in-play: "
-                             f"not yet evaluated (pre-9:45)")
-                else:
-                    log.info(f"[{self.symbol}] BLOCKED {setup_name} by in-play: "
-                             f"{self._ip_result.reason}")
+                log.info(f"[{self.symbol}] BLOCKED {setup_name} by in-play: not yet evaluated")
                 continue
-            if self._ip_result.score < _IP_SCORE_MIN:
+
+            if not self._ip_result.active_passed:
                 setup_name = _STRATEGY_SETUP_MAP.get(
                     sig.strategy_name, (sig.strategy_name,))[0]
-                log.info(f"[{self.symbol}] BLOCKED {setup_name} by in-play score: "
-                         f"{self._ip_result.score:.1f} < {_IP_SCORE_MIN}")
+                log.info(f"[{self.symbol}] BLOCKED {setup_name} by in-play V2: "
+                         f"score={self._ip_result.active_score:.3f} "
+                         f"kind={self._ip_result.active_score_kind} "
+                         f"flags={self._ip_result.reason_flags}")
                 continue
+
+            # Block provisional promotion unless per-strategy override
+            if self._ip_result.active_score_kind == "PROVISIONAL":
+                _allow_prov = (_IP_CFG.ip_v2_allow_provisional_promotion or
+                               _IP_CFG.ip_v2_allow_provisional_by_strategy.get(
+                                   sig.strategy_name, False))
+                if not _allow_prov:
+                    setup_name = _STRATEGY_SETUP_MAP.get(
+                        sig.strategy_name, (sig.strategy_name,))[0]
+                    log.info(f"[{self.symbol}] BLOCKED {setup_name} by in-play V2: "
+                             f"provisional not promotable (score={self._ip_result.active_score:.3f})")
+                    continue
 
             # ── Gate: Quality tier (unified — ALL strategies) ──
             # All strategies now use the internal quality pipeline

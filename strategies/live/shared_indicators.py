@@ -294,7 +294,8 @@ class IndicatorSnapshot:
     rvol: float = NaN
 
     # ── Market context scores (set by manager from MarketContext) ──
-    in_play_score: float = 0.0    # 0-10 composite from InPlayProxy, 0.0 = not yet evaluated
+    in_play_score: float = 0.0    # V2: percentile 0-1, never zeroed on failure
+    in_play_passed: bool = False  # V2: active_passed from InPlayProxyV2
     regime_score: float = 0.5     # GREEN=1.0, FLAT=0.5, RED=0.0 (from SPY trend)
     alignment_score: float = 0.0  # 0-1: (0.5 if SPY>VWAP) + (0.5 if EMA9>EMA20)
     rs_market: float = 0.0        # stock % from open - SPY % from open
@@ -417,7 +418,8 @@ class SharedIndicators:
         self._ip_session_evaluated: bool = False       # True once first-N bars collected
 
         # Market context scores: set by dashboard/manager from MarketContext
-        self._in_play_score: float = 0.0              # 0-10 composite, 0.0 = not yet evaluated
+        self._in_play_score: float = 0.0              # V2: percentile 0-1, never zeroed
+        self._in_play_passed: bool = False             # V2: active_passed
         self._regime_score: float = 0.5               # GREEN=1.0, FLAT=0.5, RED=0.0
         self._alignment_score: float = 0.0            # (0.5 if SPY>VWAP) + (0.5 if EMA9>EMA20)
         self._rs_market: float = 0.0                  # stock % from open - SPY % from open
@@ -553,6 +555,7 @@ class SharedIndicators:
         self._ip_session_bars = []
         self._ip_session_evaluated = False
         self._in_play_score = 0.0  # reset until re-evaluated for new day
+        self._in_play_passed = False
         self._regime_score = 0.5   # reset to neutral until SPY data arrives
         self._alignment_score = 0.0
         self._rs_market = 0.0
@@ -735,6 +738,7 @@ class SharedIndicators:
 
             # Market context scores (set by manager/dashboard)
             in_play_score=self._in_play_score,
+            in_play_passed=self._in_play_passed,
             regime_score=self._regime_score,
             alignment_score=self._alignment_score,
             rs_market=self._rs_market,
@@ -879,8 +883,17 @@ class SharedIndicators:
 
     @in_play_score.setter
     def in_play_score(self, value: float):
-        """Set by dashboard after InPlayProxy.evaluate_session()."""
+        """Set by dashboard after V2 evaluation. Never zeroed on failure."""
         self._in_play_score = value
+
+    @property
+    def in_play_passed(self) -> bool:
+        """V2: whether this symbol passes the active in-play gate."""
+        return self._in_play_passed
+
+    @in_play_passed.setter
+    def in_play_passed(self, value: bool):
+        self._in_play_passed = value
 
     @property
     def regime_score(self) -> float:
