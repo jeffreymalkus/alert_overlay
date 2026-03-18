@@ -80,6 +80,7 @@ STRATEGY_TARGET_RR = {
     "EMA_FPIP_V3_A": 1.5, "EMA_FPIP_V3_B": 2.0, "EMA_FPIP_V3_C": 1.5,
     "BDR_SHORT": 2.0,
     "BDR_V3_A": 1.5, "BDR_V3_B": 1.5, "BDR_V3_C": 2.0, "BDR_V3_D": 1.5,
+    "BDR_V4_A": 1.5, "BDR_V4_B": 1.5, "BDR_V4_C": 1.5, "BDR_V4_D": 1.5,
     "EMA9_FT": 2.0,
     "EMA9_V4_A": 1.25, "EMA9_V4_B": 2.0, "EMA9_V4_C": 1.25, "EMA9_V4_D": 1.25,
     "EMA9_V5_A": 2.0, "EMA9_V5_B": 2.0, "EMA9_V5_C": 2.0, "EMA9_V5_D": 2.0,
@@ -95,6 +96,7 @@ STRATEGY_MAX_BARS = {
     "EMA_FPIP_V3_A": 24, "EMA_FPIP_V3_B": 24, "EMA_FPIP_V3_C": 24,
     "BDR_SHORT": 8,
     "BDR_V3_A": 8, "BDR_V3_B": 8, "BDR_V3_C": 8, "BDR_V3_D": 8,
+    "BDR_V4_A": 8, "BDR_V4_B": 8, "BDR_V4_C": 8, "BDR_V4_D": 8,
     "EMA9_FT": 120,
     "EMA9_V4_A": 120, "EMA9_V4_B": 120, "EMA9_V4_C": 120, "EMA9_V4_D": 120,
     "EMA9_V5_A": 120, "EMA9_V5_B": 120, "EMA9_V5_C": 120, "EMA9_V5_D": 120,
@@ -126,6 +128,7 @@ QUALITY_SCORED_STRATEGIES = {
     # FL_ANTICHOP demoted 2026-03-17
     "EMA_FPIP", "EMA_FPIP_V3_A", "EMA_FPIP_V3_B", "EMA_FPIP_V3_C",
     "BDR_SHORT", "BDR_V3_A", "BDR_V3_B", "BDR_V3_C", "BDR_V3_D",
+    "BDR_V4_A", "BDR_V4_B", "BDR_V4_C", "BDR_V4_D",
     "EMA9_FT", "EMA9_V4_A", "EMA9_V4_B", "EMA9_V4_C", "EMA9_V4_D",
     "EMA9_V5_A", "EMA9_V5_B", "EMA9_V5_C", "EMA9_V5_D",
     "BS_STRUCT", "ORL_FBD_LONG",
@@ -542,6 +545,40 @@ def main():
             c.bdr_retest_min_upper_wick_pct = 0.15
             return c
 
+        # BDR V4 variant configs (rebuilt: internal quality gate, bypasses external A-tier)
+        def _make_bdr_v4_a(base):
+            """Balanced: 10:25-10:35, ip>=0.80, tq>=0.60, no extra quality floor."""
+            c = _make_bdr_v3_a(base)  # inherits V3 base (ORL+swing, no VWAP, no regime, etc.)
+            c.bdr_v4_enabled = True
+            c.bdr_v4_min_ip_score = 0.80
+            c.bdr_v4_min_trigger_quality = 0.60
+            c.bdr_v4_min_quality_score = 0.0
+            c.bdr_v4_time_start = 1025
+            c.bdr_v4_time_end = 1035
+            return c
+
+        def _make_bdr_v4_b(base):
+            """Broader: 10:20-10:40."""
+            c = _make_bdr_v4_a(base)
+            c.bdr_v4_time_start = 1020
+            c.bdr_v4_time_end = 1040
+            return c
+
+        def _make_bdr_v4_c(base):
+            """Stricter: 10:25-10:35, quality_score>=3.0."""
+            c = _make_bdr_v4_a(base)
+            c.bdr_v4_min_quality_score = 3.0
+            return c
+
+        def _make_bdr_v4_d(base):
+            """Strictest D-descendant: 10:25-10:35, quality>=3.0, failed_reclaim anatomy."""
+            c = _make_bdr_v4_c(base)
+            c.bdr_setup_mode = "failed_reclaim_break"
+            c.bdr_retest_close_max_pos = 0.50
+            c.bdr_retest_body_max_pct = 0.45
+            c.bdr_retest_min_upper_wick_pct = 0.15
+            return c
+
         # EMA9 V4 variant configs
         def _make_ema9_v4_a(base):
             c = deepcopy(base)
@@ -620,6 +657,10 @@ def main():
             BDRShortLive(_make_bdr_v3_b(strat_cfg), strategy_name="BDR_V3_B"),
             BDRShortLive(_make_bdr_v3_c(strat_cfg), strategy_name="BDR_V3_C"),
             BDRShortLive(_make_bdr_v3_d(strat_cfg), strategy_name="BDR_V3_D"),
+            BDRShortLive(_make_bdr_v4_a(strat_cfg), strategy_name="BDR_V4_A"),
+            BDRShortLive(_make_bdr_v4_b(strat_cfg), strategy_name="BDR_V4_B"),
+            BDRShortLive(_make_bdr_v4_c(strat_cfg), strategy_name="BDR_V4_C"),
+            BDRShortLive(_make_bdr_v4_d(strat_cfg), strategy_name="BDR_V4_D"),
             EMA9FirstTouchLive(strat_cfg),  # legacy EMA9
             EMA9FirstTouchLive(_make_ema9_v4_a(strat_cfg), strategy_name="EMA9_V4_A"),
             EMA9FirstTouchLive(_make_ema9_v4_b(strat_cfg), strategy_name="EMA9_V4_B"),
@@ -1120,6 +1161,7 @@ def main():
                    "FFT_NEWLOW_REV"}
     # FL_ANTICHOP demoted 2026-03-17
     short_strats = {"BDR_SHORT", "BDR_V3_A", "BDR_V3_B", "BDR_V3_C", "BDR_V3_D",
+                    "BDR_V4_A", "BDR_V4_B", "BDR_V4_C", "BDR_V4_D",
                     "ORH_FBO_V2_A", "ORH_FBO_V2_B", "PDH_FBO_B"}
 
     long_trades = [t for t in all_trades

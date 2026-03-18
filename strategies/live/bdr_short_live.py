@@ -38,8 +38,16 @@ class BDRShortLive(LiveStrategy):
         self.quality = quality
 
         self._v3 = cfg.bdr_v3_enabled
-        self._time_start = cfg.bdr_v3_time_start if self._v3 else cfg.get(cfg.bdr_time_start)
-        self._time_end = cfg.bdr_v3_time_end if self._v3 else cfg.get(cfg.bdr_time_end)
+        self._v4 = cfg.bdr_v4_enabled
+        if self._v4:
+            self._time_start = cfg.bdr_v4_time_start
+            self._time_end = cfg.bdr_v4_time_end
+        elif self._v3:
+            self._time_start = cfg.bdr_v3_time_start
+            self._time_end = cfg.bdr_v3_time_end
+        else:
+            self._time_start = cfg.get(cfg.bdr_time_start)
+            self._time_end = cfg.get(cfg.bdr_time_end)
         self._retest_window = cfg.get(cfg.bdr_retest_window)
         self._confirm_window = cfg.get(cfg.bdr_confirm_window)
 
@@ -210,6 +218,22 @@ class BDRShortLive(LiveStrategy):
                         )
                         quality_tier = QualityTier.B_TIER if quality_score >= self.cfg.quality_b_min else QualityTier.C_TIER
 
+                # V4: internal quality gate — bypass external A-tier
+                v4_promoted = False
+                if cfg.bdr_v4_enabled:
+                    _tq = trigger_bar_quality(bar, i_atr, vol_ma) if vol_ma > 0 else 0.0
+                    ip_ok = snap.in_play_score >= cfg.bdr_v4_min_ip_score
+                    tq_ok = _tq >= cfg.bdr_v4_min_trigger_quality
+                    q_ok = quality_score >= cfg.bdr_v4_min_quality_score if cfg.bdr_v4_min_quality_score > 0 else True
+                    if ip_ok and tq_ok and q_ok:
+                        quality_tier = QualityTier.A_TIER
+                        v4_promoted = True
+                    else:
+                        # V4 internal filter blocks
+                        self._v3_waiting_trigger = False
+                        self._bd_active = False
+                        return None
+
                 self._v3_waiting_trigger = False
                 self._bd_active = False
                 self._triggered_today = True
@@ -235,6 +259,7 @@ class BDRShortLive(LiveStrategy):
                         "in_play_score": snap.in_play_score,
                         "quality_tier": quality_tier.value,
                         "reject_reasons": reject_reasons,
+                        "v4_promoted": v4_promoted,
                         "entry_type": "retest_low_break",
                         **_stop_meta,
                     },

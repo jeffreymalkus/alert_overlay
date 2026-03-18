@@ -236,6 +236,14 @@ class StrategyConfig:
     bdr_skip_generic_trigger_body_filter: bool = False
     bdr_skip_generic_trigger_vol_filter: bool = False
 
+    # ── BDR V4 controls (rebuilt: internal quality gate, bypasses external A-tier) ──
+    bdr_v4_enabled: bool = False
+    bdr_v4_min_ip_score: float = 0.80        # V2 in-play percentile floor
+    bdr_v4_min_trigger_quality: float = 0.60  # trigger bar quality floor
+    bdr_v4_min_quality_score: float = 0.0     # internal quality score floor (0 = no extra filter)
+    bdr_v4_time_start: int = 1025
+    bdr_v4_time_end: int = 1035
+
     # ── EMA9 FirstTouch Only thresholds ──
     enable_ema9ft: bool = True
     e9ft_time_start: Dict[int, int] = field(default_factory=lambda: {1: 935, 5: 935})
