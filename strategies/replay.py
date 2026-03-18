@@ -40,6 +40,7 @@ from ..layered_regime import PermissionWeights, compute_permission
 from .shared.signal_schema import StrategySignal, StrategyTrade, QualityTier
 from .shared.config import StrategyConfig
 from .shared.in_play_proxy import InPlayProxy, SessionSnapshot, InPlayResult, DayOpenStats
+from .shared.in_play_proxy_v2 import InPlayProxyV2, InPlayResultV2
 from .shared.market_regime import EnhancedMarketRegime
 from .shared.helpers import simulate_strategy_trade, trigger_bar_quality
 from .shared.regime_gate import (
@@ -368,8 +369,12 @@ def main():
     # ── Initialize in-play proxies ──
     ip_cfg = StrategyConfig(timeframe_min=1)
     ip_cfg_5m = StrategyConfig(timeframe_min=5)
-    in_play_proxy = InPlayProxy(ip_cfg)       # for 1-min path (first_n=15)
-    in_play_proxy_5m = InPlayProxy(ip_cfg_5m) # for 5-min-only path (first_n=3)
+    in_play_proxy = InPlayProxy(ip_cfg)       # V1: for 1-min path (first_n=15)
+    in_play_proxy_5m = InPlayProxy(ip_cfg_5m) # V1: for 5-min-only path (first_n=3)
+
+    # V2 in-play gate (percentile-ranked, two-stage, rolling)
+    _USE_IP_V2 = ip_cfg.ip_v2_enabled
+    in_play_v2 = InPlayProxyV2(ip_cfg) if _USE_IP_V2 else None
 
     # ── Quality scorer (matches original replay.py scan_day pipeline) ──
     quality_cfg = StrategyConfig()
@@ -398,6 +403,50 @@ def main():
     trades_by_strat: Dict[str, List[StrategyTrade]] = defaultdict(list)
     ip_eval_log = []  # (symbol, date, passed, score, data_status, reason)
     target_tag_audit: Dict[str, list] = defaultdict(list)  # strategy -> list of (tag, rr, risk, entry)
+
+    # ── V2 in-play pre-pass: compute cross-sectional features ──
+    if _USE_IP_V2:
+        print(f"\n  V2 in-play pre-pass: loading bars for {len(symbols_5m)} symbols...")
+        # Load SPY bars
+        _spy_path = DATA_DIR / "SPY_5min.csv"
+        _spy_all_bars = load_bars_from_csv(str(_spy_path)) if _spy_path.exists() else []
+        _spy_by_date = defaultdict(list)
+        for b in _spy_all_bars:
+            _spy_by_date[b.timestamp.date()].append(b)
+
+        # Load all symbol bars and group by date
+        _all_bars_by_date = defaultdict(dict)  # {date: {symbol: [bars]}}
+        _prior_closes = {}  # {symbol: float} running
+        for sym in symbols_5m:
+            p = DATA_DIR / f"{sym}_5min.csv"
+            if not p.exists():
+                continue
+            sym_bars = load_bars_from_csv(str(p))
+            prev_close = NaN
+            by_date = defaultdict(list)
+            for b in sym_bars:
+                by_date[b.timestamp.date()].append(b)
+            for d in sorted(by_date.keys()):
+                _all_bars_by_date[d][sym] = by_date[d]
+                if not _isnan(prev_close):
+                    if d not in _prior_closes:
+                        _prior_closes_day = {}
+                    else:
+                        _prior_closes_day = _prior_closes.get(d, {})
+                    _prior_closes_day[sym] = prev_close
+                    _prior_closes[d] = _prior_closes_day
+                if by_date[d]:
+                    prev_close = by_date[d][-1].close
+
+        # Precompute V2 for each trading day
+        for d in sorted(_all_bars_by_date.keys()):
+            pc = _prior_closes.get(d, {})
+            spy_bars_d = _spy_by_date.get(d, [])
+            in_play_v2.precompute_day(
+                _all_bars_by_date[d], spy_bars_d, d, prior_closes=pc
+            )
+        print(f"  V2 pre-pass complete: {len(_all_bars_by_date)} trading days processed.")
+        del _all_bars_by_date, _spy_by_date, _spy_all_bars  # free memory
 
     print(f"\n  Processing {len(symbols_5m)} symbols through live pipeline...")
 
@@ -736,25 +785,39 @@ def main():
                         per_strategy_funnel[sig.strategy_name]["blocked_regime"] += 1
                         continue
 
-                    # Gate 0.5: In-play (hard gate + per-strategy score minimum)
-                    _IP_SCORE_MIN_DEFAULT = 3.0  # v4: lowered for broader signal evaluation
-                    _IP_SCORE_MIN_BY_STRATEGY = {
-                        "SP_ATIER": 3.5,   # Spencer needs genuine institutional flow
-                        "ORH_FBO_V2_B": 3.5,  # Failed breakout needs real in-play activity
-                    }
-                    _IP_SCORE_MIN = _IP_SCORE_MIN_BY_STRATEGY.get(
-                        sig.strategy_name, _IP_SCORE_MIN_DEFAULT)
-                    if ip_result_current is None or not ip_result_current.passed:
-                        funnel["blocked_inplay"] += 1
-                        per_strategy_funnel[sig.strategy_name]["blocked_inplay"] += 1
-                        if ip_result_current is None:
-                            funnel["ip_pending_blocked"] = funnel.get("ip_pending_blocked", 0) + 1
-                        continue
-                    if ip_result_current.score < _IP_SCORE_MIN:
-                        funnel["blocked_inplay_score"] += 1
-                        per_strategy_funnel[sig.strategy_name]["blocked_inplay_score"] = \
-                            per_strategy_funnel[sig.strategy_name].get("blocked_inplay_score", 0) + 1
-                        continue
+                    # Gate 0.5: In-play
+                    if _USE_IP_V2:
+                        # V2 gate: percentile-ranked, two-stage
+                        _ip_v2_result = in_play_v2.get_result(sym, bar_date, hhmm=sig_hhmm)
+                        if not _ip_v2_result.active_passed:
+                            funnel["blocked_inplay"] += 1
+                            per_strategy_funnel[sig.strategy_name]["blocked_inplay"] += 1
+                            if _ip_v2_result.active_score_kind == "NONE":
+                                funnel["ip_pending_blocked"] = funnel.get("ip_pending_blocked", 0) + 1
+                            continue
+                        # V2 doesn't use a separate score minimum — the threshold IS the gate
+                        ip_score = _ip_v2_result.active_score
+                    else:
+                        # V1 gate: hard gate + per-strategy score minimum
+                        _IP_SCORE_MIN_DEFAULT = 3.0
+                        _IP_SCORE_MIN_BY_STRATEGY = {
+                            "SP_ATIER": 3.5,
+                            "ORH_FBO_V2_B": 3.5,
+                        }
+                        _IP_SCORE_MIN = _IP_SCORE_MIN_BY_STRATEGY.get(
+                            sig.strategy_name, _IP_SCORE_MIN_DEFAULT)
+                        if ip_result_current is None or not ip_result_current.passed:
+                            funnel["blocked_inplay"] += 1
+                            per_strategy_funnel[sig.strategy_name]["blocked_inplay"] += 1
+                            if ip_result_current is None:
+                                funnel["ip_pending_blocked"] = funnel.get("ip_pending_blocked", 0) + 1
+                            continue
+                        if ip_result_current.score < _IP_SCORE_MIN:
+                            funnel["blocked_inplay_score"] += 1
+                            per_strategy_funnel[sig.strategy_name]["blocked_inplay_score"] = \
+                                per_strategy_funnel[sig.strategy_name].get("blocked_inplay_score", 0) + 1
+                            continue
+                        ip_score = ip_result_current.score
 
                     # ── Quality tier gate (read from strategy's internal pipeline) ──
                     # Matches dashboard.py exactly: strategies compute quality_tier

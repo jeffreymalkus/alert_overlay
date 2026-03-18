@@ -14,13 +14,22 @@ class StrategyConfig:
 
     timeframe_min: int = 5      # 1 or 5
 
-    # ── In-play proxy ──
+    # ── In-play proxy (V1 — legacy, kept for fallback) ──
     ip_mode: str = "hybrid"  # "list_only" | "proxy_only" | "hybrid"
     ip_gap_min: Dict[int, float] = field(default_factory=lambda: {1: 0.005, 5: 0.01})
     ip_rvol_min: Dict[int, float] = field(default_factory=lambda: {1: 1.5, 5: 2.0})
     ip_dolvol_min: Dict[int, float] = field(default_factory=lambda: {1: 500_000, 5: 1_000_000})
     ip_range_expansion_min: Dict[int, float] = field(default_factory=lambda: {1: 1.5, 5: 1.5})
     ip_first_n_bars: Dict[int, int] = field(default_factory=lambda: {1: 15, 5: 3})
+
+    # ── In-play proxy V2 (percentile-ranked, two-stage, rolling) ──
+    ip_v2_enabled: bool = True
+    ip_v2_threshold_provisional: float = 0.80
+    ip_v2_threshold_confirmed: float = 0.80
+    ip_v2_provisional_hhmm: int = 940
+    ip_v2_confirmed_hhmm: int = 1000
+    ip_v2_recompute_confirmed_each_bar: bool = True
+    ip_v2_debug_logging: bool = True
 
     # ── Market regime ──
     regime_require_green: bool = True
