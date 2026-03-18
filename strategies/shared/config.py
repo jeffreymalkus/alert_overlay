@@ -22,14 +22,18 @@ class StrategyConfig:
     ip_range_expansion_min: Dict[int, float] = field(default_factory=lambda: {1: 1.5, 5: 1.5})
     ip_first_n_bars: Dict[int, int] = field(default_factory=lambda: {1: 15, 5: 3})
 
-    # ── In-play proxy V2 (percentile-ranked, two-stage, rolling) ──
+    # ── In-play proxy V2 (percentile-ranked, two-stage base gate) ──
+    # V2 is the default base gate. Set ip_v2_enabled=False to revert to V1.
+    # Provisional stage (9:40) is informational only — not promotable by default.
+    # Confirmed stage (10:00 snapshot) is the promotable base gate.
     ip_v2_enabled: bool = True
     ip_v2_threshold_provisional: float = 0.80
     ip_v2_threshold_confirmed: float = 0.80
     ip_v2_provisional_hhmm: int = 940
     ip_v2_confirmed_hhmm: int = 1000
     ip_v2_recompute_confirmed_each_bar: bool = True
-    ip_v2_allow_provisional_promotion: bool = False  # provisional trades are net -12.2R; disabled by default
+    ip_v2_allow_provisional_promotion: bool = False  # default OFF; provisional trades net -12.2R
+    ip_v2_allow_provisional_by_strategy: Dict[str, bool] = field(default_factory=dict)  # e.g. {"HH_QUALITY": True}
     ip_v2_debug_logging: bool = True
 
     # ── Market regime ──

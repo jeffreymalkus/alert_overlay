@@ -798,14 +798,18 @@ def main():
                                 funnel["ip_pending_blocked"] = funnel.get("ip_pending_blocked", 0) + 1
                             continue
 
-                        # Block provisional promotion unless explicitly allowed
-                        # (provisional trades are net -12.2R in testing)
-                        if (_ip_v2_result.active_score_kind == "PROVISIONAL" and
-                                not ip_cfg.ip_v2_allow_provisional_promotion):
-                            funnel["blocked_inplay"] += 1
-                            per_strategy_funnel[sig.strategy_name]["blocked_inplay"] += 1
-                            funnel["ip_provisional_blocked"] = funnel.get("ip_provisional_blocked", 0) + 1
-                            continue
+                        # Block provisional promotion unless explicitly allowed.
+                        # Provisional is informational by default. Confirmed is the promotable stage.
+                        # Per-strategy override: ip_v2_allow_provisional_by_strategy
+                        if _ip_v2_result.active_score_kind == "PROVISIONAL":
+                            _allow_prov = (ip_cfg.ip_v2_allow_provisional_promotion or
+                                           ip_cfg.ip_v2_allow_provisional_by_strategy.get(
+                                               sig.strategy_name, False))
+                            if not _allow_prov:
+                                funnel["blocked_inplay"] += 1
+                                per_strategy_funnel[sig.strategy_name]["blocked_inplay"] += 1
+                                funnel["ip_provisional_blocked"] = funnel.get("ip_provisional_blocked", 0) + 1
+                                continue
 
                         ip_score = _ip_v2_result.active_score
                     else:
