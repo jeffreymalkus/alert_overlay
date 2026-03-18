@@ -195,6 +195,33 @@ class StrategyConfig:
     bdr_require_red_trend: bool = True
     bdr_spy_trend_pct: float = 0.25         # SPY close in bottom X% of day range
 
+    # ── BDR V3 controls ──
+    bdr_v3_enabled: bool = False
+    bdr_use_orl_level: bool = True
+    bdr_use_swing_low_level: bool = True
+    bdr_use_vwap_level: bool = True          # legacy True; V3 presets set False
+    bdr_v3_time_start: int = 1000
+    bdr_v3_time_end: int = 1100
+    bdr_setup_mode: str = "legacy_rejection_close"  # "legacy_rejection_close" | "weak_retest_break" | "failed_reclaim_break"
+    bdr_max_reclaim_above_level_atr: float = 0.10
+    bdr_retest_close_max_pos: float = 0.55
+    bdr_retest_body_max_pct: float = 0.55
+    bdr_retest_min_upper_wick_pct: float = 0.10
+    bdr_require_retest_below_vwap: bool = False
+    bdr_require_retest_below_ema9: bool = False
+    bdr_require_trigger_below_vwap: bool = False
+    bdr_require_trigger_below_ema9: bool = False
+    bdr_require_retest_vol_not_stronger_than_breakdown: bool = False
+    bdr_entry_mode: str = "close"            # "close" | "retest_low_break"
+    bdr_entry_buffer: float = 0.01
+    bdr_trigger_bars_after_retest: int = 2
+    bdr_stop_mode: str = "retest_high"       # "retest_high" | "trigger_bar_high"
+    bdr_v3_stop_buffer: float = 0.01
+    bdr_target_mode_v3: str = "fixed_rr"
+    bdr_target_rr_v3: float = 1.5
+    bdr_skip_generic_trigger_body_filter: bool = False
+    bdr_skip_generic_trigger_vol_filter: bool = False
+
     # ── EMA9 FirstTouch Only thresholds ──
     enable_ema9ft: bool = True
     e9ft_time_start: Dict[int, int] = field(default_factory=lambda: {1: 935, 5: 935})
@@ -215,6 +242,25 @@ class StrategyConfig:
     e9ft_struct_max_rr: float = 3.0
     e9ft_max_bars: Dict[int, int] = field(default_factory=lambda: {1: 120, 5: 24})
     e9ft_min_rs_vs_spy: float = 0.0005       # positive RS threshold (0.05%)
+
+    # ── EMA9 V4 controls ──
+    ema9_v4_enabled: bool = False
+    ema9_v4_time_start: int = 935
+    ema9_v4_time_end: int = 1115
+    ema9_require_relative_impulse_vs_spy: bool = False
+    ema9_min_relative_impulse_vs_spy: float = 0.0
+    ema9_require_soft_trigger_bar: bool = False
+    ema9_max_trigger_close_location: float = 1.0
+    ema9_max_trigger_body_fraction: float = 1.0
+    ema9_entry_mode_v4: str = "close"
+    ema9_stop_mode_v4: str = "pullback_low"    # "pullback_low" | "setup_bar_low" | "two_bar_low"
+    ema9_stop_buffer_v4: float = 0.01
+    ema9_target_mode_v4: str = "fixed_rr"
+    ema9_target_rr_v4: float = 1.25
+    ema9_require_5m_context: bool = False
+    ema9_5m_require_above_vwap: bool = False
+    ema9_5m_require_ema9_gt_ema20: bool = False
+    ema9_5m_touch_count_max: int = 999
 
     # ── Backside Structure Only thresholds ──
     enable_backside: bool = True

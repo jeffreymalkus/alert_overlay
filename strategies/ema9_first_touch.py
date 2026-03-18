@@ -56,8 +56,9 @@ class EMA9FirstTouchStrategy:
 
     def __init__(self, cfg: StrategyConfig, in_play: InPlayProxy,
                  regime: EnhancedMarketRegime, rejection: RejectionFilters,
-                 quality: QualityScorer):
+                 quality: QualityScorer, strategy_name: str = "EMA9_FT"):
         self.cfg = cfg
+        self._strategy_name = strategy_name
         self.in_play = in_play
         self.regime = regime
         self.rejection = rejection
@@ -221,6 +222,8 @@ class EMA9FirstTouchStrategy:
         pullback_touched_e9 = False
         triggered = False
         prev_date = None
+        prev_bar = None
+        prev_prev_bar = None
 
         signals = []
 
@@ -332,10 +335,21 @@ class EMA9FirstTouchStrategy:
                         continue
 
                 # ── Phase 3: Trigger check (must be in time window) ──
-                if not (time_start <= hhmm <= time_end):
-                    continue
+                # V4 time override
+                if cfg.ema9_v4_enabled:
+                    if not (cfg.ema9_v4_time_start <= hhmm <= cfg.ema9_v4_time_end):
+                        prev_prev_bar = prev_bar
+                        prev_bar = bar
+                        continue
+                else:
+                    if not (time_start <= hhmm <= time_end):
+                        prev_prev_bar = prev_bar
+                        prev_bar = bar
+                        continue
 
                 if not pullback_touched_e9:
+                    prev_prev_bar = prev_bar
+                    prev_bar = bar
                     continue
 
                 # Trigger: first close back above E9
@@ -353,69 +367,112 @@ class EMA9FirstTouchStrategy:
 
                         # Must be above VWAP at entry
                         if cfg.e9ft_above_vwap and not _isnan(vw) and bar.close <= vw:
+                            prev_prev_bar = prev_bar
+                            prev_bar = bar
                             continue
 
                         # RS check: stock pct_from_open > SPY pct_from_open
                         stock_pct = (bar.close - session_open) / session_open if session_open > 0 else 0
                         spy_pct = 0.0
                         if spy_bars:
-                            # Get current SPY close
                             for sb in spy_bars:
                                 if sb.timestamp <= bar.timestamp and sb.timestamp.date() == day:
                                     spy_pct = (sb.close - spy_open_today) / spy_open_today if not _isnan(spy_open_today) and spy_open_today > 0 else 0
                         rs = stock_pct - spy_pct
 
                         if rs < cfg.e9ft_min_rs_vs_spy:
+                            prev_prev_bar = prev_bar
+                            prev_bar = bar
                             continue
 
-                        # ── TRIGGER FIRES ──
-                        stop = pullback_low - cfg.e9ft_stop_buffer
-                        min_stop = 0.15 * i_atr
-                        if abs(bar.close - stop) < min_stop:
-                            stop = bar.close - min_stop
+                        # V4: relative impulse vs SPY filter
+                        relative_impulse_vs_spy = rs  # same as RS for now
+                        if cfg.ema9_require_relative_impulse_vs_spy:
+                            if relative_impulse_vs_spy < cfg.ema9_min_relative_impulse_vs_spy:
+                                prev_prev_bar = prev_bar
+                                prev_bar = bar
+                                continue
 
-                        risk = bar.close - stop
+                        # V4: optional soft trigger bar filter
+                        if cfg.ema9_require_soft_trigger_bar:
+                            if (close_pct > cfg.ema9_max_trigger_close_location or
+                                    body_pct > cfg.ema9_max_trigger_body_fraction):
+                                prev_prev_bar = prev_bar
+                                prev_bar = bar
+                                continue
+
+                        # ── TRIGGER FIRES ──
+                        entry_price = bar.close
+
+                        # V4: stop model
+                        if cfg.ema9_v4_enabled and cfg.ema9_stop_mode_v4 == "two_bar_low":
+                            pb_low_ref = bar.low
+                            if prev_bar is not None:
+                                pb_low_ref = min(bar.low, prev_bar.low)
+                            stop = pb_low_ref - cfg.ema9_stop_buffer_v4
+                        elif cfg.ema9_v4_enabled and cfg.ema9_stop_mode_v4 == "setup_bar_low":
+                            stop = bar.low - cfg.ema9_stop_buffer_v4
+                        elif cfg.ema9_v4_enabled and cfg.ema9_stop_mode_v4 == "three_bar_low":
+                            lows = [bar.low]
+                            if prev_bar is not None:
+                                lows.append(prev_bar.low)
+                            if prev_prev_bar is not None:
+                                lows.append(prev_prev_bar.low)
+                            stop = min(lows) - cfg.ema9_stop_buffer_v4
+                        else:
+                            # Legacy stop
+                            stop = pullback_low - cfg.e9ft_stop_buffer
+
+                        min_stop = 0.15 * i_atr
+                        if abs(entry_price - stop) < min_stop:
+                            stop = entry_price - min_stop
+
+                        risk = entry_price - stop
                         if risk <= 0:
                             drive_confirmed = False
                             pullback_started = False
+                            prev_prev_bar = prev_bar
+                            prev_bar = bar
                             continue
 
-                        # Structural target: drive high, session high
-                        if cfg.e9ft_target_mode == "structural":
+                        # V4: fixed RR target
+                        if cfg.ema9_v4_enabled and cfg.ema9_target_mode_v4 == "fixed_rr":
+                            target = entry_price + risk * cfg.ema9_target_rr_v4
+                            actual_rr = cfg.ema9_target_rr_v4
+                            target_tag = "fixed_rr"
+                        elif cfg.e9ft_target_mode == "structural":
                             _candidates = []
-                            if not _isnan(drive_high) and drive_high > bar.close:
+                            if not _isnan(drive_high) and drive_high > entry_price:
                                 _candidates.append((drive_high, "drive_high"))
-                            if not _isnan(session_high) and session_high > bar.close:
+                            if not _isnan(session_high) and session_high > entry_price:
                                 _candidates.append((session_high, "session_high"))
                             target, actual_rr, target_tag, skipped = compute_structural_target_long(
-                                bar.close, risk, _candidates,
+                                entry_price, risk, _candidates,
                                 min_rr=cfg.e9ft_struct_min_rr, max_rr=cfg.e9ft_struct_max_rr,
                                 fallback_rr=cfg.e9ft_target_rr, mode="structural",
                             )
                             if skipped:
                                 drive_confirmed = False
                                 pullback_started = False
+                                prev_prev_bar = prev_bar
+                                prev_bar = bar
                                 continue
                         else:
-                            target = bar.close + risk * cfg.e9ft_target_rr
+                            target = entry_price + risk * cfg.e9ft_target_rr
                             actual_rr = cfg.e9ft_target_rr
                             target_tag = "fixed_rr"
 
                         # Structure quality
                         struct_q = 0.40
-                        # Shallow pullback bonus
                         if pb_depth < 0.30 * i_atr:
                             struct_q += 0.15
                         elif pb_depth < 0.45 * i_atr:
                             struct_q += 0.10
-                        # Strong drive bonus
                         drive_dist = drive_high - session_open
                         if drive_dist >= 1.5 * i_atr:
                             struct_q += 0.15
-                        # Volume on trigger
                         if bar.volume >= 1.2 * vol_ma:
                             struct_q += 0.10
-                        # E9 > E20 slope
                         if e9 > e20:
                             struct_q += 0.10
 
@@ -432,11 +489,11 @@ class EMA9FirstTouchStrategy:
                             confluence.append("strong_drive")
 
                         sig = StrategySignal(
-                            strategy_name="EMA9_FT",
+                            strategy_name=self._strategy_name,
                             symbol=symbol,
                             timestamp=bar.timestamp,
                             direction=1,
-                            entry_price=bar.close,
+                            entry_price=entry_price,
                             stop_price=stop,
                             target_price=target,
                             in_play_score=ip_score,
@@ -448,9 +505,13 @@ class EMA9FirstTouchStrategy:
                                 "pb_depth": pb_depth,
                                 "pb_depth_atr": pb_depth / i_atr if i_atr > 0 else 0,
                                 "rs_vs_spy": rs,
+                                "relative_impulse_vs_spy": relative_impulse_vs_spy if cfg.ema9_v4_enabled else rs,
+                                "close_location": close_pct,
+                                "body_fraction": body_pct,
                                 "structure_quality": min(struct_q, 1.0),
                                 "actual_rr": actual_rr,
                                 "target_tag": target_tag,
+                                "stop_mode": cfg.ema9_stop_mode_v4 if cfg.ema9_v4_enabled else "pullback_low",
                             },
                         )
 
@@ -458,6 +519,11 @@ class EMA9FirstTouchStrategy:
                         triggered = True
 
                         if cfg.e9ft_first_pullback_only:
+                            prev_prev_bar = prev_bar
+                            prev_bar = bar
                             continue
+
+            prev_prev_bar = prev_bar
+            prev_bar = bar
 
         return signals

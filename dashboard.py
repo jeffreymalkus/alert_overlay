@@ -2002,6 +2002,7 @@ class DashboardHandler(SimpleHTTPRequestHandler):
 
         added = []
         skipped = []
+        new_symbols_to_setup = []
         for symbol in symbols:
             with _lock:
                 if symbol in _in_play_symbols:
@@ -2021,27 +2022,7 @@ class DashboardHandler(SimpleHTTPRequestHandler):
                         "bars": 0, "alerts": 0, "last_price": 0,
                         "warming_up": True, "universe": "IN_PLAY",
                     }
-
-                def _make_setup(sym):
-                    async def _do():
-                        global _ib, _cfg, _runners
-                        try:
-                            runner = SymbolRunner(sym, _ib, _cfg, universe="IN_PLAY")
-                            await runner.setup_async()
-                            await runner.subscribe_async()
-                            with _lock:
-                                _runners.append(runner)
-                                _status["symbols"][sym].pop("warming_up", None)
-                            _broadcast_sse("status", _status)
-                            log.info(f"[{sym}] In-play symbol subscribed (bulk).")
-                        except Exception as e:
-                            log.error(f"[{sym}] Failed to add in-play (bulk): {e}")
-                            with _lock:
-                                _status["symbols"].pop(sym, None)
-                            _broadcast_sse("status", _status)
-                    return _do
-
-                _schedule_on_main(_make_setup(symbol))
+                new_symbols_to_setup.append(symbol)
             else:
                 with _lock:
                     _status["symbols"][symbol]["universe"] = "BOTH"
@@ -2061,11 +2042,42 @@ class DashboardHandler(SimpleHTTPRequestHandler):
         })
         _broadcast_sse("status", _status)
 
-        log.info(f"Bulk in-play: added {len(added)}, skipped {len(skipped)} duplicates")
+        # ── Paced bulk setup: subscribe new symbols with IBKR pacing ──
+        if new_symbols_to_setup:
+            async def _paced_bulk_setup():
+                global _ib, _cfg, _runners
+                total = len(new_symbols_to_setup)
+                for idx, sym in enumerate(new_symbols_to_setup):
+                    try:
+                        runner = SymbolRunner(sym, _ib, _cfg, universe="IN_PLAY")
+                        await runner.setup_async()
+                        await runner.subscribe_async()
+                        with _lock:
+                            _runners.append(runner)
+                            _status["symbols"][sym].pop("warming_up", None)
+                        _broadcast_sse("status", _status)
+                        log.info(f"[{sym}] In-play symbol subscribed (bulk {idx+1}/{total}).")
+                    except Exception as e:
+                        log.error(f"[{sym}] Failed to add in-play (bulk): {e}")
+                        with _lock:
+                            _status["symbols"].pop(sym, None)
+                        _broadcast_sse("status", _status)
+                    # Pace: 2s between symbols to stay under IBKR's 60 req/10min limit
+                    await asyncio.sleep(2.0)
+                log.info(f"Bulk in-play setup complete: {total} symbols processed.")
+
+            try:
+                _schedule_on_main(lambda: _paced_bulk_setup())
+            except RuntimeError:
+                log.error("Cannot schedule bulk setup — main loop not ready")
+
+        log.info(f"Bulk in-play: added {len(added)}, skipped {len(skipped)} duplicates"
+                 f", {len(new_symbols_to_setup)} queued for paced setup")
         self._send_json_response(200, {
             "ok": True,
             "added": added,
             "skipped": skipped,
+            "queued_for_setup": new_symbols_to_setup,
             "total_in_play": len(_in_play_symbols),
         })
 

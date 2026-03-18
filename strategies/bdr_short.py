@@ -52,8 +52,9 @@ class BDRShortStrategy:
 
     def __init__(self, cfg: StrategyConfig, in_play: InPlayProxy,
                  regime: EnhancedMarketRegime, rejection: RejectionFilters,
-                 quality: QualityScorer):
+                 quality: QualityScorer, strategy_name: str = "BDR_SHORT"):
         self.cfg = cfg
+        self._strategy_name = strategy_name
         self.in_play = in_play
         self.regime = regime
         self.rejection = rejection
@@ -95,7 +96,10 @@ class BDRShortStrategy:
         pdl = self._compute_pdl(bars, day)
 
         # ── Step 3: Raw BDR detection ──
-        raw_signals = self._detect_bdr_signals(symbol, bars, day, ip_score, pdl=pdl)
+        if cfg.bdr_v3_enabled:
+            raw_signals = self._detect_bdr_v3_signals(symbol, bars, day, ip_score, pdl=pdl)
+        else:
+            raw_signals = self._detect_bdr_signals(symbol, bars, day, ip_score, pdl=pdl)
 
         # ── Steps 4-6: Filter + score (with per-signal regime check) ──
         results = []
@@ -103,8 +107,11 @@ class BDRShortStrategy:
             self.stats["raw_signals"] += 1
 
             # Step 2b: Per-signal regime check (real-time SPY position)
-            if not self.regime.is_aligned_short(sig.timestamp):
+            if not cfg.bdr_v3_enabled and not self.regime.is_aligned_short(sig.timestamp):
                 continue
+            if cfg.bdr_v3_enabled and cfg.bdr_require_red_trend:
+                if not self.regime.is_aligned_short(sig.timestamp):
+                    continue
 
             # Step 4: Rejection filters
             # Skip bigger_picture (long-only check, irrelevant for shorts)
@@ -447,6 +454,275 @@ class BDRShortStrategy:
                     bd_active = False
                     retested = False
                     triggered_today = True
+
+        return signals
+
+    def _detect_bdr_v3_signals(self, symbol: str, bars: List[Bar], day: date,
+                               ip_score: float, pdl: float = NaN) -> list:
+        """
+        BDR V3 state machine: breakdown → weak retest → retest-low-break entry.
+        Replaces the legacy rejection-wick trigger with a structural continuation entry.
+        """
+        cfg = self.cfg
+        time_start = cfg.bdr_v3_time_start
+        time_end = cfg.bdr_v3_time_end
+
+        # Indicators
+        ema9 = EMA(9)
+        vwap_calc = VWAPCalc()
+        atr_pair = ATRPair(14, use_completed=True)
+        vol_buf = deque(maxlen=20)
+        range_buf = deque(maxlen=10)
+
+        # OR tracking
+        or_high = NaN
+        or_low = NaN
+        or_ready = False
+
+        # V3 state
+        bd_active = False
+        bd_level = NaN
+        bd_level_tag = ""
+        bd_bar_vol = 0.0
+        bd_bar_range = 0.0
+        retest_found = False
+        retest_high = NaN
+        retest_low = NaN
+        retest_close = NaN
+        retest_open = NaN
+        retest_vol = 0.0
+        retest_bar_idx = -1
+        entry_deadline_idx = -1
+        waiting_for_trigger = False
+
+        recent_bars = deque(maxlen=10)
+        prev_date = None
+        triggered_today = False
+        session_low = NaN
+        signals = []
+
+        for i, bar in enumerate(bars):
+            d = bar.timestamp.date()
+            hhmm = get_hhmm(bar)
+
+            if d != prev_date:
+                vwap_calc.reset()
+                bd_active = False
+                retest_found = False
+                waiting_for_trigger = False
+                triggered_today = False
+                or_high = NaN
+                or_low = NaN
+                or_ready = False
+                session_low = NaN
+                recent_bars.clear()
+                prev_date = d
+
+            if d == day:
+                session_low = min(session_low, bar.low) if not _isnan(session_low) else bar.low
+
+            e9 = ema9.update(bar.close)
+            i_atr = atr_pair.update_intraday(bar.high, bar.low, bar.close)
+            tp = (bar.high + bar.low + bar.close) / 3.0
+            vw = vwap_calc.update(tp, bar.volume)
+            vol_buf.append(bar.volume)
+            vol_ma = sum(vol_buf) / len(vol_buf) if len(vol_buf) >= 5 else NaN
+            rng = bar.high - bar.low
+            range_buf.append(rng)
+
+            if d == day and not or_ready:
+                if hhmm <= 959:
+                    or_high = max(or_high, bar.high) if not _isnan(or_high) else bar.high
+                    or_low = min(or_low, bar.low) if not _isnan(or_low) else bar.low
+                else:
+                    or_ready = True
+
+            recent_bars.append(bar)
+            if d != day:
+                continue
+            if triggered_today or not ema9.ready or _isnan(i_atr) or i_atr <= 0:
+                continue
+            if _isnan(vol_ma) or vol_ma <= 0:
+                continue
+
+            # ── TRIGGER PHASE: waiting for retest-low break ──
+            if waiting_for_trigger:
+                if i > entry_deadline_idx:
+                    # Timed out
+                    waiting_for_trigger = False
+                    bd_active = False
+                    retest_found = False
+                    continue
+
+                # Check for break below retest low
+                trigger_price = retest_low - cfg.bdr_entry_buffer
+                if bar.low < trigger_price:
+                    # Context checks on trigger bar
+                    if cfg.bdr_require_trigger_below_vwap and not (bar.close < vw):
+                        continue
+                    if cfg.bdr_require_trigger_below_ema9 and not (bar.close < e9):
+                        continue
+
+                    entry_price = min(trigger_price, bar.open)
+
+                    # Stop above retest high
+                    stop = retest_high + cfg.bdr_v3_stop_buffer
+                    min_stop = cfg.bdr_min_stop_atr * i_atr
+                    risk = stop - entry_price
+                    if risk < min_stop:
+                        stop = entry_price + min_stop
+                        risk = min_stop
+                    if risk <= 0:
+                        waiting_for_trigger = False
+                        bd_active = False
+                        continue
+
+                    # Fixed RR target
+                    target = entry_price - risk * cfg.bdr_target_rr_v3
+                    actual_rr = cfg.bdr_target_rr_v3
+                    target_tag = "fixed_rr"
+
+                    # Quality
+                    struct_q = 0.50
+                    if bd_level_tag == "ORL":
+                        struct_q += 0.15
+                    if bd_bar_vol >= 1.25 * vol_ma:
+                        struct_q += 0.10
+                    if retest_vol < bd_bar_vol:
+                        struct_q += 0.10
+                    if bar.close < vw and bar.close < e9:
+                        struct_q += 0.15
+
+                    confluence = []
+                    if bar.close < vw:
+                        confluence.append("below_vwap")
+                    if bar.close < e9:
+                        confluence.append("below_ema9")
+                    if bd_level_tag == "ORL":
+                        confluence.append("or_level")
+                    if bd_bar_vol >= 1.5 * vol_ma:
+                        confluence.append("strong_bd_vol")
+
+                    sig = StrategySignal(
+                        strategy_name=self._strategy_name,
+                        symbol=symbol,
+                        timestamp=bar.timestamp,
+                        direction=-1,
+                        entry_price=entry_price,
+                        stop_price=stop,
+                        target_price=target,
+                        in_play_score=ip_score,
+                        confluence_tags=confluence,
+                        metadata={
+                            "level_type": bd_level_tag,
+                            "level_price": bd_level,
+                            "breakdown_bar_volume": bd_bar_vol,
+                            "retest_high": retest_high,
+                            "retest_low": retest_low,
+                            "entry_mode": cfg.bdr_entry_mode,
+                            "setup_mode": cfg.bdr_setup_mode,
+                            "trigger_bars_after_retest": cfg.bdr_trigger_bars_after_retest,
+                            "stop_mode": cfg.bdr_stop_mode,
+                            "target_rr_v3": cfg.bdr_target_rr_v3,
+                            "structure_quality": min(struct_q, 1.0),
+                            "actual_rr": actual_rr,
+                            "target_tag": target_tag,
+                            "retest_below_vwap": retest_close < vw if not _isnan(vw) else False,
+                            "retest_below_ema9": retest_close < e9 if not _isnan(e9) else False,
+                            "trigger_below_vwap": bar.close < vw if not _isnan(vw) else False,
+                            "trigger_below_ema9": bar.close < e9 if not _isnan(e9) else False,
+                            "entry_type": "retest_low_break",
+                        },
+                    )
+                    signals.append((sig, i, bar, i_atr, e9, vw, vol_ma))
+                    waiting_for_trigger = False
+                    bd_active = False
+                    retest_found = False
+                    triggered_today = True
+                continue
+
+            # ── RETEST PHASE: look for weak retest after breakdown ──
+            if bd_active and not retest_found:
+                proximity = cfg.bdr_retest_proximity_atr * i_atr
+                approaches = bar.high >= bd_level - proximity
+                reclaim_above = max(0.0, bar.high - bd_level)
+                reclaim_atr = reclaim_above / max(i_atr, 1e-6)
+
+                if approaches and reclaim_atr <= cfg.bdr_max_reclaim_above_level_atr:
+                    # Evaluate retest quality
+                    bar_range = max(bar.high - bar.low, 1e-6)
+                    close_pos = (bar.close - bar.low) / bar_range
+                    body_pct = abs(bar.close - bar.open) / bar_range
+                    upper_wick_pct = (bar.high - max(bar.open, bar.close)) / bar_range
+
+                    weak_enough = close_pos <= cfg.bdr_retest_close_max_pos
+
+                    if cfg.bdr_setup_mode == "failed_reclaim_break":
+                        weak_enough = (weak_enough and
+                                       body_pct <= cfg.bdr_retest_body_max_pct and
+                                       upper_wick_pct >= cfg.bdr_retest_min_upper_wick_pct)
+
+                    # Context checks
+                    if cfg.bdr_require_retest_below_vwap and not (bar.close < vw):
+                        weak_enough = False
+                    if cfg.bdr_require_retest_below_ema9 and not (bar.close < e9):
+                        weak_enough = False
+                    if cfg.bdr_require_retest_vol_not_stronger_than_breakdown:
+                        if bar.volume > bd_bar_vol:
+                            weak_enough = False
+
+                    if weak_enough:
+                        retest_found = True
+                        retest_high = bar.high
+                        retest_low = bar.low
+                        retest_close = bar.close
+                        retest_open = bar.open
+                        retest_vol = bar.volume
+                        retest_bar_idx = i
+                        entry_deadline_idx = i + cfg.bdr_trigger_bars_after_retest
+                        waiting_for_trigger = True
+                continue
+
+            # ── BREAKDOWN PHASE: detect new breakdown ──
+            if not bd_active and time_start <= hhmm <= time_end:
+                level, tag = self._find_support_level(or_high, or_low, or_ready, vw, list(recent_bars))
+                if _isnan(level):
+                    continue
+
+                # V3 level filtering
+                allowed = (
+                    (tag == "ORL" and cfg.bdr_use_orl_level) or
+                    (tag == "SWING" and cfg.bdr_use_swing_low_level) or
+                    (tag == "VWAP" and cfg.bdr_use_vwap_level)
+                )
+                if not allowed:
+                    continue
+
+                broke = bar.close < level - cfg.bdr_break_atr_min * i_atr
+                bearish = bar.close < bar.open
+                if not (broke and bearish):
+                    continue
+
+                if len(range_buf) >= 5:
+                    med_rng = median(list(range_buf))
+                    if rng < cfg.bdr_break_bar_range_frac * med_rng:
+                        continue
+
+                if bar.volume < cfg.bdr_break_vol_frac * vol_ma:
+                    continue
+
+                if rng > 0:
+                    close_pct = (bar.high - bar.close) / rng
+                    if close_pct < cfg.bdr_break_close_pct:
+                        continue
+
+                bd_active = True
+                bd_level = level
+                bd_level_tag = tag
+                bd_bar_vol = bar.volume
+                bd_bar_range = rng
+                retest_found = False
+                waiting_for_trigger = False
 
         return signals
 

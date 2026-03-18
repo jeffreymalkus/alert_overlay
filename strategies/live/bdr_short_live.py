@@ -29,15 +29,17 @@ class BDRShortLive(LiveStrategy):
     """Incremental BDR_SHORT for live pipeline."""
 
     def __init__(self, cfg: StrategyConfig, rejection: RejectionFilters = None,
-                 quality: QualityScorer = None, enabled: bool = True):
-        super().__init__(name="BDR_SHORT", direction=-1, enabled=enabled,
+                 quality: QualityScorer = None, enabled: bool = True,
+                 strategy_name: str = "BDR_SHORT"):
+        super().__init__(name=strategy_name, direction=-1, enabled=enabled,
                          skip_rejections=["bigger_picture", "distance"])
         self.cfg = cfg
         self.rejection = rejection
         self.quality = quality
 
-        self._time_start = cfg.get(cfg.bdr_time_start)
-        self._time_end = cfg.get(cfg.bdr_time_end)
+        self._v3 = cfg.bdr_v3_enabled
+        self._time_start = cfg.bdr_v3_time_start if self._v3 else cfg.get(cfg.bdr_time_start)
+        self._time_end = cfg.bdr_v3_time_end if self._v3 else cfg.get(cfg.bdr_time_end)
         self._retest_window = cfg.get(cfg.bdr_retest_window)
         self._confirm_window = cfg.get(cfg.bdr_confirm_window)
 
@@ -56,12 +58,204 @@ class BDRShortLive(LiveStrategy):
         self._retest_vol: float = 0.0
         self._triggered_today: bool = False
         self._range_buf: deque = deque(maxlen=10)
+        # V3 additional state
+        self._v3_retest_found: bool = False
+        self._v3_retest_close: float = NaN
+        self._v3_waiting_trigger: bool = False
+        self._v3_trigger_countdown: int = 0
 
     def reset_day(self):
         self._init_state()
 
     def step(self, snap: IndicatorSnapshot,
              market_ctx=None) -> Optional[RawSignal]:
+        if self._v3:
+            return self._step_v3(snap, market_ctx)
+        return self._step_legacy(snap, market_ctx)
+
+    def _step_v3(self, snap: IndicatorSnapshot,
+                 market_ctx=None) -> Optional[RawSignal]:
+        """V3: breakdown → weak retest → retest-low-break entry."""
+        cfg = self.cfg
+        hhmm = snap.hhmm
+        bar = snap.bar
+        e9 = snap.ema9
+        vw = snap.vwap
+        i_atr = snap.atr
+        vol_ma = snap.vol_ma20
+        rng = bar.high - bar.low
+        self._range_buf.append(rng)
+
+        if self._triggered_today:
+            return None
+        if not snap.ema9_ready or _isnan(i_atr) or i_atr <= 0:
+            return None
+        if _isnan(vol_ma) or vol_ma <= 0:
+            return None
+
+        # Regime gate
+        if cfg.bdr_require_red_trend and market_ctx is not None:
+            spy_label = getattr(market_ctx, 'day_label', None)
+            if spy_label and spy_label != "RED":
+                return None
+            spy_close_pct = getattr(market_ctx, 'spy_close_pct_of_range', None)
+            if spy_close_pct is not None and spy_close_pct > cfg.bdr_spy_trend_pct:
+                return None
+
+        # ── TRIGGER PHASE ──
+        if self._v3_waiting_trigger:
+            self._v3_trigger_countdown -= 1
+            if self._v3_trigger_countdown < 0:
+                self._v3_waiting_trigger = False
+                self._bd_active = False
+                self._v3_retest_found = False
+                return None
+
+            trigger_price = self._retest_bar_low - cfg.bdr_entry_buffer
+            if bar.low < trigger_price:
+                if cfg.bdr_require_trigger_below_vwap and not (bar.close < vw):
+                    return None
+                if cfg.bdr_require_trigger_below_ema9 and not (bar.close < e9):
+                    return None
+
+                entry_price = min(trigger_price, bar.open)
+                stop = self._retest_bar_high + cfg.bdr_v3_stop_buffer
+                min_stop = cfg.bdr_min_stop_atr * i_atr
+                risk = stop - entry_price
+                if risk < min_stop:
+                    stop = entry_price + min_stop
+                    risk = min_stop
+                if risk <= 0:
+                    self._v3_waiting_trigger = False
+                    self._bd_active = False
+                    return None
+
+                target = entry_price - risk * cfg.bdr_target_rr_v3
+                actual_rr = cfg.bdr_target_rr_v3
+
+                struct_q = 0.50
+                if self._bd_level_tag == "ORL":
+                    struct_q += 0.15
+                if self._bd_bar_vol >= 1.25 * vol_ma:
+                    struct_q += 0.10
+                if self._retest_vol < self._bd_bar_vol:
+                    struct_q += 0.10
+                if bar.close < vw and bar.close < e9:
+                    struct_q += 0.15
+
+                confluence = []
+                if bar.close < vw:
+                    confluence.append("below_vwap")
+                if bar.close < e9:
+                    confluence.append("below_ema9")
+                if self._bd_level_tag == "ORL":
+                    confluence.append("or_level")
+
+                self._v3_waiting_trigger = False
+                self._bd_active = False
+                self._triggered_today = True
+
+                return RawSignal(
+                    strategy_name=self.name,
+                    direction=-1,
+                    entry_price=entry_price,
+                    stop_price=stop,
+                    target_price=target,
+                    bar_idx=snap.bar_idx,
+                    hhmm=hhmm,
+                    quality=3,
+                    metadata={
+                        "level_type": self._bd_level_tag,
+                        "level_price": self._bd_level,
+                        "entry_mode": cfg.bdr_entry_mode,
+                        "setup_mode": cfg.bdr_setup_mode,
+                        "actual_rr": actual_rr,
+                        "target_tag": "fixed_rr",
+                        "structure_quality": min(struct_q, 1.0),
+                        "confluence": confluence,
+                        "entry_type": "retest_low_break",
+                    },
+                )
+            return None
+
+        # ── RETEST PHASE ──
+        if self._bd_active and not self._v3_retest_found:
+            proximity = cfg.bdr_retest_proximity_atr * i_atr
+            approaches = bar.high >= self._bd_level - proximity
+            reclaim_above = max(0.0, bar.high - self._bd_level)
+            reclaim_atr = reclaim_above / max(i_atr, 1e-6)
+
+            if approaches and reclaim_atr <= cfg.bdr_max_reclaim_above_level_atr:
+                bar_range = max(bar.high - bar.low, 1e-6)
+                close_pos = (bar.close - bar.low) / bar_range
+                body_pct = abs(bar.close - bar.open) / bar_range
+                upper_wick_pct = (bar.high - max(bar.open, bar.close)) / bar_range
+
+                weak_enough = close_pos <= cfg.bdr_retest_close_max_pos
+                if cfg.bdr_setup_mode == "failed_reclaim_break":
+                    weak_enough = (weak_enough and
+                                   body_pct <= cfg.bdr_retest_body_max_pct and
+                                   upper_wick_pct >= cfg.bdr_retest_min_upper_wick_pct)
+                if cfg.bdr_require_retest_below_vwap and not (bar.close < vw):
+                    weak_enough = False
+                if cfg.bdr_require_retest_below_ema9 and not (bar.close < e9):
+                    weak_enough = False
+                if cfg.bdr_require_retest_vol_not_stronger_than_breakdown:
+                    if bar.volume > self._bd_bar_vol:
+                        weak_enough = False
+
+                if weak_enough:
+                    self._v3_retest_found = True
+                    self._retest_bar_high = bar.high
+                    self._retest_bar_low = bar.low
+                    self._v3_retest_close = bar.close
+                    self._retest_vol = bar.volume
+                    self._v3_waiting_trigger = True
+                    self._v3_trigger_countdown = cfg.bdr_trigger_bars_after_retest
+            return None
+
+        # ── BREAKDOWN PHASE ──
+        if not self._bd_active and self._time_start <= hhmm <= self._time_end:
+            level, tag = self._find_support_level(snap)
+            if _isnan(level):
+                return None
+
+            allowed = (
+                (tag == "ORL" and cfg.bdr_use_orl_level) or
+                (tag == "SWING" and cfg.bdr_use_swing_low_level) or
+                (tag == "VWAP" and cfg.bdr_use_vwap_level)
+            )
+            if not allowed:
+                return None
+
+            broke = bar.close < level - cfg.bdr_break_atr_min * i_atr
+            bearish = bar.close < bar.open
+            if not (broke and bearish):
+                return None
+
+            if len(self._range_buf) >= 10:
+                med_rng = median(list(self._range_buf))
+                if rng < cfg.bdr_break_bar_range_frac * med_rng:
+                    return None
+            if bar.volume < cfg.bdr_break_vol_frac * vol_ma:
+                return None
+            if rng > 0:
+                close_pct = (bar.high - bar.close) / rng
+                if close_pct < cfg.bdr_break_close_pct:
+                    return None
+
+            self._bd_active = True
+            self._bd_level = level
+            self._bd_level_tag = tag
+            self._bd_bar_vol = bar.volume
+            self._v3_retest_found = False
+            self._v3_waiting_trigger = False
+
+        return None
+
+    def _step_legacy(self, snap: IndicatorSnapshot,
+                     market_ctx=None) -> Optional[RawSignal]:
+        """Legacy BDR path (unchanged)."""
         cfg = self.cfg
         hhmm = snap.hhmm
         bar = snap.bar

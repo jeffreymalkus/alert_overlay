@@ -78,7 +78,10 @@ STRATEGY_TARGET_RR = {
     "HH_QUALITY": 1.5, "EMA_FPIP": 2.0,
     "EMA_FPIP_V3_A": 1.5, "EMA_FPIP_V3_B": 2.0, "EMA_FPIP_V3_C": 1.5,
     "BDR_SHORT": 2.0,
-    "EMA9_FT": 2.0, "BS_STRUCT": 2.0, "ORL_FBD_LONG": 2.0,
+    "BDR_V3_A": 1.5, "BDR_V3_B": 1.5, "BDR_V3_C": 2.0, "BDR_V3_D": 1.5,
+    "EMA9_FT": 2.0,
+    "EMA9_V4_A": 1.25, "EMA9_V4_B": 2.0, "EMA9_V4_C": 1.25, "EMA9_V4_D": 1.25,
+    "BS_STRUCT": 2.0, "ORL_FBD_LONG": 2.0,
     "ORH_FBO_V2_A": 1.5, "ORH_FBO_V2_B": 1.5,
     "PDH_FBO_B": 1.5, "FFT_NEWLOW_REV": 2.0,
 }
@@ -89,7 +92,10 @@ STRATEGY_MAX_BARS = {
     "HH_QUALITY": 20, "EMA_FPIP": 24,
     "EMA_FPIP_V3_A": 24, "EMA_FPIP_V3_B": 24, "EMA_FPIP_V3_C": 24,
     "BDR_SHORT": 8,
-    "EMA9_FT": 120, "BS_STRUCT": 30, "ORL_FBD_LONG": 24,
+    "BDR_V3_A": 8, "BDR_V3_B": 8, "BDR_V3_C": 8, "BDR_V3_D": 8,
+    "EMA9_FT": 120,
+    "EMA9_V4_A": 120, "EMA9_V4_B": 120, "EMA9_V4_C": 120, "EMA9_V4_D": 120,
+    "BS_STRUCT": 30, "ORL_FBD_LONG": 24,
     "ORH_FBO_V2_A": 60, "ORH_FBO_V2_B": 60,
     "PDH_FBO_B": 60, "FFT_NEWLOW_REV": 60,
 }
@@ -116,7 +122,9 @@ QUALITY_SCORED_STRATEGIES = {
     "SC_SNIPER", "SP_ATIER", "HH_QUALITY",
     # FL_ANTICHOP demoted 2026-03-17
     "EMA_FPIP", "EMA_FPIP_V3_A", "EMA_FPIP_V3_B", "EMA_FPIP_V3_C",
-    "BDR_SHORT", "EMA9_FT", "BS_STRUCT", "ORL_FBD_LONG",
+    "BDR_SHORT", "BDR_V3_A", "BDR_V3_B", "BDR_V3_C", "BDR_V3_D",
+    "EMA9_FT", "EMA9_V4_A", "EMA9_V4_B", "EMA9_V4_C", "EMA9_V4_D",
+    "BS_STRUCT", "ORL_FBD_LONG",
     "ORH_FBO_V2_A", "ORH_FBO_V2_B", "PDH_FBO_B", "FFT_NEWLOW_REV",
 }
 
@@ -433,6 +441,87 @@ def main():
             c.fpip_target_rr = 1.5
             return c
 
+        # BDR V3 variant configs
+        def _make_bdr_v3_a(base):
+            c = deepcopy(base)
+            c.bdr_v3_enabled = True
+            c.bdr_use_orl_level = True
+            c.bdr_use_swing_low_level = True
+            c.bdr_use_vwap_level = False
+            c.bdr_v3_time_start = 1025
+            c.bdr_v3_time_end = 1040
+            c.bdr_setup_mode = "weak_retest_break"
+            c.bdr_max_reclaim_above_level_atr = 0.10
+            c.bdr_retest_close_max_pos = 0.55
+            c.bdr_retest_body_max_pct = 0.55
+            c.bdr_retest_min_upper_wick_pct = 0.10
+            c.bdr_require_retest_below_vwap = True
+            c.bdr_require_retest_below_ema9 = True
+            c.bdr_require_trigger_below_vwap = True
+            c.bdr_require_trigger_below_ema9 = True
+            c.bdr_require_retest_vol_not_stronger_than_breakdown = True
+            c.bdr_entry_mode = "retest_low_break"
+            c.bdr_entry_buffer = 0.01
+            c.bdr_trigger_bars_after_retest = 2
+            c.bdr_stop_mode = "retest_high"
+            c.bdr_v3_stop_buffer = 0.01
+            c.bdr_target_mode_v3 = "fixed_rr"
+            c.bdr_target_rr_v3 = 1.5
+            c.bdr_skip_generic_trigger_body_filter = True
+            c.bdr_skip_generic_trigger_vol_filter = True
+            c.bdr_require_red_trend = False
+            return c
+
+        def _make_bdr_v3_b(base):
+            c = _make_bdr_v3_a(base)
+            c.bdr_v3_time_end = 1035
+            return c
+
+        def _make_bdr_v3_c(base):
+            c = _make_bdr_v3_a(base)
+            c.bdr_target_rr_v3 = 2.0
+            return c
+
+        def _make_bdr_v3_d(base):
+            c = _make_bdr_v3_a(base)
+            c.bdr_setup_mode = "failed_reclaim_break"
+            c.bdr_retest_close_max_pos = 0.50
+            c.bdr_retest_body_max_pct = 0.45
+            c.bdr_retest_min_upper_wick_pct = 0.15
+            return c
+
+        # EMA9 V4 variant configs
+        def _make_ema9_v4_a(base):
+            c = deepcopy(base)
+            c.ema9_v4_enabled = True
+            c.ema9_v4_time_start = 1000
+            c.ema9_v4_time_end = 1045
+            c.ema9_require_relative_impulse_vs_spy = True
+            c.ema9_min_relative_impulse_vs_spy = 0.02
+            c.ema9_stop_mode_v4 = "two_bar_low"
+            c.ema9_stop_buffer_v4 = 0.01
+            c.ema9_target_mode_v4 = "fixed_rr"
+            c.ema9_target_rr_v4 = 1.25
+            return c
+
+        def _make_ema9_v4_b(base):
+            c = _make_ema9_v4_a(base)
+            c.ema9_target_rr_v4 = 2.0
+            return c
+
+        def _make_ema9_v4_c(base):
+            c = _make_ema9_v4_a(base)
+            c.ema9_min_relative_impulse_vs_spy = 0.04
+            return c
+
+        def _make_ema9_v4_d(base):
+            c = _make_ema9_v4_a(base)
+            c.ema9_require_5m_context = True
+            c.ema9_5m_require_above_vwap = True
+            c.ema9_5m_require_ema9_gt_ema20 = True
+            c.ema9_5m_touch_count_max = 4
+            return c
+
         live_strats = [
             SCSniperLive(strat_cfg),
             # FLAntiChopLive(strat_cfg),  # DEMOTED 2026-03-17: PF=0.53 — revisit for different stock type
@@ -442,8 +531,16 @@ def main():
             EmaFpipLive(_make_fpip_v3_a(strat_cfg), strategy_name="EMA_FPIP_V3_A"),
             EmaFpipLive(_make_fpip_v3_b(strat_cfg), strategy_name="EMA_FPIP_V3_B"),
             EmaFpipLive(_make_fpip_v3_c(strat_cfg), strategy_name="EMA_FPIP_V3_C"),
-            BDRShortLive(strat_cfg),
-            EMA9FirstTouchLive(strat_cfg),
+            BDRShortLive(strat_cfg),  # legacy BDR
+            BDRShortLive(_make_bdr_v3_a(strat_cfg), strategy_name="BDR_V3_A"),
+            BDRShortLive(_make_bdr_v3_b(strat_cfg), strategy_name="BDR_V3_B"),
+            BDRShortLive(_make_bdr_v3_c(strat_cfg), strategy_name="BDR_V3_C"),
+            BDRShortLive(_make_bdr_v3_d(strat_cfg), strategy_name="BDR_V3_D"),
+            EMA9FirstTouchLive(strat_cfg),  # legacy EMA9
+            EMA9FirstTouchLive(_make_ema9_v4_a(strat_cfg), strategy_name="EMA9_V4_A"),
+            EMA9FirstTouchLive(_make_ema9_v4_b(strat_cfg), strategy_name="EMA9_V4_B"),
+            EMA9FirstTouchLive(_make_ema9_v4_c(strat_cfg), strategy_name="EMA9_V4_C"),
+            EMA9FirstTouchLive(_make_ema9_v4_d(strat_cfg), strategy_name="EMA9_V4_D"),
             BacksideStructureLive(strat_cfg),
             ORLFBDLongLive(strat_cfg),
             ORHFBOShortV2Live(strat_cfg),
@@ -900,10 +997,12 @@ def main():
     # ── Combined ──
     long_strats = {"SC_SNIPER", "SP_ATIER", "HH_QUALITY",
                    "EMA_FPIP", "EMA_FPIP_V3_A", "EMA_FPIP_V3_B", "EMA_FPIP_V3_C",
-                   "EMA9_FT", "BS_STRUCT", "ORL_FBD_LONG",
+                   "EMA9_FT", "EMA9_V4_A", "EMA9_V4_B", "EMA9_V4_C", "EMA9_V4_D",
+                   "BS_STRUCT", "ORL_FBD_LONG",
                    "FFT_NEWLOW_REV"}
     # FL_ANTICHOP demoted 2026-03-17
-    short_strats = {"BDR_SHORT", "ORH_FBO_V2_A", "ORH_FBO_V2_B", "PDH_FBO_B"}
+    short_strats = {"BDR_SHORT", "BDR_V3_A", "BDR_V3_B", "BDR_V3_C", "BDR_V3_D",
+                    "ORH_FBO_V2_A", "ORH_FBO_V2_B", "PDH_FBO_B"}
 
     long_trades = [t for t in all_trades
                    if t.signal.strategy_name in long_strats]

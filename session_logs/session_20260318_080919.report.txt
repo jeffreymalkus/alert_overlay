@@ -1,0 +1,82 @@
+=================================================================
+  STRATEGYMANAGER — FIRST SESSION VALIDATION REPORT
+=================================================================
+
+Engine:    StrategyManager (step)
+Session:   08:09:19 → 08:20:00
+Runners:   138
+
+─────────────────────────────────────────────
+1. TOTAL ALERT COUNT
+   Alerts fired:   0
+   Alerts blocked: 0 (tape permission gate)
+   LONG:  0
+   SHORT: 0
+
+─────────────────────────────────────────────
+2. ALERTS BY STRATEGY
+   (none)
+
+
+─────────────────────────────────────────────
+3. BAD ENTRY/STOP/TARGET VALUES
+   PASS — no suspicious values detected
+
+─────────────────────────────────────────────
+4. DUPLICATE / SPAM BEHAVIOR
+   PASS — no rapid-fire duplicates detected
+
+─────────────────────────────────────────────
+5. STARTUP & OPEN LATENCY
+   Dashboard start:  08:09:19
+   IBKR connected:   08:09:20
+   All runners ready: 08:11:32
+   First bar:        08:16:00
+   First alert:      (none fired)
+   Startup→Ready:    133s
+
+─────────────────────────────────────────────
+6. RUNTIME EXCEPTIONS
+   ✗ 08:13:03 Error 162, reqId 1354: Historical Market Data Service error message:API historical data query cancelled: 1354, contract: Stock(conId=7616, symbol='GIS', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='GIS', tradingClass='GIS')
+   ✗ 08:13:03 Error 162, reqId 1355: Historical Market Data Service error message:API historical data query cancelled: 1355, contract: Stock(conId=110650558, symbol='FIVE', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='FIVE', tradingClass='NMS')
+   ✗ 08:13:03 Error 162, reqId 1356: Historical Market Data Service error message:API historical data query cancelled: 1356, contract: Stock(conId=316073742, symbol='DOCU', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='DOCU', tradingClass='NMS')
+   ✗ 08:13:03 Error 162, reqId 1357: Historical Market Data Service error message:API historical data query cancelled: 1357, contract: Stock(conId=5019164, symbol='WSM', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='WSM', tradingClass='WSM')
+   ✗ 08:13:04 Error 162, reqId 1358: Historical Market Data Service error message:API historical data query cancelled: 1358, contract: Stock(conId=4457282, symbol='JBL', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='JBL', tradingClass='JBL')
+   ✗ 08:13:04 Error 162, reqId 1359: Historical Market Data Service error message:API historical data query cancelled: 1359, contract: Stock(conId=67889930, symbol='ACN', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='ACN', tradingClass='ACN')
+   ✗ 08:13:04 Error 162, reqId 1360: Historical Market Data Service error message:API historical data query cancelled: 1360, contract: Stock(conId=5100583, symbol='FDX', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='FDX', tradingClass='FDX')
+   ✗ 08:13:04 Error 162, reqId 1361: Historical Market Data Service error message:API historical data query cancelled: 1361, contract: Stock(conId=44475946, symbol='M', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='M', tradingClass='M')
+   ✗ 08:13:05 Error 162, reqId 1372: Historical Market Data Service error message:API historical data query cancelled: 1372, contract: Stock(conId=44001820, symbol='DAL', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='DAL', tradingClass='DAL')
+   ✗ 08:13:05 Error 162, reqId 1373: Historical Market Data Service error message:API historical data query cancelled: 1373, contract: Stock(conId=500073396, symbol='OKLO', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='OKLO', tradingClass='OKLO')
+   ✗ 08:13:05 Error 162, reqId 1374: Historical Market Data Service error message:API historical data query cancelled: 1374, contract: Stock(conId=359130923, symbol='LYFT', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='LYFT', tradingClass='NMS')
+   ✗ 08:13:05 Error 162, reqId 1375: Historical Market Data Service error message:API historical data query cancelled: 1375, contract: Stock(conId=585323053, symbol='AMPX', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='AMPX', tradingClass='AMPX')
+   ✗ 08:13:05 Error 162, reqId 1376: Historical Market Data Service error message:API historical data query cancelled: 1376, contract: Stock(conId=478483393, symbol='DOCN', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='DOCN', tradingClass='DOCN')
+   ✗ 08:13:06 Error 162, reqId 1377: Historical Market Data Service error message:API historical data query cancelled: 1377, contract: Stock(conId=275582621, symbol='SEI', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='SEI', tradingClass='SEI')
+   ✗ 08:13:06 Error 162, reqId 1378: Historical Market Data Service error message:API historical data query cancelled: 1378, contract: Stock(conId=421139451, symbol='KC', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='KC', tradingClass='NMS')
+   ✗ 08:13:06 Error 162, reqId 1379: Historical Market Data Service error message:API historical data query cancelled: 1379, contract: Stock(conId=827303554, symbol='SUNC', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='SUNC', tradingClass='SUNC')
+   ✗ 08:13:06 Error 162, reqId 1380: Historical Market Data Service error message:API historical data query cancelled: 1380, contract: Stock(conId=132717465, symbol='MUSA', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='MUSA', tradingClass='MUSA')
+   ✗ 08:13:06 Error 162, reqId 1382: Historical Market Data Service error message:API historical data query cancelled: 1382, contract: Stock(conId=87356334, symbol='VNET', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='VNET', tradingClass='NMS')
+   ✗ 08:13:06 Error 162, reqId 1383: Historical Market Data Service error message:API historical data query cancelled: 1383, contract: Stock(conId=579848128, symbol='GCT', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='GCT', tradingClass='NMS')
+   ✗ 08:13:06 Error 162, reqId 1384: Historical Market Data Service error message:API historical data query cancelled: 1384, contract: Stock(conId=490798918, symbol='HITI', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='HITI', tradingClass='SCM')
+   ... and 22 more
+   Warnings: 43
+     08:11:32 MARKET DATA BUDGET: 140 lines needed (2 market + 138 symbols). Check your IBKR account's market data line limit (usually 100, can be lower). Excess subscriptions will be silently dropped by IBKR.
+     08:13:03 reqHistoricalData: Timeout for Stock(conId=7616, symbol='GIS', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='GIS', tradingClass='GIS')
+     08:13:03 reqHistoricalData: Timeout for Stock(conId=110650558, symbol='FIVE', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='FIVE', tradingClass='NMS')
+     08:13:03 reqHistoricalData: Timeout for Stock(conId=316073742, symbol='DOCU', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='DOCU', tradingClass='NMS')
+     08:13:03 reqHistoricalData: Timeout for Stock(conId=5019164, symbol='WSM', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='WSM', tradingClass='WSM')
+
+─────────────────────────────────────────────
+7. IN-PLAY / UNIVERSE TAGGING
+   In-play symbols loaded: 90
+   IN_PLAY: 90 symbols
+   STATIC: 48 symbols
+
+─────────────────────────────────────────────
+BAR PROGRESS
+   Symbols receiving bars: 6
+   Min bars: 620  Max bars: 1950  Avg: 1687
+   ⚠ Zero bars received: AFRM, ARM, BABA, BAC, C, COIN, CRSP, DASH, DKNG, FAS
+
+=================================================================
+VERDICT: 42 issue(s) found — review above
+=================================================================

@@ -35,16 +35,18 @@ class EMA9FirstTouchLive(LiveStrategy):
     """Incremental EMA9_FT for live pipeline. Runs on 1-min bars."""
 
     def __init__(self, cfg: StrategyConfig, rejection: RejectionFilters = None,
-                 quality: QualityScorer = None, enabled: bool = True):
-        super().__init__(name="EMA9_FT", direction=1, enabled=enabled,
+                 quality: QualityScorer = None, enabled: bool = True,
+                 strategy_name: str = "EMA9_FT"):
+        super().__init__(name=strategy_name, direction=1, enabled=enabled,
                          skip_rejections=["distance", "maturity", "trigger_weakness"],
                          timeframe=1)  # ← 1-min timeframe
         self.cfg = cfg
         self.rejection = rejection
         self.quality = quality
+        self._v4 = cfg.ema9_v4_enabled
 
-        self._time_start = cfg.get(cfg.e9ft_time_start)
-        self._time_end = cfg.get(cfg.e9ft_time_end)
+        self._time_start = cfg.ema9_v4_time_start if self._v4 else cfg.get(cfg.e9ft_time_start)
+        self._time_end = cfg.ema9_v4_time_end if self._v4 else cfg.get(cfg.e9ft_time_end)
 
         self._init_state()
 
@@ -55,6 +57,8 @@ class EMA9FirstTouchLive(LiveStrategy):
         self._pullback_low: float = NaN
         self._pullback_touched_e9: bool = False
         self._triggered: bool = False
+        self._prev_bar_low: float = NaN
+        self._prev_prev_bar_low: float = NaN
 
     def reset_day(self):
         self._init_state()
@@ -159,52 +163,97 @@ class EMA9FirstTouchLive(LiveStrategy):
                     rs = stock_pct - spy_pct
 
                     if rs < cfg.e9ft_min_rs_vs_spy:
+                        self._prev_prev_bar_low = self._prev_bar_low
+                        self._prev_bar_low = bar.low
                         return None
 
+                    # V4: relative impulse vs SPY filter
+                    relative_impulse_vs_spy = rs
+                    if cfg.ema9_require_relative_impulse_vs_spy:
+                        if relative_impulse_vs_spy < cfg.ema9_min_relative_impulse_vs_spy:
+                            self._prev_prev_bar_low = self._prev_bar_low
+                            self._prev_bar_low = bar.low
+                            return None
+
+                    # V4: optional soft trigger bar filter
+                    if cfg.ema9_require_soft_trigger_bar:
+                        if (close_pct > cfg.ema9_max_trigger_close_location or
+                                body_pct > cfg.ema9_max_trigger_body_fraction):
+                            self._prev_prev_bar_low = self._prev_bar_low
+                            self._prev_bar_low = bar.low
+                            return None
+
                     # ── TRIGGER FIRES ──
-                    stop = self._pullback_low - cfg.e9ft_stop_buffer
+                    entry_price = bar.close
+
+                    # V4: stop model
+                    if self._v4 and cfg.ema9_stop_mode_v4 == "two_bar_low":
+                        pb_low_ref = bar.low
+                        if not _isnan(self._prev_bar_low):
+                            pb_low_ref = min(bar.low, self._prev_bar_low)
+                        stop = pb_low_ref - cfg.ema9_stop_buffer_v4
+                    elif self._v4 and cfg.ema9_stop_mode_v4 == "setup_bar_low":
+                        stop = bar.low - cfg.ema9_stop_buffer_v4
+                    elif self._v4 and cfg.ema9_stop_mode_v4 == "three_bar_low":
+                        lows = [bar.low]
+                        if not _isnan(self._prev_bar_low):
+                            lows.append(self._prev_bar_low)
+                        if not _isnan(self._prev_prev_bar_low):
+                            lows.append(self._prev_prev_bar_low)
+                        stop = min(lows) - cfg.ema9_stop_buffer_v4
+                    else:
+                        stop = self._pullback_low - cfg.e9ft_stop_buffer
+
                     min_stop = 0.15 * i_atr
                     min_stop_rule_applied = False
-                    if abs(bar.close - stop) < min_stop:
-                        stop = bar.close - min_stop
+                    if abs(entry_price - stop) < min_stop:
+                        stop = entry_price - min_stop
                         min_stop_rule_applied = True
 
-                    risk = bar.close - stop
+                    risk = entry_price - stop
                     if risk <= 0:
                         self._drive_confirmed = False
                         self._pullback_started = False
+                        self._prev_prev_bar_low = self._prev_bar_low
+                        self._prev_bar_low = bar.low
                         return None
 
                     _stop_meta = {
-                        "stop_ref_type": "pullback_low",
+                        "stop_ref_type": cfg.ema9_stop_mode_v4 if self._v4 else "pullback_low",
                         "stop_ref_price": self._pullback_low,
-                        "raw_stop": self._pullback_low - cfg.e9ft_stop_buffer,
+                        "raw_stop": stop,
                         "buffer_type": "dollar",
-                        "buffer_value": cfg.e9ft_stop_buffer,
+                        "buffer_value": cfg.ema9_stop_buffer_v4 if self._v4 else cfg.e9ft_stop_buffer,
                         "min_stop_rule_applied": min_stop_rule_applied,
                         "min_stop_distance": min_stop,
                         "final_stop": stop,
                     }
 
-                    # Structural target: drive high, session high
-                    if cfg.e9ft_target_mode == "structural":
+                    # V4: fixed RR target
+                    if self._v4 and cfg.ema9_target_mode_v4 == "fixed_rr":
+                        target = entry_price + risk * cfg.ema9_target_rr_v4
+                        actual_rr = cfg.ema9_target_rr_v4
+                        target_tag = "fixed_rr"
+                    elif cfg.e9ft_target_mode == "structural":
                         _candidates = []
-                        if not _isnan(self._drive_high) and self._drive_high > bar.close:
+                        if not _isnan(self._drive_high) and self._drive_high > entry_price:
                             _candidates.append((self._drive_high, "drive_high"))
-                        if not _isnan(snap.session_high) and snap.session_high > bar.close:
+                        if not _isnan(snap.session_high) and snap.session_high > entry_price:
                             _candidates.append((snap.session_high, "session_high"))
                         from ..shared.helpers import compute_structural_target_long
                         target, actual_rr, target_tag, skipped = compute_structural_target_long(
-                            bar.close, risk, _candidates,
+                            entry_price, risk, _candidates,
                             min_rr=cfg.e9ft_struct_min_rr, max_rr=cfg.e9ft_struct_max_rr,
                             fallback_rr=cfg.e9ft_target_rr, mode="structural",
                         )
                         if skipped:
                             self._drive_confirmed = False
                             self._pullback_started = False
+                            self._prev_prev_bar_low = self._prev_bar_low
+                            self._prev_bar_low = bar.low
                             return None
                     else:
-                        target = bar.close + risk * cfg.e9ft_target_rr
+                        target = entry_price + risk * cfg.e9ft_target_rr
                         actual_rr = cfg.e9ft_target_rr
                         target_tag = "fixed_rr"
 
@@ -289,10 +338,12 @@ class EMA9FirstTouchLive(LiveStrategy):
                             quality_tier = QualityTier.B_TIER if quality_score >= self.cfg.quality_b_min else QualityTier.C_TIER
 
                     self._triggered = True
+                    self._prev_prev_bar_low = self._prev_bar_low
+                    self._prev_bar_low = bar.low
                     return RawSignal(
-                        strategy_name="EMA9_FT",
+                        strategy_name=self.name,
                         direction=1,
-                        entry_price=bar.close,
+                        entry_price=entry_price,
                         stop_price=stop,
                         target_price=target,
                         bar_idx=snap.bar_idx,
@@ -317,4 +368,6 @@ class EMA9FirstTouchLive(LiveStrategy):
                         },
                     )
 
+        self._prev_prev_bar_low = self._prev_bar_low
+        self._prev_bar_low = bar.low
         return None
