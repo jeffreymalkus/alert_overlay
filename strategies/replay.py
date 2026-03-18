@@ -82,6 +82,7 @@ STRATEGY_TARGET_RR = {
     "BDR_V3_A": 1.5, "BDR_V3_B": 1.5, "BDR_V3_C": 2.0, "BDR_V3_D": 1.5,
     "EMA9_FT": 2.0,
     "EMA9_V4_A": 1.25, "EMA9_V4_B": 2.0, "EMA9_V4_C": 1.25, "EMA9_V4_D": 1.25,
+    "EMA9_V5_A": 2.0, "EMA9_V5_B": 2.0, "EMA9_V5_C": 2.0, "EMA9_V5_D": 2.0,
     "BS_STRUCT": 2.0, "ORL_FBD_LONG": 2.0,
     "ORH_FBO_V2_A": 1.5, "ORH_FBO_V2_B": 1.5,
     "PDH_FBO_B": 1.5, "FFT_NEWLOW_REV": 2.0,
@@ -96,6 +97,7 @@ STRATEGY_MAX_BARS = {
     "BDR_V3_A": 8, "BDR_V3_B": 8, "BDR_V3_C": 8, "BDR_V3_D": 8,
     "EMA9_FT": 120,
     "EMA9_V4_A": 120, "EMA9_V4_B": 120, "EMA9_V4_C": 120, "EMA9_V4_D": 120,
+    "EMA9_V5_A": 120, "EMA9_V5_B": 120, "EMA9_V5_C": 120, "EMA9_V5_D": 120,
     "BS_STRUCT": 30, "ORL_FBD_LONG": 24,
     "ORH_FBO_V2_A": 60, "ORH_FBO_V2_B": 60,
     "PDH_FBO_B": 60, "FFT_NEWLOW_REV": 60,
@@ -125,6 +127,7 @@ QUALITY_SCORED_STRATEGIES = {
     "EMA_FPIP", "EMA_FPIP_V3_A", "EMA_FPIP_V3_B", "EMA_FPIP_V3_C",
     "BDR_SHORT", "BDR_V3_A", "BDR_V3_B", "BDR_V3_C", "BDR_V3_D",
     "EMA9_FT", "EMA9_V4_A", "EMA9_V4_B", "EMA9_V4_C", "EMA9_V4_D",
+    "EMA9_V5_A", "EMA9_V5_B", "EMA9_V5_C", "EMA9_V5_D",
     "BS_STRUCT", "ORL_FBD_LONG",
     "ORH_FBO_V2_A", "ORH_FBO_V2_B", "PDH_FBO_B", "FFT_NEWLOW_REV",
 }
@@ -571,6 +574,38 @@ def main():
             c.ema9_5m_touch_count_max = 4
             return c
 
+        # EMA9 V5 variant configs (rebuilt: wider stop floor, tighter window, structural target)
+        def _make_ema9_v5_a(base):
+            c = deepcopy(base)
+            c.ema9_v5_enabled = True
+            c.ema9_v5_time_start = 1000
+            c.ema9_v5_time_end = 1059
+            c.ema9_v5_min_stop_dollar = 0.35
+            c.ema9_v5_min_ip_score = 0.80
+            c.ema9_v5_min_quality_score = 3.0
+            c.ema9_v5_price_min = 0.0
+            c.ema9_v5_price_max = 99999.0
+            c.ema9_v5_struct_min_rr = 0.0
+            c.ema9_v5_struct_max_rr = 5.0
+            return c
+
+        def _make_ema9_v5_b(base):
+            c = _make_ema9_v5_a(base)
+            c.ema9_v5_min_stop_dollar = 0.40
+            return c
+
+        def _make_ema9_v5_c(base):
+            c = _make_ema9_v5_a(base)
+            c.ema9_v5_price_min = 25.0
+            c.ema9_v5_price_max = 250.0
+            return c
+
+        def _make_ema9_v5_d(base):
+            c = _make_ema9_v5_b(base)
+            c.ema9_v5_price_min = 25.0
+            c.ema9_v5_price_max = 250.0
+            return c
+
         live_strats = [
             SCSniperLive(strat_cfg),
             # FLAntiChopLive(strat_cfg),  # DEMOTED 2026-03-17: PF=0.53 — revisit for different stock type
@@ -590,6 +625,10 @@ def main():
             EMA9FirstTouchLive(_make_ema9_v4_b(strat_cfg), strategy_name="EMA9_V4_B"),
             EMA9FirstTouchLive(_make_ema9_v4_c(strat_cfg), strategy_name="EMA9_V4_C"),
             EMA9FirstTouchLive(_make_ema9_v4_d(strat_cfg), strategy_name="EMA9_V4_D"),
+            EMA9FirstTouchLive(_make_ema9_v5_a(strat_cfg), strategy_name="EMA9_V5_A"),
+            EMA9FirstTouchLive(_make_ema9_v5_b(strat_cfg), strategy_name="EMA9_V5_B"),
+            EMA9FirstTouchLive(_make_ema9_v5_c(strat_cfg), strategy_name="EMA9_V5_C"),
+            EMA9FirstTouchLive(_make_ema9_v5_d(strat_cfg), strategy_name="EMA9_V5_D"),
             BacksideStructureLive(strat_cfg),
             ORLFBDLongLive(strat_cfg),
             ORHFBOShortV2Live(strat_cfg),
@@ -1076,6 +1115,7 @@ def main():
     long_strats = {"SC_SNIPER", "SP_ATIER", "HH_QUALITY",
                    "EMA_FPIP", "EMA_FPIP_V3_A", "EMA_FPIP_V3_B", "EMA_FPIP_V3_C",
                    "EMA9_FT", "EMA9_V4_A", "EMA9_V4_B", "EMA9_V4_C", "EMA9_V4_D",
+                   "EMA9_V5_A", "EMA9_V5_B", "EMA9_V5_C", "EMA9_V5_D",
                    "BS_STRUCT", "ORL_FBD_LONG",
                    "FFT_NEWLOW_REV"}
     # FL_ANTICHOP demoted 2026-03-17

@@ -1,0 +1,76 @@
+=================================================================
+  STRATEGYMANAGER — FIRST SESSION VALIDATION REPORT
+=================================================================
+
+Engine:    StrategyManager (step)
+Session:   08:20:15 → 16:19:41
+Runners:   110
+
+─────────────────────────────────────────────
+1. TOTAL ALERT COUNT
+   Alerts fired:   2
+   Alerts blocked: 0 (tape permission gate)
+   LONG:  0
+   SHORT: 2
+
+─────────────────────────────────────────────
+2. ALERTS BY STRATEGY
+   ORH_FBO_RETEST           1 fired
+   PDH_FBO_CONT             1 fired
+
+   By symbol (top 10):
+     LULU       2
+
+─────────────────────────────────────────────
+3. BAD ENTRY/STOP/TARGET VALUES
+   PASS — no suspicious values detected
+
+─────────────────────────────────────────────
+4. DUPLICATE / SPAM BEHAVIOR
+   PASS — no rapid-fire duplicates detected
+
+─────────────────────────────────────────────
+5. STARTUP & OPEN LATENCY
+   Dashboard start:  08:20:15
+   IBKR connected:   08:20:15
+   All runners ready: 08:34:08
+   First bar:        08:36:00
+   First alert:      10:10:00
+   Startup→Ready:    833s
+
+─────────────────────────────────────────────
+6. RUNTIME EXCEPTIONS
+   ✗ 08:53:10 Error 200, reqId 1217: No security definition has been found for the request, contract: Stock(symbol='CLTT', exchange='SMART', currency='USD')
+   ✗ 08:53:10 Error 200, reqId 1218: No security definition has been found for the request, contract: Stock(symbol='CLTT', exchange='SMART', currency='USD')
+   ✗ 08:53:10 Error 200, reqId 1219: No security definition has been found for the request, contract: Stock(symbol='CLTT', exchange='SMART', currency='USD')
+   ✗ 08:53:10 Error 200, reqId 1220: No security definition has been found for the request, contract: Stock(symbol='CLTT', exchange='SMART', currency='USD')
+   ✗ 08:53:18 Error 300, reqId 1220: Can't find EId with tickerId:1220
+   ✗ 09:56:02 Value (Ticker(contract=Stock(conId=83512173, symbol='AGRO', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='AGRO', tradingClass='AGRO'), time=datetime.datetime(2026, 3, 18, 13, 56, 2, 46795, tzinfo=datetime.timezone.utc), minTick=0.01, bid=13.49, bidSize=600.0, bidExchange='NKT', ask=13.53, askSize=2000.0, askExchange='NV', last=13.51, lastSize=100.0, prevBid=13.5, prevBidSize=700.0, prevAsk=13.52, prevAskSize=1900.0, prevLast=13.5, prevLastSize=280.0, volume=1075251.0, open=12.61, high=13.54, low=12.48, close=12.45, ticks=[TickData(time=datetime.datetime(2026, 3, 18, 13, 56, 2, 46795, tzinfo=datetime.timezone.utc), tickType=3, price=13.53, size=2000.0)], bboExchange='a60001', snapshotPermissions=3),) caused exception for event Event<updateEvent, [[None, <weakref at 0x10886bcc0; to 'SymbolRunner' at 0x10823e370>, <function SymbolRunner._on_tick at 0x106951ee0>]]>
+   ✗ 10:11:23 Error 10349, reqId 1289: Order TIF was set to DAY based on order preset.
+   ✗ 10:11:23 Error 10349, reqId 1290: Order TIF was set to DAY based on order preset.
+   ✗ 10:11:23 Error 10349, reqId 1291: Order TIF was set to DAY based on order preset.
+   ✗ 10:19:21 Error 10349, reqId 1293: Order TIF was set to DAY based on order preset.
+   ✗ 10:19:21 Error 10349, reqId 1294: Order TIF was set to DAY based on order preset.
+   ✗ 10:19:21 Error 10349, reqId 1295: Order TIF was set to DAY based on order preset.
+   Warnings: 15
+     08:34:08 MARKET DATA BUDGET: 112 lines needed (2 market + 110 symbols). Check your IBKR account's market data line limit (usually 100, can be lower). Excess subscriptions will be silently dropped by IBKR.
+     08:53:10 Unknown contract: Stock(symbol='CLTT', exchange='SMART', currency='USD')
+     09:40:15 PER-SYMBOL STALE: 1 stale symbols detected. Resubscribing batch of 1: ['MCRAA']
+     09:40:45 PER-SYMBOL STALE: 1 stale symbols detected. Resubscribing batch of 1: ['MCRAA']
+     09:41:15 PER-SYMBOL STALE: 1 stale symbols detected. Resubscribing batch of 1: ['MCRAA']
+
+─────────────────────────────────────────────
+7. IN-PLAY / UNIVERSE TAGGING
+   In-play symbols loaded: 65
+   IN_PLAY: 65 symbols
+   STATIC: 45 symbols
+
+─────────────────────────────────────────────
+BAR PROGRESS
+   Symbols receiving bars: 122
+   Min bars: 150  Max bars: 2040  Avg: 1790
+   ⚠ Zero bars received: HITI, LLY, MCRAA
+
+=================================================================
+VERDICT: 12 issue(s) found — review above
+=================================================================

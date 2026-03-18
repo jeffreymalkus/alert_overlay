@@ -44,9 +44,17 @@ class EMA9FirstTouchLive(LiveStrategy):
         self.rejection = rejection
         self.quality = quality
         self._v4 = cfg.ema9_v4_enabled
+        self._v5 = cfg.ema9_v5_enabled
 
-        self._time_start = cfg.ema9_v4_time_start if self._v4 else cfg.get(cfg.e9ft_time_start)
-        self._time_end = cfg.ema9_v4_time_end if self._v4 else cfg.get(cfg.e9ft_time_end)
+        if self._v5:
+            self._time_start = cfg.ema9_v5_time_start
+            self._time_end = cfg.ema9_v5_time_end
+        elif self._v4:
+            self._time_start = cfg.ema9_v4_time_start
+            self._time_end = cfg.ema9_v4_time_end
+        else:
+            self._time_start = cfg.get(cfg.e9ft_time_start)
+            self._time_end = cfg.get(cfg.e9ft_time_end)
 
         self._init_state()
 
@@ -204,7 +212,14 @@ class EMA9FirstTouchLive(LiveStrategy):
                     # ── TRIGGER FIRES ──
                     entry_price = bar.close
 
-                    # V4: stop model
+                    # V5: price band filter
+                    if self._v5:
+                        if entry_price < cfg.ema9_v5_price_min or entry_price > cfg.ema9_v5_price_max:
+                            self._prev_prev_bar_low = self._prev_bar_low
+                            self._prev_bar_low = bar.low
+                            return None
+
+                    # Stop computation
                     if self._v4 and cfg.ema9_stop_mode_v4 == "two_bar_low":
                         pb_low_ref = bar.low
                         if not _isnan(self._prev_bar_low):
@@ -220,6 +235,7 @@ class EMA9FirstTouchLive(LiveStrategy):
                             lows.append(self._prev_prev_bar_low)
                         stop = min(lows) - cfg.ema9_stop_buffer_v4
                     else:
+                        # V5 and legacy: pullback-low stop
                         stop = self._pullback_low - cfg.e9ft_stop_buffer
 
                     min_stop = 0.15 * i_atr
@@ -229,6 +245,14 @@ class EMA9FirstTouchLive(LiveStrategy):
                         min_stop_rule_applied = True
 
                     risk = entry_price - stop
+
+                    # V5: enforce minimum dollar risk floor (widen stop if too tight)
+                    v5_floor_applied = False
+                    if self._v5 and risk < cfg.ema9_v5_min_stop_dollar:
+                        stop = entry_price - cfg.ema9_v5_min_stop_dollar
+                        risk = cfg.ema9_v5_min_stop_dollar
+                        v5_floor_applied = True
+
                     if risk <= 0:
                         self._drive_confirmed = False
                         self._pullback_started = False
@@ -237,31 +261,33 @@ class EMA9FirstTouchLive(LiveStrategy):
                         return None
 
                     _stop_meta = {
-                        "stop_ref_type": cfg.ema9_stop_mode_v4 if self._v4 else "pullback_low",
+                        "stop_ref_type": "v5_floor" if v5_floor_applied else (cfg.ema9_stop_mode_v4 if self._v4 else "pullback_low"),
                         "stop_ref_price": self._pullback_low,
-                        "raw_stop": stop,
+                        "raw_stop": self._pullback_low - cfg.e9ft_stop_buffer,
                         "buffer_type": "dollar",
-                        "buffer_value": cfg.ema9_stop_buffer_v4 if self._v4 else cfg.e9ft_stop_buffer,
+                        "buffer_value": cfg.ema9_v5_min_stop_dollar if self._v5 else (cfg.ema9_stop_buffer_v4 if self._v4 else cfg.e9ft_stop_buffer),
                         "min_stop_rule_applied": min_stop_rule_applied,
-                        "min_stop_distance": min_stop,
+                        "v5_floor_applied": v5_floor_applied,
                         "final_stop": stop,
                     }
 
-                    # V4: fixed RR target
+                    # Target computation
                     if self._v4 and cfg.ema9_target_mode_v4 == "fixed_rr":
                         target = entry_price + risk * cfg.ema9_target_rr_v4
                         actual_rr = cfg.ema9_target_rr_v4
                         target_tag = "fixed_rr"
-                    elif cfg.e9ft_target_mode == "structural":
+                    elif self._v5 or cfg.e9ft_target_mode == "structural":
                         _candidates = []
                         if not _isnan(self._drive_high) and self._drive_high > entry_price:
                             _candidates.append((self._drive_high, "drive_high"))
                         if not _isnan(snap.session_high) and snap.session_high > entry_price:
                             _candidates.append((snap.session_high, "session_high"))
                         from ..shared.helpers import compute_structural_target_long
+                        _min_rr = cfg.ema9_v5_struct_min_rr if self._v5 else cfg.e9ft_struct_min_rr
+                        _max_rr = cfg.ema9_v5_struct_max_rr if self._v5 else cfg.e9ft_struct_max_rr
                         target, actual_rr, target_tag, skipped = compute_structural_target_long(
                             entry_price, risk, _candidates,
-                            min_rr=cfg.e9ft_struct_min_rr, max_rr=cfg.e9ft_struct_max_rr,
+                            min_rr=_min_rr, max_rr=_max_rr,
                             fallback_rr=cfg.e9ft_target_rr, mode="structural",
                         )
                         if skipped:
@@ -355,6 +381,21 @@ class EMA9FirstTouchLive(LiveStrategy):
                             )
                             quality_tier = QualityTier.B_TIER if quality_score >= self.cfg.quality_b_min else QualityTier.C_TIER
 
+                    # V5: internal quality gate — bypass external A-tier
+                    # If V5 conditions met, force quality_tier=A so external gate passes
+                    v5_promoted = False
+                    if self._v5:
+                        ip_ok = snap.in_play_score >= cfg.ema9_v5_min_ip_score
+                        q_ok = quality_score >= cfg.ema9_v5_min_quality_score
+                        if ip_ok and q_ok:
+                            quality_tier = QualityTier.A_TIER
+                            v5_promoted = True
+                        else:
+                            # V5 internal filter blocks this trade
+                            self._prev_prev_bar_low = self._prev_bar_low
+                            self._prev_bar_low = bar.low
+                            return None
+
                     self._triggered = True
                     self._prev_prev_bar_low = self._prev_bar_low
                     self._prev_bar_low = bar.low
@@ -381,6 +422,8 @@ class EMA9FirstTouchLive(LiveStrategy):
                             "in_play_score": snap.in_play_score,
                             "quality_tier": quality_tier.value,
                             "reject_reasons": reject_reasons,
+                            "v5_promoted": v5_promoted,
+                            "v5_floor_applied": v5_floor_applied if self._v5 else False,
                             "timeframe": "1m",
                             **_stop_meta,
                         },

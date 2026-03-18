@@ -257,6 +257,18 @@ class StrategyConfig:
     e9ft_max_bars: Dict[int, int] = field(default_factory=lambda: {1: 120, 5: 24})
     e9ft_min_rs_vs_spy: float = 0.0005       # positive RS threshold (0.05%)
 
+    # ── EMA9 V5 controls (rebuilt: wider stop floor, tighter window, structural target) ──
+    ema9_v5_enabled: bool = False
+    ema9_v5_time_start: int = 1000
+    ema9_v5_time_end: int = 1059
+    ema9_v5_min_stop_dollar: float = 0.35     # minimum flat dollar risk floor
+    ema9_v5_min_ip_score: float = 0.80        # V2 in-play percentile floor
+    ema9_v5_min_quality_score: float = 3.0    # internal quality floor
+    ema9_v5_price_min: float = 0.0            # min entry price (0 = no filter)
+    ema9_v5_price_max: float = 99999.0        # max entry price (99999 = no filter)
+    ema9_v5_struct_min_rr: float = 0.0        # NO minimum RR floor
+    ema9_v5_struct_max_rr: float = 5.0        # generous cap
+
     # ── EMA9 V4 controls ──
     ema9_v4_enabled: bool = False
     ema9_v4_time_start: int = 935
