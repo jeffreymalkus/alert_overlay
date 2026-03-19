@@ -1,0 +1,8 @@
+09:08:07 [INFO] Dashboard running at http://localhost:8877
+09:08:07 [INFO] Loaded 71 in-play symbols: AAOI, AAPL, ABB, ACLX, ACN, ALB, ALGN, AMD, AMPX, AMZN...
+09:08:07 [INFO] Running in DEFERRED mode. Dashboard available immediately.
+09:08:07 [INFO] Click 'Connect' in the dashboard when ready to start IBKR.
+09:08:07 [INFO] Registered 114 symbols in DEFERRED mode
+09:08:07 [INFO] Dashboard DEFERRED at http://localhost:8877
+09:08:16 [INFO] Connecting to IBKR at 127.0.0.1:7497...
+09:08:16 [ERROR] IBKR connection failed: There is no current event loop in thread 'Thread-9'.

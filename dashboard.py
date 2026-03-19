@@ -347,6 +347,10 @@ def _run_ibkr_connection(host="127.0.0.1", port=7497, client_id=10):
             runner.setup()
             _runners.append(runner)
             with _lock:
+                # Preserve existing universe tag from deferred mode if present
+                existing = _status.get("symbols", {}).get(symbol)
+                if existing and existing.get("universe"):
+                    universe = existing["universe"]
                 _status["symbols"][symbol] = {
                     "bars": getattr(runner, '_bar_count', 0),
                     "alerts": 0, "last_price": 0, "universe": universe,

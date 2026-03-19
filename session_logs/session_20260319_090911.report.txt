@@ -1,0 +1,61 @@
+=================================================================
+  STRATEGYMANAGER — FIRST SESSION VALIDATION REPORT
+=================================================================
+
+Engine:    StrategyManager (step)
+Session:   09:09:11 → 09:20:13
+Runners:   114
+
+─────────────────────────────────────────────
+1. TOTAL ALERT COUNT
+   Alerts fired:   0
+   Alerts blocked: 0 (tape permission gate)
+   LONG:  0
+   SHORT: 0
+
+─────────────────────────────────────────────
+2. ALERTS BY STRATEGY
+   (none)
+
+
+─────────────────────────────────────────────
+3. BAD ENTRY/STOP/TARGET VALUES
+   PASS — no suspicious values detected
+
+─────────────────────────────────────────────
+4. DUPLICATE / SPAM BEHAVIOR
+   PASS — no rapid-fire duplicates detected
+
+─────────────────────────────────────────────
+5. STARTUP & OPEN LATENCY
+   Dashboard start:  09:09:11
+   IBKR connected:   09:09:12
+   All runners ready: 09:18:55
+   First bar:        (none seen)
+   First alert:      (none fired)
+   Startup→Ready:    584s
+
+─────────────────────────────────────────────
+6. RUNTIME EXCEPTIONS
+   ✗ 09:10:09 Error 200, reqId 1454: No security definition has been found for the request, contract: Stock(symbol='ABB', exchange='SMART', currency='USD')
+   ✗ 09:10:09 Error 200, reqId 1455: No security definition has been found for the request, contract: Stock(symbol='ABB', exchange='SMART', currency='USD')
+   ✗ 09:10:09 Error 200, reqId 1456: No security definition has been found for the request, contract: Stock(symbol='ABB', exchange='SMART', currency='USD')
+   ✗ 09:12:20 Error 200, reqId 1502: No security definition has been found for the request, contract: Stock(symbol='CIRCL', exchange='SMART', currency='USD')
+   ✗ 09:12:20 Error 200, reqId 1503: No security definition has been found for the request, contract: Stock(symbol='CIRCL', exchange='SMART', currency='USD')
+   ✗ 09:12:20 Error 200, reqId 1504: No security definition has been found for the request, contract: Stock(symbol='CIRCL', exchange='SMART', currency='USD')
+   ✗ 09:19:05 Error 200, reqId 1696: No security definition has been found for the request, contract: Stock(symbol='ABB', exchange='SMART', currency='USD')
+   ✗ 09:19:08 Error 200, reqId 1712: No security definition has been found for the request, contract: Stock(symbol='CIRCL', exchange='SMART', currency='USD')
+   Warnings: 3
+     09:10:09 Unknown contract: Stock(symbol='ABB', exchange='SMART', currency='USD')
+     09:12:20 Unknown contract: Stock(symbol='CIRCL', exchange='SMART', currency='USD')
+     09:18:55 MARKET DATA BUDGET: 116 lines needed (2 market + 114 symbols). Check your IBKR account's market data line limit (usually 100, can be lower). Excess subscriptions will be silently dropped by IBKR.
+
+─────────────────────────────────────────────
+7. IN-PLAY / UNIVERSE TAGGING
+   In-play symbols loaded: 71
+   IN_PLAY: 71 symbols
+   STATIC: 43 symbols
+
+=================================================================
+VERDICT: 8 issue(s) found — review above
+=================================================================
