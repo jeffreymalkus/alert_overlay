@@ -28,7 +28,7 @@ class StrategyConfig:
     # Confirmed stage (10:00 snapshot) is the promotable base gate.
     ip_v2_enabled: bool = True
     ip_v2_threshold_provisional: float = 0.80
-    ip_v2_threshold_confirmed: float = 0.80
+    ip_v2_threshold_confirmed: float = 0.77
     ip_v2_provisional_hhmm: int = 940
     ip_v2_confirmed_hhmm: int = 1000
     ip_v2_recompute_confirmed_each_bar: bool = True
