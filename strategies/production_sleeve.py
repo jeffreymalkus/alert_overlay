@@ -85,7 +85,7 @@ def _make_ema9_v5_c(base):
     c.ema9_v5_min_ip_score = 0.80
     c.ema9_v5_min_quality_score = 3.0
     c.ema9_v5_price_min = 25.0
-    c.ema9_v5_price_max = 250.0
+    c.ema9_v5_price_max = 150.0
     c.ema9_v5_struct_min_rr = 0.0
     c.ema9_v5_struct_max_rr = 5.0
     return c
