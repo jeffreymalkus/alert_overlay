@@ -672,10 +672,10 @@ def main():
             # ── PRODUCTION SLEEVE (profitable strategies) ──
             HitchHikerLive(strat_cfg),
             EmaFpipLive(_make_fpip_v3_b(strat_cfg), strategy_name="EMA_FPIP_V3_B"),
-            SpencerATierLive(strat_cfg),  # legacy SP_ATIER baseline
-            SpencerATierLive(_make_sp_v2_bal(strat_cfg), strategy_name="SP_V2_BAL"),
             SpencerATierLive(_make_sp_v2_simple(strat_cfg), strategy_name="SP_V2_SIMPLE"),
-            SpencerATierLive(_make_sp_v2_hq(strat_cfg), strategy_name="SP_V2_HQ"),
+            # SpencerATierLive(strat_cfg),  # retired: SP_ATIER N=91 PF=1.16 — replaced by SP_V2_SIMPLE
+            # SpencerATierLive(_make_sp_v2_bal(strat_cfg), strategy_name="SP_V2_BAL"),  # identical to SIMPLE on current data
+            # SpencerATierLive(_make_sp_v2_hq(strat_cfg), strategy_name="SP_V2_HQ"),   # N=47 PF=3.12 — future eval
             ORHFBOShortV2Live(strat_cfg),                                            # V2_A + V2_B
             EMA9FirstTouchLive(_make_ema9_v5_c(strat_cfg), strategy_name="EMA9_V5_C"),
             BDRShortLive(_make_bdr_v3_c(strat_cfg), strategy_name="BDR_V3_C"),
