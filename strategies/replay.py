@@ -75,7 +75,7 @@ OUT_DIR = Path(__file__).parent.parent / "outputs"
 
 # Target RR per strategy (matches config defaults and replay.py)
 STRATEGY_TARGET_RR = {
-    "SC_SNIPER": 2.0, "FL_ANTICHOP": 1.5, "SP_ATIER": 3.0, "SP_V2_BAL": 1.9, "SP_V2_SIMPLE": 1.9, "SP_V2_HQ": 1.9,
+    "SC_SNIPER": 2.0, "FL_ANTICHOP": 1.5, "FL_REBUILD_STRUCT_Q7": 3.0, "FL_REBUILD_R10_Q6": 1.0, "SP_ATIER": 3.0, "SP_V2_BAL": 1.9, "SP_V2_SIMPLE": 1.9, "SP_V2_HQ": 1.9,
     "HH_QUALITY": 1.5, "EMA_FPIP": 2.0,
     "EMA_FPIP_V3_A": 1.5, "EMA_FPIP_V3_B": 2.0, "EMA_FPIP_V3_C": 1.5,
     "BDR_SHORT": 2.0,
@@ -91,7 +91,7 @@ STRATEGY_TARGET_RR = {
 
 # Max bars per strategy (5-min timeframe for 5m strats, 1-min for 1m strats)
 STRATEGY_MAX_BARS = {
-    "SC_SNIPER": 78, "FL_ANTICHOP": 52, "SP_ATIER": 78, "SP_V2_BAL": 78, "SP_V2_SIMPLE": 78, "SP_V2_HQ": 78,
+    "SC_SNIPER": 78, "FL_ANTICHOP": 52, "FL_REBUILD_STRUCT_Q7": 52, "FL_REBUILD_R10_Q6": 52, "SP_ATIER": 78, "SP_V2_BAL": 78, "SP_V2_SIMPLE": 78, "SP_V2_HQ": 78,
     "HH_QUALITY": 20, "EMA_FPIP": 24,
     "EMA_FPIP_V3_A": 24, "EMA_FPIP_V3_B": 24, "EMA_FPIP_V3_C": 24,
     "BDR_SHORT": 8,
@@ -133,6 +133,7 @@ QUALITY_SCORED_STRATEGIES = {
     "EMA9_V5_A", "EMA9_V5_B", "EMA9_V5_C", "EMA9_V5_D",
     "BS_STRUCT", "ORL_FBD_LONG",
     "ORH_FBO_V2_A", "ORH_FBO_V2_B", "PDH_FBO_B", "FFT_NEWLOW_REV",
+    "FL_REBUILD_STRUCT_Q7", "FL_REBUILD_R10_Q6",
 }
 
 from .shared.quality_scoring import QualityScorer
@@ -496,6 +497,28 @@ def main():
             c.fpip_target_rr = 1.5
             return c
 
+        # FL rebuild variant configs
+        def _make_fl_hybrid_struct_q7(base):
+            """High-quality structural: 10:30-11:00, current_hybrid stop, structural target, quality>=7."""
+            c = deepcopy(base)
+            c.fl_time_start = {1: 1030, 5: 1030}
+            c.fl_time_end = {1: 1100, 5: 1100}
+            c.fl_stop_mode = "current_hybrid"
+            c.fl_target_mode = "structural"
+            c.fl_min_quality_score = 7.0
+            return c
+
+        def _make_fl_source_r10_q6(base):
+            """Balanced fixed-R: 10:30-11:00, source_faithful stop, fixed 1.0R, quality>=6."""
+            c = deepcopy(base)
+            c.fl_time_start = {1: 1030, 5: 1030}
+            c.fl_time_end = {1: 1100, 5: 1100}
+            c.fl_stop_mode = "source_faithful"
+            c.fl_target_mode = "fixed_rr"
+            c.fl_target_rr = 1.0
+            c.fl_min_quality_score = 6.0
+            return c
+
         # SP V2 variant configs
         def _make_sp_v2_bal(base):
             """Balanced: time<=14:05, RR<=1.9, struct_q>=0.6."""
@@ -705,7 +728,12 @@ def main():
             # ORLFBDLongLive(strat_cfg),                                             # PF=0.64, -5.3R
             # PDHFBOShortLive(strat_cfg, enable_mode_a=False, enable_mode_b=True),   # N=1, PF=0.00
             # FFTNewlowReversalLive(strat_cfg),                                      # PF=0.00, -6.0R
-            # FLAntiChopLive(strat_cfg),                                             # DEMOTED 2026-03-17
+            # FLAntiChopLive(strat_cfg),  # PF=0.61 under V2 gate — core concept broken, not gating
+            # FL rebuild variants — FAILED authoritative replay (both PF<1.0)
+            # FL_REBUILD_STRUCT_Q7: N=12, PF=0.42 | FL_REBUILD_R10_Q6: N=77, PF=0.75
+            # Counterfactual sweep did not survive authoritative replay.
+            # FLAntiChopLive(_make_fl_hybrid_struct_q7(strat_cfg), strategy_name="FL_REBUILD_STRUCT_Q7"),
+            # FLAntiChopLive(_make_fl_source_r10_q6(strat_cfg), strategy_name="FL_REBUILD_R10_Q6"),
         ]
         mgr = StrategyManager(strategies=live_strats, symbol=sym, config=strat_cfg)
 
@@ -1189,7 +1217,7 @@ def main():
                    "EMA9_FT", "EMA9_V4_A", "EMA9_V4_B", "EMA9_V4_C", "EMA9_V4_D",
                    "EMA9_V5_A", "EMA9_V5_B", "EMA9_V5_C", "EMA9_V5_D",
                    "BS_STRUCT", "ORL_FBD_LONG",
-                   "FFT_NEWLOW_REV"}
+                   "FFT_NEWLOW_REV", "FL_REBUILD_STRUCT_Q7", "FL_REBUILD_R10_Q6"}
     # FL_ANTICHOP demoted 2026-03-17
     short_strats = {"BDR_SHORT", "BDR_V3_A", "BDR_V3_B", "BDR_V3_C", "BDR_V3_D",
                     "BDR_V4_A", "BDR_V4_B", "BDR_V4_C", "BDR_V4_D",

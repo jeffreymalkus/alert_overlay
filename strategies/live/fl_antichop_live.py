@@ -28,8 +28,9 @@ class FLAntiChopLive(LiveStrategy):
     """Incremental FL_ANTICHOP for live pipeline."""
 
     def __init__(self, cfg: StrategyConfig, rejection: RejectionFilters = None,
-                 quality: QualityScorer = None, enabled: bool = True):
-        super().__init__(name="FL_ANTICHOP", direction=1, enabled=enabled,
+                 quality: QualityScorer = None, enabled: bool = True,
+                 strategy_name: str = "FL_ANTICHOP"):
+        super().__init__(name=strategy_name, direction=1, enabled=enabled,
                          skip_rejections=["trigger_weakness", "distance"])
         self.cfg = cfg
         self.rejection = rejection
@@ -307,8 +308,16 @@ class FLAntiChopLive(LiveStrategy):
                                 )
                                 quality_tier = QualityTier.B_TIER if quality_score >= self.cfg.quality_b_min else QualityTier.C_TIER
 
+                        # FL rebuild: internal quality floor + A-tier bypass
+                        _fl_q_floor = getattr(cfg, 'fl_min_quality_score', 0.0)
+                        if _fl_q_floor > 0 and quality_score < _fl_q_floor:
+                            return None  # below quality floor
+                        # If quality floor passes, force A-tier for promotion
+                        if _fl_q_floor > 0:
+                            quality_tier = QualityTier.A_TIER
+
                         signal = RawSignal(
-                            strategy_name="FL_ANTICHOP",
+                            strategy_name=self.name,
                             direction=1,
                             entry_price=bar.close,
                             stop_price=stop,

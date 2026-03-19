@@ -113,6 +113,7 @@ class StrategyConfig:
     fl_max_bars: Dict[int, int] = field(default_factory=lambda: {1: 156, 5: 52})
     fl_chop_lookback: Dict[int, int] = field(default_factory=lambda: {1: 20, 5: 5})
     fl_chop_overlap_max: float = 0.60         # stricter than universal (anti-chop)
+    fl_min_quality_score: float = 0.0        # FL rebuild: internal quality floor (0 = no filter)
 
     # ── Spencer A-Tier thresholds ──
     enable_spencer: bool = True
