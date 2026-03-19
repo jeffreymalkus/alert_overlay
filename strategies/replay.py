@@ -691,50 +691,11 @@ def main():
             c.ema9_v5_price_max = 250.0
             return c
 
-        live_strats = [
-            # ── PRODUCTION SLEEVE (profitable strategies) ──
-            HitchHikerLive(strat_cfg),
-            EmaFpipLive(_make_fpip_v3_b(strat_cfg), strategy_name="EMA_FPIP_V3_B"),
-            SpencerATierLive(_make_sp_v2_simple(strat_cfg), strategy_name="SP_V2_SIMPLE"),
-            # SpencerATierLive(strat_cfg),  # retired: SP_ATIER N=91 PF=1.16 — replaced by SP_V2_SIMPLE
-            # SpencerATierLive(_make_sp_v2_bal(strat_cfg), strategy_name="SP_V2_BAL"),  # identical to SIMPLE on current data
-            # SpencerATierLive(_make_sp_v2_hq(strat_cfg), strategy_name="SP_V2_HQ"),   # N=47 PF=3.12 — future eval
-            ORHFBOShortV2Live(strat_cfg),                                            # V2_A + V2_B
-            EMA9FirstTouchLive(_make_ema9_v5_c(strat_cfg), strategy_name="EMA9_V5_C"),
-            BDRShortLive(_make_bdr_v3_c(strat_cfg), strategy_name="BDR_V3_C"),
-            BacksideStructureLive(strat_cfg),
+        # ── PRODUCTION SLEEVE (single source of truth) ──
+        from .production_sleeve import build_production_strategies
+        live_strats = build_production_strategies(strat_cfg)
 
-            # ── DISABLED — revisit later ──
-            # SCSniperLive(strat_cfg),                                               # PF=0.32, -3.1R
-            # EmaFpipLive(strat_cfg),                                                # legacy FPIP, PF=0.86
-            # EmaFpipLive(_make_fpip_v3_a(strat_cfg), strategy_name="EMA_FPIP_V3_A"),  # redundant with V3_B
-            # EmaFpipLive(_make_fpip_v3_c(strat_cfg), strategy_name="EMA_FPIP_V3_C"),  # redundant with V3_B
-            # BDRShortLive(strat_cfg),                                               # legacy BDR, N=0
-            # BDRShortLive(_make_bdr_v3_a(strat_cfg), strategy_name="BDR_V3_A"),     # PF=1.13 but redundant with V3_C
-            # BDRShortLive(_make_bdr_v3_b(strat_cfg), strategy_name="BDR_V3_B"),     # PF=1.11 but redundant
-            # BDRShortLive(_make_bdr_v3_d(strat_cfg), strategy_name="BDR_V3_D"),     # PF=0.31
-            # BDRShortLive(_make_bdr_v4_a(strat_cfg), strategy_name="BDR_V4_A"),     # N=2, too low
-            # BDRShortLive(_make_bdr_v4_b(strat_cfg), strategy_name="BDR_V4_B"),     # N=3, too low
-            # BDRShortLive(_make_bdr_v4_c(strat_cfg), strategy_name="BDR_V4_C"),     # N=2, too low
-            # BDRShortLive(_make_bdr_v4_d(strat_cfg), strategy_name="BDR_V4_D"),     # N=0
-            # EMA9FirstTouchLive(strat_cfg),                                         # legacy EMA9, N=0
-            # EMA9FirstTouchLive(_make_ema9_v4_a(strat_cfg), strategy_name="EMA9_V4_A"),  # PF=0.30, superseded by V5
-            # EMA9FirstTouchLive(_make_ema9_v4_b(strat_cfg), strategy_name="EMA9_V4_B"),  # PF=0.30, superseded
-            # EMA9FirstTouchLive(_make_ema9_v4_c(strat_cfg), strategy_name="EMA9_V4_C"),  # PF=0.36, superseded
-            # EMA9FirstTouchLive(_make_ema9_v4_d(strat_cfg), strategy_name="EMA9_V4_D"),  # PF=0.24, superseded
-            # EMA9FirstTouchLive(_make_ema9_v5_a(strat_cfg), strategy_name="EMA9_V5_A"),  # redundant with V5_C
-            # EMA9FirstTouchLive(_make_ema9_v5_b(strat_cfg), strategy_name="EMA9_V5_B"),  # redundant
-            # EMA9FirstTouchLive(_make_ema9_v5_d(strat_cfg), strategy_name="EMA9_V5_D"),  # redundant
-            # ORLFBDLongLive(strat_cfg),                                             # PF=0.64, -5.3R
-            # PDHFBOShortLive(strat_cfg, enable_mode_a=False, enable_mode_b=True),   # N=1, PF=0.00
-            # FFTNewlowReversalLive(strat_cfg),                                      # PF=0.00, -6.0R
-            # FLAntiChopLive(strat_cfg),  # PF=0.61 under V2 gate — core concept broken, not gating
-            # FL rebuild variants — FAILED authoritative replay (both PF<1.0)
-            # FL_REBUILD_STRUCT_Q7: N=12, PF=0.42 | FL_REBUILD_R10_Q6: N=77, PF=0.75
-            # Counterfactual sweep did not survive authoritative replay.
-            # FLAntiChopLive(_make_fl_hybrid_struct_q7(strat_cfg), strategy_name="FL_REBUILD_STRUCT_Q7"),
-            # FLAntiChopLive(_make_fl_source_r10_q6(strat_cfg), strategy_name="FL_REBUILD_R10_Q6"),
-        ]
+        # Disabled strategies preserved in comments — see REVISIT_NOTES.md
         mgr = StrategyManager(strategies=live_strats, symbol=sym, config=strat_cfg)
 
         # Daily ATR warmup
