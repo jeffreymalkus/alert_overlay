@@ -1168,27 +1168,94 @@ class SymbolRunner:
         # Set ALERT_ENABLE_ALL_STRATS=1 to re-enable them for testing.
         _enable_all = os.environ.get("ALERT_ENABLE_ALL_STRATS", "").strip() in ("1", "true", "yes")
         strat_cfg = _StrategyConfig(timeframe_min=5)
+
+        # Build V2/V3/V5 variant configs (must match replay.py production sleeve)
+        from copy import deepcopy as _deepcopy
+
+        def _sp_v2_simple(base):
+            c = _deepcopy(base)
+            c.sp_v2_enabled = True
+            c.sp_v2_max_selected_rr = 1.9
+            c.sp_v2_min_structure_quality = 0.0
+            c.sp_v2_min_bar_return_pct = 0.0
+            return c
+
+        def _fpip_v3_b(base):
+            c = _deepcopy(base)
+            c.fpip_max_pullback_depth = 0.70
+            c.fpip_max_pullback_vol_ratio = 0.95
+            c.fpip_trigger_require_close_above_prev_high = True
+            c.fpip_entry_mode = "prev_high_break"
+            c.fpip_entry_buffer = 0.01
+            c.fpip_target_mode = "fixed_rr"
+            c.fpip_target_rr = 2.0
+            return c
+
+        def _bdr_v3_c(base):
+            c = _deepcopy(base)
+            c.bdr_v3_enabled = True
+            c.bdr_use_orl_level = True
+            c.bdr_use_swing_low_level = True
+            c.bdr_use_vwap_level = False
+            c.bdr_v3_time_start = 1025
+            c.bdr_v3_time_end = 1040
+            c.bdr_setup_mode = "weak_retest_break"
+            c.bdr_max_reclaim_above_level_atr = 0.10
+            c.bdr_retest_close_max_pos = 0.55
+            c.bdr_retest_body_max_pct = 0.55
+            c.bdr_retest_min_upper_wick_pct = 0.10
+            c.bdr_require_retest_below_vwap = True
+            c.bdr_require_retest_below_ema9 = True
+            c.bdr_require_trigger_below_vwap = True
+            c.bdr_require_trigger_below_ema9 = True
+            c.bdr_require_retest_vol_not_stronger_than_breakdown = True
+            c.bdr_entry_mode = "retest_low_break"
+            c.bdr_entry_buffer = 0.01
+            c.bdr_trigger_bars_after_retest = 2
+            c.bdr_stop_mode = "retest_high"
+            c.bdr_v3_stop_buffer = 0.01
+            c.bdr_target_mode_v3 = "fixed_rr"
+            c.bdr_target_rr_v3 = 2.0
+            c.bdr_skip_generic_trigger_body_filter = True
+            c.bdr_skip_generic_trigger_vol_filter = True
+            c.bdr_require_red_trend = False
+            return c
+
+        def _ema9_v5_c(base):
+            c = _deepcopy(base)
+            c.ema9_v5_enabled = True
+            c.ema9_v5_time_start = 1000
+            c.ema9_v5_time_end = 1059
+            c.ema9_v5_min_stop_dollar = 0.35
+            c.ema9_v5_min_ip_score = 0.80
+            c.ema9_v5_min_quality_score = 3.0
+            c.ema9_v5_price_min = 25.0
+            c.ema9_v5_price_max = 250.0
+            c.ema9_v5_struct_min_rr = 0.0
+            c.ema9_v5_struct_max_rr = 5.0
+            return c
+
         live_strats = [
-            # _SCSniperLive(strat_cfg),          # DISABLED: PF=0.47 live-path
-            # _FLAntiChopLive(strat_cfg),  # DEMOTED 2026-03-17: PF=0.53, wrong stock type
-            _SpencerATierLive(strat_cfg),
-            _HitchHikerLive(strat_cfg),          # PROMOTED: PF=2.09, N=85, TotalR=+25.9 (replay dual-tf)
-            _EmaFpipLive(strat_cfg),
-            _BDRShortLive(strat_cfg),
-            _EMA9FirstTouchLive(strat_cfg),
+            # ── PRODUCTION SLEEVE (must match replay.py) ──
+            _HitchHikerLive(strat_cfg),
+            _EmaFpipLive(_fpip_v3_b(strat_cfg), strategy_name="EMA_FPIP_V3_B"),
+            _SpencerATierLive(_sp_v2_simple(strat_cfg), strategy_name="SP_V2_SIMPLE"),
+            _ORHFBOShortV2Live(strat_cfg),                                          # V2_A + V2_B
+            _EMA9FirstTouchLive(_ema9_v5_c(strat_cfg), strategy_name="EMA9_V5_C"),
+            _BDRShortLive(_bdr_v3_c(strat_cfg), strategy_name="BDR_V3_C"),
             _BacksideStructureLive(strat_cfg),
-            # _ORLFBDLongLive(strat_cfg),        # DISABLED: PF=0.00 live-path
-            _ORHFBOShortV2Live(strat_cfg),
-            _PDHFBOShortLive(strat_cfg, enable_mode_a=False, enable_mode_b=True),
-            # _FFTNewlowReversalLive(strat_cfg), # DISABLED: PF=0.84, train/test overfit
+
+            # ── DISABLED ──
+            # _SCSniperLive(strat_cfg),
+            # _FLAntiChopLive(strat_cfg),
+            # _EmaFpipLive(strat_cfg),                  # legacy FPIP
+            # _SpencerATierLive(strat_cfg),              # legacy Spencer
+            # _BDRShortLive(strat_cfg),                  # legacy BDR
+            # _EMA9FirstTouchLive(strat_cfg),            # legacy EMA9
+            # _PDHFBOShortLive(strat_cfg, enable_mode_a=False, enable_mode_b=True),  # N=1 PF=0
+            # _ORLFBDLongLive(strat_cfg),
+            # _FFTNewlowReversalLive(strat_cfg),
         ]
-        if _enable_all:
-            live_strats.extend([
-                _SCSniperLive(strat_cfg),
-                _ORLFBDLongLive(strat_cfg),
-                _FFTNewlowReversalLive(strat_cfg),
-            ])
-            log.info(f"[{symbol}] ALL strategies enabled (ALERT_ENABLE_ALL_STRATS=1)")
         self._strategy_mgr = _StrategyManager(strategies=live_strats, symbol=symbol, config=strat_cfg)
 
         # ── Legacy engine (emergency rollback only, off by default) ──
