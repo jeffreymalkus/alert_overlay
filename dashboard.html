@@ -556,14 +556,33 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 8px;
+    margin-bottom: 0;
+    cursor: pointer;
+    user-select: none;
   }
+  .ip-history-header:hover { opacity: 0.8; }
   .ip-history-title {
     font-size: 11px;
     font-weight: 600;
     color: #64748b;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+  }
+  .ip-history-title .chevron {
+    display: inline-block;
+    transition: transform 0.2s;
+    margin-right: 4px;
+    font-size: 9px;
+  }
+  .ip-history-title .chevron.open { transform: rotate(90deg); }
+  .ip-history-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease;
+  }
+  .ip-history-body.open {
+    max-height: 200px;
+    margin-top: 8px;
   }
   .ip-history-stats {
     font-size: 11px;
@@ -890,12 +909,14 @@
         <span class="in-play-empty">No in-play symbols. Add symbols for today's session.</span>
       </div>
       <div class="ip-history" id="ipHistory">
-        <div class="ip-history-header">
-          <span class="ip-history-title">Session Log</span>
+        <div class="ip-history-header" onclick="toggleSessionLog()">
+          <span class="ip-history-title"><span class="chevron" id="sessionLogChevron">&#9654;</span>Session Log</span>
           <span class="ip-history-stats" id="ipHistoryStats"></span>
         </div>
-        <div class="ip-history-log" id="ipHistoryLog">
-          <span class="ip-history-empty">No activity yet today.</span>
+        <div class="ip-history-body" id="sessionLogBody">
+          <div class="ip-history-log" id="ipHistoryLog">
+            <span class="ip-history-empty">No activity yet today.</span>
+          </div>
         </div>
       </div>
     </div>
@@ -1517,6 +1538,13 @@
     inPlayOpen = !inPlayOpen;
     document.getElementById('inPlayCollapse').classList.toggle('open', inPlayOpen);
     document.getElementById('inPlayChevron').classList.toggle('open', inPlayOpen);
+  }
+
+  let sessionLogOpen = false;
+  function toggleSessionLog() {
+    sessionLogOpen = !sessionLogOpen;
+    document.getElementById('sessionLogBody').classList.toggle('open', sessionLogOpen);
+    document.getElementById('sessionLogChevron').classList.toggle('open', sessionLogOpen);
   }
 
   function renderInPlayBadges() {
