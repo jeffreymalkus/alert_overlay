@@ -2066,40 +2066,46 @@ class DashboardHandler(SimpleHTTPRequestHandler):
                 return
 
         # Add a placeholder so UI updates immediately
+        universe = _get_universe(symbol)
         with _lock:
-            _status["symbols"][symbol] = {"bars": 0, "alerts": 0, "last_price": 0, "warming_up": True}
+            _status["symbols"][symbol] = {"bars": 0, "alerts": 0, "last_price": 0,
+                                          "universe": universe}
+        _save_watchlist()
         _broadcast_sse("status", _status)
 
-        # Schedule IB work on the main event loop (ib_insync requires it)
-        async def _setup_and_subscribe():
-            global _ib, _cfg, _runners
-            try:
-                universe = _get_universe(symbol)
-                runner = SymbolRunner(symbol, _ib, _cfg, universe=universe)
-                await runner.setup_async()
-                await runner.subscribe_async()
-                with _lock:
-                    _runners.append(runner)
-                    _status["symbols"][symbol].pop("warming_up", None)
-                    _status["symbols"][symbol]["universe"] = universe
-                _save_watchlist()
-                _broadcast_sse("status", _status)
-                log.info(f"[{symbol}] Added to watchlist (universe={universe}).")
-            except Exception as e:
-                log.error(f"[{symbol}] Failed to add: {e}")
-                with _lock:
-                    _status["symbols"].pop(symbol, None)
-                _broadcast_sse("status", _status)
-
-        try:
-            _schedule_on_main(lambda: _setup_and_subscribe())
-        except RuntimeError as e:
+        # If IBKR is connected, subscribe the symbol live
+        if _main_loop is not None:
             with _lock:
-                _status["symbols"].pop(symbol, None)
+                _status["symbols"][symbol]["warming_up"] = True
             _broadcast_sse("status", _status)
-            self._send_json_response(503, {"ok": False, "error": f"Engine not ready: {e}"})
-            return
-        self._send_json_response(200, {"ok": True, "symbol": symbol, "message": f"Adding {symbol}..."})
+
+            async def _setup_and_subscribe():
+                global _ib, _cfg, _runners
+                try:
+                    runner = SymbolRunner(symbol, _ib, _cfg, universe=universe)
+                    await runner.setup_async()
+                    await runner.subscribe_async()
+                    with _lock:
+                        _runners.append(runner)
+                        _status["symbols"][symbol].pop("warming_up", None)
+                    _save_watchlist()
+                    _broadcast_sse("status", _status)
+                    log.info(f"[{symbol}] Added to watchlist (universe={universe}).")
+                except Exception as e:
+                    log.error(f"[{symbol}] Failed to add: {e}")
+                    with _lock:
+                        _status["symbols"].pop(symbol, None)
+                    _broadcast_sse("status", _status)
+
+            try:
+                _schedule_on_main(lambda: _setup_and_subscribe())
+            except RuntimeError:
+                pass  # will subscribe on next connect
+            self._send_json_response(200, {"ok": True, "symbol": symbol, "message": f"Adding {symbol}..."})
+        else:
+            # Offline/deferred mode — symbol saved to watchlist, will subscribe on connect
+            log.info(f"[{symbol}] Added to static watchlist (offline, will subscribe on connect).")
+            self._send_json_response(200, {"ok": True, "symbol": symbol, "message": f"{symbol} added (will connect later)"})
 
     def _remove_symbol(self, data):
         """Remove a symbol from the live watchlist."""
@@ -2155,6 +2161,11 @@ class DashboardHandler(SimpleHTTPRequestHandler):
         with _lock:
             if symbol in _in_play_symbols:
                 self._send_json_response(409, {"ok": False, "error": f"{symbol} already in-play"})
+                return
+            # Check if already in static watchlist — no need to add to in-play
+            static_symbols = _load_watchlist()
+            if symbol in static_symbols:
+                self._send_json_response(409, {"ok": False, "error": f"{symbol} already tracked (static watchlist)"})
                 return
             _in_play_symbols.append(symbol)
         _save_in_play()
