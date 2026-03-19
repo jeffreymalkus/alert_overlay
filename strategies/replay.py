@@ -75,7 +75,7 @@ OUT_DIR = Path(__file__).parent.parent / "outputs"
 
 # Target RR per strategy (matches config defaults and replay.py)
 STRATEGY_TARGET_RR = {
-    "SC_SNIPER": 2.0, "FL_ANTICHOP": 1.5, "SP_ATIER": 3.0,
+    "SC_SNIPER": 2.0, "FL_ANTICHOP": 1.5, "SP_ATIER": 3.0, "SP_V2_BAL": 1.9, "SP_V2_SIMPLE": 1.9, "SP_V2_HQ": 1.9,
     "HH_QUALITY": 1.5, "EMA_FPIP": 2.0,
     "EMA_FPIP_V3_A": 1.5, "EMA_FPIP_V3_B": 2.0, "EMA_FPIP_V3_C": 1.5,
     "BDR_SHORT": 2.0,
@@ -91,7 +91,7 @@ STRATEGY_TARGET_RR = {
 
 # Max bars per strategy (5-min timeframe for 5m strats, 1-min for 1m strats)
 STRATEGY_MAX_BARS = {
-    "SC_SNIPER": 78, "FL_ANTICHOP": 52, "SP_ATIER": 78,
+    "SC_SNIPER": 78, "FL_ANTICHOP": 52, "SP_ATIER": 78, "SP_V2_BAL": 78, "SP_V2_SIMPLE": 78, "SP_V2_HQ": 78,
     "HH_QUALITY": 20, "EMA_FPIP": 24,
     "EMA_FPIP_V3_A": 24, "EMA_FPIP_V3_B": 24, "EMA_FPIP_V3_C": 24,
     "BDR_SHORT": 8,
@@ -124,7 +124,7 @@ MIN_CONFLUENCE_BY_STRATEGY = {
 # All 13 strategies use the full rejection + quality scoring + A-tier pipeline.
 # No more Family A/B split. One pipeline, one gate chain.
 QUALITY_SCORED_STRATEGIES = {
-    "SC_SNIPER", "SP_ATIER", "HH_QUALITY",
+    "SC_SNIPER", "SP_ATIER", "SP_V2_BAL", "SP_V2_SIMPLE", "SP_V2_HQ", "HH_QUALITY",
     # FL_ANTICHOP demoted 2026-03-17
     "EMA_FPIP", "EMA_FPIP_V3_A", "EMA_FPIP_V3_B", "EMA_FPIP_V3_C",
     "BDR_SHORT", "BDR_V3_A", "BDR_V3_B", "BDR_V3_C", "BDR_V3_D",
@@ -496,6 +496,31 @@ def main():
             c.fpip_target_rr = 1.5
             return c
 
+        # SP V2 variant configs
+        def _make_sp_v2_bal(base):
+            """Balanced: time<=14:05, RR<=1.9, struct_q>=0.6."""
+            c = deepcopy(base)
+            c.sp_v2_enabled = True
+            c.sp_v2_max_selected_rr = 1.9
+            c.sp_v2_min_structure_quality = 0.6
+            c.sp_v2_min_bar_return_pct = 0.0
+            return c
+
+        def _make_sp_v2_simple(base):
+            """Simple: time<=14:05, RR<=1.9, no struct_q floor."""
+            c = deepcopy(base)
+            c.sp_v2_enabled = True
+            c.sp_v2_max_selected_rr = 1.9
+            c.sp_v2_min_structure_quality = 0.0
+            c.sp_v2_min_bar_return_pct = 0.0
+            return c
+
+        def _make_sp_v2_hq(base):
+            """HQ: balanced + bar_return_pct>=0.25."""
+            c = _make_sp_v2_bal(base)
+            c.sp_v2_min_bar_return_pct = 0.25
+            return c
+
         # BDR V3 variant configs
         def _make_bdr_v3_a(base):
             c = deepcopy(base)
@@ -647,7 +672,10 @@ def main():
             # ── PRODUCTION SLEEVE (profitable strategies) ──
             HitchHikerLive(strat_cfg),
             EmaFpipLive(_make_fpip_v3_b(strat_cfg), strategy_name="EMA_FPIP_V3_B"),
-            SpencerATierLive(strat_cfg),
+            SpencerATierLive(strat_cfg),  # legacy SP_ATIER baseline
+            SpencerATierLive(_make_sp_v2_bal(strat_cfg), strategy_name="SP_V2_BAL"),
+            SpencerATierLive(_make_sp_v2_simple(strat_cfg), strategy_name="SP_V2_SIMPLE"),
+            SpencerATierLive(_make_sp_v2_hq(strat_cfg), strategy_name="SP_V2_HQ"),
             ORHFBOShortV2Live(strat_cfg),                                            # V2_A + V2_B
             EMA9FirstTouchLive(_make_ema9_v5_c(strat_cfg), strategy_name="EMA9_V5_C"),
             BDRShortLive(_make_bdr_v3_c(strat_cfg), strategy_name="BDR_V3_C"),
@@ -1156,7 +1184,7 @@ def main():
             print(f"    {mo}  N={monthly_n[mo]:3d}  R={monthly_r[mo]:+7.1f}  cum={cum_mo:+.1f}")
 
     # ── Combined ──
-    long_strats = {"SC_SNIPER", "SP_ATIER", "HH_QUALITY",
+    long_strats = {"SC_SNIPER", "SP_ATIER", "SP_V2_BAL", "SP_V2_SIMPLE", "SP_V2_HQ", "HH_QUALITY",
                    "EMA_FPIP", "EMA_FPIP_V3_A", "EMA_FPIP_V3_B", "EMA_FPIP_V3_C",
                    "EMA9_FT", "EMA9_V4_A", "EMA9_V4_B", "EMA9_V4_C", "EMA9_V4_D",
                    "EMA9_V5_A", "EMA9_V5_B", "EMA9_V5_C", "EMA9_V5_D",

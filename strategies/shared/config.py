@@ -118,6 +118,12 @@ class StrategyConfig:
     enable_spencer: bool = True
     sp_time_start: Dict[int, int] = field(default_factory=lambda: {1: 1000, 5: 1000})
     sp_time_end: Dict[int, int] = field(default_factory=lambda: {1: 1430, 5: 1430})
+    # SP V2 controls (sleeve tightening — applied inside strategy, not post-hoc)
+    sp_v2_enabled: bool = False
+    sp_v2_time_end: Dict[int, int] = field(default_factory=lambda: {1: 1409, 5: 1405})
+    sp_v2_max_selected_rr: float = 1.9       # reject if structural target RR > this
+    sp_v2_min_structure_quality: float = 0.0  # min structure_quality (0 = no filter)
+    sp_v2_min_bar_return_pct: float = 0.0    # min bar return % (0 = no filter, HQ sleeve uses 0.25)
     sp_trend_advance_atr: float = 0.75       # min advance from session low (daily ATR)
     sp_trend_advance_vwap_atr: float = 0.50  # or min above VWAP (intra ATR)
     sp_box_min_bars: Dict[int, int] = field(default_factory=lambda: {1: 20, 5: 4})

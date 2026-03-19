@@ -1,0 +1,21 @@
+23:19:58 [INFO] Dashboard running at http://localhost:8877
+23:19:59 [INFO] Loaded 74 in-play symbols: AAOI, ACN, AGRO, AMPX, AMR, APH, ARM, ASO, ATAT, AXTI...
+23:19:59 [INFO] Running in DEFERRED mode. Dashboard available immediately.
+23:19:59 [INFO] Click 'Connect' in the dashboard when ready to start IBKR.
+23:19:59 [INFO] Registered 121 symbols in DEFERRED mode
+23:19:59 [INFO] Dashboard DEFERRED at http://localhost:8877
+23:24:14 [INFO] [TEST] LONG EMA9_SEP on MU @ 299.12
+23:27:10 [INFO] In-play snapshot saved: 2026-03-18.txt (75 symbols)
+23:27:21 [INFO] In-play snapshot saved: 2026-03-18.txt (76 symbols)
+23:27:27 [INFO] In-play snapshot saved: 2026-03-18.txt (77 symbols)
+23:27:32 [INFO] In-play snapshot saved: 2026-03-18.txt (78 symbols)
+23:27:41 [INFO] In-play snapshot saved: 2026-03-18.txt (79 symbols)
+23:27:47 [INFO] In-play snapshot saved: 2026-03-18.txt (80 symbols)
+23:28:08 [INFO] In-play snapshot saved: 2026-03-18.txt (81 symbols)
+23:28:27 [INFO] In-play snapshot saved: 2026-03-18.txt (80 symbols)
+23:28:30 [INFO] In-play snapshot saved: 2026-03-18.txt (79 symbols)
+23:28:31 [INFO] In-play snapshot saved: 2026-03-18.txt (78 symbols)
+23:28:35 [INFO] In-play snapshot saved: 2026-03-18.txt (77 symbols)
+23:28:42 [INFO] In-play snapshot saved: 2026-03-18.txt (76 symbols)
+23:28:55 [INFO] In-play snapshot saved: 2026-03-18.txt (75 symbols)
+23:29:11 [INFO] In-play snapshot saved: 2026-03-18.txt (74 symbols)

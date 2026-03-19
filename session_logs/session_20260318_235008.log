@@ -1,0 +1,9 @@
+23:50:08 [INFO] Dashboard running at http://localhost:8877
+23:50:08 [INFO] Loaded 74 in-play symbols: AAOI, ACN, AGRO, AMPX, AMR, APH, ARM, ASO, ATAT, AXTI...
+23:50:08 [INFO] Running in DEFERRED mode. Dashboard available immediately.
+23:50:08 [INFO] Click 'Connect' in the dashboard when ready to start IBKR.
+23:50:08 [INFO] Registered 120 symbols in DEFERRED mode
+23:50:08 [INFO] Dashboard DEFERRED at http://localhost:8877
+23:50:16 [INFO] [AGQ] Added to static watchlist (offline, will subscribe on connect).
+23:50:23 [INFO] [TQQQ] Added to static watchlist (offline, will subscribe on connect).
+23:50:29 [INFO] [UCO] Added to static watchlist (offline, will subscribe on connect).

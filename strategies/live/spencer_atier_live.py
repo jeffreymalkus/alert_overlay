@@ -28,15 +28,17 @@ class SpencerATierLive(LiveStrategy):
     """Incremental SP_ATIER for live pipeline."""
 
     def __init__(self, cfg: StrategyConfig, rejection: RejectionFilters = None,
-                 quality: QualityScorer = None, enabled: bool = True):
-        super().__init__(name="SP_ATIER", direction=1, enabled=enabled,
+                 quality: QualityScorer = None, enabled: bool = True,
+                 strategy_name: str = "SP_ATIER"):
+        super().__init__(name=strategy_name, direction=1, enabled=enabled,
                          skip_rejections=["distance", "bigger_picture"])
         self.cfg = cfg
         self.rejection = rejection
         self.quality = quality
 
         self._time_start = cfg.get(cfg.sp_time_start)
-        self._time_end = cfg.get(cfg.sp_time_end)
+        self._time_end = cfg.get(cfg.sp_v2_time_end) if cfg.sp_v2_enabled else cfg.get(cfg.sp_time_end)
+        self._v2 = cfg.sp_v2_enabled
         self._box_min = cfg.get(cfg.sp_box_min_bars)
         self._box_max = cfg.get(cfg.sp_box_max_bars)
 
@@ -360,8 +362,20 @@ class SpencerATierLive(LiveStrategy):
                 )
                 quality_tier = QualityTier.B_TIER if quality_score >= self.cfg.quality_b_min else QualityTier.C_TIER
 
+        # V2 sleeve filters (applied after target selection + quality scoring)
+        _bar_return_pct = ((bar.close - bar.open) / bar.open * 100.0
+                           if bar.open > 0 else 0.0)
+        if self._v2:
+            cfg = self.cfg
+            if actual_rr > cfg.sp_v2_max_selected_rr:
+                return None  # RR too ambitious
+            if min(struct_q, 1.0) < cfg.sp_v2_min_structure_quality:
+                return None  # structure quality too low
+            if cfg.sp_v2_min_bar_return_pct > 0 and _bar_return_pct < cfg.sp_v2_min_bar_return_pct:
+                return None  # bar return too weak (HQ sleeve only)
+
         signal = RawSignal(
-            strategy_name="SP_ATIER",
+            strategy_name=self.name,
             direction=1,
             entry_price=entry_price,
             stop_price=stop,
@@ -382,6 +396,7 @@ class SpencerATierLive(LiveStrategy):
                 "actual_rr": actual_rr,
                 "target_tag": target_tag,
                 "structure_quality": min(struct_q, 1.0),
+                "bar_return_pct": _bar_return_pct,
                 "confluence": confluence,
                 "in_play_score": snap.in_play_score,
                 "quality_tier": quality_tier.value,
