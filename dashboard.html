@@ -952,6 +952,7 @@
   let soundEnabled = true;
   let alerts = [];
   let status = { symbols: {}, connected: false };
+  let _initialHistoryLoaded = false;
   let eventSource = null;
   let reconnectTimer = null;
   let orderedAlerts = new Set();  // track which alert IDs have been ordered
@@ -1240,11 +1241,18 @@
     }
   }
 
-  // ── SSE Connection ──
+  // ── SSE Connection (auto-reconnect on disconnect) ──
   function connectSSE() {
     if (eventSource) { eventSource.close(); }
 
     eventSource = new EventSource('/api/stream');
+
+    eventSource.onerror = () => {
+      // SSE disconnected — reconnect after 3 seconds
+      // This catches silent drops (browser sleep, network hiccup)
+      eventSource.close();
+      setTimeout(connectSSE, 3000);
+    };
 
     eventSource.addEventListener('status', (e) => {
       status = JSON.parse(e.data);
@@ -1268,8 +1276,19 @@
     });
 
     eventSource.addEventListener('history', (e) => {
-      alerts = JSON.parse(e.data);
+      const newAlerts = JSON.parse(e.data);
+      // Check if history contains alerts we haven't seen (reconnect scenario)
+      const existingIds = new Set(alerts.map(a => a.id));
+      const unseenAlerts = newAlerts.filter(a => a.id && !existingIds.has(a.id));
+      alerts = newAlerts;
       renderAlerts();
+      // Play sound if history brought new alerts we missed during disconnect
+      if (unseenAlerts.length > 0 && !_initialHistoryLoaded) {
+        // Don't sound on very first page load
+      } else if (unseenAlerts.length > 0) {
+        playAlertSound();
+      }
+      _initialHistoryLoaded = true;
     });
 
     eventSource.addEventListener('in_play_updated', (e) => {
