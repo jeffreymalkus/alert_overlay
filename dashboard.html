@@ -1065,8 +1065,9 @@
           ? ``
           : ``;
       return `
-        <div class="symbol-card ${hasAlert ? 'has-alert' : ''} ${warmingUp ? 'warming-up' : ''}">
-          <button class="remove-btn" onclick="removeSymbol('${sym}')" title="Remove ${sym}">&times;</button>
+        <div class="symbol-card ${hasAlert ? 'has-alert' : ''} ${warmingUp ? 'warming-up' : ''}"
+             onclick="openChart('${sym}')" style="cursor:pointer;" title="Open ${sym} chart">
+          <button class="remove-btn" onclick="event.stopPropagation(); removeSymbol('${sym}')" title="Remove ${sym}">&times;</button>
           <div class="ticker">${sym}</div>
           <div class="price">${warmingUp ? '...' : '$' + (s.last_price || 0).toFixed(2)}</div>
           ${ipBadge}
@@ -1411,6 +1412,10 @@
     input.focus();
   }
 
+  function openChart(symbol) {
+    window.open(`https://www.tradingview.com/chart/DCyzk2MK/?symbol=${encodeURIComponent(symbol)}`, '_blank');
+  }
+
   function removeSymbol(symbol) {
     if (status.symbols[symbol]) {
       delete status.symbols[symbol];
@@ -1589,8 +1594,9 @@
           ? ``
           : ``;
       return `
-        <div class="symbol-card in-play-card ${hasAlert ? 'has-alert' : ''} ${warmingUp ? 'warming-up' : ''}">
-          <button class="remove-btn" onclick="removeInPlay('${sym}')" title="Remove ${sym}">&times;</button>
+        <div class="symbol-card in-play-card ${hasAlert ? 'has-alert' : ''} ${warmingUp ? 'warming-up' : ''}"
+             onclick="openChart('${sym}')" style="cursor:pointer;" title="Open ${sym} chart">
+          <button class="remove-btn" onclick="event.stopPropagation(); removeInPlay('${sym}')" title="Remove ${sym}">&times;</button>
           <div class="ticker">${sym}</div>
           <div class="price">${warmingUp ? '...' : '$' + (s.last_price || 0).toFixed(2)}</div>
           ${ipBadge}
