@@ -79,8 +79,8 @@ def _make_ema9_v5_c(base):
     """EMA9_V5_C: $0.35 stop floor, $25-250 price band, structural target."""
     c = deepcopy(base)
     c.ema9_v5_enabled = True
-    c.ema9_v5_time_start = 1000
-    c.ema9_v5_time_end = 1059
+    c.ema9_v5_time_start = 950
+    c.ema9_v5_time_end = 1130
     c.ema9_v5_min_stop_dollar = 0.35
     c.ema9_v5_min_ip_score = 0.80
     c.ema9_v5_min_quality_score = 3.0

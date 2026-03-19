@@ -41,7 +41,7 @@ class StrategyConfig:
         "ORH_FBO_V2_B": 0.80,    # PF=3.47 at 0.80, drops at 0.78
         "ORH_FBO_V2_A": 0.78,    # N grows without much PF loss
         "BDR_V3_C": 0.74,         # PF improves as threshold drops (2.17 at 0.74)
-        "EMA9_V5_C": 0.79,        # insensitive, keep tight
+        "EMA9_V5_C": 0.70,        # lowered to increase N; strategy insensitive to threshold
         "BS_STRUCT": 0.80,        # small N, keep tight
     })
     ip_v2_debug_logging: bool = True
