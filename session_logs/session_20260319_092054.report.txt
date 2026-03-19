@@ -1,0 +1,79 @@
+=================================================================
+  STRATEGYMANAGER — FIRST SESSION VALIDATION REPORT
+=================================================================
+
+Engine:    UNKNOWN
+Session:   09:20:54 → 16:22:43
+Runners:   114
+
+─────────────────────────────────────────────
+1. TOTAL ALERT COUNT
+   Alerts fired:   0
+   Alerts blocked: 0 (tape permission gate)
+   LONG:  0
+   SHORT: 0
+
+─────────────────────────────────────────────
+2. ALERTS BY STRATEGY
+   (none)
+
+
+─────────────────────────────────────────────
+3. BAD ENTRY/STOP/TARGET VALUES
+   PASS — no suspicious values detected
+
+─────────────────────────────────────────────
+4. DUPLICATE / SPAM BEHAVIOR
+   PASS — no rapid-fire duplicates detected
+
+─────────────────────────────────────────────
+5. STARTUP & OPEN LATENCY
+   Dashboard start:  09:20:54
+   IBKR connected:   09:20:58
+   All runners ready: 09:22:34
+   First bar:        09:26:00
+   First alert:      (none fired)
+   Startup→Ready:    100s
+
+─────────────────────────────────────────────
+6. RUNTIME EXCEPTIONS
+   ✗ 09:21:45 Error 200, reqId 1454: No security definition has been found for the request, contract: Stock(symbol='ABB', exchange='SMART', currency='USD')
+   ✗ 09:21:45 Error 200, reqId 1455: No security definition has been found for the request, contract: Stock(symbol='ABB', exchange='SMART', currency='USD')
+   ✗ 09:21:45 Error 200, reqId 1456: No security definition has been found for the request, contract: Stock(symbol='ABB', exchange='SMART', currency='USD')
+   ✗ 09:21:58 Error 200, reqId 1502: No security definition has been found for the request, contract: Stock(symbol='CIRCL', exchange='SMART', currency='USD')
+   ✗ 09:21:58 Error 200, reqId 1503: No security definition has been found for the request, contract: Stock(symbol='CIRCL', exchange='SMART', currency='USD')
+   ✗ 09:21:58 Error 200, reqId 1504: No security definition has been found for the request, contract: Stock(symbol='CIRCL', exchange='SMART', currency='USD')
+   ✗ 09:22:44 Error 200, reqId 1696: No security definition has been found for the request, contract: Stock(symbol='ABB', exchange='SMART', currency='USD')
+   ✗ 09:22:47 Error 200, reqId 1712: No security definition has been found for the request, contract: Stock(symbol='CIRCL', exchange='SMART', currency='USD')
+   ✗ 09:26:09 Error 300, reqId 1712: Can't find EId with tickerId:1712
+   ✗ 09:40:24 Error 300, reqId 1696: Can't find EId with tickerId:1696
+   ✗ 09:40:24 Error 200, reqId 1764: No security definition has been found for the request, contract: Stock(symbol='ABB', exchange='SMART', currency='USD')
+   ✗ 09:40:52 Error 300, reqId 1764: Can't find EId with tickerId:1764
+   ✗ 10:11:00 Value (Ticker(contract=Stock(conId=805357791, symbol='HTFL', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='HTFL', tradingClass='NMS'), time=datetime.datetime(2026, 3, 19, 14, 11, 0, 217418, tzinfo=datetime.timezone.utc), minTick=0.01, bid=27.47, bidSize=100.0, bidExchange='Q', ask=28.21, askSize=200.0, askExchange='Q', last=27.5, lastSize=960.0, prevBid=27.46, prevBidSize=300.0, prevAsk=28.0, prevAskSize=300.0, prevLast=27.65, prevLastSize=100.0, volume=580049.604203, open=25.0, high=28.55, low=24.72, close=25.47, ticks=[TickData(time=datetime.datetime(2026, 3, 19, 14, 11, 0, 217418, tzinfo=datetime.timezone.utc), tickType=3, price=28.21, size=200.0)], bboExchange='9c0001', snapshotPermissions=3),) caused exception for event Event<updateEvent, [[None, <weakref at 0x10caef770; to 'SymbolRunner' at 0x10b33f040>, <function SymbolRunner._on_tick at 0x10aa14d30>]]>
+   ✗ 10:36:01 Value (Ticker(contract=Stock(conId=13681, symbol='WDC', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='WDC', tradingClass='NMS'), time=datetime.datetime(2026, 3, 19, 14, 36, 1, 75788, tzinfo=datetime.timezone.utc), minTick=0.01, bid=309.0, bidSize=200.0, bidExchange='PQ', ask=309.41, askSize=300.0, askExchange='PQG', last=309.19, lastSize=100.0, prevBid=309.19, prevBidSize=100.0, prevAsk=309.44, prevAskSize=400.0, prevLast=309.31, prevLastSize=240.0, volume=2290442.570657, open=292.07, high=309.9, low=289.03, close=304.9, ticks=[TickData(time=datetime.datetime(2026, 3, 19, 14, 36, 1, 75788, tzinfo=datetime.timezone.utc), tickType=8, price=-1.0, size=2290442.570657), TickData(time=datetime.datetime(2026, 3, 19, 14, 36, 1, 75788, tzinfo=datetime.timezone.utc), tickType=4, price=309.19, size=100.0), TickData(time=datetime.datetime(2026, 3, 19, 14, 36, 1, 75788, tzinfo=datetime.timezone.utc), tickType=5, price=309.19, size=100.0), TickData(time=datetime.datetime(2026, 3, 19, 14, 36, 1, 75788, tzinfo=datetime.timezone.utc), tickType=1, price=309.0, size=200.0), TickData(time=datetime.datetime(2026, 3, 19, 14, 36, 1, 75788, tzinfo=datetime.timezone.utc), tickType=2, price=309.41, size=300.0)], bboExchange='9c0001', snapshotPermissions=3),) caused exception for event Event<updateEvent, [[None, <weakref at 0x10caef590; to 'SymbolRunner' at 0x10a9eaa00>, <function SymbolRunner._on_tick at 0x10aa14d30>]]>
+   ✗ 11:16:00 Value (Ticker(contract=Stock(conId=135423662, symbol='AAOI', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='AAOI', tradingClass='NMS'), time=datetime.datetime(2026, 3, 19, 15, 16, 0, 712276, tzinfo=datetime.timezone.utc), minTick=0.0001, bid=101.3, bidSize=300.0, bidExchange='Q', ask=101.62, askSize=1000.0, askExchange='PQV', last=101.46, lastSize=100.0, prevBid=101.45, prevBidSize=100.0, prevAsk=101.56, prevAskSize=900.0, prevLast=101.38, prevLastSize=500.0, volume=5485917.142629, open=89.27, high=101.7881, low=88.5, close=92.63, ticks=[TickData(time=datetime.datetime(2026, 3, 19, 15, 16, 0, 712276, tzinfo=datetime.timezone.utc), tickType=4, price=101.46, size=100.0), TickData(time=datetime.datetime(2026, 3, 19, 15, 16, 0, 712276, tzinfo=datetime.timezone.utc), tickType=8, price=-1.0, size=5485917.142629), TickData(time=datetime.datetime(2026, 3, 19, 15, 16, 0, 712276, tzinfo=datetime.timezone.utc), tickType=3, price=101.62, size=1000.0)], bboExchange='9c0001', snapshotPermissions=3),) caused exception for event Event<updateEvent, [[None, <weakref at 0x10c0f9c20; to 'SymbolRunner' at 0x10b766a90>, <function SymbolRunner._on_tick at 0x10aa14d30>]]>
+   ✗ 12:31:00 Value (Ticker(contract=Stock(conId=530906124, symbol='PL', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='PL', tradingClass='PL'), time=datetime.datetime(2026, 3, 19, 16, 31, 0, 196595, tzinfo=datetime.timezone.utc), minTick=0.0001, bid=26.16, bidSize=100.0, bidExchange='N', ask=26.19, askSize=200.0, askExchange='NV', last=26.17, lastSize=1300.0, prevBid=26.15, prevBidSize=900.0, prevAsk=26.18, prevAskSize=300.0, prevLast=26.1521, prevLastSize=611.0, volume=6904394.425663, open=24.06, high=26.54, low=23.94, close=24.81, ticks=[TickData(time=datetime.datetime(2026, 3, 19, 16, 31, 0, 196595, tzinfo=datetime.timezone.utc), tickType=1, price=26.16, size=100.0), TickData(time=datetime.datetime(2026, 3, 19, 16, 31, 0, 196595, tzinfo=datetime.timezone.utc), tickType=3, price=26.19, size=200.0)], bboExchange='a60001', snapshotPermissions=3),) caused exception for event Event<updateEvent, [[None, <weakref at 0x10caef5e0; to 'SymbolRunner' at 0x10cef9490>, <function SymbolRunner._on_tick at 0x10aa14d30>]]>
+   ✗ 12:32:00 Value (Ticker(contract=Stock(conId=525768800, symbol='RIVN', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='RIVN', tradingClass='NMS'), time=datetime.datetime(2026, 3, 19, 16, 32, 0, 349075, tzinfo=datetime.timezone.utc), minTick=0.01, bid=16.0, bidSize=7400.0, bidExchange='CJKPQVZNUH', ask=16.01, askSize=2700.0, askExchange='JKPQVZNUH', last=16.0, lastSize=100.0, prevBid=15.99, prevBidSize=8100.0, prevAsk=16.0, prevAskSize=3100.0, prevLast=15.99, prevLastSize=400.0, volume=44356451.535147, open=16.52, high=17.12, low=15.9, close=15.53, ticks=[TickData(time=datetime.datetime(2026, 3, 19, 16, 32, 0, 349075, tzinfo=datetime.timezone.utc), tickType=0, price=16.0, size=7400.0), TickData(time=datetime.datetime(2026, 3, 19, 16, 32, 0, 349075, tzinfo=datetime.timezone.utc), tickType=3, price=16.01, size=2700.0)], bboExchange='9c0001', snapshotPermissions=3),) caused exception for event Event<updateEvent, [[None, <weakref at 0x10b630810; to 'SymbolRunner' at 0x10c221100>, <function SymbolRunner._on_tick at 0x10aa14d30>]]>
+   ✗ 12:46:00 Value (Ticker(contract=Stock(conId=760250490, symbol='SNDK', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='SNDK', tradingClass='NMS'), time=datetime.datetime(2026, 3, 19, 16, 46, 0, 746268, tzinfo=datetime.timezone.utc), minTick=0.01, bid=745.71, bidSize=100.0, bidExchange='Q', ask=746.0, askSize=400.0, askExchange='KQ', last=745.83, lastSize=200.0, prevBid=745.2, prevBidSize=200.0, prevAsk=745.5, prevAskSize=500.0, prevLast=745.86, prevLastSize=250.0, volume=12683206.381936, open=707.15, high=756.0, low=692.0, close=753.69, ticks=[TickData(time=datetime.datetime(2026, 3, 19, 16, 46, 0, 746268, tzinfo=datetime.timezone.utc), tickType=8, price=-1.0, size=12683206.381936)], bboExchange='9c0001', snapshotPermissions=3),) caused exception for event Event<updateEvent, [[None, <weakref at 0x10caef310; to 'SymbolRunner' at 0x10c831040>, <function SymbolRunner._on_tick at 0x10aa14d30>]]>
+   ✗ 14:16:00 Value (Ticker(contract=Stock(conId=73340487, symbol='SOXL', exchange='SMART', primaryExchange='ARCA', currency='USD', localSymbol='SOXL', tradingClass='SOXL'), time=datetime.datetime(2026, 3, 19, 18, 16, 0, 87376, tzinfo=datetime.timezone.utc), minTick=0.01, bid=53.99, bidSize=4500.0, bidExchange='NKPTVGZUH', ask=54.0, askSize=4300.0, askExchange='CNJKPTVZUH', last=54.0, lastSize=200.0, prevBid=53.98, prevBidSize=6500.0, prevAsk=53.99, prevAskSize=74500.0, prevLast=53.99, prevLastSize=299.0, volume=67407436.381538, open=49.46, high=54.01, low=48.5, close=54.02, ticks=[TickData(time=datetime.datetime(2026, 3, 19, 18, 16, 0, 87376, tzinfo=datetime.timezone.utc), tickType=8, price=-1.0, size=67407436.381538), TickData(time=datetime.datetime(2026, 3, 19, 18, 16, 0, 87376, tzinfo=datetime.timezone.utc), tickType=6, price=54.01, size=0.0), TickData(time=datetime.datetime(2026, 3, 19, 18, 16, 0, 87376, tzinfo=datetime.timezone.utc), tickType=5, price=54.0, size=200.0), TickData(time=datetime.datetime(2026, 3, 19, 18, 16, 0, 87376, tzinfo=datetime.timezone.utc), tickType=0, price=53.99, size=4500.0), TickData(time=datetime.datetime(2026, 3, 19, 18, 16, 0, 87376, tzinfo=datetime.timezone.utc), tickType=3, price=54.0, size=4300.0)], bboExchange='a60001', snapshotPermissions=3),) caused exception for event Event<updateEvent, [[None, <weakref at 0x10b630f40; to 'SymbolRunner' at 0x10b895790>, <function SymbolRunner._on_tick at 0x10aa14d30>]]>
+   ✗ 14:16:00 Value (Ticker(contract=Stock(conId=374627687, symbol='BW', exchange='SMART', primaryExchange='NYSE', currency='USD', localSymbol='BW', tradingClass='BW'), time=datetime.datetime(2026, 3, 19, 18, 16, 0, 828742, tzinfo=datetime.timezone.utc), minTick=0.0001, bid=15.12, bidSize=1500.0, bidExchange='NVH', ask=15.15, askSize=700.0, askExchange='NT', last=15.1277, lastSize=292.0, prevBid=15.1, prevBidSize=1600.0, prevAsk=15.18, prevAskSize=600.0, prevLast=15.1445, prevLastSize=100.0, volume=2261271.251786, open=13.66, high=15.15, low=13.35, close=14.17, ticks=[TickData(time=datetime.datetime(2026, 3, 19, 18, 16, 0, 828742, tzinfo=datetime.timezone.utc), tickType=0, price=15.12, size=1500.0)], bboExchange='a60001', snapshotPermissions=3),) caused exception for event Event<updateEvent, [[None, <weakref at 0x10c7563b0; to 'SymbolRunner' at 0x10c93e070>, <function SymbolRunner._on_tick at 0x10aa14d30>]]>
+   Warnings: 9
+     09:21:45 Unknown contract: Stock(symbol='ABB', exchange='SMART', currency='USD')
+     09:21:58 Unknown contract: Stock(symbol='CIRCL', exchange='SMART', currency='USD')
+     09:40:24 PER-SYMBOL STALE: 1 stale symbols detected. Resubscribing batch of 1: ['ABB']
+     10:24:25 PER-SYMBOL STALE: 1 stale symbols detected. Resubscribing batch of 1: ['YB']
+     11:56:26 PER-SYMBOL STALE: 1 stale symbols detected. Resubscribing batch of 1: ['YB']
+
+─────────────────────────────────────────────
+7. IN-PLAY / UNIVERSE TAGGING
+   In-play symbols loaded: 71
+   (no setup data — offline mode?)
+
+─────────────────────────────────────────────
+BAR PROGRESS
+   Symbols receiving bars: 117
+   Min bars: 220  Max bars: 2030  Avg: 1796
+
+=================================================================
+VERDICT: 20 issue(s) found — review above
+=================================================================

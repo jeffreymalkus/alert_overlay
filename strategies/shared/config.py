@@ -28,12 +28,22 @@ class StrategyConfig:
     # Confirmed stage (10:00 snapshot) is the promotable base gate.
     ip_v2_enabled: bool = True
     ip_v2_threshold_provisional: float = 0.80
-    ip_v2_threshold_confirmed: float = 0.77
+    ip_v2_threshold_confirmed: float = 0.74
     ip_v2_provisional_hhmm: int = 940
     ip_v2_confirmed_hhmm: int = 1000
     ip_v2_recompute_confirmed_each_bar: bool = True
     ip_v2_allow_provisional_promotion: bool = False  # default OFF; provisional trades net -12.2R
     ip_v2_allow_provisional_by_strategy: Dict[str, bool] = field(default_factory=dict)  # e.g. {"HH_QUALITY": True}
+    ip_v2_threshold_by_strategy: Dict[str, float] = field(default_factory=lambda: {
+        "HH_QUALITY": 0.79,        # PF peaks at 0.79 (2.20), dips at 0.75-0.74
+        "EMA_FPIP_V3_B": 0.73,    # PF rises as threshold drops (2.89 at 0.73, +51R)
+        "SP_V2_SIMPLE": 0.77,     # PF peaks at 0.77 (2.56, +34.7R)
+        "ORH_FBO_V2_B": 0.80,    # PF=3.47 at 0.80, drops at 0.78
+        "ORH_FBO_V2_A": 0.78,    # N grows without much PF loss
+        "BDR_V3_C": 0.74,         # PF improves as threshold drops (2.17 at 0.74)
+        "EMA9_V5_C": 0.79,        # insensitive, keep tight
+        "BS_STRUCT": 0.80,        # small N, keep tight
+    })
     ip_v2_debug_logging: bool = True
 
     # ── Market regime ──

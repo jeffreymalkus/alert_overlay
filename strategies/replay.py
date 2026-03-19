@@ -929,8 +929,15 @@ def main():
                         # V2 gate: percentile-ranked, two-stage
                         _ip_v2_result = in_play_v2.get_result(sym, bar_date, hhmm=sig_hhmm)
 
-                        # Block if not passed
-                        if not _ip_v2_result.active_passed:
+                        # Per-strategy threshold (falls back to global default)
+                        _strat_thresh = ip_cfg.ip_v2_threshold_by_strategy.get(
+                            sig.strategy_name, ip_cfg.ip_v2_threshold_confirmed)
+                        _ip_score_raw = _ip_v2_result.active_score
+                        _ip_passed = (not math.isnan(_ip_score_raw) and
+                                      _ip_score_raw >= _strat_thresh and
+                                      _ip_v2_result.active_score_kind != "NONE")
+
+                        if not _ip_passed:
                             funnel["blocked_inplay"] += 1
                             per_strategy_funnel[sig.strategy_name]["blocked_inplay"] += 1
                             if _ip_v2_result.active_score_kind == "NONE":
