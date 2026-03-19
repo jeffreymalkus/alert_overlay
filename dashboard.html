@@ -1413,7 +1413,8 @@
   }
 
   function openChart(symbol) {
-    window.open(`https://www.tradingview.com/chart/DCyzk2MK/?symbol=${encodeURIComponent(symbol)}`, '_blank');
+    // Reuse a single named window — dashboard stays visible, chart updates in place
+    window.open(`https://www.tradingview.com/chart/DCyzk2MK/?symbol=${encodeURIComponent(symbol)}`, 'tvChart');
   }
 
   function removeSymbol(symbol) {
