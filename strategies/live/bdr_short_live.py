@@ -71,6 +71,7 @@ class BDRShortLive(LiveStrategy):
         self._v3_retest_close: float = NaN
         self._v3_waiting_trigger: bool = False
         self._v3_trigger_countdown: int = 0
+        self._v3_bars_since_breakdown: int = 0  # lifecycle expiry counter
 
     def reset_day(self):
         self._init_state()
@@ -108,6 +109,23 @@ class BDRShortLive(LiveStrategy):
                 return None
             spy_close_pct = getattr(market_ctx, 'spy_close_pct_of_range', None)
             if spy_close_pct is not None and spy_close_pct > cfg.bdr_spy_trend_pct:
+                return None
+
+        # ── LIFECYCLE EXPIRY ──
+        if self._bd_active:
+            self._v3_bars_since_breakdown += 1
+            # Hard time cutoff: no entry after configured time
+            _entry_cutoff = cfg.bdr_entry_time_end
+            if hhmm > _entry_cutoff:
+                self._v3_waiting_trigger = False
+                self._bd_active = False
+                self._v3_retest_found = False
+                return None
+            # Max bars from breakdown to entry
+            if self._v3_bars_since_breakdown > cfg.bdr_max_bars_breakdown_to_entry:
+                self._v3_waiting_trigger = False
+                self._bd_active = False
+                self._v3_retest_found = False
                 return None
 
         # ── TRIGGER PHASE ──
@@ -329,6 +347,7 @@ class BDRShortLive(LiveStrategy):
             self._bd_level_tag = tag
             self._bd_bar_vol = bar.volume
             self._v3_retest_found = False
+            self._v3_bars_since_breakdown = 0  # start lifecycle counter
             self._v3_waiting_trigger = False
 
         return None

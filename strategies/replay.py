@@ -95,7 +95,7 @@ STRATEGY_MAX_BARS = {
     "HH_QUALITY": 20, "EMA_FPIP": 24,
     "EMA_FPIP_V3_A": 24, "EMA_FPIP_V3_B": 24, "EMA_FPIP_V3_C": 24,
     "BDR_SHORT": 8,
-    "BDR_V3_A": 8, "BDR_V3_B": 8, "BDR_V3_C": 8, "BDR_V3_D": 8,
+    "BDR_V3_A": 8, "BDR_V3_B": 8, "BDR_V3_C": 16, "BDR_V3_D": 8,
     "BDR_V4_A": 8, "BDR_V4_B": 8, "BDR_V4_C": 8, "BDR_V4_D": 8,
     "EMA9_FT": 120,
     "EMA9_V4_A": 120, "EMA9_V4_B": 120, "EMA9_V4_C": 120, "EMA9_V4_D": 120,

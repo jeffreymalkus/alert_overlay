@@ -494,6 +494,7 @@ class BDRShortStrategy:
         retest_bar_idx = -1
         entry_deadline_idx = -1
         waiting_for_trigger = False
+        bars_since_breakdown = 0
 
         recent_bars = deque(maxlen=10)
         prev_date = None
@@ -544,6 +545,21 @@ class BDRShortStrategy:
                 continue
             if _isnan(vol_ma) or vol_ma <= 0:
                 continue
+
+            # ── LIFECYCLE EXPIRY ──
+            if bd_active:
+                bars_since_breakdown += 1
+                _entry_cutoff = cfg.bdr_entry_time_end
+                if hhmm > _entry_cutoff:
+                    waiting_for_trigger = False
+                    bd_active = False
+                    retest_found = False
+                    continue
+                if bars_since_breakdown > cfg.bdr_max_bars_breakdown_to_entry:
+                    waiting_for_trigger = False
+                    bd_active = False
+                    retest_found = False
+                    continue
 
             # ── TRIGGER PHASE: waiting for retest-low break ──
             if waiting_for_trigger:
@@ -719,6 +735,7 @@ class BDRShortStrategy:
                 bd_bar_range = rng
                 retest_found = False
                 waiting_for_trigger = False
+                bars_since_breakdown = 0  # start lifecycle counter
 
         return signals
 

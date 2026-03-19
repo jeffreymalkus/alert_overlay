@@ -236,6 +236,10 @@ class StrategyConfig:
     bdr_skip_generic_trigger_body_filter: bool = False
     bdr_skip_generic_trigger_vol_filter: bool = False
 
+    # Lifecycle expiry: hard cutoff for retest/entry after breakdown window closes
+    bdr_entry_time_end: int = 1130           # no BDR entry after 11:30 regardless of breakdown time
+    bdr_max_bars_breakdown_to_entry: int = 12  # max 5m bars from breakdown to entry (60min)
+
     # ── BDR V4 controls (rebuilt: internal quality gate, bypasses external A-tier) ──
     bdr_v4_enabled: bool = False
     bdr_v4_min_ip_score: float = 0.80        # V2 in-play percentile floor
