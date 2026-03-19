@@ -350,6 +350,32 @@ class ORHFBOShortV2Live(LiveStrategy):
                 )
                 quality_tier = QualityTier.B_TIER if quality_score >= self.cfg.quality_b_min else QualityTier.C_TIER
 
+        # ── ORH_B sleeve classification ──
+        # Compute trigger bar metrics for sleeve admission
+        _bar_range = max(bar.high - bar.low, 1e-6)
+        _body_fraction = abs(bar.close - bar.open) / _bar_range
+        _counter_wick = (bar.high - max(bar.open, bar.close)) / _bar_range  # upper wick for bearish bar
+        _bar_return_pct = ((bar.close - bar.open) / bar.open * 100.0) if bar.open > 0 else 0.0
+        _rel_impulse = getattr(snap, 'rs_market', 0.0)  # relative impulse vs SPY
+        _hhmm = snap.hhmm
+
+        _is_elite = (quality_tier == QualityTier.A_TIER)
+        _is_pm_continuation = False
+        _is_pm_premium = False
+        _confluence_premium = (len(confluence) >= 5)
+
+        # Primary PM continuation sleeve: hour>=12, body>=0.60, counter_wick<=0.30, return<=-0.20
+        if mode == "B" and _hhmm >= 1200:
+            if (_body_fraction >= 0.60 and _counter_wick <= 0.30 and _bar_return_pct <= -0.20):
+                _is_pm_continuation = True
+                quality_tier = QualityTier.A_TIER  # bypass external gate
+
+        # Premium late-day sleeve: hour>=13, body>=0.55, return<=-0.15, rel_impulse<=-0.10
+        if mode == "B" and _hhmm >= 1300:
+            if (_body_fraction >= 0.55 and _bar_return_pct <= -0.15 and _rel_impulse <= -0.10):
+                _is_pm_premium = True
+                quality_tier = QualityTier.A_TIER  # bypass external gate
+
         return RawSignal(
             strategy_name=f"ORH_FBO_V2_{mode}",
             direction=-1,
@@ -370,6 +396,14 @@ class ORHFBOShortV2Live(LiveStrategy):
                 "structure_quality": round(struct_q, 3) if self.rejection and self.quality else None,
                 "confluence": confluence,
                 "quality_tier": quality_tier.value,
+                "body_fraction": round(_body_fraction, 3),
+                "counter_wick_fraction": round(_counter_wick, 3),
+                "bar_return_pct": round(_bar_return_pct, 3),
+                "relative_impulse_vs_spy": round(_rel_impulse, 4),
+                "orh_b_is_elite": _is_elite,
+                "orh_b_is_pm_continuation": _is_pm_continuation,
+                "orh_b_is_pm_premium": _is_pm_premium,
+                "orh_b_confluence_premium": _confluence_premium,
                 "reject_reasons": reject_reasons,
                 "in_play_score": snap.in_play_score,
                 **_stop_meta,
