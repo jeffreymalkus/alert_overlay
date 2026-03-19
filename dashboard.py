@@ -214,9 +214,14 @@ def _run_ibkr_connection(host="127.0.0.1", port=7497, client_id=10):
 
     Called either from main() (normal startup) or from a background thread
     when the user clicks Connect in deferred mode.
+    ib_insync requires its own asyncio event loop on the calling thread.
     """
     global _ib, _cfg, _runners, _spy_engine, _qqq_engine, _spy_snap, _qqq_snap
     global _order_manager, _spy_runner, _qqq_runner, _main_loop
+
+    # Create a new event loop for this thread (ib_insync needs one)
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
 
     cfg = _cfg
 
