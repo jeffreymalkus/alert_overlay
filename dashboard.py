@@ -167,12 +167,7 @@ _MIN_CONFLUENCE_BY_STRATEGY = {
 # ── Quality-scored strategies (ALL — unified pipeline) ──
 # All 13 strategies use internal rejection filters + quality scoring + A-tier gate.
 # No more Family A/B split. One pipeline, one gate chain.
-_QUALITY_SCORED = {
-    "SC_SNIPER", "SP_ATIER", "HH_QUALITY",
-    # FL_ANTICHOP demoted 2026-03-17
-    "EMA_FPIP", "BDR_SHORT", "EMA9_FT", "BS_STRUCT", "ORL_FBD_LONG",
-    "ORH_FBO_V2_A", "ORH_FBO_V2_B", "PDH_FBO_B", "FFT_NEWLOW_REV",
-}
+# _QUALITY_SCORED — removed, unused. Quality tier gate reads from signal metadata directly.
 _spy_engine: Optional[MarketEngine] = None
 _qqq_engine: Optional[MarketEngine] = None
 _spy_snap = None
@@ -1847,13 +1842,21 @@ class SymbolRunner:
                 log.info(f"[{self.symbol}] BLOCKED {setup_name} by in-play: not yet evaluated")
                 continue
 
-            if not self._ip_result.active_passed:
+            # Per-strategy IP threshold (matches replay gate logic)
+            import math as _math
+            _ip_score_raw = self._ip_result.active_score
+            _strat_thresh = _IP_CFG.ip_v2_threshold_by_strategy.get(
+                sig.strategy_name, _IP_CFG.ip_v2_threshold_confirmed)
+            _ip_passed = (not _math.isnan(_ip_score_raw) and
+                          _ip_score_raw >= _strat_thresh and
+                          self._ip_result.active_score_kind != "NONE")
+
+            if not _ip_passed:
                 setup_name = _STRATEGY_SETUP_MAP.get(
                     sig.strategy_name, (sig.strategy_name,))[0]
                 log.info(f"[{self.symbol}] BLOCKED {setup_name} by in-play V2: "
-                         f"score={self._ip_result.active_score:.3f} "
-                         f"kind={self._ip_result.active_score_kind} "
-                         f"flags={self._ip_result.reason_flags}")
+                         f"score={_ip_score_raw:.3f} < {_strat_thresh:.2f} "
+                         f"kind={self._ip_result.active_score_kind}")
                 continue
 
             # Block provisional promotion unless per-strategy override
