@@ -644,37 +644,40 @@ def main():
             return c
 
         live_strats = [
-            SCSniperLive(strat_cfg),
-            # FLAntiChopLive(strat_cfg),  # DEMOTED 2026-03-17: PF=0.53 — revisit for different stock type
-            SpencerATierLive(strat_cfg),
+            # ── PRODUCTION SLEEVE (profitable strategies) ──
             HitchHikerLive(strat_cfg),
-            EmaFpipLive(strat_cfg),  # legacy FPIP (unchanged defaults)
-            EmaFpipLive(_make_fpip_v3_a(strat_cfg), strategy_name="EMA_FPIP_V3_A"),
             EmaFpipLive(_make_fpip_v3_b(strat_cfg), strategy_name="EMA_FPIP_V3_B"),
-            EmaFpipLive(_make_fpip_v3_c(strat_cfg), strategy_name="EMA_FPIP_V3_C"),
-            BDRShortLive(strat_cfg),  # legacy BDR
-            BDRShortLive(_make_bdr_v3_a(strat_cfg), strategy_name="BDR_V3_A"),
-            BDRShortLive(_make_bdr_v3_b(strat_cfg), strategy_name="BDR_V3_B"),
-            BDRShortLive(_make_bdr_v3_c(strat_cfg), strategy_name="BDR_V3_C"),
-            BDRShortLive(_make_bdr_v3_d(strat_cfg), strategy_name="BDR_V3_D"),
-            BDRShortLive(_make_bdr_v4_a(strat_cfg), strategy_name="BDR_V4_A"),
-            BDRShortLive(_make_bdr_v4_b(strat_cfg), strategy_name="BDR_V4_B"),
-            BDRShortLive(_make_bdr_v4_c(strat_cfg), strategy_name="BDR_V4_C"),
-            BDRShortLive(_make_bdr_v4_d(strat_cfg), strategy_name="BDR_V4_D"),
-            EMA9FirstTouchLive(strat_cfg),  # legacy EMA9
-            EMA9FirstTouchLive(_make_ema9_v4_a(strat_cfg), strategy_name="EMA9_V4_A"),
-            EMA9FirstTouchLive(_make_ema9_v4_b(strat_cfg), strategy_name="EMA9_V4_B"),
-            EMA9FirstTouchLive(_make_ema9_v4_c(strat_cfg), strategy_name="EMA9_V4_C"),
-            EMA9FirstTouchLive(_make_ema9_v4_d(strat_cfg), strategy_name="EMA9_V4_D"),
-            EMA9FirstTouchLive(_make_ema9_v5_a(strat_cfg), strategy_name="EMA9_V5_A"),
-            EMA9FirstTouchLive(_make_ema9_v5_b(strat_cfg), strategy_name="EMA9_V5_B"),
+            SpencerATierLive(strat_cfg),
+            ORHFBOShortV2Live(strat_cfg),                                            # V2_A + V2_B
             EMA9FirstTouchLive(_make_ema9_v5_c(strat_cfg), strategy_name="EMA9_V5_C"),
-            EMA9FirstTouchLive(_make_ema9_v5_d(strat_cfg), strategy_name="EMA9_V5_D"),
+            BDRShortLive(_make_bdr_v3_c(strat_cfg), strategy_name="BDR_V3_C"),
             BacksideStructureLive(strat_cfg),
-            ORLFBDLongLive(strat_cfg),
-            ORHFBOShortV2Live(strat_cfg),
-            PDHFBOShortLive(strat_cfg, enable_mode_a=False, enable_mode_b=True),
-            FFTNewlowReversalLive(strat_cfg),
+
+            # ── DISABLED — revisit later ──
+            # SCSniperLive(strat_cfg),                                               # PF=0.32, -3.1R
+            # EmaFpipLive(strat_cfg),                                                # legacy FPIP, PF=0.86
+            # EmaFpipLive(_make_fpip_v3_a(strat_cfg), strategy_name="EMA_FPIP_V3_A"),  # redundant with V3_B
+            # EmaFpipLive(_make_fpip_v3_c(strat_cfg), strategy_name="EMA_FPIP_V3_C"),  # redundant with V3_B
+            # BDRShortLive(strat_cfg),                                               # legacy BDR, N=0
+            # BDRShortLive(_make_bdr_v3_a(strat_cfg), strategy_name="BDR_V3_A"),     # PF=1.13 but redundant with V3_C
+            # BDRShortLive(_make_bdr_v3_b(strat_cfg), strategy_name="BDR_V3_B"),     # PF=1.11 but redundant
+            # BDRShortLive(_make_bdr_v3_d(strat_cfg), strategy_name="BDR_V3_D"),     # PF=0.31
+            # BDRShortLive(_make_bdr_v4_a(strat_cfg), strategy_name="BDR_V4_A"),     # N=2, too low
+            # BDRShortLive(_make_bdr_v4_b(strat_cfg), strategy_name="BDR_V4_B"),     # N=3, too low
+            # BDRShortLive(_make_bdr_v4_c(strat_cfg), strategy_name="BDR_V4_C"),     # N=2, too low
+            # BDRShortLive(_make_bdr_v4_d(strat_cfg), strategy_name="BDR_V4_D"),     # N=0
+            # EMA9FirstTouchLive(strat_cfg),                                         # legacy EMA9, N=0
+            # EMA9FirstTouchLive(_make_ema9_v4_a(strat_cfg), strategy_name="EMA9_V4_A"),  # PF=0.30, superseded by V5
+            # EMA9FirstTouchLive(_make_ema9_v4_b(strat_cfg), strategy_name="EMA9_V4_B"),  # PF=0.30, superseded
+            # EMA9FirstTouchLive(_make_ema9_v4_c(strat_cfg), strategy_name="EMA9_V4_C"),  # PF=0.36, superseded
+            # EMA9FirstTouchLive(_make_ema9_v4_d(strat_cfg), strategy_name="EMA9_V4_D"),  # PF=0.24, superseded
+            # EMA9FirstTouchLive(_make_ema9_v5_a(strat_cfg), strategy_name="EMA9_V5_A"),  # redundant with V5_C
+            # EMA9FirstTouchLive(_make_ema9_v5_b(strat_cfg), strategy_name="EMA9_V5_B"),  # redundant
+            # EMA9FirstTouchLive(_make_ema9_v5_d(strat_cfg), strategy_name="EMA9_V5_D"),  # redundant
+            # ORLFBDLongLive(strat_cfg),                                             # PF=0.64, -5.3R
+            # PDHFBOShortLive(strat_cfg, enable_mode_a=False, enable_mode_b=True),   # N=1, PF=0.00
+            # FFTNewlowReversalLive(strat_cfg),                                      # PF=0.00, -6.0R
+            # FLAntiChopLive(strat_cfg),                                             # DEMOTED 2026-03-17
         ]
         mgr = StrategyManager(strategies=live_strats, symbol=sym, config=strat_cfg)
 
