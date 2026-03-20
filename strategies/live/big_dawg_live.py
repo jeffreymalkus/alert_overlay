@@ -191,22 +191,30 @@ class BigDawgLive(LiveStrategy):
                         return self._build_signal(snap, bar, i_atr, vol_ma, vw, e9, pdh,
                                                   pattern_avg_vol, pre_pattern_avg_vol, day_range)
 
-            # Update pattern bounds
-            new_high = max(self._pattern_high, bar.high)
-            new_low = min(self._pattern_low, bar.low)
+            # ── BOUNDED PATTERN: reject bars that expand beyond initial range ──
+            # A real consolidation/flag should NOT expand. If price breaks
+            # outside the range established by the first 2 bars, reset.
+            expansion_tolerance = 0.15 * i_atr if i_atr > 0 else 0.05  # small tolerance
+
+            # Bar breaks above pattern high (but not enough for breakout)
+            if bar.high > self._pattern_high and bar.high <= self._pattern_high + expansion_tolerance:
+                pass  # minor overshoot, tolerate but don't expand
+            elif bar.high > self._pattern_high:
+                # Already checked as breakout above — if we're here, breakout conditions failed
+                self._pattern_active = False
+                return None
+
+            # Bar breaks below pattern low — pattern is broken
+            if bar.low < self._pattern_low - expansion_tolerance:
+                self._pattern_active = False
+                return None
 
             # If pattern gets too long, reset
             if self._pattern_bars >= self._pattern_max:
                 self._pattern_active = False
                 return None
 
-            # If price breaks below pattern significantly, reset
-            if bar.close < self._pattern_low - 0.5 * i_atr:
-                self._pattern_active = False
-                return None
-
-            self._pattern_high = new_high
-            self._pattern_low = new_low
+            # Pattern bounds stay fixed (no expansion)
             self._pattern_bars += 1
             self._pattern_total_vol += bar.volume
 
@@ -245,8 +253,8 @@ class BigDawgLive(LiveStrategy):
 
         target, actual_rr, target_tag, skipped = compute_structural_target_long(
             entry_price, risk, _candidates,
-            min_rr=0.0, max_rr=5.0,
-            fallback_rr=2.0, mode="structural",
+            min_rr=0.0, max_rr=1.5,
+            fallback_rr=1.5, mode="structural",
         )
         if skipped:
             target = entry_price + risk * 2.0

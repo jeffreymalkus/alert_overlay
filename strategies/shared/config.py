@@ -342,23 +342,23 @@ class StrategyConfig:
 
     # ── Big Dawg Consolidation (BD) Long V1 thresholds ──
     enable_big_dawg: bool = True
-    bd_time_start: Dict[int, int] = field(default_factory=lambda: {1: 1100, 5: 1100})
-    bd_time_end: Dict[int, int] = field(default_factory=lambda: {1: 1330, 5: 1330})
+    bd_time_start: Dict[int, int] = field(default_factory=lambda: {1: 1130, 5: 1130})
+    bd_time_end: Dict[int, int] = field(default_factory=lambda: {1: 1215, 5: 1215})
     bd_require_above_vwap: bool = True
     bd_require_above_pdh: bool = True
     bd_require_upper_third: bool = True
     bd_min_day_above_open_frac: float = 0.75  # 75% of bars above open
-    bd_min_prior_drive_pct: float = 1.5       # min % move from open to pre-pattern high
+    bd_min_prior_drive_pct: float = 3.0       # min % move from open to pre-pattern high
     bd_pattern_min_bars: Dict[int, int] = field(default_factory=lambda: {1: 3, 5: 2})
     bd_pattern_max_bars: Dict[int, int] = field(default_factory=lambda: {1: 12, 5: 4})
     bd_pattern_max_dayrange_frac: float = 0.50  # pattern size <= 50% of day range
     bd_require_declining_vol: bool = True
-    bd_pattern_vol_frac_max: float = 0.80     # pattern avg vol <= 80% of pre-pattern avg vol
+    bd_pattern_vol_frac_max: float = 0.70     # pattern avg vol <= 80% of pre-pattern avg vol
     bd_reject_crescendo: bool = True          # reject if first pattern bar is loudest
     bd_break_vol_frac: float = 1.00           # breakout bar vol >= this * pattern avg vol
     bd_stop_buffer: float = 0.02              # $0.02 below pattern low
     bd_max_attempts: int = 1                  # one-and-done
-    bd_exit_mode: str = "structural"          # "move2move_dbb" | "structural" (V1: structural fallback)
+    bd_exit_mode: str = "fixed_rr_0.75"          # "move2move_dbb" | "structural" (V1: structural fallback)
     bd_max_bars: Dict[int, int] = field(default_factory=lambda: {1: 45, 5: 10})
     bd_min_ip_score: float = 0.80
     bd_min_quality_score: float = 0.0

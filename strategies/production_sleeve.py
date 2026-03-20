@@ -147,8 +147,9 @@ def build_production_strategies(strat_cfg: StrategyConfig) -> list:
         SpencerATierLive(_make_sp_v2_simple(strat_cfg), strategy_name="SP_V2_SIMPLE"),  # Spencer V2
         EMA9FirstTouchLive(_make_ema9_v5_c(strat_cfg), strategy_name="EMA9_V5_C"),      # EMA9 V5_C
         BacksideStructureLive(strat_cfg),                                                # BS_STRUCT
-        GapGiveGoLive(strat_cfg),                                                            # GGG_LONG_V1
-        BigDawgLive(strat_cfg),                                                              # BIG_DAWG_LONG_V1
+        # ── EXPERIMENTAL — quarantined until PF improves ──
+        # GapGiveGoLive(strat_cfg),                                                          # GGG: PF=0.22, needs premarket low
+        BigDawgLive(strat_cfg),                                                              # BIG_DAWG: under active research
         # FLS source-faithful variants — all 4 failed authoritative replay
         # FLS_MIDDAY: N=33, PF=0.44, -6.1R (78% time exits, measured-move targets too far)
         # FLS_MORNING: N=4, PF=0.22, -1.8R
