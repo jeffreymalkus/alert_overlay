@@ -27,7 +27,7 @@ class StrategyConfig:
     # Provisional stage (9:40) is informational only — not promotable by default.
     # Confirmed stage (10:00 snapshot) is the promotable base gate.
     ip_v2_enabled: bool = True
-    ip_v2_threshold_provisional: float = 0.80
+    ip_v2_threshold_provisional: float = 0.74  # aligned with confirmed threshold
     ip_v2_threshold_confirmed: float = 0.74
     ip_v2_provisional_hhmm: int = 940
     ip_v2_confirmed_hhmm: int = 1000
