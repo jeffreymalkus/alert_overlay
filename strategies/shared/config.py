@@ -319,6 +319,27 @@ class StrategyConfig:
     ema9_5m_require_ema9_gt_ema20: bool = False
     ema9_5m_touch_count_max: int = 999
 
+    # ── Fashionably Late Source (FLS) thresholds ──
+    enable_fls: bool = True
+    fls_time_start: Dict[int, int] = field(default_factory=lambda: {1: 1000, 5: 1000})
+    fls_time_end: Dict[int, int] = field(default_factory=lambda: {1: 1045, 5: 1045})
+    fls_min_decline_atr: float = 1.0         # min decline from session high to LOD
+    fls_ema_slope_lookback: int = 3          # bars for EMA9 slope
+    fls_vwap_slope_lookback: int = 3         # bars for VWAP slope
+    fls_min_ema_slope: float = 0.001         # EMA9 must be rising
+    fls_max_vwap_slope: float = 0.001        # VWAP must be flat or falling
+    fls_flat_ema_max_bars: int = 3           # 15min on 5m: invalidate if flat >3 bars
+    fls_flat_ema_threshold: float = 0.001    # slope below this = flat
+    fls_require_conv_gt_div_vol: bool = False # convergence vol > divergence vol
+    fls_max_cross_dwell_bars: int = 999      # bars spent near cross before triggering
+    fls_cross_dwell_atr_frac: float = 0.05   # "near cross" = abs(ema9-vwap) < this*ATR
+    fls_min_hold_above_ema_frac: float = 0.0 # fraction of convergence bars closing above EMA9
+    fls_target_mode: str = "measured_move"   # measured move from LOD to cross
+    fls_stop_mode: str = "measured_move"     # 1/3 of (VWAP - LOD) below VWAP
+    fls_max_bars: Dict[int, int] = field(default_factory=lambda: {1: 120, 5: 24})
+    fls_min_ip_score: float = 0.80
+    fls_min_quality_score: float = 0.0
+
     # ── Gap Give and Go (GGG) Long V1 thresholds ──
     enable_ggg: bool = True
     ggg_time_start: Dict[int, int] = field(default_factory=lambda: {1: 930, 5: 930})

@@ -15,6 +15,7 @@ from .live.ema9_ft_live import EMA9FirstTouchLive
 from .live.bdr_short_live import BDRShortLive
 from .live.backside_live import BacksideStructureLive
 from .live.gap_give_go_live import GapGiveGoLive
+from .live.fashionably_late_source_live import FashionablyLateSourceLive
 
 
 # ══════════════════════════════════════════════════════════════
@@ -92,6 +93,40 @@ def _make_ema9_v5_c(base):
     return c
 
 
+def _make_fls_morning(base):
+    """FLS morning: 10:00-10:45, base source-faithful rules."""
+    c = deepcopy(base)
+    c.fls_time_start = {1: 1000, 5: 1000}
+    c.fls_time_end = {1: 1045, 5: 1045}
+    c.fls_require_conv_gt_div_vol = False
+    c.fls_max_cross_dwell_bars = 999
+    c.fls_min_hold_above_ema_frac = 0.0
+    return c
+
+def _make_fls_midday(base):
+    """FLS midday: 10:46-13:30."""
+    c = deepcopy(base)
+    c.fls_time_start = {1: 1046, 5: 1050}  # 5m: nearest 5m bar
+    c.fls_time_end = {1: 1330, 5: 1330}
+    c.fls_require_conv_gt_div_vol = False
+    c.fls_max_cross_dwell_bars = 999
+    c.fls_min_hold_above_ema_frac = 0.0
+    return c
+
+def _make_fls_morning_vol(base):
+    """FLS morning + convergence vol > divergence vol."""
+    c = _make_fls_morning(base)
+    c.fls_require_conv_gt_div_vol = True
+    return c
+
+def _make_fls_morning_vol_tight(base):
+    """FLS morning + vol + dwell limit + hold above EMA."""
+    c = _make_fls_morning_vol(base)
+    c.fls_max_cross_dwell_bars = 2
+    c.fls_min_hold_above_ema_frac = 0.60
+    return c
+
+
 # ══════════════════════════════════════════════════════════════
 # PRODUCTION SLEEVE — THE SINGLE SOURCE OF TRUTH
 # ══════════════════════════════════════════════════════════════
@@ -112,6 +147,15 @@ def build_production_strategies(strat_cfg: StrategyConfig) -> list:
         EMA9FirstTouchLive(_make_ema9_v5_c(strat_cfg), strategy_name="EMA9_V5_C"),      # EMA9 V5_C
         BacksideStructureLive(strat_cfg),                                                # BS_STRUCT
         GapGiveGoLive(strat_cfg),                                                            # GGG_LONG_V1
+        # FLS source-faithful variants — all 4 failed authoritative replay
+        # FLS_MIDDAY: N=33, PF=0.44, -6.1R (78% time exits, measured-move targets too far)
+        # FLS_MORNING: N=4, PF=0.22, -1.8R
+        # FLS_MORNING_VOL: N=1, PF=0.00
+        # FLS_MORN_VOL_TIGHT: N=1, PF=0.00
+        # FashionablyLateSourceLive(_make_fls_morning(strat_cfg), strategy_name="FLS_MORNING"),
+        # FashionablyLateSourceLive(_make_fls_midday(strat_cfg), strategy_name="FLS_MIDDAY"),
+        # FashionablyLateSourceLive(_make_fls_morning_vol(strat_cfg), strategy_name="FLS_MORNING_VOL"),
+        # FashionablyLateSourceLive(_make_fls_morning_vol_tight(strat_cfg), strategy_name="FLS_MORN_VOL_TIGHT"),
 
         # ── SHORT FAILURE / BREAKDOWN ──
         ORHFBOShortV2Live(strat_cfg),                                                    # ORH_FBO_V2_A + V2_B
