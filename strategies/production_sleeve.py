@@ -16,6 +16,7 @@ from .live.bdr_short_live import BDRShortLive
 from .live.backside_live import BacksideStructureLive
 from .live.gap_give_go_live import GapGiveGoLive
 from .live.fashionably_late_source_live import FashionablyLateSourceLive
+from .live.big_dawg_live import BigDawgLive
 
 
 # ══════════════════════════════════════════════════════════════
@@ -147,6 +148,7 @@ def build_production_strategies(strat_cfg: StrategyConfig) -> list:
         EMA9FirstTouchLive(_make_ema9_v5_c(strat_cfg), strategy_name="EMA9_V5_C"),      # EMA9 V5_C
         BacksideStructureLive(strat_cfg),                                                # BS_STRUCT
         GapGiveGoLive(strat_cfg),                                                            # GGG_LONG_V1
+        BigDawgLive(strat_cfg),                                                              # BIG_DAWG_LONG_V1
         # FLS source-faithful variants — all 4 failed authoritative replay
         # FLS_MIDDAY: N=33, PF=0.44, -6.1R (78% time exits, measured-move targets too far)
         # FLS_MORNING: N=4, PF=0.22, -1.8R
