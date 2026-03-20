@@ -33,7 +33,9 @@ class StrategyConfig:
     ip_v2_confirmed_hhmm: int = 1000
     ip_v2_recompute_confirmed_each_bar: bool = True
     ip_v2_allow_provisional_promotion: bool = False  # default OFF; provisional trades net -12.2R
-    ip_v2_allow_provisional_by_strategy: Dict[str, bool] = field(default_factory=dict)  # e.g. {"HH_QUALITY": True}
+    ip_v2_allow_provisional_by_strategy: Dict[str, bool] = field(default_factory=lambda: {
+        "GGG_LONG_V1": True,  # GGG fires 9:30-9:45, before confirmed stage (10:00)
+    })
     ip_v2_threshold_by_strategy: Dict[str, float] = field(default_factory=lambda: {
         "HH_QUALITY": 0.79,        # PF peaks at 0.79 (2.20), dips at 0.75-0.74
         "EMA_FPIP_V3_B": 0.73,    # PF rises as threshold drops (2.89 at 0.73, +51R)
@@ -316,6 +318,27 @@ class StrategyConfig:
     ema9_5m_require_above_vwap: bool = False
     ema9_5m_require_ema9_gt_ema20: bool = False
     ema9_5m_touch_count_max: int = 999
+
+    # ── Gap Give and Go (GGG) Long V1 thresholds ──
+    enable_ggg: bool = True
+    ggg_time_start: Dict[int, int] = field(default_factory=lambda: {1: 930, 5: 930})
+    ggg_time_end: Dict[int, int] = field(default_factory=lambda: {1: 945, 5: 945})
+    ggg_gap_min_pct: float = 0.5            # minimum gap up % from prior close
+    ggg_flush_min_pct: float = 0.3          # minimum flush down % from open
+    ggg_flush_max_gap_retrace_frac: float = 0.50  # reject if flush retraces > 50% of gap
+    ggg_support_mode: str = "prior_day_high"  # V1: PDH as support (premarket_low not available in RTH data)
+    ggg_consol_min_bars: Dict[int, int] = field(default_factory=lambda: {1: 3, 5: 1})
+    ggg_consol_max_bars: Dict[int, int] = field(default_factory=lambda: {1: 7, 5: 2})
+    ggg_consol_max_flush_frac: float = 0.50  # consolidation height <= 50% of flush
+    ggg_break_vol_frac: float = 1.10         # breakout bar vol >= 110% of consol avg
+    ggg_max_failed_probes: int = 1           # max failed pushes above consol high before trigger
+    ggg_stop_buffer: float = 0.02            # $0.02 below consolidation low
+    ggg_max_attempts: int = 2                # max entries (initial + 1 re-entry)
+    ggg_reentry_window_bars: int = 3         # re-entry allowed within 3 bars of stop
+    ggg_exit_mode: str = "move2move_dbb"     # "move2move_dbb" | "structural"
+    ggg_max_bars: Dict[int, int] = field(default_factory=lambda: {1: 60, 5: 12})
+    ggg_min_ip_score: float = 0.80           # internal IP floor
+    ggg_min_quality_score: float = 0.0       # internal quality floor (0 = no filter)
 
     # ── Backside Structure Only thresholds ──
     enable_backside: bool = True

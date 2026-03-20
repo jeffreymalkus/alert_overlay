@@ -14,6 +14,7 @@ from .live.orh_fbo_short_v2_live import ORHFBOShortV2Live
 from .live.ema9_ft_live import EMA9FirstTouchLive
 from .live.bdr_short_live import BDRShortLive
 from .live.backside_live import BacksideStructureLive
+from .live.gap_give_go_live import GapGiveGoLive
 
 
 # ══════════════════════════════════════════════════════════════
@@ -110,6 +111,7 @@ def build_production_strategies(strat_cfg: StrategyConfig) -> list:
         SpencerATierLive(_make_sp_v2_simple(strat_cfg), strategy_name="SP_V2_SIMPLE"),  # Spencer V2
         EMA9FirstTouchLive(_make_ema9_v5_c(strat_cfg), strategy_name="EMA9_V5_C"),      # EMA9 V5_C
         BacksideStructureLive(strat_cfg),                                                # BS_STRUCT
+        GapGiveGoLive(strat_cfg),                                                            # GGG_LONG_V1
 
         # ── SHORT FAILURE / BREAKDOWN ──
         ORHFBOShortV2Live(strat_cfg),                                                    # ORH_FBO_V2_A + V2_B

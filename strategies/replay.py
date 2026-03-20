@@ -84,7 +84,7 @@ STRATEGY_TARGET_RR = {
     "EMA9_FT": 2.0,
     "EMA9_V4_A": 1.25, "EMA9_V4_B": 2.0, "EMA9_V4_C": 1.25, "EMA9_V4_D": 1.25,
     "EMA9_V5_A": 2.0, "EMA9_V5_B": 2.0, "EMA9_V5_C": 2.0, "EMA9_V5_D": 2.0,
-    "BS_STRUCT": 2.0, "ORL_FBD_LONG": 2.0,
+    "BS_STRUCT": 2.0, "GGG_LONG_V1": 1.5, "ORL_FBD_LONG": 2.0,
     "ORH_FBO_V2_A": 1.5, "ORH_FBO_V2_B": 1.5,
     "PDH_FBO_B": 1.5, "FFT_NEWLOW_REV": 2.0,
 }
@@ -100,7 +100,7 @@ STRATEGY_MAX_BARS = {
     "EMA9_FT": 120,
     "EMA9_V4_A": 120, "EMA9_V4_B": 120, "EMA9_V4_C": 120, "EMA9_V4_D": 120,
     "EMA9_V5_A": 120, "EMA9_V5_B": 120, "EMA9_V5_C": 120, "EMA9_V5_D": 120,
-    "BS_STRUCT": 30, "ORL_FBD_LONG": 24,
+    "BS_STRUCT": 30, "GGG_LONG_V1": 60, "ORL_FBD_LONG": 24,
     "ORH_FBO_V2_A": 60, "ORH_FBO_V2_B": 60,
     "PDH_FBO_B": 60, "FFT_NEWLOW_REV": 60,
 }
@@ -131,7 +131,7 @@ QUALITY_SCORED_STRATEGIES = {
     "BDR_V4_A", "BDR_V4_B", "BDR_V4_C", "BDR_V4_D",
     "EMA9_FT", "EMA9_V4_A", "EMA9_V4_B", "EMA9_V4_C", "EMA9_V4_D",
     "EMA9_V5_A", "EMA9_V5_B", "EMA9_V5_C", "EMA9_V5_D",
-    "BS_STRUCT", "ORL_FBD_LONG",
+    "BS_STRUCT", "GGG_LONG_V1", "ORL_FBD_LONG",
     "ORH_FBO_V2_A", "ORH_FBO_V2_B", "PDH_FBO_B", "FFT_NEWLOW_REV",
     "FL_REBUILD_STRUCT_Q7", "FL_REBUILD_R10_Q6",
 }
@@ -890,13 +890,21 @@ def main():
                         # V2 gate: percentile-ranked, two-stage
                         _ip_v2_result = in_play_v2.get_result(sym, bar_date, hhmm=sig_hhmm)
 
-                        # Per-strategy threshold (falls back to global default)
-                        _strat_thresh = ip_cfg.ip_v2_threshold_by_strategy.get(
-                            sig.strategy_name, ip_cfg.ip_v2_threshold_confirmed)
-                        _ip_score_raw = _ip_v2_result.active_score
-                        _ip_passed = (not math.isnan(_ip_score_raw) and
-                                      _ip_score_raw >= _strat_thresh and
-                                      _ip_v2_result.active_score_kind != "NONE")
+                        # Strategies with internal IP gates that fire before V2 is ready
+                        _IP_GATE_BYPASS_STRATEGIES = {"GGG_LONG_V1"}  # fires 9:30-9:45, before V2 at 10:00
+
+                        if sig.strategy_name in _IP_GATE_BYPASS_STRATEGIES:
+                            # Strategy uses its own internal IP gate — skip external V2 check
+                            ip_score = _ip_v2_result.active_score if not math.isnan(_ip_v2_result.active_score) else 0.0
+                            _ip_passed = True
+                        else:
+                            # Per-strategy threshold (falls back to global default)
+                            _strat_thresh = ip_cfg.ip_v2_threshold_by_strategy.get(
+                                sig.strategy_name, ip_cfg.ip_v2_threshold_confirmed)
+                            _ip_score_raw = _ip_v2_result.active_score
+                            _ip_passed = (not math.isnan(_ip_score_raw) and
+                                          _ip_score_raw >= _strat_thresh and
+                                          _ip_v2_result.active_score_kind != "NONE")
 
                         if not _ip_passed:
                             funnel["blocked_inplay"] += 1
@@ -1184,7 +1192,7 @@ def main():
                    "EMA_FPIP", "EMA_FPIP_V3_A", "EMA_FPIP_V3_B", "EMA_FPIP_V3_C",
                    "EMA9_FT", "EMA9_V4_A", "EMA9_V4_B", "EMA9_V4_C", "EMA9_V4_D",
                    "EMA9_V5_A", "EMA9_V5_B", "EMA9_V5_C", "EMA9_V5_D",
-                   "BS_STRUCT", "ORL_FBD_LONG",
+                   "BS_STRUCT", "GGG_LONG_V1", "ORL_FBD_LONG",
                    "FFT_NEWLOW_REV", "FL_REBUILD_STRUCT_Q7", "FL_REBUILD_R10_Q6"}
     # FL_ANTICHOP demoted 2026-03-17
     short_strats = {"BDR_SHORT", "BDR_V3_A", "BDR_V3_B", "BDR_V3_C", "BDR_V3_D",
