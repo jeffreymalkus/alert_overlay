@@ -79,10 +79,9 @@ _ip_log_handle = open(_ip_log_file, "w", newline="", buffering=1)
 _ip_csv_writer = _csv.writer(_ip_log_handle)
 _ip_csv_writer.writerow([
     "timestamp", "symbol", "date", "hhmm",
-    "gap_pct", "rvol", "dolvol", "range_exp", "score",
-    "pass_gap", "pass_rvol", "pass_dolvol", "passed",
-    "data_status", "vol_depth", "range_depth",
-    "regime_spy_pct",
+    "gap_abs_pct", "abs_move_from_open_pct", "abs_rs_vs_spy_pct",
+    "score_kind", "active_score", "active_passed",
+    "reason_flags", "regime_spy_pct",
 ])
 
 # ── Legacy engine — emergency rollback only ──
@@ -1690,18 +1689,13 @@ class SymbolRunner:
                 self.symbol,
                 bar.timestamp.date().isoformat(),
                 hhmm,
-                f"{st.gap_pct:.4f}",
-                f"{st.rvol:.3f}",
-                f"{st.dolvol:.0f}",
-                f"{st.range_expansion:.3f}",
-                f"{result.score:.1f}",
-                result.pass_gap,
-                result.pass_rvol,
-                result.pass_dolvol,
-                result.passed,
-                result.data_status,
-                baselines["vol_baseline_depth"],
-                baselines["range_baseline_depth"],
+                f"{result.gap_abs_pct:.4f}" if not math.isnan(result.gap_abs_pct) else "",
+                f"{result.abs_move_from_open_pct:.4f}" if not math.isnan(result.abs_move_from_open_pct) else "",
+                f"{result.abs_rs_vs_spy_pct:.4f}" if not math.isnan(result.abs_rs_vs_spy_pct) else "",
+                result.active_score_kind,
+                f"{result.active_score:.3f}" if not math.isnan(result.active_score) else "",
+                result.active_passed,
+                result.reason_flags,
                 spy_pct,
             ])
         except Exception:
@@ -1928,9 +1922,8 @@ class SymbolRunner:
             else:
                 alert_data["in_play_score"] = None
                 alert_data["in_play_status"] = "PENDING"
-            # Add tape permission to alert data for display
-            if sig.direction == 1 and alert_ctx is not None:
-                alert_data["tape_perm"] = round(perm_reading.permission, 3)
+            # Tape permission: not available in current V2 gate path
+            # (perm_reading was removed when tape gate was simplified)
 
             with _lock:
                 _alert_history.insert(0, alert_data)
