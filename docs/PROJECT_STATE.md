@@ -1,20 +1,43 @@
 # Portfolio D — Project State
 
-**Last updated:** 2026-03-10
+**Last updated:** 2026-03-22
 
 ---
 
 ## Status Taxonomy
 
-### ACTIVE (live trading)
+### ACTIVE (live trading — 7 strategies)
+
+**Production sleeve** (`production_sleeve.py` — single source of truth):
+| Strategy | Type | N | PF | TotalR |
+|----------|------|---|---|--------|
+| EMA_FPIP_V3_B | Long continuation | 139 | 2.31 | +61.8 |
+| HH_QUALITY | Long continuation | 90 | 2.04 | +27.5 |
+| SP_V2_SIMPLE | Long continuation | 61 | 1.90 | +21.3 |
+| BIG_DAWG_LONG_V1 | Long continuation | 20 | 5.60 | +7.0 |
+| BS_STRUCT | Long continuation | 5 | 7.97 | +2.8 |
+| ORH_FBO_V2_B | Short failure | 17 | 5.46 | +17.9 |
+| BDR_V3_C | Short breakdown | 15 | 3.09 | +8.7 |
+| **TOTAL** | | **347** | **2.37** | **+147.0** |
+
+**Disabled strategies** (`config.disabled_strategies` — Gate -1 silent drop):
+| Strategy | Reason | Status |
+|----------|--------|--------|
+| ORH_FBO_V2_A | PF=0.81, -9.3R worst in portfolio | Permanently disabled |
+| EMA9_V5_C | Median RR=0.29, structural R:R problem on 1-min bars | Preserved for research |
+| EMA9_V6_A | 5-min redesign, promising R:R but N=5 gated sample | Preserved for research |
+
+**Active infrastructure:**
 | Component | Description |
 |-----------|-------------|
-| 2ND CHANCE (SC) LONG | Q ≥ 5, validated, 30 trades PF 1.62 |
-| BDR SHORT | Regime-gated (RED + TREND), 30 trades PF 1.44 |
-| EMA PULL SHORT | Early session (< 14:00), short-only, 11 trades PF 1.29 |
 | Dashboard server | `dashboard.py` + `dashboard.html`, reqMktData streaming |
 | Order manager | Bracket order placement via IBKR paper |
 | Layered regime gate | SPY/QQQ tape permission for long-side filter |
+| InPlayProxyV2 objective gate | 0–10 bucketed score (move, RS, gap, range-exp, RVOL), per-strategy hard floor |
+| IP gate bypass set | GGG_LONG_V1, BIG_DAWG_LONG_V1 skip IP gate (internal logic is sufficient) |
+| BIG_DAWG admissibility filters | Projected RR band [0.50–1.10], bullish counter-wick ≤0.20 |
+| BS_STRUCT admissibility filters | time ≤12:30, close_loc ≥0.70, body ≥0.70, wick ≤0.15, struct_q ≥0.50, confluence ≥2 |
+| ORH_FBO_V2_B recovery rule | 12:00–14:00 window + counter_wick ≤0.15 bypass for late-session signals |
 
 ### INFRASTRUCTURE COMPLETE (operational, not yet live-validated)
 | Component | Description | Dependency |
@@ -132,7 +155,7 @@ curl -s http://localhost:8877/api/iplog | python3 -c "import sys,json; d=json.lo
 
 | File | Category | Purpose |
 |------|----------|---------|
-| `config.py` | ACTIVE | Central configuration (validated 3-setup model) |
+| `config.py` | ACTIVE | Central config — IP hard floors (0–10), disabled_strategies frozenset, ip_v2_gate_bypass_strategies frozenset, BIG_DAWG/BS_STRUCT/ORH_B filter params |
 | `models.py` | ACTIVE | Data models (Signal, Bar, SetupId, etc.) |
 | `engine.py` | ACTIVE | Signal detection engine |
 | `backtest.py` | ACTIVE | Core backtest harness |

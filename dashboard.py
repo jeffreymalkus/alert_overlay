@@ -898,10 +898,12 @@ class MarketBarTracker:
             useRTH=True, formatDate=1,
         )
         bars_1min_count = 0
+        all_warmup_1min = []
         if intraday_bars:
             for ib_bar in intraday_bars:
                 bar_1min = self._convert_bar(ib_bar)
                 bars_1min_count += 1
+                all_warmup_1min.append(bar_1min)
 
                 bar_5min = self._upsampler.on_bar(bar_1min)
                 if bar_5min is not None:
@@ -913,6 +915,10 @@ class MarketBarTracker:
             if final_5min is not None:
                 self.snapshot = self.market_engine.process_bar(final_5min)
                 self._bars_completed += 1
+
+            # Cache warmup bars to disk (SPY/QQQ needed for replay)
+            if all_warmup_1min:
+                _append_bars_to_cache(self.symbol, all_warmup_1min)
 
             log.info(f"[MKT:{self.symbol}] Caught up: {bars_1min_count} 1-min bars → "
                      f"{self._bars_completed} 5-min bars")
@@ -972,6 +978,9 @@ class MarketBarTracker:
         completed_1min = self._aggregator.on_tick(price, cum_vol, ts)
         if completed_1min is None:
             return  # still forming 1-min bar
+
+        # ── Record live 1-min bar to disk (SPY/QQQ) ──
+        _append_bars_to_cache(self.symbol, [completed_1min])
 
         # Step 2: 1-min → 5-min upsampler
         completed_5min = self._upsampler.on_bar(completed_1min)
@@ -1764,6 +1773,9 @@ class SymbolRunner:
         if completed_1min is None:
             return  # still forming 1-min bar
 
+        # ── Record live 1-min bar to disk ──
+        _append_bars_to_cache(self.symbol, [completed_1min])
+
         # Step 2a: Feed 1-min bar to 1-min strategies (EMA9_FT etc.)
         market_ctx_1m = self._build_market_ctx(completed_1min)
         signals_1m = self._strategy_mgr.on_1min_bar(completed_1min, market_ctx=market_ctx_1m)
@@ -1825,6 +1837,10 @@ class SymbolRunner:
                     pass  # fallback: _bar_hhmm stays None → shared module uses default 0.15%
 
         for sig in raw_signals:
+            # ── Gate -1: Disabled strategies — silently drop ──
+            if sig.strategy_name in _IP_CFG.disabled_strategies:
+                continue
+
             # ── Gate 0: Regime gate (time-normalized, shared module) ──
             regime_pass, regime_reason = _check_regime_gate(
                 sig.strategy_name, bar_time_hhmm=_bar_hhmm)
@@ -1837,28 +1853,32 @@ class SymbolRunner:
             # ── Gate 0.5: In-play V2 objective gate ──
             # Objective 0–10 score. PASS if score >= per-strategy hard floor.
             # No relational score. No cross-sectional ranking.
-            if self._ip_result is None or not hasattr(self._ip_result, 'active_passed'):
+
+            # Bypass IP gate for strategies with sufficient internal logic
+            if sig.strategy_name in _IP_CFG.ip_v2_gate_bypass_strategies:
+                pass  # skip IP gate entirely — strategy's own filters are the gate
+            elif self._ip_result is None or not hasattr(self._ip_result, 'active_passed'):
                 setup_name = _STRATEGY_SETUP_MAP.get(
                     sig.strategy_name, (sig.strategy_name,))[0]
                 log.info(f"[{self.symbol}] BLOCKED {setup_name} by in-play: not yet evaluated")
                 continue
+            else:
+                # Per-strategy hard floor (objective 0-10 scale)
+                import math as _math
+                _ip_score_raw = self._ip_result.active_score
+                _strat_floor = _IP_CFG.ip_v2_threshold_by_strategy.get(
+                    sig.strategy_name, _IP_CFG.ip_v2_threshold_confirmed)
+                _ip_passed = (not _math.isnan(_ip_score_raw) and
+                              _ip_score_raw >= _strat_floor and
+                              self._ip_result.active_score_kind != "NONE")
 
-            # Per-strategy hard floor (objective 0-10 scale)
-            import math as _math
-            _ip_score_raw = self._ip_result.active_score
-            _strat_floor = _IP_CFG.ip_v2_threshold_by_strategy.get(
-                sig.strategy_name, _IP_CFG.ip_v2_threshold_confirmed)
-            _ip_passed = (not _math.isnan(_ip_score_raw) and
-                          _ip_score_raw >= _strat_floor and
-                          self._ip_result.active_score_kind != "NONE")
-
-            if not _ip_passed:
-                setup_name = _STRATEGY_SETUP_MAP.get(
-                    sig.strategy_name, (sig.strategy_name,))[0]
-                log.info(f"[{self.symbol}] BLOCKED {setup_name} by in-play V2: "
-                         f"score={_ip_score_raw:.1f} < floor {_strat_floor:.1f} "
-                         f"kind={self._ip_result.active_score_kind}")
-                continue
+                if not _ip_passed:
+                    setup_name = _STRATEGY_SETUP_MAP.get(
+                        sig.strategy_name, (sig.strategy_name,))[0]
+                    log.info(f"[{self.symbol}] BLOCKED {setup_name} by in-play V2: "
+                             f"score={_ip_score_raw:.1f} < floor {_strat_floor:.1f} "
+                             f"kind={self._ip_result.active_score_kind}")
+                    continue
 
             # ── ORH_FBO_V2_B special recovery rule ──
             # Afternoon short sleeve: time window + counter_wick_fraction filter

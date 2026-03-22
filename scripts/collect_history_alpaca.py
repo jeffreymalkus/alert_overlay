@@ -71,23 +71,69 @@ SECTOR_ETFS = [
 MARKET_ETFS = ["SPY", "QQQ"]
 
 
-def load_watchlist() -> List[str]:
-    """Load symbols from watchlist.txt."""
-    wl_path = Path(__file__).parent.parent / "watchlist.txt"
+def _load_symbol_file(path: Path) -> List[str]:
+    """Load one-symbol-per-line file, skip comments and blanks."""
+    if not path.exists():
+        return []
     symbols = []
-    if wl_path.exists():
-        for line in wl_path.read_text().splitlines():
-            sym = line.strip()
-            if sym and not sym.startswith("#"):
-                symbols.append(sym)
+    for line in path.read_text().splitlines():
+        sym = line.strip()
+        if sym and not sym.startswith("#"):
+            symbols.append(sym.upper())
     return symbols
 
 
+def load_watchlist() -> List[str]:
+    """Load symbols from watchlist.txt."""
+    return _load_symbol_file(Path(__file__).parent.parent / "watchlist.txt")
+
+
+def load_in_play() -> List[str]:
+    """Load current in-play symbols from in_play.txt."""
+    return _load_symbol_file(Path(__file__).parent.parent / "in_play.txt")
+
+
+def load_in_play_snapshots() -> List[str]:
+    """Load ALL symbols that have appeared in any in_play_snapshot."""
+    snap_dir = Path(__file__).parent.parent / "in_play_snapshots"
+    if not snap_dir.exists():
+        return []
+    all_syms = set()
+    for f in snap_dir.glob("*.txt"):
+        all_syms.update(_load_symbol_file(f))
+    return sorted(all_syms)
+
+
+def load_recorded_symbols() -> List[str]:
+    """Load symbols that already have 1-min data on disk."""
+    one_min_dir = DATA_DIR / "1min"
+    if not one_min_dir.exists():
+        return []
+    return sorted([
+        f.stem.replace("_1min", "")
+        for f in one_min_dir.glob("*_1min.csv")
+    ])
+
+
 def get_all_symbols() -> List[str]:
-    """Deduplicated list: market + sector ETFs + watchlist."""
+    """Deduplicated list: market + sector ETFs + watchlist + in-play + recorded.
+
+    This ensures Alpaca pulls cover the FULL live universe, not just
+    the static watchlist. In-play symbols rotate daily; snapshot history
+    captures every symbol that was ever in-play; recorded symbols include
+    anything the dashboard bar-recorded from IBKR.
+    """
     seen: Set[str] = set()
     ordered = []
-    for sym in MARKET_ETFS + SECTOR_ETFS + load_watchlist():
+    sources = (
+        MARKET_ETFS
+        + SECTOR_ETFS
+        + load_watchlist()
+        + load_in_play()
+        + load_in_play_snapshots()
+        + load_recorded_symbols()
+    )
+    for sym in sources:
         if sym not in seen:
             seen.add(sym)
             ordered.append(sym)

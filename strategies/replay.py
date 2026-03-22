@@ -83,7 +83,7 @@ STRATEGY_TARGET_RR = {
     "BDR_V4_A": 1.5, "BDR_V4_B": 1.5, "BDR_V4_C": 1.5, "BDR_V4_D": 1.5,
     "EMA9_FT": 2.0,
     "EMA9_V4_A": 1.25, "EMA9_V4_B": 2.0, "EMA9_V4_C": 1.25, "EMA9_V4_D": 1.25,
-    "EMA9_V5_A": 2.0, "EMA9_V5_B": 2.0, "EMA9_V5_C": 2.0, "EMA9_V5_D": 2.0,
+    "EMA9_V5_A": 2.0, "EMA9_V5_B": 2.0, "EMA9_V5_C": 2.0, "EMA9_V5_D": 2.0, "EMA9_V6_A": 2.0,
     "BS_STRUCT": 2.0, "GGG_LONG_V1": 1.5, "BIG_DAWG_LONG_V1": 2.0, "FLS_MORNING": 2.0, "FLS_MIDDAY": 2.0, "FLS_MORNING_VOL": 2.0, "FLS_MORN_VOL_TIGHT": 2.0, "ORL_FBD_LONG": 2.0,
     "ORH_FBO_V2_A": 1.5, "ORH_FBO_V2_B": 1.5,
     "PDH_FBO_B": 1.5, "FFT_NEWLOW_REV": 2.0,
@@ -99,7 +99,7 @@ STRATEGY_MAX_BARS = {
     "BDR_V4_A": 8, "BDR_V4_B": 8, "BDR_V4_C": 8, "BDR_V4_D": 8,
     "EMA9_FT": 120,
     "EMA9_V4_A": 120, "EMA9_V4_B": 120, "EMA9_V4_C": 120, "EMA9_V4_D": 120,
-    "EMA9_V5_A": 120, "EMA9_V5_B": 120, "EMA9_V5_C": 120, "EMA9_V5_D": 120,
+    "EMA9_V5_A": 120, "EMA9_V5_B": 120, "EMA9_V5_C": 120, "EMA9_V5_D": 120, "EMA9_V6_A": 24,
     "BS_STRUCT": 30, "GGG_LONG_V1": 60, "BIG_DAWG_LONG_V1": 10, "FLS_MORNING": 24, "FLS_MIDDAY": 24, "FLS_MORNING_VOL": 24, "FLS_MORN_VOL_TIGHT": 24, "ORL_FBD_LONG": 24,
     "ORH_FBO_V2_A": 60, "ORH_FBO_V2_B": 60,
     "PDH_FBO_B": 60, "FFT_NEWLOW_REV": 60,
@@ -130,7 +130,7 @@ QUALITY_SCORED_STRATEGIES = {
     "BDR_SHORT", "BDR_V3_A", "BDR_V3_B", "BDR_V3_C", "BDR_V3_D",
     "BDR_V4_A", "BDR_V4_B", "BDR_V4_C", "BDR_V4_D",
     "EMA9_FT", "EMA9_V4_A", "EMA9_V4_B", "EMA9_V4_C", "EMA9_V4_D",
-    "EMA9_V5_A", "EMA9_V5_B", "EMA9_V5_C", "EMA9_V5_D",
+    "EMA9_V5_A", "EMA9_V5_B", "EMA9_V5_C", "EMA9_V5_D", "EMA9_V6_A",
     "BS_STRUCT", "GGG_LONG_V1", "BIG_DAWG_LONG_V1", "FLS_MORNING", "FLS_MIDDAY", "FLS_MORNING_VOL", "FLS_MORN_VOL_TIGHT", "ORL_FBD_LONG",
     "ORH_FBO_V2_A", "ORH_FBO_V2_B", "PDH_FBO_B", "FFT_NEWLOW_REV",
     "FL_REBUILD_STRUCT_Q7", "FL_REBUILD_R10_Q6",
@@ -316,12 +316,34 @@ class BarUpsampler:
 #  Main
 # ════════════════════════════════════════════════════════════════
 
+def _parse_date(s: str) -> date:
+    """Parse YYYY-MM-DD string to date object."""
+    return date.fromisoformat(s)
+
+
 def main():
-    ungated = "--ungated" in sys.argv
+    import argparse
+    parser = argparse.ArgumentParser(description="Live-path replay")
+    parser.add_argument("--ungated", action="store_true",
+                        help="Run without gates (raw signal performance)")
+    parser.add_argument("--start", type=str, default=None,
+                        help="Start date inclusive (YYYY-MM-DD). Bars before this still warm up indicators but signals are not collected.")
+    parser.add_argument("--end", type=str, default=None,
+                        help="End date inclusive (YYYY-MM-DD)")
+    args, _unknown = parser.parse_known_args()
+
+    ungated = args.ungated
+    date_start = _parse_date(args.start) if args.start else None
+    date_end = _parse_date(args.end) if args.end else None
     mode_label = "UNGATED (no gates)" if ungated else "GATED (regime + in-play + tape)"
+    date_label = ""
+    if date_start or date_end:
+        ds = str(date_start) if date_start else "..."
+        de = str(date_end) if date_end else "..."
+        date_label = f" [{ds} → {de}]"
 
     print("=" * 100)
-    print(f"LIVE-PATH REPLAY — Portfolio D [{mode_label}]")
+    print(f"LIVE-PATH REPLAY — Portfolio D [{mode_label}]{date_label}")
     print("=" * 100)
 
     # ── Load data ──
@@ -870,11 +892,25 @@ def main():
             if not raw_signals:
                 continue
 
+            # ── Date filter: skip signal processing outside requested range ──
+            # Indicators have already warmed up on all bars above.
+            if date_start and bar_date < date_start:
+                continue
+            if date_end and bar_date > date_end:
+                continue
+
             # ── Gate chain ──
             for sig in raw_signals:
                 funnel["raw_signals"] += 1
                 per_strategy_funnel[sig.strategy_name]["raw"] += 1
                 sig_hhmm = sig.hhmm if hasattr(sig, 'hhmm') else hhmm
+
+                # Gate -1: Disabled strategies — silently drop
+                if sig.strategy_name in ip_cfg.disabled_strategies:
+                    funnel["blocked_disabled"] = funnel.get("blocked_disabled", 0) + 1
+                    per_strategy_funnel[sig.strategy_name]["blocked_disabled"] = \
+                        per_strategy_funnel[sig.strategy_name].get("blocked_disabled", 0) + 1
+                    continue
 
                 if not ungated:
                     # Gate 0: Regime (time-normalized thresholds)
@@ -894,10 +930,9 @@ def main():
                         _ip_v2_result = in_play_v2.get_result(
                             sym, bar_date, hhmm=sig_hhmm, hard_floor=_strat_floor)
 
-                        # Strategies with internal IP gates that fire before V2 is ready
-                        _IP_GATE_BYPASS_STRATEGIES = {"GGG_LONG_V1"}  # fires 9:30-9:45, before V2 at 10:00
-
-                        if sig.strategy_name in _IP_GATE_BYPASS_STRATEGIES:
+                        # Strategies that bypass the IP hard-floor gate entirely
+                        # (configured in ip_v2_gate_bypass_strategies)
+                        if sig.strategy_name in ip_cfg.ip_v2_gate_bypass_strategies:
                             ip_score = _ip_v2_result.active_score if not math.isnan(_ip_v2_result.active_score) else 0.0
                             _ip_passed = True
                         else:
@@ -1002,7 +1037,9 @@ def main():
                 funnel["promoted"] += 1
                 per_strategy_funnel[sig.strategy_name]["promoted"] += 1
 
-                ip_score = ip_result_current.score if ip_result_current else 0.0
+                # Use V2 ip_score if already set by V2 gate; fall back to V1
+                if not _USE_IP_V2:
+                    ip_score = ip_result_current.score if ip_result_current else 0.0
                 regime_label = regime_reason if not ungated else ""
 
                 # Compute quality inputs available in live pipeline
@@ -1203,7 +1240,7 @@ def main():
     long_strats = {"SC_SNIPER", "SP_ATIER", "SP_V2_BAL", "SP_V2_SIMPLE", "SP_V2_HQ", "HH_QUALITY",
                    "EMA_FPIP", "EMA_FPIP_V3_A", "EMA_FPIP_V3_B", "EMA_FPIP_V3_C",
                    "EMA9_FT", "EMA9_V4_A", "EMA9_V4_B", "EMA9_V4_C", "EMA9_V4_D",
-                   "EMA9_V5_A", "EMA9_V5_B", "EMA9_V5_C", "EMA9_V5_D",
+                   "EMA9_V5_A", "EMA9_V5_B", "EMA9_V5_C", "EMA9_V5_D", "EMA9_V6_A",
                    "BS_STRUCT", "GGG_LONG_V1", "BIG_DAWG_LONG_V1", "FLS_MORNING", "FLS_MIDDAY", "FLS_MORNING_VOL", "FLS_MORN_VOL_TIGHT", "ORL_FBD_LONG",
                    "FFT_NEWLOW_REV", "FL_REBUILD_STRUCT_Q7", "FL_REBUILD_R10_Q6"}
     # FL_ANTICHOP demoted 2026-03-17

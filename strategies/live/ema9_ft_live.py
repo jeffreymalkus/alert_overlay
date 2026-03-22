@@ -97,7 +97,7 @@ class EMA9FirstTouchLive(LiveStrategy):
         # ── Phase 1: Opening drive detection ──
         if not self._drive_confirmed:
             if not _isnan(snap.session_open) and i_atr > 0:
-                drive_dist = bar.high - snap.session_open
+                drive_dist = snap.session_high - snap.session_open
                 if drive_dist >= cfg.e9ft_drive_min_atr * i_atr:
                     if not _isnan(vw) and bar.close > vw:
                         if not cfg.e9ft_ema9_above_ema20 or e9 > e20:

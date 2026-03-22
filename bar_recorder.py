@@ -168,7 +168,7 @@ def aggregate_1min_to_5min(symbol: str, data_dir: Optional[Path] = None):
         h = max(float(r["high"]) for r in rows)
         l = min(float(r["low"]) for r in rows)
         c = float(rows[-1]["close"])
-        v = sum(int(r["volume"]) for r in rows)
+        v = sum(int(float(r["volume"])) for r in rows)
         new_5min[bucket_key] = {
             "datetime": bucket_key,
             "open": f"{o:.4f}",

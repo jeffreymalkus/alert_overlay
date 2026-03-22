@@ -48,6 +48,18 @@ class StrategyConfig:
         "ORH_FBO_V2_A": 5.0,
         "ORH_FBO_V2_B": 6.0,
         "EMA9_V5_C": 5.0,
+        "EMA9_V6_A": 5.0,
+    })
+    # Strategies whose own internal logic is sufficient — skip the IP hard-floor gate entirely.
+    ip_v2_gate_bypass_strategies: frozenset = frozenset({
+        "GGG_LONG_V1",       # fires 9:30-9:45, before V2 is ready
+        "BIG_DAWG_LONG_V1",  # internal RR band + counter-wick filter is the real gate
+    })
+    # Strategies disabled from the active sleeve — signals are silently dropped.
+    disabled_strategies: frozenset = frozenset({
+        "ORH_FBO_V2_A",  # PF=0.81, -9.3R — worst strategy in portfolio
+        "EMA9_V5_C",     # demoted: median RR=0.29 on 1m bars, structural R:R problem
+        "EMA9_V6_A",     # demoted: 5m redesign promising but insufficient sample (N=5 gated)
     })
     ip_v2_debug_logging: bool = True
 
@@ -308,6 +320,25 @@ class StrategyConfig:
     ema9_v5_price_max: float = 99999.0        # max entry price (99999 = no filter)
     ema9_v5_struct_min_rr: float = 0.0        # NO minimum RR floor
     ema9_v5_struct_max_rr: float = 5.0        # generous cap
+
+    # ── EMA9 V6_A controls (5-min bar redesign) ──
+    ema9_v6a_enabled: bool = False
+    ema9_v6a_time_start: int = 1015       # E9 ready at bar 9 → ~10:15 on 5-min
+    ema9_v6a_time_end: int = 1230         # wider window (no fatal resets)
+    ema9_v6a_drive_min_atr: float = 1.0   # session_high - open >= 1.0 * 5m ATR
+    ema9_v6a_max_pb_depth_atr: float = 0.75   # max PB depth in 5-min ATR (much wider than 1m)
+    ema9_v6a_pb_vwap_buffer_atr: float = 0.15  # how far below VWAP PB can dip
+    ema9_v6a_trigger_body_min: float = 0.30    # trigger bar body >= 30% of range
+    ema9_v6a_trigger_close_min: float = 0.50   # close in upper 50% of bar
+    ema9_v6a_min_stop_dollar: float = 0.30     # minimum dollar risk floor
+    ema9_v6a_price_min: float = 20.0
+    ema9_v6a_price_max: float = 500.0          # include TSLA, META, etc.
+    ema9_v6a_struct_min_rr: float = 1.0        # force minimum 1:1 RR (key V5 fix)
+    ema9_v6a_struct_max_rr: float = 5.0
+    ema9_v6a_fallback_rr: float = 2.0
+    ema9_v6a_stop_buffer: float = 0.03         # $ buffer below PB low
+    ema9_v6a_above_vwap: bool = True           # close above VWAP at trigger
+    ema9_v6a_min_rs_vs_spy: float = 0.0005     # min relative strength (0.05%)
 
     # ── EMA9 V4 controls ──
     ema9_v4_enabled: bool = False

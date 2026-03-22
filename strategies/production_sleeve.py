@@ -12,6 +12,7 @@ from .live.ema_fpip_live import EmaFpipLive
 from .live.spencer_atier_live import SpencerATierLive
 from .live.orh_fbo_short_v2_live import ORHFBOShortV2Live
 from .live.ema9_ft_live import EMA9FirstTouchLive
+from .live.ema9_v6a_live import EMA9V6ALive
 from .live.bdr_short_live import BDRShortLive
 from .live.backside_live import BacksideStructureLive
 from .live.gap_give_go_live import GapGiveGoLive
@@ -94,6 +95,30 @@ def _make_ema9_v5_c(base):
     return c
 
 
+def _make_ema9_v6_a(base):
+    """EMA9_V6_A: 5-min bar redesign. Fixes V5 R:R geometry problem.
+    Key: min 1:1 RR, 5m ATR depth, wider price band, no E9>E20 noise."""
+    c = deepcopy(base)
+    c.ema9_v6a_enabled = True
+    c.ema9_v6a_time_start = 1015
+    c.ema9_v6a_time_end = 1230
+    c.ema9_v6a_drive_min_atr = 1.0
+    c.ema9_v6a_max_pb_depth_atr = 0.75
+    c.ema9_v6a_pb_vwap_buffer_atr = 0.15
+    c.ema9_v6a_trigger_body_min = 0.30
+    c.ema9_v6a_trigger_close_min = 0.50
+    c.ema9_v6a_min_stop_dollar = 0.30
+    c.ema9_v6a_price_min = 20.0
+    c.ema9_v6a_price_max = 500.0
+    c.ema9_v6a_struct_min_rr = 1.0      # KEY FIX: min 1:1 RR (V5 had 0.0 → median 0.29 RR)
+    c.ema9_v6a_struct_max_rr = 5.0
+    c.ema9_v6a_fallback_rr = 2.0
+    c.ema9_v6a_stop_buffer = 0.03
+    c.ema9_v6a_above_vwap = True
+    c.ema9_v6a_min_rs_vs_spy = 0.0005
+    return c
+
+
 def _make_fls_morning(base):
     """FLS morning: 10:00-10:45, base source-faithful rules."""
     c = deepcopy(base)
@@ -145,7 +170,6 @@ def build_production_strategies(strat_cfg: StrategyConfig) -> list:
         HitchHikerLive(strat_cfg),                                                      # HH_QUALITY
         EmaFpipLive(_make_fpip_v3_b(strat_cfg), strategy_name="EMA_FPIP_V3_B"),        # FPIP V3_B
         SpencerATierLive(_make_sp_v2_simple(strat_cfg), strategy_name="SP_V2_SIMPLE"),  # Spencer V2
-        EMA9FirstTouchLive(_make_ema9_v5_c(strat_cfg), strategy_name="EMA9_V5_C"),      # EMA9 V5_C
         BacksideStructureLive(strat_cfg),                                                # BS_STRUCT
         # ── EXPERIMENTAL — quarantined until PF improves ──
         # GapGiveGoLive(strat_cfg),                                                          # GGG: PF=0.22, needs premarket low

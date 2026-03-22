@@ -294,7 +294,7 @@ class IndicatorSnapshot:
     rvol: float = NaN
 
     # ── Market context scores (set by manager from MarketContext) ──
-    in_play_score: float = 0.0    # V2: percentile 0-1, never zeroed on failure
+    in_play_score: float = 0.0    # replay: V1 composite 0-7 | dashboard: V2 objective 0-10. See ALIGNMENT NOTE below.
     in_play_passed: bool = False  # V2: active_passed from InPlayProxyV2
     regime_score: float = 0.5     # GREEN=1.0, FLAT=0.5, RED=0.0 (from SPY trend)
     alignment_score: float = 0.0  # 0-1: (0.5 if SPY>VWAP) + (0.5 if EMA9>EMA20)
@@ -418,7 +418,7 @@ class SharedIndicators:
         self._ip_session_evaluated: bool = False       # True once first-N bars collected
 
         # Market context scores: set by dashboard/manager from MarketContext
-        self._in_play_score: float = 0.0              # V2: percentile 0-1, never zeroed
+        self._in_play_score: float = 0.0              # replay: V1 0-7 | dashboard: V2 0-10 (KNOWN MISMATCH)
         self._in_play_passed: bool = False             # V2: active_passed
         self._regime_score: float = 0.5               # GREEN=1.0, FLAT=0.5, RED=0.0
         self._alignment_score: float = 0.0            # (0.5 if SPY>VWAP) + (0.5 if EMA9>EMA20)
