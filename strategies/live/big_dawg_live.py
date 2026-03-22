@@ -261,6 +261,21 @@ class BigDawgLive(LiveStrategy):
             actual_rr = 2.0
             target_tag = "fixed_rr_fallback"
 
+        # ── BIG_DAWG admissibility filters ──
+
+        # 1. Projected RR band: reject if outside [min, max]
+        if (_isnan(actual_rr) or actual_rr < cfg.bd_min_actual_rr
+                or actual_rr > cfg.bd_max_actual_rr):
+            return None
+
+        # 2. Bullish trigger-bar anatomy: counter_wick_fraction = (open - low) / (high - low)
+        _bar_range = bar.high - bar.low
+        if _bar_range <= 0:
+            return None  # degenerate bar — reject safely
+        _counter_wick_fraction = (bar.open - bar.low) / _bar_range
+        if _counter_wick_fraction > cfg.bd_max_counter_wick_fraction:
+            return None
+
         # Metadata
         pattern_size = self._pattern_high - self._pattern_low
         above_frac = self._bars_above_open / max(self._total_bars, 1)
@@ -335,6 +350,7 @@ class BigDawgLive(LiveStrategy):
                 "pattern_vol_frac": round(pattern_vol_frac, 3),
                 "breakout_vol_frac": round(bar.volume / pattern_avg_vol, 2) if pattern_avg_vol > 0 else 0,
                 "actual_rr": round(actual_rr, 3),
+                "counter_wick_fraction": round(_counter_wick_fraction, 3),
                 "target_tag": target_tag,
                 "exit_mode": cfg.bd_exit_mode,
                 "quality_tier": quality_tier.value,

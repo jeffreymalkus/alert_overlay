@@ -371,6 +371,9 @@ class StrategyConfig:
     bd_max_bars: Dict[int, int] = field(default_factory=lambda: {1: 45, 5: 10})
     bd_min_ip_score: float = 0.80
     bd_min_quality_score: float = 0.0
+    bd_min_actual_rr: float = 0.50              # reject projected RR below this
+    bd_max_actual_rr: float = 1.10              # reject projected RR above this
+    bd_max_counter_wick_fraction: float = 0.20  # reject bullish trigger bars with lower wick > 20%
 
     # ── Gap Give and Go (GGG) Long V1 thresholds ──
     enable_ggg: bool = True
