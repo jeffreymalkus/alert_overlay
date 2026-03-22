@@ -22,31 +22,40 @@ class StrategyConfig:
     ip_range_expansion_min: Dict[int, float] = field(default_factory=lambda: {1: 1.5, 5: 1.5})
     ip_first_n_bars: Dict[int, int] = field(default_factory=lambda: {1: 15, 5: 3})
 
-    # ── In-play proxy V2 (percentile-ranked, two-stage base gate) ──
+    # ── In-play proxy V2 (objective 0–10 score, hard-floor-only gate) ──
     # V2 is the default base gate. Set ip_v2_enabled=False to revert to V1.
-    # Provisional stage (9:40) is informational only — not promotable by default.
-    # Confirmed stage (10:00 snapshot) is the promotable base gate.
+    # Provisional stage (default 9:40) is early-stage score — strategy-configurable.
+    # Confirmed stage (10:00) is the default promotable gate.
+    # Gate rule: PASS if objective_score >= per-strategy hard floor.
+    # No relational score. No cross-sectional ranking. No daily exclusion overlay.
     ip_v2_enabled: bool = True
-    ip_v2_threshold_provisional: float = 0.74  # aligned with confirmed threshold
-    ip_v2_threshold_confirmed: float = 0.74
+    ip_v2_threshold_provisional: float = 5.0  # default hard floor (objective 0-10)
+    ip_v2_threshold_confirmed: float = 5.0    # default hard floor (objective 0-10)
     ip_v2_provisional_hhmm: int = 940
     ip_v2_confirmed_hhmm: int = 1000
     ip_v2_recompute_confirmed_each_bar: bool = True
-    ip_v2_allow_provisional_promotion: bool = False  # default OFF; provisional trades net -12.2R
+    ip_v2_allow_provisional_promotion: bool = False  # default OFF
     ip_v2_allow_provisional_by_strategy: Dict[str, bool] = field(default_factory=lambda: {
         "GGG_LONG_V1": True,  # GGG fires 9:30-9:45, before confirmed stage (10:00)
     })
     ip_v2_threshold_by_strategy: Dict[str, float] = field(default_factory=lambda: {
-        "HH_QUALITY": 0.79,        # PF peaks at 0.79 (2.20), dips at 0.75-0.74
-        "EMA_FPIP_V3_B": 0.73,    # PF rises as threshold drops (2.89 at 0.73, +51R)
-        "SP_V2_SIMPLE": 0.77,     # PF peaks at 0.77 (2.56, +34.7R)
-        "ORH_FBO_V2_B": 0.80,    # PF=3.47 at 0.80, drops at 0.78
-        "ORH_FBO_V2_A": 0.78,    # N grows without much PF loss
-        "BDR_V3_C": 0.74,         # PF improves as threshold drops (2.17 at 0.74)
-        "EMA9_V5_C": 0.70,        # lowered to increase N; strategy insensitive to threshold
-        "BS_STRUCT": 0.80,        # small N, keep tight
+        "HH_QUALITY": 6.0,
+        "EMA_FPIP_V3_B": 5.0,
+        "SP_V2_SIMPLE": 6.0,
+        "BDR_V3_C": 6.5,
+        "BIG_DAWG_LONG_V1": 8.5,
+        "BS_STRUCT": 5.0,
+        "ORH_FBO_V2_A": 5.0,
+        "ORH_FBO_V2_B": 6.0,
+        "EMA9_V5_C": 5.0,
     })
     ip_v2_debug_logging: bool = True
+
+    # ── ORH_FBO_V2_B special recovery rule ──
+    # Afternoon short sleeve: additional gating beyond generic hard floor.
+    orh_b_time_start: int = 1200     # earliest signal time (HHMM)
+    orh_b_time_end: int = 1400       # latest signal time (HHMM)
+    orh_b_counter_wick_max: float = 0.15  # max counter_wick_fraction for bearish bar
 
     # ── Market regime ──
     regime_require_green: bool = True

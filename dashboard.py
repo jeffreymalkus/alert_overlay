@@ -1574,13 +1574,13 @@ class SymbolRunner:
         log.info(f"[{self.symbol}] Unsubscribed and removed (async).")
 
     def _maybe_evaluate_in_play(self, bar: Bar):
-        """Evaluate in-play status using V2 percentile-ranked base gate.
+        """Evaluate in-play status using V2 objective gate.
 
-        V2 computes: gap_abs%, abs_move_from_open%, abs_RS_vs_SPY%
-        then ranks cross-sectionally across the live universe.
+        V2 computes: objective 0–10 score from five bucketed components
+        (move, RS, gap, range-expansion, RVOL). No cross-sectional ranking.
 
         Two stages:
-          Provisional (9:40): informational only, not promotable by default
+          Provisional (9:40): early-stage score, strategy-configurable
           Confirmed (10:00+): active promotable gate, re-evaluated each bar
 
         Failed names are never zeroed — strategies see the raw score.
@@ -1614,35 +1614,34 @@ class SymbolRunner:
             if math.isnan(spy_close):
                 spy_close = getattr(_spy_snap, 'close', NaN)
 
-        # Build universe features for cross-sectional ranking
-        # Collect features from all active runners
-        universe_features = {}
-        for runner in _runners:
-            r_si = runner._strategy_mgr.indicators if hasattr(runner, '_strategy_mgr') else None
-            if r_si is None:
-                continue
-            r_baselines = r_si.get_in_play_baselines()
-            r_bars = r_baselines.get("session_bars", [])
-            r_pc = r_baselines.get("prev_close", NaN)
-            if not r_bars:
-                continue
-            r_open = r_bars[0].open
-            if runner.symbol == self.symbol:
-                r_close = bar.close
-            else:
-                with _lock:
-                    r_close = _status.get("symbols", {}).get(runner.symbol, {}).get("last_price", NaN)
-                if r_close == 0:
-                    r_close = NaN
-            if math.isnan(r_open) or r_open <= 0 or math.isnan(r_close) or r_close <= 0:
-                continue
-            feat = _InPlayProxyV2._compute_features_direct(
-                r_open, r_pc, r_close, spy_open, spy_close
-            )
-            if feat is not None:
-                universe_features[runner.symbol] = feat
+        # Compute session high/low/volume through current bar
+        session_high = NaN
+        session_low = NaN
+        first_window_volume = 0.0
+        for sb in session_bars:
+            if math.isnan(session_high) or sb.high > session_high:
+                session_high = sb.high
+            if math.isnan(session_low) or sb.low < session_low:
+                session_low = sb.low
+            first_window_volume += getattr(sb, 'volume', 0) or 0
+        # Include current bar
+        if not math.isnan(bar.high):
+            if math.isnan(session_high) or bar.high > session_high:
+                session_high = bar.high
+        if not math.isnan(bar.low):
+            if math.isnan(session_low) or bar.low < session_low:
+                session_low = bar.low
+        first_window_volume += getattr(bar, 'volume', 0) or 0
 
-        # Evaluate this symbol using V2
+        # Get rolling baselines from SharedIndicators
+        vol_baseline = baselines.get("vol_baseline", 0.0)
+        range_baseline = baselines.get("range_baseline", 0.0)
+        if vol_baseline <= 0:
+            vol_baseline = NaN
+        if range_baseline <= 0:
+            range_baseline = NaN
+
+        # Evaluate this symbol using V2 objective score — no cross-sectional logic
         result = _in_play_v2.update_live(
             symbol=self.symbol,
             session_date=bar.timestamp.date(),
@@ -1652,7 +1651,11 @@ class SymbolRunner:
             current_hhmm=hhmm,
             spy_open=spy_open,
             spy_current_close=spy_close,
-            universe_features=universe_features,
+            session_high=session_high,
+            session_low=session_low,
+            first_window_volume=first_window_volume,
+            vol_baseline=vol_baseline,
+            range_baseline=range_baseline,
         )
         self._ip_result = result
         self._ip_eval_date = date_int
@@ -1665,10 +1668,11 @@ class SymbolRunner:
         if result.active_score_kind != "NONE":
             log.info(
                 f"[{self.symbol}] IN-PLAY V2: {result.reason_flags} | "
-                f"kind={result.active_score_kind} score={result.active_score:.3f} "
+                f"kind={result.active_score_kind} score={result.active_score:.1f}/10 "
                 f"passed={result.active_passed} | "
                 f"gap={result.gap_abs_pct:.2f}% move={result.abs_move_from_open_pct:.2f}% "
-                f"rs={result.abs_rs_vs_spy_pct:.2f}%"
+                f"rs={result.abs_rs_vs_spy_pct:.2f}% rvol={result.rvol:.2f}x "
+                f"range_exp={result.range_expansion:.2f}x"
             )
 
         # Surface to dashboard status
@@ -1830,31 +1834,54 @@ class SymbolRunner:
                 log.info(f"[{self.symbol}] BLOCKED {setup_name} by regime: {regime_reason}")
                 continue
 
-            # ── Gate 0.5: In-play V2 base gate ──
-            # V2 percentile-ranked gate. Confirmed-only promotion by default.
-            # Provisional is informational — blocked unless per-strategy override.
+            # ── Gate 0.5: In-play V2 objective gate ──
+            # Objective 0–10 score. PASS if score >= per-strategy hard floor.
+            # No relational score. No cross-sectional ranking.
             if self._ip_result is None or not hasattr(self._ip_result, 'active_passed'):
                 setup_name = _STRATEGY_SETUP_MAP.get(
                     sig.strategy_name, (sig.strategy_name,))[0]
                 log.info(f"[{self.symbol}] BLOCKED {setup_name} by in-play: not yet evaluated")
                 continue
 
-            # Per-strategy IP threshold (matches replay gate logic)
+            # Per-strategy hard floor (objective 0-10 scale)
             import math as _math
             _ip_score_raw = self._ip_result.active_score
-            _strat_thresh = _IP_CFG.ip_v2_threshold_by_strategy.get(
+            _strat_floor = _IP_CFG.ip_v2_threshold_by_strategy.get(
                 sig.strategy_name, _IP_CFG.ip_v2_threshold_confirmed)
             _ip_passed = (not _math.isnan(_ip_score_raw) and
-                          _ip_score_raw >= _strat_thresh and
+                          _ip_score_raw >= _strat_floor and
                           self._ip_result.active_score_kind != "NONE")
 
             if not _ip_passed:
                 setup_name = _STRATEGY_SETUP_MAP.get(
                     sig.strategy_name, (sig.strategy_name,))[0]
                 log.info(f"[{self.symbol}] BLOCKED {setup_name} by in-play V2: "
-                         f"score={_ip_score_raw:.3f} < {_strat_thresh:.2f} "
+                         f"score={_ip_score_raw:.1f} < floor {_strat_floor:.1f} "
                          f"kind={self._ip_result.active_score_kind}")
                 continue
+
+            # ── ORH_FBO_V2_B special recovery rule ──
+            # Afternoon short sleeve: time window + counter_wick_fraction filter
+            if sig.strategy_name == "ORH_FBO_V2_B":
+                _sig_hhmm = sig.hhmm if hasattr(sig, 'hhmm') else (
+                    sig.metadata.get("hhmm", 0) if sig.metadata else 0)
+                _orh_b_start = getattr(_IP_CFG, 'orh_b_time_start', 1200)
+                _orh_b_end = getattr(_IP_CFG, 'orh_b_time_end', 1400)
+                _orh_b_wick_max = getattr(_IP_CFG, 'orh_b_counter_wick_max', 0.15)
+                _cwf = sig.metadata.get("counter_wick_fraction", 1.0) if sig.metadata else 1.0
+
+                if _sig_hhmm < _orh_b_start or _sig_hhmm > _orh_b_end:
+                    setup_name = _STRATEGY_SETUP_MAP.get(
+                        sig.strategy_name, (sig.strategy_name,))[0]
+                    log.info(f"[{self.symbol}] BLOCKED {setup_name} by ORH_B time window: "
+                             f"hhmm={_sig_hhmm} outside {_orh_b_start}-{_orh_b_end}")
+                    continue
+                if _cwf > _orh_b_wick_max:
+                    setup_name = _STRATEGY_SETUP_MAP.get(
+                        sig.strategy_name, (sig.strategy_name,))[0]
+                    log.info(f"[{self.symbol}] BLOCKED {setup_name} by ORH_B counter_wick: "
+                             f"{_cwf:.3f} > {_orh_b_wick_max:.2f}")
+                    continue
 
             # Block provisional promotion unless per-strategy override
             if self._ip_result.active_score_kind == "PROVISIONAL":
@@ -1865,7 +1892,7 @@ class SymbolRunner:
                     setup_name = _STRATEGY_SETUP_MAP.get(
                         sig.strategy_name, (sig.strategy_name,))[0]
                     log.info(f"[{self.symbol}] BLOCKED {setup_name} by in-play V2: "
-                             f"provisional not promotable (score={self._ip_result.active_score:.3f})")
+                             f"provisional not promotable (score={self._ip_result.active_score:.1f})")
                     continue
 
             # ── Gate: Quality tier (unified — ALL strategies) ──
