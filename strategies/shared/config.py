@@ -399,7 +399,7 @@ class StrategyConfig:
     # ── Backside Structure Only thresholds ──
     enable_backside: bool = True
     bs_time_start: Dict[int, int] = field(default_factory=lambda: {1: 1000, 5: 1000})
-    bs_time_end: Dict[int, int] = field(default_factory=lambda: {1: 1330, 5: 1330})
+    bs_time_end: Dict[int, int] = field(default_factory=lambda: {1: 1230, 5: 1230})
     bs_min_decline_atr: float = 1.5          # min decline from HOD to LOD in ATR
     bs_min_hh_count: int = 1                 # at least 1 higher-high after LOD
     bs_min_hl_count: int = 1                 # at least 1 higher-low after LOD
@@ -418,6 +418,11 @@ class StrategyConfig:
     bs_struct_max_rr: float = 3.0
     bs_max_bars: Dict[int, int] = field(default_factory=lambda: {1: 156, 5: 30})
     bs_one_and_done: bool = True             # single attempt only
+    bs_min_close_location: float = 0.70      # breakout bar close location (close-low)/(high-low)
+    bs_min_body_fraction: float = 0.70       # breakout bar body fraction
+    bs_max_counter_wick_fraction: float = 0.15  # max lower wick for bullish breakout bar
+    bs_min_structure_quality: float = 0.50   # min internal structure_quality score
+    bs_min_confluence_count: int = 2         # min confluence factors required
 
     # ── ORH Failed Breakout Short thresholds ──
     enable_orh_fbo: bool = True

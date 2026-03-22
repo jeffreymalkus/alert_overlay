@@ -192,6 +192,23 @@ class BacksideStructureLive(LiveStrategy):
                                 breakout_fired = True
 
             if breakout_fired:
+                # ── BS_STRUCT admissibility filters ──
+
+                # Breakout bar geometry
+                _bar_range = bar.high - bar.low
+                if _bar_range <= 0:
+                    breakout_fired = False  # degenerate bar
+                else:
+                    _close_location = (bar.close - bar.low) / _bar_range
+                    _body_fraction = abs(bar.close - bar.open) / _bar_range
+                    _counter_wick_fraction = (bar.open - bar.low) / _bar_range
+
+                    if (_close_location < cfg.bs_min_close_location or
+                            _body_fraction < cfg.bs_min_body_fraction or
+                            _counter_wick_fraction > cfg.bs_max_counter_wick_fraction):
+                        breakout_fired = False
+
+            if breakout_fired:
                 if not _isnan(self._most_recent_hl):
                     stop = self._most_recent_hl - cfg.bs_stop_buffer
                     stop_ref_type = "most_recent_hl"
@@ -278,6 +295,20 @@ class BacksideStructureLive(LiveStrategy):
                 if bar.volume >= 1.5 * vol_ma:
                     confluence.append("strong_bo_vol")
 
+                # ── BS_STRUCT structure/confluence admissibility ──
+                if min(struct_q, 1.0) < cfg.bs_min_structure_quality:
+                    self._range_active = False
+                    if cfg.bs_one_and_done:
+                        self._triggered = True
+                    self._shift_bars(bar)
+                    return None
+                if len(confluence) < cfg.bs_min_confluence_count:
+                    self._range_active = False
+                    if cfg.bs_one_and_done:
+                        self._triggered = True
+                    self._shift_bars(bar)
+                    return None
+
                 # ── Quality pipeline ──
                 quality_score = 3  # default
                 quality_tier = QualityTier.B_TIER
@@ -355,8 +386,12 @@ class BacksideStructureLive(LiveStrategy):
                         "midpoint_frac": midpoint_frac,
                         "actual_rr": actual_rr,
                         "target_tag": target_tag,
+                        "close_location": round(_close_location, 3),
+                        "body_fraction": round(_body_fraction, 3),
+                        "counter_wick_fraction": round(_counter_wick_fraction, 3),
                         "structure_quality": min(struct_q, 1.0),
                         "confluence": confluence,
+                        "confluence_count": len(confluence),
                         "in_play_score": snap.in_play_score,
                         "quality_tier": quality_tier.value,
                         "reject_reasons": reject_reasons,
